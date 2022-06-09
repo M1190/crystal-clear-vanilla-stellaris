@@ -1,2 +1,2 @@
-# crystal-clear-vanilla-stellaris
+# Crystal Clear Vanilla Stellaris Mod
  Initial description
