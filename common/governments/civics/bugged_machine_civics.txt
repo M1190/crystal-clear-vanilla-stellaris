@@ -1,0 +1,76 @@
+civic_bugged_machine_researcher = {
+	modification = yes
+
+	potential = { authority = { value = auth_machine_intelligence } }
+
+#	possible = {
+#		civics = {
+#			NOR = {
+#				value = civic_machine_terminator
+#			}
+#		}
+#	}
+
+	description = "civic_tooltip_bugged_machine_researcher_effects"
+
+	modifier = {
+		ship_archeaological_site_clues_add = 2
+	#	species_leader_exp_gain = 0.10
+	}
+
+	random_weight = {
+		base = 5
+	}
+}
+
+civic_bugged_machine_emancipation_proclamation = {
+	modification = no
+
+	playable = { host_has_dlc = "Apocalypse" }
+
+	potential = {
+		ethics = {
+			OR = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		authority = { OR = {  value = auth_machine_intelligence } }
+	}
+
+	description = "civic_tooltip_bugged_machine_emancipation_proclamation_effects"
+
+	random_weight = {
+		base = 2
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Apocalypse" }
+		}
+		modifier = {
+			# civic has no effect after galaxy generation, disable for random generation
+			factor = 0
+			has_global_flag = game_started
+		}
+	}
+}
+
+civic_bugged_machine_stripmine = {
+	modification = no
+	
+	potential = {
+		authority = {
+			value = auth_machine_intelligence
+		}
+	}
+	
+	description = "civic_tooltip_bugged_machine_stripmine_effects"
+
+	modifier = {
+		country_minerals_produces_mult = 0.15
+		country_alloys_produces_mult = 0.05
+		district_mining_max = +2
+	}
+
+	random_weight = {
+		base = 5
+	}
+}

@@ -1,0 +1,357 @@
+##########################
+# PRIMITIVE OUTPOST SHIT #
+##########################
+
+namespace = observation
+
+# Societal Shift towards Competitive
+country_event = {
+	id = observation.0001
+	hide_window = yes
+	
+	trigger = {
+		is_country_type = primitive
+		NOT = { has_ethic = ethic_fanatic_competitive }
+		capital_scope = {
+			has_observation_outpost = yes
+			observation_outpost = { has_mission = native_indoctrination }
+			observation_outpost_owner = { 
+				OR = {
+					has_ethic = ethic_fanatic_competitive
+					has_ethic = ethic_competitive
+				}
+			}
+			any_owned_pop = {
+				has_ethic = ethic_competitive
+			}		
+			OR = {
+				root = { NOT = { has_ethic = ethic_competitive } }
+				count_owned_pop = {
+					limit = { has_ethic = ethic_competitive }
+					count > 1
+				}				
+			}				
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	immediate = {
+		shift_ethic = "ethic_competitive"
+		capital_scope = {
+			observation_outpost_owner = { country_event = { id = observation.0002 } }
+		}
+	}
+}
+
+country_event = {
+	id = observation.0002
+	title = "observation.0002.name"
+	desc = "observation.0002.desc"
+	picture = GFX_evt_medieval_alien_civilization
+	show_sound = event_primitive_civilization
+	location = from
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "observation.0002.a"
+	}
+}
+
+
+
+# Societal Shift towards Cooperative
+country_event = {
+	id = observation.6001
+	hide_window = yes
+	
+	trigger = {
+		is_country_type = primitive
+		NOT = { has_ethic = ethic_fanatic_cooperative }
+		capital_scope = {
+			has_observation_outpost = yes
+			observation_outpost = { has_mission = native_indoctrination }
+			observation_outpost_owner = { 
+				OR = {
+					has_ethic = ethic_fanatic_cooperative
+					has_ethic = ethic_cooperative
+				}
+			}
+			any_owned_pop = {
+				has_ethic = ethic_cooperative
+			}		
+			OR = {
+				root = { NOT = { has_ethic = ethic_cooperative } }
+				count_owned_pop = {
+					limit = { has_ethic = ethic_cooperative }
+					count > 1
+				}				
+			}				
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	immediate = {
+		shift_ethic = "ethic_cooperative"
+		capital_scope = {
+			observation_outpost_owner = { country_event = { id = observation.6002 } }
+		}
+	}
+}
+
+country_event = {
+	id = observation.6002
+	title = "observation.0002.name"
+	desc = "observation.6002.desc"
+	picture = GFX_evt_medieval_alien_civilization
+	show_sound = event_primitive_civilization
+	location = from
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "observation.0002.a"
+	}
+}
+
+
+
+# Societal Shift towards Elitism
+country_event = {
+	id = observation.2001
+	hide_window = yes
+	
+	trigger = {
+		is_country_type = primitive
+		NOT = { has_ethic = ethic_fanatic_elitist }
+		capital_scope = {
+			has_observation_outpost = yes
+			observation_outpost = { has_mission = native_indoctrination }
+			observation_outpost_owner = { 
+				OR = {
+					has_ethic = ethic_fanatic_elitist
+					has_ethic = ethic_elitist
+				}
+			}
+			any_owned_pop = {
+				has_ethic = ethic_elitist
+			}		
+			OR = {
+				root = { NOT = { has_ethic = ethic_elitist } }
+				count_owned_pop = {
+					limit = { has_ethic = ethic_elitist }
+					count > 1
+				}				
+			}				
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	immediate = {
+		shift_ethic = "ethic_elitist"
+		capital_scope = {
+			observation_outpost_owner = { country_event = { id = observation.2002 } }
+		}
+	}
+}
+
+country_event = {
+	id = observation.2002
+	title = "observation.0002.name"
+	desc = "observation.2002.desc"
+	picture = GFX_evt_medieval_alien_civilization
+	show_sound = event_primitive_civilization
+	location = from
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "observation.0002.a"
+	}
+}
+
+
+# Societal Shift towards Egalitarian
+country_event = {
+	id = observation.3001
+	hide_window = yes
+	
+	trigger = {
+		is_country_type = primitive
+		NOT = { has_ethic = ethic_fanatic_pluralist }
+		capital_scope = {
+			has_observation_outpost = yes
+			observation_outpost = { has_mission = native_indoctrination }
+			observation_outpost_owner = { 
+				OR = {
+					has_ethic = ethic_fanatic_pluralist
+					has_ethic = ethic_pluralist
+				}
+			}
+			any_owned_pop = {
+				has_ethic = ethic_pluralist
+			}		
+			OR = {
+				root = { NOT = { has_ethic = ethic_pluralist } }
+				count_owned_pop = {
+					limit = { has_ethic = ethic_pluralist }
+					count > 1
+				}				
+			}				
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	immediate = {
+		shift_ethic = "ethic_pluralist"
+		capital_scope = {
+			observation_outpost_owner = { country_event = { id = observation.3002 } }
+		}
+	}
+}
+
+country_event = {
+	id = observation.3002
+	title = "observation.0002.name"
+	desc = "observation.3002.desc"
+	picture = GFX_evt_medieval_alien_civilization
+	show_sound = event_primitive_civilization
+	location = from
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "observation.0002.a"
+	}
+}
+
+
+
+# Societal Shift towards Ecologism
+country_event = {
+	id = observation.4001
+	hide_window = yes
+	
+	trigger = {
+		is_country_type = primitive
+		NOT = { has_ethic = ethic_fanatic_ecocentric }
+		capital_scope = {
+			has_observation_outpost = yes
+			observation_outpost = { has_mission = native_indoctrination }
+			observation_outpost_owner = { 
+				OR = {
+					has_ethic = ethic_fanatic_ecocentric
+					has_ethic = ethic_ecocentric
+				}
+			}
+			any_owned_pop = {
+				has_ethic = ethic_ecocentric
+			}		
+			OR = {
+				root = { NOT = { has_ethic = ethic_ecocentric } }
+				count_owned_pop = {
+					limit = { has_ethic = ethic_ecocentric }
+					count > 1
+				}				
+			}				
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	immediate = {
+		shift_ethic = "ethic_ecocentric"
+		capital_scope = {
+			observation_outpost_owner = { country_event = { id = observation.4002 } }
+		}
+	}
+}
+
+country_event = {
+	id = observation.4002
+	title = "observation.0002.name"
+	desc = "observation.4002.desc"
+	picture = GFX_evt_medieval_alien_civilization
+	show_sound = event_primitive_civilization
+	location = from
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "observation.0002.a"
+	}
+}
+
+
+
+
+# Societal Shift towards anthropocentrism
+country_event = {
+	id = observation.5001
+	hide_window = yes
+	
+	trigger = {
+		is_country_type = primitive
+		NOT = { has_ethic = ethic_fanatic_anthropocentric }
+		capital_scope = {
+			has_observation_outpost = yes
+			observation_outpost = { has_mission = native_indoctrination }
+			observation_outpost_owner = { 
+				OR = {
+					has_ethic = ethic_fanatic_anthropocentric
+					has_ethic = ethic_anthropocentric
+				}
+			}
+			any_owned_pop = {
+				has_ethic = ethic_anthropocentric
+			}		
+			OR = {
+				root = { NOT = { has_ethic = ethic_anthropocentric } }
+				count_owned_pop = {
+					limit = { has_ethic = ethic_anthropocentric }
+					count > 1
+				}				
+			}				
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	immediate = {
+		shift_ethic = "ethic_anthropocentric"
+		capital_scope = {
+			observation_outpost_owner = { country_event = { id = observation.5002 } }
+		}
+	}
+}
+
+country_event = {
+	id = observation.5002
+	title = "observation.0002.name"
+	desc = "observation.5002.desc"
+	picture = GFX_evt_medieval_alien_civilization
+	show_sound = event_primitive_civilization
+	location = from
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "observation.0002.a"
+	}
+}

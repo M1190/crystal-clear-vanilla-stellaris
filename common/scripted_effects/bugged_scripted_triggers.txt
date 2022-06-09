@@ -1,0 +1,100 @@
+bugged_recalculate_consecrated_stars_modifier = {
+	if = {
+     	limit = {
+			OR = {
+    	  	  check_variable = {
+          	    	which = bugged_consecrated_stars_variable
+    	  	    	value > 0
+      	    	}
+				check_variable = {
+       	     		which = bugged_consecrated_stars_variable
+        	   		value < 0
+       	  		}
+			}
+      	}
+		remove_modifier = bugged_consecrated_star_modifier
+      	add_modifier = {
+      	    modifier = bugged_consecrated_star_modifier
+      	    days = -1
+      	    multiplier = bugged_consecrated_stars_variable
+      	}
+ 	}
+	else = {
+		#Do Nothing
+	}
+}
+
+recalculate_war_won_modifier = {
+	if = {
+		limit = {
+			check_variable = {
+				which = bugged_war_cult_won_variable
+				value > 0
+			}
+		}
+		remove_modifier = bugged_war_cult_won
+  		add_modifier = {
+  	  		modifier = bugged_war_cult_won
+			multiplier = bugged_war_cult_won_variable
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = bugged_war_cult_won_variable
+				value = 0
+			}
+		}
+		remove_modifier = bugged_war_cult_won	
+	}
+}
+
+recalculate_war_lost_modifier = {
+	if = {
+		limit = {
+			check_variable = {
+				which = bugged_war_cult_lost_variable
+				value > 0
+			}
+		}
+		remove_modifier = bugged_war_cult_lost
+		add_modifier = {
+			modifier = bugged_war_cult_lost
+			multiplier = bugged_war_cult_lost_variable
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = bugged_war_cult_lost_variable
+				value = 0
+			}
+		}
+		remove_modifier = bugged_war_cult_lost	
+	}
+}
+
+recalculate_militarist_governmental_modifier = {
+	if = {
+		limit = {
+			check_variable = {
+				which = bugged_militarist_governmental_variable
+				value > 0
+			}
+		}
+		remove_modifier = bugged_militarist_governmental
+  		add_modifier = {
+  	  		modifier = bugged_militarist_governmental
+			multiplier = bugged_militarist_governmental_variable
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = bugged_militarist_governmental_variable
+				value = 0
+			}
+		}
+		remove_modifier = bugged_militarist_governmental	
+	}
+}

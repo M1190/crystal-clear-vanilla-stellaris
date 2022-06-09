@@ -1,0 +1,490 @@
+#######################
+# BLACK HOLE CREATION #
+#######################
+
+namespace = bugged_black_hole
+
+system_event = {
+	id = bugged_black_hole.1
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		set_star_class = sc_black_hole
+	}
+}
+
+##########################
+# THE KEY TO IMMORTALITY #
+##########################
+
+namespace = bugged_immortal_ruler
+
+country_event = {
+	id = bugged_immortal_ruler.1
+	title = "Immortal Ruler"
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_celebration
+	desc = edict_bugged_immortal_ruler_desc
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+	}
+
+	immediate = {
+		FROMFROM = {
+			leader = { save_event_target_as = ruler }
+			solar_system = { save_event_target_as = system }
+			leader = { add_trait = leader_trait_bugged_immortal }
+		}
+		
+		set_country_flag = flag_immortal_ruler
+	}
+	
+	option = {
+		name = "bugged_immortal_ruler.1.yes"
+		custom_tooltip = "bugged_immortal_ruler.1.tooltip"
+	}
+}
+
+#####################
+# INTERVENTIONALIST #
+#####################
+
+namespace = bugged_interventionalist
+
+#Cry for help
+country_event = {
+	id = bugged_interventionalist.1
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_war_leader = yes
+		from = {
+			any_attacker = { is_same_value = root }
+			any_defender = {
+				is_war_leader = yes
+			}
+		}
+	}
+
+	immediate = {
+		save_event_target_as = attacking_country
+		from = {
+			random_defender = {
+				limit = {
+					is_war_leader = yes
+				}
+				save_event_target_as = victim_country
+			}
+		}
+		every_country = {
+			limit = {
+				has_communications = root
+				is_bugged_interventionalist = yes
+			}
+			country_event = { id = bugged_interventionalist.2 days = 10 }
+		}
+	}
+}
+
+# Interventionalist Requested (Interventionalist Notification)
+country_event = {
+	id = bugged_interventionalist.2
+	title = "bugged_interventionalist.2.name"
+	desc = "bugged_interventionalist.2.desc"
+	picture = GFX_evt_fleet_from_surface
+	show_sound = event_announcement
+
+	is_triggered_only = yes
+
+	option = { # Answer Call For Help
+		name = bugged_interventionalist.2.a
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 6
+				opinion_level = {
+					who = event_target:victim_country
+					level >= good
+				}
+			}
+		}
+		event_target:victim_country = {
+			add_opinion_modifier = {
+				who = root
+				modifier = opinion_emperor_support_us
+			}
+		}
+		custom_tooltip = bugged_interventionalist.2.a.tooltip
+		hidden_effect = {
+			join_war_on_side = {
+				war = fromfrom
+				side = defenders
+			}
+			every_playable_country = {
+				limit = {
+					NOT = {
+						is_same_value = root
+						is_same_value = event_target:victim_country
+						is_war_participant = {
+							war = fromfrom
+							side = attackers
+						}
+					}
+				}
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_emperor_supported_member
+				}
+			}
+			event_target:victim_country = {
+				country_event = { id = bugged_interventionalist.10 }
+			}
+			event_target:attacking_country = {
+				country_event = { id = bugged_interventionalist.20 }
+			}
+		}
+	}
+	option = { # Ignore Call For Help (You're A Dick)
+		name = bugged_interventionalist.2.b
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 60
+				opinion_level = {
+					who = event_target:victim_country
+					level <= poor
+				}
+			}
+		}
+		event_target:victim_country = {
+			add_opinion_modifier = {
+				who = root
+				modifier = opinion_emperor_abandoned_us
+			}
+		}
+		hidden_effect = {
+			every_playable_country = {
+				limit = {
+					NOT = {
+						is_same_value = root
+						is_same_value = event_target:victim_country
+						is_war_participant = {
+							war = fromfrom
+							side = attackers
+						}
+					}
+				}
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_emperor_abandoned_member
+				}
+			}
+			event_target:victim_country = {
+				country_event = { id = bugged_interventionalist.30 }
+			}
+		}
+	}
+}
+
+#Interventionalist Joins War (Defender Notification)
+country_event = {
+	id = bugged_interventionalist.10
+	title = "bugged_interventionalist.10.name"
+	desc = "bugged_interventionalist.10.desc"
+	picture = GFX_evt_federation_fleet
+	show_sound = event_announcement
+
+	is_triggered_only = yes
+
+	option = {
+		name = bugged_interventionalist.10.a
+		custom_tooltip = bugged_interventionalist.10.a.tooltip
+	}
+}
+
+#Interventionalist Joins War (Attacker Notification)
+country_event = {
+	id = bugged_interventionalist.20
+	title = "bugged_interventionalist.20.name"
+	desc = "bugged_interventionalist.20.desc"
+	picture = GFX_evt_federation_fleet
+	show_sound = event_announcement
+
+	is_triggered_only = yes
+
+	option = {
+		name = bugged_interventionalist.20.a
+		custom_tooltip = bugged_interventionalist.20.a.tooltip
+	}
+}
+
+#Interventionalist Refuses To Help ( Defender Notification (They're A Dick) )
+country_event = {
+	id = bugged_interventionalist.30
+	title = "bugged_interventionalist.30.name"
+	desc = "bugged_interventionalist.30.desc"
+	picture = GFX_evt_undertaker
+	show_sound = event_announcement
+
+	is_triggered_only = yes
+
+	option = {
+		name = bugged_interventionalist.30.a
+	}
+
+}
+
+###########################
+# MILITARIST GOVERNMENTAL #
+###########################
+
+namespace = bugged_militarist_governmental_unity
+country_event = {
+	id = bugged_militarist_governmental_unity.1
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			has_valid_civic = civic_bugged_ordered_stratocracy
+			has_valid_civic = civic_bugged_warlord
+			has_valid_civic = civic_bugged_war_council
+			has_valid_civic = civic_citizen_service
+		}
+	}
+
+	immediate = {
+		export_trigger_value_to_variable = {
+			trigger = used_naval_capacity_integer
+			variable = bugged_militarist_governmental_variable
+		}
+		recalculate_militarist_governmental_modifier = yes
+	}
+}
+
+############
+# WAR CULT #
+############
+
+namespace = bugged_war_cult_war_ended
+#War Ended - We Won
+country_event = {
+	id = bugged_war_cult_war_ended.1
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		owner = { is_bugged_war_cult = yes }
+	}
+
+	immediate = {
+		# add_modifier = {
+		# 	modifier = bugged_war_cult_won
+		# 	years = 5
+		# }
+		change_variable = {
+			which = bugged_war_cult_won_variable
+			value = 1
+		}
+		recalculate_war_won_modifier = yes 
+		country_event = {
+			days = 2555
+			id = bugged_war_cult_war_ended.2
+		}
+	}
+}
+#War Won - Reset Buff After 7 Years
+country_event = {
+	id = bugged_war_cult_war_ended.2
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		owner = { is_bugged_war_cult = yes }
+	}
+
+	immediate = {
+		# add_modifier = {
+		# 	modifier = bugged_war_cult_won
+		# 	years = 5
+		# }
+		change_variable = {
+			which = bugged_war_cult_won_variable
+			value = -1
+		}
+		recalculate_war_won_modifier = yes
+	}
+}
+#War Ended - We Lost
+country_event = {
+	id = bugged_war_cult_war_ended.3
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		owner = { is_bugged_war_cult = yes }
+	}
+
+	immediate = {
+		# add_modifier = {
+		# 	modifier = bugged_war_cult_lost
+		# 	years = 5
+		# }
+		change_variable = {
+			which = bugged_war_cult_lost_variable
+			value = 1
+		}
+		recalculate_war_lost_modifier = yes
+		country_event = {
+			days = 2555
+			id = bugged_war_cult_war_ended.4
+		}
+	}
+}
+#War Lost - Reset Debuff After 7 Years
+country_event = {
+	id = bugged_war_cult_war_ended.4
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		owner = { is_bugged_war_cult = yes }
+	}
+
+	immediate = {
+		# add_modifier = {
+		# 	modifier = bugged_war_cult_lost
+		# 	years = 5
+		# }
+		change_variable = {
+			which = bugged_war_cult_lost_variable
+			value = -1
+		}
+		recalculate_war_lost_modifier = yes
+	}
+}
+
+###########################
+# DISTINGUISHED ADMIRALTY #
+###########################
+
+namespace = bugged_distuinguished_admiralty
+
+# Add Distinguished trait
+country_event = {
+    id = bugged_distuinguished_admiralty.1
+    hide_window = yes
+    
+    is_triggered_only = yes
+    
+    trigger = {
+        has_valid_civic = civic_distinguished_admiralty
+        from = {
+            leader_class = admiral
+            has_level >= 5
+            NOT = { has_trait = leader_trait_bugged_distinguished }
+        }
+    }
+    
+    immediate = {
+        from = {
+            add_trait = leader_trait_bugged_distinguished
+        }
+    }
+}
+
+##############################
+# GRAVITY CULT SHIP MODIFIER #
+##############################
+
+namespace = bugged_gravity_cult_modifier
+
+# country_event = {
+# 	id = bugged_gravity_cult_modifier.1
+# 	hide_window = yes
+    
+#     is_triggered_only = yes
+
+# 	trigger = {
+# 		owner = {
+# 			is_bugged_gravity_cult = yes
+# 		}
+# 		solar_system = { is_star_class = sc_black_hole }
+# 	}
+# 	immediate = {
+# 		every_owned_fleet = {
+# 			add_modifier = {
+# 				modifier = bugged_black_hole_fleet
+# 			}
+# 		}
+# 	}
+# }
+
+# country_event = {
+# 	id = bugged_gravity_cult_modifier.2
+# 	hide_window = yes
+    
+#     is_triggered_only = yes
+
+# 	trigger = {
+# 		owner = {
+# 			is_bugged_gravity_cult = yes
+# 		}
+# 		solar_system = { NOT = { is_star_class = sc_black_hole } }
+# 	}
+# 	immediate = {
+# 		every_owned_fleet = {
+# 			remove_modifier = bugged_black_hole_fleet
+# 		}
+# 	}
+# }
+
+
+fleet_event = {
+	id = bugged_gravity_cult_modifier.1
+	hide_window = yes
+	
+	is_triggered_only = yes
+  
+	trigger = {
+	  from = { is_star_class = sc_black_hole }
+	  	owner = {
+			is_bugged_gravity_cult = yes
+		}
+	}
+  
+	immediate = {
+	  set_fleet_flag = bugged_black_hole_fleet_active
+	 	every_owned_ship = {
+			add_modifier = {
+		  	modifier = bugged_black_hole_fleet
+			}
+ 		}
+	}
+}
+
+fleet_event = {
+	id = bugged_gravity_cult_modifier.2
+	hide_window = yes
+	
+	is_triggered_only = yes
+  
+	trigger = {
+	  from = { NOT = { is_star_class = sc_black_hole } }
+	  	owner = {
+			is_bugged_gravity_cult = yes
+		}
+	}
+  
+	immediate = {
+	  set_fleet_flag = bugged_black_hole_fleet_active
+	 	every_owned_ship = {
+			remove_modifier = bugged_black_hole_fleet
+ 		}
+	}
+}

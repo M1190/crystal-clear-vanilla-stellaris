@@ -1,0 +1,99 @@
+building_bugged_thermal_borehole = {
+
+	base_buildtime = 400
+	base_cap_amount = 1
+
+	category = resource
+
+	potential = {
+		owner = {
+			is_anthropocentric = yes
+		}
+		NOT = { has_modifier = resort_colony }
+		NOR = { is_planet_class = pc_habitat  is_planet_class = pc_ringworld_habitable is_a_habitable_planet_megastructure = no }
+		NOT = { has_modifier = slave_colony }
+	}
+
+
+	planet_modifier = {
+		job_bugged_deep_core_miner_add = 3
+		planet_miners_minerals_produces_add = 1
+		pop_environment_tolerance = -0.1
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 450
+		}
+		upkeep = {
+			energy = 2
+			volatile_motes = 1
+		}
+	}
+
+	prerequisites = {
+		"tech_bugged_thermal_borehole"
+	}
+
+
+	triggered_desc = {
+		text = job_bugged_deep_core_miner_effect_desc
+	}
+
+	ai_resource_production = {
+		minerals = 20
+		energy = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_bugged_nature_reserve = {
+	base_buildtime = 400
+	base_cap_amount = 1
+
+	category = amenity
+
+	potential = {
+		owner = {
+			is_ecocentric = yes
+		}
+		NOT = { has_modifier = resort_colony }
+		NOR = { is_planet_class = pc_habitat  is_planet_class = pc_ringworld_habitable is_a_habitable_planet_megastructure = no }
+		NOT = { has_modifier = slave_colony }
+	}
+
+	planet_modifier = {
+		pop_environment_tolerance = 0.1
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 450
+		}
+		upkeep = {
+			energy = 2
+			exotic_gases = 1
+		}
+	}
+
+	prerequisites = {
+		"tech_bugged_nature_reserve"
+	}
+
+
+	# triggered_desc = {
+	# 	text = job_bugged_deep_core_miner_effect_desc
+	# }
+
+	ai_resource_production = {
+		minerals = 20
+		energy = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

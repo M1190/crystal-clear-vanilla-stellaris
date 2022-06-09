@@ -1,0 +1,192 @@
+civic_bugged_hive_researcher = {
+	potential = { authority = { value = auth_hive_mind } }
+	possible = {
+#		civics = {
+#			NOR = {
+#				value = civic_hive_devouring_swarm
+#			}
+#		}
+	}
+	modifier = {
+		all_technology_research_speed = 0.05
+		ship_archeaological_site_clues_add = 2
+	}
+	modification = yes
+	random_weight = {
+		base = 5
+	}
+
+	description = "civic_tooltip_bugged_hive_researcher_effects"
+}
+
+civic_bugged_hive_aggressive_proliferation = {
+	modification = no
+
+	playable = { host_has_dlc = "Apocalypse" }
+
+	potential = {
+		authority = { OR = {  value = auth_hive_mind } }
+	}
+	possible = {
+		ethics = {
+			value = ethic_form_convergent
+		}
+	}
+
+	description = "civic_tooltip_bugged_hive_aggressive_proliferation_effects"
+
+	random_weight = {
+		base = 2
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Apocalypse" }
+		}
+		modifier = {
+			# civic has no effect after galaxy generation, disable for random generation
+			factor = 0
+			has_global_flag = game_started
+		}
+	}
+}
+
+# TO BE REWORKED
+# civic_bugged_hive_cognitive_focus ={
+# 	potential = {
+# 		authority = {
+# 			value = auth_hive_mind
+# 		}
+# 	}
+
+# 	description = "civic_tooltip_bugged_hive_cognitive_focus_effects"
+
+# 	modifier = {
+# 		country_admin_cap_mult = 0.1
+# 	}
+
+# 	random_weight = {
+# 		base = 0
+# 	}
+# }
+
+civic_bugged_hive_burrows = {
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+
+	description = "civic_tooltip_bugged_hive_burrows_effects"
+
+	modifier = {
+		planet_orbital_bombardment_damage = -0.25
+		pop_housing_usage_mult = -0.10
+		pop_environment_tolerance = 0.05
+	}
+
+	random_weight = {
+		base = 5
+	}
+}
+
+civic_bugged_hive_symbiotic_relations = {
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+
+	description = "civic_tooltip_bugged_hive_symbiotic_relations_effects"
+
+	modifier = {
+		country_unity_produces_mult = 0.15
+	}
+
+	random_weight = {
+		base = 5
+	}
+}
+
+#Soon (tm)
+#civic_hive_brood_mothers = {
+#	potential = {
+#		authority = {
+#			value = auth_hive_mind
+#		}
+#	}
+#	possible = {
+#		ethics = {
+#			OR = {
+#				text = civic_tooltip_cooperative
+#				value = ethic_cooperative
+#				value = ethic_fanatic_cooperative
+#			}
+#		}
+#	}
+#	modifier = {
+#		bio_pop_growth_speed = 0.10
+#		planet_pops_organics_food_upkeep_mult = 0.1
+#	}
+#}
+
+civic_bugged_hive_rapid_industry = {
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+
+	description = "civic_tooltip_building_civic_effects"
+
+	modifier = {
+		planet_max_buildings_add = 1
+		planet_building_build_speed_mult = 0.1
+	}
+
+	random_weight = {
+		base = 5
+	}
+}
+
+civic_bugged_hive_biogenesis = {
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+
+	description = "civic_tooltip_bugged_hive_biogenesis_effects"
+
+	modifier = {
+		country_food_produces_mult = 0.2
+		terraform_speed_mult = 0.25
+		terraforming_cost_mult = -0.25
+	}
+
+	random_weight = {
+		base = 5
+	}
+}
+
+civic_bugged_hive_terravore = {
+	potential = {
+		authority = {
+			value = auth_hive_mind
+		}
+	}
+	possible = {
+		ethics = {
+			value = ethic_form_impassive
+		}
+	}
+
+	description = "civic_tooltip_bugged_hive_terravore_effects"
+
+	modifier = {
+		country_minerals_produces_mult = 0.15
+		district_mining_max = +2
+	}
+
+	random_weight = {
+		base = 5
+	}
+}
