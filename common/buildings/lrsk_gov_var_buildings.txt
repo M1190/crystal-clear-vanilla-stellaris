@@ -1,39 +1,32 @@
 # Government Variety Pack
 # Buildings
 # Author: littleraskol
-
 ## Army Buildings
-
 # Hall of Honor
-
 lrsk_gov_var_bldg_hall_of_honor = {
 	base_buildtime = 240
 	#add_to_first_building_slot = yes
 	base_cap_amount = 2
-
 	category = army
-
 	potential = {
-		owner = {  OR = {
-      		has_valid_civic = lrsk_gov_var_civic_chivalry
-      		has_valid_civic = lrsk_gov_var_civic_chivalry_aristo
-		} }
+		owner = {
+			OR = {
+				has_valid_civic = lrsk_gov_var_civic_chivalry
+				has_valid_civic = lrsk_gov_var_civic_chivalry_aristo
+			}
+		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	planet_modifier = {
 		planet_housing_add = 1
 		job_lrsk_gov_var_job_knight_add = 1
 	}
-
 	army_modifier = {
 		army_starting_experience_add = 25
 		army_morale = 0.1
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -43,32 +36,26 @@ lrsk_gov_var_bldg_hall_of_honor = {
 			energy = 1
 		}
 	}
-
 	upgrades = {
 		"lrsk_gov_var_bldg_hall_of_valor"
 	}
-
 	ai_weight = {
 		weight = 0.75
-
 		modifier = {
 			factor = 5
 			planet_crime > 4
 			planet_crime < 15
 		}
-
 		modifier = {
 			factor = 10
 			planet_crime > 14
 			planet_crime < 30
 		}
-
 		modifier = {
 			factor = 20
 			planet_crime > 29
 			planet_crime < 50
 		}
-
 		modifier = {
 			factor = 25
 			planet_crime > 49
@@ -77,27 +64,21 @@ lrsk_gov_var_bldg_hall_of_honor = {
 }
 
 # Hall of Valor
-
 lrsk_gov_var_bldg_hall_of_valor = {
 	base_buildtime = 360
 	can_build = no
-
 	category = army
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	planet_modifier = {
 		planet_housing_add = 2
 		job_lrsk_gov_var_job_knight_add = 2
 	}
-
 	army_modifier = {
 		army_starting_experience_add = 50
 		army_morale = 0.2
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -107,28 +88,23 @@ lrsk_gov_var_bldg_hall_of_valor = {
 			energy = 2
 		}
 	}
-
 	ai_weight = {
 		weight = 0.75
-
 		modifier = {
 			factor = 5
 			planet_crime > 4
 			planet_crime < 15
 		}
-
 		modifier = {
 			factor = 10
 			planet_crime > 14
 			planet_crime < 30
 		}
-
 		modifier = {
 			factor = 20
 			planet_crime > 29
 			planet_crime < 50
 		}
-
 		modifier = {
 			factor = 25
 			planet_crime > 49
@@ -137,68 +113,55 @@ lrsk_gov_var_bldg_hall_of_valor = {
 }
 
 ## Government Buildings
-
 # Planetary Synaptic Stuff
 @lrsk_gov_var_planet_synaptic_unity_cost_base = 1000
 @lrsk_gov_var_planet_synaptic_unity_cost_upgrade = 200
 @lrsk_gov_var_planet_synaptic_unity_cost_upkeep = 5
-
 @lrsk_gov_var_planet_synaptic_crime_1 = 0.1
 @lrsk_gov_var_planet_synaptic_crime_2 = 0.2
 @lrsk_gov_var_planet_synaptic_crime_3 = 0.3
 @lrsk_gov_var_planet_synaptic_crime_4 = 0.4
 @lrsk_gov_var_planet_synaptic_crime_5 = 0.5
-
 @lrsk_gov_var_planet_synaptic_amenities_1 = 0.05
 @lrsk_gov_var_planet_synaptic_amenities_2 = 0.15
 @lrsk_gov_var_planet_synaptic_amenities_3 = 0.2
 @lrsk_gov_var_planet_synaptic_amenities_4 = 0.25
 @lrsk_gov_var_planet_synaptic_amenities_5 = 0.3
-
 @lrsk_gov_var_planet_synaptic_popsreq_1 = 15
 @lrsk_gov_var_planet_synaptic_popsreq_2 = 20
 @lrsk_gov_var_planet_synaptic_popsreq_3 = 25
 @lrsk_gov_var_planet_synaptic_popsreq_4 = 30
 @lrsk_gov_var_planet_synaptic_popsreq_5 = 35
-
 # Planetary Synaptic Node
 lrsk_gov_var_bldg_planet_synaptic_node = {
 	base_buildtime = 360
 	base_cap_amount = 1
-
 	category = government
-
 	potential = {
 		exists = owner
 		owner = {
 			is_hive_empire = yes
-	  		has_valid_civic = lrsk_gov_var_civic_hive_planetmind_creativity
+			has_valid_civic = lrsk_gov_var_civic_hive_planetmind_creativity
 		}
 	}
-
 	allow = {
 		num_pops >= @lrsk_gov_var_planet_synaptic_popsreq_1
 	}
-
 	upgrades = {
 		lrsk_gov_var_bldg_planet_synaptic_cluster
 	}
-
 	planet_modifier = {
 		planet_amenities_no_happiness_mult = @lrsk_gov_var_planet_synaptic_amenities_1
 		job_lrsk_gov_var_job_planetmind_overseer_add = 1
 		job_maintenance_drone_add = 1
 		planet_crime_no_happiness_mult = @lrsk_gov_var_planet_synaptic_crime_1
 	}
-
 	triggered_desc = {
 		text = job_lrsk_gov_var_job_planetmind_overseer_effect_desc
 	}
-
 	triggered_desc = {
 		text = job_maintenance_drone_effect_desc
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -210,7 +173,6 @@ lrsk_gov_var_bldg_planet_synaptic_node = {
 			unity = @lrsk_gov_var_planet_synaptic_unity_cost_upkeep
 		}
 	}
-
 	ai_weight = {
 		weight = 1
 	}
@@ -219,41 +181,33 @@ lrsk_gov_var_bldg_planet_synaptic_node = {
 # Planetary Synaptic Cluster
 lrsk_gov_var_bldg_planet_synaptic_cluster = {
 	base_buildtime = 450
-
 	category = government
 	can_build = no
-
 	potential = {
 		exists = owner
 		owner = {
 			is_hive_empire = yes
-	  		has_valid_civic = lrsk_gov_var_civic_hive_planetmind_creativity
+			has_valid_civic = lrsk_gov_var_civic_hive_planetmind_creativity
 		}
 	}
-
 	allow = {
 		num_pops >= @lrsk_gov_var_planet_synaptic_popsreq_2
 	}
-
 	upgrades = {
 		lrsk_gov_var_bldg_planet_synaptic_confluence
 	}
-
 	planet_modifier = {
 		planet_amenities_no_happiness_mult = @lrsk_gov_var_planet_synaptic_amenities_2
 		job_lrsk_gov_var_job_planetmind_overseer_add = 2
 		job_maintenance_drone_add = 1
 		planet_crime_no_happiness_mult = @lrsk_gov_var_planet_synaptic_crime_2
 	}
-
 	triggered_desc = {
 		text = job_lrsk_gov_var_job_planetmind_overseer_effect_desc
 	}
-
 	triggered_desc = {
 		text = job_maintenance_drone_effect_desc
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -265,7 +219,6 @@ lrsk_gov_var_bldg_planet_synaptic_cluster = {
 			unity = @lrsk_gov_var_planet_synaptic_unity_cost_upkeep
 		}
 	}
-
 	ai_weight = {
 		weight = 1
 	}
@@ -274,41 +227,33 @@ lrsk_gov_var_bldg_planet_synaptic_cluster = {
 # Planetary Synaptic Confluence
 lrsk_gov_var_bldg_planet_synaptic_confluence = {
 	base_buildtime = 540
-
 	category = government
 	can_build = no
-
 	potential = {
 		exists = owner
 		owner = {
 			is_hive_empire = yes
-	  		has_valid_civic = lrsk_gov_var_civic_hive_planetmind_creativity
+			has_valid_civic = lrsk_gov_var_civic_hive_planetmind_creativity
 		}
 	}
-
 	allow = {
 		num_pops >= @lrsk_gov_var_planet_synaptic_popsreq_3
 	}
-
 	upgrades = {
 		lrsk_gov_var_bldg_planet_synaptic_core
 	}
-
 	planet_modifier = {
 		planet_amenities_no_happiness_mult = @lrsk_gov_var_planet_synaptic_amenities_3
 		job_lrsk_gov_var_job_planetmind_overseer_add = 3
 		job_maintenance_drone_add = 1
 		planet_crime_no_happiness_mult = @lrsk_gov_var_planet_synaptic_crime_3
 	}
-
 	triggered_desc = {
 		text = job_lrsk_gov_var_job_planetmind_overseer_effect_desc
 	}
-
 	triggered_desc = {
 		text = job_maintenance_drone_effect_desc
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -320,7 +265,6 @@ lrsk_gov_var_bldg_planet_synaptic_confluence = {
 			unity = @lrsk_gov_var_planet_synaptic_unity_cost_upkeep
 		}
 	}
-
 	ai_weight = {
 		weight = 1
 	}
@@ -329,41 +273,33 @@ lrsk_gov_var_bldg_planet_synaptic_confluence = {
 # Planetary Synaptic Core
 lrsk_gov_var_bldg_planet_synaptic_core = {
 	base_buildtime = 630
-
 	category = government
 	can_build = no
-
 	potential = {
 		exists = owner
 		owner = {
 			is_hive_empire = yes
-	  		has_valid_civic = lrsk_gov_var_civic_hive_planetmind_creativity
+			has_valid_civic = lrsk_gov_var_civic_hive_planetmind_creativity
 		}
 	}
-
 	allow = {
 		num_pops >= @lrsk_gov_var_planet_synaptic_popsreq_4
 	}
-
 	upgrades = {
 		lrsk_gov_var_bldg_planet_synaptic_nexus
 	}
-
 	planet_modifier = {
 		planet_amenities_no_happiness_mult = @lrsk_gov_var_planet_synaptic_amenities_4
 		job_lrsk_gov_var_job_planetmind_overseer_add = 4
 		job_maintenance_drone_add = 1
 		planet_crime_no_happiness_mult = @lrsk_gov_var_planet_synaptic_crime_4
 	}
-
 	triggered_desc = {
 		text = job_lrsk_gov_var_job_planetmind_overseer_effect_desc
 	}
-
 	triggered_desc = {
 		text = job_maintenance_drone_effect_desc
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -375,7 +311,6 @@ lrsk_gov_var_bldg_planet_synaptic_core = {
 			unity = @lrsk_gov_var_planet_synaptic_unity_cost_upkeep
 		}
 	}
-
 	ai_weight = {
 		weight = 1
 	}
@@ -384,37 +319,30 @@ lrsk_gov_var_bldg_planet_synaptic_core = {
 # Planetary Synaptic Nexus
 lrsk_gov_var_bldg_planet_synaptic_nexus = {
 	base_buildtime = 800
-
 	category = government
 	can_build = no
-
 	potential = {
 		exists = owner
 		owner = {
 			is_hive_empire = yes
-	  		has_valid_civic = lrsk_gov_var_civic_hive_planetmind_creativity
+			has_valid_civic = lrsk_gov_var_civic_hive_planetmind_creativity
 		}
 	}
-
 	allow = {
 		num_pops >= @lrsk_gov_var_planet_synaptic_popsreq_5
 	}
-
 	planet_modifier = {
 		planet_amenities_no_happiness_mult = @lrsk_gov_var_planet_synaptic_amenities_5
 		job_lrsk_gov_var_job_planetmind_overseer_add = 5
 		job_maintenance_drone_add = 1
 		planet_crime_no_happiness_mult = @lrsk_gov_var_planet_synaptic_crime_5
 	}
-
 	triggered_desc = {
 		text = job_lrsk_gov_var_job_planetmind_overseer_effect_desc
 	}
-
 	triggered_desc = {
 		text = job_maintenance_drone_effect_desc
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -426,53 +354,61 @@ lrsk_gov_var_bldg_planet_synaptic_nexus = {
 			unity = @lrsk_gov_var_planet_synaptic_unity_cost_upkeep
 		}
 	}
-
 	ai_weight = {
 		weight = 1
 	}
 }
 
 ## Branch Office Buildings
-
 # Managerial Technique Institute
 lrsk_gvp_bldg_managerial_technique_institute = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-
 	owner_type = corporate
-
 	potential = {
 		has_branch_office = yes
-		branch_office_owner = { has_valid_civic = lrsk_gov_var_civic_mc_sci_mgnt }
+		branch_office_owner = {
+			has_valid_civic = lrsk_gov_var_civic_mc_sci_mgnt
+		}
 	}
-
 	planet_modifier = {
 		job_lrsk_gov_var_job_functionary_add = 2
 	}
-	
 	triggered_desc = {
 		trigger = {
-			branch_office_owner = {  NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		text = lrsk_legit_mgmt_bonus
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		modifier = {
 			branch_office_value_mult = 0.1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 			count_owned_pop = {
-				limit = { has_job = lrsk_gov_var_job_functionary }
+				limit = {
+					has_job = lrsk_gov_var_job_functionary
+				}
 				count = 1
 			}
 		}
@@ -480,13 +416,18 @@ lrsk_gvp_bldg_managerial_technique_institute = {
 			branch_office_value_mult = 0.05
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 			count_owned_pop = {
-				limit = { has_job = lrsk_gov_var_job_functionary }
+				limit = {
+					has_job = lrsk_gov_var_job_functionary
+				}
 				count > 1
 			}
 		}
@@ -494,52 +435,59 @@ lrsk_gvp_bldg_managerial_technique_institute = {
 			branch_office_value_mult = 0.1
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		text = lrsk_crim_mgmt_bonus
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		modifier = {
 			planet_crime_add = 20
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 			count_owned_pop = {
-				limit = { has_job = lrsk_gov_var_job_functionary }
+				limit = {
+					has_job = lrsk_gov_var_job_functionary
+				}
 				count = 1
 			}
 		}
-		modifier = {			
+		modifier = {
 			planet_crime_mult = 0.1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 			count_owned_pop = {
-				limit = { has_job = lrsk_gov_var_job_functionary }
+				limit = {
+					has_job = lrsk_gov_var_job_functionary
+				}
 				count > 1
 			}
 		}
-		modifier = {			
+		modifier = {
 			planet_crime_mult = 0.2
 		}
 	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -549,7 +497,6 @@ lrsk_gvp_bldg_managerial_technique_institute = {
 			energy = 2
 		}
 	}
-
 	ai_weight = {
 		weight = 100
 	}
@@ -559,55 +506,61 @@ lrsk_gvp_bldg_managerial_technique_institute = {
 lrsk_gvp_bldg_learnarium_dome = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-
 	owner_type = corporate
-
 	potential = {
 		has_branch_office = yes
-		branch_office_owner = { has_valid_civic = lrsk_gov_var_civic_mc_edu_corp }
+		branch_office_owner = {
+			has_valid_civic = lrsk_gov_var_civic_mc_edu_corp
+		}
 	}
-
 	planet_modifier = {
 		job_lrsk_gov_var_job_infoguide_add = 2
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		text = lrsk_branch_value_legit_materialist
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		modifier = {
 			pop_ethic_materialist_attraction_mult = 0.5
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		text = lrsk_branch_value_crime_materialist
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		modifier = {
 			pop_ethic_materialist_attraction_mult = 0.25
 			planet_crime_add = 20
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			pop_percentage = {
@@ -619,7 +572,6 @@ lrsk_gvp_bldg_learnarium_dome = {
 		}
 		text = lrsk_scaling_branch_value_materialist
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			pop_percentage = {
@@ -750,7 +702,6 @@ lrsk_gvp_bldg_learnarium_dome = {
 			branch_office_value_mult = 0.05
 		}
 	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -760,7 +711,6 @@ lrsk_gvp_bldg_learnarium_dome = {
 			energy = 5
 		}
 	}
-
 	ai_weight = {
 		weight = 250
 	}
@@ -770,41 +720,51 @@ lrsk_gvp_bldg_learnarium_dome = {
 lrsk_gvp_bldg_odd_jobs_emporium = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-
 	owner_type = corporate
-
 	potential = {
 		has_branch_office = yes
-		branch_office_owner = { has_valid_civic = lrsk_gov_var_civic_mc_gig_economy }
+		branch_office_owner = {
+			has_valid_civic = lrsk_gov_var_civic_mc_gig_economy
+		}
 	}
-
 	planet_modifier = {
 		job_lrsk_gov_var_job_gofer_add = 2
 	}
-	
 	triggered_desc = {
 		trigger = {
-			branch_office_owner = {  NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		text = lrsk_legit_gofer_bonus
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		modifier = {
 			branch_office_value_mult = 0.1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 			count_owned_pop = {
-				limit = { has_job = lrsk_gov_var_job_gofer }
+				limit = {
+					has_job = lrsk_gov_var_job_gofer
+				}
 				count = 1
 			}
 		}
@@ -812,13 +772,18 @@ lrsk_gvp_bldg_odd_jobs_emporium = {
 			branch_office_value_mult = 0.05
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 			count_owned_pop = {
-				limit = { has_job = lrsk_gov_var_job_gofer }
+				limit = {
+					has_job = lrsk_gov_var_job_gofer
+				}
 				count > 1
 			}
 		}
@@ -826,31 +791,36 @@ lrsk_gvp_bldg_odd_jobs_emporium = {
 			branch_office_value_mult = 0.1
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		text = lrsk_crim_courier_bonus
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		modifier = {
 			branch_office_value_mult = 0.05
 			planet_crime_add = 20
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 			count_owned_pop = {
-				limit = { has_job = lrsk_gov_var_job_gofer }
+				limit = {
+					has_job = lrsk_gov_var_job_gofer
+				}
 				count = 1
 			}
 		}
@@ -858,13 +828,16 @@ lrsk_gvp_bldg_odd_jobs_emporium = {
 			planet_crime_mult = 0.1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 			count_owned_pop = {
-				limit = { has_job = lrsk_gov_var_job_gofer }
+				limit = {
+					has_job = lrsk_gov_var_job_gofer
+				}
 				count > 1
 			}
 		}
@@ -872,7 +845,6 @@ lrsk_gvp_bldg_odd_jobs_emporium = {
 			planet_crime_mult = 0.2
 		}
 	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -882,7 +854,6 @@ lrsk_gvp_bldg_odd_jobs_emporium = {
 			energy = 2
 		}
 	}
-
 	ai_weight = {
 		weight = 100
 	}
@@ -892,56 +863,62 @@ lrsk_gvp_bldg_odd_jobs_emporium = {
 lrsk_gvp_bldg_organizing_hub = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-
 	owner_type = corporate
-
 	potential = {
 		has_branch_office = yes
-		branch_office_owner = { has_valid_civic = lrsk_gov_var_civic_mc_workers_councils }
+		branch_office_owner = {
+			has_valid_civic = lrsk_gov_var_civic_mc_workers_councils
+		}
 	}
-	
 	planet_modifier = {
 		pop_cat_worker_happiness = 0.1
 		pop_cat_worker_political_power = 0.2
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		text = lrsk_branch_value_legit_egalitarian
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		modifier = {
 			pop_ethic_egalitarian_attraction_mult = 0.5
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		text = lrsk_branch_value_crime_egalitarian
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		modifier = {
 			pop_ethic_egalitarian_attraction_mult = 0.25
 			planet_crime_add = 20
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			pop_percentage = {
@@ -953,7 +930,6 @@ lrsk_gvp_bldg_organizing_hub = {
 		}
 		text = lrsk_scaling_branch_value_egalitarian
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			pop_percentage = {
@@ -1084,7 +1060,6 @@ lrsk_gvp_bldg_organizing_hub = {
 			branch_office_value_mult = 0.05
 		}
 	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1094,7 +1069,6 @@ lrsk_gvp_bldg_organizing_hub = {
 			energy = 2
 		}
 	}
-
 	ai_weight = {
 		weight = 250
 	}
@@ -1104,81 +1078,101 @@ lrsk_gvp_bldg_organizing_hub = {
 lrsk_gov_var_bldg_grand_casino = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-
 	owner_type = corporate
-
 	potential = {
 		has_branch_office = yes
-		branch_office_owner = { has_valid_civic = lrsk_gov_var_civic_mc_casino_mystic }
+		branch_office_owner = {
+			has_valid_civic = lrsk_gov_var_civic_mc_casino_mystic
+		}
 	}
-
 	planet_modifier = {
 		planet_amenities_add = 10
 	}
-	
 	triggered_desc = {
 		trigger = {
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		text = lrsk_legit_gamble_bonus
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		modifier = {
 			branch_office_value_mult = 0.1
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		text = lrsk_crim_gamble_bonus
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		modifier = {
 			planet_crime_add = 20
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
-			branch_office_owner = { has_valid_civic = lrsk_gov_var_civic_mc_casino_mystic }
+			branch_office_owner = {
+				has_valid_civic = lrsk_gov_var_civic_mc_casino_mystic
+			}
 		}
 		text = lrsk_casino_events_desc
 	}
-	
 	on_built = {
 		set_planet_flag = lrsk_can_get_casino_events_from@branch_office_owner
 		owner = {
-			change_variable = { which = lrsk_num_owned_casinos value = 1 }
+			change_variable = {
+				which = lrsk_num_owned_casinos
+				value = 1
+			}
 		}
 		branch_office_owner = {
-			change_variable = { which = lrsk_num_built_casinos value = 1 }
+			change_variable = {
+				which = lrsk_num_built_casinos
+				value = 1
+			}
 		}
 	}
-    
 	on_destroy = {
-		if = { limit = { has_planet_flag = lrsk_can_get_casino_events_from@branch_office_owner }
+		if = {
+			limit = {
+				has_planet_flag = lrsk_can_get_casino_events_from@branch_office_owner
+			}
 			remove_planet_flag = lrsk_can_get_casino_events_from@branch_office_owner
 		}
 		owner = {
-			change_variable = { which = lrsk_num_owned_casinos value = 1 }
+			change_variable = {
+				which = lrsk_num_owned_casinos
+				value = 1
+			}
 		}
 		branch_office_owner = {
-			subtract_variable = { which = lrsk_num_built_casinos value = 1 }
+			subtract_variable = {
+				which = lrsk_num_built_casinos
+				value = 1
+			}
 		}
 	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1188,7 +1182,6 @@ lrsk_gov_var_bldg_grand_casino = {
 			energy = 5
 		}
 	}
-
 	ai_weight = {
 		weight = 100
 	}
@@ -1198,45 +1191,53 @@ lrsk_gov_var_bldg_grand_casino = {
 lrsk_gov_var_bldg_professional_protection_office = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-
 	owner_type = corporate
-
 	potential = {
 		has_branch_office = yes
-		branch_office_owner = { has_valid_civic = lrsk_gov_var_civic_mc_police_state }
+		branch_office_owner = {
+			has_valid_civic = lrsk_gov_var_civic_mc_police_state
+		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		text = lrsk_branch_value_legit_authoritarian
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		modifier = {
 			pop_ethic_authoritarian_attraction_mult = 0.5
 			job_lrsk_gov_var_job_investigator_add = 1
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		text = lrsk_branch_value_crime_authoritarian
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		modifier = {
 			pop_ethic_authoritarian_attraction_mult = 0.25
@@ -1244,7 +1245,6 @@ lrsk_gov_var_bldg_professional_protection_office = {
 			job_lrsk_gov_var_job_suppressor_add = 1
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			pop_percentage = {
@@ -1256,7 +1256,6 @@ lrsk_gov_var_bldg_professional_protection_office = {
 		}
 		text = lrsk_scaling_branch_value_authoritarian
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			pop_percentage = {
@@ -1387,7 +1386,6 @@ lrsk_gov_var_bldg_professional_protection_office = {
 			branch_office_value_mult = 0.05
 		}
 	}
-	
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1397,7 +1395,6 @@ lrsk_gov_var_bldg_professional_protection_office = {
 			energy = 2
 		}
 	}
-
 	ai_weight = {
 		weight = 250
 	}
@@ -1407,55 +1404,61 @@ lrsk_gov_var_bldg_professional_protection_office = {
 lrsk_gov_var_bldg_mediation_retreat = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-
 	owner_type = corporate
-
 	potential = {
 		has_branch_office = yes
-		branch_office_owner = { has_valid_civic = lrsk_gov_var_civic_mc_conflict_res }
+		branch_office_owner = {
+			has_valid_civic = lrsk_gov_var_civic_mc_conflict_res
+		}
 	}
-
 	planet_modifier = {
 		planet_stability_add = 5
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		text = lrsk_branch_value_legit_pacifist
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		modifier = {
 			pop_ethic_pacifist_attraction_mult = 0.5
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		text = lrsk_branch_value_crime_pacifist
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		modifier = {
 			pop_ethic_pacifist_attraction_mult = 0.25
 			planet_crime_add = 20
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			pop_percentage = {
@@ -1467,7 +1470,6 @@ lrsk_gov_var_bldg_mediation_retreat = {
 		}
 		text = lrsk_scaling_branch_value_pacifist
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			pop_percentage = {
@@ -1598,7 +1600,6 @@ lrsk_gov_var_bldg_mediation_retreat = {
 			branch_office_value_mult = 0.05
 		}
 	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1608,7 +1609,6 @@ lrsk_gov_var_bldg_mediation_retreat = {
 			energy = 2
 		}
 	}
-
 	ai_weight = {
 		weight = 250
 	}
@@ -1618,55 +1618,61 @@ lrsk_gov_var_bldg_mediation_retreat = {
 lrsk_gov_var_bldg_heritage_museum = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-
 	owner_type = corporate
-
 	potential = {
 		has_branch_office = yes
-		branch_office_owner = { has_valid_civic = lrsk_gov_var_civic_mc_heritage_trust }
+		branch_office_owner = {
+			has_valid_civic = lrsk_gov_var_civic_mc_heritage_trust
+		}
 	}
-	
 	planet_modifier = {
 		pop_citizen_happiness = 0.1
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		text = lrsk_branch_value_legit_xenophobe
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		modifier = {
 			pop_ethic_xenophobe_attraction_mult = 0.5
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		text = lrsk_branch_value_crime_xenophobe
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		modifier = {
 			pop_ethic_xenophobe_attraction_mult = 0.25
 			planet_crime_add = 20
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			pop_percentage = {
@@ -1678,7 +1684,6 @@ lrsk_gov_var_bldg_heritage_museum = {
 		}
 		text = lrsk_scaling_branch_value_xenophobe
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			pop_percentage = {
@@ -1809,7 +1814,6 @@ lrsk_gov_var_bldg_heritage_museum = {
 			branch_office_value_mult = 0.05
 		}
 	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1819,7 +1823,6 @@ lrsk_gov_var_bldg_heritage_museum = {
 			energy = 2
 		}
 	}
-
 	ai_weight = {
 		weight = 250
 	}
@@ -1829,56 +1832,62 @@ lrsk_gov_var_bldg_heritage_museum = {
 lrsk_gov_var_bldg_galactic_excursions_office = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-
 	owner_type = corporate
-
 	potential = {
 		has_branch_office = yes
-		branch_office_owner = { has_valid_civic = lrsk_gov_var_civic_mc_vacay_planning }
+		branch_office_owner = {
+			has_valid_civic = lrsk_gov_var_civic_mc_vacay_planning
+		}
 	}
-
 	planet_modifier = {
 		pop_amenities_usage_mult = -0.15
 		pop_ethic_xenophile_attraction_mult = 0.5
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		text = lrsk_branch_value_legit_xenophile
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		modifier = {
 			pop_ethic_xenophile_attraction_mult = 0.5
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		text = lrsk_branch_value_crime_xenophile
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		modifier = {
 			pop_ethic_xenophile_attraction_mult = 0.25
 			planet_crime_add = 20
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			pop_percentage = {
@@ -1890,7 +1899,6 @@ lrsk_gov_var_bldg_galactic_excursions_office = {
 		}
 		text = lrsk_scaling_branch_value_xenophile
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			pop_percentage = {
@@ -2021,7 +2029,6 @@ lrsk_gov_var_bldg_galactic_excursions_office = {
 			branch_office_value_mult = 0.05
 		}
 	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2031,7 +2038,6 @@ lrsk_gov_var_bldg_galactic_excursions_office = {
 			energy = 2
 		}
 	}
-
 	ai_weight = {
 		weight = 250
 	}
@@ -2041,55 +2047,64 @@ lrsk_gov_var_bldg_galactic_excursions_office = {
 lrsk_gov_var_bldg_military_excellence_academy = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-
 	owner_type = corporate
-
 	potential = {
-		NOT = { has_global_flag = lrsk_gvp_enhanced_civics_off }
+		NOT = {
+			has_global_flag = lrsk_gvp_enhanced_civics_off
+		}
 		has_branch_office = yes
-		branch_office_owner = { OR = {
-			has_valid_civic = civic_naval_contractors
-			has_valid_civic = civic_private_military_companies
-		} }
+		branch_office_owner = {
+			OR = {
+				has_valid_civic = civic_naval_contractors
+				has_valid_civic = civic_private_military_companies
+			}
+		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		text = lrsk_branch_value_legit_militarist
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		modifier = {
 			pop_ethic_militarist_attraction_mult = 0.5
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		text = lrsk_branch_value_crime_militarist
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		modifier = {
 			pop_ethic_militarist_attraction_mult = 0.25
 			planet_crime_add = 20
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			pop_percentage = {
@@ -2101,7 +2116,6 @@ lrsk_gov_var_bldg_military_excellence_academy = {
 		}
 		text = lrsk_scaling_branch_value_militarist
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			pop_percentage = {
@@ -2232,23 +2246,24 @@ lrsk_gov_var_bldg_military_excellence_academy = {
 			branch_office_value_mult = 0.05
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
-			NOT = { has_planet_flag = lrsk_got_general_bonus_from@branch_office_owner }
+			NOT = {
+				has_planet_flag = lrsk_got_general_bonus_from@branch_office_owner
+			}
 			has_planet_flag = lrsk_got_admiral_bonus_from@branch_office_owner
 		}
 		text = lrsk_military_excellence_naval_effect
 	}
-	
 	triggered_desc = {
 		trigger = {
 			has_planet_flag = lrsk_got_general_bonus_from@branch_office_owner
-			NOT = { has_planet_flag = lrsk_got_admiral_bonus_from@branch_office_owner }
+			NOT = {
+				has_planet_flag = lrsk_got_admiral_bonus_from@branch_office_owner
+			}
 		}
 		text = lrsk_military_excellence_army_effect
 	}
-	
 	triggered_desc = {
 		trigger = {
 			has_planet_flag = lrsk_got_general_bonus_from@branch_office_owner
@@ -2256,34 +2271,67 @@ lrsk_gov_var_bldg_military_excellence_academy = {
 		}
 		text = lrsk_military_excellence_both_effect
 	}
-	
 	# Effect is by event: Better chance of positive military leader traits
-	on_built = {		
-		if = { limit = { branch_office_owner = { has_valid_civic = civic_private_military_companies } }
-			owner = { change_variable = { which = lrsk_general_training_bonus value = 1 } }
+	on_built = {
+		if = {
+			limit = {
+				branch_office_owner = {
+					has_valid_civic = civic_private_military_companies
+				}
+			}
+			owner = {
+				change_variable = {
+					which = lrsk_general_training_bonus
+					value = 1
+				}
+			}
 			set_planet_flag = lrsk_got_general_bonus_from@branch_office_owner
 		}
-		if = { limit = { branch_office_owner = { has_valid_civic = civic_naval_contractors } }
-			owner = { change_variable = { which = lrsk_admiral_training_bonus value = 1 } }
+		if = {
+			limit = {
+				branch_office_owner = {
+					has_valid_civic = civic_naval_contractors
+				}
+			}
+			owner = {
+				change_variable = {
+					which = lrsk_admiral_training_bonus
+					value = 1
+				}
+			}
 			set_planet_flag = lrsk_got_admiral_bonus_from@branch_office_owner
 		}
 		log = "General training bonus = [owner.lrsk_general_training_bonus]"
 		log = "Admiral training bonus = [owner.lrsk_admiral_training_bonus]"
 	}
-    
 	on_destroy = {
-		if = { limit = { has_planet_flag = lrsk_got_general_bonus_from@branch_office_owner }
-			owner = { subtract_variable = { which = lrsk_general_training_bonus value = 1 } }
+		if = {
+			limit = {
+				has_planet_flag = lrsk_got_general_bonus_from@branch_office_owner
+			}
+			owner = {
+				subtract_variable = {
+					which = lrsk_general_training_bonus
+					value = 1
+				}
+			}
 			remove_planet_flag = lrsk_got_general_bonus_from@branch_office_owner
 		}
-		if = { limit = { has_planet_flag = lrsk_got_admiral_bonus_from@branch_office_owner }
-			owner = { subtract_variable = { which = lrsk_admiral_training_bonus value = 1 } }
+		if = {
+			limit = {
+				has_planet_flag = lrsk_got_admiral_bonus_from@branch_office_owner
+			}
+			owner = {
+				subtract_variable = {
+					which = lrsk_admiral_training_bonus
+					value = 1
+				}
+			}
 			remove_planet_flag = lrsk_got_admiral_bonus_from@branch_office_owner
 		}
 		log = "General training bonus = [owner.lrsk_general_training_bonus]"
 		log = "Admiral training bonus = [owner.lrsk_admiral_training_bonus]"
 	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2293,7 +2341,6 @@ lrsk_gov_var_bldg_military_excellence_academy = {
 			energy = 2
 		}
 	}
-
 	ai_weight = {
 		weight = 250
 	}
@@ -2303,70 +2350,104 @@ lrsk_gov_var_bldg_military_excellence_academy = {
 lrsk_gov_var_bldg_reformatory_workhouse = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-
 	owner_type = corporate
-
 	potential = {
-		NOT = { has_global_flag = lrsk_gvp_enhanced_civics_off }
+		NOT = {
+			has_global_flag = lrsk_gvp_enhanced_civics_off
+		}
 		has_branch_office = yes
-		branch_office_owner = { has_valid_civic = civic_indentured_assets }
+		branch_office_owner = {
+			has_valid_civic = civic_indentured_assets
+		}
 	}
-
-	planet_modifier = {	
+	planet_modifier = {
 		planet_jobs_slave_produces_mult = 0.1
 		planet_jobs_worker_produces_mult = 0.1
 	}
-	
 	triggered_desc = {
 		trigger = {
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		text = lrsk_legit_debt_repay_bonus
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		modifier = {
 			branch_office_value_mult = 0.15
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		text = lrsk_crim_workhouse_pop_steal_chance
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		modifier = {
 			planet_crime_add = 20
 		}
 	}
-
-	on_built = {		
-		owner = { change_variable = { which = lrsk_num_owned_workhouses value = 1 }	}
-		if = { limit = { branch_office_owner = { has_valid_civic = civic_criminal_heritage } }
+	on_built = {
+		owner = {
+			change_variable = {
+				which = lrsk_num_owned_workhouses
+				value = 1
+			}
+		}
+		if = {
+			limit = {
+				branch_office_owner = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 			set_planet_flag = lrsk_could_lose_pops_to@branch_office_owner
 		}
-		branch_office_owner = { change_variable = { which = lrsk_num_built_workhouses value = 1 } }
+		branch_office_owner = {
+			change_variable = {
+				which = lrsk_num_built_workhouses
+				value = 1
+			}
+		}
 	}
-    
 	on_destroy = {
-		owner = { change_variable = { which = lrsk_num_owned_workhouses value = 1 } }
-		if = { limit = { has_planet_flag = lrsk_could_lose_pops_to@branch_office_owner }
+		owner = {
+			change_variable = {
+				which = lrsk_num_owned_workhouses
+				value = 1
+			}
+		}
+		if = {
+			limit = {
+				has_planet_flag = lrsk_could_lose_pops_to@branch_office_owner
+			}
 			remove_planet_flag = lrsk_got_general_bonus_from@branch_office_owner
 		}
-		branch_office_owner = { subtract_variable = { which = lrsk_num_built_workhouses value = 1 } }
+		branch_office_owner = {
+			subtract_variable = {
+				which = lrsk_num_built_workhouses
+				value = 1
+			}
+		}
 	}
-	
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2376,7 +2457,6 @@ lrsk_gov_var_bldg_reformatory_workhouse = {
 			energy = 2
 		}
 	}
-
 	ai_weight = {
 		weight = 100
 	}
@@ -2386,89 +2466,122 @@ lrsk_gov_var_bldg_reformatory_workhouse = {
 lrsk_gov_var_bldg_local_news_office = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-
 	owner_type = corporate
-
 	potential = {
-		NOT = { has_global_flag = lrsk_gvp_enhanced_civics_off }
+		NOT = {
+			has_global_flag = lrsk_gvp_enhanced_civics_off
+		}
 		has_branch_office = yes
-		branch_office_owner = { has_valid_civic = civic_media_conglomerate }
+		branch_office_owner = {
+			has_valid_civic = civic_media_conglomerate
+		}
 	}
-
-	planet_modifier = {	
+	planet_modifier = {
 		pop_cat_specialist_political_power = 0.2
 		pop_cat_specialist_happiness = 0.05
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		modifier = {
 			planet_jobs_ruler_produces_mult = 0.1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		modifier = {
 			planet_jobs_ruler_produces_mult = 0.05
 			planet_crime_add = 20
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		text = lrsk_media_legit_favor_chance
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		modifier = {
 			branch_office_value_mult = 0.1
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		text = lrsk_media_crim_favor_chance
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		modifier = {
 			planet_crime_add = 20
 		}
 	}
-	
 	on_built = {
 		set_planet_flag = lrsk_could_leak_scandal_to@branch_office_owner
-		owner = { change_variable = { which = lrsk_num_owned_localmedia value = 1 } }
-		branch_office_owner = { change_variable = { which = lrsk_num_built_localmedia value = 1 } }
+		owner = {
+			change_variable = {
+				which = lrsk_num_owned_localmedia
+				value = 1
+			}
+		}
+		branch_office_owner = {
+			change_variable = {
+				which = lrsk_num_built_localmedia
+				value = 1
+			}
+		}
 	}
-    
 	on_destroy = {
-		owner = { change_variable = { which = lrsk_num_owned_workhouses value = 1 } }
-		if = { limit = { has_planet_flag = lrsk_could_leak_scandal_to@branch_office_owner }
+		owner = {
+			change_variable = {
+				which = lrsk_num_owned_workhouses
+				value = 1
+			}
+		}
+		if = {
+			limit = {
+				has_planet_flag = lrsk_could_leak_scandal_to@branch_office_owner
+			}
 			remove_planet_flag = lrsk_could_leak_scandal_to@branch_office_owner
 		}
-		branch_office_owner = { subtract_variable = { which = lrsk_num_built_localmedia value = 1 } }
+		branch_office_owner = {
+			subtract_variable = {
+				which = lrsk_num_built_localmedia
+				value = 1
+			}
+		}
 	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2478,7 +2591,6 @@ lrsk_gov_var_bldg_local_news_office = {
 			energy = 2
 		}
 	}
-
 	ai_weight = {
 		weight = 100
 	}
@@ -2488,42 +2600,54 @@ lrsk_gov_var_bldg_local_news_office = {
 lrsk_gov_var_bldg_offworld_jobs_placement = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-
 	owner_type = corporate
-
 	potential = {
-		NOT = { has_global_flag = lrsk_gvp_enhanced_civics_off }
+		NOT = {
+			has_global_flag = lrsk_gvp_enhanced_civics_off
+		}
 		has_branch_office = yes
-		branch_office_owner = { has_valid_civic = civic_private_prospectors }
+		branch_office_owner = {
+			has_valid_civic = civic_private_prospectors
+		}
 	}
-
-	planet_modifier = {	
+	planet_modifier = {
 		job_lrsk_gov_var_job_offworld_worker_add = 2
 	}
-	
 	triggered_desc = {
 		trigger = {
-			branch_office_owner = {  NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		text = lrsk_legit_worker_bonus
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 		}
 		modifier = {
 			branch_office_value_mult = 0.1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 			count_owned_pop = {
-				limit = { has_job = lrsk_gov_var_job_offworld_worker }
+				limit = {
+					has_job = lrsk_gov_var_job_offworld_worker
+				}
 				count = 1
 			}
 		}
@@ -2531,13 +2655,18 @@ lrsk_gov_var_bldg_offworld_jobs_placement = {
 			branch_office_value_mult = 0.05
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { NOT = { has_valid_civic = civic_criminal_heritage } }
+			branch_office_owner = {
+				NOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
+			}
 			count_owned_pop = {
-				limit = { has_job = lrsk_gov_var_job_offworld_worker }
+				limit = {
+					has_job = lrsk_gov_var_job_offworld_worker
+				}
 				count > 1
 			}
 		}
@@ -2545,85 +2674,111 @@ lrsk_gov_var_bldg_offworld_jobs_placement = {
 			branch_office_value_mult = 0.1
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		text = lrsk_crim_smuggle_bonus
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 		modifier = {
 			branch_office_value_mult = 0.05
 			planet_crime_add = 20
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 			count_owned_pop = {
-				limit = { has_job = lrsk_gov_var_job_offworld_worker }
+				limit = {
+					has_job = lrsk_gov_var_job_offworld_worker
+				}
 				count = 1
 			}
 		}
-		modifier = {			
+		modifier = {
 			planet_crime_mult = 0.1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = branch_office_owner
-			branch_office_owner = { has_valid_civic = civic_criminal_heritage }
+			branch_office_owner = {
+				has_valid_civic = civic_criminal_heritage
+			}
 			count_owned_pop = {
-				limit = { has_job = lrsk_gov_var_job_offworld_worker }
+				limit = {
+					has_job = lrsk_gov_var_job_offworld_worker
+				}
 				count > 1
 			}
 		}
-		modifier = {			
+		modifier = {
 			planet_crime_mult = 0.2
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
-			branch_office_owner = { has_valid_civic = civic_private_prospectors }
+			branch_office_owner = {
+				has_valid_civic = civic_private_prospectors
+			}
 		}
 		text = lrsk_offworld_work_effect
 	}
-
 	# The queue logic controls how many the AI builds, see ai_weight below
-
 	on_queued = {
-		branch_office_owner = { change_variable = { which = lrsk_offworld_placement_built value = 1 } }
+		branch_office_owner = {
+			change_variable = {
+				which = lrsk_offworld_placement_built
+				value = 1
+			}
+		}
 	}
-    
 	on_unqueued = {
-		branch_office_owner = { subtract_variable = { which = lrsk_offworld_placement_built value = 1 } }
+		branch_office_owner = {
+			subtract_variable = {
+				which = lrsk_offworld_placement_built
+				value = 1
+			}
+		}
 	}
-
 	on_built = {
 		branch_office_owner = {
-			change_variable = { which = lrsk_offworld_workers_bonus value = 1 }
-			country_event = { id = lrsk_gvp_mc_bldg_special.40 }
+			change_variable = {
+				which = lrsk_offworld_workers_bonus
+				value = 1
+			}
+			country_event = {
+				id = lrsk_gvp_mc_bldg_special.40
+			}
 		}
 	}
-    
 	on_destroy = {
 		branch_office_owner = {
-			subtract_variable = { which = lrsk_offworld_placement_built value = 1 }
-			subtract_variable = { which = lrsk_offworld_workers_bonus value = 1 }
-			country_event = { id = lrsk_gvp_mc_bldg_special.40 }
+			subtract_variable = {
+				which = lrsk_offworld_placement_built
+				value = 1
+			}
+			subtract_variable = {
+				which = lrsk_offworld_workers_bonus
+				value = 1
+			}
+			country_event = {
+				id = lrsk_gvp_mc_bldg_special.40
+			}
 		}
 	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2633,17 +2788,17 @@ lrsk_gov_var_bldg_offworld_jobs_placement = {
 			energy = 2
 		}
 	}
-
 	ai_weight = {
 		weight = 100
 		modifier = {
 			# Little advantage to corp past 10 of these...
 			factor = 0.01
-			branch_office_owner = { check_variable = { which = lrsk_offworld_placement_built value >= 10 } }
+			branch_office_owner = {
+				check_variable = {
+					which = lrsk_offworld_placement_built
+					value >= 10
+				}
+			}
 		}
 	}
 }
-
-
-
-
