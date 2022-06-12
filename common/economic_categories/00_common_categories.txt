@@ -7,9 +7,8 @@ country = {
 	hidden = yes
 	generate_mult_modifiers = {
 		produces
-        cost
+		cost
 	}
-
 	generate_add_modifiers = {
 		produces
 	}
@@ -20,6 +19,9 @@ country_base = {
 	parent = country
 	generate_add_modifiers = {
 		produces
+	}
+	generate_mult_modifiers = {
+		produces		### Added in EST-ESAP ###.
 	}
 }
 
@@ -49,19 +51,18 @@ edicts = {
 }
 
 rare_edicts = {
-	use_for_ai_budget = yes
+	use_for_ai_budget = no
 	parent = edicts
 }
 
 ship_edicts = {
 	parent = rare_edicts
-	use_for_ai_budget = yes
+	use_for_ai_budget = no
 }
 
 campaigns = {
-	use_for_ai_budget = yes
+	use_for_ai_budget = no
 	parent = edicts
-
 	generate_mult_modifiers = {
 		cost
 	}
@@ -70,7 +71,6 @@ campaigns = {
 decisions = {
 	use_for_ai_budget = yes
 	parent = country
-
 	generate_mult_modifiers = {
 		cost
 	}
@@ -81,6 +81,10 @@ megastructures = {
 	ai_use_parent_for_resources_upkeep = {
 		energy
 		consumer_goods
+	}
+	generate_mult_modifiers = {
+		cost		### Added in EST-ESAP ###
+		produces		### Added in EST-ESAP ###
 	}
 	parent = country
 }
@@ -110,42 +114,34 @@ ships = {
 	generate_mult_modifiers = {
 		upkeep
 	}
-
 	ai_use_parent_for_resources_upkeep = {
 		energy
 	}
-
 	parent = country
-
 	triggered_cost_modifier = {
 		key = starbase_shipyard_build
 		use_parent_icon = yes
-
 		modifier_types = {
 			mult
 		}
 	}
-
 	triggered_cost_modifier = {
 		key = gdf_ship
 		use_parent_icon = yes
 		modifier_types = {
 			mult
 		}
-
 		trigger = {
-			is_scope_valid = yes #When called from ship designer the design is not valid yet.
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
 			has_ship_owner_type = galactic_community
 		}
 	}
-
 	triggered_cost_modifier = {
 		key = ship_corvette
 		use_parent_icon = yes
 		modifier_types = {
 			mult
 		}
-
 		trigger = {
 			is_scope_valid = yes
 			OR = {
@@ -154,14 +150,12 @@ ships = {
 			}
 		}
 	}
-
 	triggered_cost_modifier = {
 		key = ship_destroyer
 		use_parent_icon = yes
 		modifier_types = {
 			mult
 		}
-
 		trigger = {
 			is_scope_valid = yes
 			OR = {
@@ -170,14 +164,12 @@ ships = {
 			}
 		}
 	}
-
 	triggered_cost_modifier = {
 		key = ship_cruiser
 		use_parent_icon = yes
 		modifier_types = {
 			mult
 		}
-
 		trigger = {
 			is_scope_valid = yes
 			OR = {
@@ -186,14 +178,12 @@ ships = {
 			}
 		}
 	}
-
 	triggered_cost_modifier = {
 		key = ship_battleship
 		use_parent_icon = yes
 		modifier_types = {
 			mult
 		}
-
 		trigger = {
 			is_scope_valid = yes
 			OR = {
@@ -202,53 +192,45 @@ ships = {
 			}
 		}
 	}
-
 	triggered_cost_modifier = {
 		key = ship_military_station_small
 		use_parent_icon = yes
 		modifier_types = {
 			mult
 		}
-
 		trigger = {
 			is_scope_valid = yes
 			is_ship_size = military_station_small
 		}
 	}
-
 	triggered_upkeep_modifier = {
 		key = shipsize_military_station_small
 		use_parent_icon = yes
 		modifier_types = {
 			mult
 		}
-
 		trigger = {
 			is_scope_valid = yes
-            is_ship_size = military_station_small
+			is_ship_size = military_station_small
 		}
 	}
-
 	triggered_cost_modifier = {
 		key = ship_science
 		use_parent_icon = yes
 		modifier_types = {
 			mult
 		}
-
 		trigger = {
 			is_scope_valid = yes
 			is_ship_class = shipclass_science_ship
 		}
 	}
-
 	triggered_cost_modifier = {
 		key = ship_military
 		use_parent_icon = yes
 		modifier_types = {
 			mult
 		}
-
 		trigger = {
 			is_scope_valid = yes
 			OR = {
@@ -257,14 +239,12 @@ ships = {
 			}
 		}
 	}
-
 	triggered_upkeep_modifier = {
 		key = ship_military
 		use_parent_icon = yes
 		modifier_types = {
 			mult
 		}
-
 		trigger = {
 			is_scope_valid = yes
 			OR = {
@@ -280,25 +260,25 @@ colonies = {
 	ai_use_parent_for_resources_upkeep = {
 		energy
 	}
-
 	triggered_cost_modifier = {
 		key = ship_colonizer
 		use_parent_icon = yes
 		modifier_types = {
 			mult
 		}
-
 		trigger = {
-			is_scope_valid = yes #When called from ship designer the design is not valid yet.
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
 			is_ship_class = shipclass_colonizer
 		}
 	}
-
 	parent = ships
 }
 
 ship_components = {
 	parent = ships
+	generate_mult_modifiers = {
+		cost		### Added in EST-ESAP ###
+	}
 }
 
 ship_sections = {
@@ -315,17 +295,14 @@ stations = {
 	ai_use_parent_for_resources_upkeep = {
 		energy
 	}
-
 	generate_mult_modifiers = {
 		produces
 	}
-
 	parent = country
 }
 
 station_gatherers = {
 	parent = stations
-
 	generate_mult_modifiers = {
 		produces
 		cost
@@ -334,56 +311,68 @@ station_gatherers = {
 
 station_researchers = {
 	parent = stations
-
 	generate_mult_modifiers = {
 		produces
 		upkeep
+		cost		### Added in EST-ESAP ###
 	}
 }
 
 station_observers = {
 	parent = stations
+	generate_add_modifiers = {
+		produces		### Added in EST-ESAP ###
+	}
 }
 
 station_observer_missions = {
 	parent = station_observers
+	generate_mult_modifiers = {
+		produces		### Added in EST-ESAP ###
+	}
 }
 
 starbases = {
 	use_for_ai_budget = yes
-
 	generate_mult_modifiers = {
 		upkeep
+		cost		
 	}
 	ai_use_parent_for_resources_upkeep = {
 		energy
 	}
-
 	parent = country
 }
 
 starbase_stations = {
 	parent = starbases
-
 	triggered_cost_modifier = {
 		key = starbase_outpost
 		modifier_types = {
 			mult
 		}
-
 		trigger = {
-			is_scope_valid = yes #When called from ship designer the design is not valid yet.
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
 			OR = {
 				is_ship_size = starbase_outpost
-				is_ship_size = orbital_ring_tier_1 #TODOJM: Remove?
+				is_ship_size = orbital_ring_tier_1				#TODOJM: Remove?
 			}
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = starbase_outpost
+		modifier_types = {
+			mult			### Added in EST-ESAP ###
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = starbase_outpost
 		}
 	}
 }
 
 starbase_constructions = {
 	parent = starbases
-
 	generate_mult_modifiers = {
 		produces
 	}
@@ -391,7 +380,6 @@ starbase_constructions = {
 
 starbase_buildings = {
 	parent = starbase_constructions
-
 	generate_mult_modifiers = {
 		cost
 	}
@@ -399,7 +387,6 @@ starbase_buildings = {
 
 starbase_modules = {
 	parent = starbase_constructions
-
 	generate_mult_modifiers = {
 		cost
 	}
@@ -408,7 +395,6 @@ starbase_modules = {
 terraforming = {
 	parent = country
 	use_for_ai_budget = yes
-
 	generate_mult_modifiers = {
 		cost
 	}
@@ -416,7 +402,6 @@ terraforming = {
 
 terraforming_ocean = {
 	parent = terraforming
-
 	generate_mult_modifiers = {
 		cost
 	}
@@ -428,7 +413,9 @@ planets = {
 	ai_use_parent_for_resources_upkeep = {
 		energy
 	}
-
+	generate_mult_modifiers = {
+		produces		### Added in EST-ESAP ###
+	}
 	hidden = yes
 }
 
@@ -443,7 +430,6 @@ planet_structures = {
 
 planet_buildings = {
 	parent = planet_structures
-
 	generate_mult_modifiers = {
 		cost
 		upkeep
@@ -452,15 +438,16 @@ planet_buildings = {
 
 planet_buildings_strongholds = {
 	parent = planet_buildings
+	generate_mult_modifiers = {
+		cost		### Added in EST-ESAP ###
+	}
 }
 
 planet_branch_offices = {
 	parent = planets
-
 	generate_mult_modifiers = {
 		cost
 	}
-
 	generate_add_modifiers = {
 		produces
 	}
@@ -468,7 +455,6 @@ planet_branch_offices = {
 
 planet_buildings_hab_capital = {
 	parent = planet_buildings
-
 	generate_mult_modifiers = {
 		upkeep
 	}
@@ -484,7 +470,6 @@ planet_holdings = {
 
 planet_districts = {
 	parent = planet_structures
-
 	generate_mult_modifiers = {
 		cost
 		upkeep
@@ -493,52 +478,73 @@ planet_districts = {
 
 planet_districts_cities = {
 	parent = planet_districts
-    
+	generate_add_modifiers = {
+		produces		### Added in EST-ESAP ###
+	}
 	generate_mult_modifiers = {
 		upkeep
+		cost		### Added in EST-ESAP ###
 	}
 }
 
 planet_districts_industrial = {
 	parent = planet_districts
+	generate_mult_modifiers = {
+		cost		### Added in EST-ESAP ###
+	}
 }
 
 planet_districts_hab_energy = {
 	parent = planet_districts
+	generate_mult_modifiers = {
+		cost		### Added in EST-ESAP ###
+	}
 }
 
 planet_districts_hab_industrial = {
 	parent = planet_districts
+	generate_mult_modifiers = {
+		cost		### Added in EST-ESAP ###
+	}
 }
 
 planet_districts_hab_research = {
 	parent = planet_districts
+	generate_mult_modifiers = {
+		cost		### Added in EST-ESAP ###
+	}
 }
 
 planet_districts_hab_mining = {
 	parent = planet_districts
+	generate_mult_modifiers = {
+		cost		### Added in EST-ESAP ###
+	}
 }
 
 planet_districts_hab_trade = {
 	parent = planet_districts
+	generate_mult_modifiers = {
+		cost		### Added in EST-ESAP ###
+	}
 }
 
 planet_districts_hab_leisure = {
 	parent = planet_districts
+	generate_mult_modifiers = {
+		cost		### Added in EST-ESAP ###
+	}
 }
 
 planet_jobs = {
 	parent = planets
-
 	generate_mult_modifiers = {
 		produces
 		upkeep
 	}
-
-    generate_add_modifiers = {
+	generate_add_modifiers = {
 		produces
 	}
-
 	triggered_produces_modifier = {
 		key = planet_jobs_slave
 		modifier_types = {
@@ -549,7 +555,6 @@ planet_jobs = {
 			has_job_category = worker
 		}
 	}
-
 	triggered_produces_modifier = {
 		key = habitat_jobs
 		modifier_types = {
@@ -557,10 +562,11 @@ planet_jobs = {
 		}
 		trigger = {
 			exists = planet
-			planet = { is_planet_class = pc_habitat }
+			planet = {
+				is_planet_class = pc_habitat
+			}
 		}
 	}
-
 	triggered_produces_modifier = {
 		key = non_artificial_planet_jobs
 		modifier_types = {
@@ -568,10 +574,11 @@ planet_jobs = {
 		}
 		trigger = {
 			exists = planet
-			planet = { is_artificial = no }
+			planet = {
+				is_artificial = no
+			}
 		}
 	}
-
 	triggered_produces_modifier = {
 		key = planet_jobs_worker
 		modifier_types = {
@@ -581,15 +588,15 @@ planet_jobs = {
 			OR = {
 				is_pop_category = worker
 				AND = {
-					is_pop_category = slave # Yes, slave should count towards both worker and slave
+					is_pop_category = slave					# Yes, slave should count towards both worker and slave
 					has_job_category = worker
 				}
 				is_pop_category = simple_drone
 			}
 		}
 	}
-
-	triggered_produces_modifier = { #use this one if deliberately excluding worker drones
+	triggered_produces_modifier = {
+		#use this one if deliberately excluding worker drones
 		key = planet_jobs_worker_only
 		modifier_types = {
 			mult
@@ -598,13 +605,12 @@ planet_jobs = {
 			OR = {
 				is_pop_category = worker
 				AND = {
-					is_pop_category = slave # Yes, slave should count towards both worker and slave
+					is_pop_category = slave					# Yes, slave should count towards both worker and slave
 					has_job_category = worker
 				}
 			}
 		}
 	}
-
 	triggered_produces_modifier = {
 		key = planet_jobs_specialist
 		modifier_types = {
@@ -613,7 +619,7 @@ planet_jobs = {
 		trigger = {
 			OR = {
 				is_pop_category = specialist
-				is_pop_category = complex_drone #planet_jobs_complex_drone is preferable for stuff visible during galaxy setup
+				is_pop_category = complex_drone				#planet_jobs_complex_drone is preferable for stuff visible during galaxy setup
 				AND = {
 					is_pop_category = slave
 					has_job_category = specialist
@@ -621,8 +627,8 @@ planet_jobs = {
 			}
 		}
 	}
-
-	triggered_produces_modifier = { #use this one if deliberately excluding complex drones
+	triggered_produces_modifier = {
+		#use this one if deliberately excluding complex drones
 		key = planet_jobs_specialist_only
 		modifier_types = {
 			mult
@@ -637,7 +643,6 @@ planet_jobs = {
 			}
 		}
 	}
-
 	triggered_produces_modifier = {
 		key = planet_jobs_ruler
 		modifier_types = {
@@ -647,7 +652,6 @@ planet_jobs = {
 			is_pop_category = ruler
 		}
 	}
-
 	triggered_produces_modifier = {
 		key = planet_jobs_simple_drone
 		modifier_types = {
@@ -657,7 +661,6 @@ planet_jobs = {
 			is_pop_category = simple_drone
 		}
 	}
-
 	triggered_produces_modifier = {
 		key = planet_jobs_complex_drone
 		modifier_types = {
@@ -667,9 +670,8 @@ planet_jobs = {
 			is_pop_category = complex_drone
 		}
 	}
-
 	triggered_produces_modifier = {
-    	key = planet_jobs_complex_and_simple_drone
+		key = planet_jobs_complex_and_simple_drone
 		modifier_types = {
 			mult
 		}
@@ -678,10 +680,8 @@ planet_jobs = {
 				is_pop_category = complex_drone
 				is_pop_category = simple_drone
 			}
-			
 		}
 	}
-
 	triggered_produces_modifier = {
 		key = planet_jobs_robotic
 		modifier_types = {
@@ -693,7 +693,8 @@ planet_jobs = {
 	}
 }
 
-planet_jobs_productive = { #this should contain all categories that primarily produce resources (rather than e.g. amenities, trade, stability)
+planet_jobs_productive = {
+	#this should contain all categories that primarily produce resources (rather than e.g. amenities, trade, stability)
 	parent = planet_jobs
 	generate_mult_modifiers = {
 		produces
@@ -720,7 +721,6 @@ planet_farmers = {
 	generate_mult_modifiers = {
 		produces
 	}
-
 	generate_add_modifiers = {
 		produces
 		upkeep
@@ -732,22 +732,23 @@ planet_miners = {
 	generate_mult_modifiers = {
 		produces
 	}
-
 	generate_add_modifiers = {
 		produces
 		upkeep
 	}
 }
 
-planet_sr_miners = { #added because we don't want miners_minerals_produces_add to apply to these
+planet_sr_miners = {
+	#added because we don't want miners_minerals_produces_add to apply to these
 	parent = planet_miners
 	generate_add_modifiers = {
 		upkeep
 	}
-    generate_mult_modifiers = {
+	generate_mult_modifiers = {
 		produces
 	}
 }
+
 planet_livestock = {
 	parent = planet_jobs_productive
 	generate_add_modifiers = {
@@ -763,6 +764,7 @@ planet_technician = {
 	}
 	generate_mult_modifiers = {
 		produces
+		upkeep
 	}
 }
 
@@ -777,7 +779,7 @@ planet_administrators = {
 		produces
 		upkeep
 	}
-   	generate_add_modifiers = {
+	generate_add_modifiers = {
 		produces
 	}
 }
@@ -823,8 +825,11 @@ planet_metallurgists = {
 
 planet_culture_workers = {
 	parent = planet_jobs_productive
-    generate_mult_modifiers = {
-
+	generate_mult_modifiers = {
+	}
+	generate_add_modifiers = {
+		produces		### Added in EST-ESAP ###
+		upkeep		### Added in EST-ESAP ###
 	}
 }
 
@@ -836,7 +841,11 @@ planet_evaluators = {
 
 planet_synapse_drones = {
 	parent = planet_jobs_productive
-    generate_mult_modifiers = {
+	generate_mult_modifiers = {
+	}
+	generate_add_modifiers = {
+		produces		### Added in EST-ESAP ###
+		upkeep		### Added in EST-ESAP ###
 	}
 }
 
@@ -854,11 +863,15 @@ planet_merchants = {
 
 planet_entertainers = {
 	parent = planet_jobs
+	generate_add_modifiers = {
+		produces		### Added in EST-ESAP ###
+	}
 }
 
 planet_soldiers = {
 	parent = planet_jobs
-    	generate_add_modifiers = {
+	generate_add_modifiers = {
+		produces
 		upkeep
 	}
 }
@@ -867,17 +880,21 @@ planet_priests = {
 	parent = planet_administrators
 	generate_mult_modifiers = {
 		produces
+		upkeep		### Added in EST-ESAP ###
 	}
-    	generate_add_modifiers = {
+	generate_add_modifiers = {
 		produces
+		upkeep		### Added in EST-ESAP ###
 	}
 }
 
 planet_enforcers = {
 	parent = planet_jobs
-
 	generate_mult_modifiers = {
 		upkeep
+	}
+	generate_add_modifiers = {
+		produces
 	}
 }
 
@@ -890,13 +907,17 @@ planet_telepaths = {
 
 planet_doctors = {
 	parent = planet_jobs
+	generate_add_modifiers = {
+		produces		### Added in EST-ESAP ###
+		upkeep		### Added in EST-ESAP ###
+	}
 }
 
 planet_refiners = {
 	parent = planet_jobs_productive
 	generate_mult_modifiers = {
 		produces
-        upkeep
+		upkeep
 	}
 }
 
@@ -904,7 +925,7 @@ planet_translucers = {
 	parent = planet_jobs_productive
 	generate_mult_modifiers = {
 		produces
-        upkeep
+		upkeep
 	}
 }
 
@@ -912,7 +933,7 @@ planet_chemists = {
 	parent = planet_jobs_productive
 	generate_mult_modifiers = {
 		produces
-        upkeep
+		upkeep
 	}
 }
 
@@ -934,7 +955,6 @@ planet_pops = {
 	generate_mult_modifiers = {
 		upkeep
 	}
-
 	triggered_upkeep_modifier = {
 		key = planet_pops_robotics
 		modifier_types = {
@@ -944,7 +964,6 @@ planet_pops = {
 			is_robot_pop = yes
 		}
 	}
-
 	triggered_upkeep_modifier = {
 		key = planet_pops_organics
 		modifier_types = {
@@ -954,7 +973,6 @@ planet_pops = {
 			is_robot_pop = no
 		}
 	}
-
 	triggered_upkeep_modifier = {
 		key = planet_pops_unemployed
 		modifier_types = {
@@ -970,7 +988,7 @@ unemployment_resources = {
 	parent = planet_pops
 	generate_add_modifiers = {
 		produces
-        upkeep
+		upkeep
 	}
 }
 
@@ -1000,6 +1018,7 @@ pop_category_bio_trophy = {
 pop_category_slave = {
 	parent = planet_pops
 	generate_mult_modifiers = {
+		produces		### Added in EST-ESAP ###
 		upkeep
 	}
 	generate_add_modifiers = {
@@ -1009,28 +1028,28 @@ pop_category_slave = {
 
 pop_category_robot = {
 	parent = planet_pops
-    generate_mult_modifiers = {
-        upkeep
-	}
+	generate_mult_modifiers = {
+		produces		### Added in EST-ESAP ###
+		upkeep		### Added in EST-ESAP ###	}
 }
 
 pop_category_drones = {
 	parent = planet_pops
-    generate_add_modifiers = {
+	generate_add_modifiers = {
 		upkeep
 	}
 }
 
 pop_category_workers = {
 	parent = planet_pops
-    generate_add_modifiers = {
+	generate_add_modifiers = {
 		upkeep
 	}
 }
 
 pop_category_specialists = {
 	parent = planet_pops
-    generate_add_modifiers = {
+	generate_add_modifiers = {
 		upkeep
 	}
 }
@@ -1063,11 +1082,9 @@ deposit_blockers = {
 	generate_mult_modifiers = {
 		cost
 	}
-
 	ai_use_parent_for_resources_upkeep = {
 		energy
 	}
-
 	parent = country
 }
 
@@ -1075,22 +1092,18 @@ deposit_blockers_natural = {
 	generate_add_modifiers = {
 		produces
 	}
-
 	parent = deposit_blockers
 }
 
 armies = {
 	use_for_ai_budget = yes
-
 	generate_mult_modifiers = {
 		cost
 		upkeep
 	}
-
 	ai_use_parent_for_resources_upkeep = {
 		energy
 	}
-
 	parent = country
 }
 
@@ -1100,40 +1113,39 @@ leaders = {
 		cost
 		upkeep
 	}
-
 	ai_use_parent_for_resources_upkeep = {
 		energy
 	}
-
 	parent = country
 }
 
 leader_admirals = {
 	parent = leaders
-    generate_mult_modifiers = {
+	generate_mult_modifiers = {
 		upkeep
 	}
 }
 
 leader_generals = {
 	parent = leaders
-    generate_mult_modifiers = {
-		upkeep
+	generate_mult_modifiers = {
+		cost		### Added in EST-ESAP ###
+		upkeep		### Added in EST-ESAP ###
 	}
 }
 
 leader_scientists = {
 	parent = leaders
-    generate_mult_modifiers = {
+	generate_mult_modifiers = {
 		upkeep
 	}
 }
 
 leader_governors = {
 	parent = leaders
-    generate_mult_modifiers = {
-		cost
-		upkeep
+	generate_mult_modifiers = {
+		cost		### Added in EST-ESAP ###
+		upkeep		### Added in EST-ESAP ###
 	}
 }
 
@@ -1266,6 +1278,9 @@ country_ruler = {
 
 country_ethic = {
 	parent = country_container
+	generate_add_modifiers = {
+		produces
+	}
 }
 
 country_first_league_homeworld = {
@@ -1290,9 +1305,7 @@ pop_factions = {
 	generate_mult_modifiers = {
 		produces
 	}
-
 	generate_add_modifiers = {
-
 	}
 }
 
@@ -1309,8 +1322,8 @@ federation = {
 
 rivalries = {
 	parent = diplomacy
-    generate_mult_modifiers = {
-		produces
+	generate_mult_modifiers = {
+		produces		### Added in EST-ESAP ###
 	}
 }
 
@@ -1391,8 +1404,8 @@ menace = {
 }
 
 traditions = {
-		use_for_ai_budget = yes
-		parent = country
+	use_for_ai_budget = yes
+	parent = country
 }
 
 operations = {
@@ -1407,7 +1420,7 @@ operations = {
 	generate_add_modifiers = {
 		produces
 	}
-    parent = country
+	parent = country
 }
 
 country_situations = {
