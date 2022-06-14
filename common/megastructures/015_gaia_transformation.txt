@@ -1,0 +1,173 @@
+gaia_transformation_0 = {
+	entity = ""
+	construction_entity = ""
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = yes
+	build_time = 3600
+	construction_blocks_and_blocked_by = none
+	
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 2500
+			energy = 7500
+			influence = 200
+			exotic_gases = 250
+		}
+	}
+
+	potential = { 
+		AND = {
+			has_ascension_perk = ap_sublunaris_progressus
+		}
+	}
+
+	possible = {
+		exists = starbase
+		custom_tooltip = {
+			fail_text = "requires_inside_border"
+			is_inside_border = from
+		}
+	}
+
+	placement_rules = {
+		planet_possible = {
+			custom_tooltip = {
+				fail_text = "is_gaia_transformation"
+				OR = {
+					is_planet_class = pc_pd_gas_giant_hab
+					is_planet_class = pc_pd_barren_hab
+					is_planet_class = pc_pd_barren_cold_hab
+					is_planet_class = pc_pd_molten_hab
+					is_planet_class = pc_pd_frozen_hab
+					is_planet_class = pc_pd_hothouse_hab
+					is_planet_class = pc_pd_asteroid_hab
+					is_planet_class = pc_pd_toxic_hab
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_surveyed_planet"
+				is_surveyed = {			# prevent leaking habitability information
+					who = prev.from
+					status = yes
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_anomaly"
+				NOT = {
+					has_anomaly = yes
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_existing_megastructure"
+				NOR = {
+					has_planet_flag = megastructure
+					has_planet_flag = has_megastructure
+					solar_system = {
+						has_star_flag = ring_world_built
+					}
+					is_planet_class = pc_ringworld_habitable
+					is_planet_class = pc_ringworld_habitable_damaged
+					is_planet_class = pc_ringworld_tech
+					is_planet_class = pc_ringworld_tech_damaged
+					is_planet_class = pc_ringworld_seam
+					is_planet_class = pc_ringworld_seam_damaged
+					is_planet_class = pc_habitat
+				}
+			custom_tooltip = {
+				fail_text = "requires_not_star"
+				is_star = no
+			}
+			}
+		} 
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+	
+	on_build_start = {}
+	on_build_cancel = {}
+	on_build_complete = {
+		fromfrom.planet = {
+			set_planet_flag = colony_event
+			
+			change_pc = pc_gaia
+			clear_deposits = yes
+			remove_all_districts = yes
+			
+			if = {
+				limit = {
+					NOT = { has_global_flag = has_guillis_planet_modifiers_mod }
+				}
+				reroll_planet = yes
+			}
+			
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			remove_building = building_hab_capital
+			remove_building = building_hab_major_capital
+			add_building = building_capital
+			add_district = district_city
+			add_district = district_city
+			add_district = district_city
+			add_district = district_city
+			add_district = district_industrial
+			add_district = district_industrial
+			add_district = district_generator
+			add_district = district_mining
+			
+			if = {
+				limit = {
+					from = {
+						OR = {
+							is_lithoid_empire = yes
+							is_machine_empire = yes
+						}
+					}
+				}
+				add_district = district_mining
+				add_district = district_mining			
+			}
+
+			if = {
+				limit = {
+					from = {
+						AND = {
+							is_lithoid_empire = no
+							is_machine_empire = no
+						}
+					}
+				}
+				add_district = district_farming
+				add_district = district_farming		
+			}		
+
+			while = {
+				count = 8
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+		remove_megastructure = fromfrom
+	}
+}

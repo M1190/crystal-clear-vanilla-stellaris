@@ -1,874 +1,3252 @@
-@hiveCost = 10000
-@hiveTime = 7200
+#################
+#      Wet      #
+#################
 
+## BASIC ##
 
-###################
-## Hive World ##
-###################
+# Hive World to Continental World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_continental"
 
-#PD Hive Start
-terraform_link = {
-	from = pc_pdhive2
-	to = pc_hive
-	resources = { category = terraforming cost = { energy = 2000 } }
-	duration = 1800
-	potential = { has_ascension_perk = ap_hive_worlds }
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-#Uninhabitable
-terraform_link = {
-	from = pc_barren
-	to = pc_hive
-	resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { has_modifier = terraforming_candidate NOT = { has_modifier = pd_infestingplanet } } }
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_barren_cold
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { has_modifier = terraforming_candidate NOT = { has_modifier = pd_infestingplanet } } }
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_hothouse
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { has_modifier = terraforming_candidate NOT = { has_modifier = pd_infestingplanet } } }
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_molten
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { has_modifier = terraforming_candidate NOT = { has_modifier = pd_infestingplanet } } }
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_nuked
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-#Special Worlds
-terraform_link = {
-	to = pc_hive
-	from = pc_gaia
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }
-	#condition = { from = { OR = { is_owned_by = root NOT = { has_modifier = "holy_planet" } }} }
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_hot_gaia
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }
-	#condition = { from = { OR = { is_owned_by = root NOT = { has_modifier = "holy_planet" } }} }
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_cold_gaia
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }
-	#condition = { from = { OR = { is_owned_by = root NOT = { has_modifier = "holy_planet" } }} }
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_aquatic
-	resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }
-	#condition = { from = { OR = { is_owned_by = root NOT = { has_modifier = "holy_planet" } }} }
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_machine
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-#Regular To
-terraform_link = {
-	to = pc_hive
-	from = pc_desert
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_alpine
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_arctic
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_arid
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_hadesert
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_prairie
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_veld
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_semiarid
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_med
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_desertislands
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_retinal
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_forest
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_lake
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_tepid
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_swamp
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_mud
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_basalt
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_boreal
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_cascadian
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_continental
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_subarctic
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_sandsea
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_frozen_desert
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_glacial
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_mangrove
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_wetswamp
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_fog
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_mesa
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_badlands
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_outback
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_coastal
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_mushroom
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_antarctic
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_aeolian
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_snow
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_highland
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_duneforest
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_oasis
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_ocean
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_savannah
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_steppe
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_hajungle
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_cenote
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_tropical
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
-}
-terraform_link = {
-	to = pc_hive
-	from = pc_tundra
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_ascension_perk = ap_hive_worlds from = { NOT = { has_modifier = pd_infestingplanet } } }	
-	ai_weight = { weight = 20 modifier = { factor = 0 NOT = { has_origin = origin_necrophage } from = { any_owned_species = { NOT = { has_trait = trait_hive_mind } is_sapient = yes } } } }
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_1
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_continental
+			}
+		}
+	}
 }
 
-#Regular From
+# Hive World to Ocean World
 terraform_link = {
-	from = pc_hive
-	to = pc_desert
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_ocean"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_1
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_ocean
+			}
+		}
+	}
 }
+
+# Hive World to Tropical World
 terraform_link = {
-	from = pc_hive
-	to = pc_alpine
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_tropical"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_1
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_tropical
+			}
+		}
+	}
 }
+
+# Hive World to Cascadian World
 terraform_link = {
-	from = pc_hive
-	to = pc_arctic
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_cascadian"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_1
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_cascadian
+			}
+		}
+	}
 }
+
+# Hive World to Atoll World
 terraform_link = {
-	from = pc_hive
-	to = pc_arid
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_desertislands"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_1
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_desertislands
+			}
+		}
+	}
 }
+
+# Hive World to Swamp World
 terraform_link = {
-	from = pc_hive
-	to = pc_hadesert
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_wetswamp"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_1
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_wetswamp
+			}
+		}
+	}
 }
+
+# Hive World to Crag World
 terraform_link = {
-	from = pc_hive
-	to = pc_desertislands
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_subarctic"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_1
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_subarctic
+			}
+		}
+	}
 }
+
+# Hive World to Mangrove World
 terraform_link = {
-	from = pc_hive
-	to = pc_retinal
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_mangrove"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_1
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_mangrove
+			}
+		}
+	}
 }
+
+# Hive World to Tepui World
 terraform_link = {
-	from = pc_hive
-	to = pc_forest
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
+	from = "pc_hive"
+	to = "pc_hajungle"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_1
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_hajungle
+			}
+		}
+	}
 }
+
+# Hive World to Retinal World
 terraform_link = {
-	from = pc_hive
-	to = pc_lake
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_retinal"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_1
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_retinal
+			}
+		}
+	}
 }
+
+# Hive World to Forest World
 terraform_link = {
-	from = pc_hive
-	to = pc_tepid
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_forest"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_1
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_forest
+			}
+		}
+	}
 }
+
+# Hive World to Lake World
 terraform_link = {
-	from = pc_hive
-	to = pc_swamp
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_lake"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_1
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_lake
+			}
+		}
+	}
 }
+
+# Hive World to Tepid World
 terraform_link = {
-	from = pc_hive
-	to = pc_mud
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_tepid"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_1
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_tepid
+			}
+		}
+	}
 }
+
+# Hive World to Cenot World
 terraform_link = {
-	from = pc_hive
-	to = pc_basalt
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_cenote"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_1
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_cenote
+			}
+		}
+	}
 }
+
+# Hive World to Fog World
 terraform_link = {
-	from = pc_hive
-	to = pc_boreal
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_fog"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_1
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_fog
+			}
+		}
+	}
 }
+
+## RARE ##
+
+# Hive World to Geothermal World
 terraform_link = {
-	from = pc_hive
-	to = pc_cascadian
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_geothermal"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_geothermal
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_geothermal
+			#add_modifier = { 
+				#modifier = geothermal
+				#days = -1
+			#}
+			add_deposit = d_geothermal_pools_deposit
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_geothermal
+			}
+		}
+	}
 }
+
+# Hive World to Superhabitable World
 terraform_link = {
-	from = pc_hive
-	to = pc_continental
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_superhabitable"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_superhabitable
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_superhabitable
+			add_modifier = { 
+				modifier = superhabitable
+				days = -1
+			}
+			add_deposit = d_ancient_motes
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_superhabitable
+			}
+		}
+	}
 }
+
+# Hive World to Bioluminescent World
 terraform_link = {
-	from = pc_hive
-	to = pc_subarctic
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_biolumen"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_biolumen
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_biolumen
+			add_modifier = { 
+				modifier = biolumen
+				days = -1
+			}
+			add_deposit = d_biolumen_nature_preserve
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_biolumen
+			}
+		}
+	}
 }
+
+# Hive World to Megaflora World
 terraform_link = {
-	from = pc_hive
-	to = pc_sandsea
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_megaflora"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_megaflora
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_megaflora
+			add_modifier = { 
+				modifier = pdmegaflora
+				days = -1
+			}
+			add_deposit = d_megaflora_deposit
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_megaflora
+			}
+		}
+	}
 }
+
+# Hive World to Karst World
 terraform_link = {
-	from = pc_hive
-	to = pc_frozen_desert
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_karst"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_karst
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_karst
+			add_modifier = { 
+				modifier = karst
+				days = -1
+			}
+			add_deposit = d_karst_cave
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_karst
+			}
+		}
+	}
 }
+
+# Hive World to Reef World
 terraform_link = {
-	from = pc_hive
-	to = pc_glacial
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_reef"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_reef
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_reef
+			add_modifier = { 
+				modifier = pdreef
+				days = -1
+			}
+			add_deposit = d_great_reef
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_reef
+			}
+		}
+	}
 }
+
+#################
+#      Dry      #
+#################
+## BASIC ##
+
+# Hive World to Desert World
 terraform_link = {
-	from = pc_hive
-	to = pc_mangrove
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_desert"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_desert
+			}
+		}
+	}
 }
+
+# Hive World to Arid World
 terraform_link = {
-	from = pc_hive
-	to = pc_wetswamp
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_arid"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_arid
+			}
+		}
+	}
 }
+
+# Hive World to Savanna World
 terraform_link = {
-	from = pc_hive
-	to = pc_fog
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_savannah"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_savannah
+			}
+		}
+	}
 }
+
+# Hive World to Steppe World
 terraform_link = {
-	from = pc_hive
-	to = pc_mesa
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_steppe"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_steppe
+			}
+		}
+	}
 }
+
+# Hive World to Dune World
 terraform_link = {
-	from = pc_hive
-	to = pc_badlands
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_sandsea"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_sandsea
+			}
+		}
+	}
 }
+
+# Hive World to Outback World
 terraform_link = {
-	from = pc_hive
-	to = pc_outback
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_outback"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_outback
+			}
+		}
+	}
 }
+
+# Hive World to Oasis World
 terraform_link = {
-	from = pc_hive
-	to = pc_coastal
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_oasis"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_oasis
+			}
+		}
+	}
 }
+
+# Hive World to Mesa World
 terraform_link = {
-	from = pc_hive
-	to = pc_mushroom
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_mesa"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_mesa
+			}
+		}
+	}
 }
+
+# Hive World to Atacama World
 terraform_link = {
-	from = pc_hive
-	to = pc_oasis
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_hadesert"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_hadesert
+			}
+		}
+	}
 }
+
+# Hive World to Prairie World
 terraform_link = {
-	from = pc_hive
-	to = pc_ocean
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_prairie"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_prairie
+			}
+		}
+	}
 }
+
+# Hive World to Mediterranean World
 terraform_link = {
-	from = pc_hive
-	to = pc_savannah
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_med"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_med
+			}
+		}
+	}
 }
+
+# Hive World to Veld World
 terraform_link = {
-	from = pc_hive
-	to = pc_steppe
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_veld"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_veld
+			}
+		}
+	}
 }
+
+# Hive World to Semi-Arid World
 terraform_link = {
-	from = pc_hive
-	to = pc_hajungle
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_semiarid"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_semiarid
+			}
+		}
+	}
 }
+
+# Hive World to Badlands World
 terraform_link = {
-	from = pc_hive
-	to = pc_cenote
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_badlands"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_badlands
+			}
+		}
+	}
 }
+
+# Hive World to Coastal World
 terraform_link = {
-	from = pc_hive
-	to = pc_tropical
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_coastal"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_coastal
+			}
+		}
+	}
 }
+
+## RARE ##
+
+# Hive World to Tidally-Locked
 terraform_link = {
-	from = pc_hive
-	to = pc_tundra
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_tidallylocked"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_tidallocked
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_tidallocked
+			add_modifier = { 
+				modifier = tidal_locked2
+				days = -1
+			}
+			add_deposit = d_nightside_mining_operations
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_tidallylocked
+			}
+		}
+	}
 }
+
+# Hive World to Coral World
 terraform_link = {
-	from = pc_hive
-	to = pc_prairie
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_coral"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_coral
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_coral
+			add_modifier = { 
+				modifier = pdcoral
+				days = -1
+			}
+			add_deposit = d_coral_fields
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_coral
+			}
+		}
+	}
 }
+
+# Hive World to Salt World
 terraform_link = {
-	from = pc_hive
-	to = pc_veld
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_salt"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_salt
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_salt
+			add_modifier = { 
+				modifier = pdsalt
+				days = -1
+			}
+			add_deposit = d_salt_caves
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_salt
+			}
+		}
+	}
 }
+
+# Hive World to Primal World
 terraform_link = {
-	from = pc_hive
-	to = pc_semiarid
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_primal"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_primal
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_primal
+			add_modifier = { 
+				modifier = primal
+				days = -1
+			}
+			add_deposit = d_lava_lakes
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_primal
+			}
+		}
+	}
 }
+
+# Hive World to Supercontinent World
 terraform_link = {
-	from = pc_hive
-	to = pc_med
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_supercon"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_supercon
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_supercon
+			add_modifier = { 
+				modifier = supercon
+				days = -1
+			}
+			add_deposit = d_supercon_site
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_supercon
+			}
+		}
+	}
 }
+
+# Hive World to Aquifer World
 terraform_link = {
-	from = pc_hive
-	to = pc_antarctic
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_aquifer"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_aquifer
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_aquifer
+			add_modifier = { 
+				modifier = pdaquifer
+				days = -1
+			}
+			add_deposit = d_aquifer_cave
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_aquifer
+			}
+		}
+	}
 }
+
+#################
+#    Frozen     #
+#################
+## BASIC ##
+
+# Hive World to Arctic World
 terraform_link = {
-	from = pc_hive
-	to = pc_aeolian
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_arctic"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_arctic
+			}
+		}
+	}
 }
+
+# Hive World to Alpine World
 terraform_link = {
-	from = pc_hive
-	to = pc_snow
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_alpine"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_alpine
+			}
+		}
+	}
 }
+
+# Hive World to Tundra World
 terraform_link = {
-	from = pc_hive
-	to = pc_highland
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_tundra"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_tundra
+			}
+		}
+	}
 }
+
+# Hive World to Bog World
 terraform_link = {
-	from = pc_hive
-	to = pc_duneforest
-	    resources = { category = terraforming cost = { energy = @hiveCost } }
-	duration = @hiveTime
-	potential = { has_technology = tech_climate_restoration }
-	ai_weight = { weight = 5 modifier = { factor = 0 has_authority = auth_hive_mind	} }
-	effect = { from = { reroll_deposits = yes } }
+	from = "pc_hive"
+	to = "pc_swamp"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_swamp
+			}
+		}
+	}
+}
+
+# Hive World to Frigid World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_frozen_desert"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_frozen_desert
+			}
+		}
+	}
+}
+
+# Hive World to Highland World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_highland"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_highland
+			}
+		}
+	}
+}
+
+# Hive World to Glacial World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_glacial"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_glacial
+			}
+		}
+	}
+}
+
+# Hive World to Boreal World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_boreal"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_boreal
+			}
+		}
+	}
+}
+
+# Hive World to Mycelium World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_mushroom"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_mushroom
+			}
+		}
+	}
+}
+
+# Hive World to Antarctic World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_antarctic"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_antarctic
+			}
+		}
+	}
+}
+
+# Hive World to Snow World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_snow"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_snow
+			}
+		}
+	}
+}
+
+# Hive World to Mud World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_mud"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_mud
+			}
+		}
+	}
+}
+
+# Hive World to Basalt World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_basalt"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_basalt
+			}
+		}
+	}
+}
+
+# Hive World to Aeolian World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_aeolian"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_aeolian
+			}
+		}
+	}
+}
+
+# Hive World to Dune Forest World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_duneforest"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_2
+		}
+	}
+
+	duration = @terraforming_duration_level_2
+
+	potential = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_terrestrial_biome_manipulation"
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_duneforest
+			}
+		}
+	}
+}
+
+## RARE ##
+
+# Hive World to Storm World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_storm"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_storm
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_storm
+			add_modifier = {
+				modifier = pdstorm
+				days = -1
+			}
+			add_deposit = d_storm_corridor
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_storm
+			}
+		}
+	}
+}
+
+# Hive World to Rogue World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_rogue"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_rogue
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_rogue
+			add_modifier = {
+				modifier = pdrogue
+				days = -1
+			}
+			add_deposit = d_rogue_geo
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_rogue
+			}
+		}
+	}
+}
+
+# Hive World to Eyeball World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_eyeball"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_tidallocked
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_tidallocked
+			add_modifier = {
+				modifier = pdeyeball
+				days = -1
+			}
+			add_deposit = d_eyeball_site
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_eyeball
+			}
+		}
+	}
+}
+
+# Hive World to Glaciovolcanic World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_glacio"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_glacio
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_glacio
+			add_modifier = {
+				modifier = pdglacio
+				days = -1
+			}
+			add_deposit = d_glacio_lake
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_glacio
+			}
+		}
+	}
+}
+
+# Hive World to Lanthanide World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_lanthanide"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_lanthanide
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_lanthanide
+			add_modifier = {
+				modifier = pdlanthanide
+				days = -1
+			}
+			add_deposit = d_lanthanide_deposit
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_lanthanide
+			}
+		}
+	}
+}
+
+# Hive World to Lichen World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_lichen"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = pdterra_lichen
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_lichen
+			add_modifier = {
+				modifier = pdlichen
+				days = -1
+			}
+			add_deposit = d_lichen_forest
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_lichen
+			}
+		}
+	}
+}
+
+#################
+#    Special    #
+#################
+
+## Normal ##
+
+# Hive World to Machine World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_machine"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+		has_ascension_perk = ap_machine_worlds
+	}
+	
+	condition = {
+		has_ascension_perk = ap_machine_worlds
+	}
+
+	ai_weight = {
+		weight = 250
+		modifier = {
+			factor = 0
+			from = {
+				any_owned_species = {
+					NOR = {
+						has_trait = trait_machine_unit
+						has_trait = trait_mechanical
+					}
+					is_sapient = yes
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			from = {
+				is_colony = no
+			}
+		}
+	}
+}
+
+# Hive World to Gaia World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_gaia"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+		has_ascension_perk = ap_world_shaper
+	}
+	
+	condition = {
+		has_ascension_perk = ap_world_shaper
+	}
+
+	effect = {
+		from = {
+			add_deposit = d_pdgaia
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0 
+			from = { 
+				is_hive_empire = yes
+			}
+		}
+	}
+}
+
+# Hive World to Aquatic World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_aquatic"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_3
+		}
+	}
+
+	duration = @terraforming_duration_level_3
+
+	potential = {
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+		has_ascension_perk = ap_hydrocentric
+	}
+	
+	condition = {
+		has_ascension_perk = ap_hydrocentric
+	}
+
+	effect = {
+		from = {
+			add_modifier = {
+				modifier = aquatic
+				days = -1
+			}
+			add_deposit = d_aquatic_trench
+		}
+	}
+	
+	ai_weight = {
+		weight = 125
+		modifier = {
+			factor = 0 
+			from = { 
+				is_hive_empire = yes
+			}
+		}
+	}
+}
+
+## Exotic ##
+
+# Hive World to Ammonia World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_ammonia"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_global_flag = planetarydiversityexotics
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			add_modifier = {
+				modifier = ammonia
+				days = -1
+			}
+			add_deposit = d_ammonia_sea
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_ammonia
+			}
+		}
+	}
+}
+
+# Hive World to Methane World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_methane"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_global_flag = planetarydiversityexotics
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			add_modifier = {
+				modifier = methane
+				days = -1
+			}
+			add_deposit = d_frozen_gas_mountain
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_methane
+			}
+		}
+	}
+}
+
+# Hive World to Radiotrophic World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_irradiated"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			sr_rad_bloom = @terraforming_cost_radblooms
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_global_flag = planetarydiversityexotics
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			add_modifier = {
+				modifier = radiotrophic
+				days = -1
+			}
+			add_deposit = d_rad_blooms_field
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_irradiated
+			}
+		}
+	}
+}
+
+# Hive World to Ash World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_ash"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_global_flag = planetarydiversityexotics
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			add_modifier = {
+				modifier = ash
+				days = -1
+			}
+			add_deposit = d_lava_lakes
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_ash
+			}
+		}
+	}
+}
+
+# Hive World to Acid World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_acid"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_global_flag = planetarydiversityexotics
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			add_modifier = {
+				modifier = pdacid
+				days = -1
+			}
+			add_deposit = d_acid_lakes
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_acid
+			}
+		}
+	}
+}
+
+# Hive World to Sulfur World
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_sulfur"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_global_flag = planetarydiversityexotics
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+		OR = {
+			has_ascension_perk = ap_sublunaris_progressus
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+	}
+	
+	condition = {
+		has_technology = tech_climate_restoration
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			add_modifier = {
+				modifier = pdsulfur
+				days = -1
+			}
+			add_deposit = d_sulfur_pool
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			should_terraform_trigger = {
+				CLASS_FROM = pc_hive
+				CLASS_TO = pc_sulfur
+			}
+		}
+	}
 }

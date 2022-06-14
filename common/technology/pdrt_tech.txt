@@ -1,0 +1,378 @@
+# Biome Manipulation
+tech_terrestrial_biome_manipulation = {
+	cost = @tier3cost2
+	area = society
+	tier = 3
+	category = { new_worlds }
+	prerequisites = { "tech_terrestrial_sculpting" }
+	weight = @tier3weight2
+
+	prereqfor_desc = {
+		custom = {
+			title = "tech_unlock_terrestrial_biome_manipulation_title"
+			desc = "tech_unlock_terrestrial_biome_manipulation_desc"
+		}
+	}
+	
+	modifier = {
+		terraform_speed_mult = 0.10
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_expansion_adopt
+		}
+		modifier = {
+			factor = value:tech_weight_likelihood
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+	}
+
+	ai_weight = {
+		factor = @terraforming_tech_ai_factor
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+		modifier = {
+			factor = 2
+			is_xenophobe = yes
+		}
+		modifier = {
+			factor = 5
+			OR = {
+				any_owned_planet = {
+					habitability = {
+						who = root
+						value < 0.5
+					}
+				}
+				any_system_within_border = {
+					any_system_planet = {
+						is_planet_class = pc_nuked
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 5
+			has_origin = origin_life_seeded
+		}
+		modifier = {
+			factor = 2
+			is_ai = no #auto-research
+		}
+	}
+}
+
+tech_terraforming_reconstruction = {
+	cost = @tier5cost1
+	area = physics
+	tier = 5
+	category = { field_manipulation }
+	is_rare = yes
+	prerequisites = { "tech_climate_restoration" }
+	weight = @tier5weight1
+
+	potential = {
+		has_ascension_perk = ap_breath_of_creation
+	}
+
+	# unlocks additional terraforming-options
+
+	modifier = {
+		country_rare_crystals_produces_mult = 0.10
+	}
+	
+	prereqfor_desc = {
+		custom = {
+			title = "tech_unlock_terraforming_reconstruction"
+			desc = "tech_unlock_terraforming_reconstruction_desc"
+		}
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_expansion_adopt
+		}
+		modifier = {
+			factor = value:tech_weight_likelihood
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+	}
+
+	ai_weight = {
+		factor = @terraforming_tech_ai_factor
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+		modifier = {
+			factor = 5
+			any_system_within_border = {
+				any_system_planet = {
+					is_planet_class = pc_nuked
+				}
+			}
+		}
+	}
+}
+
+tech_terraforming_frozen = {
+	cost = @tier5cost1
+	area = society
+	tier = 5
+	category = { new_worlds }
+	is_rare = yes
+	prerequisites = { "tech_climate_restoration" }
+	weight = @tier5weight1
+
+
+	potential = {
+		has_ascension_perk = ap_breath_of_creation
+	}
+
+	# unlocks additional terraforming-options
+
+	modifier = {
+		country_exotic_gases_produces_mult = 0.10
+	}
+	
+	prereqfor_desc = {
+		custom = {
+			title = "tech_unlock_terraforming_frozen"
+			desc = "tech_unlock_terraforming_frozen_desc"
+		}
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_expansion_adopt
+		}
+		modifier = {
+			factor = value:tech_weight_likelihood
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+	}
+
+	ai_weight = {
+		factor = @terraforming_tech_ai_factor
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+		modifier = {
+			factor = 5
+			any_system_within_border = {
+				any_system_planet = {
+					is_planet_class = pc_nuked
+				}
+			}
+		}
+	}
+}
+
+tech_terraforming_molten = {
+	cost = @tier5cost1
+	area = society
+	tier = 5
+	category = { new_worlds }
+	is_rare = yes
+	prerequisites = { "tech_climate_restoration" }
+	weight = @tier5weight1
+
+
+	potential = {
+		has_ascension_perk = ap_breath_of_creation
+	}
+
+	# unlocks additional terraforming-options
+
+	modifier = {
+		country_volatile_motes_produces_mult = 0.10
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "tech_unlock_terraforming_molten"
+			desc = "tech_unlock_terraforming_molten_desc"
+		}
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_expansion_adopt
+		}
+		modifier = {
+			factor = value:tech_weight_likelihood
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+	}
+
+	ai_weight = {
+		factor = @terraforming_tech_ai_factor
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+		modifier = {
+			factor = 5
+			any_system_within_border = {
+				any_system_planet = {
+					is_planet_class = pc_nuked
+				}
+			}
+		}
+	}
+}
+
+tech_terraforming_barren = {
+	cost = @tier5cost1
+	area = physics
+	tier = 5
+	category = { field_manipulation }
+	is_rare = yes
+	prerequisites = { "tech_climate_restoration" }
+	weight = @tier5weight1
+
+
+	potential = {
+		has_ascension_perk = ap_breath_of_creation
+	}
+
+	# unlocks additional terraforming-options
+
+	modifier = {
+		country_resource_max_add = 50000
+#       custom_tooltip = tech_unlock_terraforming_barren ##DryusFix
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "tech_unlock_terraforming_barren"
+			desc = "tech_unlock_terraforming_barren_desc"
+		}
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_expansion_adopt
+		}
+		modifier = {
+			factor = value:tech_weight_likelihood
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+	}
+
+	ai_weight = {
+		factor = @terraforming_tech_ai_factor
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+		modifier = {
+			factor = 5
+			any_system_within_border = {
+				any_system_planet = {
+					is_planet_class = pc_nuked
+				}
+			}
+		}
+	}
+}
+
+tech_terraforming_toxic = {
+	cost = @tier5cost1
+	area = society
+	tier = 5
+	category = { new_worlds }
+	is_rare = yes
+	prerequisites = { "tech_climate_restoration" }
+	weight = @tier5weight1
+
+
+	potential = {
+		has_ascension_perk = ap_breath_of_creation
+	}
+
+	# unlocks additional terraforming-options
+
+	modifier = {
+		country_sr_zro_produces_mult = 0.10
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "tech_unlock_terraforming_toxic"
+			desc = "tech_unlock_terraforming_toxic_desc"
+		}
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_expansion_adopt
+		}
+		modifier = {
+			factor = value:tech_weight_likelihood
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+	}
+
+	ai_weight = {
+		factor = @terraforming_tech_ai_factor
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+		modifier = {
+			factor = 5
+			any_system_within_border = {
+				any_system_planet = {
+					is_planet_class = pc_nuked
+				}
+			}
+		}
+	}
+}

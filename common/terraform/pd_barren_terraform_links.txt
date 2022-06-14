@@ -1,521 +1,5370 @@
-@terraforming_cost_level_1 = 2000 #<-- same category terraforming
-@terraforming_cost_level_2 = 5000 #<-- different category terraforming
-@terraforming_cost_level_3 = 10000 #<-- Hive and machine
-@terraforming_cost_level_4 = 15000 #<-- climate restoration
-@terraforming_cost_gaia = 7500
-@terraforming_duration_level_1 = 1800 #<-- same category terraforming
-@terraforming_duration_level_2 = 3600 #<-- different category terraforming
-@terraforming_duration_level_3 = 5400 #<-- opposite category terraforming and uninhabitable to inhabitable terraforming
-@terraforming_duration_level_4 = 7200 #<-- special terraforming, e.g. to gaia, machine world etc.
-@terraforming_duration_gaia = 3600
+#################
+#      Wet      #
+#################
 
-#Bareen
+## BASIC ##
 
-#All Others
+# Barren World to Continental World
 terraform_link = {
-	from = pc_barren
-	to = pc_continental
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_continental } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_ocean
-    resources = { category = terraforming_ocean cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_ocean } } modifier = { factor = 10  any_owned_species = { OR = { has_trait = trait_aquatic has_trait = trait_pc_aquatic_preference has_trait = trait_pc_ocean_preference } is_sapient = yes } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_tropical
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_tropical } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_cascadian
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_cascadian } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_desertislands
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_desertislands } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_subarctic
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_subarctic } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_mangrove
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_mangrove } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_wetswamp
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_wetswamp } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_fog
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_fog } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_hajungle
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_hajungle } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_cenote
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_cenote } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_retinal
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_retinal } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_forest
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_forest } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_lake
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_lake } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_tepid
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_tepid } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_aquatic
-    resources = { category = terraforming_ocean cost = { energy = @terraforming_cost_gaia } }
-	duration = @terraforming_duration_gaia
-	potential = { from = { has_modifier = terraforming_candidate } has_ascension_perk = ap_hydrocentric }
-	condition = { has_ascension_perk = ap_hydrocentric has_technology = tech_climate_restoration }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_aquatic } } modifier = { factor = 10  any_owned_species = { OR = { has_trait = trait_aquatic has_trait = trait_pc_aquatic_preference has_trait = trait_pc_ocean_preference } is_sapient = yes } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_desert
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_desert } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_arid
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_arid } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_savannah
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_savannah } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_steppe
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }	
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_steppe } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_sandsea
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_sandsea } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_oasis
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_oasis } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_mesa
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_mesa } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_badlands
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_badlands } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_outback
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_outback } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_coastal
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_coastal } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_arctic
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_arctic } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_alpine
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }	
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_alpine } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_tundra
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_tundra } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_swamp
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_swamp } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_mud
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_mud } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_basalt
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_basalt } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_frozen_desert
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_frozen_desert } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_glacial
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }
-	effect = { from = { remove_modifier = terraforming_candidate } }	
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_glacial } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_hadesert
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_hadesert } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_prairie
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_prairie } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_veld
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_veld } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_semiarid
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_semiarid } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_med
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_med } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_boreal
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }	
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_boreal } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_mushroom
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_mushroom } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_antarctic
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_antarctic } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_aeolian
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_aeolian } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_snow
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_snow } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_highland
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_highland } } }
-}
-terraform_link = {
-	from = pc_barren
-	to = pc_duneforest
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_3 } }
-	duration = @terraforming_duration_level_3
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_technology = "tech_climate_restoration" }	
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 0 modifier = { weight = 2 should_terraform_trigger = { CLASS_FROM = pc_barren CLASS_TO = pc_duneforest } } }
-}
-#Exotic
+	from = "pc_barren"
+	to = "pc_continental"
 
-#Special
-terraform_link = {
-	from = pc_barren
-	to = pc_gaia
-	
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_4 } }
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
 	duration = @terraforming_duration_level_4
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_ascension_perk = ap_world_shaper }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 2 modifier = { factor = 0 resource_stockpile_compare = { resource = energy value < 40000 } } modifier = { factor = 0	OR = { is_mechanical_empire = yes is_cyborg_empire = yes has_authority = auth_machine_intelligence } } }
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
 }
+
+# Barren World to Ocean World
 terraform_link = {
-	from = pc_barren
-	to = pc_hot_gaia
-	
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_4 } }
+	from = "pc_barren"
+	to = "pc_ocean"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
 	duration = @terraforming_duration_level_4
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_ascension_perk = ap_world_shaper }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 2 modifier = { factor = 0 resource_stockpile_compare = { resource = energy value < 40000 } } modifier = { factor = 0	OR = { is_mechanical_empire = yes is_cyborg_empire = yes has_authority = auth_machine_intelligence } } }
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
 }
+
+# Barren World to Tropical World
 terraform_link = {
-	from = pc_barren
-	to = pc_cold_gaia
-	
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_4 } }
+	from = "pc_barren"
+	to = "pc_tropical"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
 	duration = @terraforming_duration_level_4
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_ascension_perk = ap_world_shaper }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 2 modifier = { factor = 0 resource_stockpile_compare = { resource = energy value < 40000 } } modifier = { factor = 0	OR = { is_mechanical_empire = yes is_cyborg_empire = yes has_authority = auth_machine_intelligence } } }
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
 }
+
+# Barren World to Cascadian World
 terraform_link = {
-	from = pc_barren
-	to = pc_machine
-	
-    resources = { category = terraforming cost = { energy = @terraforming_cost_level_4 } }
+	from = "pc_barren"
+	to = "pc_cascadian"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
 	duration = @terraforming_duration_level_4
-	potential = { from = { has_modifier = terraforming_candidate } }
-	condition = { has_ascension_perk = ap_machine_worlds }
-	effect = { from = { remove_modifier = terraforming_candidate } }
-	ai_weight = { weight = 20 modifier = { factor = 0 from = { any_owned_species = { NOR = { has_trait = trait_machine_unit	has_trait = trait_mechanical } is_sapient = yes	} } } }
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Atoll World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_desertislands"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Swamp World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_wetswamp"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Crag World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_subarctic"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Mangrove World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_mangrove"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Tepui World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_hajungle"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Retinal World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_retinal"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Forest World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_forest"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Lake World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_lake"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Tepid World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_tepid"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Cenot World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_cenote"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Fog World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_fog"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+## RARE ##
+
+# Barren World to Geothermal World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_geothermal"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_geothermal
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			#add_modifier = { 
+				#modifier = geothermal
+				#days = -1
+			#}
+			add_deposit = d_geothermal_pools_deposit
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Superhabitable World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_superhabitable"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_superhabitable
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = { 
+				modifier = superhabitable
+				days = -1
+			}
+			add_deposit = d_ancient_motes
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Bioluminescent World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_biolumen"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_biolumen
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = { 
+				modifier = biolumen
+				days = -1
+			}
+			add_deposit = d_biolumen_nature_preserve
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Megaflora World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_megaflora"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_megaflora
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = { 
+				modifier = pdmegaflora
+				days = -1
+			}
+			add_deposit = d_megaflora_deposit
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Karst World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_karst"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_karst
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = { 
+				modifier = karst
+				days = -1
+			}
+			add_deposit = d_karst_cave
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Reef World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_reef"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_wet_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_reef
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = { 
+				modifier = pdreef
+				days = -1
+			}
+			add_deposit = d_great_reef
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+#################
+#      Dry      #
+#################
+## BASIC ##
+
+# Barren World to Desert World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_desert"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Arid World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_arid"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Savanna World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_savannah"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Steppe World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_steppe"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Dune World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_sandsea"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Outback World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_outback"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Oasis World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_oasis"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Mesa World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_mesa"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Atacama World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_hadesert"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Prairie World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_prairie"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Mediterranean World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_med"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Veld World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_veld"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Semi-Arid World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_semiarid"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Badlands World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_badlands"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Coastal World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_coastal"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+## RARE ##
+
+# Barren World to Tidally-Locked
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_tidallylocked"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_tidallocked
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = { 
+				modifier = tidal_locked2
+				days = -1
+			}
+			add_deposit = d_nightside_mining_operations
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Coral World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_coral"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_coral
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = { 
+				modifier = pdcoral
+				days = -1
+			}
+			add_deposit = d_coral_fields
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Salt World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_salt"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_salt
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = { 
+				modifier = pdsalt
+				days = -1
+			}
+			add_deposit = d_salt_caves
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Primal World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_primal"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_primal
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = { 
+				modifier = primal
+				days = -1
+			}
+			add_deposit = d_lava_lakes
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Supercontinent World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_supercon"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_supercon
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = { 
+				modifier = supercon
+				days = -1
+			}
+			add_deposit = d_supercon_site
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Aquifer World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_aquifer"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_dry_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_aquifer
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = { 
+				modifier = pdaquifer
+				days = -1
+			}
+			add_deposit = d_aquifer_cave
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+#################
+#    Frozen     #
+#################
+## BASIC ##
+
+# Barren World to Arctic World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_arctic"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Alpine World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_alpine"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Tundra World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_tundra"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Bog World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_swamp"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Frigid World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_frozen_desert"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Highland World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_highland"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Glacial World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_glacial"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Boreal World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_boreal"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Mycelium World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_mushroom"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Antarctic World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_antarctic"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Snow World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_snow"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Mud World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_mud"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Basalt World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_basalt"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Aeolian World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_aeolian"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Dune Forest World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_duneforest"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOR = {
+			has_policy_flag = terraforming_basic_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+## RARE ##
+
+# Barren World to Storm World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_storm"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_storm
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = {
+				modifier = pdstorm
+				days = -1
+			}
+			add_deposit = d_storm_corridor
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Rogue World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_rogue"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_rogue
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = {
+				modifier = pdrogue
+				days = -1
+			}
+			add_deposit = d_rogue_geo
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Eyeball World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_eyeball"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_tidallocked
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = {
+				modifier = pdeyeball
+				days = -1
+			}
+			add_deposit = d_eyeball_site
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Glaciovolcanic World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_glacio"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_glacio
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = {
+				modifier = pdglacio
+				days = -1
+			}
+			add_deposit = d_glacio_lake
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Lanthanide World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_lanthanide"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_lanthanide
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = {
+				modifier = pdlanthanide
+				days = -1
+			}
+			add_deposit = d_lanthanide_deposit
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Lichen World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_lichen"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_ascension_perk = ap_sublunaris_progressus
+		NOR = {
+			has_policy_flag = terraforming_rare_invisible
+			has_policy_flag = terraforming_frozen_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = pdterra_lichen
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = {
+				modifier = pdlichen
+				days = -1
+			}
+			add_deposit = d_lichen_forest
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+#################
+#    Special    #
+#################
+
+## Normal ##
+
+# Barren World to Hive World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_hive"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+		has_ascension_perk = ap_hive_worlds
+	}
+	
+	condition = {
+		has_ascension_perk = ap_hive_worlds
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Machine World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_machine"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+		has_ascension_perk = ap_machine_worlds
+	}
+	
+	condition = {
+		has_ascension_perk = ap_machine_worlds
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Gaia World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_gaia"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+		has_ascension_perk = ap_world_shaper
+	}
+	
+	condition = {
+		has_ascension_perk = ap_world_shaper
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_deposit = d_pdgaia
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Aquatic World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_aquatic"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		OR = {
+			has_technology = "tech_terraforming_barren"
+			from = {
+				has_modifier = terraforming_candidate
+			}
+		}
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+		has_ascension_perk = ap_hydrocentric
+	}
+	
+	condition = {
+		has_ascension_perk = ap_hydrocentric
+	}
+
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = {
+				modifier = aquatic
+				days = -1
+			}
+			add_deposit = d_aquatic_trench
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+## Exotic ##
+
+# Barren World to Ammonia World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_ammonia"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_global_flag = planetarydiversityexotics
+		has_ascension_perk = ap_sublunaris_progressus
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = {
+				modifier = ammonia
+				days = -1
+			}
+			add_deposit = d_ammonia_sea
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Methane World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_methane"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_global_flag = planetarydiversityexotics
+		has_ascension_perk = ap_sublunaris_progressus
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = {
+				modifier = methane
+				days = -1
+			}
+			add_deposit = d_frozen_gas_mountain
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Radiotrophic World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_irradiated"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			sr_rad_bloom = @terraforming_cost_radblooms
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_global_flag = planetarydiversityexotics
+		has_ascension_perk = ap_sublunaris_progressus
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = {
+				modifier = radiotrophic
+				days = -1
+			}
+			add_deposit = d_rad_blooms_field
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Ash World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_ash"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_global_flag = planetarydiversityexotics
+		has_ascension_perk = ap_sublunaris_progressus
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = {
+				modifier = ash
+				days = -1
+			}
+			add_deposit = d_lava_lakes
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Acid World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_acid"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_global_flag = planetarydiversityexotics
+		has_ascension_perk = ap_sublunaris_progressus
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = {
+				modifier = pdacid
+				days = -1
+			}
+			add_deposit = d_acid_lakes
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Barren World to Sulfur World
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_sulfur"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @terraforming_cost_level_4
+			#exotic_gases = @terraforming_cost_level_1
+		}
+	}
+
+	duration = @terraforming_duration_level_4
+
+	potential = {
+		has_global_flag = planetarydiversityexotics
+		has_ascension_perk = ap_sublunaris_progressus
+		NOT = {
+			has_policy_flag = terraforming_special_invisible
+		}
+	}
+	
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
+	
+	effect = {
+		from = {
+			remove_modifier = terraforming_candidate
+			reroll_planet = yes
+			if = {
+				limit = {
+					has_global_flag = has_guillis_planet_modifiers_mod
+				}
+				gpm_purge_all_planetary_modifiers = yes
+				reroll_planet = yes
+				gpm_spawn_normal_habitable_world_modifier = yes
+			}
+			else = {
+				reroll_planet = yes
+			}
+			while = {
+				count = 5
+				random_list = {
+					20 = { add_deposit = d_rushing_waterfalls }
+					20 = { add_deposit = d_prosperous_mesa }
+					20 = { add_deposit = d_fertile_lands }
+					10 = { add_deposit = d_black_soil  }
+					5 = { add_deposit = d_tempestous_mountain }
+					5 = { add_deposit = d_submerged_ore_veins }
+					5 = { add_deposit = d_alien_pets_deposit }
+					5 = { add_deposit = d_betharian_deposit }
+					2 = { add_deposit = d_dust_caverns }
+					2 = { add_deposit = d_dust_desert }
+					2 = { add_deposit = d_fuming_bog }
+					2 = { add_deposit = d_crystal_reef }
+					2 = { add_deposit = d_bubbling_swamp }
+				}
+			}
+			add_modifier = {
+				modifier = pdsulfur
+				days = -1
+			}
+			add_deposit = d_sulfur_pool
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
 }

@@ -1,0 +1,129 @@
+ap_breath_of_creation = {
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ap_world_shaper_tier"
+			OR = {
+				has_ascension_perk = ap_world_shaper
+				has_ascension_perk = ap_hive_worlds
+				has_ascension_perk = ap_machine_worlds
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_3"
+			num_ascension_perks > 2
+		}
+	}
+
+	modifier = {
+		terraform_speed_mult = 0.15
+	}
+
+	on_enabled = {
+		tooltip = {
+            add_research_option = tech_terraforming_barren
+            add_research_option = tech_terraforming_frozen
+            add_research_option = tech_terraforming_molten
+            add_research_option = tech_terraforming_toxic
+            add_research_option = tech_terraforming_reconstruction
+		}
+	}
+
+	potential = {
+		NOT = {
+			has_ascension_perk = ap_breath_of_creation
+		}
+	}
+
+	ai_weight = {
+		factor = 5
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_origin = origin_void_dwellers
+				has_origin = origin_shattered_ring
+				has_trait = trait_aquatic
+				has_ethic = ethic_gestalt_consciousness
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = ethic_pacifist
+				has_ethic = ethic_xenophobe
+			}
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_ethic = ethic_fanatic_pacifist
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+		modifier = { #only way to get more nice planets
+			factor = 100
+			has_origin = origin_life_seeded
+		}
+	}
+}
+
+ap_sublunaris_progressus = {
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ap_breath_of_creation"
+			has_ascension_perk = ap_breath_of_creation
+		}
+		AND = {
+            has_technology = tech_terraforming_barren
+            has_technology = tech_terraforming_frozen
+            has_technology = tech_terraforming_molten
+            has_technology = tech_terraforming_toxic
+            has_technology = tech_terraforming_reconstruction
+		}
+	}
+
+	modifier = {
+		terraform_speed_mult = 0.25
+	}
+
+	on_enabled = {
+		custom_tooltip = "allow_gaia_any"
+	}
+
+	potential = {
+		NOT = {
+			has_ascension_perk = ap_sublunaris_progressus
+		}
+		has_global_flag = planetarydiversity 
+	}
+
+	ai_weight = {
+		factor = 5
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_origin = origin_void_dwellers
+				has_origin = origin_shattered_ring
+				has_trait = trait_aquatic
+				has_ethic = ethic_gestalt_consciousness
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = ethic_pacifist
+				has_ethic = ethic_xenophobe
+			}
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_ethic = ethic_fanatic_pacifist
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+		modifier = { #only way to get more nice planets
+			factor = 100
+			has_origin = origin_life_seeded
+		}
+	}
+}
