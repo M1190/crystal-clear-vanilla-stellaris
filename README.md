@@ -1,2 +1,2 @@
-# Crystal Clear Vanilla Stellaris Mod
+# Crystal Clear Vanilla Stellaris Modpack
  Initial description
