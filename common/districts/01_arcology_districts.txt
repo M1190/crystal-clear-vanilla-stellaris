@@ -2,22 +2,28 @@ district_arcology_housing = {
 	base_buildtime = 600
 	is_capped_by_modifier = no
 	exempt_from_ai_planet_specialization = yes
-
 	show_on_uncolonized = {
-		uses_district_set = city_world
+		OR = {
+			uses_district_set = city_world
+			uses_district_set = pdecocity
+			uses_district_set = pdmilarc
+			uses_district_set = pdcorpoarc
+		}
 	}
-
 	potential = {
-		uses_district_set = city_world
+		OR = {
+			uses_district_set = city_world
+			uses_district_set = pdecocity
+			uses_district_set = pdmilarc
+			uses_district_set = pdcorpoarc
+		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_city
 		district_nexus
 		district_hive
 	}
-
 	resources = {
 		category = planet_districts
 		cost = {
@@ -27,31 +33,31 @@ district_arcology_housing = {
 			energy = 5
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 15
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_maintenance_drone_add = 9
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_active_tradition = tr_prosperity_public_works }
+			owner = {
+				has_active_tradition = tr_prosperity_public_works
+			}
 		}
 		modifier = {
 			planet_housing_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -63,20 +69,20 @@ district_arcology_housing = {
 			planet_housing_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_technology = tech_housing_2
-				NOT = { has_valid_civic = civic_agrarian_idyll }
+				NOT = {
+					has_valid_civic = civic_agrarian_idyll
+				}
 			}
 		}
 		modifier = {
 			planet_housing_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -89,7 +95,6 @@ district_arcology_housing = {
 			job_maintenance_drone_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -101,28 +106,30 @@ district_arcology_housing = {
 			job_clerk_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_active_tradition = tr_prosperity_interstellar_franchising }
+			owner = {
+				has_active_tradition = tr_prosperity_interstellar_franchising
+			}
 		}
 		modifier = {
 			job_clerk_add = 3
 		}
 	}
-
-	triggered_planet_modifier = { #Bug Branch
+	triggered_planet_modifier = {
+		#Bug Branch
 		potential = {
 			exists = owner
-			owner = { has_valid_civic = civic_bugged_rooftop_farmers }
+			owner = {
+				has_valid_civic = civic_bugged_rooftop_farmers
+			}
 		}
 		modifier = {
 			job_clerk_add = -3
 			job_farmer_add = 3
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -132,19 +139,22 @@ district_arcology_housing = {
 		}
 		text = job_clerk_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_maintenance_drone_effect_desc
 	}
-
-	triggered_desc = { #Bug Branch
+	triggered_desc = {
+		#Bug Branch
 		trigger = {
 			exists = owner
-			owner = { has_valid_civic = civic_bugged_rooftop_farmers }
+			owner = {
+				has_valid_civic = civic_bugged_rooftop_farmers
+			}
 		}
 		text = job_farmer_effect_desc
 	}
@@ -153,22 +163,24 @@ district_arcology_housing = {
 district_arcology_arms_industry = {
 	base_buildtime = 600
 	is_capped_by_modifier = no
-
 	show_on_uncolonized = {
-		uses_district_set = city_world
+		OR = {
+			uses_district_set = city_world
+			uses_district_set = pdmilarc
+		}
 	}
-
 	potential = {
-		uses_district_set = city_world
+		OR = {
+			uses_district_set = city_world
+			uses_district_set = pdmilarc
+		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_city
 		district_nexus
 		district_hive
 	}
-
 	resources = {
 		category = planet_districts
 		cost = {
@@ -189,11 +201,9 @@ district_arcology_arms_industry = {
 			energy = 2
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 10
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -206,7 +216,6 @@ district_arcology_arms_industry = {
 			job_fabricator_add = 6
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -219,7 +228,6 @@ district_arcology_arms_industry = {
 			job_alloy_drone_add = 6
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -232,7 +240,6 @@ district_arcology_arms_industry = {
 			job_catalytic_drone_add = 6
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -245,7 +252,6 @@ district_arcology_arms_industry = {
 			job_foundry_add = 6
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -258,7 +264,6 @@ district_arcology_arms_industry = {
 			job_catalytic_technician_add = 6
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -269,7 +274,6 @@ district_arcology_arms_industry = {
 		}
 		text = job_foundry_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -290,7 +294,6 @@ district_arcology_arms_industry = {
 		}
 		text = job_alloy_drone_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -301,7 +304,6 @@ district_arcology_arms_industry = {
 		}
 		text = job_fabricator_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -312,7 +314,6 @@ district_arcology_arms_industry = {
 		}
 		text = job_catalytic_drone_effect_desc
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -325,7 +326,6 @@ district_arcology_arms_industry = {
 			job_maintenance_drone_add = 1
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -341,29 +341,54 @@ district_arcology_arms_industry = {
 district_arcology_civilian_industry = {
 	base_buildtime = 600
 	is_capped_by_modifier = no
-
 	show_on_uncolonized = {
-		uses_district_set = city_world
-	}
-
-	potential = {
-		uses_district_set = city_world
-		exists = owner
-		owner = {
-			OR = {
-				is_gestalt = no
-				has_valid_civic = civic_machine_servitor
+		OR = {
+			AND = {
+				uses_district_set = city_world
+				exists = owner
+				owner = {
+					OR = {
+						is_gestalt = no
+						has_valid_civic = civic_machine_servitor
+					}
+				}
+			}
+			AND = {
+				exists = owner
+				owner = {
+					has_valid_civic = civic_machine_servitor
+				}
+				uses_district_set = pdecocity
 			}
 		}
 	}
-
+	potential = {
+		OR = {
+			AND = {
+				uses_district_set = city_world
+				exists = owner
+				owner = {
+					OR = {
+						is_gestalt = no
+						has_valid_civic = civic_machine_servitor
+					}
+				}
+			}
+			AND = {
+				exists = owner
+				owner = {
+					has_valid_civic = civic_machine_servitor
+				}
+				uses_district_set = pdecocity
+			}
+		}
+	}
 	conversion_ratio = 1
 	convert_to = {
 		district_city
 		district_nexus
 		district_hive
 	}
-
 	resources = {
 		category = planet_districts
 		cost = {
@@ -384,25 +409,24 @@ district_arcology_civilian_industry = {
 			energy = 2
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 10
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_artisan_drone_add = 6
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_regular_empire = yes
 				is_crafter_empire = no
 			}
@@ -411,11 +435,10 @@ district_arcology_civilian_industry = {
 			job_artisan_add = 6
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_regular_empire = yes
 				is_crafter_empire = yes
 			}
@@ -424,29 +447,26 @@ district_arcology_civilian_industry = {
 			job_artificer_add = 6
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_regular_empire = yes
 				is_crafter_empire = no
 			}
 		}
 		text = job_artisan_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { 
-				is_regular_empire = yes 
+			owner = {
+				is_regular_empire = yes
 				is_crafter_empire = yes
 			}
 		}
 		text = job_artificer_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -457,7 +477,6 @@ district_arcology_civilian_industry = {
 		}
 		text = job_artisan_drone_effect_desc
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -470,7 +489,6 @@ district_arcology_civilian_industry = {
 			job_maintenance_drone_add = 1
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -486,22 +504,29 @@ district_arcology_civilian_industry = {
 district_arcology_leisure = {
 	base_buildtime = 600
 	is_capped_by_modifier = no
-
 	show_on_uncolonized = {
-		uses_district_set = city_world
+		OR = {
+			uses_district_set = city_world
+			uses_district_set = pdecocity
+			uses_district_set = pdmilarc
+			uses_district_set = pdcorpoarc
+		}
 		from = {
 			is_regular_empire = yes
 		}
 	}
-
 	potential = {
-		uses_district_set = city_world
+		OR = {
+			uses_district_set = city_world
+			uses_district_set = pdecocity
+			uses_district_set = pdmilarc
+			uses_district_set = pdcorpoarc
+		}
 		owner = {
 			exists = owner
 			is_regular_empire = yes
 		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_arcology_organic_housing
@@ -510,7 +535,6 @@ district_arcology_leisure = {
 		district_hive
 		district_arcology_housing
 	}
-
 	resources = {
 		category = planet_districts
 		cost = {
@@ -522,24 +546,23 @@ district_arcology_leisure = {
 			exotic_gases = 1
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 10
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_regular_empire = yes
-				NOT = { has_valid_civic = civic_warrior_culture }
+				NOT = {
+					has_valid_civic = civic_warrior_culture
+				}
 			}
 		}
 		modifier = {
 			job_entertainer_add = 6
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -552,19 +575,23 @@ district_arcology_leisure = {
 			job_duelist_add = 6
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { has_valid_civic = civic_warrior_culture }
+			owner = {
+				has_valid_civic = civic_warrior_culture
+			}
 		}
 		text = job_duelist_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { NOT = { has_valid_civic = civic_warrior_culture } }
+			owner = {
+				NOT = {
+					has_valid_civic = civic_warrior_culture
+				}
+			}
 		}
 		text = job_entertainer_effect_desc
 	}
@@ -573,22 +600,27 @@ district_arcology_leisure = {
 district_arcology_organic_housing = {
 	base_buildtime = 600
 	is_capped_by_modifier = no
-
 	show_on_uncolonized = {
-		uses_district_set = city_world
+		OR = {
+			uses_district_set = city_world
+			uses_district_set = pdecocity
+			uses_district_set = pdmilarc
+		}
 		from = {
 			has_valid_civic = civic_machine_servitor
 		}
 	}
-
 	potential = {
-		uses_district_set = city_world
+		OR = {
+			uses_district_set = city_world
+			uses_district_set = pdecocity
+			uses_district_set = pdmilarc
+		}
 		owner = {
 			exists = owner
 			has_valid_civic = civic_machine_servitor
 		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_arcology_leisure
@@ -597,7 +629,6 @@ district_arcology_organic_housing = {
 		district_hive
 		district_arcology_housing
 	}
-
 	resources = {
 		category = planet_districts
 		cost = {
@@ -609,49 +640,54 @@ district_arcology_organic_housing = {
 			exotic_gases = 1
 		}
 	}
-
 	planet_modifier = {
 		job_bio_trophy_add = 15
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { has_valid_civic = civic_machine_servitor }
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
 		}
 		text = job_bio_trophy_effect_desc
 	}
 }
 
-district_arcology_administrative = 	{
-
+district_arcology_administrative = {
 	base_buildtime = 600
 	is_capped_by_modifier = no
-
 	show_on_uncolonized = {
-		uses_district_set = city_world
+		OR = {
+			uses_district_set = city_world
+			uses_district_set = pdecocity
+			uses_district_set = pdcorpoarc
+			uses_district_set = pdmilarc
+		}
 		from = {
 			is_regular_empire = yes
 			is_spiritualist = no
 		}
 	}
-
 	potential = {
-		uses_district_set = city_world
+		OR = {
+			uses_district_set = city_world
+			uses_district_set = pdecocity
+			uses_district_set = pdcorpoarc
+			uses_district_set = pdmilarc
+		}
 		owner = {
 			exists = owner
 			is_regular_empire = yes
 			is_spiritualist = no
 		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_nexus
 		district_hive
 		district_arcology_religious
 	}
-
 	resources = {
 		category = planet_districts
 		cost = {
@@ -663,11 +699,9 @@ district_arcology_administrative = 	{
 			rare_crystals = 1
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 10
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -680,7 +714,6 @@ district_arcology_administrative = 	{
 			job_bureaucrat_add = 6
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -693,22 +726,20 @@ district_arcology_administrative = 	{
 			job_manager_add = 6
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_regular_empire = yes
 				is_megacorp = no
 			}
 		}
 		text = job_bureaucrat_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_megacorp = yes
 				is_spiritualist = no
 			}
@@ -720,29 +751,35 @@ district_arcology_administrative = 	{
 district_arcology_religious = {
 	base_buildtime = 600
 	is_capped_by_modifier = no
-
 	show_on_uncolonized = {
-		uses_district_set = city_world
+		OR = {
+			uses_district_set = city_world
+			uses_district_set = pdecocity
+			uses_district_set = pdcorpoarc
+			uses_district_set = pdmilarc
+		}
 		from = {
 			is_spiritualist = yes
 		}
 	}
-
 	potential = {
-		uses_district_set = city_world
+		OR = {
+			uses_district_set = city_world
+			uses_district_set = pdecocity
+			uses_district_set = pdcorpoarc
+			uses_district_set = pdmilarc
+		}
 		owner = {
 			exists = owner
 			is_spiritualist = yes
 		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_nexus
 		district_hive
 		district_arcology_administrative
 	}
-
 	resources = {
 		category = planet_districts
 		cost = {
@@ -754,11 +791,9 @@ district_arcology_religious = {
 			rare_crystals = 1
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 10
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -772,7 +807,6 @@ district_arcology_religious = {
 			job_priest_add = 6
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -787,7 +821,6 @@ district_arcology_religious = {
 			job_manager_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -802,7 +835,6 @@ district_arcology_religious = {
 			job_mortal_initiate_add = 3
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -818,8 +850,8 @@ district_arcology_religious = {
 			job_manager_add = 2
 		}
 	}
-
-	triggered_planet_modifier = { #Bug Branch
+	triggered_planet_modifier = {
+		#Bug Branch
 		potential = {
 			exists = owner
 			owner = {
@@ -832,8 +864,8 @@ district_arcology_religious = {
 			job_bugged_luminosity_priest_add = 6
 		}
 	}
-	
-	triggered_planet_modifier = { #Bug Branch
+	triggered_planet_modifier = {
+		#Bug Branch
 		potential = {
 			exists = owner
 			owner = {
@@ -847,8 +879,8 @@ district_arcology_religious = {
 			job_manager_add = 3
 		}
 	}
-
-	triggered_planet_modifier = { #Bug Branch
+	triggered_planet_modifier = {
+		#Bug Branch
 		potential = {
 			exists = owner
 			owner = {
@@ -861,7 +893,6 @@ district_arcology_religious = {
 			job_bugged_warrior_priest_add = 6
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -876,18 +907,16 @@ district_arcology_religious = {
 			job_manager_add = 3
 		}
 	}
-
 	# Priests desc?
 	triggered_desc = {
 		trigger = {
 			exists = owner
 			owner = {
-				is_bugged_advanced_cult = no
+				is_bugged_cult = no
 			}
 		}
 		text = job_priest_effect_desc
 	}
-
 	# Death Priests and Mortal Initiates desc?
 	triggered_desc = {
 		trigger = {
@@ -898,7 +927,6 @@ district_arcology_religious = {
 		}
 		text = jobs_death_priest_and_mortal_initiate_effect_desc
 	}
-
 	# Managers desc?
 	triggered_desc = {
 		trigger = {
@@ -909,7 +937,6 @@ district_arcology_religious = {
 		}
 		text = job_manager_effect_desc
 	}
-
 	# Luminosity Priest Desc - Bug Branch
 	triggered_desc = {
 		trigger = {
@@ -920,7 +947,6 @@ district_arcology_religious = {
 		}
 		text = job_bugged_luminosity_priest_effect_desc
 	}
-		
 	# Warrior Priest Desc - Bug Branch
 	triggered_desc = {
 		trigger = {
