@@ -1,2 +1,2 @@
 # Crystal Clear Vanilla Stellaris Modpack
- Initial description
+[Wiki] (https://github.com/M1190/crystal-clear-vanilla-stellaris/wiki) for this modpack.
