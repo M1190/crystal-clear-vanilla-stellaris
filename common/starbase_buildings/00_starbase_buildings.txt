@@ -1,0 +1,2874 @@
+crew_quarters = {
+	icon = "GFX_spaceport_module_crew_quarters"
+	construction_days = 180
+
+	initial = yes
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 50
+		}
+
+		upkeep = {
+			energy = 1
+		}
+	}
+
+	orbit_modifier = {
+		ship_orbit_upkeep_mult = -0.25
+	}
+
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			years_passed < 40
+		}
+		modifier = {
+			factor = 0
+			exists = owner
+			owner = { country_uses_food = yes }
+			nor = {
+				has_starbase_building = hydroponics_bay
+				has_starbase_module = shipyard
+			}
+		}
+	}
+}
+
+hydroponics_bay = {
+	icon = "GFX_spaceport_module_hydroponic_farms"
+	construction_days = 180
+
+	potential = {
+		exists = owner
+		owner = { has_technology = "tech_hydroponics" }
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 50
+		}
+
+		produces = {
+			food = 10
+		}
+
+		upkeep = {
+			energy = 1
+		}
+	}
+
+	show_in_tech = "tech_hydroponics"
+	
+	triggered_station_modifier = {
+		potential = {
+			has_global_flag = LocalProduction_active
+		}
+
+		custom_tooltip = sm_local_hydrponics_bay_desc
+	}
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 125
+		modifier = {
+			factor = 0
+			exists = owner
+			owner = {
+				OR = {
+					country_uses_food = no
+					has_monthly_income = { resource = food value >= 50 }
+				}
+			}
+		}
+	}
+}
+
+resource_silo = {
+	icon = "GFX_spaceport_module_resource_silo"
+	construction_days = 180
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 50
+		}
+	}
+
+	country_modifier = {
+		country_resource_max_add = 4000
+	}
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			owner = {
+				not = {
+					has_technology = tech_interstellar_fleet_traditions
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			years_passed < 40
+		}
+		modifier = {
+			factor = 10
+			owner = {
+				resource_stockpile_compare = {
+					resource = minerals
+					value > 14000
+				}
+			}
+		}
+		modifier = {
+			factor = 5
+			owner = {
+				resource_stockpile_compare = {
+					resource = minerals
+					value > 12000
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			owner = {
+				resource_stockpile_compare = {
+					resource = minerals
+					value > 10000
+				}
+			}
+		}
+	}
+}
+
+nebula_refinery = {
+	icon = "GFX_spaceport_nebula_refinery"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_space_mining_1 }
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport_or_ring"
+			OR = {
+				has_starbase_size >= starbase_starport
+				is_orbital_ring = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_nebula"
+			OR = {
+				star = { is_inside_nebula = yes }
+				solar_system = {
+					OR = {
+						# Nebula
+						is_star_class = sc_p_purple
+						is_star_class = sc_p_green
+						is_star_class = sc_p_red
+						is_star_class = sc_nova_1
+						is_star_class = sc_nova_2
+						is_star_class = sc_w_azure
+						is_star_class = sc_w_red
+						is_star_class = sc_w_green
+						is_star_class = sc_w_purple
+						is_star_class = sc_lbv_blue
+						is_star_class = sc_lbv_green
+						is_star_class = sc_lbv_red
+						# Protoplanetary Disks
+						is_star_class = sc_protostar
+						is_star_class = sc_tt_red
+						is_star_class = sc_tt_orange
+						is_star_class = sc_tt_white
+						is_star_class = sc_ae
+					}
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		produces = {
+			minerals = 10
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_alloys_2 }
+			}
+			alloys = 4
+		}
+		
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_exotic_gases }
+			}
+			exotic_gases = 1
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	show_in_tech = "tech_space_mining_1"
+	
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 150
+	}
+}
+
+space_production = {
+	icon = "GFX_starbase_mining_terminal"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { 
+			has_technology = tech_space_mining_5
+		}
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport_or_ring"
+			OR = {
+				has_starbase_size >= starbase_starport
+				is_orbital_ring = yes
+			}
+		}
+		solar_system = {
+			count_starbase_buildings = {
+				type = space_production
+				count < 1
+				include_being_constructed = yes
+			}
+		}
+	}
+
+	abort_construction_trigger = {
+		solar_system = {
+			count_starbase_buildings = {
+				type = space_production
+				count > 1
+				include_being_constructed = yes
+			}
+		}
+	}
+	
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 300
+		}
+
+		upkeep = {
+			energy = 4
+		}
+	}
+	
+	system_modifier = {
+		station_gatherers_produces_mult = 1.0
+	}
+	
+	show_in_tech = "tech_space_mining_5"
+	
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 150
+		modifier = {
+			factor = 0
+			solar_system = {
+				NOT = {
+					count_system_planet = {
+						count > 4
+						limit = {
+							has_deposit = yes
+							is_colonizable = no
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+listening_post = {
+	icon = "GFX_spaceport_module_navigators_guild"
+	construction_days = 360
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_sensors_2 }
+		is_orbital_ring = no
+	}
+
+	station_modifier = {
+		ship_sensor_range_add = 2
+		ship_hyperlane_range_add = 4
+	}
+
+	country_modifier = {
+		add_base_country_intel = 1
+	}
+
+	triggered_station_modifier = {
+		potential = {
+			hidden_trigger = { exists = this }
+			exists = owner
+			owner = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_galacticstudies_astral_studies_network"
+				is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+				is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+				is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+			}
+		}
+
+		ship_sensor_range_add = 1
+		ship_hyperlane_range_add = 2
+	}
+	
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 50
+		modifier = {
+			factor = 0
+			years_passed < 20
+		}
+		modifier = {
+			factor = 2
+			years_passed > 40
+		}
+		modifier = {
+			factor = 2
+			solar_system = {
+				any_neighbor_system = {
+					exists = space_owner
+					space_owner = { NOT = { is_same_value = from } }
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				solar_system = {
+					any_neighbor_system = {
+						exists = space_owner
+						space_owner = { NOT = { is_same_value = from } }
+					}
+				}
+			}
+		}
+	}	
+	
+	show_in_tech = "tech_sensors_2"
+}
+
+offworld_trading_company = {
+	icon = "GFX_starbase_offworld_trading_company"
+	construction_days = 360
+
+	
+	potential = {
+		exists = owner
+		owner = {
+			has_technology = tech_space_trading
+			is_gestalt = no
+		}
+		is_orbital_ring = no
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+		OR = {
+			has_starbase_module = trading_hub
+			starbase_buildable_is_in_queue_before = {
+				first = trading_hub
+				second = offworld_trading_company
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			hidden_trigger = { exists = this }
+			exists = owner
+			owner = { NOT = { has_technology = "tech_galactic_trading_companies" } }
+			has_starbase_module = trading_hub
+		}
+		trade_value_add = 2
+		mult = value:num_starbase_modules_of_type|TYPE|trading_hub|
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			hidden_trigger = { exists = this }
+			exists = owner
+			owner = { has_technology = "tech_galactic_trading_companies" }
+			has_starbase_module = trading_hub
+		}
+		trade_value_add = 4
+		mult = value:num_starbase_modules_of_type|TYPE|trading_hub|
+	}
+	
+	custom_tooltip = sm_offworld_trading_company_desc_modifier
+
+	show_in_tech = "tech_space_trading"
+	
+	triggered_system_modifier = {
+		potential = {
+			has_starbase_building = offworld_trading_company
+		}
+		trade_value_mult = 0.10
+	}
+	
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			count_starbase_modules = {
+				type = trading_hub
+				count < 2
+			}
+		}
+	}
+}
+# End_of_Trading_Company
+
+trade_patrol = {
+	icon = "GFX_starbase_hangar_bay"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = {
+			has_technology = tech_interstellar_enforcement
+			is_gestalt = no
+		}
+		is_orbital_ring = no
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+		OR = {
+			has_starbase_module = gun_battery
+			has_starbase_module = missile_battery
+			has_starbase_module = hangar_bay
+			has_starbase_module = large_battery
+			has_starbase_module = extra_large_battery
+			has_starbase_module = titanic_battery
+			starbase_buildable_is_in_queue_before = { first = gun_battery second = trade_patrol }
+			starbase_buildable_is_in_queue_before = { first = missile_battery second = trade_patrol }
+			starbase_buildable_is_in_queue_before = { first = hangar_bay second = trade_patrol }
+			starbase_buildable_is_in_queue_before = { first = large_battery second = trade_patrol }
+			starbase_buildable_is_in_queue_before = { first = extra_large_battery second = trade_patrol }
+			starbase_buildable_is_in_queue_before = { first = titanic_battery second = trade_patrol }
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 3
+			alloys = 1
+		}
+	}
+
+	custom_tooltip = sm_trade_patrol_desc_modifier
+	show_in_tech = "tech_interstellar_enforcement"
+	
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			exists = owner
+			owner = {
+				NOT = { has_monthly_income = { resource = alloys value >= 6 } }
+			}
+		}
+	}
+}
+
+customs_office = {
+	icon = "GFX_starbase_customs_office"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_gestalt = no
+			is_criminal_syndicate = no
+			has_technology = tech_customs_office
+		}
+		is_orbital_ring = no
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+		custom_tooltip = {
+			fail_text = "requires_neighbor_with_open_borders"
+			SOLAR_SYSTEM = {
+				any_neighbor_system = {
+					exists = space_owner
+					space_owner = {
+						NOT = { is_same_value = from }
+						OR = {
+							has_commercial_pact = from
+							FROM = { is_overlord_to = PREV }
+							is_in_federation_with = FROM
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 125
+		}
+		
+		produces = {
+			society_research = 5
+		}
+		
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_galactic_community_member = yes
+				}
+				OR = {
+					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
+					is_active_resolution = "resolution_commerce_profit_maximization_engines"
+				}
+			}
+			energy = 5
+			consumer_goods = 2
+		}
+
+		upkeep = {
+			energy = 1
+		}
+	}
+	
+	station_modifier = {
+		starbase_trade_collection_range_add = 1
+		starbase_trade_protection_range_add = 1
+		starbase_trade_protection_add = 10
+		trade_value_add = 5
+	}
+	
+	show_in_tech = "tech_customs_office"
+	
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 150
+	}
+}
+
+customs_office_criminal = {
+	icon = "GFX_starbase_customs_office"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_criminal_syndicate = yes
+			has_technology = tech_customs_office
+		}
+		is_orbital_ring = no
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+		custom_tooltip = {
+			fail_text = "requires_neighbor_not_gestalt"
+			SOLAR_SYSTEM = {
+				any_neighbor_system = {
+					exists = space_owner
+					space_owner = {
+						NOT = { is_same_value = from }
+						OR = {
+							any_owned_planet = {
+								has_branch_office = yes
+								exists = branch_office_owner
+								branch_office_owner = { is_same_value = from }
+							}
+							FROM = { is_overlord_to = PREV }
+							is_in_federation_with = FROM
+						}
+						is_gestalt = no
+					}
+				}
+			}
+		}
+	}
+	
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 125
+		}
+		
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_galactic_community_member = yes
+				}
+				OR = {
+					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
+					is_active_resolution = "resolution_commerce_profit_maximization_engines"
+				}
+			}
+			energy = 5
+			alloys = 2
+		}
+
+		upkeep = {
+			energy = 1
+		}
+	}
+	
+	station_modifier = {
+		starbase_trade_protection_range_add = 1
+		starbase_trade_protection_add = 20
+		trade_value_add = 10
+	}
+	
+	#show_in_tech = "tech_customs_office" # to not clutter up the tech
+	
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 150
+	}
+}
+
+customs_office_gestalt = {
+	icon = "GFX_starbase_customs_office"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_gestalt = yes
+			has_technology = tech_gestalt_economics
+		}
+		is_orbital_ring = no
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+		custom_tooltip = {
+			fail_text = "requires_neighbor_with_open_borders"
+			SOLAR_SYSTEM = {
+				any_neighbor_system = {
+					exists = space_owner
+					space_owner = {
+						NOT = { is_same_value = from }
+						NOT = { has_closed_borders = from }
+						is_homicidal = no
+					}
+				}
+			}
+		}
+	}
+	
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 125
+		}
+		
+		produces = {
+			society_research = 5
+		}
+		
+		produces = {
+			minerals = 8
+			alloys = 2
+		}
+		
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_galactic_community_member = yes
+					country_uses_food = yes
+					is_hive_empire = yes
+				}
+				OR = {
+					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
+					is_active_resolution = "resolution_commerce_profit_maximization_engines"
+				}
+			}
+			energy = 5
+			food = 5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_galactic_community_member = yes
+					OR = {
+						country_uses_food = no
+						is_hive_empire = no
+					}
+				}
+				OR = {
+					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
+					is_active_resolution = "resolution_commerce_profit_maximization_engines"
+				}
+			}
+			energy = 5
+			minerals = 4
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	show_in_tech = "tech_gestalt_economics"
+	
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 150
+	}
+}
+
+fleet_academy = {
+	icon = "GFX_spaceport_module_fleet_academy"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_interstellar_fleet_traditions }
+		is_orbital_ring = no
+	}	
+	
+	possible = {
+		OR = {
+			has_starbase_module = shipyard
+			starbase_buildable_is_in_queue_before = { first = shipyard second = fleet_academy }
+		}
+	}
+	
+	ship_modifier = {
+		ship_starting_experience_add = 100
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	show_in_tech = "tech_interstellar_fleet_traditions"
+	
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			count_starbase_modules = {
+				type = shipyard
+				count < 2
+			}
+		}
+	}
+}
+
+naval_logistics_office = {
+	icon = "GFX_starbase_naval_logistics"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_interstellar_fleet_traditions }
+	}	
+	
+	possible = {
+		OR = {
+			has_starbase_module = anchorage
+			starbase_buildable_is_in_queue_before = { first = anchorage second = naval_logistics_office }
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	custom_tooltip = sm_naval_logistics_office_desc_modifier
+	show_in_tech = "tech_interstellar_fleet_traditions"
+	
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			count_starbase_modules = {
+				type = anchorage
+				count < 2
+			}
+		}
+	}
+}
+
+titan_yards = {
+	icon = "GFX_spaceport_module_titan_assembly_yard"
+	construction_days = 720
+
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_titans }
+		is_orbital_ring = no
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_citadel_or_ring_4"
+			OR = {
+				has_starbase_size >= starbase_citadel
+				has_starbase_size >= orbital_ring_tier_4
+			}
+		}
+		OR = {
+			has_starbase_module = shipyard
+			starbase_buildable_is_in_queue_before = { first = shipyard second = titan_yards }
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 500
+		}
+
+		upkeep = {
+			energy = 10
+		}
+	}
+
+	custom_tooltip = sm_titan_yards_desc_modifier
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			count_starbase_modules = {
+				type = shipyard
+				count < 3
+			}
+		}
+		modifier = {
+			factor = 0.1
+			owner = {
+				any_owned_starbase = {
+					NOT = { is_same_value = root }
+					has_starbase_building = titan_yards
+				}
+			}
+		}
+	}
+}
+
+colossus_yards = {
+	icon = "GFX_spaceport_module_colossus_assembly_yard"
+	construction_days = 720
+
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				has_technology = tech_colossus
+				has_technology = tech_juggernaut
+			}
+		}
+		is_orbital_ring = no
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_citadel_or_ring_4"
+			OR = {
+				has_starbase_size >= starbase_citadel
+				has_starbase_size >= orbital_ring_tier_4
+			}
+		}
+		OR = {
+			has_starbase_module = shipyard
+			starbase_buildable_is_in_queue_before = {
+				first = shipyard
+				second = colossus_yards
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 1000
+		}
+
+		upkeep = {
+			energy = 20
+		}
+	}
+
+	custom_tooltip = sm_colossus_yards_desc_modifier
+	show_in_tech = "tech_colossus"
+	show_in_tech = "tech_juggernaut"
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			count_starbase_modules = {
+				type = shipyard
+				count < 3
+			}
+		}
+		modifier = {
+			factor = 0.1
+			owner = {
+				any_owned_starbase = {
+					NOT = { is_same_value = root }
+					has_starbase_building = colossus_yards
+				}
+			}
+		}
+	}
+}
+
+black_hole_observatory = {
+	icon = "GFX_spaceport_module_observatory"
+	construction_days = 360
+
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_sensors_3 }
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport_or_ring"
+			OR = {
+				has_starbase_size >= starbase_starport
+				is_orbital_ring = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_black_hole"
+			OR = {
+				star = { is_star_class = sc_black_hole }
+				star = { is_star_class = sc_microquasar_1 }
+				star = { is_star_class = sc_microquasar_2 }
+				solar_system = { any_system_planet = { is_planet_class = pc_black_hole } }
+				solar_system = { has_natural_wormhole = yes }
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		produces = {
+			physics_research = 15
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_dark_matter }
+			}
+			sr_dark_matter = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_galactic_community_member = yes
+				}
+				OR = {
+					is_active_resolution = "resolution_galacticstudies_astral_studies_network"
+					is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+					is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+					is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+				}
+			}
+			physics_research = 15
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			always = yes
+		}
+		custom_tooltip = black_hole_observatory_effects
+	}
+
+	show_in_tech = "tech_sensors_3"
+	
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 150
+	}
+}
+
+pulsar_hole_observatory = {
+	icon = "GFX_spaceport_module_observatory"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_sensors_3 }
+	}		
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport_or_ring"
+			OR = {
+				has_starbase_size >= starbase_starport
+				is_orbital_ring = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_pulsar"
+			OR = {
+				star = { is_star_class = sc_pulsar }
+				star = { is_star_class = sc_magnetar }
+				solar_system = { any_system_planet = { is_planet_class = pc_pulsar } }
+				solar_system = { any_system_planet = { is_planet_class = pc_magnetar } }
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		produces = {
+			engineering_research = 15
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_volatile_motes }
+			}
+			volatile_motes = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_galactic_community_member = yes
+				}
+				OR = {
+					is_active_resolution = "resolution_galacticstudies_astral_studies_network"
+					is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+					is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+					is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+				}
+			}
+			engineering_research = 15
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			always = yes
+		}
+		custom_tooltip = pulsar_hole_observatory_effects
+	}
+
+	show_in_tech = "tech_sensors_3"
+	
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 150
+	}
+}
+
+protostar_observatory = {
+	icon = "GFX_spaceport_module_observatory"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_sensors_2 }
+	}		
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport_or_ring"
+			OR = {
+				has_starbase_size >= starbase_starport
+				is_orbital_ring = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_protostar"
+			OR = {
+				star = { is_star_class = sc_protostar }
+				star = { is_star_class = sc_tt_red }
+				star = { is_star_class = sc_tt_orange }
+				star = { is_star_class = sc_tt_white }
+				star = { is_star_class = sc_ae }
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		produces = {
+			physics_research = 15
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_exotic_gases }
+			}
+			exotic_gases = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_galactic_community_member = yes
+				}
+				OR = {
+					is_active_resolution = "resolution_galacticstudies_astral_studies_network"
+					is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+					is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+					is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+				}
+			}
+			physics_research = 15
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			always = yes
+		}
+		custom_tooltip = black_hole_observatory_effects
+	}
+
+	show_in_tech = "tech_sensors_2"
+	
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 150
+	}
+}
+
+target_uplink_computer = {
+	icon = "GFX_spaceport_synchronized_defenses"
+	construction_days = 360
+
+	potential = {
+		exists = owner
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport_or_ring"
+			OR = {
+				has_starbase_size >= starbase_starport
+				is_orbital_ring = yes
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	station_modifier = {
+		ship_weapon_range_mult = 0.50
+		ship_tracking_add = 5
+	}
+	
+	defense_platform_modifier = {
+		ship_weapon_range_mult = 0.50
+		ship_tracking_add = 5
+	}
+
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			NOR = {
+				has_starbase_module = gun_battery
+				has_starbase_module = missile_battery
+				has_starbase_module = hangar_bay
+				has_starbase_module = large_battery
+				has_starbase_module = extra_large_battery
+				has_starbase_module = titanic_battery
+			}
+		}
+	}
+}
+
+defense_grid = {
+	icon = "GFX_starbase_defense_grid_supercomputer"
+	construction_days = 360
+
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_synchronized_defences }
+	}		
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport_or_ring"
+			OR = {
+				has_starbase_size >= starbase_starport
+				is_orbital_ring = yes
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 150
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	station_modifier = {
+		starbase_defense_platform_capacity_add = 10
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			owner = { has_technology = "tech_synchronized_defences_2" }
+		}
+		starbase_defense_platform_capacity_add = 6
+	}
+
+	show_in_tech = "tech_synchronized_defences"
+	
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			NOR = {
+				has_starbase_module = gun_battery
+				has_starbase_module = missile_battery
+				has_starbase_module = hangar_bay
+				has_starbase_module = large_battery
+				has_starbase_module = extra_large_battery
+				has_starbase_module = titanic_battery
+			}
+		}
+	}
+}
+
+starbase_fortifications = {
+	icon = "GFX_starbase_anchorage"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { 
+			has_technology = tech_starbase_hull_1
+		}
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport_or_ring"
+			OR = {
+				has_starbase_size >= starbase_starport
+				is_orbital_ring = yes
+			}
+		}
+	}
+	
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 1
+		}
+	}
+	
+	station_modifier = {
+		ship_armor_mult = 0.25
+		ship_shield_mult = 0.25
+	}
+	
+	defense_platform_modifier = {
+		ship_armor_mult = 0.25
+		ship_shield_mult = 0.25
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_starbase_hull_3 }
+		}
+		ship_shield_mult = 0.05
+		ship_shield_regen_add_perc = 1.0
+		ship_armor_mult = 0.05
+		ship_armor_regen_add_perc = 1.0
+	}
+	
+	show_in_tech = "tech_starbase_hull_1"
+	
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			NOR = {
+				has_starbase_module = gun_battery
+				has_starbase_module = missile_battery
+				has_starbase_module = hangar_bay
+				has_starbase_module = large_battery
+				has_starbase_module = extra_large_battery
+				has_starbase_module = titanic_battery
+			}
+		}
+	}
+}
+
+deep_space_black_site = {
+	icon = "GFX_starbase_deep_space_black_site"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = {
+			has_technology = tech_living_state
+			NOT = { has_ethic = ethic_gestalt_consciousness }
+		}
+		is_orbital_ring = no
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+		custom_tooltip = {
+			fail_text = "requires_colonized_planet"
+			solar_system = {
+				any_system_planet = {
+					is_owned_by = from
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		produces = {
+			unity = 3
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_improved_black_site }
+			}
+			unity = 3
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_galactic_community_member = yes
+				}
+				has_global_flag = better_diplo_installed
+				is_active_resolution = "resolution_lawandorder_informed_governance"
+			}
+			unity = 3
+		}
+
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	system_modifier = {
+		pop_government_ethic_attraction = 0.25
+		planet_crime_mult = -0.25
+		planet_stability_add = 5
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_improved_black_site
+			}
+		}
+		spy_network_daily_value_mult = 0.05
+	}
+	
+	show_in_tech = "tech_living_state"
+	
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 150
+		modifier = {
+			factor = 0.1
+			exists = owner
+			owner = {
+				is_egalitarian = yes
+				NOR = {
+					has_valid_civic = civic_shadow_council
+					has_valid_civic = civic_police_state
+				}
+			}
+		}
+	}
+}
+
+orbital_institute = {
+	icon = "GFX_starbase_super_computer"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_global_research_initiative }
+		is_orbital_ring = no
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+		OR = {
+			has_starbase_module = orbital_lab
+			starbase_buildable_is_in_queue_before = {
+				first = orbital_lab
+				second = orbital_institute
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+		
+		produces = {
+			physics_research = 5
+			society_research = 5
+			engineering_research = 5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_galactic_community_member = yes
+				}
+				OR = {
+					is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+					is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+					is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+				}
+			}
+			physics_research = 5
+			society_research = 5
+			engineering_research = 5
+		}
+
+		upkeep = {
+			energy = 3
+		}
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			always = yes
+		}
+		custom_tooltip = orbital_institute_effects
+	}
+	
+	show_in_tech = "tech_global_research_initiative"
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 150
+	}
+}
+
+curator_think_tank = {
+	icon = "GFX_starbase_curator_think_tank"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		OR = {
+			owner = { has_country_flag = curator_intro }
+			solar_system = { has_star_flag = enclave }
+		}	
+		owner = {
+			is_homicidal = no
+		}
+		is_orbital_ring = no
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+		custom_tooltip = {
+			fail_text = "requires_curator"
+			solar_system = {
+				has_star_flag = enclave
+				any_fleet_in_system = {
+					exists = owner
+					owner = {
+						has_country_flag = curator_enclave_country
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_curator_agreement"
+			solar_system = {
+				has_star_flag = enclave
+				any_fleet_in_system = {
+					exists = owner
+					owner = {
+						has_country_flag = curator_enclave_country
+						has_country_flag = think_tank@root.owner
+					}
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		produces = {
+			physics_research = 10
+			society_research = 10
+			engineering_research = 10
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_galactic_community_member = yes
+				}
+				OR = {
+					is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+					is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+					is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+				}
+			}
+			physics_research = 10
+			society_research = 10
+			engineering_research = 10
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			always = yes
+		}
+		custom_tooltip = curator_think_tank_effects
+	}
+
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 150
+	}
+}
+
+art_college = {
+	icon = "GFX_starbase_artist_college"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		OR = {
+			owner = { has_country_flag = enclave_artist_encountered }
+			solar_system = { has_star_flag = enclave }
+		}
+		owner = {
+			is_homicidal = no
+		}
+		is_orbital_ring = no
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+		custom_tooltip = {
+			fail_text = "requires_artisans"
+			solar_system = {
+				has_star_flag = enclave
+				any_fleet_in_system = {
+					exists = owner
+					owner = {
+						is_same_value = event_target:artist_enclave_country
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_artist_agreement"
+			solar_system = {
+				has_star_flag = enclave
+				any_fleet_in_system = {
+					exists = owner
+					owner = {
+						is_same_value = event_target:artist_enclave_country
+						has_country_flag = art_college@root.owner
+					}
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		produces = {
+			unity = 15
+		}
+		
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_galactic_community_member = yes
+				}
+				OR = {
+					is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+					is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+					is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+				}
+			}
+			unity = 15
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 150
+	}
+}
+
+trader_proxy_office = {
+	icon = "GFX_starbase_offworld_trading_company"
+	construction_days = 360
+
+	
+	potential = {
+		exists = owner
+		owner = {
+			is_homicidal = no
+			is_gestalt = no
+			has_country_flag = has_market_access
+		}
+		solar_system = {
+			any_fleet_in_system = {
+				has_fleet_flag = trader_enclave_station
+			}
+		}
+		is_orbital_ring = no
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+		NOT = { has_starbase_building = trader_proxy_office }
+
+		custom_tooltip = {
+			fail_text = "requires_trade_enclave"
+			solar_system = {
+				has_star_flag = enclave
+				any_fleet_in_system = {
+					exists = owner
+					owner = {
+						has_country_flag = trader_enclave_country
+					}
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+	}
+	
+	country_modifier = {
+		country_trade_fee = -0.05
+	}
+	
+	station_modifier = {
+		trade_value_add = 10
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			hidden_trigger = { exists = this }
+
+			exists = owner
+			owner = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+				is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+				is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+			}
+		}
+
+		trade_value_add = 10
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_trade_enclave"
+			solar_system = {
+				OR = {
+					any_system_planet = {
+						is_owned_by = from
+					}
+					AND = {
+						has_star_flag = enclave
+						any_ship_in_system = {
+							exists = owner
+							owner = {
+								has_country_flag = trader_enclave_country
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 150
+		modifier = {
+			factor = 0
+			OR = {
+				solar_system = { NOT = { has_star_flag = guardians_traders_system } }
+				has_starbase_building = trader_proxy_office
+				solar_system = {
+					any_fleet_in_system = {
+						has_fleet_flag = trader_enclave_station
+					}
+				}
+			}
+		}
+	}
+}
+
+salvager_workshop = {
+	icon = "GFX_starbase_salvager_workshop"
+	construction_days = 360
+
+	potential = {
+		exists = owner
+		owner = {
+			is_homicidal = no
+			has_country_flag = salvager_enclave_diplomacy_engaged
+		}
+		is_orbital_ring = no
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+		custom_tooltip = {
+			fail_text = "requires_salvager_enclave"
+			solar_system = {
+				has_star_flag = enclave
+				any_fleet_in_system = {
+					exists = owner
+					owner = {
+						has_country_flag = salvager_enclave_country
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_salvager_agreement"
+			solar_system = {
+				has_star_flag = enclave
+				any_fleet_in_system = {
+					exists = owner
+					owner = {
+						has_country_flag = salvager_enclave_country
+						has_country_flag = salvage_works@root.owner
+					}
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			energy = 3
+		}
+
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_galactic_community_member = yes
+				}
+				OR = {
+					is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+					is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+					is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+				}
+			}
+			alloys = 5
+		}
+	}
+
+	orbit_modifier = {
+		ship_orbit_upkeep_mult = -0.2
+		ship_repair_hull_mult = 0.3
+		ship_repair_armor_mult = 0.3
+	}
+
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 150
+	}
+}
+
+shroud_beacon = {
+	icon = "GFX_starbase_shroud_beacon"
+	construction_days = 720
+
+	potential = {
+		exists = owner
+		owner = {
+			is_homicidal = no
+			has_country_flag = shroudwalker_enclave_diplomacy_engaged
+			has_country_flag = shroudwalker_enclave_bought_shroud_beacon
+		}
+		is_orbital_ring = no
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_shroudwalker_system"
+			solar_system = {
+				NOR = {
+					has_star_flag = shroudwalker_enclave_system
+					any_fleet_in_system = {
+						exists = owner
+						owner = { has_country_flag = shroudwalker_enclave_country }
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_no_bypass"
+			solar_system = {
+				if = {
+					limit = {
+						NOT = { has_star_flag = spawned_shroud_tunnel }
+					}
+					has_natural_wormhole = no
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "limit_one_shroud_tunnel"
+			OR = {
+				owner = {
+					NOT = {
+						any_system_within_border = {
+							OR = {
+								has_star_flag = spawned_shroud_tunnel
+								starbase = { has_starbase_building = shroud_beacon }
+							}
+						}
+					}
+				}
+				AND = {
+					solar_system = { has_star_flag = spawned_shroud_tunnel }
+					NOT = { has_starbase_building = shroud_beacon }
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_shroudwalker_agreement"
+			OR = {
+				AND = {
+					exists = event_target:shroudwalker_enclave_country
+					event_target:shroudwalker_enclave_country = {
+						has_country_flag = shroud_beacon@root.owner
+					}
+				}
+				owner = { has_country_flag = shroud_beacon }
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 500
+			rare_crystals = 25
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 50
+		#Don't build nextdoor to the Shroudwalkers
+		modifier = {
+			factor = 0
+			solar_system = {
+				any_neighbor_system = {
+					any_fleet_in_system = {
+						exists = owner
+						owner = { has_country_flag = shroudwalker_enclave_country }
+					}
+				}
+			}
+		}
+	}
+
+	on_finished = {
+		if = {
+			limit = {
+				solar_system = { NOT = { has_star_flag = spawned_shroud_tunnel } }
+			}
+			shroudwalker_enclave_starbase_create_shroud_tunnel = yes
+		}
+		fleet.owner = {
+			country_event = { id = enclave.4200 }
+			country_event = { id = origin.5625 }
+		}
+	}
+
+	on_destroyed = {
+		fleet.owner = {
+			country_event = { id = enclave.6015 }
+		}
+	}
+}
+
+dathnak_embassy = {
+	icon = "GFX_starbase_artist_college"
+	construction_days = 360
+	
+	potential = {
+		custom_tooltip = {
+			fail_text = "requires_dathnak_colony"
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_planet_flag = baldarak
+						has_planet_flag = new_baldarak
+					}
+				}
+			}
+		}
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport_or_ring"
+			OR = {
+				has_starbase_size >= starbase_starport
+				is_orbital_ring = yes
+			}
+		}
+		solar_system = {
+			count_starbase_buildings = {
+				type = dathnak_embassy
+				count < 1
+				include_being_constructed = yes
+			}
+		}
+	}
+	
+	abort_construction_trigger = {
+		solar_system = {
+			count_starbase_buildings = {
+				type = dathnak_embassy
+				count > 1
+				include_being_constructed = yes
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+		
+		produces = {
+			society_research = 10
+		}
+		produces = {
+			trigger = {
+				solar_system = {
+					exists = space_owner
+					space_owner = { is_gestalt = yes }
+				}
+			}
+			energy = 10
+		}
+
+		upkeep = {
+			energy = 1
+		}
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			always = yes
+		}
+		custom_tooltip = dathnak_embassy_effects
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		trade_value_add = 10
+	}
+	
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 150
+	}
+}
+
+dragon_hatchery = {
+	icon = "GFX_starbase_dragon_hatchery"
+	construction_days = 720
+
+	potential = {
+		exists = owner
+		owner = {
+			is_dragon_breeder_country = yes
+		}
+		is_orbital_ring = no
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_citadel"
+			has_starbase_size >= starbase_citadel
+		}
+		OR = {
+			has_starbase_module = shipyard
+			starbase_buildable_is_in_queue_before = {
+				first = shipyard
+				second = dragon_hatchery
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 750
+		}
+		upkeep = {
+			energy = 10
+		}
+	}
+
+	custom_tooltip = dragon_hatchery_tooltip
+
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 100 #use same weight here - ai weighting is done in starbase_types.txt
+		modifier = {
+			factor = 0
+			owner = {
+				count_owned_starbase = {
+					count >= 1
+					limit = {
+						has_starbase_building = dragon_hatchery
+					}
+				}
+			}
+		}
+	}
+}
+
+ice_mining_station = {
+	icon = "GFX_starbase_ice_mining_station"
+	construction_days = 360
+
+	potential = {
+		exists = owner
+		owner = {
+			has_ascension_perk = ap_hydrocentric
+		}
+		is_orbital_ring = no
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+
+		custom_tooltip = {
+			fail_text = requires_ice_source
+			solar_system = {
+				OR = {
+					has_planet_class = pc_ice_asteroid
+					has_planet_class = pc_frozen
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+	}
+
+	custom_tooltip = ice_mining_station_tooltip
+
+	system_modifier = {
+		station_gatherers_produces_mult = 0.15
+	}
+
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 100 #use same weight here - ai weighting is done in starbase_types.txt
+		modifier = {
+			factor = 0
+			owner = {
+				count_owned_starbase = {
+					count >= 2
+					limit = {
+						has_starbase_building = ice_mining_station
+					}
+				}
+			}
+		}
+	}
+}
+
+offspring_outlook = {
+	icon = "GFX_offspring_aura_sb"
+	construction_days = 180
+
+	potential = {
+		exists = owner
+		owner = {
+			has_origin = origin_progenitor_hive
+		}
+		is_orbital_ring = no
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 150
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+	equipped_component = "STARBASE_OFFSPRING_OUTLOOK"
+
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 10
+	}
+}
+
+mercenary_garrison = {
+	icon = "GFX_starbase_mercenary_garrison"
+	construction_days = 360
+
+	potential = {
+		exists = owner
+		owner = {
+			is_homicidal = no
+			has_country_flag = mercenary_enclave_diplomacy_engaged
+		}
+		is_orbital_ring = no
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+		custom_tooltip = {
+			fail_text = "requires_mercenary_agreement"
+			owner = {
+				has_country_flag = mercenary_enclave_bought_mercenary_garrison
+			}
+		}
+		solar_system = {
+			count_starbase_buildings = {
+				type = mercenary_garrison
+				count < 1
+				include_being_constructed = yes
+			}
+		}
+	}
+
+	abort_construction_trigger = {
+		solar_system = {
+			count_starbase_buildings = {
+				type = mercenary_garrison
+				count > 1
+				include_being_constructed = yes
+			}
+		}
+	}
+
+	equipped_component = "STARBASE_AURA_MERCENARY_GARRISON"
+
+	triggered_country_modifier = {
+		potential = {
+			hidden_trigger = { exists = this }
+
+			exists = owner
+			owner = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+				is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+				is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+			}
+		}
+
+		country_naval_cap_add = 5
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 20
+		}
+	}
+
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 50
+	}
+}
+
+#####
+# Aura buildings
+#####
+
+
+communications_jammer = {
+	icon = "GFX_starbase_communication_jammer"
+	construction_days = 180
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport_or_ring"
+			OR = {
+				has_starbase_size >= starbase_starport
+				is_orbital_ring = yes
+			}
+		}
+		solar_system = {
+			count_starbase_buildings = {
+				type = communications_jammer
+				count < 1
+				include_being_constructed = yes
+			}
+		}
+	}
+	
+	abort_construction_trigger = {
+		solar_system = {
+			count_starbase_buildings = {
+				type = communications_jammer
+				count > 1
+				include_being_constructed = yes
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 50
+		}
+
+		upkeep = {
+			energy = 1
+		}
+	}
+
+	equipped_component = "STARBASE_AURA_COMMUNICATIONS_JAMMER"
+
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			years_passed < 20
+		}
+		modifier = {
+			factor = 0
+			NOR = {
+				has_starbase_module = gun_battery
+				has_starbase_module = missile_battery
+				has_starbase_module = hangar_bay
+				has_starbase_module = large_battery
+				has_starbase_module = extra_large_battery
+				has_starbase_module = titanic_battery
+			}
+		}
+	}
+}
+
+disruption_field = {
+	icon = "GFX_spaceport_module_orbital_mind_control_lazer"
+	construction_days = 180
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport_or_ring"
+			OR = {
+				has_starbase_size >= starbase_starport
+				is_orbital_ring = yes
+			}
+		}
+		solar_system = {
+			count_starbase_buildings = {
+				type = disruption_field
+				count < 1
+				include_being_constructed = yes
+			}
+		}
+	}
+
+	abort_construction_trigger = {
+		solar_system = {
+			count_starbase_buildings = {
+				type = communications_jammer
+				count > 1
+				include_being_constructed = yes
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	equipped_component = "STARBASE_AURA_DISRUPTION_FIELD"
+
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			years_passed < 20
+		}
+		modifier = {
+			factor = 0
+			NOR = {
+				has_starbase_module = gun_battery
+				has_starbase_module = missile_battery
+				has_starbase_module = hangar_bay
+				has_starbase_module = large_battery
+				has_starbase_module = extra_large_battery
+				has_starbase_module = titanic_battery
+			}
+		}
+	}
+}
+
+warp_fluctuator = {
+	icon = "GFX_spaceport_module_atmospheric_manipulator"
+	construction_days = 180
+	
+	potential = {
+		exists = owner
+		owner = {
+			has_technology = tech_interstellar_economics
+			is_gestalt = no
+		}
+		is_orbital_ring = no
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	station_modifier = {
+		starbase_trade_collection_range_add = 2
+		trade_value_add = 2
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			has_global_flag = LocalProduction_active
+		}
+
+		custom_tooltip = sm_local_hyperlane_registry_desc
+	}
+
+	show_in_tech = "tech_interstellar_economics"
+	
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			years_passed < 20
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { has_starbase_building = offworld_trading_company }
+		}
+	}
+}
+
+transit_hub = {
+	icon = "GFX_spaceport_module_pioneering_terminal"
+	construction_days = 180
+
+	potential = {
+		exists = owner
+		owner = {
+			has_technology = tech_hyper_drive_2
+		}
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport_or_ring"
+			OR = {
+				has_starbase_size >= starbase_starport
+				is_orbital_ring = yes
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_colonized_planet"
+			solar_system = {
+				any_system_planet = {
+					is_owned_by = from
+				}
+			}
+		}
+		solar_system = {
+			count_starbase_buildings = {
+				type = transit_hub
+				count < 1
+				include_being_constructed = yes
+			}
+		}
+	}
+
+	abort_construction_trigger = {
+		solar_system = {
+			count_starbase_buildings = {
+				type = communications_jammer
+				count > 1
+				include_being_constructed = yes
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 3
+		}
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			has_global_flag = LocalProduction_active
+		}
+
+		custom_tooltip = sm_local_transit_hub_desc
+	}
+
+	system_modifier = {
+		planet_resettlement_unemployed_mult = 1.00
+	}
+
+	show_in_tech = "tech_hyper_drive_2"
+
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			NOT = {
+				solar_system = {
+					any_system_planet = {
+						is_owned_by = from
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { has_starbase_building = offworld_trading_company }
+		}
+	}
+}
+
+command_center = {
+	icon = "GFX_starbase_command_center"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_command_matrix }
+	}	
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starfortress_or_ring_3"
+			OR = {
+				has_starbase_size >= starbase_starfortress
+				has_starbase_size >= orbital_ring_tier_3
+			}
+		}
+		solar_system = {
+			count_starbase_buildings = {
+				type = command_center
+				count < 1
+				include_being_constructed = yes
+			}
+		}
+	}
+
+	abort_construction_trigger = {
+		solar_system = {
+			count_starbase_buildings = {
+				type = communications_jammer
+				count > 1
+				include_being_constructed = yes
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 250
+		}
+
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	equipped_component = "STARBASE_AURA_COMMAND_CENTER"
+	show_in_tech = "tech_command_matrix"
+	
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			years_passed < 30
+		}
+		modifier = {
+			factor = 0
+			NOR = {
+				has_starbase_module = gun_battery
+				has_starbase_module = missile_battery
+				has_starbase_module = hangar_bay
+				has_starbase_module = large_battery
+				has_starbase_module = extra_large_battery
+				has_starbase_module = titanic_battery
+			}
+		}
+	}
+}
+
+starbase_minefield = {
+	icon = "GFX_spaceport_synchronized_defenses"
+	construction_days = 180
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+		is_orbital_ring = no
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	equipped_component = "STARBASE_AURA_MINEFIELD"
+
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			years_passed < 30
+		}
+		modifier = {
+			factor = 0
+			NOR = {
+				has_starbase_module = gun_battery
+				has_starbase_module = missile_battery
+				has_starbase_module = hangar_bay
+				has_starbase_module = large_battery
+				has_starbase_module = extra_large_battery
+				has_starbase_module = titanic_battery
+			}
+		}
+	}
+}

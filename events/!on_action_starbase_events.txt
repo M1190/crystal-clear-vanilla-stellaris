@@ -1,0 +1,112 @@
+
+#########################################
+#
+# on_action_events
+#
+#########################################
+
+namespace = action
+
+
+# Called when a Starbase changes owner
+# THIS = Ship (Starbase)
+# FROM = Former Owner (Country)
+ship_event = {
+	id = action.223
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		exists = starbase
+	}
+
+	immediate = {
+		starbase = {
+			if = {
+				limit = {
+					owner = {
+						is_gestalt = yes
+					}
+				}
+				remove_starbase_building = {
+					building = offworld_trading_company
+				}
+				remove_starbase_building = {
+					building = trade_patrol
+				}
+				remove_starbase_building = {
+					building = customs_office
+				}
+				remove_starbase_building = {
+					building = customs_office_criminal
+				}
+				remove_starbase_building = {
+					building = deep_space_black_site
+				}
+				remove_starbase_building = {
+					building = trader_proxy_office
+				}
+				remove_starbase_building = {
+					building = warp_fluctuator
+				}
+				remove_starbase_module = {
+					module = trading_hub
+				}
+			}
+			else = {
+				remove_starbase_building = {
+					building = customs_office_gestalt
+				}
+				remove_starbase_module = {
+					module = solar_panel_network
+				}
+			}
+			if = {
+				limit = {
+					owner = {
+						is_criminal_syndicate = yes
+					}
+				}
+				remove_starbase_building = {
+					building = customs_office
+				}
+			}
+			else = {
+				remove_starbase_building = {
+					building = customs_office_criminal
+				}
+			}
+			if = {
+				limit = {
+					owner = {
+						country_uses_food = no
+					}
+				}
+				remove_starbase_building = {
+					building = hydroponics_bay
+				}
+			}
+			if = {
+				limit = {
+					owner = {
+						NOT = { has_ascension_perk = ap_hydrocentric }
+					}
+				}
+				remove_starbase_building = {
+					building = ice_mining_station
+				}
+			}
+			if = {
+				limit = {
+					owner = {
+						is_dragon_breeder_country = no
+					}
+				}
+				remove_starbase_building = {
+					building = dragon_hatchery
+				}
+			}
+		}
+	}
+}
