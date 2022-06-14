@@ -32,9 +32,17 @@ action_improve_relation = {
 	action_type = positive
 	potential = {
 		hidden_trigger = {
-			is_country_type = default
-			from = {
+			OR = {
 				is_country_type = default
+				is_country_type = ascended_empire
+				is_country_type = lost_empire
+			}
+			from = {
+				OR = {
+					is_country_type = default
+					is_country_type = ascended_empire
+					is_country_type = lost_empire
+				}
 			}
 		}
 	}
@@ -139,9 +147,17 @@ action_build_spy_network = {
 	action_type = positive
 	potential = {
 		hidden_trigger = {
-			is_country_type = default
-			from = {
+			OR = {
 				is_country_type = default
+				is_country_type = ascended_empire
+				is_country_type = lost_empire
+			}
+			from = {
+				OR = {
+					is_country_type = default
+					is_country_type = ascended_empire
+					is_country_type = lost_empire
+				}
 			}
 		}
 	}
@@ -158,9 +174,17 @@ action_harm_relation = {
 	action_type = negative
 	potential = {
 		hidden_trigger = {
-			is_country_type = default
-			from = {
+			OR = {
 				is_country_type = default
+				is_country_type = ascended_empire
+				is_country_type = lost_empire
+			}
+			from = {
+				OR = {
+					is_country_type = default
+					is_country_type = ascended_empire
+					is_country_type = lost_empire
+				}
 			}
 		}
 	}
@@ -492,25 +516,48 @@ action_make_rival = {
 			}
 		}
 		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_collective"
+			NOT = {
+				has_valid_civic = civic_closed_collective
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_network"
+			NOT = {
+				has_valid_civic = civic_closed_network
+			}
+		}
+		custom_tooltip = {
 			fail_text = "requires_terrible_opinion_or_supremacist"
 			OR = {
+				AND = {
+					is_harming_relations_with = from
+					NOT = {
+						has_global_flag = better_diplo_installed
+					}
+				}
 				opinion_level = {
 					who = from
 					level <= terrible
 				}
 				is_harming_relations_with = from
+				AND = {
+					opinion_level = {
+						who = from
+						level <= poor
+					}
+					from_has_antagonistic_ethics = yes
+				}
 				from = {
 					is_at_war_with = prev
 				}
-				OR = {
+				has_policy_flag = "diplo_stance_supremacist"
+				from = {
 					has_policy_flag = "diplo_stance_supremacist"
-					from = {
-						has_policy_flag = "diplo_stance_supremacist"
-					}
+				}
+				is_fallen_empire = yes
+				from = {
 					is_fallen_empire = yes
-					from = {
-						is_fallen_empire = yes
-					}
 				}
 				from = {
 					is_rival = prev
@@ -579,6 +626,14 @@ action_form_defensive_pact = {
 				FROM = {
 					is_overlord_to = ROOT
 				}
+			}
+		}
+		hidden_trigger = {
+			is_subject = no
+		}
+		hidden_trigger = {
+			FROM = {
+				is_subject = no
 			}
 		}
 	}
@@ -716,14 +771,108 @@ action_form_defensive_pact = {
 				}
 			}
 		}
+		if = {
+			limit = {
+				from = {
+					has_valid_civic = civic_closed_collective
+				}
+			}
+			if = {
+				limit = {
+					has_intel = {
+						who = from
+						intel = civics
+					}
+				}
+				custom_tooltip = {
+					fail_text = requires_recipient_not_closed_collective
+					always = no
+				}
+			}
+			else = {
+				custom_tooltip = {
+					fail_text = diplo_action_no_low_intel
+					always = no
+				}
+			}
+		}
 		custom_tooltip = {
-			fail_text = "requires_excellent_or_better_opinion"
+			fail_text = "requires_actor_not_closed_collective"
+			NOT = {
+				has_valid_civic = civic_closed_collective
+			}
+		}
+		if = {
+			limit = {
+				from = {
+					has_valid_civic = civic_closed_network
+				}
+			}
+			if = {
+				limit = {
+					has_intel = {
+						who = from
+						intel = civics
+					}
+				}
+				custom_tooltip = {
+					fail_text = requires_recipient_not_closed_network
+					always = no
+				}
+			}
+			else = {
+				custom_tooltip = {
+					fail_text = diplo_action_no_low_intel
+					always = no
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_network"
+			NOT = {
+				has_valid_civic = civic_closed_network
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_excellent_opinion_or_threatened"
 			OR = {
 				opinion_level = {
 					who = from
 					level >= excellent
 				}
-				is_improving_relations_with = from
+				AND = {
+					opinion_level = {
+						who = from
+						level >= good
+					}
+					from_has_compatible_ethics = yes
+				}
+				AND = {
+					NOT = {
+						is_threatened_to = FROM
+					}
+					any_relation = {
+						PREV = {
+							is_threatened_to = PREV
+						}
+					}
+				}
+				FROM = {
+					NOT = {
+						is_threatened_to = PREV
+					}
+					any_relation = {
+						FROM = {
+							is_threatened_to = PREV
+						}
+					}
+				}
+				AND = {
+					is_improving_relations_with = from
+					NOT = {
+						has_global_flag = better_diplo_installed
+					}
+				}
 			}
 		}
 	}
@@ -851,13 +1000,35 @@ action_form_non_aggression_pact = {
 			}
 		}
 		custom_tooltip = {
-			fail_text = "requires_neutral_or_better_opinion"
+			fail_text = "requires_neutral_or_recipient_pacifist"
 			OR = {
 				opinion_level = {
 					who = from
 					level >= neutral
 				}
-				is_improving_relations_with = from
+				AND = {
+					opinion_level = {
+						who = from
+						level >= poor
+					}
+					from_has_compatible_ethics = yes
+				}
+				is_pacifist = yes
+				has_policy_flag = diplo_stance_isolationist
+				has_policy_flag = diplo_stance_secretive
+				FROM = {
+					OR = {
+						is_pacifist = yes
+						has_policy_flag = diplo_stance_isolationist
+						has_policy_flag = diplo_stance_secretive
+					}
+				}
+				AND = {
+					is_improving_relations_with = from
+					NOT = {
+						has_global_flag = better_diplo_installed
+					}
+				}
 			}
 		}
 	}
@@ -946,12 +1117,18 @@ action_form_commercial_pact = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_actor_not_criminal_heritage"
-			is_criminal_syndicate = no
+			OR = {
+				is_criminal_syndicate = no
+				has_civic = civic_shadow_council_megacorp
+			}
 		}
 		if = {
 			limit = {
 				from = {
 					is_criminal_syndicate = yes
+					NOT = {
+						has_civic = civic_shadow_council_megacorp
+					}
 				}
 			}
 			if = {
@@ -1042,13 +1219,29 @@ action_form_commercial_pact = {
 			}
 		}
 		custom_tooltip = {
-			fail_text = "requires_good_or_better_opinion"
+			fail_text = "requires_good_opinion_or_mercantile"
 			OR = {
 				opinion_level = {
 					who = from
 					level >= good
 				}
-				is_improving_relations_with = from
+				AND = {
+					opinion_level = {
+						who = from
+						level >= neutral
+					}
+					from_has_compatible_ethics = yes
+				}
+				has_policy_flag = "diplo_stance_mercantile"
+				from = {
+					has_policy_flag = "diplo_stance_mercantile"
+				}
+				AND = {
+					is_improving_relations_with = from
+					NOT = {
+						has_global_flag = better_diplo_installed
+					}
+				}
 			}
 		}
 	}
@@ -1073,9 +1266,17 @@ action_form_research_agreement = {
 	action_type = positive
 	potential = {
 		hidden_trigger = {
-			is_country_type = default
-			from = {
+			OR = {
 				is_country_type = default
+				is_country_type = ascended_empire
+				is_country_type = lost_empire
+			}
+			from = {
+				OR = {
+					is_country_type = default
+					is_country_type = ascended_empire
+					is_country_type = lost_empire
+				}
 			}
 		}
 	}
@@ -1143,6 +1344,68 @@ action_form_research_agreement = {
 			fail_text = "requires_actor_not_inward_perfection"
 			NOT = {
 				has_valid_civic = civic_inwards_perfection
+			}
+		}
+		if = {
+			limit = {
+				from = {
+					has_valid_civic = civic_closed_collective
+				}
+			}
+			if = {
+				limit = {
+					has_intel = {
+						who = from
+						intel = civics
+					}
+				}
+				custom_tooltip = {
+					fail_text = requires_recipient_not_closed_collective
+					always = no
+				}
+			}
+			else = {
+				custom_tooltip = {
+					fail_text = diplo_action_no_low_intel
+					always = no
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_collective"
+			NOT = {
+				has_valid_civic = civic_closed_collective
+			}
+		}
+		if = {
+			limit = {
+				from = {
+					has_valid_civic = civic_closed_network
+				}
+			}
+			if = {
+				limit = {
+					has_intel = {
+						who = from
+						intel = civics
+					}
+				}
+				custom_tooltip = {
+					fail_text = requires_recipient_not_closed_network
+					always = no
+				}
+			}
+			else = {
+				custom_tooltip = {
+					fail_text = diplo_action_no_low_intel
+					always = no
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_network"
+			NOT = {
+				has_valid_civic = civic_closed_network
 			}
 		}
 		custom_tooltip = {
@@ -1269,13 +1532,35 @@ action_form_research_agreement = {
 			}
 		}
 		custom_tooltip = {
-			fail_text = "requires_good_or_better_opinion"
+			fail_text = "requires_good_opinion_or_materialist"
 			OR = {
 				opinion_level = {
 					who = from
 					level >= good
 				}
-				is_improving_relations_with = from
+				AND = {
+					opinion_level = {
+						who = from
+						level >= neutral
+					}
+					from_has_compatible_ethics = yes
+				}
+				is_materialist = yes
+				is_machine_empire = yes
+				is_civic_materialist = yes
+				FROM = {
+					OR = {
+						is_materialist = yes
+						is_machine_empire = yes
+						is_civic_materialist = yes
+					}
+				}
+				AND = {
+					is_improving_relations_with = from
+					NOT = {
+						has_global_flag = better_diplo_installed
+					}
+				}
 			}
 		}
 		custom_tooltip = {
@@ -1355,6 +1640,9 @@ action_guarantee_independence = {
 			FROM = {
 				is_subject = no
 			}
+		}
+		hidden_trigger = {
+			is_subject = no
 		}
 		# Target is not overlord.
 		hidden_trigger = {
@@ -1454,6 +1742,18 @@ action_guarantee_independence = {
 				has_valid_civic = civic_inwards_perfection
 			}
 		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_collective"
+			NOT = {
+				has_valid_civic = civic_closed_collective
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_network"
+			NOT = {
+				has_valid_civic = civic_closed_network
+			}
+		}
 		if = {
 			limit = {
 				from = {
@@ -1491,7 +1791,19 @@ action_guarantee_independence = {
 					who = from
 					level >= neutral
 				}
-				is_improving_relations_with = from
+				AND = {
+					opinion_level = {
+						who = from
+						level >= poor
+					}
+					from_has_compatible_ethics = yes
+				}
+				AND = {
+					is_improving_relations_with = from
+					NOT = {
+						has_global_flag = better_diplo_installed
+					}
+				}
 			}
 		}
 	}
@@ -1619,6 +1931,18 @@ action_support_independence = {
 				has_valid_civic = civic_inwards_perfection
 			}
 		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_collective"
+			NOT = {
+				has_valid_civic = civic_closed_collective
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_network"
+			NOT = {
+				has_valid_civic = civic_closed_network
+			}
+		}
 	}
 }
 
@@ -1711,7 +2035,7 @@ action_form_migration_pact = {
 		if = {
 			limit = {
 				from = {
-					has_valid_civic = civic_barbaric_despoilers
+					has_valid_civic = civic_closed_collective
 				}
 			}
 			if = {
@@ -1722,7 +2046,7 @@ action_form_migration_pact = {
 					}
 				}
 				custom_tooltip = {
-					fail_text = requires_recipient_not_barbaric_despoilers
+					fail_text = requires_recipient_not_closed_collective
 					always = no
 				}
 			}
@@ -1730,6 +2054,51 @@ action_form_migration_pact = {
 				custom_tooltip = {
 					fail_text = diplo_action_no_low_intel
 					always = no
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_collective"
+			NOT = {
+				has_valid_civic = civic_closed_collective
+			}
+		}
+		if = {
+			limit = {
+				from = {
+					has_valid_civic = civic_closed_network
+				}
+			}
+			if = {
+				limit = {
+					has_intel = {
+						who = from
+						intel = civics
+					}
+				}
+				custom_tooltip = {
+					fail_text = requires_recipient_not_closed_network
+					always = no
+				}
+			}
+			else = {
+				custom_tooltip = {
+					fail_text = diplo_action_no_low_intel
+					always = no
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_network"
+			NOT = {
+				has_valid_civic = civic_closed_network
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_recipient_not_barbaric_despoilers"
+			from = {
+				NOT = {
+					has_valid_civic = civic_barbaric_despoilers
 				}
 			}
 		}
@@ -1830,13 +2199,29 @@ action_form_migration_pact = {
 			}
 		}
 		custom_tooltip = {
-			fail_text = "requires_good_or_better_opinion"
+			fail_text = "requires_good_opinion_or_xenophile"
 			OR = {
 				opinion_level = {
 					who = from
 					level >= good
 				}
-				is_improving_relations_with = from
+				AND = {
+					opinion_level = {
+						who = from
+						level >= neutral
+					}
+					from_has_compatible_ethics = yes
+				}
+				is_xenophile = yes
+				FROM = {
+					is_xenophile = yes
+				}
+				AND = {
+					is_improving_relations_with = from
+					NOT = {
+						has_global_flag = better_diplo_installed
+					}
+				}
 			}
 		}
 	}
@@ -1860,6 +2245,8 @@ action_offer_federation_association_status = {
 	requires_actor_peace = no
 	requires_recipient_peace = no
 	requires_alliance_vote = yes
+	# added
+	requires_unanimous_vote = no
 	diplo_view_acceptance_icon = yes
 	should_notify_all_communications = yes
 	AI_acceptance_base_value = -50
@@ -1939,16 +2326,33 @@ action_offer_federation_association_status = {
 			}
 		}
 		custom_tooltip = {
-			fail_text = "requires_good_or_better_opinion"
+			fail_text = "requires_good_opinion_or_cooperative"
 			OR = {
 				from = {
 					is_same_value = prevprev
-				}				# Bypass opinion check if we are proposing on behalf of recipient
+				}
+				# Bypass opinion check if we are proposing on behalf of recipient
 				opinion_level = {
 					who = from
 					level >= good
 				}
-				is_improving_relations_with = from
+				AND = {
+					opinion_level = {
+						who = from
+						level >= neutral
+					}
+					from_has_compatible_ethics = yes
+				}
+				has_policy_flag = "diplo_stance_cooperative"
+				from = {
+					has_policy_flag = "diplo_stance_cooperative"
+				}
+				AND = {
+					is_improving_relations_with = from
+					NOT = {
+						has_global_flag = better_diplo_installed
+					}
+				}
 			}
 		}
 		# Members of the Galactic Empire can't associate with federations
@@ -2087,13 +2491,29 @@ action_ask_for_federation_association_status = {
 			}
 		}
 		custom_tooltip = {
-			fail_text = "requires_good_or_better_opinion"
+			fail_text = "requires_good_opinion_or_cooperative"
 			OR = {
 				opinion_level = {
 					who = from
 					level >= good
 				}
-				is_improving_relations_with = from
+				AND = {
+					opinion_level = {
+						who = from
+						level >= neutral
+					}
+					from_has_compatible_ethics = yes
+				}
+				has_policy_flag = "diplo_stance_cooperative"
+				from = {
+					has_policy_flag = "diplo_stance_cooperative"
+				}
+				AND = {
+					is_improving_relations_with = from
+					NOT = {
+						has_global_flag = better_diplo_installed
+					}
+				}
 			}
 		}
 		# Members of the Galactic Empire can't associate with federations
@@ -2299,17 +2719,96 @@ action_invite_to_federation = {
 				has_valid_civic = civic_inwards_perfection
 			}
 		}
+		if = {
+			limit = {
+				from = {
+					has_valid_civic = civic_closed_collective
+				}
+			}
+			if = {
+				limit = {
+					has_intel = {
+						who = from
+						intel = civics
+					}
+				}
+				custom_tooltip = {
+					fail_text = requires_recipient_not_closed_collective
+					always = no
+				}
+			}
+			else = {
+				custom_tooltip = {
+					fail_text = diplo_action_no_low_intel
+					always = no
+				}
+			}
+		}
 		custom_tooltip = {
-			fail_text = "requires_excellent_or_better_opinion"
+			fail_text = "requires_actor_not_closed_collective"
+			NOT = {
+				has_valid_civic = civic_closed_collective
+			}
+		}
+		if = {
+			limit = {
+				from = {
+					has_valid_civic = civic_closed_network
+				}
+			}
+			if = {
+				limit = {
+					has_intel = {
+						who = from
+						intel = civics
+					}
+				}
+				custom_tooltip = {
+					fail_text = requires_recipient_not_closed_network
+					always = no
+				}
+			}
+			else = {
+				custom_tooltip = {
+					fail_text = diplo_action_no_low_intel
+					always = no
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_network"
+			NOT = {
+				has_valid_civic = civic_closed_network
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_excellent_opinion_or_cooperative"
 			OR = {
 				from = {
 					is_same_value = prevprev
-				}				# Bypass opinion check if we are proposing on behalf of recipient
+				}
+				# Bypass opinion check if we are proposing on behalf of recipient
 				opinion_level = {
 					who = from
 					level >= excellent
 				}
-				is_improving_relations_with = from
+				AND = {
+					opinion_level = {
+						who = from
+						level >= good
+					}
+					from_has_compatible_ethics = yes
+				}
+				has_policy_flag = "diplo_stance_cooperative"
+				from = {
+					has_policy_flag = "diplo_stance_cooperative"
+				}
+				AND = {
+					is_improving_relations_with = from
+					NOT = {
+						has_global_flag = better_diplo_installed
+					}
+				}
 			}
 		}
 		if = {
@@ -2572,14 +3071,92 @@ action_ask_to_join_federation = {
 				has_valid_civic = civic_inwards_perfection
 			}
 		}
+		if = {
+			limit = {
+				from = {
+					has_valid_civic = civic_closed_collective
+				}
+			}
+			if = {
+				limit = {
+					has_intel = {
+						who = from
+						intel = civics
+					}
+				}
+				custom_tooltip = {
+					fail_text = requires_recipient_not_closed_collective
+					always = no
+				}
+			}
+			else = {
+				custom_tooltip = {
+					fail_text = diplo_action_no_low_intel
+					always = no
+				}
+			}
+		}
 		custom_tooltip = {
-			fail_text = "requires_excellent_or_better_opinion"
+			fail_text = "requires_actor_not_closed_collective"
+			NOT = {
+				has_valid_civic = civic_closed_collective
+			}
+		}
+		if = {
+			limit = {
+				from = {
+					has_valid_civic = civic_closed_network
+				}
+			}
+			if = {
+				limit = {
+					has_intel = {
+						who = from
+						intel = civics
+					}
+				}
+				custom_tooltip = {
+					fail_text = requires_recipient_not_closed_network
+					always = no
+				}
+			}
+			else = {
+				custom_tooltip = {
+					fail_text = diplo_action_no_low_intel
+					always = no
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_network"
+			NOT = {
+				has_valid_civic = civic_closed_network
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_excellent_opinion_or_cooperative"
 			OR = {
 				opinion_level = {
 					who = from
 					level >= excellent
 				}
-				is_improving_relations_with = from
+				AND = {
+					opinion_level = {
+						who = from
+						level >= good
+					}
+					from_has_compatible_ethics = yes
+				}
+				has_policy_flag = "diplo_stance_cooperative"
+				from = {
+					has_policy_flag = "diplo_stance_cooperative"
+				}
+				AND = {
+					is_improving_relations_with = from
+					NOT = {
+						has_global_flag = better_diplo_installed
+					}
+				}
 			}
 		}
 		custom_tooltip = {
@@ -3157,11 +3734,26 @@ action_insult = {
 					who = from
 					level <= poor
 				}
+				AND = {
+					opinion_level = {
+						who = from
+						level <= neutral
+					}
+					from_has_antagonistic_ethics = yes
+				}
+				AND = {
+					is_harming_relations_with = from
+					NOT = {
+						has_global_flag = better_diplo_installed
+					}
+				}
 				is_fallen_empire = yes
 				from = {
 					is_fallen_empire = yes
 				}
 				is_harming_relations_with = from
+				has_policy_flag = diplo_stance_belligerent
+				has_policy_flag = diplo_stance_supremacist
 				from = {
 					is_at_war_with = prev
 				}

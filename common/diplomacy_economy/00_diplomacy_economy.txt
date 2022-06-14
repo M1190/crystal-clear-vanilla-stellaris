@@ -3,7 +3,6 @@
 # right now it ignores the "cost" part of it
 # subjects upkeep/production is not stored here, but in the subject type
 #
-
 once = {
 	# this is applied only once per country
 	federation = {
@@ -34,11 +33,11 @@ per_relation = {
 			}
 		}
 	}
-
 	non_aggression_pact = {
 		trigger = {
 			has_non_aggression_pact = FROM
 			is_bugged_universalism = no
+			is_civic_inwards_perfection = no
 		}
 		resources = {
 			category = non_aggression_pacts
@@ -47,23 +46,47 @@ per_relation = {
 			}
 		}
 	}
-
 	migration_pact = {
 		trigger = {
 			has_diplo_migration_treaty = FROM
-			NOT = {
+			NOR = {
 				AND = {
 					has_federation = yes
-					federation = { has_federation_perk = diplomacy_upkeep_1 }
-					federation = { any_member = { is_same_value = FROM } }
+					federation = {
+						has_federation_perk = diplomacy_upkeep_1
+					}
+					federation = {
+						any_member = {
+							is_same_value = FROM
+						}
+					}
 				}
-			}
-			NOT = {
 				AND = {
 					has_federation = yes
-					federation = { has_federation_law = free_migration_yes }
-					federation = { any_member = { is_same_value = FROM } }
+					federation = {
+						has_federation_law = free_migration_yes
+					}
+					federation = {
+						any_member = {
+							is_same_value = FROM
+						}
+					}
 				}
+				AND = {
+					has_global_flag = better_diplo_installed
+					OR = {
+						is_active_resolution = "resolution_galacticcooperation_pan_galactic_migration"
+						is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
+						is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
+						is_active_resolution = "resolution_galacticcooperation_sanctity_of_life"
+					}
+					is_galactic_community_member = yes
+					FROM = {
+						is_galactic_community_member = yes
+					}
+				}
+				has_valid_civic = civic_free_haven
+				has_valid_civic = civic_free_haven_corp
 			}
 		}
 		resources = {
@@ -73,7 +96,6 @@ per_relation = {
 			}
 		}
 	}
-
 	research_agreement = {
 		trigger = {
 			has_research_agreement = FROM
@@ -84,12 +106,17 @@ per_relation = {
 			NOT = {
 				AND = {
 					has_federation = yes
-					federation = { has_federation_perk = diplomacy_upkeep_1 }
-					federation = { any_member = { is_same_value = FROM } }
+					federation = {
+						has_federation_perk = diplomacy_upkeep_1
+					}
+					federation = {
+						any_member = {
+							is_same_value = FROM
+						}
+					}
 				}
 			}
 		}
-
 		resources = {
 			category = research_agreements
 			upkeep = {
@@ -97,13 +124,13 @@ per_relation = {
 			}
 		}
 	}
-
 	commercial_pact = {
 		trigger = {
 			has_commercial_pact = FROM
-			NOR = { has_ascension_perk = ap_universal_transactions }
+			NOT = {
+				has_ascension_perk = ap_universal_transactions
+			}
 		}
-
 		resources = {
 			category = commercial_pacts
 			upkeep = {
@@ -111,13 +138,11 @@ per_relation = {
 			}
 		}
 	}
-
 	defensive_pact = {
 		trigger = {
 			has_defensive_pact = FROM
 			# is_bugged_interventionalist = no
 		}
-
 		resources = {
 			category = defensive_pacts
 			upkeep = {
@@ -125,7 +150,6 @@ per_relation = {
 			}
 		}
 	}
-
 	guarantee = {
 		trigger = {
 			is_guaranteeing = FROM
@@ -138,12 +162,12 @@ per_relation = {
 			}
 		}
 	}
-
 	improving_relations = {
 		trigger = {
 			is_improving_relations_with = FROM
 			OR = {
 				has_policy_flag = diplo_stance_isolationist
+				has_policy_flag = diplo_stance_secretive
 				has_policy_flag = diplo_stance_belligerent
 				has_policy_flag = diplo_stance_supremacist
 			}
@@ -155,7 +179,6 @@ per_relation = {
 			}
 		}
 	}
-
 	harming_relations = {
 		trigger = {
 			is_harming_relations_with = FROM
@@ -171,11 +194,9 @@ per_relation = {
 			}
 		}
 	}
-
 	diplo_stance_closed_borders = {
 		trigger = {
 			has_policy_flag = diplo_stance_mercantile
-
 			has_closed_borders = FROM
 			NOT = {
 				has_rival = FROM
@@ -188,7 +209,6 @@ per_relation = {
 			}
 		}
 	}
-
 	embassy = {
 		trigger = {
 			has_active_tradition = tr_diplomacy_diplomatic_networking

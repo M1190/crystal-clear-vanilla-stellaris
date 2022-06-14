@@ -20,12 +20,10 @@
 #			}
 #		}
 #	}
-
 @xp_to_level_2 = 1200
 @xp_to_level_3 = 2400
 @xp_to_level_4 = 4800
 @xp_to_level_5 = 9600
-
 default_federation = {
 	base_intel = 60
 	icon = "GFX_default_federation"
@@ -33,19 +31,26 @@ default_federation = {
 		always = yes
 	}
 	allow = {
+		federation_check_for_subject_trigger = yes
 		custom_tooltip = {
 			fail_text = civic_tooltip_not_bugged_raider
 			is_bugged_raider = no
 		}
+		custom_tooltip = {
+			fail_text = requires_actor_not_barbaric_despoilers
+			NOT = {
+				has_valid_civic = civic_barbaric_despoilers
+			}
+		}
 	}
 	levels = {
-		level_1 = { # Starting rank
-			experience = @xp_to_level_2 # Experience until next rank
+		level_1 = {
+			# Starting rank
+			experience = @xp_to_level_2			# Experience until next rank
 			perks = {
 				default_federation_passive
 			}
 		}
-
 		level_2 = {
 			experience = @xp_to_level_3
 			perks = {
@@ -54,7 +59,6 @@ default_federation = {
 				extra_envoy_1
 			}
 		}
-
 		level_3 = {
 			experience = @xp_to_level_4
 			perks = {
@@ -63,7 +67,6 @@ default_federation = {
 				extra_influence_1
 			}
 		}
-
 		level_4 = {
 			experience = @xp_to_level_5
 			perks = {
@@ -72,7 +75,6 @@ default_federation = {
 				diplo_weight_1
 			}
 		}
-
 		level_5 = {
 			perks = {
 				envoy_unity_2
@@ -96,7 +98,6 @@ default_federation = {
 		set_federation_law = treaties_separate_yes
 		set_federation_flag = enable_federation_cooldowns
 	}
-
 	ai_weight = {
 		base = 0
 		modifier = {
@@ -232,6 +233,106 @@ default_federation = {
 				has_ai_personality = fanatic_befrienders
 			}
 		}
+		# Modded Personalities
+		modifier = {
+			desc = federation_acceptance_knowledge_seekers
+			add = 10
+			from = {
+				has_ai_personality = knowledge_seekers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_egalitarian_imperialists
+			add = -20
+			from = {
+				has_ai_personality = egalitarian_imperialists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_decadent_technocracy
+			add = -30
+			from = {
+				has_ai_personality = decadent_technocracy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_technological_warriors
+			add = -10
+			from = {
+				has_ai_personality = technological_warriors
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_vb_keepers_of_peace
+			add = 0
+			from = {
+				has_ai_personality = vb_keepers_of_peace
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_vb_sneering_technocrats
+			add = -20
+			from = {
+				has_ai_personality = vb_sneering_technocrats
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_vb_ambitious_unifiers
+			add = -20
+			from = {
+				has_ai_personality = vb_ambitious_unifiers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_mechanical_zealots
+			add = -20
+			from = {
+				has_ai_personality = mechanical_zealots
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_machine_acolyte
+			add = 10
+			from = {
+				has_ai_personality = machine_acolyte
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_open_hive_mind
+			add = 0
+			from = {
+				has_ai_personality = open_hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_closed_hive_mind
+			add = -100
+			from = {
+				has_ai_personality = closed_hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_infested_hive_mind
+			add = -75
+			from = {
+				has_ai_personality = infested_hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_open_machine_intelligence
+			add = 0
+			from = {
+				has_ai_personality = open_machine_intelligence
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_closed_machine_intelligence
+			add = -100
+			from = {
+				has_ai_personality = closed_machine_intelligence
+			}
+		}
+		# end of modded personalities
 		modifier = {
 			add = -100
 			desc = alert_federation_low_cohesion_title
@@ -239,7 +340,9 @@ default_federation = {
 				has_federation = yes
 			}
 			exists = federation
-			federation = { federation_cohesion <= -50 }
+			federation = {
+				federation_cohesion <= -50
+			}
 		}
 		modifier = {
 			add = -50
@@ -260,7 +363,9 @@ default_federation = {
 				has_federation = yes
 			}
 			exists = federation
-			federation = { federation_cohesion >= 80 }
+			federation = {
+				federation_cohesion >= 80
+			}
 		}
 		modifier = {
 			add = 20
@@ -275,7 +380,9 @@ default_federation = {
 				}
 			}
 			exists = federation
-			federation = { has_federation_type = hegemony_federation }
+			federation = {
+				has_federation_type = hegemony_federation
+			}
 		}
 		modifier = {
 			add = 50
@@ -288,7 +395,9 @@ default_federation = {
 				}
 			}
 			exists = federation
-			federation = { has_federation_type = hegemony_federation }
+			federation = {
+				has_federation_type = hegemony_federation
+			}
 		}
 	}
 }
@@ -297,19 +406,30 @@ trade_federation = {
 	base_intel = 50
 	icon = "GFX_trade_federation"
 	potential = {
-		host_has_dlc = Federations
+		has_federations_dlc = yes
 	}
 	allow = {
-		if = {
-			limit = { host_has_dlc = "Megacorp" }
-			OR = {
-				is_competitive = yes
-				is_megacorp = yes
-				has_valid_civic = civic_merchant_guilds
-				custom_tooltip = {
-					fail_text = mercantile_traditions_completed
-					has_active_tradition = tr_mercantile_federations_finish
-				}
+		federation_check_for_subject_trigger = yes
+	if = {
+		limit = {
+			host_has_dlc = "Megacorp"
+		}
+		OR = {
+			is_competitive = yes
+			is_megacorp = yes
+			has_valid_civic = civic_merchant_guilds
+			custom_tooltip = {
+				fail_text = mercantile_traditions_completed
+				has_active_tradition = tr_mercantile_federations_finish
+			}
+		}
+		OR = {
+			is_auth_corporate = yes
+			custom_tooltip = {
+				fail_text = requires_non_xenophobe_pacifist
+				is_pacifist = yes
+				is_xenophobe = no
+				is_anti_corp = no
 			}
 		}
 		else = {
@@ -323,15 +443,21 @@ trade_federation = {
 			fail_text = civic_tooltip_not_bugged_raider
 			is_bugged_raider = no
 		}
+		custom_tooltip = {
+			fail_text = requires_actor_not_barbaric_despoilers
+			NOT = {
+				has_valid_civic = civic_barbaric_despoilers
+			}
+		}
 	}
 	levels = {
-		level_1 = { # Starting rank
-			experience = @xp_to_level_2 # Experience until next rank
+		level_1 = {
+			# Starting rank
+			experience = @xp_to_level_2			# Experience until next rank
 			perks = {
 				trade_federation_passive
 			}
 		}
-
 		level_2 = {
 			experience = @xp_to_level_3
 			perks = {
@@ -340,7 +466,6 @@ trade_federation = {
 				extra_envoy_1
 			}
 		}
-
 		level_3 = {
 			experience = @xp_to_level_4
 			perks = {
@@ -349,7 +474,6 @@ trade_federation = {
 				extra_influence_1
 			}
 		}
-
 		level_4 = {
 			experience = @xp_to_level_5
 			perks = {
@@ -358,7 +482,6 @@ trade_federation = {
 				diplo_weight_1
 			}
 		}
-
 		level_5 = {
 			perks = {
 				trade_value_4
@@ -382,7 +505,11 @@ trade_federation = {
 		set_federation_law = treaties_separate_yes
 		set_federation_flag = enable_federation_cooldowns
 		every_member = {
-			limit = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+			limit = {
+				NOT = {
+					has_ethic = ethic_gestalt_consciousness
+				}
+			}
 			set_policy = {
 				policy = trade_policy
 				option = trade_policy_bugged_basic_league
@@ -390,7 +517,6 @@ trade_federation = {
 			}
 		}
 	}
-
 	ai_weight = {
 		base = 0
 		modifier = {
@@ -526,6 +652,106 @@ trade_federation = {
 				has_ai_personality = fanatic_befrienders
 			}
 		}
+		# Modded Personalities
+		modifier = {
+			desc = federation_acceptance_knowledge_seekers
+			add = 10
+			from = {
+				has_ai_personality = knowledge_seekers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_egalitarian_imperialists
+			add = -20
+			from = {
+				has_ai_personality = egalitarian_imperialists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_decadent_technocracy
+			add = -30
+			from = {
+				has_ai_personality = decadent_technocracy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_technological_warriors
+			add = -20
+			from = {
+				has_ai_personality = technological_warriors
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_vb_keepers_of_peace
+			add = -20
+			from = {
+				has_ai_personality = vb_keepers_of_peace
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_vb_sneering_technocrats
+			add = -20
+			from = {
+				has_ai_personality = vb_sneering_technocrats
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_vb_ambitious_unifiers
+			add = -20
+			from = {
+				has_ai_personality = vb_ambitious_unifiers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_mechanical_zealots
+			add = -20
+			from = {
+				has_ai_personality = mechanical_zealots
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_machine_acolyte
+			add = 10
+			from = {
+				has_ai_personality = machine_acolyte
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_open_hive_mind
+			add = -50
+			from = {
+				has_ai_personality = open_hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_closed_hive_mind
+			add = -100
+			from = {
+				has_ai_personality = closed_hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_infested_hive_mind
+			add = -75
+			from = {
+				has_ai_personality = infested_hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_open_machine_intelligence
+			add = -50
+			from = {
+				has_ai_personality = open_machine_intelligence
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_closed_machine_intelligence
+			add = -100
+			from = {
+				has_ai_personality = closed_machine_intelligence
+			}
+		}
+		# end of modded personalities
 		modifier = {
 			add = -100
 			desc = alert_federation_low_cohesion_title
@@ -533,7 +759,9 @@ trade_federation = {
 				has_federation = yes
 			}
 			exists = federation
-			federation = { federation_cohesion <= -50 }
+			federation = {
+				federation_cohesion <= -50
+			}
 		}
 		modifier = {
 			add = -50
@@ -554,7 +782,9 @@ trade_federation = {
 				has_federation = yes
 			}
 			exists = federation
-			federation = { federation_cohesion >= 80 }
+			federation = {
+				federation_cohesion >= 80
+			}
 		}
 		modifier = {
 			add = 20
@@ -569,7 +799,9 @@ trade_federation = {
 				}
 			}
 			exists = federation
-			federation = { has_federation_type = hegemony_federation }
+			federation = {
+				has_federation_type = hegemony_federation
+			}
 		}
 		modifier = {
 			add = 50
@@ -582,7 +814,9 @@ trade_federation = {
 				}
 			}
 			exists = federation
-			federation = { has_federation_type = hegemony_federation }
+			federation = {
+				has_federation_type = hegemony_federation
+			}
 		}
 	}
 }
@@ -591,13 +825,17 @@ research_federation = {
 	base_intel = 50
 	icon = "GFX_research_federation"
 	potential = {
-		host_has_dlc = Federations
+		has_federations_dlc = yes
 	}
 	allow = {
+		federation_check_for_subject_trigger = yes
 		OR = {
 			custom_tooltip = {
 				fail_text = civic_tooltip_materialist
-				is_materialist = yes
+				OR = {
+					is_materialist = yes
+					is_civic_materialist = yes
+				}
 			}
 			is_machine_empire = yes
 			custom_tooltip = {
@@ -609,15 +847,21 @@ research_federation = {
 			fail_text = civic_tooltip_not_bugged_raider
 			is_bugged_raider = no
 		}
+		custom_tooltip = {
+			fail_text = requires_actor_not_barbaric_despoilers
+			NOT = {
+				has_valid_civic = civic_barbaric_despoilers
+			}
+		}
 	}
 	levels = {
-		level_1 = { # Starting rank
-			experience = @xp_to_level_2 # Experience until next rank
+		level_1 = {
+			# Starting rank
+			experience = @xp_to_level_2			# Experience until next rank
 			perks = {
 				research_federation_passive
 			}
 		}
-
 		level_2 = {
 			experience = @xp_to_level_3
 			perks = {
@@ -626,7 +870,6 @@ research_federation = {
 				president_option_1
 			}
 		}
-
 		level_3 = {
 			experience = @xp_to_level_4
 			perks = {
@@ -635,7 +878,6 @@ research_federation = {
 				tech_diplo_weight_1
 			}
 		}
-
 		level_4 = {
 			experience = @xp_to_level_5
 			perks = {
@@ -644,7 +886,6 @@ research_federation = {
 				extra_envoy_1
 			}
 		}
-
 		level_5 = {
 			perks = {
 				research_share_4
@@ -803,6 +1044,106 @@ research_federation = {
 				has_ai_personality = fanatic_befrienders
 			}
 		}
+		# Modded Personalities
+		modifier = {
+			desc = federation_acceptance_knowledge_seekers
+			add = 20
+			from = {
+				has_ai_personality = knowledge_seekers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_egalitarian_imperialists
+			add = -20
+			from = {
+				has_ai_personality = egalitarian_imperialists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_decadent_technocracy
+			add = -10
+			from = {
+				has_ai_personality = decadent_technocracy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_technological_warriors
+			add = 0
+			from = {
+				has_ai_personality = technological_warriors
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_vb_keepers_of_peace
+			add = -20
+			from = {
+				has_ai_personality = vb_keepers_of_peace
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_vb_sneering_technocrats
+			add = -10
+			from = {
+				has_ai_personality = vb_sneering_technocrats
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_vb_ambitious_unifiers
+			add = -20
+			from = {
+				has_ai_personality = vb_ambitious_unifiers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_mechanical_zealots
+			add = -10
+			from = {
+				has_ai_personality = mechanical_zealots
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_machine_acolyte
+			add = 25
+			from = {
+				has_ai_personality = machine_acolyte
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_open_hive_mind
+			add = 0
+			from = {
+				has_ai_personality = open_hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_closed_hive_mind
+			add = -100
+			from = {
+				has_ai_personality = closed_hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_infested_hive_mind
+			add = -75
+			from = {
+				has_ai_personality = infested_hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_open_machine_intelligence
+			add = 20
+			from = {
+				has_ai_personality = open_machine_intelligence
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_closed_machine_intelligence
+			add = -100
+			from = {
+				has_ai_personality = closed_machine_intelligence
+			}
+		}
+		# end of modded personalities
 		modifier = {
 			add = -100
 			desc = alert_federation_low_cohesion_title
@@ -810,7 +1151,9 @@ research_federation = {
 				has_federation = yes
 			}
 			exists = federation
-			federation = { federation_cohesion <= -50 }
+			federation = {
+				federation_cohesion <= -50
+			}
 		}
 		modifier = {
 			add = -50
@@ -831,7 +1174,9 @@ research_federation = {
 				has_federation = yes
 			}
 			exists = federation
-			federation = { federation_cohesion >= 80 }
+			federation = {
+				federation_cohesion >= 80
+			}
 		}
 		modifier = {
 			add = 20
@@ -846,7 +1191,9 @@ research_federation = {
 				}
 			}
 			exists = federation
-			federation = { has_federation_type = hegemony_federation }
+			federation = {
+				has_federation_type = hegemony_federation
+			}
 		}
 		modifier = {
 			add = 50
@@ -859,7 +1206,9 @@ research_federation = {
 				}
 			}
 			exists = federation
-			federation = { has_federation_type = hegemony_federation }
+			federation = {
+				has_federation_type = hegemony_federation
+			}
 		}
 	}
 }
@@ -868,13 +1217,20 @@ military_federation = {
 	base_intel = 50
 	icon = "GFX_military_federation"
 	potential = {
-		host_has_dlc = Federations
+		has_federations_dlc = yes
 	}
 	allow = {
+		federation_check_for_subject_trigger = yes
 		OR = {
 			custom_tooltip = {
 				fail_text = civic_tooltip_militarist
-				is_militarist = yes
+				OR = {
+					is_militarist = yes
+					has_civic = civic_barbaric_despoilers
+					has_valid_civic = civic_hive_strength_of_legions
+					has_valid_civic = civic_machine_warbots
+					has_valid_civic = civic_machine_terminator
+				}
 			}
 			custom_tooltip = {
 				fail_text = unyielding_traditions_completed
@@ -883,13 +1239,13 @@ military_federation = {
 		}
 	}
 	levels = {
-		level_1 = { # Starting rank
-			experience = @xp_to_level_2 # Experience until next rank
+		level_1 = {
+			# Starting rank
+			experience = @xp_to_level_2			# Experience until next rank
 			perks = {
 				military_federation_passive
 			}
 		}
-
 		level_2 = {
 			experience = @xp_to_level_3
 			perks = {
@@ -898,7 +1254,6 @@ military_federation = {
 				claim_cost_1
 			}
 		}
-
 		level_3 = {
 			experience = @xp_to_level_4
 			perks = {
@@ -907,7 +1262,6 @@ military_federation = {
 				extra_envoy_1
 			}
 		}
-
 		level_4 = {
 			experience = @xp_to_level_5
 			perks = {
@@ -916,7 +1270,6 @@ military_federation = {
 				federation_fleet_unity_1
 			}
 		}
-
 		level_5 = {
 			perks = {
 				federation_fleet_size_3
@@ -1075,6 +1428,106 @@ military_federation = {
 				has_ai_personality = fanatic_befrienders
 			}
 		}
+		# Modded Personalities
+		modifier = {
+			desc = federation_acceptance_knowledge_seekers
+			add = 10
+			from = {
+				has_ai_personality = knowledge_seekers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_egalitarian_imperialists
+			add = -10
+			from = {
+				has_ai_personality = egalitarian_imperialists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_decadent_technocracy
+			add = -30
+			from = {
+				has_ai_personality = decadent_technocracy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_technological_warriors
+			add = 0
+			from = {
+				has_ai_personality = technological_warriors
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_vb_keepers_of_peace
+			add = 0
+			from = {
+				has_ai_personality = vb_keepers_of_peace
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_vb_sneering_technocrats
+			add = -10
+			from = {
+				has_ai_personality = vb_sneering_technocrats
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_vb_ambitious_unifiers
+			add = -10
+			from = {
+				has_ai_personality = vb_ambitious_unifiers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_mechanical_zealots
+			add = -20
+			from = {
+				has_ai_personality = mechanical_zealots
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_machine_acolyte
+			add = 10
+			from = {
+				has_ai_personality = machine_acolyte
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_open_hive_mind
+			add = -10
+			from = {
+				has_ai_personality = open_hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_closed_hive_mind
+			add = -100
+			from = {
+				has_ai_personality = closed_hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_infested_hive_mind
+			add = -60
+			from = {
+				has_ai_personality = infested_hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_open_machine_intelligence
+			add = -10
+			from = {
+				has_ai_personality = open_machine_intelligence
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_closed_machine_intelligence
+			add = -100
+			from = {
+				has_ai_personality = closed_machine_intelligence
+			}
+		}
+		# end of modded personalities
 		modifier = {
 			add = -100
 			desc = alert_federation_low_cohesion_title
@@ -1082,7 +1535,9 @@ military_federation = {
 				has_federation = yes
 			}
 			exists = federation
-			federation = { federation_cohesion <= -50 }
+			federation = {
+				federation_cohesion <= -50
+			}
 		}
 		modifier = {
 			add = -50
@@ -1103,7 +1558,9 @@ military_federation = {
 				has_federation = yes
 			}
 			exists = federation
-			federation = { federation_cohesion >= 80 }
+			federation = {
+				federation_cohesion >= 80
+			}
 		}
 		modifier = {
 			add = 20
@@ -1118,7 +1575,9 @@ military_federation = {
 				}
 			}
 			exists = federation
-			federation = { has_federation_type = hegemony_federation }
+			federation = {
+				has_federation_type = hegemony_federation
+			}
 		}
 		modifier = {
 			add = 50
@@ -1131,7 +1590,9 @@ military_federation = {
 				}
 			}
 			exists = federation
-			federation = { has_federation_type = hegemony_federation }
+			federation = {
+				has_federation_type = hegemony_federation
+			}
 		}
 	}
 }
@@ -1140,7 +1601,7 @@ hegemony_federation = {
 	base_intel = 40
 	icon = "GFX_hegemony_federation"
 	potential = {
-		host_has_dlc = Federations
+		has_federations_dlc = yes
 	}
 	allow = {
 		OR = {
@@ -1151,7 +1612,19 @@ hegemony_federation = {
 			}
 			custom_tooltip = {
 				fail_text = civic_tooltip_authoritarian
-				is_authoritarian = yes
+				OR = {
+					has_civic = civic_feudal_realm
+					has_civic = civic_franchising
+					is_authoritarian = yes
+				}
+			}
+			custom_tooltip = {
+				fail_text = requires_xenophobe_not_egalitarian_pacifist
+				AND = {
+					is_xenophobe = yes
+					is_egalitarian = no
+					is_pacifist = no
+				}
 			}
 			custom_tooltip = {
 				fail_text = domination_traditions_completed
@@ -1164,13 +1637,13 @@ hegemony_federation = {
 		}
 	}
 	levels = {
-		level_1 = { # Starting rank
-			experience = @xp_to_level_2 # Experience until next rank
+		level_1 = {
+			# Starting rank
+			experience = @xp_to_level_2			# Experience until next rank
 			perks = {
 				hegemony_federation_passive
 			}
 		}
-
 		level_2 = {
 			experience = @xp_to_level_3
 			perks = {
@@ -1179,7 +1652,6 @@ hegemony_federation = {
 				extra_envoy_1
 			}
 		}
-
 		level_3 = {
 			experience = @xp_to_level_4
 			perks = {
@@ -1188,7 +1660,6 @@ hegemony_federation = {
 				president_hegemony_cb_1
 			}
 		}
-
 		level_4 = {
 			experience = @xp_to_level_5
 			perks = {
@@ -1197,7 +1668,6 @@ hegemony_federation = {
 				extra_influence_1
 			}
 		}
-
 		level_5 = {
 			perks = {
 				damage_crisis_1
@@ -1368,6 +1838,106 @@ hegemony_federation = {
 				has_ai_personality = fanatic_befrienders
 			}
 		}
+		# Modded Personalities
+		modifier = {
+			desc = federation_acceptance_knowledge_seekers
+			add = 10
+			from = {
+				has_ai_personality = knowledge_seekers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_egalitarian_imperialists
+			add = 0
+			from = {
+				has_ai_personality = egalitarian_imperialists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_decadent_technocracy
+			add = -10
+			from = {
+				has_ai_personality = decadent_technocracy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_technological_warriors
+			add = -10
+			from = {
+				has_ai_personality = technological_warriors
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_vb_keepers_of_peace
+			add = -10
+			from = {
+				has_ai_personality = vb_keepers_of_peace
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_vb_sneering_technocrats
+			add = 0
+			from = {
+				has_ai_personality = vb_sneering_technocrats
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_vb_ambitious_unifiers
+			add = 0
+			from = {
+				has_ai_personality = vb_ambitious_unifiers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_mechanical_zealots
+			add = -20
+			from = {
+				has_ai_personality = mechanical_zealots
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_machine_acolyte
+			add = 10
+			from = {
+				has_ai_personality = machine_acolyte
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_open_hive_mind
+			add = 0
+			from = {
+				has_ai_personality = open_hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_closed_hive_mind
+			add = -100
+			from = {
+				has_ai_personality = closed_hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_infested_hive_mind
+			add = -50
+			from = {
+				has_ai_personality = infested_hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_open_machine_intelligence
+			add = 0
+			from = {
+				has_ai_personality = open_machine_intelligence
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_closed_machine_intelligence
+			add = -100
+			from = {
+				has_ai_personality = closed_machine_intelligence
+			}
+		}
+		# end of modded personalities
 		modifier = {
 			add = -100
 			desc = alert_federation_low_cohesion_title
@@ -1375,7 +1945,9 @@ hegemony_federation = {
 				has_federation = yes
 			}
 			exists = federation
-			federation = { federation_cohesion <= -50 }
+			federation = {
+				federation_cohesion <= -50
+			}
 		}
 		modifier = {
 			add = -50
@@ -1396,7 +1968,9 @@ hegemony_federation = {
 				has_federation = yes
 			}
 			exists = federation
-			federation = { federation_cohesion >= 80 }
+			federation = {
+				federation_cohesion >= 80
+			}
 		}
 		modifier = {
 			add = 50

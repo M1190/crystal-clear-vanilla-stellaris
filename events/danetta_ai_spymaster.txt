@@ -1,0 +1,237 @@
+namespace = danetta_ai_spymaster
+
+# trigger country event later this month to set a cooldown
+event = {
+	id = danetta_ai_spymaster.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_country = {
+			limit = {
+				is_ai = yes
+				is_country_type = default
+			}
+			country_event = { id = danetta_ai_spymaster.2 days = 7 }
+			#country_event = { id = danetta_ai_spymaster.4 days = 1 }
+		}
+	}
+}
+
+
+# 20 days cooldown is set for every envoy that is not working on the operation in some spy network and not already on cooldown
+country_event = {
+	id = danetta_ai_spymaster.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+	}
+
+	immediate = {
+		####
+		# This is not needed anymore as of 3.4.2
+		####
+		if = {
+			limit = {
+				any_envoy = {
+					has_envoy_task = {
+						task = spy_network
+					}
+				}
+			}
+			every_spynetwork = {
+				limit = {
+					is_running_espionage_operation = no
+				}
+				owner = {
+					random_envoy = {
+						limit = {
+							exists = prevprev
+							exists = prevprev.target
+							has_envoy_cooldown = no
+							has_envoy_task = {
+								task = spy_network
+								target = prevprev.target
+							}
+						}
+						set_cooldown = 20
+					}
+				}
+			}
+			every_envoy = {
+				limit = {
+					has_envoy_cooldown = no
+					not = {
+						has_envoy_task = {
+							task = spy_network
+						}
+					}
+				}
+				set_cooldown = 20
+			}
+		}
+		# if envoy is working in federation, increased their cooldown to 3 years
+		# if they have no flag
+		# flag is set to 4 years to prevent the cooldown from being increased more than once
+		# after 3 years the cooldown runs of (but flag does not) and AI may reassign an envoy (which would take at least a year)
+		####
+		# As of 3.4.2 Vanilla AI is now good enough at assigning their envoys to federation and galactic community
+		# so this workaround is mostly not needed anymore
+		# let's just increases the cooldown for spy network assignments specifically
+		# to prevent them from being unassigned so frequently
+		####
+		every_envoy = {
+			limit = {
+				not = {
+					has_leader_flag = spymaster_increased_cooldown
+				}
+				or = {
+					has_envoy_task = {
+						task = spy_network
+					}
+					#has_envoy_task = {
+					#	task = federation
+					#}
+					#has_envoy_task = {
+					#	task = galactic_community
+					#}
+				}
+			}
+			set_cooldown = 1080
+			set_timed_leader_flag = {
+				flag = spymaster_increased_cooldown
+				days = 1440
+			}
+		}
+	}
+}
+
+# increase the cooldown on some tasks after assignment to make AI shuffle envoys a bit less
+# these are supposedly long term assignments anyway
+# XXX: vanilla has a bug that crashes during loading or exiting to menu when this event is present
+# disabled, workaround events [4-5] tbd
+# leader_event = {
+# 	id = danetta_ai_spymaster.3
+# 	hide_window = yes
+# 	is_triggered_only = yes
+
+# 	trigger = {
+# 		exists = envoy_location_country
+# 		#exists = owner
+# 		owner = {
+# 			is_ai = yes
+# 		}
+# 		leader_class = envoy
+# 	}
+
+# 	immediate = {
+# 		if = {
+# 			limit = {
+# 				or = {
+# 					has_envoy_task = {
+# 						task = galactic_community
+# 					}
+# 					has_envoy_task = {
+# 						task = federation
+# 					}
+# 					has_envoy_task = {
+# 						task = strengthen_imperial_authority
+# 					}
+# 					has_envoy_task = {
+# 						task = undermine_imperial_authority
+# 					}
+# 				}
+# 			}
+# 			set_cooldown = 1080
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_envoy_task = {
+# 					task = spy_network
+# 				}
+# 			}
+# 			set_cooldown = 720
+# 		}
+# 	}
+# }
+
+# country_event = {
+# 	id = danetta_ai_spymaster.4
+# 	hide_window = yes
+# 	is_triggered_only = yes
+
+# 	trigger = {
+# 		is_ai = yes
+# 	}
+
+# 	immediate = {
+# 		every_envoy = {
+# 			limit = {
+# 				not = {
+# 					has_leader_flag = danetta_leader_cooldown
+# 				}
+# 				or = {
+# 					has_envoy_task = {
+# 						task = galactic_community
+# 					}
+# 					has_envoy_task = {
+# 						task = federation
+# 					}
+# 					has_envoy_task = {
+# 						task = strengthen_imperial_authority
+# 					}
+# 					has_envoy_task = {
+# 						task = undermine_imperial_authority
+# 					}
+# 					has_envoy_task = {
+# 						task = spy_network
+# 					}
+# 				}
+# 				has_envoy_cooldown = yes
+# 			}
+# 			set_leader_flag = danetta_leader_cooldown
+# 			set_cooldown = 10000
+# 			leader_event = { id = danetta_ai_spymaster.5 days = 30 }
+# 		}
+# 	}
+# }
+
+# leader_event = {
+# 	id = danetta_ai_spymaster.5
+# 	hide_window = yes
+# 	is_triggered_only = yes
+
+# 	trigger = {
+# 		has_leader_flag = danetta_leader_cooldown
+# 	}
+
+# 	immediate = {
+# 		remove_leader_flag = danetta_leader_cooldown
+# 		if = {
+# 			limit = {
+# 				or = {
+# 					has_envoy_task = {
+# 						task = galactic_community
+# 					}
+# 					has_envoy_task = {
+# 						task = federation
+# 					}
+# 					has_envoy_task = {
+# 						task = strengthen_imperial_authority
+# 					}
+# 					has_envoy_task = {
+# 						task = undermine_imperial_authority
+# 					}
+# 					has_envoy_task = {
+# 						task = spy_network
+# 					}
+# 				}
+# 				has_envoy_cooldown = yes
+# 			}
+# 			set_cooldown = 0
+# 		}
+# 	}
+# }
