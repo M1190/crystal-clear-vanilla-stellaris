@@ -1,0 +1,1341 @@
+# Scripted triggers from mods, expanded to acknowledge other mods.
+############################### Shadowgate ###############################
+# Making Shadowgate acknowledge mod-made Fallen Empires
+shadowgate_is_fe = {
+	OR = {
+		is_country_type = fallen_empire
+		# History of the Lost Empire
+		is_country_type = LsE_fallen_empire
+		# SW:KUAT ANCIENT EMPIRE
+		is_country_type = kuat_fallen_empire
+		# The Empty Vagrant
+		is_country_type = fallen_empire_ev
+		# ZOFE
+		is_country_type = lost_empire
+	}
+}
+
+# Making Shadowgate acknowledge mod-made Awakened Empires
+shadowgate_is_ae = {
+	OR = {
+		is_country_type = awakened_fallen_empire
+		# SW:KUAT ANCIENT EMPIRE
+		is_country_type = kuat_awakened_fallen_empire
+		is_country_type = awakened_return_kuat_empire
+		# A Deadly Tempest
+		is_country_type = awakened_gate_builders
+		# ZOFE
+		is_country_type = ascended_empire
+	}
+}
+
+# Making Shadowgate acknowledge Starbase Ships.
+shadowgate_is_military_fleet = {
+	OR = {
+		has_fleet_flag = shadowgate_military_fleet
+		any_owned_ship = {
+			OR = {
+				is_ship_class = shipclass_military
+				is_ship_class = shipclass_military_special
+				is_ship_class = shipclass_transport
+				is_ship_size = juggernaut
+				# AOT
+				is_ship_size = ascended_juggernaut
+				is_ship_size = precursor_juggernaut
+				# ACOT
+				is_ship_size = precursor_colossus
+				# ZOFE
+				is_ship_size = fe_goliath
+			}
+		}
+	}
+}
+
+shadowgate_aggressor_is_valid_cb_target = {
+	NOR = {
+		is_in_federation_with = root.from
+		is_hostile = root.from
+		has_casus_belli = {
+			type = cb_shadowrift_attacked
+			target = root.from
+		}
+	}
+	root.from = {
+		OR = {
+			merg_is_default_empire = yes
+			shadowgate_is_fe = yes
+			shadowgate_is_ae = yes
+		}
+	}
+	OR = {
+		is_subject = no
+		overlord = {
+			NOT = {
+				is_same_value = root.from
+			}
+		}
+	}
+	root.fromfrom.solar_system = {
+		has_access_fleet = event_target:shadowgate_assaulted_owner
+	}
+	has_communications = root.from
+}
+
+############################### Gigastructural Engineering & More ###############################
+# Expanding a bit the country list
+ehof_default_country = {
+	OR = {
+		is_country_type = default
+		is_country_type = fallen_empire
+		is_country_type = awakened_fallen_empire
+		# ZOFE
+		is_zofe_country = yes
+		# The Empty Vagrant
+		is_country_type = default_ev
+		# Darkspace
+		is_country_type = ds_nomads
+	}
+}
+
+# Making station-sized ships able to use the EHOF
+can_use_ehof = {
+	NOR = {
+		is_constructing = mining_station
+		is_constructing = research_station
+		is_constructing = observation_post
+		is_constructing = megastructure
+		is_constructing = starbase
+		is_ship_class = shipclass_military_station
+		is_ship_class = shipclass_mining_station
+		is_ship_class = shipclass_research_station
+		is_ship_class = shipclass_observation_station
+		AND = {
+			is_ship_class = shipclass_starbase
+			NOR = {
+				is_ship_size = juggernaut
+				# AOT
+				is_ship_size = ascended_juggernaut
+				is_ship_size = precursor_juggernaut
+				# ACOT
+				is_ship_size = precursor_colossus
+				# ZOFE
+				is_ship_size = fe_goliath
+			}
+		}
+	}
+}
+
+reshaper_eligible = {
+	NOR = {
+		has_planet_flag = paluushia
+		is_planet_class = pc_core_black_hole
+		is_planet_class = pc_core_quasar
+		is_planet_class = pc_ehof_planet
+		is_planet_class = pc_ehof_black_hole
+		is_planet_class = pc_black_hole
+		is_planet_class = pc_whc_star
+		is_planet_class = pc_wh_star
+		is_asteroid = yes
+		is_planet_class = pc_shrouded
+		giga_habitable_structure = yes
+		is_planet_class = pc_ringworld_habitable_damaged
+		is_planet_class = pc_ringworld_tech
+		is_planet_class = pc_ringworld_tech_damaged
+		is_planet_class = pc_ringworld_seam
+		is_planet_class = pc_ringworld_seam_damaged
+		# Merger of Rules edits
+		is_ringworld = yes
+		merg_is_habitat = yes
+		merg_is_hab_ringworld = yes
+		merg_is_forbidden_target = yes
+	}
+}
+
+giga_valid_planet_wrecked_ship = {
+	solar_system = {
+		merg_is_void_system = no
+	}
+	is_star = no
+	NOT = {
+		has_planet_flag = has_giga_wrecked_ship
+	}
+}
+
+# Overwriting to give support to other ringworlds
+giga_habitable_structure = {
+	OR = {
+		uses_district_set = habitat
+		is_ringworld = yes
+		merg_is_habitat = yes
+		merg_is_hab_ringworld = yes
+		# Gigastructural Engineering & More
+		is_planet_class = pc_habitable_gas_giant
+		is_planet_class = pc_interstellar_habitat
+		is_planet_class = pc_birch
+		is_planet_class = pc_void_birch
+		is_planet_class = pc_virtual_reality
+		is_planet_class = pc_virtual_industry
+		is_planet_class = pc_virtual_stellar_industry
+		is_planet_class = pc_alderson_slice_gaia
+		is_planet_class = pc_alderson_slice_pc
+		is_planet_class = pc_alderson_slice_ecu
+		is_planet_class = pc_alderson_slice_hive
+		is_planet_class = pc_alderson_slice_machine
+		is_planet_class = pc_pouchkinn_black_hole
+		is_planet_class = pc_flat_world
+		is_planet_class = pc_giga_frameworld
+		# AOT
+		uses_district_set = phanon_macripp
+	}
+}
+
+# extensible restriction list (can NOT build Maginots on these planet_classes)
+is_maginotable_restricted = {
+	OR = {
+		is_planet_class = pc_giga_planetary_computer
+		is_planet_class = pc_birch
+		is_planet_class = pc_void_birch
+		# APSR
+		is_planet_class = pc_apsr_ancient
+		is_planet_class = pc_apsr_unique
+		# ACOT
+		is_planet_class = pc_acot_enigmopolis
+		# Ancient Empire
+		is_planet_class = pc_ag_ringworld_desert
+		is_planet_class = pc_ag_ringworld_arid
+		is_planet_class = pc_ag_ringworld_savannah
+		is_planet_class = pc_ag_ringworld_ocean
+		is_planet_class = pc_ag_ringworld_continental
+		is_planet_class = pc_ag_ringworld_tropical
+		is_planet_class = pc_ag_ringworld_tundra
+		is_planet_class = pc_ag_ringworld_arctic
+		is_planet_class = pc_ag_ringworld_alpine
+		is_planet_class = pc_ag_ringworld_machine
+		is_planet_class = pc_ag_ringworld_city
+		is_planet_class = pc_ag_ringworld_gaia
+		# Merger of Rules
+		has_planet_flag = merg_is_forbidden_target
+		# Warship Girls and MIST species
+		is_planet_class = pc_ringworld_habitable_sh
+		is_planet_class = pc_ringworld_habitable_wsg
+		is_planet_class = pc_ringworld_habitable_swim
+		is_planet_class = pc_ringworld_habitable_water
+		is_planet_class = pc_ringworld_habitable_uf
+		is_planet_class = pc_ringworld_habitable_auto_uf
+		is_planet_class = pc_dyson_ring
+		# Planetary Diversity
+		is_planet_class = pc_ammoniaring
+		is_planet_class = pc_ashring
+		is_planet_class = pc_methanering
+		is_planet_class = pc_sulfurring
+	}
+}
+
+is_giga_ringworld = {
+	OR = {
+		is_planet_class = pc_ringworld_habitable
+		is_planet_class = pc_shattered_ring_habitable
+		# Gigastructural Engineering & More
+		is_planet_class = pc_gigaorbital_ring
+		is_planet_class = pc_interstellar_ringworld_habitable
+		is_planet_class = pc_ringworld_city
+		is_planet_class = pc_squareworld_habitable
+		is_planet_class = pc_giga_penrose_habitable
+		is_planet_class = pc_ringworld_machine
+		is_planet_class = pc_ringworld_hive
+		is_planet_class = pc_giga_maginot_ringworld
+		# Ancient Empire
+		is_planet_class = pc_ag_ringworld_desert
+		is_planet_class = pc_ag_ringworld_arid
+		is_planet_class = pc_ag_ringworld_savannah
+		is_planet_class = pc_ag_ringworld_ocean
+		is_planet_class = pc_ag_ringworld_continental
+		is_planet_class = pc_ag_ringworld_tropical
+		is_planet_class = pc_ag_ringworld_tundra
+		is_planet_class = pc_ag_ringworld_arctic
+		is_planet_class = pc_ag_ringworld_alpine
+		is_planet_class = pc_ag_ringworld_machine
+		is_planet_class = pc_ag_ringworld_city
+		is_planet_class = pc_ag_ringworld_gaia
+		# Warship Girls and MIST species
+		is_planet_class = pc_ringworld_habitable_sh
+		is_planet_class = pc_ringworld_habitable_wsg
+		is_planet_class = pc_ringworld_habitable_swim
+		is_planet_class = pc_ringworld_habitable_water
+		is_planet_class = pc_ringworld_habitable_uf
+		is_planet_class = pc_ringworld_habitable_auto_uf
+		is_planet_class = pc_dyson_ring
+		# Planetary Diversity
+		is_planet_class = pc_ammoniaring
+		is_planet_class = pc_ashring
+		is_planet_class = pc_methanering
+		is_planet_class = pc_sulfurring
+	}
+}
+
+is_giga_habitat = {
+	OR = {
+		merg_is_habitat = yes
+		is_planet_class = pc_flat_world
+	}
+}
+
+mega_blokkats_wont_stripmine = {
+	OR = {
+		is_megastructure_type = crisis_sphere_0
+		is_megastructure_type = crisis_sphere_1
+		is_megastructure_type = crisis_sphere_2
+		is_megastructure_type = crisis_sphere_3
+		is_megastructure_type = crisis_sphere_4
+		is_megastructure_type = crisis_sphere_ruined
+		is_megastructure_type = gateway_0
+		is_megastructure_type = gateway_restored
+		is_megastructure_type = gateway_ruined
+		is_megastructure_type = gateway_final
+		is_megastructure_type = lgate_base
+		is_megastructure_type = hyper_relay
+		is_megastructure_type = hyper_relay_restored
+		is_megastructure_type = hyper_relay_ruined
+		# ACOT
+		is_megastructure_type = sofe_inner_gate
+		is_megastructure_type = sofe_outer_gate
+		# Ancient Empire
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_0
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_1
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_2
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_3
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_4
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_5
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_opening
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_opening_blue
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_closing
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_damaged
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_damaged_alt
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_closed
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_closed_alt
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_burst
+		is_megastructure_type = ag_ancient_eta_gateway_control_megastructure_0
+		is_megastructure_type = ag_ancient_eta_gateway_control_megastructure_1
+		is_megastructure_type = ag_ancient_eta_gateway_control_megastructure_2
+		is_megastructure_type = ag_ancient_eta_gateway_control_megastructure_3
+		is_megastructure_type = ag_ancient_eta_gateway_control_damaged
+		is_megastructure_type = ag_ancient_eta_gateway_control_restored
+		is_megastructure_type = ag_ancient_eta_gateway_control_restored_1
+		is_megastructure_type = ag_ancient_eta_gateway_control_restored_2
+		is_megastructure_type = ag_ancient_eta_gateway_galactic_gateway
+		is_megastructure_type = ag_ancient_eta_gateway_lgate
+		is_megastructure_type = ag_ancient_eta_gateway_ancient_gateway
+		is_megastructure_type = ag_ancient_eta_gateway_wormhole_temporary
+		is_megastructure_type = ag_ancient_eta_gateway_wormhole_temporary_alt
+		is_megastructure_type = ag_psionic_portal_megastructure
+		is_megastructure_type = ag_psionic_portal_stabled_megastructure
+		# Antarans Attack!
+		is_megastructure_type = a_gateway_0
+		is_megastructure_type = a_gateway_final
+		# AOT
+		is_megastructure_type = dimensional_mirror_0
+		is_megastructure_type = dimensional_mirror_final
+		# Archaeology Story Pack
+		is_megastructure_type = ASP_site_beyond_earth_purity_gateway
+		# Blorg
+		is_megastructure_type = Transwarp_hub_1
+		is_megastructure_type = Transwarp_hub_2
+		is_megastructure_type = Transwarp_hub_3
+		is_megastructure_type = Transwarp_hub_4
+		is_megastructure_type = Transwarp_hub_5
+		# Darkspace
+		is_megastructure_type = ancient_relay_0
+		is_megastructure_type = ancient_relay_final
+		# Imperial Projects
+		is_megastructure_type = Empyreal_Travel_Beacon_0
+		is_megastructure_type = Empyreal_Travel_Beacon_1
+		is_megastructure_type = Empyreal_Travel_Beacon_2
+		# Gigastructural Engineering & More
+		is_megastructure_type = ehof_pgate_unknown
+		is_megastructure_type = ehof_pgate_gateway
+		is_megastructure_type = ehof_megastructure_wormhole_destination
+		is_megastructure_type = ehof_trader_wormhole_01
+		is_megastructure_type = ehof_trader_wormhole_external
+		# MEM
+		is_megastructure_type = mem_vazuran_gateway_nexus
+		is_megastructure_type = mem_vazuran_gateway
+		is_megastructure_type = mem_sadrell_gateway_inactive
+		is_megastructure_type = mem_sadrell_gateway_active
+		# Nyto Species Pack
+		is_megastructure_type = GFnyto_lgate_base
+		# Reworked Advanced Ascension
+		is_megastructure_type = AAR_MEGA_webway_BASE
+		is_megastructure_type = AAR_MEGA_webway_NODE
+		is_megastructure_type = AAR_MEGA_webway_NEXUS
+		is_megastructure_type = AAR_MEGA_webway_CLOSE
+		# Shadowgate
+		is_megastructure_type = shadowrift_a
+		is_megastructure_type = shadowrift_b
+		is_megastructure_type = shadowrift_c
+		is_megastructure_type = shadowrift_d
+		is_megastructure_type = shadowrift_e
+		is_megastructure_type = shadowrift_db
+		# Some Events of Outside Cluster
+		is_megastructure_type = nep_sealgate_ruined
+		is_megastructure_type = nep_sealgate_restored
+		is_megastructure_type = nep_sealportal_node_ruined
+		is_megastructure_type = nep_sealportal_node
+		is_megastructure_type = nep_sealphantom_node_ruined
+		is_megastructure_type = nep_sealphantom_node
+		is_megastructure_type = nep_wormhole_deus_mega
+		is_megastructure_type = nep_wormhole_ugo_mega
+		is_megastructure_type = nep_wormhole_wohp_mega
+		# Star Wars: Kuat Ancient Empire
+		is_megastructure_type = exe_outer_gate_disable
+		is_megastructure_type = exe_outer_gate
+		is_megastructure_type = exe_outer_gate_locked
+		is_megastructure_type = Shield_Gate
+		# Star Wars: UnknownWorld Shipgirls Story
+		is_megastructure_type = swgs_outer_gate
+		# ThaumStellaris
+		is_megastructure_type = tc_celestial_gateway_0
+		is_megastructure_type = tc_celestial_gateway_1
+		is_megastructure_type = tc_celestial_gateway_2
+		is_megastructure_type = tc_celestial_gateway
+		is_megastructure_type = tc_elder_gate_off
+		is_megastructure_type = tc_elder_gate_on
+		is_megastructure_type = tc_ancient_gate
+		# Twinks Atlanteans
+		is_megastructure_type = gateway_heaven
+		is_megastructure_type = gateway_titan
+		# Unique Ascension Perks
+		is_megastructure_type = nanite_gateway
+		is_megastructure_type = emergency_gateway
+		# Warship Girls R and MIST Species
+		is_megastructure_type = wg_khan_outer_gate
+		is_megastructure_type = wg_psionic_wormhole
+		is_megastructure_type = wg_fm_gateway_damaged
+		is_megastructure_type = wg_fm_gateway_01
+		is_megastructure_type = wg_fm_gateway_02
+		is_megastructure_type = wg_fm_gateway_03
+		is_megastructure_type = wg_fm_gateway_04
+		is_megastructure_type = wg_fm_gateway_05
+		is_megastructure_type = uf_mobile_portal
+		is_megastructure_type = uf_mobile_portal2
+		is_megastructure_type = uf_mobile_portal_temp
+		is_megastructure_type = uf_hyperlane_a
+		is_megastructure_type = uf_hyperlane_b
+		is_megastructure_type = uf_hyperlane_c
+		is_megastructure_type = uf_hyperlane_d
+		is_megastructure_type = uf_mega_habitat_gateway
+	}
+}
+
+ndb_can_target_system = {
+	cohesive_system = no
+	compound_cluster = no
+	annihilator_system = no
+	urmazin_system = no
+	everchanging_system = no
+	merg_is_void_system = no
+	NOT = { is_star_class = sc_black_hole }
+	NOT = { has_star_flag = blokkat_system_being_stripmined }
+	NOT = { has_star_flag = blokkat_stripmined_system }
+	NOT = { any_fleet_in_system = { owner = { is_country_type = blokkat_stripminers } } }
+	NOT = { any_ship_in_system = { is_ship_size = precursor_colossus } }
+	NOT = { any_ship_in_system = { is_ship_size = sofe_ancient_weapon } }
+	NOT = {
+		any_system_planet = {
+			NOR = {
+				AND = {
+					is_capital = yes
+					exists = owner
+					owner = { is_same_value = root }
+				}
+				is_planet_class = pc_birch
+				is_planet_class = pc_void_birch
+				is_planet_class = pc_alderson_slice_ecu
+				is_planet_class = pc_alderson_slice_hive
+				is_planet_class = pc_alderson_slice_machine
+				is_planet_class = pc_alderson_slice_gaia
+				is_planet_class = pc_alderson_slice_pc
+				is_planet_class = pc_ai
+				is_planet_class = pc_squareworld_habitable
+				has_planet_flag = cant_build_here
+				has_planet_flag = cant_target_this_planet
+				is_planet_class = pc_virtual_industry
+				is_planet_class = pc_virtual_reality
+				is_planet_class = pc_virtual_stellar_industry
+				# Merger of Rules
+				has_planet_flag = merg_is_forbidden_target
+				# ACOT
+				is_planet_class = pc_acot_enigmopolis
+			}
+		}
+	}
+}
+
+ndb_can_target_planet = {
+	NOR = {
+		AND = {
+			is_capital = yes
+			exists = owner
+			owner = { is_same_value = root }
+		}
+		is_star = yes
+		is_planet_class = pc_birch
+		is_planet_class = pc_void_birch
+		is_planet_class = pc_alderson_slice_ecu
+		is_planet_class = pc_alderson_slice_hive
+		is_planet_class = pc_alderson_slice_machine
+		is_planet_class = pc_alderson_slice_gaia
+		is_planet_class = pc_alderson_slice_pc
+		is_planet_class = pc_ai
+		is_planet_class = pc_squareworld_habitable
+		has_planet_flag = cant_build_here
+		has_planet_flag = cant_target_this_planet
+		is_planet_class = pc_virtual_industry
+		is_planet_class = pc_virtual_reality
+		is_planet_class = pc_virtual_stellar_industry
+		# Merger of Rules
+		has_planet_flag = merg_is_forbidden_target
+		# ACOT
+		is_planet_class = pc_acot_enigmopolis
+	}
+}
+
+giga_gas_giant = {
+	OR = {
+		is_planet_class = pc_gas_giant
+		# Planetary Diversity
+		is_planet_class = pc_hot_gas_giant
+		is_planet_class = pc_cloudless_gas_giant
+		is_planet_class = pc_cold_gas_giant
+	}
+}
+
+giga_can_be_war_planet = {
+	NOT = { has_planet_flag = dormant_war_planet }
+	is_moon = no
+	has_anomaly = no
+	is_colony = no
+	prev = { NOT = { has_ethic = ethic_fanatic_spiritualist } }
+	OR = {
+		is_planet_class = pc_barren
+		is_planet_class = pc_barren_cold
+		is_planet_class = pc_molten
+		is_planet_class = pc_toxic
+		is_planet_class = pc_frozen
+		# Planetary Diversity
+		is_planet_class = pc_hothouse
+	}
+}
+
+############################### Zenith of the Fallen Empires ###############################
+# Overwriting this for ZOFE and comp mods
+is_zofe_compatible = {
+	OR = {
+		is_country_type = default
+		# ZOFE
+		is_country_type = ascended_empire
+		is_country_type = lost_empire
+		# The Empty Vagrant
+		is_country_type = default_ev
+		# Darkspace
+		is_country_type = ds_nomads
+	}
+}
+
+############################### Acquisition of Technologies ###############################
+# AOT trigger disallowing planetary shields to be shown
+is_memeable_space_habitat = {
+	OR = {
+		uses_district_set = habitat
+		habitable_structure = yes
+		is_ringworld = yes
+		merg_is_habitat = yes
+		merg_is_hab_ringworld = yes
+		# Gigastructural Engineering & More
+		giga_habitable_structure = yes
+	}
+}
+
+is_memeable_ringworld = {
+	OR = {
+		is_planet_class = pc_ringworld_habitable
+		is_planet_class = pc_shattered_ring_habitable
+		# Gigastructural Engineering & More
+		is_planet_class = pc_gigaorbital_ring
+		is_planet_class = pc_interstellar_ringworld_habitable
+		is_planet_class = pc_ringworld_city
+		is_planet_class = pc_squareworld_habitable
+		is_planet_class = pc_giga_penrose_habitable
+		is_planet_class = pc_ringworld_machine
+		is_planet_class = pc_ringworld_hive
+		# Ancient Empire
+		# listed planet types are for colors only, they're all ideal
+		is_planet_class = pc_ag_ringworld_desert
+		is_planet_class = pc_ag_ringworld_arid
+		is_planet_class = pc_ag_ringworld_savannah
+		is_planet_class = pc_ag_ringworld_ocean
+		is_planet_class = pc_ag_ringworld_continental
+		is_planet_class = pc_ag_ringworld_tropical
+		is_planet_class = pc_ag_ringworld_tundra
+		is_planet_class = pc_ag_ringworld_arctic
+		is_planet_class = pc_ag_ringworld_alpine
+		is_planet_class = pc_ag_ringworld_machine
+		is_planet_class = pc_ag_ringworld_city
+		is_planet_class = pc_ag_ringworld_gaia
+		# Warship Girls and MIST species
+		is_planet_class = pc_ringworld_habitable_sh
+		is_planet_class = pc_ringworld_habitable_wsg
+		is_planet_class = pc_ringworld_habitable_swim
+		# Planetary Diversity
+		is_planet_class = pc_ammoniaring
+		is_planet_class = pc_ashring
+		is_planet_class = pc_methanering
+		is_planet_class = pc_sulfurring
+		# Darkspace
+		is_planet_class = pc_ancient_ringworld
+		is_planet_class = pc_ringworld_spectrals
+	}
+}
+
+############################### More Events Mod ###############################
+# disallowing MEM planetary shields to be shown 
+mem_is_spherical_world = {
+	is_ringworld = no
+	NOR = {
+		uses_district_set = habitat
+		habitable_structure = yes
+		merg_is_habitat = yes
+		merg_is_hab_ringworld = yes
+		# Gigastructural Engineering & More
+		uses_district_set = giga_planet
+		uses_district_set = giga_gas_giant_habitat
+		uses_district_set = giga_birch
+		uses_district_set = virtual_ring
+		uses_district_set = virtual_ring_industry
+		uses_district_set = acot_giga_void_sphere
+		uses_district_set = giga_alderson
+		is_planet_class = pc_flat_world
+	}
+}
+
+############################### ThaumStellaris ###############################
+# Expanding this with more desolate worlds
+tc_element_shard_candidate = {
+	NOT = {
+		has_deposit_for = shipclass_research_station
+	}
+	OR = {
+		uninhabitable_regular_planet = yes
+		is_planet_class = pc_asteroid
+		is_planet_class = pc_broken
+		is_planet_class = pc_shattered
+		# Planetary Diversity
+		is_planet_class = pc_rogue
+		is_planet_class = pc_eyeball
+		is_planet_class = pc_diamond
+		is_planet_class = pc_chthonian
+	}
+}
+
+############################### Starborn ###############################
+# Expanding Starborn trigger with ACOT/AOT gene clinics
+has_gene_clinic = {
+	OR = {
+		has_building = building_hospital
+		has_building = building_clinic
+		# ACOT
+		has_building = building_fe_hospital
+		has_building = building_ae_hospital
+		# AOT
+		has_building = building_stellarite_hospital
+		has_building = building_phanon_hospital
+	}
+}
+
+# Adding support to other mods structures
+starborn_can_place_hab = {
+	custom_tooltip = {
+		fail_text = "requires_surveyed_planet"
+		is_surveyed = {
+			# prevent leaking habitability information
+			who = prev.from
+			status = yes
+		}
+	}
+	custom_tooltip = {
+		fail_text = "requires_no_anomaly"
+		has_anomaly = no
+	}
+	custom_tooltip = {
+		fail_text = "requires_no_existing_megastructure"
+		NOR = {
+			has_planet_flag = megastructure
+			has_planet_flag = has_megastructure
+			solar_system = {
+				has_star_flag = ring_world_built
+			}
+			is_ringworld = yes
+			is_planet_class = pc_ringworld_habitable_damaged
+			is_planet_class = pc_ringworld_tech
+			is_planet_class = pc_ringworld_tech_damaged
+			is_planet_class = pc_ringworld_seam
+			is_planet_class = pc_ringworld_seam_damaged
+			merg_is_habitat_non_starborn = yes
+			merg_is_hab_ringworld = yes
+			# Gigastructural Engineering & More
+			giga_habitable_structure = yes
+		}
+	}
+}
+
+############################### Legendary Worlds ###############################
+legw_planet_uninhabitable = {
+	colonizable_planet = no
+}
+
+legw_planet_habitable = {
+	AND = {
+		colonizable_planet = yes
+		is_artificial = no
+	}
+}
+
+legw_megaplanet = {
+	OR = {
+		is_artificial = yes
+		is_planet_class = pc_machine
+		is_planet_class = pc_cybrex
+		is_planet_class = pc_archive
+		# Gigastructural Engineering & More
+		is_planet_class = pc_giga_planetary_computer
+	}
+}
+
+legw_is_dry = {
+	AND = {
+		has_climate = dry
+		NOT = {
+			is_planet_class = pc_city
+		}
+	}
+}
+
+legw_is_wet = {
+	has_climate = wet
+}
+
+legw_is_cold = {
+	has_climate = cold
+}
+
+legw_fallen_empire_planet = {
+	owner = {
+		OR = {
+			merg_is_fallen_empire = yes
+			merg_is_awakened_fe = yes
+		}
+	}
+}
+
+legw_broken_megastructure = {
+	OR = {
+		is_planet_class = pc_ringworld_habitable_damaged
+		is_planet_class = pc_ringworld_tech_damaged
+		is_planet_class = pc_ringworld_seam_damaged
+	}
+}
+
+############################### Real Space New Frontiers ###############################
+is_moon_of_gas_giant = {
+	is_scope_type = planet
+	exists = orbit
+	orbit = {
+		merg_is_gas_giant = yes
+	}
+}
+
+############################### Star Wars: Kuat Ancient Empire ###############################
+kuat_is_common_country = {
+	OR = {
+		is_country_type = default
+		is_country_type = fallen_empire
+		is_country_type = awakened_fallen_empire
+		is_country_type = awakened_marauders
+		is_country_type = primitive
+		is_country_type = ratlings
+		# ZOFE
+		is_country_type = lost_empire
+		# The Empty Vagrant
+		is_country_type = default_ev
+		is_country_type = fallen_empire_ev
+		# Darkspace
+		is_country_type = ds_nomads
+	}
+}
+
+kuat_is_defense_galaxy_fleet = {
+	any_country = {
+		OR = {
+			is_crisis_faction = yes
+			# Ancient Empire
+			is_country_type = ag_ancient_gamma_guardian
+			is_country_type = ag_zeta_crisis_country
+			is_country_type = ag_ancient_primitive_crisis
+		}
+	}
+}
+
+############################### Ancient Caches of Technology ###############################
+is_playable_country = {
+	OR = {
+		is_country_type = default
+		is_country_type = fallen_empire
+		is_country_type = awakened_fallen_empire
+		# ZOFE
+		is_zofe_country = yes
+		# ACOT
+		is_country_type = original_empire_active
+		# The Empty Vagrant
+		is_country_type = default_ev
+		# Darkspace
+		is_country_type = ds_nomads
+	}
+}
+
+############################### OldEnt's Crisis Mods ###############################
+CmtTriggerIsPlayableEmpire = {
+	OR = {
+		is_country_type = default
+		is_ai = no
+		# ACOT
+		is_country_type = original_empire_active
+		# ZOFE
+		is_zofe_country = yes
+		# The Empty Vagrant
+		is_country_type = default_ev
+		# Darkspace
+		is_country_type = ds_nomads
+	}
+}
+
+CmtTriggerIsEmpire = {
+	OR = {
+		is_country_type = default
+		is_ai = no
+		is_country_type = fallen_empire
+		is_country_type = awakened_fallen_empire
+		# ACOT
+		is_country_type = original_empire_active
+		# ZOFE
+		is_zofe_country = yes
+		# The Empty Vagrant
+		is_country_type = default_ev
+		is_country_type = fallen_empire_ev
+		is_country_type = awakened_fallen_empire_ev
+		# Darkspace
+		is_country_type = ds_nomads
+	}
+}
+
+CmtTriggerIsFallenEmpire = {
+	OR = {
+		is_country_type = fallen_empire
+		is_country_type = awakened_fallen_empire
+		# ZOFE
+		is_zofe_country = yes
+		# The Empty Vagrant
+		is_country_type = fallen_empire_ev
+		is_country_type = awakened_fallen_empire_ev
+		# SW:KUAT ANCIENT EMPIRE
+		is_country_type = kuat_fallen_empire
+		is_country_type = kuat_awakened_fallen_empire
+		is_country_type = awakened_return_kuat_empire
+		# History of the Lost Empire
+		is_country_type = LsE_fallen_empire
+	}
+}
+
+############################### Exalted Domination ###############################
+exalted_is_valid_as_vassal = {
+	OR = {
+		is_country_type = default
+		is_country_type = default_ev
+		# Darkspace
+		is_country_type = ds_nomads
+	}
+}
+
+############################### Expanded Traits, Civics, Pops, and More ###############################
+is_open_gestalt = {
+	OR = {
+		has_ai_personality = open_hive_mind
+		has_ai_personality = open_machine_intelligence
+		# Expanded Gestalts
+		has_valid_civic = civic_mutualistic_behavior
+	}
+}
+
+############################### History of the Lost Empire ###############################
+afk_target_planet = {
+	OR = {
+		is_planet_class = pc_city
+		is_planet_class = pc_relic
+		is_planet_class = pc_nuked
+		is_planet_class = pc_hive
+		is_planet_class = pc_machine
+		colonizable_planet = yes
+		habitable_planet = yes
+		is_artificial = yes
+		uninhabitable_regular_planet = yes
+		# Planetary Diversity
+		is_planet_class = pc_pdshroud
+		is_planet_class = pc_irradiated
+		# Gigastructures
+		is_planet_class = pc_katzenland
+		# SW:UnknownWorld Shipgirls Story
+		is_planet_class = pc_swgs_engineer
+		is_planet_class = pc_swgs_engineer_ringworld_habitable
+		# Warship Girls R And MIST Species
+		is_planet_class = pc_wsg_port
+		is_planet_class = pc_shenhai
+		# APSR: Anomalies, Planetary and Space Resources
+		has_apsr_modifiers = yes
+		# Planetary Diversity
+		is_pd_planet_class_all = yes
+		# Gigastructural Engineering & More
+		is_planet_class = pc_red_toxic
+	}
+}
+
+############################### Warship Girls R and MIST Species ###############################
+is_habitat_wg = {
+	OR = {
+		is_planet_class = pc_habitat
+		# Planetary Diversity
+		uses_district_set = pdplanethab
+		# Gigastructural Engineering & More
+		is_planet_class = pc_interstellar_habitat
+		# More Events Mod
+		is_planet_class = pc_mem_vazuran_habitat
+		# Acquisition of Technology
+		uses_district_set = dm_habitat
+		uses_district_set = ae_habitat
+		uses_district_set = sigma_habitat
+		# Starborn: Improved Voidtouched
+		uses_district_set = starborn_start
+		# Twinks Atlantean
+		uses_district_set = skypalace
+		# Plentiful Traditions
+		is_planet_class = pc_habitat_robot
+	}
+}
+
+is_default_and_fallen_country = {
+	OR = {
+		is_country_type = default
+		is_country_type = fallen_empire
+		is_country_type = awakened_fallen_empire
+		# ZOFE
+		is_zofe_country = yes
+		# The Empty Vagrant
+		is_country_type = default_ev
+		is_country_type = fallen_empire_ev
+		is_country_type = awakened_fallen_empire_ev
+		# SW:KUAT ANCIENT EMPIRE
+		is_country_type = kuat_fallen_empire
+		is_country_type = kuat_awakened_fallen_empire
+		is_country_type = awakened_return_kuat_empire
+		# A Deadly Tempest
+		is_country_type = awakened_gate_builders
+		# Darkspace
+		is_country_type = ds_nomads
+	}
+}
+
+is_default_country_wg = {
+	OR = {
+		is_country_type = default
+		is_country_type = default_ev
+		# ZOFE
+		is_zofe_country = yes
+		# Darkspace
+		is_country_type = ds_nomads
+	}
+}
+
+has_active_wg_foundry_building = {
+	OR = {
+		has_active_building = building_foundry_1
+		has_active_building = building_foundry_2
+		has_active_building = building_foundry_3
+		has_active_building = building_nano_forge
+		# Warship Girls R and MIST Species
+		has_active_building = building_sep_foundry
+		has_active_building = building_sep_foundry2
+		has_active_building = building_wsg_foundry
+		has_active_building = building_gray_nano_foundry
+		has_active_building = building_gray_nano_foundry2
+		# ACOT
+		has_active_building = building_fe_alloy_forge
+		has_active_building = building_ae_alloy_forge
+		has_active_building = building_ae_nano_forge
+		# AOT
+		has_active_building = building_fe_nano_forge
+		has_active_building = building_phanon_nano_forge
+		has_active_building = building_phanon_alloy_forge
+		has_active_building = building_stellarite_nano_forge
+		has_active_building = building_stellarite_alloy_forge
+	}
+}
+
+has_active_wg_foundry_building_lv_low = {
+	OR = {
+		has_active_building = building_foundry_1
+		has_active_building = building_foundry_2
+		# Warship Girls R and MIST Species
+		has_active_building = building_sep_foundry
+		has_active_building = building_wsg_foundry
+		has_active_building = building_gray_nano_foundry
+	}
+}
+
+has_active_wg_foundry_building_lv_high = {
+	OR = {
+		has_active_building = building_foundry_3
+		has_active_building = building_nano_forge
+		# Warship Girls R and MIST Species
+		has_active_building = building_sep_foundry2
+		has_active_building = building_wsg_foundry
+		has_active_building = building_gray_nano_foundry2
+		# ACOT
+		has_active_building = building_fe_alloy_forge
+		has_active_building = building_ae_alloy_forge
+		# AOT
+		has_active_building = building_fe_nano_forge
+		has_active_building = building_phanon_nano_forge
+		has_active_building = building_phanon_alloy_forge
+		has_active_building = building_stellarite_nano_forge
+		has_active_building = building_stellarite_alloy_forge
+	}
+}
+
+has_active_wg_factory_building = {
+	OR = {
+		has_active_building = building_factory_1
+		has_active_building = building_factory_2
+		has_active_building = building_factory_3
+		has_active_building = building_affluence_center
+		# Warship Girls R and MIST Species
+		has_active_building = building_sep_foundry
+		has_active_building = building_gray_nano_factory
+		# ACOT
+		has_active_building = building_fe_factory
+		has_active_building = building_ae_factory
+		has_active_building = building_ae_affluence_center
+		# AOT
+		has_active_building = building_fe_affluence_center
+		has_active_building = building_phanon_affluence_center
+		has_active_building = building_phanon_civilian_factory
+		has_active_building = building_stellarite_affluence_center
+		has_active_building = building_stellarite_civilian_factory
+	}
+}
+
+############################### Ancient Empire ###############################
+ag_is_gateway_megastructure = {
+	OR = {
+		is_megastructure_type = gateway_0
+		is_megastructure_type = gateway_ruined
+		is_megastructure_type = gateway_restored
+		is_megastructure_type = gateway_final
+		is_megastructure_type = lgate_base
+		is_megastructure_type = hyper_relay
+		is_megastructure_type = hyper_relay_restored
+		is_megastructure_type = hyper_relay_ruined
+		# ACOT
+		is_megastructure_type = acot_phanon_dimensional_portal
+		is_megastructure_type = sofe_inner_gate
+		is_megastructure_type = sofe_outer_gate
+		# Ancient Empire
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_0
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_1
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_2
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_3
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_4
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_5
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_opening
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_opening_blue
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_closing
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_damaged
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_damaged_alt
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_closed
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_closed_alt
+		is_megastructure_type = ag_ancient_eta_gateway_megastructure_burst
+		is_megastructure_type = ag_ancient_eta_gateway_control_megastructure_0
+		is_megastructure_type = ag_ancient_eta_gateway_control_megastructure_1
+		is_megastructure_type = ag_ancient_eta_gateway_control_megastructure_2
+		is_megastructure_type = ag_ancient_eta_gateway_control_megastructure_3
+		is_megastructure_type = ag_ancient_eta_gateway_control_damaged
+		is_megastructure_type = ag_ancient_eta_gateway_control_restored
+		is_megastructure_type = ag_ancient_eta_gateway_control_restored_1
+		is_megastructure_type = ag_ancient_eta_gateway_control_restored_2
+		is_megastructure_type = ag_ancient_eta_gateway_galactic_gateway
+		is_megastructure_type = ag_ancient_eta_gateway_lgate
+		is_megastructure_type = ag_ancient_eta_gateway_ancient_gateway
+		is_megastructure_type = ag_ancient_eta_gateway_wormhole_temporary
+		is_megastructure_type = ag_ancient_eta_gateway_wormhole_temporary_alt
+		is_megastructure_type = ag_psionic_portal_megastructure
+		is_megastructure_type = ag_psionic_portal_stabled_megastructure
+		# Antarans Attack!
+		is_megastructure_type = a_gateway_0
+		is_megastructure_type = a_gateway_final
+		# AOT
+		is_megastructure_type = dimensional_mirror_0
+		is_megastructure_type = dimensional_mirror_final
+		# Archaeology Story Pack
+		is_megastructure_type = ASP_site_beyond_earth_purity_gateway
+		# Blorg
+		is_megastructure_type = Transwarp_hub_1
+		is_megastructure_type = Transwarp_hub_2
+		is_megastructure_type = Transwarp_hub_3
+		is_megastructure_type = Transwarp_hub_4
+		is_megastructure_type = Transwarp_hub_5
+		# Darkspace
+		is_megastructure_type = ancient_relay_0
+		is_megastructure_type = ancient_relay_final
+		# Gigastructural Engineering & More
+		is_megastructure_type = ehof_megastructure_ruined_origin
+		is_megastructure_type = ehof_megastructure_restored_origin
+		is_megastructure_type = ehof_megastructure_phase0
+		is_megastructure_type = ehof_megastructure_phase1_idle
+		is_megastructure_type = ehof_megastructure_phase2_idle
+		is_megastructure_type = ehof_megastructure_phase3_idle
+		is_megastructure_type = ehof_megastructure_phase4_idle
+		is_megastructure_type = ehof_megastructure_ruined
+		is_megastructure_type = ehof_megastructure_restored
+		is_megastructure_type = ehof_megastructure_phase1_activating
+		is_megastructure_type = ehof_megastructure_phase2_activating
+		is_megastructure_type = ehof_megastructure_phase3_activating
+		is_megastructure_type = ehof_megastructure_phase4_activating
+		is_megastructure_type = ehof_megastructure_phase1_active
+		is_megastructure_type = ehof_megastructure_phase2_active
+		is_megastructure_type = ehof_megastructure_phase3_active
+		is_megastructure_type = ehof_megastructure_phase4_active
+		is_megastructure_type = ehof_megastructure_phase1_decommissioned
+		is_megastructure_type = ehof_megastructure_phase2_decommissioned
+		is_megastructure_type = ehof_megastructure_phase3_decommissioned
+		is_megastructure_type = ehof_megastructure_phase4_decommissioned
+		is_megastructure_type = ehof_pgate_unknown
+		is_megastructure_type = ehof_pgate_gateway
+		is_megastructure_type = ehof_trader_wormhole_01
+		is_megastructure_type = ehof_trader_wormhole_external
+		# Imperial Projects
+		is_megastructure_type = Empyreal_Travel_Beacon_0
+		is_megastructure_type = Empyreal_Travel_Beacon_1
+		is_megastructure_type = Empyreal_Travel_Beacon_2
+		# MEM
+		is_megastructure_type = mem_vazuran_gateway_nexus
+		is_megastructure_type = mem_vazuran_gateway
+		is_megastructure_type = mem_sadrell_gateway_inactive
+		is_megastructure_type = mem_sadrell_gateway_active
+		# Nyto Species Pack
+		is_megastructure_type = GFnyto_lgate_base
+		# Reworked Advanced Ascension
+		is_megastructure_type = AAR_MEGA_webway_BASE
+		is_megastructure_type = AAR_MEGA_webway_NODE
+		is_megastructure_type = AAR_MEGA_webway_NEXUS
+		is_megastructure_type = AAR_MEGA_webway_CLOSE
+		# Shadowgate
+		is_megastructure_type = shadowrift_a
+		is_megastructure_type = shadowrift_b
+		is_megastructure_type = shadowrift_c
+		is_megastructure_type = shadowrift_d
+		is_megastructure_type = shadowrift_e
+		is_megastructure_type = shadowrift_db
+		# Some Events of Outside Cluster
+		is_megastructure_type = nep_sealgate_ruined
+		is_megastructure_type = nep_sealgate_restored
+		is_megastructure_type = nep_sealportal_node_ruined
+		is_megastructure_type = nep_sealportal_node
+		is_megastructure_type = nep_sealphantom_node_ruined
+		is_megastructure_type = nep_sealphantom_node
+		is_megastructure_type = nep_wormhole_deus_mega
+		is_megastructure_type = nep_wormhole_ugo_mega
+		is_megastructure_type = nep_wormhole_wohp_mega
+		# Star Wars: Kuat Ancient Empire
+		is_megastructure_type = exe_outer_gate_disable
+		is_megastructure_type = exe_outer_gate
+		is_megastructure_type = exe_outer_gate_locked
+		is_megastructure_type = Shield_Gate
+		# Star Wars: UnknownWorld Shipgirls Story
+		is_megastructure_type = swgs_outer_gate
+		# ThaumStellaris
+		is_megastructure_type = tc_celestial_gateway_0
+		is_megastructure_type = tc_celestial_gateway_1
+		is_megastructure_type = tc_celestial_gateway_2
+		is_megastructure_type = tc_celestial_gateway
+		is_megastructure_type = tc_elder_gate_off
+		is_megastructure_type = tc_elder_gate_on
+		is_megastructure_type = tc_ancient_gate
+		# Twinks Atlanteans
+		is_megastructure_type = gateway_heaven
+		is_megastructure_type = gateway_titan
+		# Unique Ascension Perks
+		is_megastructure_type = nanite_gateway
+		is_megastructure_type = emergency_gateway
+		# Warship Girls R and MIST Species
+		is_megastructure_type = wg_khan_outer_gate
+		is_megastructure_type = wg_psionic_wormhole
+		is_megastructure_type = wg_fm_gateway_damaged
+		is_megastructure_type = wg_fm_gateway_01
+		is_megastructure_type = wg_fm_gateway_02
+		is_megastructure_type = wg_fm_gateway_03
+		is_megastructure_type = wg_fm_gateway_04
+		is_megastructure_type = wg_fm_gateway_05
+		is_megastructure_type = uf_mobile_portal
+		is_megastructure_type = uf_mobile_portal2
+		is_megastructure_type = uf_mobile_portal_temp
+		is_megastructure_type = uf_hyperlane_a
+		is_megastructure_type = uf_hyperlane_b
+		is_megastructure_type = uf_hyperlane_c
+		is_megastructure_type = uf_hyperlane_d
+		is_megastructure_type = uf_mega_habitat_gateway
+	}
+}
+
+############################### Reworked Advanced Ascension ###############################
+# Fixing the trigger and removing obsolete code
+AAR_trgr_cntr_playable = {
+	OR = {
+		is_country_type = default
+		is_country_type = fallen_empire
+		is_country_type = awakened_fallen_empire
+		# A Deadly Tempest
+		is_country_type = awakened_gate_builders
+		# ACOT
+		is_country_type = original_empire
+		is_country_type = original_empire_passive
+		is_country_type = original_empire_active
+		# Darkspace
+		is_country_type = ds_nomads
+		# SW:KUAT ANCIENT EMPIRE
+		is_country_type = kuat_fallen_empire
+		is_country_type = kuat_awakened_fallen_empire
+		is_country_type = awakened_return_kuat_empire
+		# The Empty Vagrant
+		is_country_type = fallen_empire_ev
+		# ZOFE
+		is_zofe_country = yes
+	}
+}
+
+############################### The Empty Vagrant ###############################
+can_be_ev_investment_country = {
+	OR = {
+		is_country_type = default
+		# Darkspace
+		is_country_type = ds_nomads
+	}
+	is_hive_empire = no
+	is_machine_empire = no
+	num_owned_planets > 0
+	opinion = {
+		who = root
+		value > -99
+	}
+	NOT = {
+		is_at_war_with = root
+	}
+	NOR = {
+		has_ethic = ethic_fanatic_xenophobe
+		is_homicidal = yes
+		# Underground Realms
+		has_country_flag = dark_side
+		# Expanded Traits, Civics, Pops, and More
+		has_valid_civic = civic_infestation
+	}
+	has_communications = ROOT
+	NOT = {
+		has_country_flag = ev_received_an_investment
+	}
+	is_ai = yes
+}
+
+############################### Exalted Domination ###############################
+exalted_is_valid_as_vassal = {
+	OR = {
+		is_country_type = default
+		# The Empty Vagrant
+		is_country_type = default_ev
+		# Darkspace
+		is_country_type = ds_nomads
+	}
+}
+
+############################### The DAL Species Mod ###############################
+is_special_colony_planet_class = {
+	OR = {
+		is_planet_class = pc_city
+		is_planet_class = pc_cybrex
+		merg_is_habitat = yes
+		merg_is_hab_ringworld = yes
+		# Gigastructural Engineering & More
+		giga_habitable_structure = yes
+	}
+}
+
+############################### Darkspace ###############################
+ds_hyperlane_create = {
+	NOR = {
+		is_same_value = prev
+		has_hyperlane_to = prev
+		has_star_flag = ds_galactic_core
+		has_star_flag = empire_home_system
+		has_star_flag = marauder_system
+		has_star_flag = marauder_capital_1
+		has_star_flag = empire_cluster
+		has_star_flag = fallen_shrouded
+		has_star_flag = fallen_shielded_1
+		has_star_flag = fallen_shielded_2
+		has_star_flag = fallen_shielded_3
+		has_star_flag = holy_system_1
+		has_star_flag = holy_system_2
+		has_star_flag = holy_system_3
+		has_star_flag = holy_system_4
+		has_star_flag = holy_system_5
+		has_star_flag = fe_xeno_zoo
+		has_star_flag = fallen_shield_world
+		has_star_flag = fallen_empire_world
+		has_star_flag = sealed_system
+		has_star_flag = lcluster
+		# Gigastructures		
+		has_star_flag = giga_inner
+		has_star_flag = giga_galactic_center
+		has_star_flag = Paluush_system
+		has_star_flag = giga_system_six
+		has_star_flag = abandoned_gateway
+		has_star_flag = giga_outer_01
+		has_star_flag = giga_outer_02
+		has_star_flag = giga_outer_03
+		has_star_flag = giga_core_03
+		# Ancient Empire
+		has_star_flag = ag_no_jump_in_system
+		# ACOT
+		has_star_flag = outercluster
+		# Warship Girls R And MIST Species
+		has_star_flag = wg_sealed_system
+		has_star_flag = wg_psionic_systems
+		# SW:Kuat Ancient Empire
+		has_star_flag = Kuat_system
+		has_star_flag = Kuat_system_1
+		has_star_flag = Kuat_system_2
+		has_star_flag = Kuat_system_3
+		has_star_flag = kuat_initial_system
+		has_star_flag = Kuat_system_int
+		has_star_flag = Kuat_system_int_1
+		has_star_flag = Kuat_system_int_2
+		has_star_flag = Kuat_system_int_3
+		has_star_flag = Kuat_system_int_4
+		has_star_flag = nep_Krahen_cluster
+		has_star_flag = nep_Scrus_cluster
+	}
+}
