@@ -6,7 +6,7 @@ ap_eternal_vigilance = {
 		}
 	}
 	modifier = {
-		shipclass_starbase_damage_mult = 0.2	#0.25
+		shipclass_starbase_damage_mult = 0.2		#0.25
 		shipclass_starbase_hull_mult = 0.2		#0.25
 		shipclass_military_station_damage_mult = 0.25
 		starbase_defense_platform_capacity_add = 5
@@ -14,23 +14,38 @@ ap_eternal_vigilance = {
 	on_enabled = {
 		custom_tooltip = "ap_eternal_vigilance_tooltip"
 		hidden_effect = {
-			country_event = { id = UniqueAscensionPerksEvents.129 }
+			country_event = {
+				id = UniqueAscensionPerksEvents.129
+			}
 		}
 		if = {
-			limit = { has_global_flag = gigastructures_enabled }
+			limit = {
+				has_global_flag = gigastructures_enabled
+			}
 			custom_tooltip = "adds_4_asteroid_artillery_points"
 			hidden_effect = {
-				change_variable = { which = asteroid_artillery_points_max value = 4 }
+				change_variable = {
+					which = asteroid_artillery_points_max
+					value = 4
+				}
 			}
 		}
 	}
 	potential = {
-		NOT = { has_ascension_perk = ap_eternal_vigilance }
+		NOT = {
+			has_ascension_perk = ap_eternal_vigilance
+		}
 	}
 	ai_weight = {
 		factor = 15
-		modifier = { factor = 2 has_civic = civic_inwards_perfection }
-		modifier = { factor = 1.5 is_xenophobe = yes }
+		modifier = {
+			factor = 2
+			has_civic = civic_inwards_perfection
+		}
+		modifier = {
+			factor = 1.5
+			is_xenophobe = yes
+		}
 		modifier = {
 			factor = 1.5
 			any_neighbor_country = {
@@ -54,16 +69,22 @@ ap_executive_vigor = {
 		# edict_length_mult = 0.50
 	}
 	potential = {
-		NOT = { has_ascension_perk = ap_executive_vigor }
+		NOT = {
+			has_ascension_perk = ap_executive_vigor
+		}
 	}
 	on_enabled = {
 		custom_tooltip = "ap_executive_vigor_tooltip"
 		hidden_effect = {
-			country_event = { id = UniqueAscensionPerksEvents.421 }
+			country_event = {
+				id = UniqueAscensionPerksEvents.421
+			}
 		}
 	}
 	# it's better than average
-	ai_weight = { factor = 30 }
+	ai_weight = {
+		factor = 30
+	}
 }
 
 # Nevertheless there is a 1 year MTTH fallback.
@@ -75,13 +96,19 @@ ap_transcendent_learning = {
 	on_enabled = {
 		custom_tooltip = "ap_transcendent_learning_tooltip"
 		hidden_effect = {
-			country_event = { id = UniqueAscensionPerksEvents.31 }
+			country_event = {
+				id = UniqueAscensionPerksEvents.31
+			}
 		}
 	}
 	potential = {
-		NOT = { has_ascension_perk = ap_transcendent_learning }
+		NOT = {
+			has_ascension_perk = ap_transcendent_learning
+		}
 	}
-	ai_weight = { factor = 10 }
+	ai_weight = {
+		factor = 10
+	}
 }
 
 ap_machine_worlds = {
@@ -89,7 +116,9 @@ ap_machine_worlds = {
 		custom_tooltip = "allow_machine_worlds"
 		custom_tooltip = "describe_machine_worlds"
 		if = {
-			limit = { has_civic = civic_machine_servitor }
+			limit = {
+				has_civic = civic_machine_servitor
+			}
 			custom_tooltip = "01_BERSERK_MACHINE_EMPIRE_ERROR"
 			custom_tooltip = "anomaly.3060.c"
 			custom_tooltip = "01_BERSERK_MACHINE_EMPIRE_ERROR"
@@ -98,7 +127,9 @@ ap_machine_worlds = {
 	potential = {
 		has_synthethic_dawn = yes
 		is_synthetic_empire = yes
-		NOT = { has_ascension_perk = ap_machine_worlds }
+		NOT = {
+			has_ascension_perk = ap_machine_worlds
+		}
 	}
 	possible = {
 		custom_tooltip = {
@@ -112,6 +143,9 @@ ap_machine_worlds = {
 	}
 	ai_weight = {
 		factor = 100
-		modifier = { factor = 0 has_valid_civic = civic_machine_servitor }
+		modifier = {
+			factor = 0
+			has_valid_civic = civic_machine_servitor
+		}
 	}
 }

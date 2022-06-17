@@ -51,13 +51,19 @@ gateway = {
 	animation_time = 1
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	prerequisites = { tech_gateway_activation }
+	prerequisites = {
+		tech_gateway_activation
+	}
 	on_pre_explore = {
 		activate_gateway = fromfrom
 		if = {
-			limit = { num_active_gateways = 1 }
+			limit = {
+				num_active_gateways = 1
+			}
 			random_megastructure = {
-				limit = { is_megastructure_type = gateway_ruined }
+				limit = {
+					is_megastructure_type = gateway_ruined
+				}
 				upgrade_megastructure_to = gateway_restored
 				finish_upgrade = yes
 			}
@@ -67,13 +73,17 @@ gateway = {
 		custom_tooltip = {
 			fail_text = GATEWAY_COUNTRY_CANNOT_USE
 			OR = {
-				NOT = { exists = from }
+				NOT = {
+					exists = from
+				}
 				from = {
 					OR = {
 						is_same_empire = root
 						is_in_federation_with = root
 						is_overlord_to = root
-						root = { is_overlord_to = from }
+						root = {
+							is_overlord_to = from
+						}
 						NOR = {
 							has_closed_borders = root
 							is_hostile = root
@@ -115,19 +125,31 @@ wormhole = {
 	connection_type = one_to_one
 	ftl_ship_effect = "wormhole_ftl_ship_effect_entity"
 	ftl_bypass_effect = "wormhole_ftl_bypass_effect_entity"
-	prerequisites = { tech_wormhole_stabilization }
-	potential = { always = yes }
+	prerequisites = {
+		tech_wormhole_stabilization
+	}
+	potential = {
+		always = yes
+	}
 	country_can_use = {
 		custom_tooltip = {
 			fail_text = NATURAL_WORMHOLE_COUNTRY_CANNOT_USE
 			# Wormhole can be used if...
 			OR = {
 				# System has no owner
-				NOT = { exists = from }
+				NOT = {
+					exists = from
+				}
 				# System's owner has not closed borders to you.
-				from = { NOT = { has_closed_borders = root } }
+				from = {
+					NOT = {
+						has_closed_borders = root
+					}
+				}
 				# System's owner is at war with you.
-				from = { is_at_war_with = root }
+				from = {
+					is_at_war_with = root
+				}
 				# System's owner is not a proper empire.
 				from = {
 					is_country_type_with_subjects = no
@@ -136,7 +158,9 @@ wormhole = {
 				AND = {
 					# System's owner is GC member and you are custodian/emperor
 					exists = from
-					from = { is_galactic_community_member = yes }
+					from = {
+						is_galactic_community_member = yes
+					}
 					root = {
 						OR = {
 							is_galactic_custodian = yes
@@ -221,12 +245,13 @@ relay_bypass = {
 	animation_time = 1
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-
 	country_can_use = {
 		custom_tooltip = {
 			fail_text = HYPER_RELAY_COUNTRY_CANNOT_USE
 			OR = {
-				NOT = { exists = from }
+				NOT = {
+					exists = from
+				}
 				AND = {
 					exists = from
 					from = {
@@ -249,11 +274,11 @@ quantum_catapult = {
 	always_active = yes
 	windup_time = 30
 	winddown_time = 360
-	ftl_multiplier = 0			# 0 means instant
+	ftl_multiplier = 0	# 0 means instant
 	icon_frame = 25
 	remember_instances = no	# Whether countries remember meeting a specific instance of that type, or if they just remember seeing the type in general.
-	galactic_map_tooltip_header=quantum_catapult_BYPASS
-	galactic_map_tooltip_desc=quantum_catapult_BYPASS_DESC
+	galactic_map_tooltip_header = quantum_catapult_BYPASS
+	galactic_map_tooltip_desc = quantum_catapult_BYPASS_DESC
 	connection_type = to_any_system
 	animation_time = 1
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
@@ -265,11 +290,15 @@ quantum_catapult = {
 		custom_tooltip = {
 			fail_text = QUANTUM_CATAPULT_COUNTRY_CANNOT_USE
 			OR = {
-				NOT = { exists = from }
+				NOT = {
+					exists = from
+				}
 				is_same_value = from
 				is_in_federation_with = from
 				is_overlord_to = from
-				from = { is_overlord_to = root }
+				from = {
+					is_overlord_to = root
+				}
 			}
 		}
 	}
@@ -280,40 +309,40 @@ shroud_tunnel = {
 	name = SHROUD_TUNNEL_GALACTIC
 	is_pathfind = yes
 	requires_exploration = no
-	uses_action = yes # opt-in to risky Shroud transit
+	uses_action = yes	# opt-in to risky Shroud transit
 	always_active = yes
 	windup_time = 40
 	winddown_time = 20
-	ftl_multiplier = 0 # instant
+	ftl_multiplier = 0	# instant
 	extends_sensors = no
 	icon_frame = 25
 	remember_instances = no
 	galactic_map_tooltip_header = SHROUD_TUNNEL_GALACTIC
 	galactic_map_tooltip_desc = SHROUD_TUNNEL_GALACTIC_DESC
 	connection_type = scripted_connection
-
 	scripted_connection = {
-		node = { # system scope
+		node = {
+			# system scope
 			starbase = {
 				has_starbase_building = shroud_beacon
 			}
 		}
-		nexus = { # system scope
+		nexus = {
+			# system scope
 			has_star_flag = shroud_tunnel_nexus
 		}
 	}
-
-	ftl_ship_effect	= "gateway_ftl_ship_effect_entity"
+	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	animation_time = 3 # Number of days to wait for the jump animation to be played.
-
-	country_can_use = { # this = country; from = system owner | default = yes
+	animation_time = 3	# Number of days to wait for the jump animation to be played.
+	country_can_use = {
+		# this = country; from = system owner | default = yes
 		OR = {
 			has_technology = tech_psionic_theory
 			custom_tooltip = {
 				text = shroud_beacon_active_tooltip
 				has_country_flag = shroudwalker_enclave_bought_shroud_beacon
-					any_system_within_border = {
+				any_system_within_border = {
 					starbase = {
 						has_starbase_building = shroud_beacon
 					}
@@ -321,5 +350,5 @@ shroud_tunnel = {
 			}
 		}
 	}
-	on_action = "on_entering_shroud_tunnel" # To be fired upon entering FTL into this bypass | this = fleet; from = system being jumped to; fromfrom = system being jumped from
+	on_action = "on_entering_shroud_tunnel"	# To be fired upon entering FTL into this bypass | this = fleet; from = system being jumped to; fromfrom = system being jumped from
 }
