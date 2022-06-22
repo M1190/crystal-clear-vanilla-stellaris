@@ -4,21 +4,21 @@ guiTypes = {
 	@column_1 = 0
 	@column_2 = 760
 	@row_w = 750
-	@row_1 = 10
-	@row_2 = 50
-	@row_3 = 90
-	@row_4 = 130
-	@row_5 = 170
-	@row_6 = 210
-	@row_7 = 250
-	@row_8 = 290
-	@row_9 = 330
-	@row_10 = 370
-	@row_11 = 410
-	@row_12 = 450
-	@row_13 = 490
-	@row_14 = 530
-	@row_15 = 570
+	@row_1 = 0
+	@row_2 = 40
+	@row_3 = 80
+	@row_4 = 120
+	@row_5 = 160
+	@row_6 = 200
+	@row_7 = 240
+	@row_8 = 280
+	@row_9 = 320
+	@row_10 = 360
+	@row_11 = 400
+	@row_12 = 440
+	@row_13 = 480
+	@row_14 = 520
+	@row_15 = 560
 	@icon_x = 404
 	@amount_c1x = 334
 	@value_c1x = 466
@@ -362,9 +362,10 @@ guiTypes = {
 			}
 			containerWindowType = {
 				name = "gamesetup_contents"
-				size = { width = 100%% height = -5 }
-				position = { x = 15 y = 5 }
+				size = { width = 100%% height = 100%% }
+				position = { x = 15 y = 0 }
 				verticalScrollbar = "right_vertical_slider_thick"
+				margin = { top = 10 bottom = 10 }
 				background = {
 					name = "background"
 					spriteType = "GFX_invisible"
@@ -377,6 +378,7 @@ guiTypes = {
 					background = {
 						name = "option_background"
 						spriteType = "GFX_tiles_dark_area_cut_8"
+						pdx_tooltip = "FE_GALAXY_SIZE_TOOLTIP"
 					}
 					instantTextBoxType = {
 						name = "pick_size_label"
@@ -431,6 +433,7 @@ guiTypes = {
 					background = {
 						name = "option_background"
 						spriteType = "GFX_tiles_dark_area_cut_8"
+						pdx_tooltip = "FE_GALAXY_SHAPE_TOOLTIP"
 					}
 					instantTextBoxType = {
 						name = "pick_shape_label"
@@ -1185,11 +1188,65 @@ guiTypes = {
 						}
 					}
 				}
+				# L-Gates
+				containerWindowType = {
+					name = "lgate_enabled"
+					size = { width = @row_w height = 36 }
+					position = { x = @column_1 y = @row_14 }
+					background = {
+						name = "option_background"
+						spriteType = "GFX_tiles_dark_area_cut_8"
+						pdx_tooltip = "LGATE_LABEL_TOOLTIP"
+					}
+					instantTextBoxType = {
+						name = "lgate_label"
+						font = "malgun_goth_24"
+						text = "LGATE_LABEL"
+						position = { x = 10 y = 5 }
+						maxWidth = 340
+						maxHeight = 24
+						vertical_alignment = center
+						alwaysTransparent = yes
+					}
+					instantTextBoxType = {
+						name = "value"
+						font = "malgun_goth_24"
+						text = "ON"
+						position = { x = @value_c1x y = 5 }
+						maxWidth = 253
+						maxHeight = 24
+						fixedSize = yes
+						format = center
+						alwaysTransparent = yes
+					}
+					spinnerType = {
+						name = "galaxy_lgate_spinner"
+						leftbutton = "spinner_upButton"
+						rightbutton = "spinner_downButton"
+						size = { x = 307 y = 30 }
+						position = { x = @spinner_c1x y = 4 }
+						priority = 100
+						borderSize = { x = 16 y = 16 }
+						horizontal = 1
+						maxValue = 100
+						startValue = 0
+						guiButtonType = {
+							name = "spinner_upButton"
+							quadTextureSprite = "scrollbar_leftbutton"
+							position = { x = 30 y = 0 }
+						}
+						guiButtonType = {
+							name = "spinner_downButton"
+							quadTextureSprite = "scrollbar_rightbutton"
+							position = { x = 30 y = 120 }
+						}
+					}
+				}
 				# Xeno Compatibility
 				containerWindowType = {
 					name = "xeno_compatibility"
 					size = { width = @row_w height = 36 }
-					position = { x = @column_1 y = @row_14 }
+					position = { x = @column_1 y = @row_15 }
 					background = {
 						name = "option_background"
 						spriteType = "GFX_tiles_dark_area_cut_8"
