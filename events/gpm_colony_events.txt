@@ -1,38 +1,36 @@
 namespace = gpm_colony
-
 ### On colonized, set planet colour again if needed
 # needed because when AI colonizes they rename the planet, so it needs to be recoloured and receive a new icon
 # dont delete this again idiot ;)
-planet_event = { id = gpm_colony.1 hide_window = yes is_triggered_only = yes
+planet_event = {
+	id = gpm_colony.1
+	hide_window = yes
+	is_triggered_only = yes
 	trigger = {
-		AND = {
-			OR = {
-				has_planet_flag = gpm_is_precursor_world
-				has_planet_flag = gpm_is_wondrous_planet
-			}
-			owner = {
-				is_ai = yes
-				# new 21/04/2018 -guilli
-				NOT = {
-                    OR = {
-                        is_country_type = swarm
-                        is_country_type = extradimensional
-                        is_country_type = extradimensional_2
-                        is_country_type = extradimensional_3
-                        is_country_type = ai_empire
-                    }
-                }
+		OR = {
+			has_planet_flag = gpm_is_precursor_world
+			has_planet_flag = gpm_is_wondrous_planet
+		}
+		owner = {
+			is_ai = yes
+			# new 21/04/2018 -guilli
+			NOT = {
+				OR = {
+					is_country_type = swarm
+					is_country_type = extradimensional
+					is_country_type = extradimensional_2
+					is_country_type = extradimensional_3
+					is_country_type = ai_empire
+				}
 			}
 		}
 	}
-	
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.1 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- set planet color on colonization(AI) ----"
-	# gpm_reset_planet_name = yes
-	# gpm_colour_planet_name = yes
+		# gpm_reset_planet_name = yes
+		# gpm_colour_planet_name = yes
 		if = {
 			limit = {
 				has_planet_flag = gpm_is_precursor_world
@@ -53,54 +51,64 @@ planet_event = { id = gpm_colony.1 hide_window = yes is_triggered_only = yes
 		}
 	}
 }
+
 ### Precursor Ship
 planet_event = {
 	id = gpm_colony.3
 	title = "gpm_colony.3.name"
 	desc = {
 		trigger = {
-			owner = { NOT = { has_authority = auth_machine_intelligence	} }
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
 		}
 		text = gpm_colony.3.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.3.desc.mach
 	}
 	picture = GFX_evt_gpm_spaceship_graveyard
 	show_sound = event_radio_chatter_02
 	location = root
-	
 	is_triggered_only = yes
-
 	pre_triggers = {
 		has_owner = yes
 	}
-	
-	
 	trigger = {
 		num_pops > 0
 		has_modifier = "gpm_spaceship_graveyard"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_country_ship_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_country_ship_event
+			}
 		}
 	}
-	
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.3 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- Ship graveyard event start ----"
-		owner = { set_country_flag = gpm_colony_country_ship_event }
+		owner = {
+			set_country_flag = gpm_colony_country_ship_event
+		}
 		begin_event_chain = {
 			event_chain = "gpm_colony_ship_event_chain"
 			target = root
 		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { NOT = { has_authority = auth_machine_intelligence	} }
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
 		}
 		name = gpm_colony.3.a
 		# planet_event = { id = gpm_colony.4 days = 30 }
@@ -111,7 +119,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.3.mach
 		# planet_event = { id = gpm_colony.4 days = 30 }
 		enable_special_project = {
@@ -121,40 +133,47 @@ planet_event = {
 		}
 	}
 }
+
 planet_event = {
 	id = gpm_colony.4
 	title = "gpm_colony.4.name"
 	desc = {
 		trigger = {
-			owner = { NOT = { has_authority = auth_machine_intelligence	} }
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
 		}
 		text = gpm_colony.4.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.4.desc.mach
 	}
 	picture = GFX_evt_gpm_salvaged_spaceship
 	show_sound = event_activating_unknown_technology
 	location = root
-	
 	is_triggered_only = yes
-	
-	
 	trigger = {
-
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- Ship graveyard event pre-reward ----"	
 		save_event_target_as = gpm_ship_event_target
 	}
-	
 	option = {
 		trigger = {
-			owner = { NOT = { has_authority = auth_machine_intelligence	} }
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
 		}
 		name = gpm_colony.4.a
 		enable_special_project = {
@@ -164,7 +183,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.4.mach
 		enable_special_project = {
 			name = "GPM_COLONY_SHIP_4"
@@ -173,31 +196,35 @@ planet_event = {
 		}
 	}
 }
+
 # pirate cruiser
 country_event = {
 	id = gpm_colony.5
 	title = "gpm_colony.5.name"
 	desc = {
 		trigger = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
 		}
 		text = gpm_colony.5.desc
 	}
 	desc = {
-		trigger = {	has_authority = auth_machine_intelligence }
+		trigger = {
+			has_authority = auth_machine_intelligence
+		}
 		text = gpm_colony.5.desc.mach
 	}
 	picture = GFX_evt_gpm_pirate_cruiser
 	show_sound = event_activating_unknown_technology
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.5 ----"
 		# log = "---- On Planet: [PREV.GetName] ----"
 		# log = "---- Ship graveyard event reward 1 ----"
 		event_target:gpm_ship_event_target = {
-			create_fleet = { }
+			create_fleet = {
+			}
 			last_created_fleet = {
 				set_owner = ROOT
 				create_ship = {
@@ -208,58 +235,69 @@ country_event = {
 				set_location = {
 					target = PREV
 					distance = 45
-					angle = random 
+					angle = random
 				}
-			}		
+			}
 		}
 	}
-	
 	option = {
 		trigger = {
-			NOT = { has_authority = auth_machine_intelligence } 
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
 		}
 		name = gpm_colony.5.c
 		custom_tooltip = gpm_colony.5.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 	option = {
-		trigger = {	has_authority = auth_machine_intelligence }
+		trigger = {
+			has_authority = auth_machine_intelligence
+		}
 		name = gpm_colony.5.d
 		custom_tooltip = gpm_colony.5.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 }
+
 # pirate cruisers
 country_event = {
 	id = gpm_colony.6
 	title = "gpm_colony.6.name"
 	desc = {
 		trigger = {
-			NOT = { has_authority = auth_machine_intelligence } 
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
 		}
 		text = gpm_colony.6.desc
 	}
 	desc = {
-		trigger = { has_authority = auth_machine_intelligence } 
+		trigger = {
+			has_authority = auth_machine_intelligence
+		}
 		text = gpm_colony.6.desc.mach
 	}
 	picture = GFX_evt_gpm_pirate_cruiser
 	show_sound = event_activating_unknown_technology
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.6 ----"
 		# log = "---- On Planet: [PREV.GetName] ----"
 		# log = "---- Ship graveyard event reward 2 ----"
 		event_target:gpm_ship_event_target = {
-			create_fleet = { }
+			create_fleet = {
+			}
 			last_created_fleet = {
 				set_owner = ROOT
 				random_list = {
@@ -318,65 +356,76 @@ country_event = {
 				set_location = {
 					target = PREV
 					distance = 45
-					angle = random 
+					angle = random
 				}
-			}		
+			}
 		}
 	}
-	
 	option = {
 		trigger = {
-			NOT = { has_authority = auth_machine_intelligence } 
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
 		}
 		name = gpm_colony.6.c
 		custom_tooltip = gpm_colony.6.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 	option = {
-		trigger = { has_authority = auth_machine_intelligence } 
+		trigger = {
+			has_authority = auth_machine_intelligence
+		}
 		name = gpm_colony.6.d
 		custom_tooltip = gpm_colony.6.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 }
+
 # dreadnaught
 country_event = {
 	id = gpm_colony.7
 	title = "gpm_colony.7.name"
 	desc = {
 		trigger = {
-			NOR = { 
+			NOR = {
 				has_authority = auth_hive_mind
 				has_authority = auth_machine_intelligence
-			} 
+			}
 		}
 		text = gpm_colony.7.desc
 	}
 	desc = {
-		trigger = { has_authority = auth_hive_mind }
+		trigger = {
+			has_authority = auth_hive_mind
+		}
 		text = gpm_colony.7.desc.hive
 	}
 	desc = {
-		trigger = {	has_authority = auth_machine_intelligence }
+		trigger = {
+			has_authority = auth_machine_intelligence
+		}
 		text = gpm_colony.7.desc.mach
 	}
 	picture = GFX_evt_automated_dreadnought
 	show_sound = event_activating_unknown_technology
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.7 ----"
 		# log = "---- On Planet: [PREV.GetName] ----"
 		# log = "---- Ship graveyard event reward 3 ----"
 		event_target:gpm_ship_event_target = {
-			create_fleet = { }
+			create_fleet = {
+			}
 			last_created_fleet = {
 				set_owner = ROOT
 				create_ship = {
@@ -387,77 +436,90 @@ country_event = {
 				set_location = {
 					target = PREV
 					distance = 45
-					angle = random 
+					angle = random
 				}
-			}		
+			}
 		}
 	}
-	
 	option = {
 		trigger = {
-			NOR = { 
+			NOR = {
 				has_authority = auth_hive_mind
 				has_authority = auth_machine_intelligence
-			} 
+			}
 		}
 		name = gpm_colony.7.c
 		custom_tooltip = gpm_colony.7.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 	option = {
-		trigger = {	has_authority = auth_hive_mind }
+		trigger = {
+			has_authority = auth_hive_mind
+		}
 		name = gpm_colony.7.c
 		custom_tooltip = gpm_colony.7.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 	option = {
-		trigger = {	has_authority = auth_machine_intelligence }
+		trigger = {
+			has_authority = auth_machine_intelligence
+		}
 		name = gpm_colony.7.d
 		custom_tooltip = gpm_colony.7.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 }
+
 # Ancient frigates
 country_event = {
 	id = gpm_colony.8
 	title = "gpm_colony.8.name"
 	desc = {
 		trigger = {
-			NOR = { 
+			NOR = {
 				has_authority = auth_hive_mind
 				has_authority = auth_machine_intelligence
-			} 
+			}
 		}
 		text = gpm_colony.8.desc
 	}
 	desc = {
-		trigger = {	has_authority = auth_hive_mind }
+		trigger = {
+			has_authority = auth_hive_mind
+		}
 		text = gpm_colony.8.desc.hive
 	}
 	desc = {
-		trigger = {	has_authority = auth_machine_intelligence }
+		trigger = {
+			has_authority = auth_machine_intelligence
+		}
 		text = gpm_colony.8.desc.mach
 	}
 	picture = GFX_evt_gpm_ancient_frigates
 	show_sound = event_activating_unknown_technology
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.8 ----"
 		# log = "---- On Planet: [PREV.GetName] ----"
 		# log = "---- Ship graveyard event reward 4 ----"
 		event_target:gpm_ship_event_target = {
-			create_fleet = { }
+			create_fleet = {
+			}
 			last_created_fleet = {
 				set_owner = ROOT
 				random_list = {
@@ -625,70 +687,83 @@ country_event = {
 				set_location = {
 					target = PREV
 					distance = 45
-					angle = random 
+					angle = random
 				}
-			}		
+			}
 		}
 	}
-	
 	option = {
 		trigger = {
-			NOR = { 
+			NOR = {
 				has_authority = auth_hive_mind
 				has_authority = auth_machine_intelligence
-			} 
+			}
 		}
 		name = gpm_colony.8.c
 		custom_tooltip = gpm_colony.8.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 	option = {
-		trigger = {	has_authority = auth_hive_mind }
+		trigger = {
+			has_authority = auth_hive_mind
+		}
 		name = gpm_colony.8.c
 		custom_tooltip = gpm_colony.8.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 	option = {
-		trigger = {	has_authority = auth_machine_intelligence }
+		trigger = {
+			has_authority = auth_machine_intelligence
+		}
 		name = gpm_colony.8.d
 		custom_tooltip = gpm_colony.8.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 }
+
 # Ancient cruiser
 country_event = {
 	id = gpm_colony.9
 	title = "gpm_colony.9.name"
 	desc = {
 		trigger = {
-			NOT = { has_authority = auth_machine_intelligence } 
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
 		}
 		text = gpm_colony.9.desc
 	}
 	desc = {
-		trigger = {	has_authority = auth_machine_intelligence }
+		trigger = {
+			has_authority = auth_machine_intelligence
+		}
 		text = gpm_colony.9.desc.mach
 	}
 	picture = GFX_evt_gpm_ancient_battlecruisers
 	show_sound = event_activating_unknown_technology
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.9 ----"
 		# log = "---- On Planet: [PREV.GetName] ----"
 		# log = "---- Ship graveyard event reward 5 ----"
 		event_target:gpm_ship_event_target = {
-			create_fleet = { }
+			create_fleet = {
+			}
 			last_created_fleet = {
 				set_owner = ROOT
 				create_ship = {
@@ -699,65 +774,76 @@ country_event = {
 				set_location = {
 					target = PREV
 					distance = 45
-					angle = random 
+					angle = random
 				}
-			}		
+			}
 		}
 	}
-	
 	option = {
 		trigger = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
 		}
 		name = gpm_colony.9.c
 		custom_tooltip = gpm_colony.9.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 	option = {
-		trigger = {	has_authority = auth_machine_intelligence }
+		trigger = {
+			has_authority = auth_machine_intelligence
+		}
 		name = gpm_colony.9.d
 		custom_tooltip = gpm_colony.9.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 }
+
 # Ancient cruisers
 country_event = {
 	id = gpm_colony.10
 	title = "gpm_colony.10.name"
 	desc = {
 		trigger = {
-			NOR = { 
+			NOR = {
 				has_authority = auth_hive_mind
 				has_authority = auth_machine_intelligence
-			} 
+			}
 		}
 		text = gpm_colony.10.desc
 	}
 	desc = {
-		trigger = {	has_authority = auth_hive_mind } 
+		trigger = {
+			has_authority = auth_hive_mind
+		}
 		text = gpm_colony.10.desc.hive
 	}
 	desc = {
-		trigger = {	has_authority = auth_machine_intelligence } 
+		trigger = {
+			has_authority = auth_machine_intelligence
+		}
 		text = gpm_colony.10.desc.mach
 	}
 	picture = GFX_evt_gpm_ancient_battlecruisers
 	show_sound = event_activating_unknown_technology
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.10 ----"
 		# log = "---- On Planet: [PREV.GetName] ----"
 		# log = "---- Ship graveyard event reward 6 ----"
 		event_target:gpm_ship_event_target = {
-			create_fleet = { }
+			create_fleet = {
+			}
 			last_created_fleet = {
 				set_owner = ROOT
 				random_list = {
@@ -831,70 +917,83 @@ country_event = {
 				set_location = {
 					target = PREV
 					distance = 45
-					angle = random 
+					angle = random
 				}
-			}		
+			}
 		}
 	}
-	
 	option = {
 		trigger = {
-			NOR = { 
+			NOR = {
 				has_authority = auth_hive_mind
 				has_authority = auth_machine_intelligence
-			} 
+			}
 		}
 		name = gpm_colony.10.c
 		custom_tooltip = gpm_colony.10.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 	option = {
-		trigger = {	has_authority = auth_hive_mind }
+		trigger = {
+			has_authority = auth_hive_mind
+		}
 		name = gpm_colony.10.c
 		custom_tooltip = gpm_colony.10.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 	option = {
-		trigger = {	has_authority = auth_machine_intelligence }
+		trigger = {
+			has_authority = auth_machine_intelligence
+		}
 		name = gpm_colony.10.d
 		custom_tooltip = gpm_colony.10.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 }
+
 # TITAN
 country_event = {
 	id = gpm_colony.11
 	title = "gpm_colony.11.name"
 	desc = {
 		trigger = {
-			NOT = { has_authority = auth_machine_intelligence } 
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
 		}
 		text = gpm_colony.11.desc
 	}
 	desc = {
-		trigger = {	has_authority = auth_machine_intelligence }
+		trigger = {
+			has_authority = auth_machine_intelligence
+		}
 		text = gpm_colony.11.desc.mach
 	}
 	picture = GFX_evt_gpm_ancient_titan
 	show_sound = event_activating_unknown_technology
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.11 ----"
 		# log = "---- On Planet: [PREV.GetName] ----"
 		# log = "---- Ship graveyard event reward 7 ----"
 		event_target:gpm_ship_event_target = {
-			create_fleet = { }
+			create_fleet = {
+			}
 			last_created_fleet = {
 				set_owner = ROOT
 				create_ship = {
@@ -905,62 +1004,76 @@ country_event = {
 				set_location = {
 					target = PREV
 					distance = 45
-					angle = random 
+					angle = random
 				}
-			}		
+			}
 		}
 	}
-	
 	option = {
 		trigger = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
 		}
 		name = gpm_colony.11.c
 		custom_tooltip = gpm_colony.11.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 	option = {
-		trigger = {	has_authority = auth_machine_intelligence }
+		trigger = {
+			has_authority = auth_machine_intelligence
+		}
 		name = gpm_colony.11.d
 		custom_tooltip = gpm_colony.11.b
 		if = {
-			limit = { has_event_chain = "gpm_colony_ship_event_chain" }
+			limit = {
+				has_event_chain = "gpm_colony_ship_event_chain"
+			}
 			end_event_chain = "gpm_colony_ship_event_chain"
 		}
 	}
 }
+
 # Alien eggs
 planet_event = {
 	id = gpm_colony.20
 	title = "gpm_colony.20.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.20.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.20.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.20.desc.mach
 	}
 	picture = GFX_evt_gpm_xenomorph_infestation
 	show_sound = event_alien_nature
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		is_homeworld = no
@@ -970,523 +1083,885 @@ planet_event = {
 	trigger = {
 		num_pops > 3
 		has_modifier = "gpm_strange_alien_eggs"
-		NOT = { 
-			owner = { has_country_flag  = gpm_colony_xenomorph_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_xenomorph_event
+			}
 		}
 	}
-	
 	immediate = {
-		owner = { set_country_flag  = gpm_colony_xenomorph_event }
+		owner = {
+			set_country_flag = gpm_colony_xenomorph_event
+		}
 		# Planet Modifier Scaling
 		if = {
-			limit = { NOT = { has_global_flag = gpm_scaling_multiplier_disabled } }
+			limit = {
+				NOT = {
+					has_global_flag = gpm_scaling_multiplier_disabled
+				}
+			}
 			gpm_scale_planet_modifiers = yes
 		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.20.a
 		locked_random_list = {
-			10 = { random_owned_pop = { kill_pop = yes } }
-			10 = { add_planet_devastation = 25 }
+			10 = {
+				random_owned_pop = {
+					kill_pop = yes
+				}
+			}
+			10 = {
+				add_planet_devastation = 25
+			}
 			10 = {
 				remove_district = district_farming
-				modifier = { factor = 0 NOT = { has_district = district_farming } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_farming
+					}
+				}
 			}
 			10 = {
 				remove_district = district_mining
-				modifier = { factor = 0 NOT = { has_district = district_mining } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_mining
+					}
+				}
 			}
 			10 = {
 				remove_district = district_generator
-				modifier = { factor = 0 NOT = { has_district = district_generator } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_generator
+					}
+				}
 			}
-			10 = { add_modifier = { modifier = dangerous_wildlife multiplier = gpm_planet_size_multiplier }
-				modifier = { factor = 0 has_modifier = dangerous_wildlife }
+			10 = {
+				add_modifier = {
+					modifier = dangerous_wildlife
+					multiplier = gpm_planet_size_multiplier
+				}
+				modifier = {
+					factor = 0
+					has_modifier = dangerous_wildlife
+				}
 			}
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.20.hive
 		locked_random_list = {
-			10 = { random_owned_pop = { kill_pop = yes } }
-			10 = { add_planet_devastation = 25 }
+			10 = {
+				random_owned_pop = {
+					kill_pop = yes
+				}
+			}
+			10 = {
+				add_planet_devastation = 25
+			}
 			10 = {
 				remove_district = district_farming
-				modifier = { factor = 0 NOT = { has_district = district_farming } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_farming
+					}
+				}
 			}
 			10 = {
 				remove_district = district_mining
-				modifier = { factor = 0 NOT = { has_district = district_mining } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_mining
+					}
+				}
 			}
 			10 = {
 				remove_district = district_generator
-				modifier = { factor = 0 NOT = { has_district = district_generator } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_generator
+					}
+				}
 			}
-			10 = { add_modifier = { modifier = dangerous_wildlife multiplier = gpm_planet_size_multiplier }
-				modifier = { factor = 0 has_modifier = dangerous_wildlife }
+			10 = {
+				add_modifier = {
+					modifier = dangerous_wildlife
+					multiplier = gpm_planet_size_multiplier
+				}
+				modifier = {
+					factor = 0
+					has_modifier = dangerous_wildlife
+				}
 			}
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.20.mach
 		locked_random_list = {
-			10 = { random_owned_pop = { kill_pop = yes } }
-			10 = { add_planet_devastation = 25 }
+			10 = {
+				random_owned_pop = {
+					kill_pop = yes
+				}
+			}
+			10 = {
+				add_planet_devastation = 25
+			}
 			10 = {
 				remove_district = district_farming
-				modifier = { factor = 0 NOT = { has_district = district_farming } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_farming
+					}
+				}
 			}
 			10 = {
 				remove_district = district_mining
-				modifier = { factor = 0 NOT = { has_district = district_mining } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_mining
+					}
+				}
 			}
 			10 = {
 				remove_district = district_generator
-				modifier = { factor = 0 NOT = { has_district = district_generator } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_generator
+					}
+				}
 			}
-			10 = { add_modifier = { modifier = dangerous_wildlife multiplier = gpm_planet_size_multiplier }
-				modifier = { factor = 0 has_modifier = dangerous_wildlife }
+			10 = {
+				add_modifier = {
+					modifier = dangerous_wildlife
+					multiplier = gpm_planet_size_multiplier
+				}
+				modifier = {
+					factor = 0
+					has_modifier = dangerous_wildlife
+				}
 			}
 		}
 	}
 }
+
 # Upgrade Mineral Poor to Mineral Rich
 planet_event = {
 	id = gpm_colony.30
 	title = "gpm_colony.30.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.30.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.30.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.30.desc.mach
 	}
 	picture = GFX_evt_gpm_mining_upgrade
 	show_sound = event_construction
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "mineral_poor"
-		NOT = { 
-			owner = { has_country_flag  = gpm_colony_mineral_upgrade_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_mineral_upgrade_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.30 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- poor to good mineral upgrade ----"
-		owner = { set_country_flag  = gpm_colony_mineral_upgrade_event }
+		owner = {
+			set_country_flag = gpm_colony_mineral_upgrade_event
+		}
 		# Planet Modifier Scaling
 		if = {
-			limit = { NOT = { has_global_flag = gpm_scaling_multiplier_disabled } }
+			limit = {
+				NOT = {
+					has_global_flag = gpm_scaling_multiplier_disabled
+				}
+			}
 			gpm_scale_planet_modifiers = yes
 		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.30.a
 		#custom_tooltip = gpm_colony.30.b
 		remove_modifier = mineral_poor
-		add_modifier = { modifier = mineral_rich days = -1 multiplier = gpm_planet_size_multiplier }
+		add_modifier = {
+			modifier = mineral_rich
+			days = -1
+			multiplier = gpm_planet_size_multiplier
+		}
 		add_deposit = d_submerged_ore_veins
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.30.hive
 		#custom_tooltip = gpm_colony.30.b
 		remove_modifier = mineral_poor
-		add_modifier = { modifier = mineral_rich days = -1 multiplier = gpm_planet_size_multiplier }
+		add_modifier = {
+			modifier = mineral_rich
+			days = -1
+			multiplier = gpm_planet_size_multiplier
+		}
 		add_deposit = d_submerged_ore_veins
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.30.mach
 		#custom_tooltip = gpm_colony.30.b
 		remove_modifier = mineral_poor
-		add_modifier = { modifier = mineral_rich days = -1 multiplier = gpm_planet_size_multiplier }
+		add_modifier = {
+			modifier = mineral_rich
+			days = -1
+			multiplier = gpm_planet_size_multiplier
+		}
 		add_deposit = d_submerged_ore_veins
 	}
-
 }
+
 # Upgrade Mineral Rich to Mineral Ultra Rick
 planet_event = {
 	id = gpm_colony.40
 	title = "gpm_colony.40.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.40.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.40.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.40.desc.mach
 	}
 	picture = GFX_evt_gpm_mining_upgrade
 	show_sound = event_construction
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		OR = {
 			has_modifier = "mineral_rich"
 			has_modifier = "gpm_mineral_rich_2"
 		}
-		NOT = { 
-			owner = { has_country_flag  = gpm_colony_mineral_upgrade_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_mineral_upgrade_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.40 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- good to better mineral upgrade ----"
-		owner = { set_country_flag  = gpm_colony_mineral_upgrade_event }
-
+		owner = {
+			set_country_flag = gpm_colony_mineral_upgrade_event
+		}
 		# Planet Modifier Scaling
 		if = {
-			limit = { NOT = { has_global_flag = gpm_scaling_multiplier_disabled } }
+			limit = {
+				NOT = {
+					has_global_flag = gpm_scaling_multiplier_disabled
+				}
+			}
 			gpm_scale_planet_modifiers = yes
 		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.40.a
 		#custom_tooltip = gpm_colony.40.b
 		locked_random_list = {
-			50 = { owner = { add_resource = { minerals = 5000 } } }
-			35 = { add_modifier = { modifier = gpm_mineral_rich_2 days = -1 multiplier = gpm_planet_size_multiplier } }
-			15 = { add_modifier = { modifier = gpm_ultra_rich_2 days = -1 multiplier = gpm_planet_size_multiplier } }
+			50 = {
+				owner = {
+					add_resource = {
+						minerals = 5000
+					}
+				}
+			}
+			35 = {
+				add_modifier = {
+					modifier = gpm_mineral_rich_2
+					days = -1
+					multiplier = gpm_planet_size_multiplier
+				}
+			}
+			15 = {
+				add_modifier = {
+					modifier = gpm_ultra_rich_2
+					days = -1
+					multiplier = gpm_planet_size_multiplier
+				}
+			}
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.40.hive
 		#custom_tooltip = gpm_colony.40.b
 		locked_random_list = {
-			50 = { owner = { add_resource = { minerals = 5000 } } }
-			35 = { add_modifier = { modifier = gpm_mineral_rich_2 days = -1 multiplier = gpm_planet_size_multiplier } }
-			15 = { add_modifier = { modifier = gpm_ultra_rich_2 days = -1 multiplier = gpm_planet_size_multiplier } }
+			50 = {
+				owner = {
+					add_resource = {
+						minerals = 5000
+					}
+				}
+			}
+			35 = {
+				add_modifier = {
+					modifier = gpm_mineral_rich_2
+					days = -1
+					multiplier = gpm_planet_size_multiplier
+				}
+			}
+			15 = {
+				add_modifier = {
+					modifier = gpm_ultra_rich_2
+					days = -1
+					multiplier = gpm_planet_size_multiplier
+				}
+			}
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.40.mach
 		#custom_tooltip = gpm_colony.40.b
 		locked_random_list = {
-			50 = { owner = { add_resource = { minerals = 5000 } } }
-			35 = { add_modifier = { modifier = gpm_mineral_rich_2 days = -1 multiplier = gpm_planet_size_multiplier } }
-			15 = { add_modifier = { modifier = gpm_ultra_rich_2 days = -1 multiplier = gpm_planet_size_multiplier } }
+			50 = {
+				owner = {
+					add_resource = {
+						minerals = 5000
+					}
+				}
+			}
+			35 = {
+				add_modifier = {
+					modifier = gpm_mineral_rich_2
+					days = -1
+					multiplier = gpm_planet_size_multiplier
+				}
+			}
+			15 = {
+				add_modifier = {
+					modifier = gpm_ultra_rich_2
+					days = -1
+					multiplier = gpm_planet_size_multiplier
+				}
+			}
 		}
 	}
-
 }
+
 # Seasonal Flooding damage
 planet_event = {
 	id = gpm_colony.50
 	title = "gpm_colony.50.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.50.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.50.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.50.desc.mach
 	}
 	picture = GFX_evt_gpm_flooding_lake
 	show_sound = event_construction
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		NOT = { 
-			owner = { has_country_flag = gpm_seasonal_flooding_dmg_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_seasonal_flooding_dmg_event
+			}
 		}
 		num_pops > 0
 		has_modifier = "gpm_seasonal_flooding"
 	}
-	
 	immediate = {
-		owner = { set_country_flag = gpm_seasonal_flooding_dmg_event }
+		owner = {
+			set_country_flag = gpm_seasonal_flooding_dmg_event
+		}
 		# log = "---- Fired Event gpm_colony.50 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- seasonal flooding to lakes ----"
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.50.a
 		# custom_tooltip = gpm_colony.50.b
 		hidden_effect = {
 			random_list = {
-				50 = { planet_event = { id = gpm_colony.51 days = 30 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 60 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 90 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 180 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 360 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 720 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 1440 } }
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 30
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 60
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 90
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 180
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 360
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 720
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 1440
+					}
+				}
 			}
 		}
-		
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.50.hive
 		# custom_tooltip = gpm_colony.50.b
 		hidden_effect = {
 			random_list = {
-				50 = { planet_event = { id = gpm_colony.51 days = 30 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 60 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 90 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 180 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 360 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 720 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 1440 } }
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 30
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 60
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 90
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 180
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 360
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 720
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 1440
+					}
+				}
 			}
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.50.mach
 		# custom_tooltip = gpm_colony.50.b
 		hidden_effect = {
 			random_list = {
-				50 = { planet_event = { id = gpm_colony.51 days = 30 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 60 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 90 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 180 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 360 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 720 } }
-				50 = { planet_event = { id = gpm_colony.51 days = 1440 } }
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 30
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 60
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 90
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 180
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 360
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 720
+					}
+				}
+				50 = {
+					planet_event = {
+						id = gpm_colony.51
+						days = 1440
+					}
+				}
 			}
 		}
 	}
-
 }
+
 # Upgrade Seasonal Flooding to Beautiful Lakes
 planet_event = {
 	id = gpm_colony.51
 	title = "gpm_colony.51.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.51.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.51.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.51.desc.mach
 	}
 	picture = GFX_evt_gpm_flooding_lake
 	show_sound = event_construction
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		NOT = { 
-			owner = { has_country_flag = gpm_seasonal_flooding_upg_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_seasonal_flooding_upg_event
+			}
 		}
 		num_pops > 0
 		has_modifier = "gpm_seasonal_flooding"
 	}
-	
 	immediate = {
-		owner = { set_country_flag = gpm_seasonal_flooding_upg_event }
+		owner = {
+			set_country_flag = gpm_seasonal_flooding_upg_event
+		}
 		# log = "---- Fired Event gpm_colony.50 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- seasonal flooding to lakes ----"
 		# Planet Modifier Scaling
 		if = {
-			limit = { NOT = { has_global_flag = gpm_scaling_multiplier_disabled } }
+			limit = {
+				NOT = {
+					has_global_flag = gpm_scaling_multiplier_disabled
+				}
+			}
 			gpm_scale_planet_modifiers = yes
 		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.51.a
 		#custom_tooltip = gpm_colony.50.b
 		remove_modifier = gpm_seasonal_flooding
-		add_modifier = { modifier = gpm_beautiful_lakes days = -1 multiplier = gpm_planet_size_multiplier }
+		add_modifier = {
+			modifier = gpm_beautiful_lakes
+			days = -1
+			multiplier = gpm_planet_size_multiplier
+		}
 		add_deposit = gpm_d_hot_springs
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.51.hive
 		#custom_tooltip = gpm_colony.50.b
 		remove_modifier = gpm_seasonal_flooding
-		add_modifier = { modifier = gpm_beautiful_lakes days = -1 multiplier = gpm_planet_size_multiplier }
+		add_modifier = {
+			modifier = gpm_beautiful_lakes
+			days = -1
+			multiplier = gpm_planet_size_multiplier
+		}
 		add_deposit = gpm_d_hot_springs
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.51.mach
 		#custom_tooltip = gpm_colony.50.b
 		remove_modifier = gpm_seasonal_flooding
-		add_modifier = { modifier = gpm_beautiful_lakes days = -1 multiplier = gpm_planet_size_multiplier }
+		add_modifier = {
+			modifier = gpm_beautiful_lakes
+			days = -1
+			multiplier = gpm_planet_size_multiplier
+		}
 		add_deposit = gpm_d_hot_springs
 	}
-
 }
+
 # Remove Locust Plagues
 planet_event = {
 	id = gpm_colony.60
 	title = "gpm_colony.60.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.60.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.60.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.60.desc.mach
 	}
 	picture = GFX_evt_gpm_locust
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		NOT = { 
-			owner = { has_country_flag = gpm_locust_plagues_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_locust_plagues_event
+			}
 		}
 		num_pops > 0
 		has_modifier = "gpm_locust_plagues"
 	}
-	
 	immediate = {
-		owner = { set_country_flag = gpm_locust_plagues_event }
+		owner = {
+			set_country_flag = gpm_locust_plagues_event
+		}
 		# log = "---- Fired Event gpm_colony.60 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- remove locust plagues ----"	
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.60.a
@@ -1494,73 +1969,89 @@ planet_event = {
 		remove_modifier = gpm_locust_plagues
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.60.hive
 		#custom_tooltip = gpm_colony.60.b
 		remove_modifier = gpm_locust_plagues
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.60.mach
 		#custom_tooltip = gpm_colony.60.b
 		remove_modifier = gpm_locust_plagues
 	}
-
 }
+
 # Remove Acidic Seas
 planet_event = {
 	id = gpm_colony.70
 	title = "gpm_colony.70.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.70.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.70.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.70.desc.mach
 	}
 	picture = GFX_evt_gpm_acidic_seas
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		NOT = { 
-			owner = { has_country_flag = gpm_acidic_seas_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_acidic_seas_event
+			}
 		}
 		num_pops > 0
 		has_modifier = "gpm_acidic_seas"
 	}
-	
 	immediate = {
-		owner = { set_country_flag = gpm_acidic_seas_event }
+		owner = {
+			set_country_flag = gpm_acidic_seas_event
+		}
 		# log = "---- Fired Event gpm_colony.70 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- remove acidic seas ----"	
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.70.a
@@ -1568,73 +2059,89 @@ planet_event = {
 		remove_modifier = gpm_acidic_seas
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.70.hive
 		#custom_tooltip = gpm_colony.70.b
 		remove_modifier = gpm_acidic_seas
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.70.mach
 		#custom_tooltip = gpm_colony.70.b
 		remove_modifier = gpm_acidic_seas
 	}
-
 }
+
 # Remove Carnivorous Flies
 planet_event = {
 	id = gpm_colony.80
 	title = "gpm_colony.80.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.80.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.80.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.80.desc.mach
 	}
 	picture = GFX_evt_gpm_carnivorous_flies
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		NOT = { 
-			owner = { has_country_flag = gpm_carnivorous_flies_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_carnivorous_flies_event
+			}
 		}
 		num_pops > 0
 		has_modifier = "gpm_carnivorous_flies"
 	}
-	
 	immediate = {
-		owner = { set_country_flag = gpm_carnivorous_flies_event }
+		owner = {
+			set_country_flag = gpm_carnivorous_flies_event
+		}
 		# log = "---- Fired Event gpm_colony.80 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- remove carnivorous flies ----"
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.80.a
@@ -1642,73 +2149,89 @@ planet_event = {
 		remove_modifier = gpm_carnivorous_flies
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.80.hive
 		#custom_tooltip = gpm_colony.80.b
 		remove_modifier = gpm_carnivorous_flies
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.80.mach
 		#custom_tooltip = gpm_colony.80.b
 		remove_modifier = gpm_carnivorous_flies
 	}
-
 }
+
 # Remove Lingering Pollution
 planet_event = {
 	id = gpm_colony.90
 	title = "gpm_colony.90.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.90.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.90.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.90.desc.mach
 	}
 	picture = GFX_evt_gpm_polution
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		NOT = { 
-			owner = { has_country_flag = gpm_lingering_pollution_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_lingering_pollution_event
+			}
 		}
 		num_pops > 0
 		has_modifier = "gpm_lingering_pollution"
 	}
-	
 	immediate = {
-		owner = { set_country_flag = gpm_lingering_pollution_event }
+		owner = {
+			set_country_flag = gpm_lingering_pollution_event
+		}
 		# log = "---- Fired Event gpm_colony.90 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- remove lingering pollutation ----"
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.90.a
@@ -1716,73 +2239,89 @@ planet_event = {
 		remove_modifier = gpm_lingering_pollution
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.90.hive
 		#custom_tooltip = gpm_colony.90.b
 		remove_modifier = gpm_lingering_pollution
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.90.mach
 		#custom_tooltip = gpm_colony.90.b
 		remove_modifier = gpm_lingering_pollution
 	}
-
 }
+
 # Remove Resilient Parasites
 planet_event = {
 	id = gpm_colony.100
 	title = "gpm_colony.100.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.100.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.100.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.100.desc.mach
 	}
 	picture = GFX_evt_gpm_resilient_parasites
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		NOT = { 
-			owner = { has_country_flag = gpm_resilent_parasites_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_resilent_parasites_event
+			}
 		}
 		num_pops > 0
 		has_modifier = "gpm_resilent_parasites"
 	}
-	
-	immediate = {		
-		owner = { set_country_flag = gpm_resilent_parasites_event }
+	immediate = {
+		owner = {
+			set_country_flag = gpm_resilent_parasites_event
+		}
 		# log = "---- Fired Event gpm_colony.100 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- remove resilient parasites ----"
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.100.a
@@ -1790,19 +2329,27 @@ planet_event = {
 		remove_modifier = gpm_resilent_parasites
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.100.hive
 		#custom_tooltip = gpm_colony.100.b
 		remove_modifier = gpm_resilent_parasites
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.100.mach
 		#custom_tooltip = gpm_colony.100.b
 		remove_modifier = gpm_resilent_parasites
 	}
-
 }
+
 # gpm_frequent_thunderstorms or gpm_global_thunderstorms energy bonus (flat amount)
 planet_event = {
 	id = gpm_colony.110
@@ -1811,31 +2358,30 @@ planet_event = {
 	picture = GFX_evt_gpm_thunderstorms
 	show_sound = event_laboratory_sound
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		OR = {
 			has_modifier = "gpm_frequent_thunderstorms"
 			has_modifier = "gpm_global_thunderstorms"
 		}
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_thunderstorm_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_thunderstorm_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.110 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- thunderstorm energy bonus ----"
-		owner = { set_country_flag = gpm_colony_thunderstorm_event }
+		owner = {
+			set_country_flag = gpm_colony_thunderstorm_event
+		}
 	}
-	
 	option = {
 		name = gpm_colony.110.a
 		#custom_tooltip = gpm_colony.110.b
@@ -1848,63 +2394,70 @@ planet_event = {
 			}
 		}
 	}
-
 }
+
 # gpm_highly_charged_air_particles flat physics bonus
 planet_event = {
 	id = gpm_colony.120
 	title = "gpm_colony.120.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.120.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.120.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.120.desc.mach
 	}
 	picture = GFX_evt_gpm_charged_air_particles
 	show_sound = event_laboratory_sound
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_highly_charged_air_particles"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_charged_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_charged_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.120 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- highly charged air particles bonus ----"
-		owner = { set_country_flag = gpm_colony_charged_event }
+		owner = {
+			set_country_flag = gpm_colony_charged_event
+		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.120.a
@@ -1919,7 +2472,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.120.hive
 		#custom_tooltip = gpm_colony.120.b
 		owner = {
@@ -1932,7 +2489,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.120.mach
 		#custom_tooltip = gpm_colony.120.b
 		owner = {
@@ -1944,66 +2505,73 @@ planet_event = {
 			}
 		}
 	}
-
 }
+
 # gpm_unstable_tectonics_2 earthquake event, damaged buildings
 planet_event = {
 	id = gpm_colony.130
 	title = "gpm_colony.130.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.130.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.130.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.130.desc.mach
 	}
 	picture = GFX_evt_gpm_earthquacke
 	show_sound = event_structural_collapse
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		OR = {
 			has_modifier = "unstable_tectonics"
 			has_modifier = "gpm_unstable_tectonics_2"
 		}
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_earthquake_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_earthquake_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.130 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- unstable tectonics earthquake ----"
-		owner = { set_country_flag = gpm_colony_earthquake_event }
+		owner = {
+			set_country_flag = gpm_colony_earthquake_event
+		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.130.a
@@ -2013,7 +2581,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.130.hive
 		# custom_tooltip = gpm_colony.130.b
 		random_owned_pop = {
@@ -2021,73 +2593,84 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.130.mach
 		# custom_tooltip = gpm_colony.130.b
 		random_owned_pop = {
 			kill_pop = yes
 		}
 	}
-
 }
+
 # gpm_asteroid_impacts_2 random building destroyed, pop killed
 planet_event = {
 	id = gpm_colony.140
 	title = "gpm_colony.140.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.140.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.140.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.140.desc.mach
 	}
 	picture = GFX_evt_gpm_asteroid_impact
 	show_sound = event_structural_collapse
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		OR = {
 			has_modifier = "asteroid_impacts"
 			has_modifier = "gpm_asteroid_impacts_2"
 		}
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_asteroid_impact_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_asteroid_impact_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.140 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- asteroid impact ----"
-		owner = { set_country_flag = gpm_colony_asteroid_impact_event }
+		owner = {
+			set_country_flag = gpm_colony_asteroid_impact_event
+		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.140.a
@@ -2097,7 +2680,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.140.hive
 		# custom_tooltip = gpm_colony.140.b
 		random_owned_pop = {
@@ -2105,7 +2692,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.140.mach
 		# custom_tooltip = gpm_colony.140.b
 		random_owned_pop = {
@@ -2113,40 +2704,46 @@ planet_event = {
 		}
 	}
 }
+
 # gpm_mineral_rich (and ultra rich and poor) flat mineral bonus 
 planet_event = {
 	id = gpm_colony.150
 	title = "gpm_colony.150.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.150.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.150.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.150.desc.mach
 	}
 	picture = GFX_evt_gpm_mineral_haul
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		OR = {
 			has_modifier = "mineral_rich"
@@ -2154,25 +2751,27 @@ planet_event = {
 			has_modifier = "ultra_rich"
 			has_modifier = "gpm_ultra_rich_2"
 		}
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_mineral_haul_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_mineral_haul_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.150 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- mineral mineral bonus ----"
-		owner = { set_country_flag = gpm_colony_mineral_haul_event }
+		owner = {
+			set_country_flag = gpm_colony_mineral_haul_event
+		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.150.a
@@ -2187,7 +2786,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.150.hive
 		#custom_tooltip = gpm_colony.150.b
 		owner = {
@@ -2200,7 +2803,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.150.mach
 		#custom_tooltip = gpm_colony.150.b
 		owner = {
@@ -2212,63 +2819,70 @@ planet_event = {
 			}
 		}
 	}
-
 }
+
 # gpm_hostile_flora pop killed
 planet_event = {
 	id = gpm_colony.160
 	title = "gpm_colony.160.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.160.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.160.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.160.desc.mach
 	}
 	picture = GFX_evt_gpm_hostile_flora
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_hostile_flora"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_hostile_flora_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_hostile_flora_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.160 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- hostile flora pop killed ----"
-		owner = { set_country_flag = gpm_colony_hostile_flora_event }
+		owner = {
+			set_country_flag = gpm_colony_hostile_flora_event
+		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.160.a
@@ -2280,7 +2894,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.160.hive
 		custom_tooltip = gpm_colony.160.b
 		hidden_effect = {
@@ -2290,7 +2908,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.160.mach
 		custom_tooltip = gpm_colony.160.c
 		hidden_effect = {
@@ -2299,66 +2921,73 @@ planet_event = {
 			}
 		}
 	}
-
 }
+
 # gpm_titanic_predators or gpm_abominable_predators pop killed, building destroyed
 planet_event = {
 	id = gpm_colony.170
 	title = "gpm_colony.170.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.170.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.170.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.170.desc.mach
 	}
 	picture = GFX_evt_gpm_predator_attack
 	show_sound = event_radio_chatter_02
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		OR = {
 			has_modifier = "gpm_titanic_predators"
 			has_modifier = "gpm_abominable_predators"
 		}
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_predator_attack_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_predator_attack_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.170 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- predators raid ----"
-		owner = { set_country_flag = gpm_colony_predator_attack_event }
+		owner = {
+			set_country_flag = gpm_colony_predator_attack_event
+		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.170.a
@@ -2368,7 +2997,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.170.hive
 		# custom_tooltip = gpm_colony.170.b
 		random_owned_pop = {
@@ -2376,7 +3009,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.170.mach
 		# custom_tooltip = gpm_colony.170.b
 		random_owned_pop = {
@@ -2384,62 +3021,70 @@ planet_event = {
 		}
 	}
 }
+
 # gpm_endless_fish flat food bonus, give alternative option to sell.
 planet_event = {
 	id = gpm_colony.180
 	title = "gpm_colony.180.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.180.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.180.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.180.desc.mach
 	}
 	picture = GFX_evt_gpm_endless_fish
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_endless_fish"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_endless_fish_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_endless_fish_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.180 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- endless fish food bonus ----"
-		owner = { set_country_flag = gpm_colony_endless_fish_event }
+		owner = {
+			set_country_flag = gpm_colony_endless_fish_event
+		}
 	}
-	
 	# Food options
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.180.a
@@ -2454,7 +3099,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.180.hive
 		#custom_tooltip = gpm_colony.180.b
 		owner = {
@@ -2467,7 +3116,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.180.mach
 		#custom_tooltip = gpm_colony.180.b
 		owner = {
@@ -2482,11 +3135,11 @@ planet_event = {
 	# Energy options
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.180.a2
@@ -2501,7 +3154,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.180.hive2
 		#custom_tooltip = gpm_colony.180.b
 		owner = {
@@ -2514,7 +3171,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.180.mach2
 		#custom_tooltip = gpm_colony.180.b
 		owner = {
@@ -2526,63 +3187,70 @@ planet_event = {
 			}
 		}
 	}
-
 }
+
 # gpm_gemstones flat energy & mineral bonus
 planet_event = {
 	id = gpm_colony.190
 	title = "gpm_colony.190.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.190.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.190.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.190.desc.mach
 	}
 	picture = GFX_evt_gpm_gemstones_sale
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_gemstones"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_gemstones_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_gemstones_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.190 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- gemstone sale ----"
-		owner = { set_country_flag = gpm_colony_gemstones_event }
+		owner = {
+			set_country_flag = gpm_colony_gemstones_event
+		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.190.a
@@ -2603,7 +3271,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.190.hive
 		#custom_tooltip = gpm_colony.190.b
 		owner = {
@@ -2622,7 +3294,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.190.mach
 		#custom_tooltip = gpm_colony.190.b
 		owner = {
@@ -2640,43 +3316,48 @@ planet_event = {
 			}
 		}
 	}
-
 }
+
 # gpm_android_pleasure_palace +1 droid pop -> fell in love with a pop
 planet_event = {
 	id = gpm_colony.200
 	title = "gpm_colony.200.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.200.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.200.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.200.desc.mach
 	}
 	picture = GFX_evt_gpm_robot_love
 	show_sound = event_celebration
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		is_occupied_flag = no
 	}
 	trigger = {
-		
 		owner = {
 			NOT = {
 				OR = {
@@ -2686,27 +3367,28 @@ planet_event = {
 			}
 		}
 		num_pops > 0
-		
 		has_modifier = "gpm_android_pleasure_palace"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_droid_love_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_droid_love_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.200 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- robot in love ----"
-		owner = { set_country_flag = gpm_colony_droid_love_event }
+		owner = {
+			set_country_flag = gpm_colony_droid_love_event
+		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.200.a
@@ -2724,11 +3406,15 @@ planet_event = {
 			}
 			create_pop = {
 				species = last_created
-			}					
+			}
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.200.hive
 		custom_tooltip = gpm_colony.200.b
 		hidden_effect = {
@@ -2744,11 +3430,15 @@ planet_event = {
 			}
 			create_pop = {
 				species = last_created
-			}					
+			}
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.200.mach
 		custom_tooltip = gpm_colony.200.b
 		hidden_effect = {
@@ -2764,51 +3454,65 @@ planet_event = {
 			}
 			create_pop = {
 				species = last_created
-			}					
+			}
 		}
 	}
 }
+
 # gpm_windy building destroyed but energy bonus
 planet_event = {
 	id = gpm_colony.210
 	title = "gpm_colony.210.name"
 	desc = {
 		trigger = {
-			owner = { NOT = { has_authority = auth_machine_intelligence	} }
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
 		}
 		text = gpm_colony.210.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.210.desc.mach
 	}
 	picture = GFX_evt_gpm_windy
 	show_sound = event_structural_collapse
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_windy"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_windy_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_windy_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.210 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- windy energy bonus ----"
-		owner = { set_country_flag = gpm_colony_windy_event }
+		owner = {
+			set_country_flag = gpm_colony_windy_event
+		}
 	}
-	
 	option = {
-		trigger = {	owner = { NOT = { has_authority = auth_machine_intelligence } } }
+		trigger = {
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
+		}
 		name = gpm_colony.210.a
 		# custom_tooltip = gpm_colony.210.b
 		owner = {
@@ -2821,7 +3525,11 @@ planet_event = {
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.210.mach
 		# custom_tooltip = gpm_colony.210.b
 		owner = {
@@ -2834,6 +3542,7 @@ planet_event = {
 		}
 	}
 }
+
 # gpm_radioactive_mantle betharian stone discovered up to 3x 
 planet_event = {
 	id = gpm_colony.220
@@ -2842,109 +3551,148 @@ planet_event = {
 	picture = GFX_evt_gpm_betharian_stone
 	show_sound = event_factions
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_radioactive_mantle"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_betharian_stone_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_betharian_stone_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.220 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- radioactive mantle betharian bonus ----"
-		owner = { set_country_flag = gpm_colony_betharian_stone_event }
+		owner = {
+			set_country_flag = gpm_colony_betharian_stone_event
+		}
 	}
-	
 	option = {
-		trigger = {	owner = { NOT = { has_authority = auth_machine_intelligence } } }
+		trigger = {
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
+		}
 		name = gpm_colony.220.a
 		custom_tooltip = gpm_colony.220.b
 		hidden_effect = {
 			random_list = {
-				10 ={ add_deposit = d_betharian_deposit }
-				10 ={ add_deposit = d_betharian_deposit add_deposit = d_betharian_deposit }
-				10 ={ add_deposit = d_betharian_deposit add_deposit = d_betharian_deposit add_deposit = d_betharian_deposit }
+				10 = {
+					add_deposit = d_betharian_deposit
+				}
+				10 = {
+					add_deposit = d_betharian_deposit
+					add_deposit = d_betharian_deposit
+				}
+				10 = {
+					add_deposit = d_betharian_deposit
+					add_deposit = d_betharian_deposit
+					add_deposit = d_betharian_deposit
+				}
 			}
 		}
-		
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.220.mach
 		custom_tooltip = gpm_colony.220.b
 		hidden_effect = {
 			random_list = {
-				10 ={ add_deposit = d_betharian_deposit }
-				10 ={ add_deposit = d_betharian_deposit add_deposit = d_betharian_deposit }
-				10 ={ add_deposit = d_betharian_deposit add_deposit = d_betharian_deposit add_deposit = d_betharian_deposit }
+				10 = {
+					add_deposit = d_betharian_deposit
+				}
+				10 = {
+					add_deposit = d_betharian_deposit
+					add_deposit = d_betharian_deposit
+				}
+				10 = {
+					add_deposit = d_betharian_deposit
+					add_deposit = d_betharian_deposit
+					add_deposit = d_betharian_deposit
+				}
 			}
 		}
 	}
 }
+
 # gpm_locust_plagues farms destroyed
 planet_event = {
 	id = gpm_colony.230
 	title = "gpm_colony.230.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.230.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.230.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.230.desc.mach
 	}
 	picture = GFX_evt_gpm_farm_locust
 	show_sound = event_air_raid_siren
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		NOT = { owner = { has_authority = auth_machine_intelligence } }
+		NOT = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		num_pops > 0
 		has_modifier = "gpm_locust_plagues"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_locust_farm_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_locust_farm_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.230 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- locust plagues farms ----"
-		owner = { set_country_flag = gpm_colony_locust_farm_event }
+		owner = {
+			set_country_flag = gpm_colony_locust_farm_event
+		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.230.a
@@ -2955,11 +3703,18 @@ planet_event = {
 			remove_district = district_farming
 		}
 		# custom_tooltip = gpm_colony.230.b
-		owner = { add_resource = { food = -186 } }
-		
+		owner = {
+			add_resource = {
+				food = -186
+			}
+		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.230.hive
 		if = {
 			limit = {
@@ -2968,11 +3723,18 @@ planet_event = {
 			remove_district = district_farming
 		}
 		# custom_tooltip = gpm_colony.230.b
-		owner = { add_resource = { food = -186 } }
-		
+		owner = {
+			add_resource = {
+				food = -186
+			}
+		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.230.mach
 		if = {
 			limit = {
@@ -2981,10 +3743,14 @@ planet_event = {
 			remove_district = district_farming
 		}
 		# custom_tooltip = gpm_colony.230.b
-		owner = { add_resource = { food = -186 } }
-		
+		owner = {
+			add_resource = {
+				food = -186
+			}
+		}
 	}
 }
+
 # gpm_trubbles food eaten from stockpile (not much)
 planet_event = {
 	id = gpm_colony.240
@@ -2993,80 +3759,109 @@ planet_event = {
 	picture = GFX_evt_gpm_trubble_feast
 	show_sound = event_administrative_work
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_trubbles"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_hungry_trubbles_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_hungry_trubbles_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.240 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- trubbles food problem ----"
-		owner = { set_country_flag = gpm_colony_hungry_trubbles_event }
+		owner = {
+			set_country_flag = gpm_colony_hungry_trubbles_event
+		}
 	}
-	
 	option = {
-		trigger = {	owner = { NOT = { has_authority = auth_hive_mind } } }
+		trigger = {
+			owner = {
+				NOT = {
+					has_authority = auth_hive_mind
+				}
+			}
+		}
 		name = gpm_colony.240.a
 		#custom_tooltip = gpm_colony.240.b
-		owner = { add_resource = { food = -79 } }
+		owner = {
+			add_resource = {
+				food = -79
+			}
+		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.240.hive
 		#custom_tooltip = gpm_colony.240.b
-		owner = { add_resource = { food = -79 } }
+		owner = {
+			add_resource = {
+				food = -79
+			}
+		}
 	}
-
 }
+
 # gpm_strange_voices rebellion army
 planet_event = {
 	id = gpm_colony.250
 	title = "gpm_colony.250.name"
 	desc = {
 		trigger = {
-			owner = { NOT = { has_authority = auth_machine_intelligence	} }
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
 		}
 		text = gpm_colony.250.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.250.desc.mach
 	}
 	picture = GFX_evt_gpm_call_of_cthulhu
 	show_sound = event_ground_battle
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_strange_voices"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_cultist_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_cultist_event
+			}
 		}
-		owner = { NOT = { has_authority = auth_hive_mind } }
+		owner = {
+			NOT = {
+				has_authority = auth_hive_mind
+			}
+		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.250 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- strange voices attacks ----"
-		owner = { set_country_flag = gpm_colony_cultist_event }
+		owner = {
+			set_country_flag = gpm_colony_cultist_event
+		}
 		create_country = {
 			name = "Followers of the Ancient One"
 			type = faction
@@ -3183,37 +3978,50 @@ planet_event = {
 			type = "rebel_army"
 		}
 	}
-	
 	option = {
-		trigger = {	owner = { NOT = { has_authority = auth_machine_intelligence } } }
+		trigger = {
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
+		}
 		name = gpm_colony.250.a
 		custom_tooltip = gpm_colony.250.b
 		hidden_effect = {
 			every_owned_pop = {
 				limit = {
 					is_same_species = FROM
-					NOT = { has_ethic = ethic_fanatic_spiritualist }
+					NOT = {
+						has_ethic = ethic_fanatic_spiritualist
+					}
 				}
 				pop_change_ethic = ethic_fanatic_spiritualist
 			}
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.250.mach
 		custom_tooltip = gpm_colony.250.c
 		hidden_effect = {
 			every_owned_pop = {
 				limit = {
 					is_same_species = FROM
-					NOT = { has_ethic = ethic_fanatic_spiritualist }
+					NOT = {
+						has_ethic = ethic_fanatic_spiritualist
+					}
 				}
 				pop_change_ethic = ethic_fanatic_spiritualist
 			}
 		}
 	}
-
 }
+
 # gpm_planetwide_forest new forest blocker (if empty space)
 planet_event = {
 	id = gpm_colony.260
@@ -3222,36 +4030,35 @@ planet_event = {
 	picture = GFX_evt_gpm_forest_growth
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_planetwide_forest"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_forest_growth_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_forest_growth_event
+			}
 		}
 		gpm_is_planet_class_normal_habitable = yes
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.260 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- planetwide forest growth ----"
-		owner = { set_country_flag = gpm_colony_forest_growth_event }
+		owner = {
+			set_country_flag = gpm_colony_forest_growth_event
+		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.260.a
@@ -3259,66 +4066,81 @@ planet_event = {
 		add_deposit = d_rugged_woods
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.260.hive
 		# custom_tooltip = gpm_colony.260.b
 		add_deposit = d_rugged_woods
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.260.mach
 		# custom_tooltip = gpm_colony.260.b
 		add_deposit = d_rugged_woods
-		
 	}
 }
+
 # gpm_hiveworld spawn friendly queen
 planet_event = {
 	id = gpm_colony.270
 	title = "gpm_colony.270.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.270.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.270.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.270.desc.mach
 	}
 	picture = GFX_evt_gpm_hive_queen
 	show_sound = event_alien_nature
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
-
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_hiveworld"
 		NOT = {
-			owner = { has_country_flag = gpm_hive_event }
+			owner = {
+				has_country_flag = gpm_hive_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.270 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- hiveworld queen ----"
-		owner = { set_country_flag = gpm_hive_event }
+		owner = {
+			set_country_flag = gpm_hive_event
+		}
 		create_fleet = {
 			name = "NAME_Domesticated_Prethoryn"
 			effect = {
@@ -3331,84 +4153,104 @@ planet_event = {
 					upgradable = no
 				}
 				set_location = ROOT
-				fleet_event = { id = crisis.106 days = 30 }
+				fleet_event = {
+					id = crisis.106
+					days = 30
+				}
 			}
-			settings = { 
-				can_upgrade = no 
-				can_change_composition = no 
-				can_change_leader = no 
+			settings = {
+				can_upgrade = no
+				can_change_composition = no
+				can_change_leader = no
 			}
 		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.270.a
 		custom_tooltip = gpm_colony.270.b
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.270.hive
 		custom_tooltip = gpm_colony.270.b
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.270.mach
 		custom_tooltip = gpm_colony.270.b
 	}
-
 }
+
 # gpm_arachnophobia enemy spider armies invade
 planet_event = {
 	id = gpm_colony.280
 	title = "gpm_colony.280.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.280.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.280.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.280.desc.mach
 	}
 	picture = GFX_evt_gpm_arachnophobia_accident
 	show_sound = event_radio_chatter_02
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_arachnophobia"
-		NOT = { owner = { has_country_flag = gpm_colony_loose_arachnids_event } }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_loose_arachnids_event
+			}
+		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.280 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- spider attacks ----"
-		owner = { set_country_flag = gpm_colony_loose_arachnids_event }
+		owner = {
+			set_country_flag = gpm_colony_loose_arachnids_event
+		}
 		create_country = {
 			name = "Arachnids"
 			type = faction
@@ -3432,30 +4274,38 @@ planet_event = {
 			}
 		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.280.a
 		custom_tooltip = gpm_colony.280.b
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.280.hive
 		custom_tooltip = gpm_colony.280.b
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.280.mach
 		custom_tooltip = gpm_colony.280.b
 	}
 }
+
 # gpm_giant_worm building destroyed
 planet_event = {
 	id = gpm_colony.290
@@ -3464,163 +4314,236 @@ planet_event = {
 	picture = GFX_evt_gpm_worm_attack
 	show_sound = event_construction
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_giant_worm"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_worm_attack_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_worm_attack_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.290 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- giant worm attack ----"
-		owner = { set_country_flag = gpm_colony_worm_attack_event }
+		owner = {
+			set_country_flag = gpm_colony_worm_attack_event
+		}
 	}
-	
 	option = {
-		trigger = {	owner = { NOT = { has_authority = auth_machine_intelligence } } }
+		trigger = {
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
+		}
 		name = gpm_colony.290.a
 		# custom_tooltip = gpm_colony.290.b
 		locked_random_list = {
-			10 = { 
+			10 = {
 				remove_district = district_city
-				modifier = { factor = 0 NOT = { has_district = district_city } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_city
+					}
+				}
 			}
-			10 = { 
+			10 = {
 				remove_district = district_hive
-				modifier = { factor = 0 NOT = { has_district = district_hive } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_hive
+					}
+				}
 			}
-			10 = { 
+			10 = {
 				remove_district = district_farming
-				modifier = { factor = 0 NOT = { has_district = district_farming } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_farming
+					}
+				}
 			}
-			10 = { 
+			10 = {
 				remove_district = district_mining
-				modifier = { factor = 0 NOT = { has_district = district_mining } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_mining
+					}
+				}
 			}
-			10 = { 
+			10 = {
 				remove_district = district_generator
-				modifier = { factor = 0 NOT = { has_district = district_generator } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_generator
+					}
+				}
 			}
 		}
 		random_owned_pop = {
 			kill_pop = yes
 		}
-
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.290.mach
 		# custom_tooltip = gpm_colony.290.b
 		locked_random_list = {
-			10 = { 
+			10 = {
 				remove_district = district_nexus
-				modifier = { factor = 0 NOT = { has_district = district_nexus } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_nexus
+					}
+				}
 			}
-			10 = { 
+			10 = {
 				remove_district = district_farming
-				modifier = { factor = 0 NOT = { has_district = district_farming } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_farming
+					}
+				}
 			}
-			10 = { 
+			10 = {
 				remove_district = district_mining
-				modifier = { factor = 0 NOT = { has_district = district_mining } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_mining
+					}
+				}
 			}
-			10 = { 
+			10 = {
 				remove_district = district_generator
-				modifier = { factor = 0 NOT = { has_district = district_generator } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_generator
+					}
+				}
 			}
 		}
 		random_owned_pop = {
 			kill_pop = yes
 		}
-
 	}
-
 }
+
 # gpm_carnivorous_flies pop eaten
 planet_event = {
 	id = gpm_colony.300
 	title = "gpm_colony.300.name"
 	desc = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		text = gpm_colony.300.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		text = gpm_colony.300.desc.hive
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.300.desc.mach
 	}
 	picture = GFX_evt_gpm_swarm_eating
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_carnivorous_flies"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_carnivorous_flies_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_carnivorous_flies_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.300 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- carnivorous flies eating people ----"
-		owner = { set_country_flag = gpm_colony_carnivorous_flies_event }
+		owner = {
+			set_country_flag = gpm_colony_carnivorous_flies_event
+		}
 	}
-	
 	option = {
 		trigger = {
-			owner = { 
-				NOR = { 
+			owner = {
+				NOR = {
 					has_authority = auth_hive_mind
 					has_authority = auth_machine_intelligence
-				} 
+				}
 			}
 		}
 		name = gpm_colony.300.a
 		#custom_tooltip = gpm_colony.300.b
-		random_owned_pop = { kill_pop = yes }
+		random_owned_pop = {
+			kill_pop = yes
+		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_hive_mind } }
+		trigger = {
+			owner = {
+				has_authority = auth_hive_mind
+			}
+		}
 		name = gpm_colony.300.hive
 		#custom_tooltip = gpm_colony.300.b
-		random_owned_pop = { kill_pop = yes }
+		random_owned_pop = {
+			kill_pop = yes
+		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.300.mach
 		#custom_tooltip = gpm_colony.300.b
-		random_owned_pop = { kill_pop = yes }
+		random_owned_pop = {
+			kill_pop = yes
+		}
 	}
-
 }
+
 # gpm_mushroom_forest fill every empty tile with mushroom tile blocker -something made them grow fast
 planet_event = {
 	id = gpm_colony.310
@@ -3629,81 +4552,91 @@ planet_event = {
 	picture = GFX_evt_gpm_mushroom_growth
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_mushroom_forest"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_mushroom_forest_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_mushroom_forest_event
+			}
 		}
-
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.310 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- mushroom forest tile growth ----"
-		owner = { set_country_flag = gpm_colony_mushroom_forest_event }
+		owner = {
+			set_country_flag = gpm_colony_mushroom_forest_event
+		}
 	}
-	
 	option = {
 		name = gpm_colony.310.a
 		# custom_tooltip = gpm_colony.310.b
 		add_deposit = gpm_d_mushroom_forest
-
 	}
 }
+
 # gpm_proto_forests gpm_dense_forests forest fire -remove some forest tile blockers
 planet_event = {
 	id = gpm_colony.320
 	title = "gpm_colony.320.name"
 	desc = {
 		trigger = {
-			owner = { NOT = { has_authority = auth_machine_intelligence	} }
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
 		}
 		text = gpm_colony.320.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.320.desc.mach
 	}
 	picture = GFX_evt_gpm_forest_fire
 	show_sound = event_ground_battle
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		OR = {
 			has_modifier = "gpm_proto_forests"
 			has_modifier = "gpm_dense_forests"
 		}
-
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_forest_fire_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_forest_fire_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.320 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- proto/dense forest tile growth ----"
-		owner = { set_country_flag = gpm_colony_forest_fire_event }
+		owner = {
+			set_country_flag = gpm_colony_forest_fire_event
+		}
 	}
-	
 	option = {
-		trigger = {	owner = { NOT = { has_authority = auth_machine_intelligence } } }
+		trigger = {
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
+		}
 		name = gpm_colony.320.a
 		custom_tooltip = gpm_colony.320.b
 		if = {
@@ -3717,15 +4650,30 @@ planet_event = {
 			locked_random_list = {
 				10 = {
 					remove_deposit = gpm_d_proto_forests
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_proto_forests } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_proto_forests
+						}
+					}
 				}
 				10 = {
 					remove_deposit = gpm_d_dense_forests
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_dense_forests } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_dense_forests
+						}
+					}
 				}
 				10 = {
 					remove_deposit = gpm_d_planetwide_forest
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_planetwide_forest } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_planetwide_forest
+						}
+					}
 				}
 			}
 		}
@@ -3738,18 +4686,34 @@ planet_event = {
 				}
 			}
 			locked_random_list = {
-				10 = { }
+				10 = {
+				}
 				10 = {
 					remove_deposit = gpm_d_proto_forests
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_proto_forests } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_proto_forests
+						}
+					}
 				}
 				10 = {
 					remove_deposit = gpm_d_dense_forests
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_dense_forests } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_dense_forests
+						}
+					}
 				}
 				10 = {
 					remove_deposit = gpm_d_planetwide_forest
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_planetwide_forest } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_planetwide_forest
+						}
+					}
 				}
 			}
 		}
@@ -3762,24 +4726,44 @@ planet_event = {
 				}
 			}
 			locked_random_list = {
-				10 = { }
+				10 = {
+				}
 				10 = {
 					remove_deposit = gpm_d_proto_forests
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_proto_forests } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_proto_forests
+						}
+					}
 				}
 				10 = {
 					remove_deposit = gpm_d_dense_forests
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_dense_forests } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_dense_forests
+						}
+					}
 				}
 				10 = {
 					remove_deposit = gpm_d_planetwide_forest
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_planetwide_forest } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_planetwide_forest
+						}
+					}
 				}
 			}
 		}
 	}
 	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		name = gpm_colony.320.mach
 		custom_tooltip = gpm_colony.320.b
 		if = {
@@ -3793,15 +4777,30 @@ planet_event = {
 			locked_random_list = {
 				10 = {
 					remove_deposit = gpm_d_proto_forests
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_proto_forests } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_proto_forests
+						}
+					}
 				}
 				10 = {
 					remove_deposit = gpm_d_dense_forests
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_dense_forests } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_dense_forests
+						}
+					}
 				}
 				10 = {
 					remove_deposit = gpm_d_planetwide_forest
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_planetwide_forest } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_planetwide_forest
+						}
+					}
 				}
 			}
 		}
@@ -3814,18 +4813,34 @@ planet_event = {
 				}
 			}
 			locked_random_list = {
-				10 = { }
+				10 = {
+				}
 				10 = {
 					remove_deposit = gpm_d_proto_forests
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_proto_forests } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_proto_forests
+						}
+					}
 				}
 				10 = {
 					remove_deposit = gpm_d_dense_forests
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_dense_forests } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_dense_forests
+						}
+					}
 				}
 				10 = {
 					remove_deposit = gpm_d_planetwide_forest
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_planetwide_forest } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_planetwide_forest
+						}
+					}
 				}
 			}
 		}
@@ -3838,217 +4853,210 @@ planet_event = {
 				}
 			}
 			locked_random_list = {
-				10 = { }
+				10 = {
+				}
 				10 = {
 					remove_deposit = gpm_d_proto_forests
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_proto_forests } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_proto_forests
+						}
+					}
 				}
 				10 = {
 					remove_deposit = gpm_d_dense_forests
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_dense_forests } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_dense_forests
+						}
+					}
 				}
 				10 = {
 					remove_deposit = gpm_d_planetwide_forest
-					modifier = { factor = 0 NOT = { has_deposit = gpm_d_planetwide_forest } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_deposit = gpm_d_planetwide_forest
+						}
+					}
 				}
 			}
 		}
 	}
 }
+
 # gpm_planetwide_forest forest fire; remove all tile blockers, destroy some buildings, kill a pop
 planet_event = {
 	id = gpm_colony.330
 	title = "gpm_colony.330.name"
 	desc = {
 		trigger = {
-			owner = { NOT = { has_authority = auth_machine_intelligence	} }
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
 		}
 		text = gpm_colony.330.desc
 	}
 	desc = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		text = gpm_colony.330.desc.mach
 	}
 	picture = GFX_evt_gpm_forest_inferno
 	show_sound = event_air_raid_siren
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_planetwide_forest"
-
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_planet_forest_fire_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_planet_forest_fire_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.330 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- planet wide forest fire ----"
-		owner = { set_country_flag = gpm_colony_planet_forest_fire_event }
+		owner = {
+			set_country_flag = gpm_colony_planet_forest_fire_event
+		}
 	}
-	
 	option = {
-		trigger = {	owner = {  NOT = { has_authority = auth_machine_intelligence } } }
+		trigger = {
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
+		}
 		name = gpm_colony.330.a
 		custom_tooltip = gpm_colony.330.b
 		locked_random_list = {
-			10 = { 
+			10 = {
 				remove_district = district_city
-				modifier = { factor = 0 NOT = { has_district = district_city } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_city
+					}
+				}
 			}
-			10 = { 
+			10 = {
 				remove_district = district_hive
-				modifier = { factor = 0 NOT = { has_district = district_hive } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_hive
+					}
+				}
 			}
-			10 = { 
+			10 = {
 				remove_district = district_nexus
-				modifier = { factor = 0 NOT = { has_district = district_nexus } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_nexus
+					}
+				}
 			}
-			10 = { 
+			10 = {
 				remove_district = district_farming
-				modifier = { factor = 0 NOT = { has_district = district_farming } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_farming
+					}
+				}
 			}
-			10 = { 
+			10 = {
 				remove_district = district_mining
-				modifier = { factor = 0 NOT = { has_district = district_mining } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_mining
+					}
+				}
 			}
-			10 = { 
+			10 = {
 				remove_district = district_generator
-				modifier = { factor = 0 NOT = { has_district = district_generator } }
-			}
-		}
-		while = {
-			count = 3
-				locked_random_list = {
-				60 = { }
-				10 = { 
-					remove_district = district_city
-					modifier = { factor = 0 NOT = { has_district = district_city } }
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_generator
+					}
 				}
-				10 = { 
-					remove_district = district_hive
-					modifier = { factor = 0 NOT = { has_district = district_hive } }
-				}
-				10 = { 
-					remove_district = district_nexus
-					modifier = { factor = 0 NOT = { has_district = district_nexus } }
-				}
-				10 = { 
-					remove_district = district_farming
-					modifier = { factor = 0 NOT = { has_district = district_farming } }
-				}
-				10 = { 
-					remove_district = district_mining
-					modifier = { factor = 0 NOT = { has_district = district_mining } }
-				}
-				10 = { 
-					remove_district = district_generator
-					modifier = { factor = 0 NOT = { has_district = district_generator } }
-				}
-			}
-			
-		}
-		if = {
-			limit = {
-				num_pops > 1
-			}
-			random_owned_pop = {
-				kill_pop = yes
-			}
-		}
-		while = {
-			count = 3
-			if = {
-				limit = {
-					num_pops > 1
-				}
-				locked_random_list = {
-					10 = {}
-					10 = { random_owned_pop = { kill_pop = yes } }
-				}
-			}
-		}
-		while = {
-			count = 3
-			if = {
-				limit = { has_deposit = gpm_d_proto_forests }
-				remove_deposit = gpm_d_proto_forests
-			}
-			if = {
-				limit = { has_deposit = gpm_d_dense_forests }
-				remove_deposit = gpm_d_dense_forests
-			}
-			if = {
-				limit = { has_deposit = gpm_d_planetwide_forest }
-				remove_deposit = gpm_d_planetwide_forest
-			}
-		}
-	}
-	option = {
-		trigger = {	owner = { has_authority = auth_machine_intelligence } }
-		name = gpm_colony.330.mach
-		custom_tooltip = gpm_colony.330.b
-		locked_random_list = {
-			10 = { 
-				remove_district = district_city
-				modifier = { factor = 0 NOT = { has_district = district_city } }
-			}
-			10 = { 
-				remove_district = district_hive
-				modifier = { factor = 0 NOT = { has_district = district_hive } }
-			}
-			10 = { 
-				remove_district = district_nexus
-				modifier = { factor = 0 NOT = { has_district = district_nexus } }
-			}
-			10 = { 
-				remove_district = district_farming
-				modifier = { factor = 0 NOT = { has_district = district_farming } }
-			}
-			10 = { 
-				remove_district = district_mining
-				modifier = { factor = 0 NOT = { has_district = district_mining } }
-			}
-			10 = { 
-				remove_district = district_generator
-				modifier = { factor = 0 NOT = { has_district = district_generator } }
 			}
 		}
 		while = {
 			count = 3
 			locked_random_list = {
-				60 = { }
-				10 = { 
+				60 = {
+				}
+				10 = {
 					remove_district = district_city
-					modifier = { factor = 0 NOT = { has_district = district_city } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_district = district_city
+						}
+					}
 				}
-				10 = { 
+				10 = {
 					remove_district = district_hive
-					modifier = { factor = 0 NOT = { has_district = district_hive } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_district = district_hive
+						}
+					}
 				}
-				10 = { 
+				10 = {
 					remove_district = district_nexus
-					modifier = { factor = 0 NOT = { has_district = district_nexus } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_district = district_nexus
+						}
+					}
 				}
-				10 = { 
+				10 = {
 					remove_district = district_farming
-					modifier = { factor = 0 NOT = { has_district = district_farming } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_district = district_farming
+						}
+					}
 				}
-				10 = { 
+				10 = {
 					remove_district = district_mining
-					modifier = { factor = 0 NOT = { has_district = district_mining } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_district = district_mining
+						}
+					}
 				}
-				10 = { 
+				10 = {
 					remove_district = district_generator
-					modifier = { factor = 0 NOT = { has_district = district_generator } }
+					modifier = {
+						factor = 0
+						NOT = {
+							has_district = district_generator
+						}
+					}
 				}
 			}
 		}
@@ -4067,28 +5075,212 @@ planet_event = {
 					num_pops > 1
 				}
 				locked_random_list = {
-					10 = {}
-					10 = { random_owned_pop = { kill_pop = yes } }
+					10 = {
+					}
+					10 = {
+						random_owned_pop = {
+							kill_pop = yes
+						}
+					}
 				}
 			}
 		}
 		while = {
 			count = 3
 			if = {
-				limit = { has_deposit = gpm_d_proto_forests }
+				limit = {
+					has_deposit = gpm_d_proto_forests
+				}
 				remove_deposit = gpm_d_proto_forests
 			}
 			if = {
-				limit = { has_deposit = gpm_d_dense_forests }
+				limit = {
+					has_deposit = gpm_d_dense_forests
+				}
 				remove_deposit = gpm_d_dense_forests
 			}
 			if = {
-				limit = { has_deposit = gpm_d_planetwide_forest }
+				limit = {
+					has_deposit = gpm_d_planetwide_forest
+				}
+				remove_deposit = gpm_d_planetwide_forest
+			}
+		}
+	}
+	option = {
+		trigger = {
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+		}
+		name = gpm_colony.330.mach
+		custom_tooltip = gpm_colony.330.b
+		locked_random_list = {
+			10 = {
+				remove_district = district_city
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_city
+					}
+				}
+			}
+			10 = {
+				remove_district = district_hive
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_hive
+					}
+				}
+			}
+			10 = {
+				remove_district = district_nexus
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_nexus
+					}
+				}
+			}
+			10 = {
+				remove_district = district_farming
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_farming
+					}
+				}
+			}
+			10 = {
+				remove_district = district_mining
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_mining
+					}
+				}
+			}
+			10 = {
+				remove_district = district_generator
+				modifier = {
+					factor = 0
+					NOT = {
+						has_district = district_generator
+					}
+				}
+			}
+		}
+		while = {
+			count = 3
+			locked_random_list = {
+				60 = {
+				}
+				10 = {
+					remove_district = district_city
+					modifier = {
+						factor = 0
+						NOT = {
+							has_district = district_city
+						}
+					}
+				}
+				10 = {
+					remove_district = district_hive
+					modifier = {
+						factor = 0
+						NOT = {
+							has_district = district_hive
+						}
+					}
+				}
+				10 = {
+					remove_district = district_nexus
+					modifier = {
+						factor = 0
+						NOT = {
+							has_district = district_nexus
+						}
+					}
+				}
+				10 = {
+					remove_district = district_farming
+					modifier = {
+						factor = 0
+						NOT = {
+							has_district = district_farming
+						}
+					}
+				}
+				10 = {
+					remove_district = district_mining
+					modifier = {
+						factor = 0
+						NOT = {
+							has_district = district_mining
+						}
+					}
+				}
+				10 = {
+					remove_district = district_generator
+					modifier = {
+						factor = 0
+						NOT = {
+							has_district = district_generator
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				num_pops > 1
+			}
+			random_owned_pop = {
+				kill_pop = yes
+			}
+		}
+		while = {
+			count = 3
+			if = {
+				limit = {
+					num_pops > 1
+				}
+				locked_random_list = {
+					10 = {
+					}
+					10 = {
+						random_owned_pop = {
+							kill_pop = yes
+						}
+					}
+				}
+			}
+		}
+		while = {
+			count = 3
+			if = {
+				limit = {
+					has_deposit = gpm_d_proto_forests
+				}
+				remove_deposit = gpm_d_proto_forests
+			}
+			if = {
+				limit = {
+					has_deposit = gpm_d_dense_forests
+				}
+				remove_deposit = gpm_d_dense_forests
+			}
+			if = {
+				limit = {
+					has_deposit = gpm_d_planetwide_forest
+				}
 				remove_deposit = gpm_d_planetwide_forest
 			}
 		}
 	}
 }
+
 # gpm_temple_of_the_ancient_one lose planet to new faction, possible multi stage event
 planet_event = {
 	id = gpm_colony.340
@@ -4097,34 +5289,33 @@ planet_event = {
 	picture = GFX_evt_gpm_xenomorph_infestation
 	show_sound = event_red_alert
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_resilent_parasites"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_ancient_one_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_ancient_one_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.340 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- ancient one faction TO DO----"
-		owner = { set_country_flag = gpm_colony_ancient_one_event }
+		owner = {
+			set_country_flag = gpm_colony_ancient_one_event
+		}
 	}
-	
 	option = {
 		name = gpm_colony.340.a
 		custom_tooltip = gpm_colony.340.b
 	}
-
 }
+
 # gpm_artificial_core multi stage, stage 1 earthquake, stage 2 bad planet modifiers, stage 3 dead planet,  ends up destroying planet with a bang
 planet_event = {
 	id = gpm_colony.350
@@ -4133,33 +5324,31 @@ planet_event = {
 	picture = GFX_evt_gpm_xenomorph_infestation
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
-		
 		num_pops > 0
 		has_modifier = "gpm_resilent_parasites"
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_artificial_core_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_artificial_core_event
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.350 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- Artificial Core TO DO ----"
-		owner = { set_country_flag = gpm_colony_artificial_core_event }
+		owner = {
+			set_country_flag = gpm_colony_artificial_core_event
+		}
 	}
-	
 	option = {
 		name = gpm_colony.350.a
 		custom_tooltip = gpm_colony.350.b
 	}
-
 }
 
 # The Crystal Beasts 1 - Crystalline Cave
@@ -4170,26 +5359,30 @@ planet_event = {
 	picture = GFX_evt_gpm_crystalline_cave
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
 	trigger = {
 		has_deposit = d_crystal_forest
-		NOT = { 
-			owner = { has_country_flag = gpm_colony_the_crystal_beasts_event }
+		NOT = {
+			owner = {
+				has_country_flag = gpm_colony_the_crystal_beasts_event
+			}
 		}
 	}
-	
 	immediate = {
-		owner = { set_country_flag = gpm_colony_the_crystal_beasts_event }
+		owner = {
+			set_country_flag = gpm_colony_the_crystal_beasts_event
+		}
 	}
-	
 	option = {
 		name = gpm_colony.360.a
-		owner = { add_resource = { rare_crystals = 150 } }
+		owner = {
+			add_resource = {
+				rare_crystals = 150
+			}
+		}
 	}
 	option = {
 		name = gpm_colony.360.b
@@ -4209,19 +5402,22 @@ planet_event = {
 	picture = GFX_evt_gpm_crystalline_cave
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
-	
 	option = {
 		name = gpm_colony.361.a
-		owner = { add_resource = { rare_crystals = 50 } }
+		owner = {
+			add_resource = {
+				rare_crystals = 50
+			}
+		}
 		add_deposit = d_crystalline_caverns
 		hidden_effect = {
-			planet_event = { id = gpm_colony.362 }
+			planet_event = {
+				id = gpm_colony.362
+			}
 		}
 	}
 	option = {
@@ -4250,13 +5446,10 @@ planet_event = {
 	picture = GFX_evt_gpm_crystalline_cave
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
-	
 	option = {
 		name = gpm_colony.362.a
 		custom_tooltip = gpm_colony.362.spacecreature
@@ -4264,7 +5457,9 @@ planet_event = {
 			random_list = {
 				10 = {
 					random_country = {
-						limit = { is_country_type = crystal }
+						limit = {
+							is_country_type = crystal
+						}
 						create_fleet = {
 							name = "NAME_Crystalline_Entity"
 							settings = {
@@ -4287,7 +5482,9 @@ planet_event = {
 				}
 				10 = {
 					random_country = {
-						limit = { is_country_type = crystal }
+						limit = {
+							is_country_type = crystal
+						}
 						create_fleet = {
 							name = "NAME_Crystalline_Entity"
 							settings = {
@@ -4310,7 +5507,9 @@ planet_event = {
 				}
 				10 = {
 					random_country = {
-						limit = { is_country_type = crystal }
+						limit = {
+							is_country_type = crystal
+						}
 						create_fleet = {
 							name = "NAME_Crystalline_Entity"
 							settings = {
@@ -4333,7 +5532,9 @@ planet_event = {
 				}
 				10 = {
 					random_country = {
-						limit = { is_country_type = crystal }
+						limit = {
+							is_country_type = crystal
+						}
 						create_fleet = {
 							name = "NAME_Crystalline_Entity"
 							settings = {
@@ -4367,13 +5568,10 @@ planet_event = {
 	picture = GFX_evt_gpm_crystalline_cave
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 	}
-	
 	option = {
 		name = INCREDIBLE
 		owner = {
@@ -4394,11 +5592,8 @@ planet_event = {
 event = {
 	id = gpm_colony.4000
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
-		
 		# log = "---- Fired Event gpm_colony.4000 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		every_galaxy_planet = {
@@ -4407,7 +5602,9 @@ event = {
 				original_owner = yes
 				is_capital = yes
 				owner = {
-					NOT = { has_country_flag = gpm_capital_unique_modifiers }
+					NOT = {
+						has_country_flag = gpm_capital_unique_modifiers
+					}
 					is_country_type = default
 				}
 				#has_planet_modifier = "capital"
@@ -4420,7 +5617,10 @@ event = {
 						has_ethic = ethic_fanatic_authoritarian
 					}
 				}
-				planet_event = { id = gpm_colony.4100 days = 24000 }
+				planet_event = {
+					id = gpm_colony.4100
+					days = 24000
+				}
 			}
 			# Egalitarian
 			if = {
@@ -4429,7 +5629,10 @@ event = {
 						has_ethic = ethic_fanatic_egalitarian
 					}
 				}
-				planet_event = { id = gpm_colony.4200 days = 24000 }
+				planet_event = {
+					id = gpm_colony.4200
+					days = 24000
+				}
 			}
 			# Matterialist
 			if = {
@@ -4438,7 +5641,10 @@ event = {
 						has_ethic = ethic_fanatic_materialist
 					}
 				}
-				planet_event = { id = gpm_colony.4300 days = 24000 }
+				planet_event = {
+					id = gpm_colony.4300
+					days = 24000
+				}
 			}
 			# Spiritualist
 			if = {
@@ -4447,7 +5653,10 @@ event = {
 						has_ethic = ethic_fanatic_spiritualist
 					}
 				}
-				planet_event = { id = gpm_colony.4400 days = 24000 }
+				planet_event = {
+					id = gpm_colony.4400
+					days = 24000
+				}
 			}
 			# Militarist
 			if = {
@@ -4456,7 +5665,10 @@ event = {
 						has_ethic = ethic_fanatic_militarist
 					}
 				}
-				planet_event = { id = gpm_colony.4500 days = 24000 }
+				planet_event = {
+					id = gpm_colony.4500
+					days = 24000
+				}
 			}
 			# Pacifists
 			if = {
@@ -4465,7 +5677,10 @@ event = {
 						has_ethic = ethic_fanatic_pacifist
 					}
 				}
-				planet_event = { id = gpm_colony.4600 days = 24000 }
+				planet_event = {
+					id = gpm_colony.4600
+					days = 24000
+				}
 			}
 			# Xenophobe
 			if = {
@@ -4474,7 +5689,10 @@ event = {
 						has_ethic = ethic_fanatic_xenophobe
 					}
 				}
-				planet_event = { id = gpm_colony.4700 days = 24000 }
+				planet_event = {
+					id = gpm_colony.4700
+					days = 24000
+				}
 			}
 			# Xenophile
 			if = {
@@ -4483,7 +5701,10 @@ event = {
 						has_ethic = ethic_fanatic_xenophile
 					}
 				}
-				planet_event = { id = gpm_colony.4800 days = 24000 }
+				planet_event = {
+					id = gpm_colony.4800
+					days = 24000
+				}
 			}
 			# Hivemind
 			if = {
@@ -4492,7 +5713,10 @@ event = {
 						has_authority = auth_hive_mind
 					}
 				}
-				planet_event = { id = gpm_colony.4900 days = 24000 }
+				planet_event = {
+					id = gpm_colony.4900
+					days = 24000
+				}
 			}
 			# Machine Empire
 			if = {
@@ -4501,11 +5725,15 @@ event = {
 						has_authority = auth_machine_intelligence
 					}
 				}
-				planet_event = { id = gpm_colony.5000 days = 24000 }
+				planet_event = {
+					id = gpm_colony.5000
+					days = 24000
+				}
 			}
 		}
 	}
 }
+
 # Capital Event - authoritarian -> Work Camps stage 1
 planet_event = {
 	id = gpm_colony.4100
@@ -4514,40 +5742,42 @@ planet_event = {
 	picture = GFX_evt_alien_propaganda
 	show_sound = event_factions
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_authoritarian
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4100 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 	}
-	
 	option = {
 		name = gpm_colony.4100.a
 		#custom_tooltip = gpm_colony.4100.b
-		planet_event = { id = gpm_colony.4110 days = 1750 }
-		add_modifier = { modifier = gpm_oppressive_laws days = 360 } # 1 years
+		planet_event = {
+			id = gpm_colony.4110
+			days = 1750
+		}
+		add_modifier = {
+			modifier = gpm_oppressive_laws
+			days = 360
+		}		# 1 years
 	}
 }
+
 # Capital Event - authoritarian -> Work Camps stage 2
 planet_event = {
 	id = gpm_colony.4110
@@ -4556,40 +5786,42 @@ planet_event = {
 	picture = GFX_evt_burning_settlement
 	show_sound = event_factions
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_authoritarian
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4110 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 	}
-	
 	option = {
 		name = gpm_colony.4110.a
 		#custom_tooltip = gpm_colony.4110.b
-		planet_event = { id = gpm_colony.4120 days = 1540 }
-		add_modifier = { modifier = gpm_oppressive_laws days = 360 } # 1 years
+		planet_event = {
+			id = gpm_colony.4120
+			days = 1540
+		}
+		add_modifier = {
+			modifier = gpm_oppressive_laws
+			days = 360
+		}		# 1 years
 	}
 }
+
 # Capital Event - authoritarian -> Work Camps stage 3
 planet_event = {
 	id = gpm_colony.4120
@@ -4598,39 +5830,38 @@ planet_event = {
 	picture = GFX_evt_alien_segregation
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_authoritarian
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4120 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 	}
-	
 	option = {
 		name = gpm_colony.4120.a
 		#custom_tooltip = gpm_colony.4120.b
-		planet_event = { id = gpm_colony.4130 days = 1540 }
+		planet_event = {
+			id = gpm_colony.4130
+			days = 1540
+		}
 	}
 }
+
 # Capital Event - authoritarian -> Work Camps stage 4
 planet_event = {
 	id = gpm_colony.4130
@@ -4639,39 +5870,38 @@ planet_event = {
 	picture = GFX_evt_arguing_senate
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_authoritarian
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4130 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 	}
-	
 	option = {
 		name = gpm_colony.4130.a
 		#custom_tooltip = gpm_colony.4130.b
-		planet_event = { id = gpm_colony.4140 days = 1450 }
+		planet_event = {
+			id = gpm_colony.4140
+			days = 1450
+		}
 	}
 }
+
 # Capital Event - authoritarian -> Work Camps stage 5
 planet_event = {
 	id = gpm_colony.4140
@@ -4680,34 +5910,31 @@ planet_event = {
 	picture = GFX_evt_gpm_work_camp
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_authoritarian
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4140 ----"
 		# log = "---- On Planet: [This.GetName] ----"
-		owner = { set_country_flag = gpm_capital_unique_modifiers }
+		owner = {
+			set_country_flag = gpm_capital_unique_modifiers
+		}
 	}
-	
 	option = {
 		name = gpm_colony.4140.a
 		#custom_tooltip = gpm_colony.4140.b
@@ -4719,9 +5946,13 @@ planet_event = {
 				max = 9000
 			}
 		}
-		add_modifier = { modifier = "gpm_work_camps" days = -1 }
+		add_modifier = {
+			modifier = "gpm_work_camps"
+			days = -1
+		}
 	}
 }
+
 # Capital Event - egalitrian -> gpm_galactic_equality stage 1
 planet_event = {
 	id = gpm_colony.4200
@@ -4730,41 +5961,43 @@ planet_event = {
 	picture = GFX_evt_news_room
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_egalitarian
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4200 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4200.a
 		#custom_tooltip = gpm_colony.4200.b
-		planet_event = { id = gpm_colony.4210 days = 1750 }
-		add_modifier = { modifier = gpm_rights_movement days = 360 } # 1 years
+		planet_event = {
+			id = gpm_colony.4210
+			days = 1750
+		}
+		add_modifier = {
+			modifier = gpm_rights_movement
+			days = 360
+		}		# 1 years
 	}
 }
+
 # Capital Event - egalitrian -> gpm_galactic_equality stage 2
 planet_event = {
 	id = gpm_colony.4210
@@ -4773,40 +6006,39 @@ planet_event = {
 	picture = GFX_evt_alien_propaganda
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_egalitarian
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4210 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4210.a
 		#custom_tooltip = gpm_colony.4210.b
-		planet_event = { id = gpm_colony.4220 days = 1510 }
+		planet_event = {
+			id = gpm_colony.4220
+			days = 1510
+		}
 	}
 }
+
 # Capital Event - egalitrian -> gpm_galactic_equality stage 3
 planet_event = {
 	id = gpm_colony.4220
@@ -4815,46 +6047,51 @@ planet_event = {
 	picture = GFX_evt_throne_room
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_egalitarian
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4220 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4220.a
 		#custom_tooltip = gpm_colony.4220.b
-		planet_event = { id = gpm_colony.4230 days = 1690 }
-		add_modifier = { modifier = gpm_rights_movement days = 360 } # 1 years
+		planet_event = {
+			id = gpm_colony.4230
+			days = 1690
+		}
+		add_modifier = {
+			modifier = gpm_rights_movement
+			days = 360
+		}		# 1 years
 	}
 	option = {
 		name = gpm_colony.4220.c
 		#custom_tooltip = gpm_colony.4220.d
-		planet_event = { id = gpm_colony.4230 days = 1690 }
+		planet_event = {
+			id = gpm_colony.4230
+			days = 1690
+		}
 	}
 }
+
 # Capital Event - egalitrian -> gpm_galactic_equality stage 4
 planet_event = {
 	id = gpm_colony.4230
@@ -4863,34 +6100,31 @@ planet_event = {
 	picture = GFX_evt_gpm_galactic_equality
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_egalitarian
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4230 ----"
 		# log = "---- On Planet: [This.GetName] ----"
-		owner = { set_country_flag = gpm_capital_unique_modifiers }
+		owner = {
+			set_country_flag = gpm_capital_unique_modifiers
+		}
 	}
-	
 	option = {
 		name = gpm_colony.4230.a
 		#custom_tooltip = gpm_colony.4230.b
@@ -4902,9 +6136,13 @@ planet_event = {
 				max = 9000
 			}
 		}
-		add_modifier = { modifier = "gpm_galactic_equality" days = -1 }
+		add_modifier = {
+			modifier = "gpm_galactic_equality"
+			days = -1
+		}
 	}
 }
+
 # Capital Event - materialist -> gpm_augment_integrated_systems	stage 1
 planet_event = {
 	id = gpm_colony.4300
@@ -4913,41 +6151,43 @@ planet_event = {
 	picture = GFX_evt_physics_research
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_materialist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4300 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4300.a
 		#custom_tooltip = gpm_colony.4300.b
-		planet_event = { id = gpm_colony.4310 days = 1810 }
-		add_modifier = { modifier = gpm_cybernetic_breaktroughs days = 360 }
+		planet_event = {
+			id = gpm_colony.4310
+			days = 1810
+		}
+		add_modifier = {
+			modifier = gpm_cybernetic_breaktroughs
+			days = 360
+		}
 	}
 }
+
 # Capital Event - materialist -> gpm_augment_integrated_systems	stage 2
 planet_event = {
 	id = gpm_colony.4310
@@ -4956,41 +6196,43 @@ planet_event = {
 	picture = GFX_evt_society_research
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_materialist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4310 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4310.a
 		#custom_tooltip = gpm_colony.4310.b
-		planet_event = { id = gpm_colony.4320 days = 1690 }
-		add_modifier = { modifier = gpm_cybernetic_breaktroughs days = 360 }
+		planet_event = {
+			id = gpm_colony.4320
+			days = 1690
+		}
+		add_modifier = {
+			modifier = gpm_cybernetic_breaktroughs
+			days = 360
+		}
 	}
 }
+
 # Capital Event - materialist -> gpm_augment_integrated_systems	stage 3
 planet_event = {
 	id = gpm_colony.4320
@@ -4999,40 +6241,39 @@ planet_event = {
 	picture = GFX_evt_sapient_AI
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_materialist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4320 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4320.a
 		#custom_tooltip = gpm_colony.4320.b
-		planet_event = { id = gpm_colony.4330 days = 1600 }
+		planet_event = {
+			id = gpm_colony.4330
+			days = 1600
+		}
 	}
 }
+
 # Capital Event - materialist -> gpm_augment_integrated_systems	stage 4
 planet_event = {
 	id = gpm_colony.4330
@@ -5041,40 +6282,39 @@ planet_event = {
 	picture = GFX_evt_alien_propaganda
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_materialist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4330 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4330.a
 		#custom_tooltip = gpm_colony.4330.b
-		planet_event = { id = gpm_colony.4340 days = 1510 }
+		planet_event = {
+			id = gpm_colony.4340
+			days = 1510
+		}
 	}
 }
+
 # Capital Event - materialist -> gpm_augment_integrated_systems	stage 5
 planet_event = {
 	id = gpm_colony.4340
@@ -5083,40 +6323,39 @@ planet_event = {
 	picture = GFX_evt_ancient_alien_temple
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_materialist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4340 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4340.a
 		#custom_tooltip = gpm_colony.4340.b
-		planet_event = { id = gpm_colony.4350 days = 1840 }
+		planet_event = {
+			id = gpm_colony.4350
+			days = 1840
+		}
 	}
 }
+
 # Capital Event - materialist -> gpm_augment_integrated_systems	stage 6
 planet_event = {
 	id = gpm_colony.4350
@@ -5125,34 +6364,31 @@ planet_event = {
 	picture = GFX_evt_gpm_augment_integrated_systems
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_materialist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4350 ----"
 		# log = "---- On Planet: [This.GetName] ----"
-		owner = { set_country_flag = gpm_capital_unique_modifiers }
+		owner = {
+			set_country_flag = gpm_capital_unique_modifiers
+		}
 	}
-	
 	option = {
 		name = gpm_colony.4350.a
 		#custom_tooltip = gpm_colony.4350.b
@@ -5164,9 +6400,13 @@ planet_event = {
 				max = 9000
 			}
 		}
-		add_modifier = { modifier = "gpm_augment_integrated_systems" days = -1 }
+		add_modifier = {
+			modifier = "gpm_augment_integrated_systems"
+			days = -1
+		}
 	}
 }
+
 # Capital Event - spiritualist -> gpm_mysterious_force stage 1
 planet_event = {
 	id = gpm_colony.4400
@@ -5175,41 +6415,43 @@ planet_event = {
 	picture = GFX_evt_alien_propaganda
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_spiritualist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4400 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4400.a
 		#custom_tooltip = gpm_colony.4400.b
-		planet_event = { id = gpm_colony.4410 days = 1960 }
-		add_modifier = { modifier = gpm_tranquility days = 360 }
+		planet_event = {
+			id = gpm_colony.4410
+			days = 1960
+		}
+		add_modifier = {
+			modifier = gpm_tranquility
+			days = 360
+		}
 	}
 }
+
 # Capital Event - spiritualist -> gpm_mysterious_force stage 2
 planet_event = {
 	id = gpm_colony.4410
@@ -5218,41 +6460,43 @@ planet_event = {
 	picture = GFX_evt_arguing_senate
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_spiritualist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4410 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4410.a
 		#custom_tooltip = gpm_colony.4410.b
-		planet_event = { id = gpm_colony.4420 days = 1600 }
-		add_modifier = { modifier = gpm_tranquility days = 360 }
+		planet_event = {
+			id = gpm_colony.4420
+			days = 1600
+		}
+		add_modifier = {
+			modifier = gpm_tranquility
+			days = 360
+		}
 	}
 }
+
 # Capital Event - spiritualist -> gpm_mysterious_force stage 3
 planet_event = {
 	id = gpm_colony.4420
@@ -5261,40 +6505,39 @@ planet_event = {
 	picture = GFX_evt_unity_symbol
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_spiritualist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4420 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4420.a
 		#custom_tooltip = gpm_colony.4420.b
-		planet_event = { id = gpm_colony.4430 days = 1720 }
+		planet_event = {
+			id = gpm_colony.4430
+			days = 1720
+		}
 	}
 }
+
 # Capital Event - spiritualist -> gpm_mysterious_force stage 4
 planet_event = {
 	id = gpm_colony.4430
@@ -5303,34 +6546,31 @@ planet_event = {
 	picture = GFX_evt_gpm_mysterious_force
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_spiritualist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4430 ----"
 		# log = "---- On Planet: [This.GetName] ----"
-		owner = { set_country_flag = gpm_capital_unique_modifiers }
+		owner = {
+			set_country_flag = gpm_capital_unique_modifiers
+		}
 	}
-	
 	option = {
 		name = gpm_colony.4430.a
 		#custom_tooltip = gpm_colony.4430.b
@@ -5342,9 +6582,13 @@ planet_event = {
 				max = 9000
 			}
 		}
-		add_modifier = { modifier = "gpm_mysterious_force" days = -1 }
+		add_modifier = {
+			modifier = "gpm_mysterious_force"
+			days = -1
+		}
 	}
 }
+
 # Capital Event - military -> gpm_mandatory_military_service stage 1
 planet_event = {
 	id = gpm_colony.4500
@@ -5353,40 +6597,39 @@ planet_event = {
 	picture = GFX_evt_star_chart
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_militarist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4500 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4500.a
 		#custom_tooltip = gpm_colony.4500.b
-		planet_event = { id = gpm_colony.4510 days = 1720 }
+		planet_event = {
+			id = gpm_colony.4510
+			days = 1720
+		}
 	}
 }
+
 # Capital Event - military -> gpm_mandatory_military_service stage 2
 planet_event = {
 	id = gpm_colony.4510
@@ -5395,40 +6638,39 @@ planet_event = {
 	picture = GFX_evt_ground_combat
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_militarist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4510 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4510.a
 		#custom_tooltip = gpm_colony.4510.b
-		planet_event = { id = gpm_colony.4520 days = 1900 }
+		planet_event = {
+			id = gpm_colony.4520
+			days = 1900
+		}
 	}
 }
+
 # Capital Event - military -> gpm_mandatory_military_service stage 3
 planet_event = {
 	id = gpm_colony.4520
@@ -5437,41 +6679,43 @@ planet_event = {
 	picture = GFX_evt_interior_battle
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_militarist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4520 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4520.a
 		#custom_tooltip = gpm_colony.4520.b
-		planet_event = { id = gpm_colony.4530 days = 1570 }
-		add_modifier = { modifier = gpm_recruitment_drive days = 360 }
+		planet_event = {
+			id = gpm_colony.4530
+			days = 1570
+		}
+		add_modifier = {
+			modifier = gpm_recruitment_drive
+			days = 360
+		}
 	}
 }
+
 # Capital Event - military -> gpm_mandatory_military_service stage 4
 planet_event = {
 	id = gpm_colony.4530
@@ -5480,41 +6724,43 @@ planet_event = {
 	picture = GFX_evt_arguing_senate
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_militarist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4530 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4530.a
 		#custom_tooltip = gpm_colony.4530.b
-		planet_event = { id = gpm_colony.4540 days = 1630 }
-		add_modifier = { modifier = gpm_recruitment_drive days = 360 }
+		planet_event = {
+			id = gpm_colony.4540
+			days = 1630
+		}
+		add_modifier = {
+			modifier = gpm_recruitment_drive
+			days = 360
+		}
 	}
 }
+
 # Capital Event - military -> gpm_mandatory_military_service stage 5
 planet_event = {
 	id = gpm_colony.4540
@@ -5523,34 +6769,31 @@ planet_event = {
 	picture = GFX_evt_gpm_mandatory_military_service
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_militarist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4540 ----"
 		# log = "---- On Planet: [This.GetName] ----"
-		owner = { set_country_flag = gpm_capital_unique_modifiers }
+		owner = {
+			set_country_flag = gpm_capital_unique_modifiers
+		}
 	}
-	
 	option = {
 		name = gpm_colony.4540.a
 		#custom_tooltip = gpm_colony.4540.b
@@ -5562,9 +6805,13 @@ planet_event = {
 				max = 9000
 			}
 		}
-		add_modifier = { modifier = "gpm_mandatory_military_service" days = -1 }
+		add_modifier = {
+			modifier = "gpm_mandatory_military_service"
+			days = -1
+		}
 	}
 }
+
 # Capital Event - pacifist -> gpm_monument_to_the_stars	stage 1
 planet_event = {
 	id = gpm_colony.4600
@@ -5573,41 +6820,43 @@ planet_event = {
 	picture = GFX_evt_satellite_in_orbit
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_pacifist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4600 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4600.a
 		#custom_tooltip = gpm_colony.4600.b
-		planet_event = { id = gpm_colony.4610 days = 1540 }
-		add_modifier = { modifier = gpm_stargazing days = 360 }
+		planet_event = {
+			id = gpm_colony.4610
+			days = 1540
+		}
+		add_modifier = {
+			modifier = gpm_stargazing
+			days = 360
+		}
 	}
 }
+
 # Capital Event - pacifist -> gpm_monument_to_the_stars	stage 2
 planet_event = {
 	id = gpm_colony.4610
@@ -5616,40 +6865,39 @@ planet_event = {
 	picture = GFX_evt_star_chart
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_pacifist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4610 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4610.a
 		#custom_tooltip = gpm_colony.4610.b
-		planet_event = { id = gpm_colony.4620 days = 1510 }
+		planet_event = {
+			id = gpm_colony.4620
+			days = 1510
+		}
 	}
 }
+
 # Capital Event - pacifist -> gpm_monument_to_the_stars	stage 3
 planet_event = {
 	id = gpm_colony.4620
@@ -5658,40 +6906,39 @@ planet_event = {
 	picture = GFX_evt_news_room
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_pacifist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4620 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4620.a
 		#custom_tooltip = gpm_colony.4620.b
-		planet_event = { id = gpm_colony.4630 days = 1390 }
+		planet_event = {
+			id = gpm_colony.4630
+			days = 1390
+		}
 	}
 }
+
 # Capital Event - pacifist -> gpm_monument_to_the_stars	stage 4
 planet_event = {
 	id = gpm_colony.4630
@@ -5700,40 +6947,39 @@ planet_event = {
 	picture = GFX_evt_throne_room
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_pacifist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4630 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4630.a
 		#custom_tooltip = gpm_colony.4630.b
-		planet_event = { id = gpm_colony.4640 days = 1480 }
+		planet_event = {
+			id = gpm_colony.4640
+			days = 1480
+		}
 	}
 }
+
 # Capital Event - pacifist -> gpm_monument_to_the_stars	stage 5
 planet_event = {
 	id = gpm_colony.4640
@@ -5742,34 +6988,31 @@ planet_event = {
 	picture = GFX_evt_gpm_monument_to_the_stars
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_pacifist
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4640 ----"
 		# log = "---- On Planet: [This.GetName] ----"
-		owner = { set_country_flag = gpm_capital_unique_modifiers }
+		owner = {
+			set_country_flag = gpm_capital_unique_modifiers
+		}
 	}
-	
 	option = {
 		name = gpm_colony.4640.a
 		#custom_tooltip = gpm_colony.4640.b
@@ -5781,9 +7024,13 @@ planet_event = {
 				max = 9000
 			}
 		}
-		add_modifier = { modifier = "gpm_monument_to_the_stars" days = -1 }
+		add_modifier = {
+			modifier = "gpm_monument_to_the_stars"
+			days = -1
+		}
 	}
 }
+
 # Capital Event - xenophobe -> gpm_ministery_of_the_hunt stage 1
 planet_event = {
 	id = gpm_colony.4700
@@ -5792,40 +7039,39 @@ planet_event = {
 	picture = GFX_evt_alien_segregation
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_xenophobe
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4700 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4700.a
 		#custom_tooltip = gpm_colony.4700.b
-		planet_event = { id = gpm_colony.4710 days = 1930 }
+		planet_event = {
+			id = gpm_colony.4710
+			days = 1930
+		}
 	}
 }
+
 # Capital Event - xenophobe -> gpm_ministery_of_the_hunt stage 2
 planet_event = {
 	id = gpm_colony.4710
@@ -5834,40 +7080,39 @@ planet_event = {
 	picture = GFX_evt_star_chart
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_xenophobe
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4710 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4710.a
 		#custom_tooltip = gpm_colony.4710.b
-		planet_event = { id = gpm_colony.4720 days = 1720 }
+		planet_event = {
+			id = gpm_colony.4720
+			days = 1720
+		}
 	}
 }
+
 # Capital Event - xenophobe -> gpm_ministery_of_the_hunt stage 3
 planet_event = {
 	id = gpm_colony.4720
@@ -5876,40 +7121,39 @@ planet_event = {
 	picture = GFX_evt_smugglers_in_bar
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_xenophobe
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4720 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4720.a
 		#custom_tooltip = gpm_colony.4720.b
-		planet_event = { id = gpm_colony.4730 days = 1690 }
+		planet_event = {
+			id = gpm_colony.4730
+			days = 1690
+		}
 	}
 }
+
 # Capital Event - xenophobe -> gpm_ministery_of_the_hunt stage 4
 planet_event = {
 	id = gpm_colony.4730
@@ -5918,41 +7162,43 @@ planet_event = {
 	picture = GFX_evt_federation_fleet
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_xenophobe
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4730 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4730.a
 		#custom_tooltip = gpm_colony.4730.b
-		planet_event = { id = gpm_colony.4740 days = 1540 }
-		add_modifier = { modifier = gpm_bounty_hunting days = 360 }
+		planet_event = {
+			id = gpm_colony.4740
+			days = 1540
+		}
+		add_modifier = {
+			modifier = gpm_bounty_hunting
+			days = 360
+		}
 	}
 }
+
 # Capital Event - xenophobe -> gpm_ministery_of_the_hunt stage 5
 planet_event = {
 	id = gpm_colony.4740
@@ -5961,41 +7207,43 @@ planet_event = {
 	picture = GFX_evt_debris
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_xenophobe
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4740 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4740.a
 		#custom_tooltip = gpm_colony.4740.b
-		planet_event = { id = gpm_colony.4750 days = 1930 }
-		add_modifier = { modifier = gpm_bounty_hunting days = 360 }
+		planet_event = {
+			id = gpm_colony.4750
+			days = 1930
+		}
+		add_modifier = {
+			modifier = gpm_bounty_hunting
+			days = 360
+		}
 	}
 }
+
 # Capital Event - xenophobe -> gpm_ministery_of_the_hunt stage 6
 planet_event = {
 	id = gpm_colony.4750
@@ -6004,40 +7252,39 @@ planet_event = {
 	picture = GFX_evt_small_space_battle
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_xenophobe
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4750 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4750.a
 		#custom_tooltip = gpm_colony.4750.b
-		planet_event = { id = gpm_colony.4760 days = 1690 }
+		planet_event = {
+			id = gpm_colony.4760
+			days = 1690
+		}
 	}
 }
+
 # Capital Event - xenophobe -> gpm_ministery_of_the_hunt stage 7
 planet_event = {
 	id = gpm_colony.4760
@@ -6046,34 +7293,31 @@ planet_event = {
 	picture = GFX_evt_gpm_ministery_of_the_hunt
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_xenophobe
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4760 ----"
 		# log = "---- On Planet: [This.GetName] ----"
-		owner = { set_country_flag = gpm_capital_unique_modifiers }
+		owner = {
+			set_country_flag = gpm_capital_unique_modifiers
+		}
 	}
-	
 	option = {
 		name = gpm_colony.4760.a
 		#custom_tooltip = gpm_colony.4760.b
@@ -6085,9 +7329,13 @@ planet_event = {
 				max = 9000
 			}
 		}
-		add_modifier = { modifier = "gpm_ministery_of_the_hunt" days = -1 }
+		add_modifier = {
+			modifier = "gpm_ministery_of_the_hunt"
+			days = -1
+		}
 	}
 }
+
 # Capital Event - xenophile -> gpm_galactic_outreach_program stage 1
 planet_event = {
 	id = gpm_colony.4800
@@ -6096,74 +7344,80 @@ planet_event = {
 	picture = GFX_evt_alien_propaganda
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_xenophile
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4800 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4800.a
 		#custom_tooltip = gpm_colony.4800.b
-		planet_event = { id = gpm_colony.4810 days = 1570 }
-		planet_event = { id = gpm_colony.4801 days = 3160 }
-		add_modifier = { modifier = gpm_diversity_holiday days = 59 }
+		planet_event = {
+			id = gpm_colony.4810
+			days = 1570
+		}
+		planet_event = {
+			id = gpm_colony.4801
+			days = 3160
+		}
+		add_modifier = {
+			modifier = gpm_diversity_holiday
+			days = 59
+		}
 	}
 }
+
 # Capital Event - xenophile -> gpm_galactic_outreach_program stage 1 repeating holliday
 planet_event = {
 	id = gpm_colony.4801
 	hide_window = yes
-	
 	is_triggered_only = yes
-
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
 			has_ethic = ethic_fanatic_xenophile
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4801 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		# log = "---- Repeatable Holiday Event 360 days ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
-		add_modifier = { modifier = gpm_diversity_holiday days = 59 }
-		planet_event = { id = gpm_colony.4801 days = 1360 }
+		add_modifier = {
+			modifier = gpm_diversity_holiday
+			days = 59
+		}
+		planet_event = {
+			id = gpm_colony.4801
+			days = 1360
+		}
 	}
 }
+
 # Capital Event - xenophile -> gpm_galactic_outreach_program stage 2
 planet_event = {
 	id = gpm_colony.4810
@@ -6172,40 +7426,39 @@ planet_event = {
 	picture = GFX_evt_metropolis
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_xenophile
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4810 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4810.a
 		#custom_tooltip = gpm_colony.4810.b
-		planet_event = { id = gpm_colony.4820 days = 1960 }
+		planet_event = {
+			id = gpm_colony.4820
+			days = 1960
+		}
 	}
 }
+
 # Capital Event - xenophile -> gpm_galactic_outreach_program stage 3
 planet_event = {
 	id = gpm_colony.4820
@@ -6214,40 +7467,39 @@ planet_event = {
 	picture = GFX_evt_arguing_senate
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_xenophile
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4820 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4820.a
 		#custom_tooltip = gpm_colony.4820.b
-		planet_event = { id = gpm_colony.4830 days = 1900 }
+		planet_event = {
+			id = gpm_colony.4830
+			days = 1900
+		}
 	}
 }
+
 # Capital Event - xenophile -> gpm_galactic_outreach_program stage 4
 planet_event = {
 	id = gpm_colony.4830
@@ -6256,34 +7508,31 @@ planet_event = {
 	picture = GFX_evt_gpm_galactic_outreach_program
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_ethic = ethic_fanatic_xenophile
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4830 ----"
 		# log = "---- On Planet: [This.GetName] ----"
-		owner = { set_country_flag = gpm_capital_unique_modifiers }
+		owner = {
+			set_country_flag = gpm_capital_unique_modifiers
+		}
 	}
-	
 	option = {
 		name = gpm_colony.4830.a
 		#custom_tooltip = gpm_colony.4830.b
@@ -6295,9 +7544,13 @@ planet_event = {
 				max = 9000
 			}
 		}
-		add_modifier = { modifier = "gpm_galactic_outreach_program" days = -1 }
+		add_modifier = {
+			modifier = "gpm_galactic_outreach_program"
+			days = -1
+		}
 	}
 }
+
 # Capital Event - hive mind -> gpm_synopsys_nodes stage 1
 planet_event = {
 	id = gpm_colony.4900
@@ -6306,41 +7559,43 @@ planet_event = {
 	picture = GFX_evt_star_chart
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_authority = auth_hive_mind
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4900 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4900.a
 		#custom_tooltip = gpm_colony.4900.b
-		planet_event = { id = gpm_colony.4910 days = 1960 }
-		add_modifier = { modifier = gpm_synopsys_overload days = 360 }
+		planet_event = {
+			id = gpm_colony.4910
+			days = 1960
+		}
+		add_modifier = {
+			modifier = gpm_synopsys_overload
+			days = 360
+		}
 	}
 }
+
 # Capital Event - hive mind -> gpm_synopsys_nodes stage 2
 planet_event = {
 	id = gpm_colony.4910
@@ -6349,41 +7604,43 @@ planet_event = {
 	picture = GFX_evt_circuitry_modification
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_authority = auth_hive_mind
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4910 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4910.a
 		#custom_tooltip = gpm_colony.4910.b
-		planet_event = { id = gpm_colony.4920 days = 1660 }
-		add_modifier = { modifier = gpm_synopsys_overload days = 360 }
+		planet_event = {
+			id = gpm_colony.4920
+			days = 1660
+		}
+		add_modifier = {
+			modifier = gpm_synopsys_overload
+			days = 360
+		}
 	}
 }
+
 # Capital Event - hive mind -> gpm_synopsys_nodes stage 3
 planet_event = {
 	id = gpm_colony.4920
@@ -6392,40 +7649,39 @@ planet_event = {
 	picture = GFX_evt_genetic_modification
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_authority = auth_hive_mind
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4920 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4920.a
 		#custom_tooltip = gpm_colony.4920.b
-		planet_event = { id = gpm_colony.4930 days = 1450 }
+		planet_event = {
+			id = gpm_colony.4930
+			days = 1450
+		}
 	}
 }
+
 # Capital Event - hive mind -> gpm_synopsys_nodes stage 4
 planet_event = {
 	id = gpm_colony.4930
@@ -6434,40 +7690,39 @@ planet_event = {
 	picture = GFX_evt_cybernetics
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_authority = auth_hive_mind
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4930 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.4930.a
 		#custom_tooltip = gpm_colony.4930.b
-		planet_event = { id = gpm_colony.4940 days = 1390 }
+		planet_event = {
+			id = gpm_colony.4940
+			days = 1390
+		}
 	}
 }
+
 # Capital Event - hive mind -> gpm_synopsys_nodes stage 5
 planet_event = {
 	id = gpm_colony.4940
@@ -6476,34 +7731,31 @@ planet_event = {
 	picture = GFX_evt_gpm_synopsys_nodes
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_authority = auth_hive_mind
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.4940 ----"
 		# log = "---- On Planet: [This.GetName] ----"
-		owner = { set_country_flag = gpm_capital_unique_modifiers }
+		owner = {
+			set_country_flag = gpm_capital_unique_modifiers
+		}
 	}
-	
 	option = {
 		name = gpm_colony.4940.a
 		#custom_tooltip = gpm_colony.4940.b
@@ -6515,9 +7767,13 @@ planet_event = {
 				max = 9000
 			}
 		}
-		add_modifier = { modifier = "gpm_synopsys_nodes" days = -1 }
+		add_modifier = {
+			modifier = "gpm_synopsys_nodes"
+			days = -1
+		}
 	}
 }
+
 # Capital Event - machine empires -> gpm_rapid_assembly_systems stage 1
 planet_event = {
 	id = gpm_colony.5000
@@ -6526,41 +7782,43 @@ planet_event = {
 	picture = GFX_evt_contingency_planet
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_authority = auth_machine_intelligence
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.5000 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.5000.a
 		#custom_tooltip = gpm_colony.5000.b
-		planet_event = { id = gpm_colony.5010 days = 1840 }
-		add_modifier = { modifier = gpm_falling_behind days = 360 }
+		planet_event = {
+			id = gpm_colony.5010
+			days = 1840
+		}
+		add_modifier = {
+			modifier = gpm_falling_behind
+			days = 360
+		}
 	}
 }
+
 # Capital Event - machine empires -> gpm_rapid_assembly_systems stage 2
 planet_event = {
 	id = gpm_colony.5010
@@ -6569,41 +7827,43 @@ planet_event = {
 	picture = GFX_evt_glitchy_matrix
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_authority = auth_machine_intelligence
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.5010 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.5010.a
 		#custom_tooltip = gpm_colony.5010.b
-		planet_event = { id = gpm_colony.5020 days = 1660 }
-		add_modifier = { modifier = gpm_falling_behind days = 360 }
+		planet_event = {
+			id = gpm_colony.5020
+			days = 1660
+		}
+		add_modifier = {
+			modifier = gpm_falling_behind
+			days = 360
+		}
 	}
 }
+
 # Capital Event - machine empires -> gpm_rapid_assembly_systems stage 3
 planet_event = {
 	id = gpm_colony.5020
@@ -6612,40 +7872,39 @@ planet_event = {
 	picture = GFX_evt_robot_assembly_plant
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_authority = auth_machine_intelligence
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.5020 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.5020.a
 		#custom_tooltip = gpm_colony.5020.b
-		planet_event = { id = gpm_colony.5030 days = 1810 }
+		planet_event = {
+			id = gpm_colony.5030
+			days = 1810
+		}
 	}
 }
+
 # Capital Event - machine empires -> gpm_rapid_assembly_systems stage 4
 planet_event = {
 	id = gpm_colony.5030
@@ -6654,40 +7913,39 @@ planet_event = {
 	picture = GFX_evt_ai_planet
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_authority = auth_machine_intelligence
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.5030 ----"
 		# log = "---- On Planet: [This.GetName] ----"
 		#set_planet_flag = gpm_capital_unique_modifiers
 	}
-	
 	option = {
 		name = gpm_colony.5030.a
 		#custom_tooltip = gpm_colony.5030.b
-		planet_event = { id = gpm_colony.5040 days = 1450 }
+		planet_event = {
+			id = gpm_colony.5040
+			days = 1450
+		}
 	}
 }
+
 # Capital Event - machine empires -> gpm_rapid_assembly_systems stage 5
 planet_event = {
 	id = gpm_colony.5040
@@ -6696,34 +7954,31 @@ planet_event = {
 	picture = GFX_evt_gpm_rapid_assembly_systems
 	show_sound = event_conversation
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
 		is_capital = yes
 	}
 	trigger = {
-		
-		
-		
 		#has_planet_modifier = "capital"
 		num_pops > 0
 		owner = {
-			NOT = { has_country_flag = gpm_capital_unique_modifiers }
+			NOT = {
+				has_country_flag = gpm_capital_unique_modifiers
+			}
 		}
 		owner = {
 			has_authority = auth_machine_intelligence
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.5040 ----"
 		# log = "---- On Planet: [This.GetName] ----"
-		owner = { set_country_flag = gpm_capital_unique_modifiers }
+		owner = {
+			set_country_flag = gpm_capital_unique_modifiers
+		}
 	}
-	
 	option = {
 		name = gpm_colony.5040.a
 		#custom_tooltip = gpm_colony.5040.b
@@ -6735,7 +7990,10 @@ planet_event = {
 				max = 9000
 			}
 		}
-		add_modifier = { modifier = "gpm_rapid_assembly_systems" days = -1 }
+		add_modifier = {
+			modifier = "gpm_rapid_assembly_systems"
+			days = -1
+		}
 	}
 }
 
@@ -6747,45 +8005,54 @@ planet_event = {
 	id = gpm_colony.7000
 	hide_window = yes
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = owner
 		gpm_is_planet_fallen_empire = yes
-		NOT = { has_planet_flag = fallen_empire_world } # This excludes worlds the fallen empire started with.
-		NOT = { has_global_flag = gpm_modifiers_fallen_empire_disabled }
+		NOT = {
+			has_planet_flag = fallen_empire_world
+		}		# This excludes worlds the fallen empire started with.
+		NOT = {
+			has_global_flag = gpm_modifiers_fallen_empire_disabled
+		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.7000 ----"
-		planet_event = { id = gpm_colony.7100 days = 720 }
+		planet_event = {
+			id = gpm_colony.7100
+			days = 720
+		}
 	}
 }
+
 # Fallen Empire Colony development Event
 planet_event = {
 	id = gpm_colony.7100
 	hide_window = yes
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = owner
 		gpm_is_planet_fallen_empire = yes
-		NOT = { has_planet_flag = gpm_developed_fallen_empire_world } # This excludes worlds the fallen empire already developed (incase of re-conquests)
-		NOT = { has_global_flag = gpm_modifiers_fallen_empire_disabled }
+		NOT = {
+			has_planet_flag = gpm_developed_fallen_empire_world
+		}		# This excludes worlds the fallen empire already developed (incase of re-conquests)
+		NOT = {
+			has_global_flag = gpm_modifiers_fallen_empire_disabled
+		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.7100 ----"
-		
 		gpm_remove_negative_modifiers = yes
 		gpm_remove_neutral_modifiers = yes
 		# Spawn one guaranteed fallen empire modifier for colonies
 		# Planet Modifier Scaling
 		if = {
-			limit = { NOT = { has_global_flag = gpm_scaling_multiplier_disabled } }
+			limit = {
+				NOT = {
+					has_global_flag = gpm_scaling_multiplier_disabled
+				}
+			}
 			gpm_scale_planet_modifiers = yes
 		}
 		gpm_roll_fallen_empire_world_modifiers = yes
@@ -6793,45 +8060,58 @@ planet_event = {
 	}
 }
 
-
 ### Special Events ###
 # Gives special modifiers to non-machine worlds for machine empires.
 planet_event = {
 	id = gpm_colony.8000
 	hide_window = yes
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = owner
 		gpm_is_planet_class_machine = no
 		num_modifiers < 4
 		OR = {
-			owner = { has_authority = auth_machine_intelligence }
-			owner = { has_authority = auth_ancient_machine_intelligence }
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
+			owner = {
+				has_authority = auth_ancient_machine_intelligence
+			}
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.8000 ----"
-		if = { 
-			limit = { owner = { has_authority = auth_ancient_machine_intelligence } }
+		if = {
+			limit = {
+				owner = {
+					has_authority = auth_ancient_machine_intelligence
+				}
+			}
 			random_list = {
-				0 = { gpm_roll_machine_world_modifiers = yes }
-				90 = { }
+				0 = {
+					gpm_roll_machine_world_modifiers = yes
+				}
+				90 = {
+				}
 			}
 		}
 		else_if = {
-			limit = { owner = { has_authority = auth_machine_intelligence } }
+			limit = {
+				owner = {
+					has_authority = auth_machine_intelligence
+				}
+			}
 			random_list = {
-				10 = { gpm_roll_machine_world_modifiers = yes }
-				90 = { }
+				10 = {
+					gpm_roll_machine_world_modifiers = yes
+				}
+				90 = {
+				}
 			}
 		}
 	}
 }
-
 
 # Triggers country_event for the attacker upon victory
 # (Before controller is switched)
@@ -6842,27 +8122,31 @@ country_event = {
 	id = gpm_colony.8100
 	hide_window = yes
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	trigger = {
-		This = { has_authority = auth_ancient_machine_intelligence }
+		This = {
+			has_authority = auth_ancient_machine_intelligence
+		}
 		FromFrom = {
 			gpm_is_planet_class_machine = no
 			num_modifiers < 4
 		}
 	}
-	
 	immediate = {
 		# log = "---- Fired Event gpm_colony.8100 ----"
-		if = { 
+		if = {
 			limit = {
-				This = { has_authority = auth_ancient_machine_intelligence }
+				This = {
+					has_authority = auth_ancient_machine_intelligence
+				}
 			}
 			FromFrom = {
 				random_list = {
-					0 = { gpm_roll_machine_world_modifiers = yes }
-					90 = { }
+					0 = {
+						gpm_roll_machine_world_modifiers = yes
+					}
+					90 = {
+					}
 				}
 			}
 		}
@@ -6874,17 +8158,19 @@ country_event = {
 	id = gpm_colony.9000
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_technology = tech_gpm_strange_alien_eggs_discovery
-		not = { has_country_flag = gpm_xeno_army_fire_event }
+		not = {
+			has_country_flag = gpm_xeno_army_fire_event
+		}
 		exists = owner
 	}
-
 	immediate = {
 		set_country_flag = gpm_xeno_army_fire_event
 		random_owned_planet = {
-			limit = { is_capital = yes }
+			limit = {
+				is_capital = yes
+			}
 			create_army = {
 				name = "Xenomorph"
 				owner = root
@@ -6892,22 +8178,26 @@ country_event = {
 				type = "xenomorph_army"
 			}
 		}
-		country_event = { id = gpm_colony.9001 days = 2520 }
+		country_event = {
+			id = gpm_colony.9001
+			days = 2520
+		}
 	}
 }
+
 country_event = {
 	id = gpm_colony.9001
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = owner
 		has_country_flag = gpm_xeno_army_fire_event
 	}
-
 	immediate = {
 		random_owned_planet = {
-			limit = { is_capital = yes }
+			limit = {
+				is_capital = yes
+			}
 			create_army = {
 				name = "Xenomorph"
 				owner = root
@@ -6915,6 +8205,9 @@ country_event = {
 				type = "xenomorph_army"
 			}
 		}
-		country_event = { id = gpm_colony.9001 days = 2520 }
+		country_event = {
+			id = gpm_colony.9001
+			days = 2520
+		}
 	}
 }
