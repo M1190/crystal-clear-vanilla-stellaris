@@ -3,7 +3,6 @@
 ######### Self Managed Colony #########
 #									 #
 ######################################
-
 self_aware_colony_clear_focus = {
 	hidden_effect = {
 		remove_modifier = self_aware_no_focus
@@ -21,82 +20,218 @@ self_aware_colony_clear_focus = {
 
 self_aware_colony_deposit_selection = {
 	hidden_effect = {
-		owner = { add_resource = { minerals = -200 } }
+		owner = {
+			add_resource = {
+				minerals = -200
+			}
+		}
 		random_list = {
 			999 = {
 				modifier = {
 					factor = 0
 					OR = {
-						AND = { check_variable = { which = d_aware_administration_building value > 0 } num_pops < 40 }
-						AND = { check_variable = { which = d_aware_administration_building value > 1 } num_pops < 80 }
-						AND = { check_variable = { which = d_aware_administration_building value > 2 } num_pops < 120 }
-						AND = { check_variable = { which = d_aware_administration_building value > 3 } num_pops < 160 }
-						AND = { check_variable = { which = d_aware_administration_building value > 4 } num_pops < 200 }
-						AND = { check_variable = { which = d_aware_administration_building value > 5 } num_pops < 240 }
-						AND = { check_variable = { which = d_aware_administration_building value > 6 } num_pops < 280 }
-						AND = { check_variable = { which = d_aware_administration_building value > 7 } num_pops < 320 }
-						AND = { check_variable = { which = d_aware_administration_building value > 8 } num_pops < 360 }
-						AND = { check_variable = { which = d_aware_administration_building value > 9 } num_pops < 400 }
+						AND = {
+							check_variable = {
+								which = d_aware_administration_building
+								value > 0
+							}
+							num_pops < 40
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_administration_building
+								value > 1
+							}
+							num_pops < 80
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_administration_building
+								value > 2
+							}
+							num_pops < 120
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_administration_building
+								value > 3
+							}
+							num_pops < 160
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_administration_building
+								value > 4
+							}
+							num_pops < 200
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_administration_building
+								value > 5
+							}
+							num_pops < 240
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_administration_building
+								value > 6
+							}
+							num_pops < 280
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_administration_building
+								value > 7
+							}
+							num_pops < 320
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_administration_building
+								value > 8
+							}
+							num_pops < 360
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_administration_building
+								value > 9
+							}
+							num_pops < 400
+						}
 						# AND = { check_variable = { which = d_aware_administration_building value > 10 } num_pops >= 400 }
 					}
 				}
-				change_variable = { which = d_aware_administration_building value = 1 }
+				change_variable = {
+					which = d_aware_administration_building
+					value = 1
+				}
 				add_deposit = d_aware_administration_building
 			}
 			5 = {
-				modifier = { factor = 0 OR = { free_housing > 1 has_modifier = self_aware_energy has_modifier = self_aware_minerals has_modifier = self_aware_food } }
-				modifier = { factor = 5 free_housing <= -1 }
-				modifier = { factor = 10 free_housing <= -5 }
-				modifier = { factor = 10 free_housing <= -10 }
+				modifier = {
+					factor = 0
+					OR = {
+						free_housing > 1
+						has_modifier = self_aware_energy
+						has_modifier = self_aware_minerals
+						has_modifier = self_aware_food
+					}
+				}
+				modifier = {
+					factor = 5
+					free_housing <= -1
+				}
+				modifier = {
+					factor = 10
+					free_housing <= -5
+				}
+				modifier = {
+					factor = 10
+					free_housing <= -10
+				}
 				add_deposit = d_aware_housing_building
 			}
 			5 = {
 				modifier = {
 					factor = 0
 					OR = {
-						NOR = { has_planet_flag = self_aware_manual_order any_owned_pop = { is_unemployed = yes } }
+						NOR = {
+							has_planet_flag = self_aware_manual_order
+							any_owned_pop = {
+								is_unemployed = yes
+							}
+						}
 						is_self_aware_not_focused_on_energy = yes
 					}
 				}
-				modifier = { factor = 10 owner = { has_deficit = energy } }
+				modifier = {
+					factor = 10
+					owner = {
+						has_deficit = energy
+					}
+				}
 				add_deposit = d_aware_energy_building
 			}
 			5 = {
 				modifier = {
 					factor = 0
 					OR = {
-						NOR = { has_planet_flag = self_aware_manual_order any_owned_pop = { is_unemployed = yes } }
+						NOR = {
+							has_planet_flag = self_aware_manual_order
+							any_owned_pop = {
+								is_unemployed = yes
+							}
+						}
 						is_self_aware_not_focused_on_minerals = yes
-						AND = { merg_is_habitat = yes NOT = { has_planet_flag = mining_habitat } }
+						AND = {
+							merg_is_habitat = yes
+							NOT = {
+								has_planet_flag = mining_habitat
+							}
+						}
 					}
 				}
-				modifier = { factor = 10 owner = { has_deficit = minerals } }
+				modifier = {
+					factor = 10
+					owner = {
+						has_deficit = minerals
+					}
+				}
 				add_deposit = d_aware_mining_building
 			}
 			5 = {
 				modifier = {
 					factor = 0
 					OR = {
-						NOR = { has_planet_flag = self_aware_manual_order any_owned_pop = { is_unemployed = yes } }
+						NOR = {
+							has_planet_flag = self_aware_manual_order
+							any_owned_pop = {
+								is_unemployed = yes
+							}
+						}
 						is_self_aware_not_focused_on_food = yes
 						merg_is_habitat = yes
 					}
 				}
-				modifier = { factor = 10 owner = { has_deficit = food } }
-				modifier = { factor = 0.5 owner = { is_machine_empire = yes } }
+				modifier = {
+					factor = 10
+					owner = {
+						has_deficit = food
+					}
+				}
+				modifier = {
+					factor = 0.5
+					owner = {
+						is_machine_empire = yes
+					}
+				}
 				add_deposit = d_aware_farming_building
 			}
 			2 = {
 				modifier = {
 					factor = 0
 					OR = {
-						NOR = { has_planet_flag = self_aware_manual_order any_owned_pop = { is_unemployed = yes } }
+						NOR = {
+							has_planet_flag = self_aware_manual_order
+							any_owned_pop = {
+								is_unemployed = yes
+							}
+						}
 						is_self_aware_not_focused_on_consumers = yes
 						merg_is_habitat = yes
-						owner = { is_gestalt = yes }
+						owner = {
+							is_gestalt = yes
+						}
 					}
 				}
-				modifier = { factor = 10 owner = { has_deficit = consumer_goods } }
+				modifier = {
+					factor = 10
+					owner = {
+						has_deficit = consumer_goods
+					}
+				}
 				# modifier = { factor = 0 owner = { NOT = { has_technology = tech_luxuries_2 } } }
 				add_deposit = d_aware_consumer_building
 			}
@@ -104,12 +239,22 @@ self_aware_colony_deposit_selection = {
 				modifier = {
 					factor = 0
 					OR = {
-						NOR = { has_planet_flag = self_aware_manual_order any_owned_pop = { is_unemployed = yes } }
+						NOR = {
+							has_planet_flag = self_aware_manual_order
+							any_owned_pop = {
+								is_unemployed = yes
+							}
+						}
 						is_self_aware_not_focused_on_alloys = yes
 						merg_is_habitat = yes
 					}
 				}
-				modifier = { factor = 10 owner = { has_deficit = alloys } }
+				modifier = {
+					factor = 10
+					owner = {
+						has_deficit = alloys
+					}
+				}
 				# modifier = { factor = 0 owner = { NOT = { has_technology = tech_alloys_2 } } }
 				add_deposit = d_aware_foundry_building
 			}
@@ -117,9 +262,19 @@ self_aware_colony_deposit_selection = {
 				modifier = {
 					factor = 0
 					OR = {
-						NOR = { has_planet_flag = self_aware_manual_order any_owned_pop = { is_unemployed = yes } }
+						NOR = {
+							has_planet_flag = self_aware_manual_order
+							any_owned_pop = {
+								is_unemployed = yes
+							}
+						}
 						is_self_aware_not_focused_on_research = yes
-						AND = { merg_is_habitat = yes NOT = { has_planet_flag = research_habitat } }
+						AND = {
+							merg_is_habitat = yes
+							NOT = {
+								has_planet_flag = research_habitat
+							}
+						}
 					}
 				}
 				# modifier = { factor = 0 owner = { NOT = { has_technology = tech_basic_science_lab_3 } } }
@@ -129,7 +284,12 @@ self_aware_colony_deposit_selection = {
 				modifier = {
 					factor = 0
 					OR = {
-						NOR = { has_planet_flag = self_aware_manual_order any_owned_pop = { is_unemployed = yes } }
+						NOR = {
+							has_planet_flag = self_aware_manual_order
+							any_owned_pop = {
+								is_unemployed = yes
+							}
+						}
 						is_self_aware_not_focused_on_trade = yes
 					}
 				}
@@ -140,7 +300,12 @@ self_aware_colony_deposit_selection = {
 				modifier = {
 					factor = 0
 					OR = {
-						NOR = { has_planet_flag = self_aware_manual_order any_owned_pop = { is_unemployed = yes } }
+						NOR = {
+							has_planet_flag = self_aware_manual_order
+							any_owned_pop = {
+								is_unemployed = yes
+							}
+						}
 						is_self_aware_not_focused_on_army = yes
 						merg_is_habitat = yes
 					}
@@ -152,83 +317,264 @@ self_aware_colony_deposit_selection = {
 				modifier = {
 					factor = 0
 					OR = {
-						NOR = { has_planet_flag = self_aware_manual_order any_owned_pop = { is_unemployed = yes } }
+						NOR = {
+							has_planet_flag = self_aware_manual_order
+							any_owned_pop = {
+								is_unemployed = yes
+							}
+						}
 						is_self_aware_not_focused_on_strategic = yes
 						merg_is_habitat = yes
-						AND = { NOT = { has_global_flag = ap_self_aware_colony } exists = owner owner = { NOR = { has_technology = tech_volatile_motes has_technology = tech_exotic_gases has_technology = tech_rare_crystals } } }
+						AND = {
+							NOT = {
+								has_global_flag = ap_self_aware_colony
+							}
+							exists = owner
+							owner = {
+								NOR = {
+									has_technology = tech_volatile_motes
+									has_technology = tech_exotic_gases
+									has_technology = tech_rare_crystals
+								}
+							}
+						}
 					}
 				}
 				add_deposit = d_aware_refinery_building
 			}
 			5 = {
-				modifier = { factor = 0 free_amenities > 2 }
-				modifier = { factor = 5 free_amenities <= 0 }
-				modifier = { factor = 10 free_amenities <= -10 }
+				modifier = {
+					factor = 0
+					free_amenities > 2
+				}
+				modifier = {
+					factor = 5
+					free_amenities <= 0
+				}
+				modifier = {
+					factor = 10
+					free_amenities <= -10
+				}
 				add_deposit = d_aware_amenities_building
 			}
 			5 = {
-				modifier = { factor = 0 planet_crime < 10 }
-				modifier = { factor = 5 planet_crime >= 20 }
-				modifier = { factor = 10 planet_crime >= 40 }
+				modifier = {
+					factor = 0
+					planet_crime < 10
+				}
+				modifier = {
+					factor = 5
+					planet_crime >= 20
+				}
+				modifier = {
+					factor = 10
+					planet_crime >= 40
+				}
 				add_deposit = d_aware_crime_building
 			}
 			2 = {
 				modifier = {
 					factor = 0
 					OR = {
-						NOR = { has_planet_flag = self_aware_manual_order any_owned_pop = { is_unemployed = yes } }
+						NOR = {
+							has_planet_flag = self_aware_manual_order
+							any_owned_pop = {
+								is_unemployed = yes
+							}
+						}
 						is_self_aware_focus = yes
-						AND = { check_variable = { which = d_aware_culture_building value >= 1 } num_pops <= 30 }
-						AND = { check_variable = { which = d_aware_culture_building value >= 2 } num_pops <= 60 }
-						AND = { check_variable = { which = d_aware_culture_building value >= 3 } num_pops <= 90 }
-						AND = { check_variable = { which = d_aware_culture_building value >= 4 } num_pops <= 120 }
-						AND = { check_variable = { which = d_aware_culture_building value >= 5 } num_pops <= 150 }
+						AND = {
+							check_variable = {
+								which = d_aware_culture_building
+								value >= 1
+							}
+							num_pops <= 30
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_culture_building
+								value >= 2
+							}
+							num_pops <= 60
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_culture_building
+								value >= 3
+							}
+							num_pops <= 90
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_culture_building
+								value >= 4
+							}
+							num_pops <= 120
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_culture_building
+								value >= 5
+							}
+							num_pops <= 150
+						}
 					}
 				}
 				# modifier = { factor = 0 check_variable = { which = d_aware_culture_building value >= 5 } num_pops >= 150 }
-				change_variable = { which = d_aware_culture_building value = 1 }
+				change_variable = {
+					which = d_aware_culture_building
+					value = 1
+				}
 				add_deposit = d_aware_culture_building
 			}
 			2 = {
 				modifier = {
 					factor = 0
 					OR = {
-						owner = { OR = { AND = { is_regular_empire = yes OR = { has_policy_flag = robots_outlawed NOT = { has_technology = tech_robotic_workers } } } is_hive_empire = yes } }
-						NOR = { has_planet_flag = self_aware_manual_order any_owned_pop = { is_unemployed = yes } }
+						owner = {
+							OR = {
+								AND = {
+									is_regular_empire = yes
+									OR = {
+										has_policy_flag = robots_outlawed
+										NOT = {
+											has_technology = tech_robotic_workers
+										}
+									}
+								}
+								is_hive_empire = yes
+							}
+						}
+						NOR = {
+							has_planet_flag = self_aware_manual_order
+							any_owned_pop = {
+								is_unemployed = yes
+							}
+						}
 						is_self_aware_focus = yes
-						AND = { check_variable = { which = d_aware_assembly_building value >= 1 } num_pops <= 30 }
-						AND = { check_variable = { which = d_aware_assembly_building value >= 2 } num_pops <= 60 }
-						AND = { check_variable = { which = d_aware_assembly_building value >= 3 } num_pops <= 90 }
-						AND = { check_variable = { which = d_aware_assembly_building value >= 4 } num_pops <= 120 }
-						AND = { check_variable = { which = d_aware_assembly_building value >= 5 } num_pops <= 150 }
+						AND = {
+							check_variable = {
+								which = d_aware_assembly_building
+								value >= 1
+							}
+							num_pops <= 30
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_assembly_building
+								value >= 2
+							}
+							num_pops <= 60
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_assembly_building
+								value >= 3
+							}
+							num_pops <= 90
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_assembly_building
+								value >= 4
+							}
+							num_pops <= 120
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_assembly_building
+								value >= 5
+							}
+							num_pops <= 150
+						}
 					}
 				}
 				# modifier = { factor = 0 check_variable = { which = d_aware_assembly_building value >= 5 } num_pops >= 150 }
-				change_variable = { which = d_aware_assembly_building value = 1 }
+				change_variable = {
+					which = d_aware_assembly_building
+					value = 1
+				}
 				add_deposit = d_aware_assembly_building
 			}
 			2 = {
 				modifier = {
 					factor = 0
 					OR = {
-						owner = { is_machine_empire = yes }
-						NOR = { has_planet_flag = self_aware_manual_order any_owned_pop = { is_unemployed = yes } }
+						owner = {
+							is_machine_empire = yes
+						}
+						NOR = {
+							has_planet_flag = self_aware_manual_order
+							any_owned_pop = {
+								is_unemployed = yes
+							}
+						}
 						is_self_aware_focus = yes
-						AND = { check_variable = { which = d_aware_growth_building value >= 1 } num_pops <= 30 }
-						AND = { check_variable = { which = d_aware_growth_building value >= 2 } num_pops <= 60 }
-						AND = { check_variable = { which = d_aware_growth_building value >= 3 } num_pops <= 90 }
-						AND = { check_variable = { which = d_aware_growth_building value >= 4 } num_pops <= 120 }
-						AND = { check_variable = { which = d_aware_growth_building value >= 5 } num_pops <= 150 }
+						AND = {
+							check_variable = {
+								which = d_aware_growth_building
+								value >= 1
+							}
+							num_pops <= 30
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_growth_building
+								value >= 2
+							}
+							num_pops <= 60
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_growth_building
+								value >= 3
+							}
+							num_pops <= 90
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_growth_building
+								value >= 4
+							}
+							num_pops <= 120
+						}
+						AND = {
+							check_variable = {
+								which = d_aware_growth_building
+								value >= 5
+							}
+							num_pops <= 150
+						}
 					}
 				}
 				# modifier = { factor = 0 check_variable = { which = d_aware_growth_building value >= 5 } num_pops >= 150 }
-				change_variable = { which = d_aware_growth_building value = 1 }
+				change_variable = {
+					which = d_aware_growth_building
+					value = 1
+				}
 				add_deposit = d_aware_growth_building
 			}
 			5 = {
-				modifier = { factor = 0 OR = { has_planet_flag = self_aware_manual_order any_owned_pop = { is_unemployed = yes } } }
-				modifier = { factor = 100 planet_crime < 10 free_amenities > 2 free_housing > 1 }
-				owner = { add_resource = { minerals = 200 } }
+				modifier = {
+					factor = 0
+					OR = {
+						has_planet_flag = self_aware_manual_order
+						any_owned_pop = {
+							is_unemployed = yes
+						}
+					}
+				}
+				modifier = {
+					factor = 100
+					planet_crime < 10
+					free_amenities > 2
+					free_housing > 1
+				}
+				owner = {
+					add_resource = {
+						minerals = 200
+					}
+				}
 			}
 		}
 		remove_planet_flag = self_aware_manual_order
@@ -237,12 +583,32 @@ self_aware_colony_deposit_selection = {
 
 reset_self_aware_planet = {
 	hidden_effect = {
-		every_deposit = { limit = { is_self_aware_deposit = yes } remove_deposit = yes }
-		set_variable = { which = d_aware_administration_building value = 0 }
-		set_variable = { which = d_aware_culture_building value = 0 }
-		set_variable = { which = d_aware_assembly_building value = 0 }
-		set_variable = { which = d_aware_growth_building value = 0 }
-		planet_event = { id = UniqueAscensionPerksEvents.465 days = $POPS|5$ }
+		every_deposit = {
+			limit = {
+				is_self_aware_deposit = yes
+			}
+			remove_deposit = yes
+		}
+		set_variable = {
+			which = d_aware_administration_building
+			value = 0
+		}
+		set_variable = {
+			which = d_aware_culture_building
+			value = 0
+		}
+		set_variable = {
+			which = d_aware_assembly_building
+			value = 0
+		}
+		set_variable = {
+			which = d_aware_growth_building
+			value = 0
+		}
+		planet_event = {
+			id = UniqueAscensionPerksEvents.465
+			days = $POPS|5$
+		}
 		# log="reset_self_aware_planet \\[$POPS$]" TODO
 		# if = { limit = { num_pops >= 5 } planet_event = { id = UniqueAscensionPerksEvents.465 days = 5 } }
 		# if = { limit = { num_pops >= 10 } planet_event = { id = UniqueAscensionPerksEvents.465 days = 10 } }
@@ -273,11 +639,28 @@ reset_self_aware_planet = {
 
 remove_self_aware_planet = {
 	hidden_effect = {
-		every_deposit = { limit = { is_self_aware_deposit = yes } remove_deposit = yes }
-		set_variable = { which = d_aware_administration_building value = 0 }
-		set_variable = { which = d_aware_culture_building value = 0 }
-		set_variable = { which = d_aware_assembly_building value = 0 }
-		set_variable = { which = d_aware_growth_building value = 0 }
+		every_deposit = {
+			limit = {
+				is_self_aware_deposit = yes
+			}
+			remove_deposit = yes
+		}
+		set_variable = {
+			which = d_aware_administration_building
+			value = 0
+		}
+		set_variable = {
+			which = d_aware_culture_building
+			value = 0
+		}
+		set_variable = {
+			which = d_aware_assembly_building
+			value = 0
+		}
+		set_variable = {
+			which = d_aware_growth_building
+			value = 0
+		}
 		self_aware_colony_clear_focus = yes
 	}
 }

@@ -5,11 +5,16 @@ pdsnowball_earth_system_setup = {
 	}
 	solar_system = {
 		random_system_planet = {
-			limit = { has_planet_flag = pd_snowball_start_earth	}
+			limit = {
+				has_planet_flag = pd_snowball_start_earth
+			}
 			save_event_target_as = pdsnowball_homeworld
-			owner = { 
+			owner = {
 				add_research_option = tech_solar_reflectrion
-				give_technology = { tech = tech_hydroponics message = no }
+				give_technology = {
+					tech = tech_hydroponics
+					message = no
+				}
 			}
 			set_planet_size = 20
 			remove_district = district_city
@@ -22,25 +27,23 @@ pdsnowball_earth_system_setup = {
 					kill_pop = yes
 				}
 			}
-
 			#colony ship
 			create_fleet = {
 				effect = {
 					set_owner = prev
-	
 					create_ship = {
 						name = random
 						random_existing_design = colonizer
 					}
-	
 					set_fleet_stance = evasive
 					set_location = event_target:pdsnowball_homeworld
 				}
 			}
-			
 		}
 		random_system_planet = {
-			limit = { has_planet_flag = pd_snowball_start_luna }
+			limit = {
+				has_planet_flag = pd_snowball_start_luna
+			}
 			set_owner = event_target:pdsnowball_earth_system_owner
 			while = {
 				count = 18
@@ -50,7 +53,10 @@ pdsnowball_earth_system_setup = {
 			}
 			set_planet_flag = pd_hab_d1
 			set_planet_flag = pd_science_hab
-			add_modifier = { modifier = pdhabsnowballmoon days = -1 }
+			add_modifier = {
+				modifier = pdhabsnowballmoon
+				days = -1
+			}
 			add_deposit = d_expanded_dome_system
 			add_deposit = d_expanded_dome_system
 			add_district = district_pdhab_industrial
@@ -64,7 +70,8 @@ pdsnowball_earth_system_setup = {
 			add_building = building_hydroponics_farm
 			add_deposit = d_snowball_stockpile
 			planet_event = {
-				id = snowball_earth.14 days = 3600
+				id = snowball_earth.14
+				days = 3600
 			}
 		}
 	}

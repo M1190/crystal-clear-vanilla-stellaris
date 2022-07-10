@@ -3,14 +3,19 @@
 ############# Mega Hivemind ###########
 #									 #
 ######################################
-
 realm_select_north = {
 	hidden_effect = {
 		realm_clear_flags = yes
 		random_list = {
-			30 = { set_country_flag = realm_destination_nothing }
-			20 = { realm_random_intersection_direction = yes }
-			15 = { set_country_flag = realm_destination_elevator }
+			30 = {
+				set_country_flag = realm_destination_nothing
+			}
+			20 = {
+				realm_random_intersection_direction = yes
+			}
+			15 = {
+				set_country_flag = realm_destination_elevator
+			}
 			15 = {
 				# realm_chest_event = yes
 				set_country_flag = realm_destination_chest
@@ -32,11 +37,19 @@ realm_select_north = {
 					}
 				}
 			}
-			15 = { set_country_flag = realm_destination_encounter }
-			10 = { set_country_flag = realm_destination_technology }
-			10 = { set_country_flag = realm_destination_dropper }
+			15 = {
+				set_country_flag = realm_destination_encounter
+			}
+			10 = {
+				set_country_flag = realm_destination_technology
+			}
+			10 = {
+				set_country_flag = realm_destination_dropper
+			}
 		}
-		country_event = { id = UniqueAscensionPerksEvents.114 }
+		country_event = {
+			id = UniqueAscensionPerksEvents.114
+		}
 	}
 }
 
@@ -46,7 +59,6 @@ realm_select_north = {
 # realm_select_up = { realm_select_north = yes }
 # realm_select_down = { realm_select_north = yes }
 # realm_select_forward = { realm_select_north = yes }
-
 # realm_move_back = {
 # 	hidden_effect = {
 # 		realm_clear_flags = yes
@@ -56,33 +68,57 @@ realm_select_north = {
 # 		country_event = { id = UniqueAscensionPerksEvents.114 }
 # 	}
 # }
-
 realm_random_intersection_direction = {
 	set_country_flag = realm_destination_intersection
 	while = {
 		count = 4
 		random_list = {
 			10 = {
-				modifier = { factor = 0 has_country_flag = realm_destination_intersection_north }
-				modifier = { factor = 100 realm_destination_intersection_no_direction = yes }
+				modifier = {
+					factor = 0
+					has_country_flag = realm_destination_intersection_north
+				}
+				modifier = {
+					factor = 100
+					realm_destination_intersection_no_direction = yes
+				}
 				set_country_flag = realm_destination_intersection_north
 			}
 			10 = {
-				modifier = { factor = 0 has_country_flag = realm_destination_intersection_west }
-				modifier = { factor = 100 realm_destination_intersection_no_direction = yes }
+				modifier = {
+					factor = 0
+					has_country_flag = realm_destination_intersection_west
+				}
+				modifier = {
+					factor = 100
+					realm_destination_intersection_no_direction = yes
+				}
 				set_country_flag = realm_destination_intersection_west
 			}
 			10 = {
-				modifier = { factor = 0 has_country_flag = realm_destination_intersection_south }
-				modifier = { factor = 100 realm_destination_intersection_no_direction = yes }
+				modifier = {
+					factor = 0
+					has_country_flag = realm_destination_intersection_south
+				}
+				modifier = {
+					factor = 100
+					realm_destination_intersection_no_direction = yes
+				}
 				set_country_flag = realm_destination_intersection_south
 			}
 			10 = {
-				modifier = { factor = 0 has_country_flag = realm_destination_intersection_east }
-				modifier = { factor = 100 realm_destination_intersection_no_direction = yes }
+				modifier = {
+					factor = 0
+					has_country_flag = realm_destination_intersection_east
+				}
+				modifier = {
+					factor = 100
+					realm_destination_intersection_no_direction = yes
+				}
 				set_country_flag = realm_destination_intersection_east
 			}
-			40 = {}
+			40 = {
+			}
 		}
 	}
 }
@@ -107,7 +143,6 @@ realm_random_intersection_direction = {
 # 		}
 # 	}
 # }
-
 # realm_opening_chest_blue = {
 # 	hidden_effect = {
 # 		if = { limit = { has_country_flag = realm_chest_event_blue_good } realm_clear_flags = yes set_country_flag = realm_chest_event_good }
@@ -121,7 +156,6 @@ realm_random_intersection_direction = {
 # 		country_event = { id = UniqueAscensionPerksEvents.114 }
 # 	}
 # }
-
 # realm_opening_chest_yellow = {
 # 	hidden_effect = {
 # 		if = { limit = { has_country_flag = realm_chest_event_yellow_good } realm_clear_flags = yes set_country_flag = realm_chest_event_good }
@@ -135,7 +169,6 @@ realm_random_intersection_direction = {
 # 		country_event = { id = UniqueAscensionPerksEvents.114 }
 # 	}
 # }
-
 # realm_opening_chest_red = {
 # 	hidden_effect = {
 # 		if = { limit = { has_country_flag = realm_chest_event_red_good } realm_clear_flags = yes set_country_flag = realm_chest_event_good }
@@ -149,7 +182,6 @@ realm_random_intersection_direction = {
 # 		country_event = { id = UniqueAscensionPerksEvents.114 }
 # 	}
 # }
-
 # TODO FOR WHAT?
 # realm_good_chest_exit = {
 # 	hidden_effect = {
@@ -164,7 +196,6 @@ realm_random_intersection_direction = {
 # 	else_if = { limit = { has_country_flag = realm_chest_alloys } add_resource = { alloys = 6000 } }
 # 	hidden_effect = { realm_clear_flags = yes }
 # }
-
 # TODO FOR WHAT?
 # realm_medium_chest_exit = {
 # 	hidden_effect = {
@@ -179,7 +210,6 @@ realm_random_intersection_direction = {
 # 	else_if = { limit = { has_country_flag = realm_chest_alloys } add_resource = { alloys = 1600 } }
 # 	hidden_effect = { realm_clear_flags = yes }
 # }
-
 # TODO FOR WHAT?
 # realm_bad_chest_exit = {
 # 	hidden_effect = {
@@ -194,7 +224,6 @@ realm_random_intersection_direction = {
 # 	else_if = { limit = { has_country_flag = realm_chest_alloys } add_resource = { alloys = 320 } }
 # 	hidden_effect = { realm_clear_flags = yes }
 # }
-
 # realm_communicating = {
 # 	hidden_effect = {
 # 		realm_clear_flags = yes
@@ -209,12 +238,17 @@ realm_random_intersection_direction = {
 # 		country_event = { id = UniqueAscensionPerksEvents.114 }
 # 	}
 # }
-
 realm_encounter_results = {
 	random_list = {
-		10 = { set_country_flag = realm_encounter_result_success }
-		10 = { set_country_flag = realm_encounter_result_perfect }
-		10 = { set_country_flag = realm_encounter_result_failure }
+		10 = {
+			set_country_flag = realm_encounter_result_success
+		}
+		10 = {
+			set_country_flag = realm_encounter_result_perfect
+		}
+		10 = {
+			set_country_flag = realm_encounter_result_failure
+		}
 	}
 }
 
@@ -223,7 +257,6 @@ realm_encounter_results = {
 # realm_society_select = { hidden_effect = { realm_clear_flags = yes set_country_flag = realm_encounter_result_society realm_encounter_results = yes country_event = { id = UniqueAscensionPerksEvents.114 } } }
 # realm_engineering_select = { hidden_effect = { realm_clear_flags = yes set_country_flag = realm_encounter_result_engineering realm_encounter_results = yes country_event = { id = UniqueAscensionPerksEvents.114 } } }
 # realm_breeding_select = { hidden_effect = { realm_clear_flags = yes set_country_flag = realm_encounter_result_breeding realm_encounter_results = yes country_event = { id = UniqueAscensionPerksEvents.114 } } }
-
 # realm_select_small_swarm_group = {
 # 	hidden_effect = {
 # 		realm_clear_flags = yes
@@ -235,7 +268,6 @@ realm_encounter_results = {
 # 		country_event = { id = UniqueAscensionPerksEvents.114 }
 # 	}
 # }
-
 # realm_select_medium_swarm_group = {
 # 	hidden_effect = {
 # 		realm_clear_flags = yes
@@ -247,7 +279,6 @@ realm_encounter_results = {
 # 		country_event = { id = UniqueAscensionPerksEvents.114 }
 # 	}
 # }
-
 # realm_select_big_swarm_group = {
 # 	hidden_effect = {
 # 		realm_clear_flags = yes
@@ -259,7 +290,6 @@ realm_encounter_results = {
 # 		country_event = { id = UniqueAscensionPerksEvents.114 }
 # 	}
 # }
-
 # realm_swarm_small_group_success = {
 # 	realm_clear_flags = yes
 # 	get_capital_planet = yes
@@ -278,7 +308,6 @@ realm_encounter_results = {
 # 		}
 # 	}
 # }
-
 # realm_swarm_medium_group_success = {
 # 	realm_clear_flags = yes
 # 	get_capital_planet = yes
@@ -298,7 +327,6 @@ realm_encounter_results = {
 # 		}
 # 	}
 # }
-
 # realm_swarm_big_group_success = {
 # 	realm_clear_flags = yes
 # 	get_capital_planet = yes
@@ -318,7 +346,6 @@ realm_encounter_results = {
 # 		}
 # 	}
 # }
-
 # realm_swarm_small_group_failure = {
 # 	realm_clear_flags = yes
 # 	random_owned_planet = { save_event_target_as = spawn_location }
@@ -341,7 +368,6 @@ realm_encounter_results = {
 # 		}
 # 	}
 # }
-
 # realm_swarm_medium_group_failure = {
 # 	realm_clear_flags = yes
 # 	random_owned_planet = { save_event_target_as = spawn_location }
@@ -365,7 +391,6 @@ realm_encounter_results = {
 # 		}
 # 	}
 # }
-
 # realm_swarm_big_group_failure = {
 # 	realm_clear_flags = yes
 # 	random_owned_planet = { save_event_target_as = spawn_location }
@@ -389,26 +414,50 @@ realm_encounter_results = {
 # 		}
 # 	}
 # }
-
 create_uncontrolled_swarm_country = {
 	save_event_target_as = main_country
 	if = {
-		limit = { any_country = { has_country_flag = uncontrolled_swarm } }
-		random_country = { limit = { has_country_flag = uncontrolled_swarm } save_event_target_as = uncontrolled_swarm }
-	} else = {
+		limit = {
+			any_country = {
+				has_country_flag = uncontrolled_swarm
+			}
+		}
+		random_country = {
+			limit = {
+				has_country_flag = uncontrolled_swarm
+			}
+			save_event_target_as = uncontrolled_swarm
+		}
+	}
+	else = {
 		create_country = {
 			name = "Uncontrolled Swarm"
 			type = domesticated_spaceborn_alien
 			flag = {
-				icon = { category = "special" file = "the_swarm.dds" }
-				background = { category = "backgrounds" file = "new_dawn.dds"}
-				colors = { "orange" "grey" "null" "null" }
+				icon = {
+					category = "special"
+					file = "the_swarm.dds"
+				}
+				background = {
+					category = "backgrounds"
+					file = "new_dawn.dds"
+				}
+				colors = {
+					"orange"
+					"grey"
+					"null"
+					"null"
+				}
 			}
 			effect = {
-				every_country = { establish_communications_no_message = prev }
+				every_country = {
+					establish_communications_no_message = prev
+				}
 				save_event_target_as = uncontrolled_swarm
 				set_country_flag = uncontrolled_swarm
-				set_faction_hostility = { set_hostile = yes }
+				set_faction_hostility = {
+					set_hostile = yes
+				}
 			}
 		}
 	}
@@ -442,7 +491,6 @@ create_uncontrolled_swarm_country = {
 # 						set_country_flag = realm_tech_dark_matter_propulsion
 # 						set_country_flag = realm_tech_dark_matter_propulsion_given
 # 					}
-
 # 					10 = {
 # 						modifier = { factor = 0 OR = { has_technology = tech_mineral_extraction has_country_flag = realm_tech_mineral_extraction_given } }
 # 						set_country_flag = realm_tech_mineral_extraction
@@ -471,32 +519,56 @@ create_uncontrolled_swarm_country = {
 # 		country_event = { id = UniqueAscensionPerksEvents.114 }
 # 	}
 # }
-
 # realm_technology_points = {
 # 	add_monthly_resource_mult = { resource = society_research value = 1 min = 14000 max = 14000 }
 # 	add_monthly_resource_mult = { resource = society_research value = 1 min = 14000 max = 14000 }
 # 	add_monthly_resource_mult = { resource = society_research value = 1 min = 14000 max = 14000 }
 # }
-
 realm_destination_dropper = {
 	realm_clear_flags = yes
 	hidden_effect = {
 		set_country_flag = realm_destination_dropper_activated
 		random_list = {
-			100 = { set_country_flag = realm_destination_dropper_nothing }
-			50 = { set_country_flag = realm_destination_dropper_food_bad }
-			10 = { set_country_flag = realm_destination_dropper_food_good }
-			10 = { set_country_flag = realm_destination_dropper_gases }
-			10 = { set_country_flag = realm_destination_dropper_motes }
-			10 = { set_country_flag = realm_destination_dropper_alloys }
-			10 = { set_country_flag = realm_destination_dropper_minerals }
-			10 = { set_country_flag = realm_destination_dropper_energy }
-			10 = { set_country_flag = realm_destination_dropper_society }
-			10 = { set_country_flag = realm_destination_dropper_engineering }
-			10 = { set_country_flag = realm_destination_dropper_physics }
-			10 = { set_country_flag = realm_destination_dropper_crystals }
+			100 = {
+				set_country_flag = realm_destination_dropper_nothing
+			}
+			50 = {
+				set_country_flag = realm_destination_dropper_food_bad
+			}
+			10 = {
+				set_country_flag = realm_destination_dropper_food_good
+			}
+			10 = {
+				set_country_flag = realm_destination_dropper_gases
+			}
+			10 = {
+				set_country_flag = realm_destination_dropper_motes
+			}
+			10 = {
+				set_country_flag = realm_destination_dropper_alloys
+			}
+			10 = {
+				set_country_flag = realm_destination_dropper_minerals
+			}
+			10 = {
+				set_country_flag = realm_destination_dropper_energy
+			}
+			10 = {
+				set_country_flag = realm_destination_dropper_society
+			}
+			10 = {
+				set_country_flag = realm_destination_dropper_engineering
+			}
+			10 = {
+				set_country_flag = realm_destination_dropper_physics
+			}
+			10 = {
+				set_country_flag = realm_destination_dropper_crystals
+			}
 		}
-		country_event = { id = UniqueAscensionPerksEvents.114 }
+		country_event = {
+			id = UniqueAscensionPerksEvents.114
+		}
 	}
 }
 
@@ -504,10 +576,16 @@ realm_destination_restart_or_not = {
 	hidden_effect = {
 		realm_clear_flags = yes
 		random_list = {
-			85 = { set_country_flag = realm_destination_dropper }
-			15 = { set_country_flag = realm_destination_dropper_deactivated }
+			85 = {
+				set_country_flag = realm_destination_dropper
+			}
+			15 = {
+				set_country_flag = realm_destination_dropper_deactivated
+			}
 		}
-		country_event = { id = UniqueAscensionPerksEvents.114 }
+		country_event = {
+			id = UniqueAscensionPerksEvents.114
+		}
 	}
 }
 

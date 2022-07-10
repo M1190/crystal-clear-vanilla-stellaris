@@ -3,33 +3,64 @@
 ######## Security Strike Forces #######
 #									 #
 ######################################
-
 create_security_forces_country = {
 	# save_event_target_as = main_country
 	if = {
-		limit = { any_relation = { has_relation_flag = { who = root flag = security_strike_force } } }
+		limit = {
+			any_relation = {
+				has_relation_flag = {
+					who = root
+					flag = security_strike_force
+				}
+			}
+		}
 		random_relation = {
-			limit = { has_relation_flag = { who = root flag = security_strike_force } }
+			limit = {
+				has_relation_flag = {
+					who = root
+					flag = security_strike_force
+				}
+			}
 			save_event_target_as = security_forces_country
 		}
-	} else = {
+	}
+	else = {
 		create_country = {
 			name = "Security Forces"
 			type = security_forces
 			flag = {
-				icon = { category = "spherical" file = "flag_spherical_3.dds" }
-				background= { category = "backgrounds" file = "diagonal.dds" }
-				colors = { "black" "blue" "null" "null" }
+				icon = {
+					category = "spherical"
+					file = "flag_spherical_3.dds"
+				}
+				background = {
+					category = "backgrounds"
+					file = "diagonal.dds"
+				}
+				colors = {
+					"black"
+					"blue"
+					"null"
+					"null"
+				}
 			}
 			effect = {
 				save_event_target_as = security_forces_country
 				every_country = {
-					limit = { has_communications = root }
+					limit = {
+						has_communications = root
+					}
 					establish_communications_no_message = prev
 				}
 				set_country_flag = security_strike_force
-				set_relation_flag = { who = root flag = security_strike_force }
-				set_subject_of = { who = root preset = preset_machine_follower }
+				set_relation_flag = {
+					who = root
+					flag = security_strike_force
+				}
+				set_subject_of = {
+					who = root
+					preset = preset_machine_follower
+				}
 			}
 		}
 	}
