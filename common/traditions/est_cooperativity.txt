@@ -31,7 +31,6 @@ tr_est_cooperativity_adopt = {
 						}
 					}
 				}
-			
 			}
 		}
 	}
@@ -44,90 +43,60 @@ tr_est_cooperativity_finish = {
 	}
 }
 
-
 tr_est_cooperativity_1 = {
 	modifier = {
-		army_damage_mult = 0.20
-		armies_upkeep_mult = -0.10
+		army_damage_mult = 0.2
+		armies_upkeep_mult = -0.1
 	}
-
-	ai_weight = { factor = 5000 }
+	ai_weight = {
+		factor = 5000
+	}
 }
 
 tr_est_cooperativity_2 = {
-	possible = { has_tradition = tr_est_cooperativity_1 }	
-
-	modifier = {
-		planet_jobs_simple_drone_food_produces_mult = 0.10
-		planet_jobs_simple_drone_minerals_produces_mult = 0.10
+	possible = {
+		has_tradition = tr_est_cooperativity_1
 	}
-	
+	modifier = {
+		planet_jobs_simple_drone_food_produces_mult = 0.1
+		planet_jobs_simple_drone_minerals_produces_mult = 0.1
+	}
 	tradition_swap = {
 		name = tr_est_cooperativity_2_machines
 		inherit_name = yes
 		trigger = {
 			is_machine_empire = yes
-		}	
-		modifier = {
-			planet_jobs_simple_drone_energy_produces_mult = 0.10
-			planet_jobs_simple_drone_minerals_produces_mult = 0.10
 		}
-		weight = { factor = 1 }
+		modifier = {
+			planet_jobs_simple_drone_energy_produces_mult = 0.1
+			planet_jobs_simple_drone_minerals_produces_mult = 0.1
+		}
+		weight = {
+			factor = 1
+		}
 	}
-
-	ai_weight = { factor = 5000 }
+	ai_weight = {
+		factor = 5000
+	}
 }
 
 tr_est_cooperativity_3 = {
 	modifier = {
 		species_leader_exp_gain = 0.25
 	}
-
-	ai_weight = { factor = 5000 }
+	ai_weight = {
+		factor = 5000
+	}
 }
 
 tr_est_cooperativity_4 = {
-	possible = { has_tradition = tr_est_cooperativity_3 }	
-
+	possible = {
+		has_tradition = tr_est_cooperativity_3
+	}
 	on_enabled = {
 		every_owned_leader = {
 			limit = {
-				Not = {
-					has_trait =	leader_trait_admiral_est_cognition_central
-					has_trait =	leader_trait_general_est_cognition_central
-					has_trait =	leader_trait_governor_est_cognition_central
-					has_trait =	leader_trait_scientist_est_cognition_central
-					has_trait =	leader_trait_ruler_est_cognition_central
-				}
-			}
-			if = {
-				limit = { leader_class = admiral }
-				add_trait = leader_trait_admiral_est_cognition_central
-				add_ruler_trait = leader_trait_ruler_est_cognition_central
-			}
-			if = {
-				limit = { leader_class = general }
-				add_trait = leader_trait_general_est_cognition_central
-				add_ruler_trait = leader_trait_ruler_est_cognition_central
-			}
-			if = {
-				limit = { leader_class = governor }
-				add_trait = leader_trait_governor_est_cognition_central
-				add_ruler_trait = leader_trait_ruler_est_cognition_central
-			}
-			if = {
-				limit = { leader_class = scientist }
-				add_trait = leader_trait_scientist_est_cognition_central
-				add_ruler_trait = leader_trait_ruler_est_cognition_central
-			}
-			if = {
-				limit = { leader_class = ruler }
-				add_trait = leader_trait_ruler_est_cognition_central
-			}
-		}
-		every_pool_leader = {
-			limit = {
-				Not = {
+				NOR = {
 					has_trait = leader_trait_admiral_est_cognition_central
 					has_trait = leader_trait_general_est_cognition_central
 					has_trait = leader_trait_governor_est_cognition_central
@@ -136,33 +105,89 @@ tr_est_cooperativity_4 = {
 				}
 			}
 			if = {
-				limit = { leader_class = admiral }
+				limit = {
+					leader_class = admiral
+				}
 				add_trait = leader_trait_admiral_est_cognition_central
 				add_ruler_trait = leader_trait_ruler_est_cognition_central
 			}
 			if = {
-				limit = { leader_class = general }
+				limit = {
+					leader_class = general
+				}
 				add_trait = leader_trait_general_est_cognition_central
 				add_ruler_trait = leader_trait_ruler_est_cognition_central
 			}
 			if = {
-				limit = { leader_class = governor }
+				limit = {
+					leader_class = governor
+				}
 				add_trait = leader_trait_governor_est_cognition_central
 				add_ruler_trait = leader_trait_ruler_est_cognition_central
 			}
 			if = {
-				limit = { leader_class = scientist }
+				limit = {
+					leader_class = scientist
+				}
 				add_trait = leader_trait_scientist_est_cognition_central
 				add_ruler_trait = leader_trait_ruler_est_cognition_central
 			}
 			if = {
-				limit = { leader_class = ruler }
+				limit = {
+					leader_class = ruler
+				}
 				add_trait = leader_trait_ruler_est_cognition_central
 			}
-		}	
+		}
+		every_pool_leader = {
+			limit = {
+				NOR = {
+					has_trait = leader_trait_admiral_est_cognition_central
+					has_trait = leader_trait_general_est_cognition_central
+					has_trait = leader_trait_governor_est_cognition_central
+					has_trait = leader_trait_scientist_est_cognition_central
+					has_trait = leader_trait_ruler_est_cognition_central
+				}
+			}
+			if = {
+				limit = {
+					leader_class = admiral
+				}
+				add_trait = leader_trait_admiral_est_cognition_central
+				add_ruler_trait = leader_trait_ruler_est_cognition_central
+			}
+			if = {
+				limit = {
+					leader_class = general
+				}
+				add_trait = leader_trait_general_est_cognition_central
+				add_ruler_trait = leader_trait_ruler_est_cognition_central
+			}
+			if = {
+				limit = {
+					leader_class = governor
+				}
+				add_trait = leader_trait_governor_est_cognition_central
+				add_ruler_trait = leader_trait_ruler_est_cognition_central
+			}
+			if = {
+				limit = {
+					leader_class = scientist
+				}
+				add_trait = leader_trait_scientist_est_cognition_central
+				add_ruler_trait = leader_trait_ruler_est_cognition_central
+			}
+			if = {
+				limit = {
+					leader_class = ruler
+				}
+				add_trait = leader_trait_ruler_est_cognition_central
+			}
+		}
 	}
-
-	ai_weight = { factor = 5000 }
+	ai_weight = {
+		factor = 5000
+	}
 }
 
 tr_est_cooperativity_5 = {
@@ -171,22 +196,24 @@ tr_est_cooperativity_5 = {
 		trigger = {
 			is_hive_empire = yes
 			is_ai = yes
-		}	
+		}
 		modifier = {
 			pop_growth_speed = 0.15
 		}
-		weight = { factor = 1 }
+		weight = {
+			factor = 1
+		}
 	}
-	
 	tradition_swap = {
 		name = tr_est_cooperativity_5_machines
 		trigger = {
 			is_machine_empire = yes
 			is_ai = no
-		}	
-		weight = { factor = 1 }
+		}
+		weight = {
+			factor = 1
+		}
 	}
-	
 	tradition_swap = {
 		name = tr_est_cooperativity_5_machines
 		inherit_effects = no
@@ -194,12 +221,15 @@ tr_est_cooperativity_5 = {
 		trigger = {
 			is_machine_empire = yes
 			is_ai = yes
-		}	
+		}
 		modifier = {
 			pop_assembly_speed = 0.15
 		}
-		weight = { factor = 1 }
+		weight = {
+			factor = 1
+		}
 	}
-
-	ai_weight = { factor = 5000 }
+	ai_weight = {
+		factor = 5000
+	}
 }
