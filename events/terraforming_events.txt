@@ -4,20 +4,17 @@
 # By Victor Haeggman
 #
 ############################
-
 namespace = terra
-
 #Saving the original planet flag
 planet_event = {
 	id = terra.5
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
-		NOT = { has_planet_flag = has_terraformflag }
+		NOT = {
+			has_planet_flag = has_terraformflag
+		}
 	}
-
 	immediate = {
 		set_planet_flag = has_terraformflag
 		switch = {
@@ -171,16 +168,13 @@ planet_event = {
 			}
 		}
 	}
-
 }
 
 #Firing
 planet_event = {
 	id = terra.10
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		NOR = {
 			has_planet_flag = terraformed_once
@@ -199,21 +193,33 @@ planet_event = {
 					factor = 0
 					free_district_slots = 0
 				}
-				space_owner = { country_event = { id = terra.15 } } # Superfluous Terraforming Equipment
+				space_owner = {
+					country_event = {
+						id = terra.15
+					}
+				}				# Superfluous Terraforming Equipment
 			}
 			3 = {
 				modifier = {
 					factor = 0
 					is_planet_class = pc_nuked
 				}
-				space_owner = { country_event = { id = terra.20 } } # Engineered Beauty
+				space_owner = {
+					country_event = {
+						id = terra.20
+					}
+				}				# Engineered Beauty
 			}
 			3 = {
 				modifier = {
 					factor = 0
 					free_district_slots >= 4
 				}
-				space_owner = { country_event = { id = terra.25 } } # Terraforming Complications
+				space_owner = {
+					country_event = {
+						id = terra.25
+					}
+				}				# Terraforming Complications
 			}
 			2 = {
 				modifier = {
@@ -223,10 +229,16 @@ planet_event = {
 							who = space_owner
 							status = no
 						}
-						space_owner = { has_country_flag = terraformed_homeworld_2 }
+						space_owner = {
+							has_country_flag = terraformed_homeworld_2
+						}
 					}
 				}
-				space_owner = { country_event = { id = terra.35 } } # Homeworld 2
+				space_owner = {
+					country_event = {
+						id = terra.35
+					}
+				}				# Homeworld 2
 			}
 			2 = {
 				modifier = {
@@ -242,7 +254,11 @@ planet_event = {
 						is_colony = yes
 					}
 				}
-				space_owner = { country_event = { id = terra.40 } } # Intentionally Tidally Locked
+				space_owner = {
+					country_event = {
+						id = terra.40
+					}
+				}				# Intentionally Tidally Locked
 			}
 			3 = {
 				modifier = {
@@ -255,36 +271,53 @@ planet_event = {
 						is_planet_class = pc_hot_gaia
 					}
 				}
-				space_owner = { country_event = { id = terra.45 } } # Add relevant deposit
+				space_owner = {
+					country_event = {
+						id = terra.45
+					}
+				}				# Add relevant deposit
 			}
 			1 = {
-				modifier = { #Cannot use decimal places in the base for random_list
+				modifier = {
+					#Cannot use decimal places in the base for random_list
 					factor = 0.5
 					always = yes
 				}
 				modifier = {
 					factor = 0
 					OR = {
-						space_owner = { is_gestalt = no }
+						space_owner = {
+							is_gestalt = no
+						}
 						has_planet_flag = barren_terraform
 						has_planet_flag = barren_cold_terraform
 						has_planet_flag = nuked_terraform
 						is_planet_class = pc_nuked
 					}
 				}
-				space_owner = { country_event = { id = terra.50 } } # Free Hiveworld
+				space_owner = {
+					country_event = {
+						id = terra.50
+					}
+				}				# Free Hiveworld
 			}
 			2 = {
 				modifier = {
 					factor = 0
 					OR = {
-						space_owner = { is_gestalt = no }
+						space_owner = {
+							is_gestalt = no
+						}
 						has_planet_flag = barren_terraform
 						has_planet_flag = barren_cold_terraform
 						is_planet_class = pc_nuked
 					}
 				}
-				space_owner = { country_event = { id = terra.55 } } # Perfect Organization
+				space_owner = {
+					country_event = {
+						id = terra.55
+					}
+				}				# Perfect Organization
 			}
 			3 = {
 				modifier = {
@@ -294,7 +327,11 @@ planet_event = {
 						has_planet_flag = barren_cold_terraform
 					}
 				}
-				space_owner = { country_event = { id = terra.65 } } # Refund and Gas
+				space_owner = {
+					country_event = {
+						id = terra.65
+					}
+				}				# Refund and Gas
 			}
 			2 = {
 				modifier = {
@@ -308,11 +345,17 @@ planet_event = {
 						is_colony = yes
 						space_owner = {
 							country_uses_consumer_goods = yes
-							NOT = { has_origin = origin_life_seeded }
+							NOT = {
+								has_origin = origin_life_seeded
+							}
 						}
 					}
 				}
-				space_owner = { country_event = { id = terra.70 } } # Gain Gaia Preference
+				space_owner = {
+					country_event = {
+						id = terra.70
+					}
+				}				# Gain Gaia Preference
 			}
 			2 = {
 				modifier = {
@@ -325,12 +368,18 @@ planet_event = {
 						}
 						space_owner = {
 							is_gestalt = no
-							NOT  = { has_country_flag = made_paradise }
+							NOT = {
+								has_country_flag = made_paradise
+							}
 						}
 						is_homeworld = no
 					}
 				}
-				space_owner = { country_event = { id = terra.75 } } # Make Paradise
+				space_owner = {
+					country_event = {
+						id = terra.75
+					}
+				}				# Make Paradise
 			}
 			2 = {
 				modifier = {
@@ -339,13 +388,24 @@ planet_event = {
 						has_planet_flag = nuked_terraform
 						host_has_dlc = "Plantoids Species Pack"
 						space_owner = {
-							NOT  = { has_country_flag = harvested_radiotrophic_dna }
-							species = { NOT = { has_trait = trait_plantoid_radiotrophic has_trait = trait_radiotrophic_mutants } }
+							NOT = {
+								has_country_flag = harvested_radiotrophic_dna
+							}
+							species = {
+								NOR = {
+									has_trait = trait_plantoid_radiotrophic
+									has_trait = trait_radiotrophic_mutants
+								}
+							}
 						}
 						is_homeworld = no
 					}
 				}
-				space_owner = { country_event = { id = terra.80 } } # Radiotrophic presapients
+				space_owner = {
+					country_event = {
+						id = terra.80
+					}
+				}				# Radiotrophic presapients
 			}
 			2 = {
 				modifier = {
@@ -354,7 +414,9 @@ planet_event = {
 						has_planet_flag = nuked_terraform
 						host_has_dlc = "Ancient Relics Story Pack"
 						space_owner = {
-							NOT  = { has_country_flag = tombworld_weapon_cache_spawned }
+							NOT = {
+								has_country_flag = tombworld_weapon_cache_spawned
+							}
 						}
 						is_homeworld = no
 					}
@@ -366,13 +428,17 @@ planet_event = {
 						has_planet_flag = nuked_earth
 					}
 				}
-				space_owner = { country_event = { id = terra.90 } } # Weapon Cache
+				space_owner = {
+					country_event = {
+						id = terra.90
+					}
+				}				# Weapon Cache
 			}
-			10 = {} # Do nothing
+			10 = {
+			}			# Do nothing
 		}
 	}
 }
-
 
 country_event = {
 	id = terra.15
@@ -382,31 +448,56 @@ country_event = {
 	is_triggered_only = yes
 	location = from
 	show_sound = event_activating_unknown_technology
-
 	option = {
 		name = terra.15.a
-		trigger = {	From = { free_district_slots >= 1 } }
+		trigger = {
+			From = {
+				free_district_slots >= 1
+			}
+		}
 		if = {
-			limit = { is_gestalt = no }
-			From = { add_district = district_city }
+			limit = {
+				is_gestalt = no
+			}
+			From = {
+				add_district = district_city
+			}
 		}
 		else_if = {
-			limit = { is_machine_empire = yes }
-			From = { add_district = district_nexus }
+			limit = {
+				is_machine_empire = yes
+			}
+			From = {
+				add_district = district_nexus
+			}
 		}
 		else_if = {
-			limit = { is_hive_empire = yes }
-			From = { add_district = district_hive }
+			limit = {
+				is_hive_empire = yes
+			}
+			From = {
+				add_district = district_hive
+			}
 		}
 	}
 	option = {
 		name = terra.15.b
-		trigger = {	From = { free_district_slots >= 1 } }
-		From = { add_district = district_industrial }
+		trigger = {
+			From = {
+				free_district_slots >= 1
+			}
+		}
+		From = {
+			add_district = district_industrial
+		}
 	}
 	option = {
 		name = terra.15.c
-		trigger = {	From = { free_district_slots >= 2 } }
+		trigger = {
+			From = {
+				free_district_slots >= 2
+			}
+		}
 		custom_tooltip = terra.15.c.tooltip
 		hidden_effect = {
 			From = {
@@ -417,7 +508,11 @@ country_event = {
 	}
 	option = {
 		name = terra.15.d
-		trigger = { From = { free_district_slots >= 2 } }
+		trigger = {
+			From = {
+				free_district_slots >= 2
+			}
+		}
 		custom_tooltip = terra.15.d.tooltip
 		From = {
 			hidden_effect = {
@@ -428,7 +523,11 @@ country_event = {
 	}
 	option = {
 		name = terra.15.e
-		trigger = {	From = { free_district_slots >= 2 } }
+		trigger = {
+			From = {
+				free_district_slots >= 2
+			}
+		}
 		custom_tooltip = terra.15.e.tooltip
 		From = {
 			hidden_effect = {
@@ -439,7 +538,9 @@ country_event = {
 	}
 	option = {
 		name = terra.15.f
-		add_resource = { minerals = 300 }
+		add_resource = {
+			minerals = 300
+		}
 	}
 }
 
@@ -447,45 +548,58 @@ country_event = {
 	id = terra.20
 	title = terra.20.name
 	desc = terra.20.desc
-
 	picture = {
 		trigger = {
-			From = { is_wet = yes }
+			From = {
+				is_wet = yes
+			}
 		}
 		picture = GFX_evt_alien_nature
 	}
 	picture = {
 		trigger = {
-			From = { is_dry = yes }
+			From = {
+				is_dry = yes
+			}
 		}
 		picture = GFX_evt_landing_ship
 	}
 	picture = {
 		trigger = {
-			From = { is_cold = yes }
+			From = {
+				is_cold = yes
+			}
 		}
 		picture = GFX_evt_arctic
 	}
 	picture = {
 		trigger = {
-			From = {  is_planet_class = pc_gaia }
+			From = {
+				is_planet_class = pc_gaia
+			}
 		}
 		picture = GFX_evt_gaia
 	}
-
 	is_triggered_only = yes
 	location = from
-
 	option = {
 		name = terra.20.a
-		From = { add_modifier = { modifier =  engineered_nature } }
+		From = {
+			add_modifier = {
+				modifier = engineered_nature
+			}
+		}
 	}
 	option = {
 		trigger = {
 			is_gestalt = no
 		}
 		name = terra.20.b
-		From = { add_modifier = { modifier = natural_beauty } }
+		From = {
+			add_modifier = {
+				modifier = natural_beauty
+			}
+		}
 	}
 }
 
@@ -496,13 +610,12 @@ country_event = {
 	picture = GFX_evt_aggressive_flora
 	location = from
 	is_triggered_only = yes
-
 	show_sound = event_bad_omen
-
 	immediate = {
-		From = { set_planet_flag = terraform_blocker_flag }
+		From = {
+			set_planet_flag = terraform_blocker_flag
+		}
 	}
-
 	option = {
 		name = terra.25.a
 		From = {
@@ -578,21 +691,20 @@ planet_event = {
 	show_sound = event_administrative_work
 	is_triggered_only = yes
 	location = this
-
 	trigger = {
 		has_planet_flag = terraform_blocker_flag
 		NOT = {
 			any_deposit = {
-				NOT = { is_same_value = From }
+				NOT = {
+					is_same_value = From
+				}
 				is_deposit_type = d_terraforming_blocker
 			}
 		}
 	}
-
 	immediate = {
 		remove_planet_flag = terraform_blocker_flag
 	}
-
 	option = {
 		name = terra.30.a
 		owner = {
@@ -600,23 +712,23 @@ planet_event = {
 				trigger = has_technology
 				tech_ecological_adaptation = {
 					add_tech_option_or_research_effect = {
-   						TECH = tech_climate_restoration
-   						PROGRESS = 0.2
-   						CATEGORY = society_research
+						TECH = tech_climate_restoration
+						PROGRESS = 0.2
+						CATEGORY = society_research
 					}
 				}
 				tech_terrestrial_sculpting = {
 					add_tech_option_or_research_effect = {
-   						TECH = tech_ecological_adaptation
-   						PROGRESS = 0.4
-   						CATEGORY = society_research
+						TECH = tech_ecological_adaptation
+						PROGRESS = 0.4
+						CATEGORY = society_research
 					}
 				}
 				default = {
 					add_tech_option_or_research_effect = {
-   						TECH = tech_terrestrial_sculpting
-   						PROGRESS = 0.8
-   						CATEGORY = society_research
+						TECH = tech_terrestrial_sculpting
+						PROGRESS = 0.8
+						CATEGORY = society_research
 					}
 				}
 			}
@@ -632,23 +744,33 @@ country_event = {
 	show_sound = event_ship_bridge
 	is_triggered_only = yes
 	location = from
-
 	immediate = {
 		set_country_flag = terraformed_homeworld_2
-		from = { set_planet_flag = second_home@root }
+		from = {
+			set_planet_flag = second_home@root
+		}
 	}
-
 	option = {
 		name = terra.35.a
-		From = { add_modifier = { modifier = second_home } }
+		From = {
+			add_modifier = {
+				modifier = second_home
+			}
+		}
 		custom_tooltip = terra.35.a.tooltip
 		hidden_effect = {
-			From = { set_name = "[Space_Owner.GetHomeWorldName] II" }
+			From = {
+				set_name = "[Space_Owner.GetHomeWorldName] II"
+			}
 		}
 	}
 	option = {
 		name = terra.35.b
-		From = { add_modifier = { modifier = second_home } }
+		From = {
+			add_modifier = {
+				modifier = second_home
+			}
+		}
 	}
 }
 
@@ -658,16 +780,20 @@ country_event = {
 	desc = terra.40.desc
 	picture = GFX_evt_satellite_in_orbit
 	location = from
-
 	is_triggered_only = yes
-
 	option = {
 		name = terra.40.a
 	}
 	option = {
 		name = terra.40.b
-		From = { add_modifier = { modifier = intentionally_tidally_locked } }
-		From = { set_planet_flag = tidally_locked_world }
+		From = {
+			add_modifier = {
+				modifier = intentionally_tidally_locked
+			}
+		}
+		From = {
+			set_planet_flag = tidally_locked_world
+		}
 		custom_tooltip = terra.40.b.tooltip
 	}
 }
@@ -678,11 +804,9 @@ country_event = {
 	desc = terra.45.desc
 	picture = GFX_evt_drilling_for_gas
 	location = from
-
 	is_triggered_only = yes
-
 	option = {
-		name = terra.45.a # Generator
+		name = terra.45.a		# Generator
 		if = {
 			limit = {
 				From = {
@@ -692,19 +816,33 @@ country_event = {
 					}
 				}
 			}
-			From = { add_deposit = d_searing_desert }
+			From = {
+				add_deposit = d_searing_desert
+			}
 		}
 		else_if = {
-			limit = { From = { is_cold = yes } }
-			From = { add_deposit = d_frozen_gas_lake }
+			limit = {
+				From = {
+					is_cold = yes
+				}
+			}
+			From = {
+				add_deposit = d_frozen_gas_lake
+			}
 		}
 		else_if = {
-			limit = { From = { is_wet = yes } }
-			From = { add_deposit = d_rushing_waterfalls }
+			limit = {
+				From = {
+					is_wet = yes
+				}
+			}
+			From = {
+				add_deposit = d_rushing_waterfalls
+			}
 		}
 	}
 	option = {
-		name = terra.45.b # Mining
+		name = terra.45.b		# Mining
 		if = {
 			limit = {
 				From = {
@@ -732,7 +870,9 @@ country_event = {
 					}
 				}
 			}
-			From = { add_deposit = d_prosperous_mesa }
+			From = {
+				add_deposit = d_prosperous_mesa
+			}
 		}
 		else_if = {
 			limit = {
@@ -767,11 +907,13 @@ country_event = {
 					}
 				}
 			}
-			From = { add_deposit = d_ore_rich_caverns }
+			From = {
+				add_deposit = d_ore_rich_caverns
+			}
 		}
 	}
 	option = {
-		name = terra.45.c # Farming
+		name = terra.45.c		# Farming
 		if = {
 			limit = {
 				From = {
@@ -789,7 +931,9 @@ country_event = {
 					}
 				}
 			}
-			From = { add_deposit = d_lush_jungle }
+			From = {
+				add_deposit = d_lush_jungle
+			}
 		}
 		else_if = {
 			limit = {
@@ -800,7 +944,9 @@ country_event = {
 					}
 				}
 			}
-			From = { add_deposit = d_fungal_caves }
+			From = {
+				add_deposit = d_fungal_caves
+			}
 		}
 		else_if = {
 			limit = {
@@ -819,7 +965,9 @@ country_event = {
 					}
 				}
 			}
-			From = { add_deposit = d_fertile_lands }
+			From = {
+				add_deposit = d_fertile_lands
+			}
 		}
 		else_if = {
 			limit = {
@@ -838,7 +986,9 @@ country_event = {
 					}
 				}
 			}
-			From = { add_deposit = d_great_river }
+			From = {
+				add_deposit = d_great_river
+			}
 		}
 	}
 }
@@ -850,21 +1000,22 @@ country_event = {
 	picture = GFX_evt_hive_mind
 	show_sound = event_activating_unknown_technology
 	location = from
-
 	is_triggered_only = yes
-
 	option = {
 		name = terra.50.a
 		ai_chance = {
 			factor = 100
 		}
-		From = { change_pc = pc_hive }
+		From = {
+			change_pc = pc_hive
+		}
 	}
 	option = {
 		name = terra.50.b
-		add_resource = { influence = 200 }
+		add_resource = {
+			influence = 200
+		}
 	}
-
 }
 
 country_event = {
@@ -873,13 +1024,13 @@ country_event = {
 	desc = terra.55.desc
 	picture = GFX_evt_fleet_from_surface
 	location = from
-
 	is_triggered_only = yes
-
 	option = {
 		name = terra.55.a
 		From = {
-			add_modifier = { modifier = perfect_organization_modifier }
+			add_modifier = {
+				modifier = perfect_organization_modifier
+			}
 			set_planet_flag = perfect_organization
 		}
 	}
@@ -891,42 +1042,87 @@ country_event = {
 	desc = terra.65.desc
 	picture = GFX_evt_drilling_for_gas
 	location = from
-
 	is_triggered_only = yes
-
 	option = {
 		name = terra.65.a
-
 		From = {
 			add_deposit = d_fuming_bog
 			switch = {
 				trigger = has_planet_flag
 				barren_terraform = {
 					if = {
-						limit = { From = { is_dry = yes } }
-						Root = { add_resource = { energy = 2500 } }
+						limit = {
+							From = {
+								is_dry = yes
+							}
+						}
+						Root = {
+							add_resource = {
+								energy = 2500
+							}
+						}
 					}
 					else_if = {
-						limit = { From = { is_wet = yes } }
-						Root = { add_resource = { energy = 5000 } }
+						limit = {
+							From = {
+								is_wet = yes
+							}
+						}
+						Root = {
+							add_resource = {
+								energy = 5000
+							}
+						}
 					}
 					else_if = {
-						limit = { From = { is_cold = yes } }
-						Root = { add_resource = { energy = 7500 } }
+						limit = {
+							From = {
+								is_cold = yes
+							}
+						}
+						Root = {
+							add_resource = {
+								energy = 7500
+							}
+						}
 					}
 				}
 				barren_cold_terraform = {
 					if = {
-						limit = { From = { is_cold = yes } }
-						Root = { add_resource = { energy = 2500 } }
+						limit = {
+							From = {
+								is_cold = yes
+							}
+						}
+						Root = {
+							add_resource = {
+								energy = 2500
+							}
+						}
 					}
 					else_if = {
-						limit = { From = { is_wet = yes } }
-						Root = { add_resource = { energy = 5000 } }
+						limit = {
+							From = {
+								is_wet = yes
+							}
+						}
+						Root = {
+							add_resource = {
+								energy = 5000
+							}
+						}
 					}
 					else_if = {
-						limit = { From = { is_dry = yes } }
-						Root = { add_resource = { energy = 7500 } }
+						limit = {
+							From = {
+								is_dry = yes
+							}
+						}
+						Root = {
+							add_resource = {
+								energy = 7500
+							}
+						}
 					}
 				}
 			}
@@ -941,13 +1137,13 @@ country_event = {
 	picture = GFX_evt_gaia
 	show_sound = event_activating_unknown_technology
 	location = from
-
 	is_triggered_only = yes
-
 	immediate = {
 		from = {
 			every_owned_pop = {
-				limit = { is_robot_pop = no }
+				limit = {
+					is_robot_pop = no
+				}
 				modify_species = {
 					species = this
 					ideal_planet_class = pc_nuked
@@ -960,7 +1156,6 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = terra.70.a
 	}
@@ -987,15 +1182,12 @@ country_event = {
 		}
 		text = terra.75.desc_spirit
 	}
-
 	picture = GFX_evt_gaia
 	location = from
-
 	is_triggered_only = yes
 	immediate = {
 		set_country_flag = made_paradise
 	}
-
 	option = {
 		ai_chance = {
 			factor = 1
@@ -1005,7 +1197,11 @@ country_event = {
 			}
 		}
 		name = terra.75.a
-		From = { add_modifier = { modifier = paradise_made } }
+		From = {
+			add_modifier = {
+				modifier = paradise_made
+			}
+		}
 	}
 	option = {
 		trigger = {
@@ -1015,9 +1211,9 @@ country_event = {
 			factor = 1
 		}
 		name = terra.75.b
-		add_resource = { influence = 100 }
-
-
+		add_resource = {
+			influence = 100
+		}
 	}
 }
 
@@ -1028,11 +1224,9 @@ country_event = {
 	picture = GFX_evt_tomb_world
 	is_triggered_only = yes
 	location = from
-
 	immediate = {
 		set_country_flag = found_radio_plants
 	}
-
 	option = {
 		name = terra.80.a
 		allow = {
@@ -1072,13 +1266,14 @@ country_event = {
 	}
 	option = {
 		name = terra.80.b
-		allow = { has_policy_flag = enlightenment_allowed }
+		allow = {
+			has_policy_flag = enlightenment_allowed
+		}
 		enable_special_project = {
 			name = ENLIGHTEN_RADIO
 			location = from
 			owner = this
 		}
-
 	}
 	option = {
 		trigger = {
@@ -1129,8 +1324,12 @@ country_event = {
 	option = {
 		name = terra.80.d
 		if = {
-			limit = { country_uses_food = yes }
-			add_resource = { food = 5 }
+			limit = {
+				country_uses_food = yes
+			}
+			add_resource = {
+				food = 5
+			}
 		}
 	}
 }
@@ -1142,13 +1341,16 @@ country_event = {
 	picture = GFX_evt_hand_shake
 	is_triggered_only = yes
 	location = this
-
 	option = {
 		name = terra.85.a
 		custom_tooltip = terra.85.a.tooltip
 		hidden_effect = {
 			if = {
-				limit = { fromfromfrom = { is_colony = yes } }
+				limit = {
+					fromfromfrom = {
+						is_colony = yes
+					}
+				}
 				fromfromfrom = {
 					create_species = {
 						name = random
@@ -1157,7 +1359,7 @@ country_event = {
 						homeworld = fromfromfrom
 						namelist = "FUN4"
 						traits = {
-							ideal_planet_class ="pc_nuked"
+							ideal_planet_class = "pc_nuked"
 							trait = "trait_plantoid_radiotrophic"
 							trait = "trait_ingenious"
 							trait = "trait_fleeting"
@@ -1214,14 +1416,14 @@ country_event = {
 	show_sound = event_bad_omen
 	is_triggered_only = yes
 	location = from
-
 	immediate = {
 		set_country_flag = tombworld_weapon_cache_spawned
 	}
-
 	option = {
 		name = terra.90.a
-		From = { create_archaeological_site = site_tombworld_weapon_cache }
+		From = {
+			create_archaeological_site = site_tombworld_weapon_cache
+		}
 	}
 }
 
@@ -1232,19 +1434,18 @@ fleet_event = {
 	picture = GFX_evt_habitable_dig_site
 	show_sound = event_dig_site
 	location = from
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = EXCELLENT
 	}
@@ -1257,19 +1458,18 @@ fleet_event = {
 	picture = GFX_evt_discovered_hidden_door
 	show_sound = event_dig_site
 	location = from
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = EXCELLENT
 		medium_artifact_reward = yes
@@ -1304,19 +1504,18 @@ fleet_event = {
 	picture = GFX_evt_clocks
 	show_sound = event_dig_site
 	location = from
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		trigger = {
 			owner = {
@@ -1380,10 +1579,13 @@ planet_event = {
 	is_triggered_only = yes
 	trigger = {
 		has_modifier = second_home
-		NOT = { has_planet_flag = second_home@from }
+		NOT = {
+			has_planet_flag = second_home@from
+		}
 	}
-
-	immediate = { remove_modifier = second_home }
+	immediate = {
+		remove_modifier = second_home
+	}
 }
 
 planet_event = {
@@ -1391,15 +1593,19 @@ planet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		NOT = { has_modifier = second_home }
+		NOT = {
+			has_modifier = second_home
+		}
 		has_planet_flag = second_home@from
 		is_ideal_planet_class = {
 			who = from
 			status = yes
 		}
 	}
-
 	immediate = {
-		add_modifier = { modifier = second_home days = -1 }
+		add_modifier = {
+			modifier = second_home
+			days = -1
+		}
 	}
 }
