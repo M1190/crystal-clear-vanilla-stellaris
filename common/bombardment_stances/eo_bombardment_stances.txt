@@ -25,27 +25,24 @@
 #		weight = 1
 #	}
 #}
-
 nanomachine = {
 	trigger = {
 		owner = {
 			has_origin = origin_gray_goo
 			OR = {
-				NOT = { is_country_type = default }
+				NOT = {
+					is_country_type = default
+				}
 				has_policy_flag = orbital_bombardment_indiscriminate
 				has_policy_flag = orbital_bombardment_armageddon
 			}
 		}
 	}
-
 	default = no
-
 	stop_when_armies_dead = no
 	abduct_pops = no
-
 	planet_damage = 1.5
 	army_damage = 1.5
-
 	kill_pop_chance = {
 		base = 1.2
 		modifier = {
@@ -54,7 +51,6 @@ nanomachine = {
 		}
 	}
 	min_pops_to_kill_pop = 0
-
 	# root = fleet
 	# from = planet
 	ai_weight = {
@@ -63,10 +59,16 @@ nanomachine = {
 			factor = 0.01
 			exists = from
 			from = {
-				owner = { NOT = { is_hostile = root.owner } }
+				owner = {
+					NOT = {
+						is_hostile = root.owner
+					}
+				}
 			}
 			exists = owner
-			owner = { is_crisis_faction = no }
+			owner = {
+				is_crisis_faction = no
+			}
 		}
 		modifier = {
 			factor = 0
