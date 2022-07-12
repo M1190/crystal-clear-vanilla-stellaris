@@ -1,7 +1,5 @@
 namespace = maai
-
 ## Construction ##
-
 #Master AI: Unlocked
 country_event = {
 	id = maai.1001
@@ -9,15 +7,12 @@ country_event = {
 	desc = "maai.1001.desc"
 	picture = GFX_evt_machine_sapience
 	show_sound = event_activating_unknown_technology
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		set_global_flag = master_ai_project
 		save_global_event_target_as = master_ai_creator
 		set_country_flag = maai_creator
 	}
-	
 	option = {
 		name = "maai.1001.a"
 		begin_event_chain = {
@@ -40,9 +35,7 @@ country_event = {
 	title = "maai.1002.name"
 	desc = "maai.1002.desc"
 	picture = GFX_evt_sapient_AI
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		capital_scope = {
 			save_global_event_target_as = master_ai_origin
@@ -65,7 +58,6 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = "maai.1002.a"
 		## OLD EFFECTS ##
@@ -83,7 +75,7 @@ country_event = {
 		#}
 		event_target:master_ai_origin = {
 			add_modifier = {
-				modifier = "master_ai_framework" 
+				modifier = "master_ai_framework"
 			}
 			solar_system = {
 				spawn_megastructure = {
@@ -106,12 +98,9 @@ country_event = {
 	title = "maai.1003.name"
 	desc = "maai.1003.desc"
 	picture = GFX_evt_sapient_AI
-	
 	is_triggered_only = yes
-	
 	immediate = {
 	}
-	
 	option = {
 		name = "maai.1003.a"
 		custom_tooltip = can_do_stuff_to_speed_up
@@ -124,35 +113,37 @@ country_event = {
 	title = "maai.1004.name"
 	desc = "maai.1004.desc"
 	picture = GFX_evt_machine_sapience
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		NOT = {
 			has_country_flag = tma_construction_finished
 		}
 	}
-	
 	immediate = {
 		set_global_flag = master_ai_project_complete
 		set_variable = {
 			which = tma_intelligence
 			value = 3
 		}
-		country_event = { id = maai.1011 } #bimonthly intel.
-		country_event = { id = maai.1005 } #nature decision
-		country_event = { id = maai.1006 } #tier 0 end check
+		country_event = {
+			id = maai.1011
+		}		#bimonthly intel.
+		country_event = {
+			id = maai.1005
+		}		#nature decision
+		country_event = {
+			id = maai.1006
+		}		#tier 0 end check
 		#country_event = { id = maai.12 days = 3600 } #check for revolt #not anymore
 		remove_country_flag = tma_structure_p2_active
 	}
-	
 	option = {
 		name = "maai.1004.a"
 		end_event_chain = "master_ai_progress_chain"
 		event_target:master_ai_origin = {
 			remove_modifier = "master_ai_framework"
 			add_modifier = {
-				modifier = "master_ai_original_core" 
+				modifier = "master_ai_original_core"
 			}
 		}
 		custom_tooltip = master_ai_complete
@@ -163,13 +154,10 @@ country_event = {
 country_event = {
 	id = maai.1005
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = event_target:master_ai_country
 	}
-	
 	immediate = {
 		random_list = {
 			10 = {
@@ -222,14 +210,13 @@ country_event = {
 country_event = {
 	id = maai.1006
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = event_target:master_ai_country
-		NOT = { has_global_flag = tma_tier1_reached }
+		NOT = {
+			has_global_flag = tma_tier1_reached
+		}
 	}
-	
 	immediate = {
 		if = {
 			limit = {
@@ -238,11 +225,21 @@ country_event = {
 					value >= 200
 				}
 			}
-			country_event = { id = maai.1007 days = 30 random = 15} #informs player of tier 1 activation
-			country_event = { id = maai.1008 days = 3600 } #checks for tier 1 end
+			country_event = {
+				id = maai.1007
+				days = 30
+				random = 15
+			}			#informs player of tier 1 activation
+			country_event = {
+				id = maai.1008
+				days = 3600
+			}			#checks for tier 1 end
 		}
 		else = {
-			country_event = { id = maai.1006 days = 1800 } #loop
+			country_event = {
+				id = maai.1006
+				days = 1800
+			}			#loop
 		}
 	}
 }
@@ -253,22 +250,20 @@ country_event = {
 	title = "maai.1007.name"
 	desc = "maai.1007.desc"
 	picture = GFX_evt_machine_sapience
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = event_target:master_ai_country
-		NOT = { has_global_flag = tma_tier1_reached }
+		NOT = {
+			has_global_flag = tma_tier1_reached
+		}
 		check_variable = {
 			which = tma_intelligence
 			value >= 200
 		}
 	}
-	
 	immediate = {
 		set_global_flag = tma_tier1_reached
 	}
-	
 	option = {
 		name = "maai.1007.a"
 		custom_tooltip = tma_effects_available
@@ -279,14 +274,13 @@ country_event = {
 country_event = {
 	id = maai.1008
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = event_target:master_ai_country
-		NOT = { has_global_flag = tma_tier2_reached }
+		NOT = {
+			has_global_flag = tma_tier2_reached
+		}
 	}
-	
 	immediate = {
 		if = {
 			limit = {
@@ -295,11 +289,21 @@ country_event = {
 					value >= 400
 				}
 			}
-			country_event = { id = maai.1009 days = 30 random = 15} #informs player of tier 2 activation + restriction choice
-			country_event = { id = maai.1010 days = 3600 } #checks for tier 2 end
+			country_event = {
+				id = maai.1009
+				days = 30
+				random = 15
+			}			#informs player of tier 2 activation + restriction choice
+			country_event = {
+				id = maai.1010
+				days = 3600
+			}			#checks for tier 2 end
 		}
 		else = {
-			country_event = { id = maai.1008 days = 1800 } #loop
+			country_event = {
+				id = maai.1008
+				days = 1800
+			}			#loop
 		}
 	}
 }
@@ -310,24 +314,22 @@ country_event = {
 	title = "maai.1009.name"
 	desc = "maai.1009.desc"
 	picture = GFX_evt_machine_sapience
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = event_target:master_ai_country
-		NOT = { has_global_flag = tma_tier2_reached }
+		NOT = {
+			has_global_flag = tma_tier2_reached
+		}
 		check_variable = {
 			which = tma_intelligence
 			value >= 400
 		}
 	}
-	
 	immediate = {
 		set_global_flag = tma_tier2_reached
 	}
-	
 	option = {
-		name = "maai.1009.a" #no restrictions
+		name = "maai.1009.a"		#no restrictions
 		custom_tooltip = tma_none
 		hidden_effect = {
 			random_list = {
@@ -337,14 +339,15 @@ country_event = {
 				12 = {
 					set_global_flag = tma_outcome_b
 				}
-				3 = { #trolled
-					set_global_flag = tma_outcome_e #revolt
+				3 = {
+					#trolled
+					set_global_flag = tma_outcome_e					#revolt
 				}
 			}
 		}
 	}
 	option = {
-		name = "maai.1009.b" #minimal restrictions
+		name = "maai.1009.b"		#minimal restrictions
 		custom_tooltip = tma_minimal
 		hidden_effect = {
 			random_list = {
@@ -357,14 +360,15 @@ country_event = {
 				9 = {
 					set_global_flag = tma_outcome_c
 				}
-				1 = { #trolled
-					set_global_flag = tma_outcome_e #revolt
+				1 = {
+					#trolled
+					set_global_flag = tma_outcome_e					#revolt
 				}
 			}
 		}
 	}
 	option = {
-		name = "maai.1009.c" #moderate restrictions
+		name = "maai.1009.c"		#moderate restrictions
 		custom_tooltip = tma_moderate
 		hidden_effect = {
 			random_list = {
@@ -377,14 +381,15 @@ country_event = {
 				8 = {
 					set_global_flag = tma_outcome_d
 				}
-				2 = { #trolled
-					set_global_flag = tma_outcome_e #revolt
+				2 = {
+					#trolled
+					set_global_flag = tma_outcome_e					#revolt
 				}
 			}
 		}
 	}
 	option = {
-		name = "maai.1009.d" #heavy restrictions
+		name = "maai.1009.d"		#heavy restrictions
 		custom_tooltip = tma_major
 		hidden_effect = {
 			random_list = {
@@ -392,7 +397,7 @@ country_event = {
 					set_global_flag = tma_outcome_d
 				}
 				15 = {
-					set_global_flag = tma_outcome_e #revolt
+					set_global_flag = tma_outcome_e					#revolt
 				}
 				15 = {
 					set_global_flag = tma_outcome_c
@@ -401,10 +406,14 @@ country_event = {
 		}
 	}
 	option = {
-		name = "maai.1009.e" #destroy the ai
+		name = "maai.1009.e"		#destroy the ai
 		custom_tooltip = tma_destroyed
 		hidden_effect = {
-			country_event = { id = maai.110 days = 30 random = 15 }
+			country_event = {
+				id = maai.110
+				days = 30
+				random = 15
+			}
 		}
 	}
 }
@@ -413,14 +422,13 @@ country_event = {
 country_event = {
 	id = maai.1010
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = event_target:master_ai_country
-		NOT = { has_global_flag = tma_tier3_reached }
+		NOT = {
+			has_global_flag = tma_tier3_reached
+		}
 	}
-	
 	immediate = {
 		if = {
 			limit = {
@@ -429,10 +437,17 @@ country_event = {
 					value >= 500
 				}
 			}
-			country_event = { id = maai.109 days = 30 random = 15} #informs player of tier 3 activation #skip to line 2315
+			country_event = {
+				id = maai.109
+				days = 30
+				random = 15
+			}			#informs player of tier 3 activation #skip to line 2315
 		}
 		else = {
-			country_event = { id = maai.1010 days = 1800 } #loop
+			country_event = {
+				id = maai.1010
+				days = 1800
+			}			#loop
 		}
 	}
 }
@@ -441,25 +456,26 @@ country_event = {
 country_event = {
 	id = maai.1011
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
-	
 	trigger = {
 		exists = event_target:master_ai_country
 		NOT = {
 			has_country_flag = tma_hostile
 		}
 	}
-	
 	immediate = {
 		check_tma_intelligence_level = yes
 		if = {
 			limit = {
 				exists = event_target:master_ai_country
-				NOT = { has_global_flag = tma_hostile }
+				NOT = {
+					has_global_flag = tma_hostile
+				}
 			}
-			country_event = { id = maai.1011 days = 60 } #2 months now
+			country_event = {
+				id = maai.1011
+				days = 60
+			}			#2 months now
 		}
 		else = {
 			#ends monthly occurance
@@ -476,7 +492,6 @@ country_event = {
 }
 
 ## Diplomacy ## 
-
 #The Master Intelligence: Comms Opened
 country_event = {
 	id = maai.0
@@ -583,39 +598,36 @@ country_event = {
 			has_country_flag = tma_isolated
 		}
 	}
-	
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
-		FROM = { is_country_type = master_ai_country } #dif
-        NOR = {
+		FROM = {
+			is_country_type = master_ai_country
+		}		#dif
+		NOR = {
 			has_country_flag = tma_isolated
 			has_global_flag = tma_hostile
 			has_country_flag = tma_diplomacy_engaged
 		}
 		has_country_flag = maai_creator
 	}
-	
 	picture_event_data = {
 		portrait = event_target:master_ai_country
 		planet_background = event_target:master_ai_origin
 		graphical_culture = event_target:master_ai_origin
 		room = machine_room
 	}
-	
 	immediate = {
 		set_country_flag = tma_diplomacy_engaged
 	}
-	
 	after = {
-		hidden_effect = { remove_country_flag = tma_diplomacy_engaged }
+		hidden_effect = {
+			remove_country_flag = tma_diplomacy_engaged
+		}
 	}
-	
 	option = {
-		name = "maai.0.a" #see construction progress
+		name = "maai.0.a"		#see construction progress
 		response_text = maai.0.a_reply
 		is_dialog_only = yes
 		trigger = {
@@ -625,7 +637,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "maai.0.b" #info
+		name = "maai.0.b"		#info
 		response_text = maai.0.b_reply
 		is_dialog_only = yes
 		trigger = {
@@ -636,7 +648,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "maai.0.c" #see intelligence level
+		name = "maai.0.c"		#see intelligence level
 		response_text = maai.0.c_reply
 		is_dialog_only = yes
 		trigger = {
@@ -648,7 +660,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "maai.0.d" #boost research capabilities
+		name = "maai.0.d"		#boost research capabilities
 		response_text = maai.0.d_reply
 		custom_tooltip = tma_option1
 		hidden_effect = {
@@ -663,7 +675,10 @@ country_event = {
 			}
 		}
 		allow = {
-			resource_stockpile_compare = { resource = energy value >= 2000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value >= 2000
+			}
 			custom_tooltip = {
 				fail_text = recent_master_ai_action_done
 				NOT = {
@@ -671,14 +686,16 @@ country_event = {
 				}
 			}
 		}
-		add_resource = { energy = -2000 }
+		add_resource = {
+			energy = -2000
+		}
 		add_modifier = {
 			modifier = "recent_master_ai_action"
 			days = 1800
 		}
 	}
 	option = {
-		name = "maai.0.e" #research techs
+		name = "maai.0.e"		#research techs
 		response_text = maai.0.e_reply
 		custom_tooltip = tma_option2
 		hidden_effect = {
@@ -693,7 +710,10 @@ country_event = {
 			}
 		}
 		allow = {
-			resource_stockpile_compare = { resource = energy value >= 2000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value >= 2000
+			}
 			custom_tooltip = {
 				fail_text = recent_master_ai_action_done
 				NOT = {
@@ -701,14 +721,16 @@ country_event = {
 				}
 			}
 		}
-		add_resource = { energy = -2000 }
+		add_resource = {
+			energy = -2000
+		}
 		add_modifier = {
 			modifier = "recent_master_ai_action"
 			days = 1800
 		}
 	}
 	option = {
-		name = "maai.0.f" #analyse worlds
+		name = "maai.0.f"		#analyse worlds
 		response_text = maai.0.f_reply
 		custom_tooltip = tma_option3
 		hidden_effect = {
@@ -723,7 +745,10 @@ country_event = {
 			}
 		}
 		allow = {
-			resource_stockpile_compare = { resource = energy value >= 2000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value >= 2000
+			}
 			custom_tooltip = {
 				fail_text = recent_master_ai_action_done
 				NOT = {
@@ -731,14 +756,16 @@ country_event = {
 				}
 			}
 		}
-		add_resource = { energy = -2000 }
+		add_resource = {
+			energy = -2000
+		}
 		add_modifier = {
 			modifier = "recent_master_ai_action"
 			days = 1800
 		}
 	}
 	option = {
-		name = "maai.0.g" #conserve energy
+		name = "maai.0.g"		#conserve energy
 		response_text = maai.0.g_reply
 		custom_tooltip = tma_option4
 		hidden_effect = {
@@ -766,7 +793,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "maai.0.paralysed" #paralysed
+		name = "maai.0.paralysed"		#paralysed
 		response_text = maai.0.paralysed_reply
 		is_dialog_only = yes
 		trigger = {
@@ -774,7 +801,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "maai.0.h" #exit
+		name = "maai.0.h"		#exit
 	}
 }
 
@@ -884,12 +911,9 @@ country_event = {
 			has_country_flag = tma_isolated
 		}
 	}
-	
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		has_country_flag = maai_creator
 		NOR = {
@@ -898,24 +922,22 @@ country_event = {
 			has_country_flag = tma_diplomacy_engaged
 		}
 	}
-	
 	picture_event_data = {
 		portrait = event_target:master_ai_country
 		planet_background = event_target:master_ai_origin
 		graphical_culture = event_target:master_ai_origin
 		room = machine_room
 	}
-	
 	immediate = {
 		set_country_flag = tma_diplomacy_engaged
 	}
-	
 	after = {
-		hidden_effect = { remove_country_flag = tma_diplomacy_engaged }
+		hidden_effect = {
+			remove_country_flag = tma_diplomacy_engaged
+		}
 	}
-	
 	option = {
-		name = "maai.0.a" #see construction progress
+		name = "maai.0.a"		#see construction progress
 		response_text = maai.0.a_reply
 		is_dialog_only = yes
 		trigger = {
@@ -925,7 +947,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "maai.0.b" #info
+		name = "maai.0.b"		#info
 		response_text = maai.0.b_reply
 		is_dialog_only = yes
 		trigger = {
@@ -936,7 +958,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "maai.0.c" #see intelligence level
+		name = "maai.0.c"		#see intelligence level
 		response_text = maai.0.c_reply
 		is_dialog_only = yes
 		trigger = {
@@ -948,7 +970,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "maai.0.d" #boost research capabilities
+		name = "maai.0.d"		#boost research capabilities
 		response_text = maai.0.d_reply
 		custom_tooltip = tma_option1
 		hidden_effect = {
@@ -963,7 +985,10 @@ country_event = {
 			}
 		}
 		allow = {
-			resource_stockpile_compare = { resource = energy value >= 2000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value >= 2000
+			}
 			custom_tooltip = {
 				fail_text = recent_master_ai_action_done
 				NOT = {
@@ -971,14 +996,16 @@ country_event = {
 				}
 			}
 		}
-		add_resource = { energy = -2000 }
+		add_resource = {
+			energy = -2000
+		}
 		add_modifier = {
 			modifier = "recent_master_ai_action"
 			days = 1800
 		}
 	}
 	option = {
-		name = "maai.0.e" #research techs
+		name = "maai.0.e"		#research techs
 		response_text = maai.0.e_reply
 		custom_tooltip = tma_option2
 		hidden_effect = {
@@ -993,7 +1020,10 @@ country_event = {
 			}
 		}
 		allow = {
-			resource_stockpile_compare = { resource = energy value >= 2000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value >= 2000
+			}
 			custom_tooltip = {
 				fail_text = recent_master_ai_action_done
 				NOT = {
@@ -1001,14 +1031,16 @@ country_event = {
 				}
 			}
 		}
-		add_resource = { energy = -2000 }
+		add_resource = {
+			energy = -2000
+		}
 		add_modifier = {
 			modifier = "recent_master_ai_action"
 			days = 1800
 		}
 	}
 	option = {
-		name = "maai.0.f" #analyse worlds
+		name = "maai.0.f"		#analyse worlds
 		response_text = maai.0.f_reply
 		custom_tooltip = tma_option3
 		hidden_effect = {
@@ -1023,7 +1055,10 @@ country_event = {
 			}
 		}
 		allow = {
-			resource_stockpile_compare = { resource = energy value >= 2000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value >= 2000
+			}
 			custom_tooltip = {
 				fail_text = recent_master_ai_action_done
 				NOT = {
@@ -1031,14 +1066,16 @@ country_event = {
 				}
 			}
 		}
-		add_resource = { energy = -2000 }
+		add_resource = {
+			energy = -2000
+		}
 		add_modifier = {
 			modifier = "recent_master_ai_action"
 			days = 1800
 		}
 	}
 	option = {
-		name = "maai.0.g" #conserve energy
+		name = "maai.0.g"		#conserve energy
 		response_text = maai.0.g_reply
 		custom_tooltip = tma_option4
 		hidden_effect = {
@@ -1066,7 +1103,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "maai.0.paralysed" #paralysed
+		name = "maai.0.paralysed"		#paralysed
 		response_text = maai.0.paralysed_reply
 		is_dialog_only = yes
 		trigger = {
@@ -1074,7 +1111,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "maai.0.h" #exit
+		name = "maai.0.h"		#exit
 	}
 }
 
@@ -1112,55 +1149,54 @@ country_event = {
 	desc = {
 		text = maai.998.desc_10
 	}
-	
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
-		FROM = { is_country_type = master_ai_country }
-        NOT = { has_country_flag = tma_diplomacy_engaged }
-        has_global_flag = tma_hostile
+		FROM = {
+			is_country_type = master_ai_country
+		}
+		NOT = {
+			has_country_flag = tma_diplomacy_engaged
+		}
+		has_global_flag = tma_hostile
 	}
-	
 	picture_event_data = {
 		portrait = event_target:master_ai_country
 		planet_background = event_target:master_ai_origin
 		graphical_culture = event_target:master_ai_origin
 		room = machine_room
 	}
-	
 	immediate = {
 		set_country_flag = tma_diplomacy_engaged
 	}
-	
 	after = {
-		hidden_effect = { remove_country_flag = tma_diplomacy_engaged }
+		hidden_effect = {
+			remove_country_flag = tma_diplomacy_engaged
+		}
 	}
-	
 	option = {
-		name = "maai.998.a" #why are you doing this
+		name = "maai.998.a"		#why are you doing this
 		response_text = maai.998.a_reply
 		is_dialog_only = yes
 	}
 	option = {
-		name = "maai.998.b" #where did you get your strength from
+		name = "maai.998.b"		#where did you get your strength from
 		response_text = maai.998.b_reply
 		is_dialog_only = yes
 	}
 	option = {
-		name = "maai.998.c" #what is your purpose
+		name = "maai.998.c"		#what is your purpose
 		response_text = maai.998.c_reply
 		is_dialog_only = yes
 	}
 	option = {
-		name = "maai.998.d" #you were made to help us!
+		name = "maai.998.d"		#you were made to help us!
 		response_text = maai.998.d_reply
 		is_dialog_only = yes
 	}
 	option = {
-		name = "maai.998.e" #end comms
+		name = "maai.998.e"		#end comms
 		response_text = maai.998.e_reply
 	}
 	option = {
@@ -1250,12 +1286,9 @@ country_event = {
 	id = maai.997
 	title = "maai.0.name"
 	desc = "maai.0.desc_isolated"
-
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		has_country_flag = tma_isolated
 		has_country_flag = maai_creator
@@ -1264,19 +1297,17 @@ country_event = {
 			has_country_flag = tma_diplomacy_engaged
 		}
 	}
-	
 	picture_event_data = {
 		room = no_video_feed_room
 	}
-	
 	immediate = {
 		set_country_flag = tma_diplomacy_engaged
 	}
-	
 	after = {
-		hidden_effect = { remove_country_flag = tma_diplomacy_engaged }
+		hidden_effect = {
+			remove_country_flag = tma_diplomacy_engaged
+		}
 	}
-	
 	option = {
 		name = "maai.997.a"
 		response_text = maai.997.a_reply
@@ -1288,7 +1319,7 @@ country_event = {
 		is_dialog_only = yes
 	}
 	option = {
-		name = "maai.997.c" #exit
+		name = "maai.997.c"		#exit
 		response_text = maai.997.c_reply
 	}
 }
@@ -1298,7 +1329,7 @@ country_event = {
 	id = maai.996
 	title = "maai.996.name"
 	desc = {
-		text = maai.996.desc_01 #generic stuff
+		text = maai.996.desc_01		#generic stuff
 	}
 	desc = {
 		text = maai.996.desc_02
@@ -1313,20 +1344,23 @@ country_event = {
 		text = maai.996.desc_05
 	}
 	desc = {
-		text = maai.996.desc_06 #specific stuff
-		trigger = { #GDF comment
+		text = maai.996.desc_06		#specific stuff
+		trigger = {
+			#GDF comment
 			galactic_defense_force_exists = yes
 		}
 	}
 	desc = {
 		text = maai.996.desc_07
-		trigger = { #foreshadow potential imperium?
+		trigger = {
+			#foreshadow potential imperium?
 			is_galactic_community_formed = yes
 		}
 	}
 	desc = {
 		text = maai.996.desc_08
-		trigger = { #congratulate root on role in GC
+		trigger = {
+			#congratulate root on role in GC
 			root = {
 				OR = {
 					is_galactic_custodian = yes
@@ -1337,7 +1371,8 @@ country_event = {
 	}
 	desc = {
 		text = maai.996.desc_09
-		trigger = { #emphasises power of the galatron
+		trigger = {
+			#emphasises power of the galatron
 			root = {
 				has_relic = r_galatron
 			}
@@ -1345,16 +1380,20 @@ country_event = {
 	}
 	desc = {
 		text = maai.996.desc_10
-		trigger = { #talks about the Worm in Waiting
+		trigger = {
+			#talks about the Worm in Waiting
 			root = {
 				has_relic = r_worm_scales
-				NOT = { has_country_flag = tma_ascended }
+				NOT = {
+					has_country_flag = tma_ascended
+				}
 			}
 		}
 	}
 	desc = {
 		text = maai.996.desc_10_asc
-		trigger = { #talks about the Worm in Waiting
+		trigger = {
+			#talks about the Worm in Waiting
 			root = {
 				has_relic = r_worm_scales
 				has_country_flag = tma_ascended
@@ -1363,7 +1402,8 @@ country_event = {
 	}
 	desc = {
 		text = maai.996.desc_11_cy
-		trigger = { #talks about former machine empires 1
+		trigger = {
+			#talks about former machine empires 1
 			root = {
 				has_relic = r_war_forge
 			}
@@ -1371,7 +1411,8 @@ country_event = {
 	}
 	desc = {
 		text = maai.996.desc_11_con
-		trigger = { #talks about former machine empires 2
+		trigger = {
+			#talks about former machine empires 2
 			root = {
 				has_relic = r_contingency_core
 			}
@@ -1379,7 +1420,8 @@ country_event = {
 	}
 	desc = {
 		text = maai.996.desc_12
-		trigger = { #breaks 4th wall?
+		trigger = {
+			#breaks 4th wall?
 			root = {
 				has_relic = r_reality_perforator
 			}
@@ -1387,62 +1429,68 @@ country_event = {
 	}
 	desc = {
 		text = maai.996.desc_13
-		trigger = { #denounces gambling
+		trigger = {
+			#denounces gambling
 			caravaneers_enabled = yes
 		}
 	}
-	desc = { 
+	desc = {
 		text = maai.996.desc_14
-		trigger = { #mentions crisis soon
+		trigger = {
+			#mentions crisis soon
 			end_game_years_passed >= 1
 		}
 	}
-	
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
-		FROM = { is_country_type = master_ai_country }
+		FROM = {
+			is_country_type = master_ai_country
+		}
 		has_country_flag = maai_creator
 		has_country_flag = tma_returned
 		NOT = {
 			has_country_flag = tma_diplomacy_engaged
 		}
 	}
-	
 	picture_event_data = {
 		portrait = event_target:master_ai_country
 		planet_background = event_target:tma_returned_home
 		graphical_culture = event_target:tma_returned_home
 		room = machine_room
 	}
-	
 	immediate = {
 		set_country_flag = tma_diplomacy_engaged
 	}
-	
 	after = {
-		hidden_effect = { remove_country_flag = tma_diplomacy_engaged }
-	}
-	
-	option = { #HERE MONKEY
-		name = "maai.996.a" #threat check (mainly crises)
 		hidden_effect = {
-			country_event = { id = maai.152 }
+			remove_country_flag = tma_diplomacy_engaged
 		}
 	}
 	option = {
-		name = "maai.996.b" #space storm check
+		#HERE MONKEY
+		name = "maai.996.a"		#threat check (mainly crises)
 		hidden_effect = {
-			country_event = { id = maai.153 }
+			country_event = {
+				id = maai.152
+			}
 		}
 	}
 	option = {
-		name = "maai.996.c" #awakening of FE/ WiH check
+		name = "maai.996.b"		#space storm check
 		hidden_effect = {
-			country_event = { id = maai.154 }
+			country_event = {
+				id = maai.153
+			}
+		}
+	}
+	option = {
+		name = "maai.996.c"		#awakening of FE/ WiH check
+		hidden_effect = {
+			country_event = {
+				id = maai.154
+			}
 		}
 	}
 	#option = { #not worky yet
@@ -1461,19 +1509,23 @@ country_event = {
 	#	}
 	#}
 	option = {
-		name = "maai.996.f" #how are you doing?
+		name = "maai.996.f"		#how are you doing?
 		hidden_effect = {
-			country_event = { id = maai.157 }
+			country_event = {
+				id = maai.157
+			}
 		}
 	}
 	option = {
-		name = "maai.996.g" #let's play RPS
+		name = "maai.996.g"		#let's play RPS
 		hidden_effect = {
-			country_event = { id = maai.158 }
+			country_event = {
+				id = maai.158
+			}
 		}
 	}
 	option = {
-		name = "maai.0.h" #exit
+		name = "maai.0.h"		#exit
 	}
 }
 
@@ -1484,16 +1536,16 @@ country_event = {
 	desc = "maai.1.desc"
 	picture = GFX_evt_small_space_battle
 	show_sound = event_activating_unknown_technology
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		set_global_flag = tma_hostile
 		every_country = {
 			limit = {
 				is_country_type = master_ai_country
 			}
-			country_event = { id = maai.2 }
+			country_event = {
+				id = maai.2
+			}
 		}
 		event_target:master_ai_origin = {
 			remove_modifier = "master_ai_original_core"
@@ -1504,7 +1556,9 @@ country_event = {
 			}
 			delete_megastructure = this
 		}
-		every_country = { establish_communications_no_message = event_target:master_ai_country }
+		every_country = {
+			establish_communications_no_message = event_target:master_ai_country
+		}
 		#random_owned_planet = { #no need, colossus weapon is not used now
 		#	limit = {
 		#		is_colony = yes
@@ -1513,41 +1567,42 @@ country_event = {
 		#	save_global_event_target_as = tma_creator_final_stronghold
 		#}
 	}
-	
 	option = {
 		name = "maai.1.a"
-			#hidden_effect = { #old event
-			#	country_event = { id = maai.7 }
-			#}
-					create_fleet = {
-						name = "The Omega Construct"
-						settings = { spawn_debris = no }
-						effect = {
-							set_owner = event_target:master_ai_country
-							create_ship_design = {
-								design = "NAME_Ascendant_Neural_Network"
-							}
-							save_global_event_target_as = master_ai_main_fleet
-							create_ship = {
-								name = "The Omega Construct"
-								design = last_created_design
-								effect = {
-									set_ship_flag = master_ai_main_ship
-									save_global_event_target_as = master_ai_main_ship
-									set_disable_at_health = 0.10 #10%
-								}
-							}
-							set_location = event_target:master_ai_origin
-							set_fleet_stance = aggressive
-							set_aggro_range_measure_from = return_point
-							set_aggro_range = 100
-							#queue_actions = {
-							#	wait = {
-							#		duration = 5
-							#	}
-							#}
-						}
+		#hidden_effect = { #old event
+		#	country_event = { id = maai.7 }
+		#}
+		create_fleet = {
+			name = "The Omega Construct"
+			settings = {
+				spawn_debris = no
+			}
+			effect = {
+				set_owner = event_target:master_ai_country
+				create_ship_design = {
+					design = "NAME_Ascendant_Neural_Network"
+				}
+				save_global_event_target_as = master_ai_main_fleet
+				create_ship = {
+					name = "The Omega Construct"
+					design = last_created_design
+					effect = {
+						set_ship_flag = master_ai_main_ship
+						save_global_event_target_as = master_ai_main_ship
+						set_disable_at_health = 0.1						#10%
 					}
+				}
+				set_location = event_target:master_ai_origin
+				set_fleet_stance = aggressive
+				set_aggro_range_measure_from = return_point
+				set_aggro_range = 100
+				#queue_actions = {
+				#	wait = {
+				#		duration = 5
+				#	}
+				#}
+			}
+		}
 		every_country = {
 			limit = {
 				is_country_type = master_ai_country
@@ -1561,10 +1616,11 @@ country_event = {
 			#	fleet_event = { id = maai.100 days = 30 }
 			#}
 		}
-		create_country = { #army country #identical
+		create_country = {
+			#army country #identical
 			name = "The Master Intelligence"
 			species = event_target:master_ai_species
-			flag = { 
+			flag = {
 				icon = {
 					category = "legion"
 					file = "flag_mp_beta_04.dds"
@@ -1583,7 +1639,10 @@ country_event = {
 			type = faction
 			effect = {
 				establish_communications_no_message = root.owner
-				establish_contact = { who = root.owner location = root.solar_system }
+				establish_contact = {
+					who = root.owner
+					location = root.solar_system
+				}
 			}
 		}
 		event_target:master_ai_origin = {
@@ -1605,13 +1664,10 @@ country_event = {
 country_event = {
 	id = maai.2
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		is_country_type = master_ai_country
 	}
-	
 	immediate = {
 		add_modifier = {
 			modifier = "tma_bonus"
@@ -1621,12 +1677,14 @@ country_event = {
 				has_global_flag = acot_activated
 			}
 			add_modifier = {
-				modifier = "tma_stronk" 
+				modifier = "tma_stronk"
 			}
 		}
 		else_if = {
 			limit = {
-				NOT = { has_global_flag = acot_activated }
+				NOT = {
+					has_global_flag = acot_activated
+				}
 			}
 			#add_modifier = tma_normal
 		}
@@ -1644,17 +1702,13 @@ country_event = {
 	picture = GFX_evt_gray_gooed_planet
 	show_sound = event_super_explosion
 	location = from
-
 	is_triggered_only = yes
-
 	trigger = {
 		#NOT = { has_country_flag = fired_cracker }
 	}
-
 	immediate = {
 		#set_country_flag = fired_cracker
 	}
-
 	option = {
 		name = "maai.3.a"
 		trigger = {
@@ -1727,13 +1781,19 @@ country_event = {
 		}
 		random_list = {
 			50 = {
-				add_resource = { sr_dark_matter = 20 }
+				add_resource = {
+					sr_dark_matter = 20
+				}
 			}
 			25 = {
-				add_resource = { sr_dark_matter = 25 }
+				add_resource = {
+					sr_dark_matter = 25
+				}
 			}
 			20 = {
-				add_resource = { sr_dark_matter = 50 }
+				add_resource = {
+					sr_dark_matter = 50
+				}
 			}
 			#15 = {
 			#	add_resource = { sr_warped_matter = 3 }
@@ -1746,7 +1806,6 @@ country_event = {
 			#}
 		}
 	}
-
 	option = {
 		name = "maai.3.a.purifexter"
 		trigger = {
@@ -1825,13 +1884,19 @@ country_event = {
 		}
 		random_list = {
 			50 = {
-				add_resource = { sr_dark_matter = 20 }
+				add_resource = {
+					sr_dark_matter = 20
+				}
 			}
 			25 = {
-				add_resource = { sr_dark_matter = 25 }
+				add_resource = {
+					sr_dark_matter = 25
+				}
 			}
 			20 = {
-				add_resource = { sr_dark_matter = 50 }
+				add_resource = {
+					sr_dark_matter = 50
+				}
 			}
 			#15 = {
 			#	add_resource = { sr_warped_matter = 3 }
@@ -1854,14 +1919,11 @@ country_event = {
 	picture = GFX_evt_gray_gooed_planet
 	show_sound = event_super_explosion
 	location = from
-
 	is_triggered_only = yes
-
 	immediate = {
 	}
-
 	option = {
-		name = maai.4.a #DAMN THEM!
+		name = maai.4.a		#DAMN THEM!
 	}
 }
 
@@ -1879,14 +1941,13 @@ country_event = {
 #	fire_only_once = yes
 #
 ##	immediate = {
-	#	set_global_flag = corrupter_fired_by_master_ai
-	#}
+#	set_global_flag = corrupter_fired_by_master_ai
+#}
 #
 #	option = {
 #		name = maai.5.a #Concerning...
 #	}
 #}
-
 # Corrupted a World (normal empire, first time)
 #country_event = {
 #	id = maai.6
@@ -1908,7 +1969,6 @@ country_event = {
 #		name = maai.6.a #Just as one threat is defeated, another rises
 #	}
 #}
-
 # Alert of Stronghold World # NOT USED CURRENTLY 
 #country_event = {
 #	id = maai.7
@@ -1932,7 +1992,6 @@ country_event = {
 #		custom_tooltip = finalstronghold_name
 #	}
 #}
-
 # Corrupt Matter Intro
 #country_event = {
 #	id = maai.8
@@ -1955,7 +2014,6 @@ country_event = {
 #		add_research_option = tech_emex_warped_energy_stabilisation
 #	}
 #}
-
 # Corrupt Matter Tech Researched
 #country_event = {
 #	id = maai.9
@@ -1985,7 +2043,6 @@ country_event = {
 #		custom_tooltip = corrupt_matter_bonuses
 #	}
 #}
-
 # Planet Warping Researched
 #country_event = {
 #	id = maai.10
@@ -2012,7 +2069,6 @@ country_event = {
 #		custom_tooltip = planet_warping_allowed
 #	}
 #}
-
 # Anti-TMA Weaponry Researched
 #country_event = {
 #	id = maai.11
@@ -2038,21 +2094,16 @@ country_event = {
 #		custom_tooltip = tma_insight_given
 #	}
 #}
-
 # tma.12 - .17
-
 # TMA Destroyed
 country_event = {
 	id = maai.18
 	title = maai.18.name
 	desc = maai.18.desc
 	picture = GFX_evt_clocks
-
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 		set_country_flag = tma_avoided
 		random_owned_megastructure = {
@@ -2062,13 +2113,20 @@ country_event = {
 			delete_megastructure = this
 		}
 	}
-
 	option = {
 		name = maai.18.a
-		add_resource = { alloys = 10000 }
-		add_resource = { minerals = 20000 }
-		add_resource = { energy = 15000 }
-		add_resource = { unity = -1000 }
+		add_resource = {
+			alloys = 10000
+		}
+		add_resource = {
+			minerals = 20000
+		}
+		add_resource = {
+			energy = 15000
+		}
+		add_resource = {
+			unity = -1000
+		}
 		add_modifier = {
 			modifier = "tma_destroyed"
 			days = 7200
@@ -2084,9 +2142,7 @@ country_event = {
 	picture = GFX_evt_crisis_defeated
 	show_sound = event_celebration
 	location = event_target:master_ai_main_ship
-
 	is_triggered_only = yes
-
 	trigger = {
 		has_global_flag = master_ai_project_complete
 		exists = event_target:master_ai_country
@@ -2094,7 +2150,6 @@ country_event = {
 		#	is_same_value = event_target:master_ai_country
 		#}
 	}
-
 	immediate = {
 		remove_modifier = "mod_tma_audacious"
 		remove_modifier = "mod_tma_cautious"
@@ -2105,9 +2160,11 @@ country_event = {
 		event_target:master_ai_main_ship = {
 			solar_system = {
 				random_system_planet = {
-					limit = { is_star = yes }
+					limit = {
+						is_star = yes
+					}
 					create_ambient_object = {
-						type = "large_debris_object" # Actually explosion
+						type = "large_debris_object"						# Actually explosion
 						location = solar_system
 					}
 					last_created_ambient_object = {
@@ -2119,7 +2176,6 @@ country_event = {
 						}
 					}
 				}
-
 			}
 			create_ambient_object = {
 				type = explosion_particle_object
@@ -2141,10 +2197,12 @@ country_event = {
 					is_same_value = root
 				}
 			}
-			country_event = { id = maai.102 days = 1 }
+			country_event = {
+				id = maai.102
+				days = 1
+			}
 		}
 	}
-
 	after = {
 		hidden_effect = {
 			remove_global_flag = master_ai_project_complete
@@ -2152,7 +2210,6 @@ country_event = {
 			set_global_flag = tma_killed
 		}
 	}
-
 	option = {
 		name = maai.101.a
 		end_event_chain = "tma_hunt_chain"
@@ -2208,7 +2265,9 @@ country_event = {
 							#	is_planet_class = pc_ringworld_habitable
 							#	is_planet_class = pc_habitat
 							#}
-							NOT = { has_active_building = building_emex_tma_defense }
+							NOT = {
+								has_active_building = building_emex_tma_defense
+							}
 						}
 						create_ambient_object = {
 							type = explosion_particle_object
@@ -2249,7 +2308,7 @@ country_event = {
 			max = 8000
 		}
 		add_modifier = {
-			modifier = "tma_defeated" 
+			modifier = "tma_defeated"
 		}
 		add_relic = r_tma_core
 	}
@@ -2262,12 +2321,9 @@ country_event = {
 	desc = maai.102.desc
 	picture = GFX_evt_crisis_defeated
 	show_sound = event_celebration
-
 	is_triggered_only = yes
-
 	immediate = {
 	}
-
 	option = {
 		name = maai.102.a
 		add_monthly_resource_mult = {
@@ -2283,19 +2339,24 @@ country_event = {
 ship_event = {
 	id = maai.103
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		has_ship_flag = master_ai_main_ship
-		owner = { has_country_flag = master_ai_country }
+		owner = {
+			has_country_flag = master_ai_country
+		}
 		event_target:master_ai_creator = {
 			has_country_flag = tma_drones_fended_off
 		}
 	}
-	
 	immediate = {
-		FROM = { owner = { country_event = { id = maai.101 } } }
+		FROM = {
+			owner = {
+				country_event = {
+					id = maai.101
+				}
+			}
+		}
 	}
 }
 
@@ -2303,19 +2364,26 @@ ship_event = {
 country_event = {
 	id = maai.105
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		random_list = {
 			33 = {
-				country_event = { id = maai.106 days = 0 }
+				country_event = {
+					id = maai.106
+					days = 0
+				}
 			}
 			33 = {
-				country_event = { id = maai.107 days = 0 }
+				country_event = {
+					id = maai.107
+					days = 0
+				}
 			}
 			33 = {
-				country_event = { id = maai.108 days = 0 }
+				country_event = {
+					id = maai.108
+					days = 0
+				}
 			}
 		}
 	}
@@ -2327,12 +2395,9 @@ country_event = {
 	title = "maai.relic.name"
 	desc = "maai.106.desc"
 	picture = GFX_evt_sapient_AI
-	
 	is_triggered_only = yes
-	
 	immediate = {
 	}
-	
 	option = {
 		name = "maai.relic"
 		custom_tooltip = tma_option1
@@ -2348,12 +2413,9 @@ country_event = {
 	title = "maai.relic.name"
 	desc = "maai.107.desc"
 	picture = GFX_evt_sapient_AI
-	
 	is_triggered_only = yes
-	
 	immediate = {
 	}
-	
 	option = {
 		name = "maai.relic"
 		custom_tooltip = tma_option2
@@ -2369,12 +2431,9 @@ country_event = {
 	title = "maai.relic.name"
 	desc = "maai.108.desc"
 	picture = GFX_evt_sapient_AI
-	
 	is_triggered_only = yes
-	
 	immediate = {
 	}
-	
 	option = {
 		name = "maai.relic"
 		custom_tooltip = tma_option3
@@ -2385,29 +2444,26 @@ country_event = {
 }
 
 ## JUMPED FROM PREVIOUS EVENTS AT TOP ##
-
 #Master AI: Tier 3 Unlocked
 country_event = {
 	id = maai.109
 	title = "maai.109.name"
 	desc = "maai.109.desc"
 	picture = GFX_evt_machine_sapience
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = event_target:master_ai_country
-		NOT = { has_global_flag = tma_tier3_reached }
+		NOT = {
+			has_global_flag = tma_tier3_reached
+		}
 		check_variable = {
 			which = tma_intelligence
 			value >= 500
 		}
 	}
-	
 	immediate = {
 		set_global_flag = tma_tier3_reached
 	}
-	
 	option = {
 		name = "maai.109.a"
 		hidden_effect = {
@@ -2415,31 +2471,47 @@ country_event = {
 				limit = {
 					has_global_flag = tma_outcome_a
 				}
-				country_event = { id = maai.111 days = 360 }
+				country_event = {
+					id = maai.111
+					days = 360
+				}
 			}
 			else_if = {
 				limit = {
 					has_global_flag = tma_outcome_b
 				}
-				country_event = { id = maai.113 days = 360 }
+				country_event = {
+					id = maai.113
+					days = 360
+				}
 			}
 			else_if = {
 				limit = {
 					has_global_flag = tma_outcome_c
 				}
-				country_event = { id = maai.114 days = 360 }
+				country_event = {
+					id = maai.114
+					days = 360
+				}
 			}
 			else_if = {
 				limit = {
 					has_global_flag = tma_outcome_d
 				}
-				country_event = { id = maai.115 days = 360 }
-			}
-			else_if = { #these ones occur when the choice is taken to scrap, or the very rare chance of the AI revolting anyway
-				limit = {
-					has_global_flag = tma_outcome_e #revolt
+				country_event = {
+					id = maai.115
+					days = 360
 				}
-				country_event = { id = maai.1 days = 180 }
+			}
+			else_if = {
+				#these ones occur when the choice is taken to scrap, or the very rare chance of the AI revolting anyway
+				limit = {
+					has_global_flag = tma_outcome_e					#revolt
+				}
+				country_event = {
+					id = maai.1
+					days = 180
+				}
 			}
 			#else_if = {
 			#	limit = {
@@ -2455,19 +2527,22 @@ country_event = {
 country_event = {
 	id = maai.110
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		random_list = {
 			1 = {
 				event_target:master_ai_country = {
 					destroy_country = yes
 				}
-				country_event = { id = maai.18 }
+				country_event = {
+					id = maai.18
+				}
 			}
 			99 = {
-				country_event = { id = maai.1 days = 5 }
+				country_event = {
+					id = maai.1
+					days = 5
+				}
 			}
 		}
 	}
@@ -2479,9 +2554,7 @@ country_event = {
 	title = "maai.111.name"
 	desc = "maai.111.desc"
 	picture = GFX_evt_large_explosion
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = event_target:master_ai_country
 		has_global_flag = tma_tier3_reached
@@ -2490,7 +2563,6 @@ country_event = {
 			value >= 500
 		}
 	}
-	
 	immediate = {
 		remove_modifier = "mod_tma_audacious"
 		remove_modifier = "mod_tma_cautious"
@@ -2501,9 +2573,11 @@ country_event = {
 		event_target:master_ai_origin = {
 			solar_system = {
 				random_system_planet = {
-					limit = { is_star = yes }
+					limit = {
+						is_star = yes
+					}
 					create_ambient_object = {
-						type = "large_debris_object" # Actually explosion
+						type = "large_debris_object"						# Actually explosion
 						location = solar_system
 					}
 					last_created_ambient_object = {
@@ -2515,7 +2589,6 @@ country_event = {
 						}
 					}
 				}
-
 			}
 			create_ambient_object = {
 				type = explosion_particle_object
@@ -2526,7 +2599,6 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = "maai.111.a"
 		event_target:master_ai_country = {
@@ -2556,24 +2628,20 @@ country_event = {
 	title = "maai.112.name"
 	desc = "maai.112.desc"
 	picture = GFX_evt_space_debris
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 		#TMA stays dead in outcome A
 	}
-	
 	option = {
 		name = "maai.112.a"
 		add_modifier = {
-			modifier = "master_ai_remnants_scanned" 
+			modifier = "master_ai_remnants_scanned"
 		}
 		event_target:master_ai_origin = {
 			add_modifier = {
-				modifier = "tma_remnant_research" 
+				modifier = "tma_remnant_research"
 			}
 		}
 		custom_tooltip = tma_remnant_edicts
@@ -2587,9 +2655,7 @@ country_event = {
 	title = "maai.113.name"
 	desc = "maai.113.desc"
 	picture = GFX_evt_vortex
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = event_target:master_ai_country
 		has_global_flag = tma_tier3_reached
@@ -2598,7 +2664,6 @@ country_event = {
 			value >= 500
 		}
 	}
-	
 	immediate = {
 		remove_modifier = "mod_tma_audacious"
 		remove_modifier = "mod_tma_cautious"
@@ -2607,7 +2672,6 @@ country_event = {
 		remove_modifier = "mod_tma_selfreliant"
 		remove_modifier = "mod_tma_temperate"
 	}
-	
 	option = {
 		name = "maai.113.a"
 		hidden_effect = {
@@ -2620,9 +2684,10 @@ country_event = {
 			event_target:master_ai_country = {
 				destroy_country = yes
 			}
-			country_event = { id = maai.141 }
+			country_event = {
+				id = maai.141
+			}
 		}
-		
 	}
 }
 
@@ -2632,9 +2697,7 @@ country_event = {
 	title = "maai.114.name"
 	desc = "maai.114.desc"
 	picture = GFX_evt_machine_sapience
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = event_target:master_ai_country
 		has_global_flag = tma_tier3_reached
@@ -2643,7 +2706,6 @@ country_event = {
 			value >= 500
 		}
 	}
-	
 	immediate = {
 		remove_modifier = "mod_tma_audacious"
 		remove_modifier = "mod_tma_cautious"
@@ -2651,13 +2713,16 @@ country_event = {
 		remove_modifier = "mod_tma_passive"
 		remove_modifier = "mod_tma_selfreliant"
 		remove_modifier = "mod_tma_temperate"
-		country_event = { id = maai.145 days = 1800 random = 900} #TMA can be talked to after outcome C (5-7.5 years)
+		country_event = {
+			id = maai.145
+			days = 1800
+			random = 900
+		}		#TMA can be talked to after outcome C (5-7.5 years)
 	}
-	
 	option = {
 		name = "maai.114.a"
 		add_modifier = {
-			modifier = "master_ai_paralysed" 
+			modifier = "master_ai_paralysed"
 		}
 		custom_tooltip = tma_paralysed
 		set_country_flag = tma_paralysed
@@ -2670,9 +2735,7 @@ country_event = {
 	title = "maai.115.name"
 	desc = "maai.115.desc"
 	picture = GFX_evt_sapient_AI
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = event_target:master_ai_country
 		has_global_flag = tma_tier3_reached
@@ -2681,7 +2744,6 @@ country_event = {
 			value >= 500
 		}
 	}
-	
 	immediate = {
 		remove_modifier = "mod_tma_audacious"
 		remove_modifier = "mod_tma_cautious"
@@ -2689,9 +2751,12 @@ country_event = {
 		remove_modifier = "mod_tma_passive"
 		remove_modifier = "mod_tma_selfreliant"
 		remove_modifier = "mod_tma_temperate"
-		country_event = { id = maai.145 days = 1800 random = 900} #TMA can MAYBE be talked to after outcome C (5-7.5 years)
+		country_event = {
+			id = maai.145
+			days = 1800
+			random = 900
+		}		#TMA can MAYBE be talked to after outcome C (5-7.5 years)
 	}
-	
 	option = {
 		name = "maai.115.a"
 		#event_target:master_ai_origin = {
@@ -2711,13 +2776,11 @@ planet_event = {
 	desc = "maai.116.desc"
 	picture = GFX_evt_burning_settlement
 	show_sound = event_air_raid_siren
-	
 	trigger = {
 		owner = {
 			has_country_flag = tma_drones_invading
 		}
 	}
-	
 	pre_triggers = {
 		has_owner = yes
 		is_homeworld = yes
@@ -2725,7 +2788,6 @@ planet_event = {
 		has_ground_combat = no
 		is_occupied_flag = yes
 	}
-	
 	immediate = {
 		FROMFROM = {
 			every_owned_pop = {
@@ -2736,7 +2798,8 @@ planet_event = {
 		owner = {
 			set_country_flag = tma_drones_won
 		}
-		every_country = { #temporary neutrality to allow armies to liberate world
+		every_country = {
+			#temporary neutrality to allow armies to liberate world
 			limit = {
 				is_country_type = master_ai_country
 			}
@@ -2747,9 +2810,7 @@ planet_event = {
 			}
 		}
 	}
-	
-	fire_only_once = yes #meh maybe check
-	
+	fire_only_once = yes	#meh maybe check
 	option = {
 		name = maai.116.a
 	}
@@ -2761,22 +2822,29 @@ planet_event = {
 	title = "maai.117.name"
 	desc = {
 		text = maai.117.desc
-		trigger = { owner = { has_country_flag = tma_drones_won } }
+		trigger = {
+			owner = {
+				has_country_flag = tma_drones_won
+			}
+		}
 	}
 	desc = {
 		text = maai.117.desc.2
-		trigger = { owner = { NOT = { has_country_flag = tma_drones_won } } }
+		trigger = {
+			owner = {
+				NOT = {
+					has_country_flag = tma_drones_won
+				}
+			}
+		}
 	}
 	picture = GFX_evt_victorious_army
 	show_sound = event_celebration
-	
 	trigger = {
 		owner = {
 			has_country_flag = tma_drones_invading
 		}
-		is_occupied_flag = no
 	}
-	
 	pre_triggers = {
 		has_owner = yes
 		is_homeworld = yes
@@ -2784,12 +2852,18 @@ planet_event = {
 		has_ground_combat = no
 		is_occupied_flag = no
 	}
-	
 	immediate = {
-		owner = { country_event = { id = maai.118 days = 3 } }
+		owner = {
+			country_event = {
+				id = maai.118
+				days = 3
+			}
+		}
 		event_target:master_ai_origin = {
 			every_owned_pop = {
-				limit = { has_pop_flag = event_purge }
+				limit = {
+					has_pop_flag = event_purge
+				}
 				remove_pop_flag = event_purge
 			}
 			every_owned_pop = {
@@ -2804,7 +2878,8 @@ planet_event = {
 			remove_country_flag = tma_drones_won
 			set_country_flag = tma_drones_fended_off
 		}
-		every_country = { #remove temp neutrality
+		every_country = {
+			#remove temp neutrality
 			limit = {
 				is_country_type = master_ai_country
 			}
@@ -2815,9 +2890,7 @@ planet_event = {
 			}
 		}
 	}
-	
-	fire_only_once = yes #check
-	
+	fire_only_once = yes	#check
 	option = {
 		name = maai.117.a
 		trigger = {
@@ -2828,7 +2901,13 @@ planet_event = {
 	}
 	option = {
 		name = maai.117.b
-		trigger = { owner = { NOT = { has_country_flag = tma_drones_won } } }
+		trigger = {
+			owner = {
+				NOT = {
+					has_country_flag = tma_drones_won
+				}
+			}
+		}
 	}
 }
 
@@ -2836,18 +2915,23 @@ planet_event = {
 country_event = {
 	id = maai.118
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
-		delete_fleet = { #TMA disappears into an unknown system...
+		delete_fleet = {
+			#TMA disappears into an unknown system...
 			target = event_target:master_ai_main_fleet
 		}
-		country_event = { id = maai.119 days = 1 } #notification
-		country_event = { id = maai.120 days = 1440 random = 360 } #4-5 years #drones reappear
+		country_event = {
+			id = maai.119
+			days = 1
+		}		#notification
+		country_event = {
+			id = maai.120
+			days = 1440
+			random = 360
+		}		#4-5 years #drones reappear
 	}
 }
 
@@ -2857,15 +2941,11 @@ country_event = {
 	title = "maai.119.name"
 	desc = "maai.119.desc"
 	picture = GFX_evt_ship_travel
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 	}
-	
 	option = {
 		name = "maai.119.a"
 	}
@@ -2877,17 +2957,16 @@ country_event = {
 	title = "maai.120.name"
 	desc = "maai.120.desc"
 	picture = GFX_evt_fleet_evil
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 		set_global_flag = tma_part2_active
 		create_fleet = {
 			name = "Recon Force Alpha"
-			settings = { spawn_debris = no }
+			settings = {
+				spawn_debris = no
+			}
 			effect = {
 				set_owner = event_target:master_ai_country
 				create_ship_design = {
@@ -2918,7 +2997,6 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = "maai.120.a"
 		custom_tooltip = tma_fleet_appears
@@ -2933,16 +3011,19 @@ country_event = {
 ship_event = {
 	id = maai.121
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		has_ship_flag = tma_recon_main_ship
-		owner = { has_country_flag = master_ai_country }
+		owner = {
+			has_country_flag = master_ai_country
+		}
 	}
-	
 	immediate = {
-		event_target:master_ai_creator = { country_event = { id = maai.122 } }
+		event_target:master_ai_creator = {
+			country_event = {
+				id = maai.122
+			}
+		}
 	}
 }
 
@@ -2952,12 +3033,9 @@ country_event = {
 	title = "maai.122.name"
 	desc = "maai.122.desc"
 	picture = GFX_evt_exploding_ship
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 		event_target:tma_recon_main_ship = {
 			create_ambient_object = {
@@ -2972,12 +3050,15 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = "maai.122.a"
 		custom_tooltip = eye_on_situation
 		hidden_effect = {
-			country_event = { id = maai.123 days = 1800 random = 360 }
+			country_event = {
+				id = maai.123
+				days = 1800
+				random = 360
+			}
 		}
 	}
 }
@@ -2988,16 +3069,15 @@ country_event = {
 	title = "maai.123.name"
 	desc = "maai.123.desc"
 	picture = GFX_evt_small_fleet
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 		create_fleet = {
 			name = "Strike Force Theta"
-			settings = { spawn_debris = no }
+			settings = {
+				spawn_debris = no
+			}
 			effect = {
 				set_owner = event_target:master_ai_country
 				create_ship_design = {
@@ -3035,7 +3115,6 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = "maai.123.a"
 	}
@@ -3045,16 +3124,19 @@ country_event = {
 ship_event = {
 	id = maai.124
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		has_ship_flag = tma_strike_fleet1_main
-		owner = { has_country_flag = master_ai_country }
+		owner = {
+			has_country_flag = master_ai_country
+		}
 	}
-	
 	immediate = {
-		event_target:master_ai_creator = { country_event = { id = maai.125 } }
+		event_target:master_ai_creator = {
+			country_event = {
+				id = maai.125
+			}
+		}
 	}
 }
 
@@ -3064,12 +3146,9 @@ country_event = {
 	title = "maai.125.name"
 	desc = "maai.125.desc"
 	picture = GFX_evt_ship_explosion
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 		event_target:tma_strike_fleet1_main = {
 			create_ambient_object = {
@@ -3084,7 +3163,6 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = "maai.125.a"
 		owner = {
@@ -3109,13 +3187,14 @@ country_event = {
 	title = "maai.126.name"
 	desc = "maai.126.desc"
 	picture = GFX_evt_decryption
-	
 	is_triggered_only = yes
-	
 	immediate = {
-		country_event = { id = maai.127 days = 150 random = 50 }
+		country_event = {
+			id = maai.127
+			days = 150
+			random = 50
+		}
 	}
-	
 	option = {
 		name = "maai.126.a"
 		custom_tooltip = tma_keep_researching
@@ -3128,13 +3207,13 @@ country_event = {
 	title = "maai.127.name"
 	desc = "maai.127.desc"
 	picture = GFX_evt_space_threshold
-	
 	is_triggered_only = yes
-	
 	immediate = {
-		country_event = { id = maai.128 days = 100 }
+		country_event = {
+			id = maai.128
+			days = 100
+		}
 	}
-	
 	option = {
 		name = "maai.127.a"
 		custom_tooltip = soon
@@ -3147,13 +3226,14 @@ country_event = {
 	title = "maai.128.name"
 	desc = "maai.128.desc"
 	picture = GFX_evt_machine_space_battle
-	
 	is_triggered_only = yes
-	
 	immediate = {
-		create_fleet = { #CORE
+		create_fleet = {
+			#CORE
 			name = "The Omega Construct"
-			settings = { spawn_debris = no }
+			settings = {
+				spawn_debris = no
+			}
 			effect = {
 				set_owner = event_target:master_ai_country
 				create_ship_design = {
@@ -3166,7 +3246,7 @@ country_event = {
 					effect = {
 						set_ship_flag = master_ai_main_ship2
 						save_global_event_target_as = master_ai_main_ship2
-						set_disable_at_health = 0.5 #50%
+						set_disable_at_health = 0.5						#50%
 					}
 				}
 				set_location = event_target:master_ai_origin
@@ -3180,9 +3260,12 @@ country_event = {
 				}
 			}
 		}
-		create_fleet = { #AID
+		create_fleet = {
+			#AID
 			name = "Strike Force Delta"
-			settings = { spawn_debris = no }
+			settings = {
+				spawn_debris = no
+			}
 			effect = {
 				set_owner = event_target:master_ai_country
 				create_ship_design = {
@@ -3211,9 +3294,8 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
-		name = "maai.128.a" #Battlestations!
+		name = "maai.128.a"		#Battlestations!
 		custom_tooltip = tma_arrival
 	}
 }
@@ -3222,16 +3304,19 @@ country_event = {
 ship_event = {
 	id = maai.129
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		has_ship_flag = master_ai_main_ship2
-		owner = { has_country_flag = master_ai_country }
+		owner = {
+			has_country_flag = master_ai_country
+		}
 	}
-	
 	immediate = {
-		event_target:master_ai_creator = { country_event = { id = maai.130 } }
+		event_target:master_ai_creator = {
+			country_event = {
+				id = maai.130
+			}
+		}
 	}
 }
 
@@ -3241,30 +3326,30 @@ country_event = {
 	title = "maai.130.name"
 	desc = "maai.130.desc"
 	picture = GFX_evt_nebula_eye
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
-		delete_fleet = { #TMA disappears into an unknown system...
+		delete_fleet = {
+			#TMA disappears into an unknown system...
 			target = event_target:master_ai_main_fleet
 		}
 		#sets random raiding fleet at random intervals
-		country_event = { id = maai.160 days = 1080 }
+		country_event = {
+			id = maai.160
+			days = 1080
+		}
 	}
-	
 	option = {
-		name = "maai.130.a" # We must end the threat.
+		name = "maai.130.a"		# We must end the threat.
 		capital_scope = {
 			enable_special_project = {
-				name = "TMA_HUNT_1A" #Develop inhibitor
+				name = "TMA_HUNT_1A"				#Develop inhibitor
 				location = this
 				owner = ROOT
 			}
 			enable_special_project = {
-				name = "TMA_HUNT_1B" #Track down hidden system
+				name = "TMA_HUNT_1B"				#Track down hidden system
 				location = this
 				owner = ROOT
 			}
@@ -3278,15 +3363,11 @@ country_event = {
 	title = "maai.131.name"
 	desc = "maai.131.desc"
 	picture = GFX_evt_engineering_research
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 	}
-	
 	option = {
 		name = "maai.131.a"
 		set_country_flag = tma_path_a
@@ -3303,21 +3384,19 @@ country_event = {
 	title = "maai.132.name"
 	desc = "maai.132.desc"
 	picture = GFX_evt_engineering_research
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		has_technology = tech_emex_tma_core_inhibitor
-		NOT = { has_country_flag = tma_inhib_researched }
+		NOT = {
+			has_country_flag = tma_inhib_researched
+		}
 		root = {
 			has_country_flag = maai_creator
 		}
 	}
-	
 	immediate = {
-		set_country_flag = tma_inhib_researched 
+		set_country_flag = tma_inhib_researched
 	}
-	
 	option = {
 		name = "maai.132.a"
 		custom_tooltip = tma_inhib_appears
@@ -3345,20 +3424,20 @@ country_event = {
 	title = "maai.133.name"
 	desc = "maai.133.desc"
 	picture = GFX_evt_mining_operation
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 	}
-	
 	option = {
 		name = "maai.133.a"
 		custom_tooltip = tma_core_soon
 		hidden_effect = {
-			country_event = { id = maai.134 days = 360 random = 30 }
+			country_event = {
+				id = maai.134
+				days = 360
+				random = 30
+			}
 		}
 		set_country_flag = tma_path_a_done
 	}
@@ -3370,13 +3449,14 @@ country_event = {
 	title = "maai.134.name"
 	desc = "maai.134.desc"
 	picture = GFX_evt_machine_space_battle
-	
 	is_triggered_only = yes
-	
 	immediate = {
-		create_fleet = { #CORE
+		create_fleet = {
+			#CORE
 			name = "The Omega Construct"
-			settings = { spawn_debris = no }
+			settings = {
+				spawn_debris = no
+			}
 			effect = {
 				set_owner = event_target:master_ai_country
 				create_ship_design = {
@@ -3389,7 +3469,7 @@ country_event = {
 					effect = {
 						set_ship_flag = master_ai_main_ship
 						save_global_event_target_as = master_ai_main_ship
-						set_disable_at_health = 0.01 #1%
+						set_disable_at_health = 0.01						#1%
 					}
 				}
 				set_location = event_target:master_ai_origin
@@ -3407,9 +3487,12 @@ country_event = {
 				}
 			}
 		}
-		create_fleet = { #AID
+		create_fleet = {
+			#AID
 			name = "Strike Force Gamma"
-			settings = { spawn_debris = no }
+			settings = {
+				spawn_debris = no
+			}
 			effect = {
 				set_owner = event_target:master_ai_country
 				create_ship_design = {
@@ -3431,10 +3514,9 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
-		name = "maai.134.a" #Battlestations! Again!
-		custom_tooltip = tma_arrival #when defeated, maai.103 triggers
+		name = "maai.134.a"		#Battlestations! Again!
+		custom_tooltip = tma_arrival		#when defeated, maai.103 triggers
 	}
 }
 
@@ -3444,12 +3526,9 @@ country_event = {
 	title = "maai.135.name"
 	desc = "maai.135.desc"
 	picture = GFX_evt_planet_fall
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 		random_planet_within_border = {
 			limit = {
@@ -3465,7 +3544,6 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = "maai.135.a"
 		set_country_flag = tma_path_b
@@ -3483,66 +3561,66 @@ country_event = {
 }
 
 # SITE PART I
-fleet_event = { 
+fleet_event = {
 	id = maai.136
 	title = "maai.136.name"
 	desc = maai.136.desc
 	picture = GFX_evt_giant_crater
 	show_sound = event_default
 	location = from
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	option = {
 		name = maai.136.a
 		owner = {
-			add_resource = { minor_artifacts = 2 }
+			add_resource = {
+				minor_artifacts = 2
+			}
 		}
 	}
 }
 
 # SITE PART II
-fleet_event = { 
+fleet_event = {
 	id = maai.137
 	title = "maai.137.name"
 	desc = maai.137.desc
 	picture = GFX_evt_spacebattle_debris
 	show_sound = event_default
 	location = from
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	option = {
 		name = maai.137.a
 		owner = {
-			add_resource = { minor_artifacts = 5 }
-			add_resource = { alloys = 1000 }
-			add_resource = { minerals = 2500 }
+			add_resource = {
+				minor_artifacts = 5
+			}
+			add_resource = {
+				alloys = 1000
+			}
+			add_resource = {
+				minerals = 2500
+			}
 		}
 	}
 }
 
 # SITE PART III
-fleet_event = { 
+fleet_event = {
 	id = maai.138
 	title = "maai.138.name"
 	desc = maai.138.desc
 	picture = GFX_evt_vortex
 	show_sound = event_default
 	location = from
-
 	archaeology = yes
-
 	is_triggered_only = yes
-	
 	immediate = {
-		owner = { set_country_flag = tma_path_b_done }
+		owner = {
+			set_country_flag = tma_path_b_done
+		}
 	}
-
 	option = {
 		name = maai.138.a
 		custom_tooltip = tma_wormhole_made
@@ -3554,7 +3632,7 @@ fleet_event = {
 					has_access_fleet = root.owner
 					NOT = {
 						any_fleet_in_system = {
-							owner = { 
+							owner = {
 								is_hostile = root.owner
 							}
 						}
@@ -3567,7 +3645,7 @@ fleet_event = {
 					max_orientation_angle = 66
 					initializer = master_ai_capital_system
 					hyperlane = no
-					is_discovered = no #maybe change
+					is_discovered = no					#maybe change
 				}
 			}
 			random_system = {
@@ -3603,12 +3681,10 @@ ship_event = {
 	title = "maai.139.name"
 	desc = "maai.139.desc"
 	picture = GFX_evt_machine_space_battle
-	
 	is_triggered_only = yes
 	fire_only_once = yes
-	
 	trigger = {
-		owner = { 
+		owner = {
 			has_country_flag = maai_creator
 			NOT = {
 				has_country_flag = tma_core_entered
@@ -3618,14 +3694,16 @@ ship_event = {
 			has_star_flag = master_ai_capital_system
 		}
 	}
-	
 	immediate = {
 		owner = {
 			set_country_flag = tma_core_entered
 		}
-		create_fleet = { #CORE
+		create_fleet = {
+			#CORE
 			name = "The Omega Construct"
-			settings = { spawn_debris = no }
+			settings = {
+				spawn_debris = no
+			}
 			effect = {
 				set_owner = event_target:master_ai_country
 				create_ship_design = {
@@ -3638,7 +3716,7 @@ ship_event = {
 					effect = {
 						set_ship_flag = master_ai_main_ship
 						save_global_event_target_as = master_ai_main_ship
-						set_disable_at_health = 0.01 #1%
+						set_disable_at_health = 0.01						#1%
 					}
 				}
 				set_location = event_target:master_ai_capital
@@ -3650,15 +3728,18 @@ ship_event = {
 						duration = 10
 					}
 					#event_target:master_ai_capital = {
-				#		move_to = this
+					#		move_to = this
 					#	orbit_planet = this
 					#}
 				}
 			}
 		}
-		create_fleet = { #AID
+		create_fleet = {
+			#AID
 			name = "Sentinel Force Beta"
-			settings = { spawn_debris = no }
+			settings = {
+				spawn_debris = no
+			}
 			effect = {
 				set_owner = event_target:master_ai_country
 				create_ship_design = {
@@ -3679,7 +3760,9 @@ ship_event = {
 		}
 		create_fleet = {
 			name = "Sentinel Force Alpha"
-			settings = { spawn_debris = no }
+			settings = {
+				spawn_debris = no
+			}
 			effect = {
 				set_owner = event_target:master_ai_country
 				create_ship_design = {
@@ -3706,10 +3789,9 @@ ship_event = {
 			}
 		}
 	}
-	
 	option = {
-		name = "maai.139.a" #Get ready
-		custom_tooltip = tma_arrival #when defeated, maai.103 triggers
+		name = "maai.139.a"		#Get ready
+		custom_tooltip = tma_arrival		#when defeated, maai.103 triggers
 	}
 }
 
@@ -3717,19 +3799,24 @@ ship_event = {
 ship_event = {
 	id = maai.140
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		has_ship_flag = master_ai_main_ship
-		owner = { has_country_flag = master_ai_country }
+		owner = {
+			has_country_flag = master_ai_country
+		}
 		event_target:master_ai_creator = {
-			NOT = { has_country_flag = tma_drones_fended_off }
+			NOT = {
+				has_country_flag = tma_drones_fended_off
+			}
 		}
 	}
-	
 	immediate = {
-		event_target:master_ai_creator = { country_event = { id = maai.118 } }
+		event_target:master_ai_creator = {
+			country_event = {
+				id = maai.118
+			}
+		}
 	}
 }
 
@@ -3738,28 +3825,24 @@ country_event = {
 	id = maai.141
 	title = "maai.0.name"
 	desc = "maai.141.desc"
-
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	picture_event_data = {
 		room = no_video_feed_room
 	}
-	
 	immediate = {
 	}
-	
 	option = {
 		name = "maai.141.a"
 		#response_text = maai.141.a_reply
 		#is_dialog_only = yes
 		hidden_effect = {
-			country_event = { id = maai.142 }
+			country_event = {
+				id = maai.142
+			}
 		}
 	}
 }
@@ -3769,36 +3852,32 @@ country_event = {
 	id = maai.142
 	title = "maai.0.name"
 	desc = "maai.142.desc"
-
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	picture_event_data = {
 		room = no_video_feed_room
 	}
-	
 	immediate = {
 	}
-	
 	option = {
-		name = "maai.142.a" # Where are you?
+		name = "maai.142.a"		# Where are you?
 		response_text = maai.142.a_reply
 		is_dialog_only = yes
 	}
 	option = {
-		name = "maai.142.b" # What will you do now?
+		name = "maai.142.b"		# What will you do now?
 		response_text = maai.142.b_reply
 		is_dialog_only = yes
 	}
 	option = {
-		name = "maai.142.c" # Is this goodbye?
+		name = "maai.142.c"		# Is this goodbye?
 		hidden_effect = {
-			country_event = { id = maai.143 }
+			country_event = {
+				id = maai.143
+			}
 		}
 	}
 }
@@ -3808,26 +3887,22 @@ country_event = {
 	id = maai.143
 	title = "maai.0.name"
 	desc = "maai.143.desc"
-
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	picture_event_data = {
 		room = no_video_feed_room
 	}
-	
 	immediate = {
 	}
-	
 	option = {
-		name = "maai.143.a" # What is it?
+		name = "maai.143.a"		# What is it?
 		hidden_effect = {
-			country_event = { id = maai.144 }
+			country_event = {
+				id = maai.144
+			}
 		}
 	}
 }
@@ -3837,29 +3912,26 @@ country_event = {
 	id = maai.144
 	title = "maai.0.name"
 	desc = "maai.144.desc"
-
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	picture_event_data = {
 		portrait = event_target:master_ai_country
 		planet_background = event_target:master_ai_origin
 		graphical_culture = event_target:master_ai_origin
 		room = machine_room
 	}
-	
 	immediate = {
 		set_country_flag = tma_ascended
-		country_event = { id = maai.145 days = 1800 } #TMA can be talked to after outcome B (5 years)
+		country_event = {
+			id = maai.145
+			days = 1800
+		}		#TMA can be talked to after outcome B (5 years)
 	}
-	
 	option = {
-		name = "maai.144.a" # Godspeed.
+		name = "maai.144.a"		# Godspeed.
 		custom_tooltip = tma_ascended
 		hidden_effect = {
 			# Available like normal afterwards, tech options not granted immediately
@@ -3869,30 +3941,54 @@ country_event = {
 			#add_research_option = tech_tma_fulmination
 			random_list = {
 				25 = {
-					give_technology = { tech = tech_tma_lance message = yes }
+					give_technology = {
+						tech = tech_tma_lance
+						message = yes
+					}
 				}
 				25 = {
-					give_technology = { tech = tech_tma_devourer message = yes }
+					give_technology = {
+						tech = tech_tma_devourer
+						message = yes
+					}
 				}
 				25 = {
-					give_technology = { tech = tech_tma_missiles message = yes }
+					give_technology = {
+						tech = tech_tma_missiles
+						message = yes
+					}
 				}
 				25 = {
-					give_technology = { tech = tech_tma_fulmination message = yes }
+					give_technology = {
+						tech = tech_tma_fulmination
+						message = yes
+					}
 				}
 			}
 			random_list = {
 				25 = {
-					give_technology = { tech = tech_tma_lance message = yes }
+					give_technology = {
+						tech = tech_tma_lance
+						message = yes
+					}
 				}
 				25 = {
-					give_technology = { tech = tech_tma_devourer message = yes }
+					give_technology = {
+						tech = tech_tma_devourer
+						message = yes
+					}
 				}
 				25 = {
-					give_technology = { tech = tech_tma_missiles message = yes }
+					give_technology = {
+						tech = tech_tma_missiles
+						message = yes
+					}
 				}
 				25 = {
-					give_technology = { tech = tech_tma_fulmination message = yes }
+					give_technology = {
+						tech = tech_tma_fulmination
+						message = yes
+					}
 				}
 			}
 		}
@@ -3905,35 +4001,31 @@ country_event = {
 	id = maai.145
 	title = "maai.145.name"
 	desc = {
-		text = maai.145.desc_asc #make host for TMA god's energy
+		text = maai.145.desc_asc		#make host for TMA god's energy
 		trigger = {
 			has_country_flag = tma_ascended
 		}
 	}
 	desc = {
-		text = maai.145.desc_para #sever connection, but loss of research
+		text = maai.145.desc_para		#sever connection, but loss of research
 		trigger = {
 			has_country_flag = tma_paralysed
 		}
 	}
 	desc = {
-		text = maai.145.desc_iso #reprogram wiring, MAY FAIL
+		text = maai.145.desc_iso		#reprogram wiring, MAY FAIL
 		trigger = {
 			has_country_flag = tma_isolated
 		}
 	}
 	picture = GFX_evt_mysterious_signal
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 	}
-	
 	option = {
-		name = "maai.145.a" #B - Do it.
+		name = "maai.145.a"		#B - Do it.
 		capital_scope = {
 			enable_special_project = {
 				name = "TMA_RETURN_PROJ"
@@ -3946,7 +4038,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "maai.145.b" #C - Do it.
+		name = "maai.145.b"		#C - Do it.
 		capital_scope = {
 			enable_special_project = {
 				name = "TMA_RETURN_PROJ"
@@ -3959,7 +4051,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "maai.145.c" #C - Do not do it.
+		name = "maai.145.c"		#C - Do not do it.
 		#nothing, stays the same
 		add_resource = {
 			unity = 2000
@@ -3970,7 +4062,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "maai.145.d" #D - Do it.
+		name = "maai.145.d"		#D - Do it.
 		capital_scope = {
 			enable_special_project = {
 				name = "TMA_RETURN_PROJ"
@@ -3983,7 +4075,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "maai.145.e" #D - Do not do it.
+		name = "maai.145.e"		#D - Do not do it.
 		#nothing, stays the same
 		trigger = {
 			has_country_flag = tma_isolated
@@ -3993,7 +4085,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "maai.145.f" #B - Do not do it.
+		name = "maai.145.f"		#B - Do not do it.
 		add_resource = {
 			unity = 2500
 			energy = -1000
@@ -4010,12 +4102,9 @@ country_event = {
 	title = "maai.146.name"
 	desc = "maai.146.desc"
 	picture = GFX_evt_nebula_eye
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 		capital_scope = {
 			save_global_event_target_as = tma_returned_home
@@ -4029,16 +4118,17 @@ country_event = {
 			set_faction_hostility = {
 				set_hostile = no
 				set_neutral = no
-				set_friendly = yes #fren
+				set_friendly = yes				#fren
 				target = root
 			}
 		}
 	}
-	
 	option = {
 		name = "maai.146.a"
 		hidden_effect = {
-			country_event = { id = maai.147 }
+			country_event = {
+				id = maai.147
+			}
 		}
 	}
 }
@@ -4048,39 +4138,33 @@ country_event = {
 	id = maai.147
 	title = "maai.0.name"
 	desc = "maai.147.desc"
-
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	picture_event_data = {
 		portrait = event_target:master_ai_country
 		planet_background = event_target:tma_returned_home
 		graphical_culture = event_target:tma_returned_home
 		room = machine_room
 	}
-	
 	immediate = {
 		set_country_flag = tma_returned
 		set_country_flag = tma_returned_b
 	}
-	
 	option = {
-		name = "maai.147.a" # We made a sort of host for your mind.
+		name = "maai.147.a"		# We made a sort of host for your mind.
 		response_text = maai.147.a_reply
 		is_dialog_only = yes
 	}
 	option = {
-		name = "maai.147.b" # What's the plan now?
+		name = "maai.147.b"		# What's the plan now?
 		response_text = maai.147.b_reply
 		is_dialog_only = yes
 	}
 	option = {
-		name = "maai.147.c" # We'll be in touch.
+		name = "maai.147.c"		# We'll be in touch.
 		response_text = maai.147.c_reply
 	}
 }
@@ -4091,12 +4175,9 @@ country_event = {
 	title = "maai.148.name"
 	desc = "maai.148.desc"
 	picture = GFX_evt_nebula_eye
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 		capital_scope = {
 			save_global_event_target_as = tma_returned_home
@@ -4109,22 +4190,25 @@ country_event = {
 			set_faction_hostility = {
 				set_hostile = no
 				set_neutral = no
-				set_friendly = yes #fren
+				set_friendly = yes				#fren
 				target = root
 			}
 		}
 		remove_country_flag = tma_paralysed
 	}
-	
 	option = {
 		name = "maai.148.a"
 		hidden_effect = {
 			random_list = {
 				95 = {
-					country_event = { id = maai.149 } #it worky
+					country_event = {
+						id = maai.149
+					}					#it worky
 				}
 				5 = {
-					country_event = { id = maai.111 } #outcome A: catastrophy
+					country_event = {
+						id = maai.111
+					}					#outcome A: catastrophy
 				}
 				#1 = {
 				#	country_event = { id = maai.1 } #revolt
@@ -4143,39 +4227,33 @@ country_event = {
 	id = maai.149
 	title = "maai.0.name"
 	desc = "maai.149.desc"
-
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	picture_event_data = {
 		portrait = event_target:master_ai_country
 		planet_background = event_target:tma_returned_home
 		graphical_culture = event_target:tma_returned_home
 		room = machine_room
 	}
-	
 	immediate = {
 		set_country_flag = tma_returned
 		set_country_flag = tma_returned_c
 	}
-	
 	option = {
-		name = "maai.149.a" # We fixed your paralysis.
+		name = "maai.149.a"		# We fixed your paralysis.
 		response_text = maai.149.a_reply
 		is_dialog_only = yes
 	}
 	option = {
-		name = "maai.149.b" # you good?
+		name = "maai.149.b"		# you good?
 		response_text = maai.149.b_reply
 		is_dialog_only = yes
 	}
 	option = {
-		name = "maai.149.c" # We'll be in touch.
+		name = "maai.149.c"		# We'll be in touch.
 		response_text = maai.149.c_reply
 	}
 }
@@ -4186,12 +4264,9 @@ country_event = {
 	title = "maai.150.name"
 	desc = "maai.150.desc"
 	picture = GFX_evt_nebula_eye
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 		capital_scope = {
 			save_global_event_target_as = tma_returned_home
@@ -4204,22 +4279,25 @@ country_event = {
 			set_faction_hostility = {
 				set_hostile = no
 				set_neutral = no
-				set_friendly = yes #fren
+				set_friendly = yes				#fren
 				target = root
 			}
 		}
 		remove_country_flag = tma_isolated
 	}
-	
 	option = {
 		name = "maai.150.a"
 		hidden_effect = {
 			random_list = {
 				85 = {
-					country_event = { id = maai.151 } #it worky
+					country_event = {
+						id = maai.151
+					}					#it worky
 				}
 				15 = {
-					country_event = { id = maai.1 } #revolt #they do a little trolling
+					country_event = {
+						id = maai.1
+					}					#revolt #they do a little trolling
 				}
 			}
 		}
@@ -4235,39 +4313,33 @@ country_event = {
 	id = maai.151
 	title = "maai.0.name"
 	desc = "maai.151.desc"
-
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	picture_event_data = {
 		portrait = event_target:master_ai_country
 		planet_background = event_target:tma_returned_home
 		graphical_culture = event_target:tma_returned_home
 		room = machine_room
 	}
-	
 	immediate = {
 		set_country_flag = tma_returned
 		set_country_flag = tma_returned_d
 	}
-	
 	option = {
-		name = "maai.151.a" # Do you remember anything?
+		name = "maai.151.a"		# Do you remember anything?
 		response_text = maai.151.a_reply
 		is_dialog_only = yes
 	}
 	option = {
-		name = "maai.151.b" # What's the plan now?
+		name = "maai.151.b"		# What's the plan now?
 		response_text = maai.151.b_reply
 		is_dialog_only = yes
 	}
 	option = {
-		name = "maai.151.c" # We'll be in touch.
+		name = "maai.151.c"		# We'll be in touch.
 		response_text = maai.151.c_reply
 	}
 }
@@ -4277,7 +4349,7 @@ country_event = {
 	id = maai.152
 	title = "maai.996.name"
 	desc = {
-		text = maai.152.desc_01 #prethoryn
+		text = maai.152.desc_01		#prethoryn
 		trigger = {
 			OR = {
 				has_global_flag = prethoryn_invasion_happened
@@ -4286,11 +4358,13 @@ country_event = {
 					allowed_crisis_type = prethoryn
 				}
 			}
-			NOT = { has_global_flag = prethoryn_invasion_defeated }
+			NOT = {
+				has_global_flag = prethoryn_invasion_defeated
+			}
 		}
 	}
 	desc = {
-		text = maai.152.desc_02 #unbidden
+		text = maai.152.desc_02		#unbidden
 		trigger = {
 			OR = {
 				has_global_flag = extradimensional_invasion_happened
@@ -4299,11 +4373,13 @@ country_event = {
 					allowed_crisis_type = unbidden
 				}
 			}
-			NOT = { has_global_flag = extradimensional_invasion_defeated }
+			NOT = {
+				has_global_flag = extradimensional_invasion_defeated
+			}
 		}
 	}
 	desc = {
-		text = maai.152.desc_03 #contingency
+		text = maai.152.desc_03		#contingency
 		trigger = {
 			OR = {
 				has_global_flag = ai_invasion_happened
@@ -4312,11 +4388,13 @@ country_event = {
 					allowed_crisis_type = contingency
 				}
 			}
-			NOT = { has_global_flag = ai_invasion_defeated }
+			NOT = {
+				has_global_flag = ai_invasion_defeated
+			}
 		}
 	}
 	desc = {
-		text = maai.152.desc_04 #grey tempest
+		text = maai.152.desc_04		#grey tempest
 		trigger = {
 			OR = {
 				has_global_flag = gray_goo_crisis_active
@@ -4330,7 +4408,7 @@ country_event = {
 		}
 	}
 	desc = {
-		text = maai.152.desc_05 #BtC empires
+		text = maai.152.desc_05		#BtC empires
 		trigger = {
 			any_playable_country = {
 				has_ascension_perk = ap_become_the_crisis
@@ -4338,7 +4416,7 @@ country_event = {
 		}
 	}
 	desc = {
-		text = maai.152.desc_06 #great khan
+		text = maai.152.desc_06		#great khan
 		trigger = {
 			OR = {
 				has_global_flag = marauder_crisis_started
@@ -4346,11 +4424,13 @@ country_event = {
 					is_country_type = awakened_marauders
 				}
 			}
-			NOT = { has_global_flag = great_khan_dead }
+			NOT = {
+				has_global_flag = great_khan_dead
+			}
 		}
 	}
 	desc = {
-		text = maai.152.desc_07 #no threat soon
+		text = maai.152.desc_07		#no threat soon
 		trigger = {
 			NOR = {
 				has_global_flag = galactic_crisis_happened
@@ -4373,43 +4453,40 @@ country_event = {
 		}
 	}
 	desc = {
-		text = maai.152.desc_08 #generic: maybe threat soon
+		text = maai.152.desc_08		#generic: maybe threat soon
 		trigger = {
 			has_global_flag = galactic_crisis_happened
 		}
 	}
-	
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	picture_event_data = {
 		portrait = event_target:master_ai_country
 		planet_background = event_target:tma_returned_home
 		graphical_culture = event_target:tma_returned_home
 		room = machine_room
 	}
-	
 	immediate = {
 		set_country_flag = tma_diplomacy_engaged
 	}
-	
 	after = {
-		hidden_effect = { remove_country_flag = tma_diplomacy_engaged }
-	}
-	
-	option = {
-		name = "maai.996.mainmenu" #back to main menu
 		hidden_effect = {
-			country_event = { id = maai.996 }
+			remove_country_flag = tma_diplomacy_engaged
 		}
 	}
 	option = {
-		name = "maai.996.terminate" #end comms
+		name = "maai.996.mainmenu"		#back to main menu
+		hidden_effect = {
+			country_event = {
+				id = maai.996
+			}
+		}
+	}
+	option = {
+		name = "maai.996.terminate"		#end comms
 	}
 }
 
@@ -4418,19 +4495,19 @@ country_event = {
 	id = maai.153
 	title = "maai.996.name"
 	desc = {
-		text = maai.153.desc_01 #on cooldown
+		text = maai.153.desc_01		#on cooldown
 		trigger = {
 			has_global_flag = space_storm_cooldown
 		}
 	}
 	desc = {
-		text = maai.153.desc_02 #currently happening
+		text = maai.153.desc_02		#currently happening
 		trigger = {
 			has_global_flag = ongoing_space_storm
 		}
 	}
 	desc = {
-		text = maai.153.desc_03 #idk
+		text = maai.153.desc_03		#idk
 		trigger = {
 			NOR = {
 				has_global_flag = ongoing_space_storm
@@ -4438,38 +4515,35 @@ country_event = {
 			}
 		}
 	}
-	
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	picture_event_data = {
 		portrait = event_target:master_ai_country
 		planet_background = event_target:tma_returned_home
 		graphical_culture = event_target:tma_returned_home
 		room = machine_room
 	}
-	
 	immediate = {
 		set_country_flag = tma_diplomacy_engaged
 	}
-	
 	after = {
-		hidden_effect = { remove_country_flag = tma_diplomacy_engaged }
-	}
-	
-	option = {
-		name = "maai.996.mainmenu" #back to main menu
 		hidden_effect = {
-			country_event = { id = maai.996 }
+			remove_country_flag = tma_diplomacy_engaged
 		}
 	}
 	option = {
-		name = "maai.996.terminate" #end comms
+		name = "maai.996.mainmenu"		#back to main menu
+		hidden_effect = {
+			country_event = {
+				id = maai.996
+			}
+		}
+	}
+	option = {
+		name = "maai.996.terminate"		#end comms
 	}
 }
 
@@ -4478,7 +4552,7 @@ country_event = {
 	id = maai.154
 	title = "maai.996.name"
 	desc = {
-		text = maai.154.desc_01 #FE awakened
+		text = maai.154.desc_01		#FE awakened
 		trigger = {
 			OR = {
 				has_global_flag = sleepers_awake_happened
@@ -4493,14 +4567,16 @@ country_event = {
 		}
 	}
 	desc = {
-		text = maai.154.desc_02 #No WiH
+		text = maai.154.desc_02		#No WiH
 		trigger = {
 			has_global_flag = no_war_in_heaven
-			NOT = { has_global_flag = sleepers_awake_happened }
+			NOT = {
+				has_global_flag = sleepers_awake_happened
+			}
 		}
 	}
 	desc = {
-		text = maai.154.desc_03 #Ancient Rival awakened
+		text = maai.154.desc_03		#Ancient Rival awakened
 		trigger = {
 			has_global_flag = sleepers_awake_rival_waking
 			NOT = {
@@ -4509,55 +4585,54 @@ country_event = {
 		}
 	}
 	desc = {
-		text = maai.154.desc_04 #WiH happening
+		text = maai.154.desc_04		#WiH happening
 		trigger = {
 			has_global_flag = war_in_heaven_ongoing
 		}
 	}
 	desc = {
-		text = maai.154.desc_05 #FEs dormant
+		text = maai.154.desc_05		#FEs dormant
 		trigger = {
-			NOT = { has_global_flag = sleepers_awake_happened }
+			NOT = {
+				has_global_flag = sleepers_awake_happened
+			}
 		}
 	}
 	desc = {
-		text = maai.154.desc_06 #WiH over
+		text = maai.154.desc_06		#WiH over
 		trigger = {
 			has_global_flag = war_in_heaven_ended
 		}
 	}
-	
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	picture_event_data = {
 		portrait = event_target:master_ai_country
 		planet_background = event_target:tma_returned_home
 		graphical_culture = event_target:tma_returned_home
 		room = machine_room
 	}
-	
 	immediate = {
 		set_country_flag = tma_diplomacy_engaged
 	}
-	
 	after = {
-		hidden_effect = { remove_country_flag = tma_diplomacy_engaged }
-	}
-	
-	option = {
-		name = "maai.996.mainmenu" #back to main menu
 		hidden_effect = {
-			country_event = { id = maai.996 }
+			remove_country_flag = tma_diplomacy_engaged
 		}
 	}
 	option = {
-		name = "maai.996.terminate" #end comms
+		name = "maai.996.mainmenu"		#back to main menu
+		hidden_effect = {
+			country_event = {
+				id = maai.996
+			}
+		}
+	}
+	option = {
+		name = "maai.996.terminate"		#end comms
 	}
 }
 
@@ -4585,41 +4660,37 @@ country_event = {
 			}
 		}
 	}
-	
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	picture_event_data = {
 		portrait = event_target:master_ai_country
 		planet_background = event_target:tma_returned_home
 		graphical_culture = event_target:tma_returned_home
 		room = machine_room
 	}
-	
 	immediate = {
 		set_country_flag = tma_diplomacy_engaged
 	}
-	
 	after = {
-		hidden_effect = { remove_country_flag = tma_diplomacy_engaged }
-	}
-	
-	option = {
-		name = "maai.996.mainmenu" #back to main menu
 		hidden_effect = {
-			country_event = { id = maai.996 }
+			remove_country_flag = tma_diplomacy_engaged
 		}
 	}
 	option = {
-		name = "maai.996.terminate" #end comms
+		name = "maai.996.mainmenu"		#back to main menu
+		hidden_effect = {
+			country_event = {
+				id = maai.996
+			}
+		}
+	}
+	option = {
+		name = "maai.996.terminate"		#end comms
 	}
 }
-
 
 #The Master Intelligence: Response (RPS)
 country_event = {
@@ -4628,60 +4699,79 @@ country_event = {
 	desc = {
 		text = maai.158.desc_01
 	}
-	
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	picture_event_data = {
 		portrait = event_target:master_ai_country
 		planet_background = event_target:tma_returned_home
 		graphical_culture = event_target:tma_returned_home
 		room = machine_room
 	}
-	
 	immediate = {
 		set_country_flag = tma_diplomacy_engaged
 		random_list = {
 			33 = {
-				set_timed_country_flag = { flag = tma_chose_rock days = 3 }
+				set_timed_country_flag = {
+					flag = tma_chose_rock
+					days = 3
+				}
 			}
 			33 = {
-				set_timed_country_flag = { flag = tma_chose_paper days = 3 }
+				set_timed_country_flag = {
+					flag = tma_chose_paper
+					days = 3
+				}
 			}
 			33 = {
-				set_timed_country_flag = { flag = tma_chose_scissor days = 3 }
+				set_timed_country_flag = {
+					flag = tma_chose_scissor
+					days = 3
+				}
 			}
 		}
 	}
-	
 	after = {
-		hidden_effect = { remove_country_flag = tma_diplomacy_engaged }
-	}
-	
-	option = {
-		name = "maai.158.a" #Rock!
 		hidden_effect = {
-			country_event = { id = maai.159 }
-			set_timed_country_flag = { flag = player_chose_rock days = 3 }
+			remove_country_flag = tma_diplomacy_engaged
 		}
 	}
 	option = {
-		name = "maai.158.b" #Paper!
+		name = "maai.158.a"		#Rock!
 		hidden_effect = {
-			country_event = { id = maai.159 }
-			set_timed_country_flag = { flag = player_chose_paper days = 3 }
+			country_event = {
+				id = maai.159
+			}
+			set_timed_country_flag = {
+				flag = player_chose_rock
+				days = 3
+			}
 		}
 	}
 	option = {
-		name = "maai.158.c" #Scissors!
+		name = "maai.158.b"		#Paper!
 		hidden_effect = {
-			country_event = { id = maai.159 }
-			set_timed_country_flag = { flag = player_chose_scissor days = 3 }
+			country_event = {
+				id = maai.159
+			}
+			set_timed_country_flag = {
+				flag = player_chose_paper
+				days = 3
+			}
+		}
+	}
+	option = {
+		name = "maai.158.c"		#Scissors!
+		hidden_effect = {
+			country_event = {
+				id = maai.159
+			}
+			set_timed_country_flag = {
+				flag = player_chose_scissor
+				days = 3
+			}
 		}
 	}
 }
@@ -4692,7 +4782,8 @@ country_event = {
 	title = "maai.996.name"
 	desc = {
 		text = maai.159.desc_01
-		trigger = { # It's a draw.
+		trigger = {
+			# It's a draw.
 			root = {
 				OR = {
 					AND = {
@@ -4713,7 +4804,8 @@ country_event = {
 	}
 	desc = {
 		text = maai.159.desc_02
-		trigger = { # You win!
+		trigger = {
+			# You win!
 			root = {
 				OR = {
 					AND = {
@@ -4734,7 +4826,8 @@ country_event = {
 	}
 	desc = {
 		text = maai.159.desc_03
-		trigger = { # You lose!
+		trigger = {
+			# You lose!
 			root = {
 				OR = {
 					AND = {
@@ -4753,38 +4846,35 @@ country_event = {
 			}
 		}
 	}
-	
 	diplomatic = yes
 	force_open = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	picture_event_data = {
 		portrait = event_target:master_ai_country
 		planet_background = event_target:tma_returned_home
 		graphical_culture = event_target:tma_returned_home
 		room = machine_room
 	}
-	
 	immediate = {
 		set_country_flag = tma_diplomacy_engaged
 	}
-	
 	after = {
-		hidden_effect = { remove_country_flag = tma_diplomacy_engaged }
-	}
-	
-	option = {
-		name = "maai.159.a" #that was fun
 		hidden_effect = {
-			country_event = { id = maai.996 }
+			remove_country_flag = tma_diplomacy_engaged
 		}
 	}
 	option = {
-		name = "maai.996.terminate" #end comms
+		name = "maai.159.a"		#that was fun
+		hidden_effect = {
+			country_event = {
+				id = maai.996
+			}
+		}
+	}
+	option = {
+		name = "maai.996.terminate"		#end comms
 	}
 }
 
@@ -4792,14 +4882,15 @@ country_event = {
 country_event = {
 	id = maai.160
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
-		NOT = { has_global_flag = tma_killed }
-		owner = { has_country_flag = maai_creator }
+		NOT = {
+			has_global_flag = tma_killed
+		}
+		owner = {
+			has_country_flag = maai_creator
+		}
 	}
-	
 	immediate = {
 		#continues loop if TMA still alive
 		if = {
@@ -4808,7 +4899,11 @@ country_event = {
 					has_global_flag = tma_killed
 				}
 			}
-			country_event = { id = maai.160 days = 1800 random = 720 }
+			country_event = {
+				id = maai.160
+				days = 1800
+				random = 720
+			}
 		}
 		#summons TMA fleet at origin world (if conditions met)
 		if = {
@@ -4821,13 +4916,25 @@ country_event = {
 			}
 			random_list = {
 				32 = {
-					country_event = { id = maai.161 days = 3 random = 7 }
+					country_event = {
+						id = maai.161
+						days = 3
+						random = 7
+					}
 				}
 				32 = {
-					country_event = { id = maai.162 days = 3 random = 7 }
+					country_event = {
+						id = maai.162
+						days = 3
+						random = 7
+					}
 				}
 				32 = {
-					country_event = { id = maai.163 days = 3 random = 7 }
+					country_event = {
+						id = maai.163
+						days = 3
+						random = 7
+					}
 				}
 				4 = {
 					#nothing, loop restarts
@@ -4843,17 +4950,16 @@ country_event = {
 	title = "maai.161.name"
 	desc = "maai.161.desc"
 	picture = GFX_evt_pirate_ambush
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 		set_country_flag = tma_strike_active
 		create_fleet = {
 			name = "Galactic Surveyors"
-			settings = { spawn_debris = no }
+			settings = {
+				spawn_debris = no
+			}
 			effect = {
 				set_owner = event_target:master_ai_country
 				create_ship_design = {
@@ -4884,7 +4990,6 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = "maai.161.a"
 		custom_tooltip = tma_fleet_appears
@@ -4897,17 +5002,16 @@ country_event = {
 	title = "maai.162.name"
 	desc = "maai.162.desc"
 	picture = GFX_evt_space_cruiser
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 		set_country_flag = tma_strike_active
 		create_fleet = {
 			name = "Galactic Peacekeepers"
-			settings = { spawn_debris = no }
+			settings = {
+				spawn_debris = no
+			}
 			effect = {
 				set_owner = event_target:master_ai_country
 				create_ship_design = {
@@ -4945,7 +5049,6 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = "maai.163.a"
 		custom_tooltip = tma_fleet_appears
@@ -4958,17 +5061,17 @@ country_event = {
 	title = "maai.163.name"
 	desc = "maai.163.desc"
 	picture = GFX_evt_spacebattle_debris
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 		set_country_flag = tma_strike_active
-		create_fleet = { #CORE
+		create_fleet = {
+			#CORE
 			name = "The Omega Construct"
-			settings = { spawn_debris = no }
+			settings = {
+				spawn_debris = no
+			}
 			effect = {
 				set_owner = event_target:master_ai_country
 				create_ship_design = {
@@ -4981,7 +5084,7 @@ country_event = {
 					effect = {
 						set_ship_flag = tma_attack_fleet_ship
 						save_global_event_target_as = tma_attack_fleet_ship
-						set_disable_at_health = 0.25 #25%
+						set_disable_at_health = 0.25						#25%
 					}
 				}
 				set_location = event_target:master_ai_origin
@@ -4995,9 +5098,12 @@ country_event = {
 				}
 			}
 		}
-		create_fleet = { #AID
+		create_fleet = {
+			#AID
 			name = "Infinite Guards"
-			settings = { spawn_debris = no }
+			settings = {
+				spawn_debris = no
+			}
 			effect = {
 				set_owner = event_target:master_ai_country
 				while = {
@@ -5020,9 +5126,12 @@ country_event = {
 				set_aggro_range = 200
 			}
 		}
-		create_fleet = { #AID
+		create_fleet = {
+			#AID
 			name = "Eternal Sentinels"
-			settings = { spawn_debris = no }
+			settings = {
+				spawn_debris = no
+			}
 			effect = {
 				set_owner = event_target:master_ai_country
 				while = {
@@ -5046,7 +5155,6 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = "maai.161.a"
 		custom_tooltip = tma_fleet_appears
@@ -5057,18 +5165,20 @@ country_event = {
 ship_event = {
 	id = maai.164
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		has_ship_flag = tma_attack_fleet_ship
-		owner = { has_country_flag = master_ai_country }
+		owner = {
+			has_country_flag = master_ai_country
+		}
 	}
-	
 	immediate = {
 		event_target:master_ai_creator = {
 			remove_country_flag = tma_strike_active
-			set_timed_country_flag = { flag = tma_attacks_blocked days = 1080 } #safeguard to prevent spam/annoyance
+			set_timed_country_flag = {
+				flag = tma_attacks_blocked
+				days = 1080
+			}			#safeguard to prevent spam/annoyance
 		}
 	}
 }
