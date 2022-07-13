@@ -1,12 +1,10 @@
 @precursor_easy = 6
 @precursor_medium = 8
 @precursor_hard = 10
-
 qfts_seeder_observation_station = {
 	desc = "qfts_1_desc"
 	picture = "GFX_evt_shattered_planet"
 	level = @precursor_easy
-	
 	#spawn_chance = {
 	#	modifier = {
 	#		add = 99999
@@ -26,7 +24,6 @@ qfts_seeder_observation_station = {
 	#	set_planet_flag = precursor_world
 	#	from.owner = { set_country_flag = vultaum_1 }
 	#}
-	
 	on_success = qfts.1
 }
 
@@ -34,14 +31,17 @@ qfts_dead_primitive_capital = {
 	desc = "qfts_2_desc"
 	picture = "GFX_evt_tomb_world"
 	level = @precursor_easy
-	
 	spawn_chance = {
 		modifier = {
 			add = -999
 			from.owner = {
-				NOT = { has_origin = origin_shiva }
+				NOT = {
+					has_origin = origin_shiva
+				}
 			}
-			NOT = { has_planet_flag = primitive_old_capital }
+			NOT = {
+				has_planet_flag = primitive_old_capital
+			}
 		}
 		modifier = {
 			add = 999
@@ -51,11 +51,9 @@ qfts_dead_primitive_capital = {
 			has_planet_flag = primitive_old_capital
 		}
 	}
-	
 	#on_spawn = {
 	#	set_planet_flag = precursor_world
 	#	from.owner = { set_country_flag = vultaum_1 }
 	#}
-	
 	on_success = qfts.7
 }
