@@ -10,31 +10,26 @@
 #
 #	NOTE: Forks of Ethics and Civics will likely work also, unless they specifically changed the IDs
 #	of some civics, such as Bug Branch as shown above.
-
 ## OVERWRITTEN POLICIES ##
-
 orbital_bombardment = {
-
 	potential = {
 		OR = {
 			is_country_type = default
 			is_country_type = vol
 		}
 	}
-
 	option = {
 		name = "orbital_bombardment_selective"
 		policy_flags = {
 			orbital_bombardment_selective
 		}
-
 		AI_weight = {
 			modifier = {
 				factor = 0
 				NOR = {
 					has_ethic = "ethic_pacifist"
 					has_ethic = "ethic_fanatic_pacifist"
-					is_ecocentric = yes #BB
+					is_ecocentric = yes					#BB
 				}
 				NOT = {
 					is_galactic_community_member = yes
@@ -49,25 +44,23 @@ orbital_bombardment = {
 	}
 	option = {
 		name = "orbital_bombardment_indiscriminate"
-
 		in_breach_of = {
 			{
 				key = resolution_rulesofwar_independent_tribunals
 			}
 		}
-
 		policy_flags = {
 			orbital_bombardment_indiscriminate
 		}
-		modifier = {}
-
+		modifier = {
+		}
 		valid = {
 			NOR = {
 				has_ethic = "ethic_pacifist"
 				has_ethic = "ethic_fanatic_pacifist"
-				has_valid_civic = "civic_tec_peacekeepers" #SE
-				is_bugged_interventionalist = yes #BB
-				has_valid_civic = "civic_xeno_militarist" #AR
+				has_valid_civic = "civic_tec_peacekeepers"				#SE
+				is_bugged_interventionalist = yes				#BB
+				has_valid_civic = "civic_xeno_militarist"				#AR
 			}
 		}
 		AI_weight = {
@@ -83,13 +76,11 @@ orbital_bombardment = {
 	}
 	option = {
 		name = "orbital_bombardment_armageddon"
-
 		in_breach_of = {
 			{
 				key = resolution_rulesofwar_independent_tribunals
 			}
 		}
-
 		potential = {
 			OR = {
 				has_valid_civic = civic_fanatic_purifiers
@@ -97,12 +88,11 @@ orbital_bombardment = {
 				has_valid_civic = civic_bringers_of_death
 			}
 		}
-
 		policy_flags = {
 			orbital_bombardment_armageddon
 		}
-		modifier = {}
-
+		modifier = {
+		}
 		AI_weight = {
 			modifier = {
 				factor = 10
@@ -122,31 +112,29 @@ orbital_bombardment = {
 
 economic_policy = {
 	potential = {
-		NOT = { has_ethic = ethic_gestalt_consciousness }
+		NOT = {
+			has_ethic = ethic_gestalt_consciousness
+		}
 	}
-
-	option = { #EMEX
+	option = {
+		#EMEX
 		name = "economic_policy_civilian"
-
 		modifier = {
 			planet_jobs_consumer_goods_produces_mult = 0.25
 			planet_jobs_alloys_produces_mult = -0.25
 		}
-		
 		valid = {
 			NOR = {
 				has_valid_civic = civic_war_economy
-				has_valid_civic = "civic_tec_military_council" #SE
-				has_valid_civic = "civic_bugged_war_council" #BB
-				has_valid_civic = "civic_military_junta" #AR
+				#				has_valid_civic = "civic_tec_military_council" #SE
+				has_valid_civic = "civic_bugged_war_council"				#BB
+				#				has_valid_civic = "civic_military_junta" #AR
 			}
 		}
-		
 		#BB
 		policy_flags = {
 			economic_policy_civilian
 		}
-		
 		#ET
 		AI_weight = {
 			weight = 0
@@ -187,22 +175,22 @@ economic_policy = {
 					is_pacifist = yes
 					has_ai_personality = open_hive_mind
 					has_ai_personality = open_machine_intelligence
-					has_monthly_income = { resource = alloys value > 20 }
+					has_monthly_income = {
+						resource = alloys
+						value > 20
+					}
 				}
 			}
 		}
 	}
-
 	option = {
 		name = "economic_policy_balanced"
-
-		modifier = {}
-		
+		modifier = {
+		}
 		#BB
 		policy_flags = {
 			economic_policy_balanced
 		}
-		
 		AI_weight = {
 			factor = 1
 			modifier = {
@@ -214,34 +202,28 @@ economic_policy = {
 			}
 		}
 	}
-
 	option = {
 		name = "economic_policy_military"
-
 		in_breach_of = {
 			{
 				key = resolution_rulesofwar_demobilization_initiative
 			}
 		}
-
 		modifier = {
 			planet_jobs_consumer_goods_produces_mult = -0.25
 			planet_jobs_alloys_produces_mult = 0.25
 		}
-
 		valid = {
 			NOR = {
 				has_valid_civic = civic_peaceful_society
-				has_valid_civic = "civic_tec_utopian_democracy" #SE
-				has_valid_civic = "civic_bugged_utopian_democracy" #BB
-				has_valid_civic = "civic_peaceful_republic" #AR
+				has_valid_civic = "civic_tec_utopian_democracy"				#SE
+				has_valid_civic = "civic_bugged_utopian_democracy"				#BB
+				has_valid_civic = "civic_peaceful_republic"				#AR
 			}
 		}
-		
 		policy_flags = {
 			economic_policy_military
 		}
-
 		AI_weight = {
 			weight = 0
 			modifier = {
@@ -250,7 +232,9 @@ economic_policy = {
 					is_at_war = yes
 					is_authoritarian = yes
 				}
-				NOT = { has_civic = civic_megastore } # other benefits from other policy options
+				NOT = {
+					has_civic = civic_megastore
+				}				# other benefits from other policy options
 				resource_stockpile_compare = {
 					resource = consumer_goods
 					value > 2500
@@ -267,7 +251,10 @@ economic_policy = {
 			modifier = {
 				weight = 20
 				has_ascension_perk = ap_become_the_crisis
-				has_monthly_income = { resource = consumer_goods value > 20 }
+				has_monthly_income = {
+					resource = consumer_goods
+					value > 20
+				}
 			}
 			modifier = {
 				factor = 0.1
@@ -284,16 +271,15 @@ economic_policy = {
 #why do forks of "ethics and civics" love to make so many goddamn trade policies?
 trade_policy = {
 	potential = {
-		NOT = { has_ethic = ethic_gestalt_consciousness }
+		NOT = {
+			has_ethic = ethic_gestalt_consciousness
+		}
 	}
-
 	option = {
 		name = "trade_policy_default"
-		
 		policy_flags = {
 			trade_policy_default
 		}
-		
 		valid = {
 			#AR
 			NOR = {
@@ -301,7 +287,6 @@ trade_policy = {
 				has_ethic = "ethic_fanatic_socialism"
 			}
 		}
-		
 		potential = {
 			NAND = {
 				has_global_flag = expanded_pops_active
@@ -311,7 +296,6 @@ trade_policy = {
 				}
 			}
 		}
-		
 		AI_weight = {
 			factor = 0
 			modifier = {
@@ -323,7 +307,6 @@ trade_policy = {
 			}
 		}
 	}
-
 	option = {
 		name = "trade_policy_consumer_goods"
 		potential = {
@@ -340,11 +323,9 @@ trade_policy = {
 			}
 			has_tradition = tr_mercantile_adaptive_economic_policies
 		}
-
 		policy_flags = {
 			trade_conversion_consumer_goods
 		}
-		
 		valid = {
 			#AR
 			NOR = {
@@ -352,14 +333,12 @@ trade_policy = {
 				has_ethic = "ethic_fanatic_socialism"
 			}
 		}
-
-		modifier = {}
-
+		modifier = {
+		}
 		AI_weight = {
 			factor = 1
 		}
 	}
-
 	option = {
 		name = "trade_policy_unity"
 		potential = {
@@ -376,11 +355,9 @@ trade_policy = {
 			}
 			has_tradition = tr_mercantile_adaptive_economic_policies
 		}
-
 		policy_flags = {
 			trade_conversion_unity
 		}
-		
 		valid = {
 			#AR
 			NOR = {
@@ -388,10 +365,8 @@ trade_policy = {
 				has_policy_flag = "economic_stance_planned"
 			}
 		}
-
 		modifier = {
 		}
-
 		AI_weight = {
 			weight = 0
 			modifier = {
@@ -404,7 +379,6 @@ trade_policy = {
 			}
 		}
 	}
-	
 	#ET
 	option = {
 		name = "trade_policy_default_corp"
@@ -415,11 +389,9 @@ trade_policy = {
 			}
 			has_global_flag = expanded_pops_active
 		}
-		
 		policy_flags = {
 			trade_policy_default_corp
 		}
-		
 		AI_weight = {
 			factor = 0
 			modifier = {
@@ -431,7 +403,6 @@ trade_policy = {
 			}
 		}
 	}
-	
 	option = {
 		name = "trade_policy_mineral_corp"
 		potential = {
@@ -444,17 +415,19 @@ trade_policy = {
 				has_federation = no
 				AND = {
 					has_federation = yes
-					federation = { NOT = { has_federation_perk = trade_federation_passive } }
+					federation = {
+						NOT = {
+							has_federation_perk = trade_federation_passive
+						}
+					}
 				}
 			}
 		}
-		
 		policy_flags = {
 			trade_conversion_mineral_corp
 		}
-		
-		modifier = {}
-		
+		modifier = {
+		}
 		AI_weight = {
 			weight = 0
 			modifier = {
@@ -467,7 +440,6 @@ trade_policy = {
 			}
 		}
 	}
-	
 	option = {
 		name = "trade_policy_food_corp"
 		potential = {
@@ -480,17 +452,19 @@ trade_policy = {
 				has_federation = no
 				AND = {
 					has_federation = yes
-					federation = { NOT = { has_federation_perk = trade_federation_passive } }
+					federation = {
+						NOT = {
+							has_federation_perk = trade_federation_passive
+						}
+					}
 				}
 			}
 		}
-		
 		policy_flags = {
 			trade_conversion_food_corp
 		}
-		
-		modifier = {}
-		
+		modifier = {
+		}
 		AI_weight = {
 			weight = 0
 			modifier = {
@@ -503,7 +477,6 @@ trade_policy = {
 			}
 		}
 	}
-
 	option = {
 		name = "trade_policy_consumer_goods_corp"
 		potential = {
@@ -516,23 +489,24 @@ trade_policy = {
 				has_federation = no
 				AND = {
 					has_federation = yes
-					federation = { NOT = { has_federation_perk = trade_federation_passive } }
+					federation = {
+						NOT = {
+							has_federation_perk = trade_federation_passive
+						}
+					}
 				}
 			}
 			has_tradition = tr_mercantile_adaptive_economic_policies
 		}
-		
 		policy_flags = {
 			trade_conversion_consumer_goods_corp
 		}
-		
-		modifier = {}
-		
+		modifier = {
+		}
 		AI_weight = {
 			weight = 2
 		}
 	}
-	
 	option = {
 		name = "trade_policy_unity_corp"
 		potential = {
@@ -545,19 +519,20 @@ trade_policy = {
 				has_federation = no
 				AND = {
 					has_federation = yes
-					federation = { NOT = { has_federation_perk = trade_federation_passive } }
+					federation = {
+						NOT = {
+							has_federation_perk = trade_federation_passive
+						}
+					}
 				}
 			}
 			has_tradition = tr_mercantile_adaptive_economic_policies
 		}
-		
 		policy_flags = {
 			trade_conversion_unity_corp
-		}		
-		
+		}
 		modifier = {
 		}
-		
 		AI_weight = {
 			weight = 0
 			modifier = {
@@ -570,42 +545,38 @@ trade_policy = {
 			}
 		}
 	}
-	
 	option = {
 		name = "trade_policy_trade_league"
 		potential = {
 			has_global_flag = expanded_pops_active
 			has_federation = yes
-			federation = { has_federation_perk = trade_federation_passive }
+			federation = {
+				has_federation_perk = trade_federation_passive
+			}
 		}
-
 		policy_flags = {
 			trade_conversion_trade_league
 		}
-
 		modifier = {
 		}
-
 		AI_weight = {
 			factor = 1000
 		}
 	}
-	
 	option = {
 		name = "trade_policy_trade_league_raw"
 		potential = {
 			has_global_flag = expanded_pops_active
 			has_federation = yes
-			federation = { has_federation_perk = trade_federation_passive }
+			federation = {
+				has_federation_perk = trade_federation_passive
+			}
 		}
-
 		policy_flags = {
 			trade_conversion_trade_league_raw
 		}
-
 		modifier = {
 		}
-
 		AI_weight = {
 			weight = 0
 			modifier = {
@@ -626,7 +597,6 @@ trade_policy = {
 			}
 		}
 	}
-	
 	#BB
 	option = {
 		name = "trade_policy_bugged_growth_construction"
@@ -636,28 +606,27 @@ trade_policy = {
 				has_federation = no
 				AND = {
 					has_federation = yes
-					federation = { NOT = { has_federation_perk = trade_federation_passive } }
+					federation = {
+						NOT = {
+							has_federation_perk = trade_federation_passive
+						}
+					}
 				}
 			}
 			has_tradition = tr_mercantile_adaptive_economic_policies
 		}
-
 		policy_flags = {
 			trade_conversion_bugged_growth_construction
 		}
-
 		modifier = {
 		}
-
 		valid = {
 			always = yes
 		}
-
 		AI_weight = {
 			factor = 0
 		}
 	}
-	
 	option = {
 		name = "trade_policy_bugged_innovative_economy"
 		potential = {
@@ -666,27 +635,26 @@ trade_policy = {
 				has_federation = no
 				AND = {
 					has_federation = yes
-					federation = { NOT = { has_federation_perk = trade_federation_passive } }
+					federation = {
+						NOT = {
+							has_federation_perk = trade_federation_passive
+						}
+					}
 				}
 			}
 		}
-
 		policy_flags = {
 			trade_conversion_bugged_innovative_economy
 		}
-
-		modifier = {	
+		modifier = {
 		}
-
 		valid = {
 			has_technology = tech_bugged_innovations
 		}
-
 		AI_weight = {
 			factor = 0
 		}
 	}
-
 	option = {
 		name = "trade_policy_bugged_social_development"
 		potential = {
@@ -695,29 +663,28 @@ trade_policy = {
 				has_federation = no
 				AND = {
 					has_federation = yes
-					federation = { NOT = { has_federation_perk = trade_federation_passive } }
+					federation = {
+						NOT = {
+							has_federation_perk = trade_federation_passive
+						}
+					}
 				}
 			}
 		}
-
 		policy_flags = {
 			trade_conversion_bugged_social_development
 		}
-
 		modifier = {
 			pop_growth_speed = 0.05
 			planet_amenities_mult = 0.15
 		}
-
 		valid = {
 			has_technology = tech_bugged_social_development
 		}
-
 		AI_weight = {
 			factor = 0
 		}
 	}
-
 	option = {
 		name = "trade_policy_bugged_agriculture"
 		potential = {
@@ -726,27 +693,26 @@ trade_policy = {
 				has_federation = no
 				AND = {
 					has_federation = yes
-					federation = { NOT = { has_federation_perk = trade_federation_passive } }
+					federation = {
+						NOT = {
+							has_federation_perk = trade_federation_passive
+						}
+					}
 				}
 			}
 		}
-
 		policy_flags = {
 			trade_conversion_bugged_agriculture
 		}
-
 		modifier = {
 		}
-
 		valid = {
 			has_technology = tech_bugged_agri_consortium
 		}
-
 		AI_weight = {
 			factor = 0
 		}
 	}
-
 	option = {
 		name = "trade_policy_bugged_mining"
 		potential = {
@@ -755,51 +721,48 @@ trade_policy = {
 				has_federation = no
 				AND = {
 					has_federation = yes
-					federation = { NOT = { has_federation_perk = trade_federation_passive } }
+					federation = {
+						NOT = {
+							has_federation_perk = trade_federation_passive
+						}
+					}
 				}
 			}
 		}
-
 		policy_flags = {
 			trade_conversion_bugged_mining
 		}
-
 		modifier = {
 		}
-
 		valid = {
 			has_technology = tech_bugged_mining_consortium
 		}
-
 		AI_weight = {
 			factor = 0
 		}
 	}
-	
 	option = {
 		name = "trade_policy_trade_league"
 		potential = {
 			has_federation = yes
-			federation = { has_federation_perk = trade_federation_passive }
+			federation = {
+				has_federation_perk = trade_federation_passive
+			}
 			#Comp
 			NOR = {
 				has_global_flag = bug_branch_active
 				has_global_flag = expanded_pops_active
 			}
 		}
-
 		policy_flags = {
 			trade_conversion_trade_league
 		}
-
 		modifier = {
 		}
-
 		AI_weight = {
 			factor = 100
 		}
 	}
-	
 	#BB
 	option = {
 		#ALL
@@ -812,23 +775,18 @@ trade_policy = {
 			}
 			has_global_flag = bug_branch_active
 		}
-		
-
 		policy_flags = {
 			trade_conversion_bugged_basic_league
 		}
-
-		modifier = {}
-
+		modifier = {
+		}
 		valid = {
 			always = yes
 		}
-
 		AI_weight = {
 			factor = 1
 		}
 	}
-
 	option = {
 		#FREE MARKET
 		name = "trade_policy_bugged_consumer_goods_league"
@@ -840,22 +798,18 @@ trade_policy = {
 			}
 			has_global_flag = bug_branch_active
 		}
-
 		policy_flags = {
 			trade_conversion_bugged_consumer_goods_league
 		}
-
-		modifier = {}
-
+		modifier = {
+		}
 		valid = {
 			always = yes
 		}
-
 		AI_weight = {
 			factor = 0
 		}
 	}
-
 	option = {
 		name = "trade_policy_bugged_growth_construction_league"
 		potential = {
@@ -866,23 +820,18 @@ trade_policy = {
 			}
 			has_global_flag = bug_branch_active
 		}
-
 		policy_flags = {
 			trade_conversion_bugged_growth_construction_league
 		}
-
 		modifier = {
 		}
-
 		valid = {
 			always = yes
 		}
-
 		AI_weight = {
 			factor = 0
 		}
 	}
-
 	option = {
 		name = "trade_policy_bugged_innovative_economy_league"
 		potential = {
@@ -893,23 +842,18 @@ trade_policy = {
 			}
 			has_global_flag = bug_branch_active
 		}
-
 		policy_flags = {
 			trade_conversion_bugged_innovative_economy_league
 		}
-
 		modifier = {
 		}
-
 		valid = {
 			always = yes
 		}
-
 		AI_weight = {
 			factor = 0
 		}
 	}
-
 	option = {
 		name = "trade_policy_bugged_social_development_league"
 		potential = {
@@ -920,23 +864,18 @@ trade_policy = {
 			}
 			has_global_flag = bug_branch_active
 		}
-
 		policy_flags = {
 			trade_conversion_bugged_social_development_league
 		}
-
 		modifier = {
 		}
-
 		valid = {
 			always = yes
 		}
-
 		AI_weight = {
 			factor = 0
 		}
 	}
-
 	option = {
 		name = "trade_policy_bugged_agriculture_league"
 		potential = {
@@ -947,23 +886,18 @@ trade_policy = {
 			}
 			has_global_flag = bug_branch_active
 		}
-
 		policy_flags = {
 			trade_conversion_bugged_agriculture_league
 		}
-
 		modifier = {
 		}
-
 		valid = {
 			always = yes
 		}
-
 		AI_weight = {
 			factor = 0
 		}
 	}
-
 	option = {
 		name = "trade_policy_bugged_mining_league"
 		potential = {
@@ -974,123 +908,102 @@ trade_policy = {
 			}
 			has_global_flag = bug_branch_active
 		}
-
 		policy_flags = {
 			trade_conversion_bugged_mining_league
 		}
-
 		modifier = {
 		}
-
 		valid = {
 			always = yes
 		}
-
 		AI_weight = {
 			factor = 0
 		}
 	}
-	
-	option = { #EMEX
+	option = {
+		#EMEX
 		name = "trade_policy_technocorp"
 		potential = {
 			has_valid_civic = civic_technocorp
 		}
-
 		policy_flags = {
 			trade_conversion_technocorp
 		}
-
 		modifier = {
 		}
-
 		AI_weight = {
 			factor = 100
 		}
 	}
-	option = { #EMEX
+	option = {
+		#EMEX
 		name = "trade_policy_technocorp_tl"
 		potential = {
 			has_valid_civic = civic_technocorp
 			has_federation = yes
-			federation = { has_federation_perk = trade_federation_passive }
+			federation = {
+				has_federation_perk = trade_federation_passive
+			}
 		}
-
 		policy_flags = {
 			trade_conversion_technocorp_tl
 		}
-
 		modifier = {
 		}
-
 		AI_weight = {
 			factor = 1100
 		}
 	}
-	
 	# SE #
 	#Social Development
 	option = {
 		name = "trade_policy_social"
-		
 		potential = {
 			has_global_flag = stellarisevolved
 		}
-		
 		policy_flags = {
 			trade_conversion_social
-		}		
-		
+		}
 		valid = {
-			tec_is_default_country = yes	
-			OR = { 
+			tec_is_default_country = yes
+			OR = {
 				has_ethic = "ethic_socialism"
 				has_ethic = "ethic_fanatic_socialism"
-			}				
-		}			
-		
+			}
+		}
 		modifier = {
 			planet_colony_development_speed_mult = 0.25
 		}
-		
 		AI_weight = {
 			factor = 0
 		}
-	}	
-
+	}
 	#Infrastructure Development
 	option = {
 		name = "trade_policy_infrastructure"
-		
 		potential = {
 			has_global_flag = stellarisevolved
 		}
-		
 		policy_flags = {
 			trade_conversion_infrastructure
 		}
-
 		modifier = {
-			planet_building_build_speed_mult = 0.20
-			starbase_shipyard_build_speed_mult = 0.10
+			planet_building_build_speed_mult = 0.2
+			starbase_shipyard_build_speed_mult = 0.1
 		}
-
 		valid = {
 			OR = {
 				tec_is_trade_gestalt = yes
 				tec_is_default_country = yes
 			}
 		}
-
 		AI_weight = {
 			factor = 0
 		}
 	}
-
 	#Innovation
 	option = {
 		name = "trade_policy_innovation"
-		
 		potential = {
 			has_global_flag = stellarisevolved
 			OR = {
@@ -1101,12 +1014,10 @@ trade_policy = {
 					has_ethic = ethic_gestalt_consciousness
 				}
 			}
-			
 		}
 		policy_flags = {
 			trade_conversion_innovation
-		}	
-
+		}
 		valid = {
 			tec_is_default_country = yes
 			OR = {
@@ -1117,36 +1028,29 @@ trade_policy = {
 			}
 			NOR = {
 				has_valid_civic = civic_tec_immutable_hierarchy
-			}	
+			}
 			#	NOR = {
 			#		has_policy_flag = "economic_stance_market"
 			#		has_policy_flag = "economic_stance_planned"
 			#	}
-		}		
-		
+		}
 		modifier = {
 		}
-		
 		AI_weight = {
 			factor = 0
 		}
 	}
-
 	#Agricultural dev
 	option = {
 		name = "trade_policy_food"
-		
 		potential = {
 			has_global_flag = stellarisevolved
 		}
-		
 		policy_flags = {
 			trade_conversion_food
 		}
-
 		modifier = {
 		}
-
 		valid = {
 			tec_is_default_country = yes
 			OR = {
@@ -1158,27 +1062,21 @@ trade_policy = {
 				}
 			}
 		}
-		
 		AI_weight = {
 			factor = 0
 		}
 	}
-
 	# Food
 	option = {
 		name = "trade_policy_mining"
-		
 		potential = {
 			has_global_flag = stellarisevolved
 		}
-		
 		policy_flags = {
 			trade_conversion_mining
 		}
-
 		modifier = {
 		}
-
 		valid = {
 			tec_is_default_country = yes
 			OR = {
@@ -1188,12 +1086,10 @@ trade_policy = {
 				has_ethic = ethic_gestalt_disregard
 			}
 		}
-
 		AI_weight = {
 			factor = 0
 		}
 	}
-	
 	#AR
 	# Growth & Development
 	option = {
@@ -1335,18 +1231,17 @@ trade_policy = {
 }
 
 artificial_intelligence_policy = {
-
 	potential = {
-		NOT = { has_ethic = ethic_gestalt_consciousness }
-		OR = { 
+		NOT = {
+			has_ethic = ethic_gestalt_consciousness
+		}
+		OR = {
 			can_set_ai_policy = yes
 			has_country_flag = synthetic_empire
 		}
 	}
-
 	option = {
 		name = "ai_outlawed"
-
 		valid = {
 			NOR = {
 				has_ethic = "ethic_materialist"
@@ -1356,7 +1251,7 @@ artificial_intelligence_policy = {
 					has_country_flag = synthetic_empire
 				}
 				has_valid_civic = civic_engineering_cult
-				has_valid_civic = civic_machine_cult #AR
+				has_valid_civic = civic_machine_cult				#AR
 				#SE
 				tec_is_robot_lover_spiritualist = yes
 				AND = {
@@ -1365,20 +1260,17 @@ artificial_intelligence_policy = {
 						has_country_flag = tec_hates_robots
 					}
 				}
-				is_bugged_machine_cult = yes #bb
+				is_bugged_machine_cult = yes				#bb
 			}
 		}
-
 		policy_flags = {
 			ai_outlawed
 		}
-
 		in_breach_of = {
 			{
 				key = resolution_galacticstudies_advanced_xenostudies
 			}
 		}
-
 		AI_weight = {
 			modifier = {
 				factor = 0
@@ -1419,26 +1311,22 @@ artificial_intelligence_policy = {
 			}
 		}
 	}
-
 	option = {
 		name = "ai_servitude"
-
 		valid = {
 			NOR = {
 				custom_tooltip = {
 					fail_text = is_a_synthetic_empire_fail
 					has_country_flag = synthetic_empire
 				}
-				has_valid_civic = civic_machine_cult #ar
-				is_bugged_machine_cult = yes #BB
+				has_valid_civic = civic_machine_cult				#ar
+				is_bugged_machine_cult = yes				#BB
 				has_valid_civic = civic_engineering_cult
-			}	
+			}
 		}
-
 		policy_flags = {
 			ai_servitude
 		}
-
 		AI_weight = {
 			modifier = {
 				factor = 5
@@ -1457,8 +1345,8 @@ artificial_intelligence_policy = {
 					has_ethic = "ethic_fanatic_spiritualist"
 				}
 				#SE
-				NOR = { 
-					has_valid_civic = civic_tec_machine_cult 
+				NOR = {
+					has_valid_civic = civic_tec_machine_cult
 					is_bugged_machine_cult = yes
 					has_country_flag = cult_empire
 				}
@@ -1482,17 +1370,15 @@ artificial_intelligence_policy = {
 			}
 		}
 	}
-
 	option = {
 		name = "ai_full_rights"
-
 		valid = {
 			OR = {
 				custom_tooltip = {
 					fail_text = is_a_synthetic_empire
 					OR = {
 						has_ascension_perk = ap_synthetic_evolution
-						tec_is_synthetic_empire = yes #SE
+						tec_is_synthetic_empire = yes						#SE
 					}
 				}
 				NOR = {
@@ -1513,22 +1399,20 @@ artificial_intelligence_policy = {
 						tec_is_robot_lover_spiritualist = yes
 					}
 				}
-				is_bugged_machine_cult = yes #bb
-				has_valid_civic = civic_machine_cult #ar
+				is_bugged_machine_cult = yes				#bb
+				has_valid_civic = civic_machine_cult				#ar
 			}
 			#SE
-			NOR = { 
+			NOR = {
 				has_policy_flag = robots_outlawed
 				has_country_flag = tec_hates_robots
 			}
 		}
-
 		policy_flags = {
 			ai_full_rights
 		}
-
-		modifier = {}
-
+		modifier = {
+		}
 		AI_weight = {
 			modifier = {
 				factor = 5
@@ -1554,44 +1438,45 @@ artificial_intelligence_policy = {
 						has_ethic = "ethic_spiritualist"
 						has_ethic = "ethic_fanatic_spiritualist"
 					}
-					NOT = { has_country_flag = cult_empire }
+					NOT = {
+						has_country_flag = cult_empire
+					}
 				}
 			}
 		}
 	}
-	
-	option = { #METAL IS ETERNAL #prolly do more in the future
+	option = {
+		#METAL IS ETERNAL #prolly do more in the future
 		name = "ai_worshipped"
-
 		valid = {
 			has_valid_civic = civic_engineering_cult
-			NOT = { has_policy_flag = robots_outlawed }
+			NOT = {
+				has_policy_flag = robots_outlawed
+			}
 		}
-
 		policy_flags = {
 			ai_full_rights
 			ai_worshipped
 		}
-
 		modifier = {
-			planet_pop_assembly_mult = 0.10
+			planet_pop_assembly_mult = 0.1
 			planet_pops_robotics_upkeep_mult = 0.05
 		}
-
 		AI_weight = {
 			modifier = {
 				factor = 10
-				always = yes 
+				always = yes
 			}
 		}
 	}
 }
 
 robot_pop_policy = {
-
 	potential = {
 		OR = {
-			NOT = { has_ethic = ethic_gestalt_consciousness }
+			NOT = {
+				has_ethic = ethic_gestalt_consciousness
+			}
 			#SE
 			AND = {
 				has_ethic = ethic_gestalt_consciousness
@@ -1600,38 +1485,40 @@ robot_pop_policy = {
 		}
 		OR = {
 			has_technology = tech_robotic_workers
-			any_owned_species = { has_trait = trait_mechanical }
+			any_owned_species = {
+				has_trait = trait_mechanical
+			}
 		}
 	}
-
 	option = {
 		name = "robot_pops_outlawed"
-
 		valid = {
 			NOR = {
 				has_ethic = "ethic_materialist"
 				has_ethic = "ethic_fanatic_materialist"
 				has_valid_civic = civic_engineering_cult
 				has_country_flag = synthetic_empire
-				has_valid_civic = civic_tec_machine_cult #SE
-				has_valid_civic = civic_machine_cult #ar
+				has_valid_civic = civic_tec_machine_cult				#SE
+				has_valid_civic = civic_machine_cult				#ar
 			}
-			NOT = { has_policy_flag = ai_full_rights }
+			NOT = {
+				has_policy_flag = ai_full_rights
+			}
 			#SE
 			OR = {
 				is_materialist = no
 				has_country_flag = tec_hates_robots
 			}
 		}
-
 		policy_flags = {
 			robots_outlawed
 		}
-
 		on_enabled = {
 			hidden_effect = {
 				every_owned_species = {
-					limit = { is_robotic_species = yes }
+					limit = {
+						is_robotic_species = yes
+					}
 					set_citizenship_type = {
 						type = citizenship_purge
 						country = root
@@ -1639,7 +1526,6 @@ robot_pop_policy = {
 				}
 			}
 		}
-
 		AI_weight = {
 			factor = 1
 			modifier = {
@@ -1660,14 +1546,11 @@ robot_pop_policy = {
 			}
 		}
 	}
-
 	option = {
 		name = "robot_pops_allowed"
-
 		policy_flags = {
 			robots_allowed
 		}
-
 		AI_weight = {
 			factor = 20
 		}

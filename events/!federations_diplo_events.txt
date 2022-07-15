@@ -5,14 +5,11 @@
 # Written by Stephen Muray
 #
 ###############################
-
 namespace = federations
-
 # Extradimensional Experimentation
 country_event = {
 	id = federations.10020
 	title = "federations.10020.name"
-
 	desc = {
 		trigger = {
 			is_gestalt = no
@@ -25,21 +22,20 @@ country_event = {
 		}
 		text = "federations.10020.desc_gestalt"
 	}
-
 	picture = GFX_evt_clocks
 	show_sound = event_laboratory_sound
-
 	is_triggered_only = yes
-
 	option = {
 		name = EXCELLENT
-
 		custom_tooltip = "extradimensional_experimentation_tooltip"
 	}
-	
 	after = {
 		if = {
-			limit = { NOT = { has_technology = tech_mine_zro } }
+			limit = {
+				NOT = {
+					has_technology = tech_mine_zro
+				}
+			}
 			add_research_option = tech_mine_zro
 		}
 	}
@@ -49,102 +45,89 @@ country_event = {
 country_event = {
 	id = federations.10110
 	title = "resolution_galacticstudies_ethical_guideline_refactoring"
-
 	desc = {
 		text = "federations.10110.desc"
 	}
-
 	picture = GFX_evt_galactic_senate
 	show_sound = event_factions
-
 	is_triggered_only = yes
-
 	option = {
 		name = FED_WE_MUST_COMPLY
-
 		trigger = {
 			has_technology = tech_capacity_boosters
-			NOT = { has_policy_flag = leader_enhancement_capacity_boosters }
+			NOT = {
+				has_policy_flag = leader_enhancement_capacity_boosters
+			}
 		}
-
 		allow = {
 			NOR = {
 				has_ethic = "ethic_egalitarian"
 				has_ethic = "ethic_fanatic_egalitarian"
 			}
 		}
-
 		set_policy = {
 			policy = leader_enhancement
 			option = leader_enhancement_capacity_boosters
 			cooldown = yes
 		}
-
 		custom_tooltip = "federations.10110.capacity_boosters"
 	}
-
 	option = {
 		name = FED_WE_MUST_COMPLY
-
 		trigger = {
-			NOT = { has_technology = tech_capacity_boosters }
+			NOT = {
+				has_technology = tech_capacity_boosters
+			}
 			has_technology = tech_selected_lineages
 			has_policy_flag = leader_enhancement_natural_selection
 		}
-
 		allow = {
-			NOT = { has_ethic = "ethic_fanatic_egalitarian" }
+			NOT = {
+				has_ethic = "ethic_fanatic_egalitarian"
+			}
 		}
-
 		set_policy = {
 			policy = leader_enhancement
 			option = leader_enhancement_selected_lineages
 			cooldown = yes
 		}
-
 		custom_tooltip = "federations.10110.selected_lineages"
 	}
-	
 	option = {
 		name = FED_WE_MUST_COMPLY
-
 		trigger = {
 			has_global_flag = expanded_megastructures_installed
 			has_technology = tech_capacity_boosters_machine
-			NOT = { has_policy_flag = leader_enhancement_capacity_boosters_machine }
+			NOT = {
+				has_policy_flag = leader_enhancement_capacity_boosters_machine
+			}
 		}
-
 		set_policy = {
 			policy = leader_enhancement_machine
 			option = leader_enhancement_capacity_boosters_machine
 			cooldown = yes
 		}
-
 		custom_tooltip = "federations.10110.capacity_boosters"
 	}
-
 	option = {
 		name = FED_WE_MUST_COMPLY
-
 		trigger = {
 			has_global_flag = expanded_megastructures_installed
-			NOT = { has_technology = tech_capacity_boosters_machine }
+			NOT = {
+				has_technology = tech_capacity_boosters_machine
+			}
 			has_technology = tech_selected_lineages_machine
 			has_policy_flag = leader_enhancement_natural_selection_machine
 		}
-
 		set_policy = {
 			policy = leader_enhancement_machine
 			option = leader_enhancement_selected_lineages_machine
 			cooldown = yes
 		}
-
 		custom_tooltip = "federations.10110.selected_lineages"
 	}
-
 	option = {
 		name = FED_WE_WILL_RETAIN
-
 		trigger = {
 			NOR = {
 				has_ethic = "ethic_xenophobe"
@@ -153,14 +136,12 @@ country_event = {
 				has_ethic = "ethic_fanatic_egalitarian"
 			}
 		}
-
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier1unityreward
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-		
 		if = {
 			limit = {
 				OR = {
@@ -172,7 +153,9 @@ country_event = {
 						}
 					}
 					AND = {
-						NOT = { has_technology = tech_capacity_boosters }
+						NOT = {
+							has_technology = tech_capacity_boosters
+						}
 						has_technology = tech_selected_lineages
 						has_policy_flag = leader_enhancement_natural_selection
 						can_set_policy = {
@@ -196,7 +179,9 @@ country_event = {
 						}
 					}
 					AND = {
-						NOT = { has_technology = tech_capacity_boosters_machine }
+						NOT = {
+							has_technology = tech_capacity_boosters_machine
+						}
 						has_technology = tech_selected_lineages_machine
 						has_policy_flag = leader_enhancement_natural_selection_machine
 						can_set_policy = {
@@ -208,13 +193,10 @@ country_event = {
 			}
 			set_policy_cooldown = leader_enhancement_machine
 		}
-
 		custom_tooltip = "FED_WE_WILL_BE_IN_BREACH"
 	}
-
 	option = {
 		name = FED_WE_WILL_NOT_SUBMIT
-
 		trigger = {
 			OR = {
 				has_ethic = "ethic_xenophobe"
@@ -223,14 +205,12 @@ country_event = {
 				has_ethic = "ethic_fanatic_egalitarian"
 			}
 		}
-
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier2unityreward
 			min = @tier2unitymin
 			max = @tier2unitymax
 		}
-		
 		if = {
 			limit = {
 				OR = {
@@ -242,7 +222,9 @@ country_event = {
 						}
 					}
 					AND = {
-						NOT = { has_technology = tech_capacity_boosters }
+						NOT = {
+							has_technology = tech_capacity_boosters
+						}
 						has_technology = tech_selected_lineages
 						has_policy_flag = leader_enhancement_natural_selection
 						can_set_policy = {
@@ -266,7 +248,9 @@ country_event = {
 						}
 					}
 					AND = {
-						NOT = { has_technology = tech_capacity_boosters_machine }
+						NOT = {
+							has_technology = tech_capacity_boosters_machine
+						}
 						has_technology = tech_selected_lineages_machine
 						has_policy_flag = leader_enhancement_natural_selection_machine
 						can_set_policy = {
@@ -278,7 +262,6 @@ country_event = {
 			}
 			set_policy_cooldown = leader_enhancement_machine
 		}
-
 		custom_tooltip = "FED_WE_WILL_BE_IN_BREACH"
 	}
 }
@@ -287,29 +270,21 @@ country_event = {
 country_event = {
 	id = federations.10310
 	title = "resolution_rulesofwar_independent_tribunals"
-
 	desc = {
 		text = "federations.10310.desc"
 	}
-
 	picture = GFX_evt_galactic_senate
 	show_sound = event_factions
-
 	is_triggered_only = yes
-
 	option = {
 		name = "FED_WE_MUST_COMPLY"
-
 		breach_fix_resolution_rulesofwar_independent_tribunals = yes
-
 		ai_chance = {
 			factor = 5
 		}
 	}
-
 	option = {
 		name = FED_WE_WILL_RETAIN
-
 		trigger = {
 			NOR = {
 				has_ethic = "ethic_xenophobe"
@@ -319,17 +294,17 @@ country_event = {
 			}
 			OR = {
 				is_ai = no
-				NOT = { has_ai_personality = vb_keepers_of_peace }
+				NOT = {
+					has_ai_personality = vb_keepers_of_peace
+				}
 			}
 		}
-
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier1unityreward
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-		
 		if = {
 			limit = {
 				can_set_policy = {
@@ -339,13 +314,10 @@ country_event = {
 			}
 			set_policy_cooldown = orbital_bombardment
 		}
-
 		custom_tooltip = "FED_WE_WILL_BE_IN_BREACH"
 	}
-
 	option = {
 		name = FED_WE_WILL_NOT_SUBMIT
-
 		trigger = {
 			OR = {
 				has_ethic = "ethic_xenophobe"
@@ -355,17 +327,17 @@ country_event = {
 			}
 			OR = {
 				is_ai = no
-				NOT = { has_ai_personality = vb_keepers_of_peace }
+				NOT = {
+					has_ai_personality = vb_keepers_of_peace
+				}
 			}
 		}
-
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier2unityreward
 			min = @tier2unitymin
 			max = @tier2unitymax
 		}
-		
 		if = {
 			limit = {
 				can_set_policy = {
@@ -375,9 +347,7 @@ country_event = {
 			}
 			set_policy_cooldown = orbital_bombardment
 		}
-
 		custom_tooltip = "FED_WE_WILL_BE_IN_BREACH"
-
 		ai_chance = {
 			factor = 2
 		}
@@ -388,47 +358,36 @@ country_event = {
 country_event = {
 	id = federations.10320
 	title = "resolution_rulesofwar_last_resort_doctrine"
-
 	desc = {
 		text = "federations.10320.desc"
 	}
-
 	picture = GFX_evt_galactic_senate
 	show_sound = event_factions
-
 	is_triggered_only = yes
-
 	option = {
 		name = "FED_WE_MUST_COMPLY"
-
 		trigger = {
-			NOT = { has_ethic = ethic_gestalt_consciousness }
+			NOT = {
+				has_ethic = ethic_gestalt_consciousness
+			}
 		}
-
 		breach_fix_resolution_rulesofwar_last_resort_doctrine = yes
-
 		ai_chance = {
 			factor = 5
 		}
 	}
-
 	option = {
 		name = "FED_WE_MUST_COMPLY"
-
 		trigger = {
 			has_ethic = ethic_gestalt_consciousness
 		}
-
 		breach_fix_resolution_rulesofwar_last_resort_doctrine = yes
-
 		ai_chance = {
 			factor = 5
 		}
 	}
-
 	option = {
 		name = FED_WE_WILL_RETAIN
-
 		trigger = {
 			NOR = {
 				has_ethic = "ethic_xenophobe"
@@ -438,17 +397,17 @@ country_event = {
 			}
 			OR = {
 				is_ai = no
-				NOT = { has_ai_personality = vb_keepers_of_peace }
+				NOT = {
+					has_ai_personality = vb_keepers_of_peace
+				}
 			}
 		}
-
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier1unityreward
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-		
 		if = {
 			limit = {
 				OR = {
@@ -470,13 +429,10 @@ country_event = {
 			}
 			set_policy_cooldown = war_philosophy
 		}
-
 		custom_tooltip = "FED_WE_WILL_BE_IN_BREACH"
 	}
-
 	option = {
 		name = FED_WE_WILL_NOT_SUBMIT
-
 		trigger = {
 			OR = {
 				has_ethic = "ethic_xenophobe"
@@ -486,17 +442,17 @@ country_event = {
 			}
 			OR = {
 				is_ai = no
-				NOT = { has_ai_personality = vb_keepers_of_peace }
+				NOT = {
+					has_ai_personality = vb_keepers_of_peace
+				}
 			}
 		}
-
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier2unityreward
 			min = @tier2unitymin
 			max = @tier2unitymax
 		}
-		
 		if = {
 			limit = {
 				OR = {
@@ -518,9 +474,7 @@ country_event = {
 			}
 			set_policy_cooldown = war_philosophy
 		}
-
 		custom_tooltip = "FED_WE_WILL_BE_IN_BREACH"
-
 		ai_chance = {
 			factor = 2
 		}
@@ -531,29 +485,21 @@ country_event = {
 country_event = {
 	id = federations.10330
 	title = "resolution_rulesofwar_demobilization_initiative"
-
 	desc = {
 		text = "federations.10330.desc"
 	}
-
 	picture = GFX_evt_galactic_senate
 	show_sound = event_factions
-
 	is_triggered_only = yes
-
 	option = {
 		name = "FED_WE_MUST_COMPLY"
-
 		breach_fix_resolution_rulesofwar_demobilization_initiative = yes
-
 		ai_chance = {
 			factor = 5
 		}
 	}
-
 	option = {
 		name = FED_WE_WILL_RETAIN
-
 		trigger = {
 			NOR = {
 				has_ethic = "ethic_xenophobe"
@@ -562,14 +508,12 @@ country_event = {
 				has_ethic = "ethic_fanatic_militarist"
 			}
 		}
-
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier1unityreward
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-		
 		if = {
 			limit = {
 				can_set_policy = {
@@ -579,13 +523,10 @@ country_event = {
 			}
 			set_policy_cooldown = economic_policy
 		}
-
 		custom_tooltip = "FED_WE_WILL_BE_IN_BREACH"
 	}
-
 	option = {
 		name = FED_WE_WILL_NOT_SUBMIT
-
 		trigger = {
 			OR = {
 				has_ethic = "ethic_xenophobe"
@@ -594,14 +535,12 @@ country_event = {
 				has_ethic = "ethic_fanatic_militarist"
 			}
 		}
-
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier2unityreward
 			min = @tier2unitymin
 			max = @tier2unitymax
 		}
-		
 		if = {
 			limit = {
 				can_set_policy = {
@@ -611,9 +550,7 @@ country_event = {
 			}
 			set_policy_cooldown = economic_policy
 		}
-
 		custom_tooltip = "FED_WE_WILL_BE_IN_BREACH"
-
 		ai_chance = {
 			factor = 2
 		}
@@ -624,16 +561,12 @@ country_event = {
 country_event = {
 	id = federations.10340
 	title = "resolution_divinity_a_defined_purpose"
-
 	desc = {
 		text = "federations.10340.desc"
 	}
-
 	picture = GFX_evt_galactic_senate
 	show_sound = event_factions
-
 	is_triggered_only = yes
-
 	immediate = {
 		random_country = {
 			limit = {
@@ -642,79 +575,67 @@ country_event = {
 				is_gestalt = no
 				is_galactic_community_member = yes
 			}
-			owner_species = { save_event_target_as = defined_purpose_random_species }
+			owner_species = {
+				save_event_target_as = defined_purpose_random_species
+			}
 		}
 	}
-
 	option = {
 		name = "FED_WE_MUST_COMPLY"
-
 		breach_fix_resolution_divinity_a_defined_purpose_nonsynthetic = yes
-
 		trigger = {
 			is_machine_empire = no
-			NOT = { has_country_flag = synthetic_empire }
+			NOT = {
+				has_country_flag = synthetic_empire
+			}
 		}
-
 		ai_chance = {
 			factor = 5
 		}
 	}
-	
 	option = {
 		name = "federations.10340.complybecomerogueservitor"
-
 		breach_fix_resolution_divinity_a_defined_purpose_synthetic = yes
-
 		trigger = {
 			has_country_flag = synthetic_empire
 		}
-		
 		allow = {
 			OR = {
 				has_ethic = "ethic_egalitarian"
 				has_ethic = "ethic_fanatic_egalitarian"
 			}
 		}
-
 		ai_chance = {
 			factor = 5
 		}
 	}
-	
 	option = {
 		name = "federations.10230.chemical"
-
 		breach_fix_resolution_divinity_a_defined_purpose_synthetic_chemical = yes
-
 		trigger = {
 			has_country_flag = synthetic_empire
 		}
-		
 		allow = {
 			has_technology = "tech_subdermal_stimulation"
 		}
-
 		ai_chance = {
 			factor = 5
 		}
 	}
-
 	option = {
 		name = FED_WE_WILL_RETAIN
-
 		trigger = {
 			is_machine_empire = no
-			NOT = { has_country_flag = synthetic_empire }
+			NOT = {
+				has_country_flag = synthetic_empire
+			}
 		}
-
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier1unityreward
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-		
 		if = {
 			limit = {
 				can_set_policy = {
@@ -724,30 +645,25 @@ country_event = {
 			}
 			set_policy_cooldown = artificial_intelligence_policy
 		}
-
 		custom_tooltip = "FED_WE_WILL_BE_IN_BREACH"
 	}
-
 	option = {
 		name = FED_WE_WILL_NOT_SUBMIT
-
 		trigger = {
 			OR = {
-			    has_country_flag = synthetic_empire
+				has_country_flag = synthetic_empire
 				has_ethic = "ethic_xenophobe"
 				has_ethic = "ethic_fanatic_xenophobe"
 				has_ethic = "ethic_materialist"
 				has_ethic = "ethic_fanatic_materialist"
 			}
 		}
-
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier2unityreward
 			min = @tier2unitymin
 			max = @tier2unitymax
 		}
-		
 		if = {
 			limit = {
 				can_set_policy = {
@@ -757,45 +673,38 @@ country_event = {
 			}
 			set_policy_cooldown = artificial_intelligence_policy
 		}
-
 		custom_tooltip = "FED_WE_WILL_BE_IN_BREACH"
-
 		ai_chance = {
 			factor = 2
 		}
 	}
-
 	option = {
 		name = "federations.10340.declinemachine"
-
 		trigger = {
 			is_machine_empire = yes
 		}
-
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier2unityreward
 			min = @tier2unitymin
 			max = @tier2unitymax
 		}
-
 		custom_tooltip = "FED_WE_WILL_BE_IN_BREACH"
 	}
-
 	option = {
 		name = "federations.10340.complybecomerogueservitor"
-
 		trigger = {
 			is_machine_empire = yes
-			NOT = { has_valid_civic = civic_machine_servitor }
+			NOT = {
+				has_valid_civic = civic_machine_servitor
+			}
 		}
-
 		allow = {
-			NOT = { has_valid_civic = civic_machine_assimilator }
+			NOT = {
+				has_valid_civic = civic_machine_assimilator
+			}
 		}
-
 		breach_fix_resolution_divinity_a_defined_purpose_machine = yes
-
 		ai_chance = {
 			factor = 2
 		}
@@ -805,22 +714,19 @@ country_event = {
 country_event = {
 	id = federations.10401
 	title = "federations.10400.title"
-
 	desc = {
 		text = "federations.10400.desc"
 	}
-
 	picture = GFX_evt_signing
 	show_sound = event_factions
-
 	is_triggered_only = yes
-
 	trigger = {
 		is_galactic_community_member = yes
 		is_in_breach_of_any = yes
-		NOT = { has_country_flag = fed_10400_ignore }
+		NOT = {
+			has_country_flag = fed_10400_ignore
+		}
 	}
-
 	immediate = {
 		if = {
 			limit = {
@@ -833,10 +739,11 @@ country_event = {
 					is_gestalt = no
 					is_galactic_community_member = yes
 				}
-				owner_species = { save_event_target_as = defined_purpose_random_species }
+				owner_species = {
+					save_event_target_as = defined_purpose_random_species
+				}
 			}
 		}
-
 		random_relation = {
 			limit = {
 				any_envoy = {
@@ -855,12 +762,9 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = federations.10400.refuse
-
 		custom_tooltip = "FED_WE_WILL_BE_IN_BREACH"
-		
 		ai_chance = {
 			factor = 1
 			modifier = {
@@ -869,14 +773,11 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = "federations.10400.comply"
-
 		allow = {
 			custom_tooltip = {
 				fail_text = federations.10400.comply_fail_ethics
-
 				NOT = {
 					AND = {
 						in_breach_of = resolution_galacticstudies_ethical_guideline_refactoring
@@ -895,18 +796,15 @@ country_event = {
 			}
 			custom_tooltip = {
 				fail_text = federations.10400.comply_fail_civics
-
 				NOT = {
 					AND = {
 						has_valid_civic = civic_machine_assimilator
-
 						OR = {
 							is_active_resolution = "resolution_divinity_a_defined_purpose"
 							is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
 						}
 					}
 				}
-
 				NOT = {
 					AND = {
 						OR = {
@@ -926,21 +824,20 @@ country_event = {
 			}
 			custom_tooltip = {
 				fail_text = federations.10400.comply_fail_tech
-
 				NOT = {
 					AND = {
 						is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
-
 						is_egalitarian = no
 						is_gestalt = no
 						in_breach_of = resolution_greatergood_universal_prosperity_mandate
-						NOT = { has_technology = tech_subdermal_stimulation }
+						NOT = {
+							has_technology = tech_subdermal_stimulation
+						}
 					}
 				}
 			}
 			custom_tooltip = {
 				fail_text = federations.10400.comply_fail_ascension
-
 				NOT = {
 					AND = {
 						is_synthetic_empire = yes
@@ -949,10 +846,8 @@ country_event = {
 				}
 			}
 		}
-
 		breach_fix_resolution_galacticstudies_advanced_xenostudies = yes
 		breach_fix_resolution_galacticstudies_ethical_guideline_refactoring = yes
-		
 		breach_fix_resolution_greatergood_workers_rights = yes
 		# The Greater Good is way too complicated. We can go from the most extreme down.
 		if = {
@@ -962,7 +857,8 @@ country_event = {
 				is_egalitarian = yes
 			}
 			breach_fix_resolution_greatergood_universal_prosperity_mandate_utopian = yes
-		} else_if = {
+		}
+		else_if = {
 			limit = {
 				is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
 				in_breach_of = resolution_greatergood_universal_prosperity_mandate
@@ -970,30 +866,31 @@ country_event = {
 				is_gestalt = no
 			}
 			breach_fix_resolution_greatergood_universal_prosperity_mandate_chemical = yes
-		} else_if = {
+		}
+		else_if = {
 			limit = {
 				is_gestalt = yes
 				OR = {
-					AND = {
-						is_active_resolution = "resolution_greatergood_balance_in_the_middle"
-						in_breach_of = resolution_greatergood_balance_in_the_middle
-					}
-					AND = {
-						is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
-						in_breach_of = resolution_greatergood_universal_prosperity_mandate
-						NOT = { has_civic = "civic_machine_assimilator" }
+					is_active_resolution = "resolution_greatergood_balance_in_the_middle"
+					in_breach_of = resolution_greatergood_balance_in_the_middle
+					is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
+					in_breach_of = resolution_greatergood_universal_prosperity_mandate
+					NOT = {
+						has_civic = "civic_machine_assimilator"
 					}
 				}
 			}
 			breach_fix_resolution_greatergood_balance_in_the_middle_gestalt = yes
-		} else_if = {
+		}
+		else_if = {
 			limit = {
 				is_gestalt = no
 				is_active_resolution = "resolution_greatergood_balance_in_the_middle"
 				in_breach_of = resolution_greatergood_balance_in_the_middle
 			}
 			breach_fix_resolution_greatergood_balance_in_the_middle = yes
-		} else_if = {
+		}
+		else_if = {
 			limit = {
 				is_active_resolution = "resolution_greatergood_greater_than_ourselves"
 				in_breach_of = resolution_greatergood_greater_than_ourselves
@@ -1002,7 +899,8 @@ country_event = {
 			}
 			breach_fix_resolution_greatergood_greater_than_ourselves_living_standards = yes
 			breach_fix_resolution_greatergood_greater_than_ourselves_thralls = yes
-		} else_if = {
+		}
+		else_if = {
 			limit = {
 				is_active_resolution = "resolution_greatergood_greater_than_ourselves"
 				in_breach_of = resolution_greatergood_greater_than_ourselves
@@ -1010,28 +908,34 @@ country_event = {
 			}
 			breach_fix_resolution_greatergood_greater_than_ourselves_living_standards = yes
 			breach_fix_resolution_greatergood_greater_than_ourselves_servants = yes
-		} else_if = {
+		}
+		else_if = {
 			limit = {
 				is_active_resolution = "resolution_greatergood_greater_than_ourselves"
 				in_breach_of = resolution_greatergood_greater_than_ourselves
-				NOT = { host_has_dlc = "Utopia" }
+				NOT = {
+					host_has_dlc = "Utopia"
+				}
 			}
 			breach_fix_resolution_greatergood_greater_than_ourselves_living_standards = yes
 			breach_fix_resolution_greatergood_greater_than_ourselves_no_utopia = yes
-		} else_if = {
+		}
+		else_if = {
 			limit = {
 				is_active_resolution = "resolution_greatergood_greater_than_ourselves"
 				in_breach_of = resolution_greatergood_greater_than_ourselves
 			}
 			breach_fix_resolution_greatergood_greater_than_ourselves_living_standards = yes
-		} else_if = {
+		}
+		else_if = {
 			limit = {
 				is_active_resolution = "resolution_greatergood_five_year_plans"
 				in_breach_of = resolution_greatergood_five_year_plans
 				is_authoritarian = yes
 			}
 			breach_fix_resolution_greatergood_five_year_plans_stratified = yes
-		} else_if = {
+		}
+		else_if = {
 			limit = {
 				is_active_resolution = "resolution_greatergood_five_year_plans"
 				in_breach_of = resolution_greatergood_five_year_plans
@@ -1039,7 +943,6 @@ country_event = {
 			}
 			breach_fix_resolution_greatergood_five_year_plans_normal = yes
 		}
-		
 		if = {
 			limit = {
 				is_active_resolution = "resolution_ecology_paradise_initiative"
@@ -1067,15 +970,15 @@ country_event = {
 			}
 			breach_fix_resolution_ecology_natural_sanctuaries = yes
 		}
-
 		breach_fix_resolution_rulesofwar_reverence_for_life = yes
 		breach_fix_resolution_rulesofwar_independent_tribunals = yes
 		breach_fix_resolution_rulesofwar_last_resort_doctrine = yes
 		breach_fix_resolution_rulesofwar_demobilization_initiative = yes
-
 		breach_fix_resolution_divinity_a_defined_purpose_nonsynthetic = yes
 		if = {
-			limit = { is_egalitarian = yes }
+			limit = {
+				is_egalitarian = yes
+			}
 			breach_fix_resolution_divinity_a_defined_purpose_synthetic = yes
 		}
 		else = {
@@ -1090,30 +993,23 @@ country_event = {
 		breach_fix_resolution_healthcare_war_relief = yes
 		breach_fix_resolution_healthcare_clonal_medicine = yes
 		breach_fix_resolution_healthcare_universal_healthcare = yes
-
 		ai_chance = {
 			factor = 5
 		}
 	}
-
 	option = {
 		name = federations.10400.refuse_2
-
 		custom_tooltip = "FED_WE_WILL_BE_IN_BREACH"
 		custom_tooltip = "federations.10400.refuse_2_tooltip"
-
 		hidden_effect = {
 			set_country_flag = fed_10400_ignore
 		}
-
 		ai_chance = {
 			factor = 0
 		}
 	}
-
 	option = {
 		name = "federations.10400.execute"
-
 		trigger = {
 			OR = {
 				has_authority = auth_imperial
@@ -1122,7 +1018,9 @@ country_event = {
 				AND = {
 					is_hive_empire = yes
 					NOR = {
-						NOT = { exists = event_target:executed_envoy }
+						NOT = {
+							exists = event_target:executed_envoy
+						}
 						AND = {
 							exists = event_target:executed_envoy
 							event_target:executed_envoy = {
@@ -1139,26 +1037,32 @@ country_event = {
 			is_xenophile = no
 			is_pacifist = no
 		}
-
 		allow = {
-			NOT = { has_origin = origin_common_ground }
-			NOT = { has_origin = origin_common_ground_npc }
-			NOT = { has_origin = origin_symbiote }
-			NOT = { has_valid_civic = civic_hive_empath }
-			NOT = { has_valid_civic = civic_harm_hive }
+			NOT = {
+				has_origin = origin_common_ground
+			}
+			NOT = {
+				has_origin = origin_common_ground_npc
+			}
+			NOT = {
+				has_origin = origin_symbiote
+			}
+			NOT = {
+				has_valid_civic = civic_hive_empath
+			}
+			NOT = {
+				has_valid_civic = civic_harm_hive
+			}
 		}
-
 		custom_tooltip = "FED_WE_WILL_BE_IN_BREACH"
 		custom_tooltip = "federations.10400.refuse_2_tooltip"
 		custom_tooltip = "federations.10400.execute_tooltip"
-
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier3unityreward
 			min = @tier3unitymin
 			max = @tier3unitymax
 		}
-
 		if = {
 			limit = {
 				exists = event_target:executed_envoy
@@ -1169,11 +1073,9 @@ country_event = {
 				}
 			}
 		}
-
 		hidden_effect = {
 			set_country_flag = fed_10400_ignore
 			set_country_flag = executed_galcom_envoys
-
 			every_playable_country = {
 				limit = {
 					is_galactic_community_member = yes
@@ -1188,22 +1090,21 @@ country_event = {
 				}
 			}
 		}
-
 		ai_chance = {
 			factor = 0
 		}
 	}
-
 	option = {
 		name = "federations.10400.eat"
-
 		trigger = {
 			OR = {
 				has_authority = auth_hive_mind
 				has_origin = origin_necrophage
 			}
 			OR = {
-				NOT = { exists = event_target:executed_envoy }
+				NOT = {
+					exists = event_target:executed_envoy
+				}
 				AND = {
 					exists = event_target:executed_envoy
 					event_target:executed_envoy = {
@@ -1216,33 +1117,38 @@ country_event = {
 				}
 			}
 		}
-
 		allow = {
-			NOT = { has_origin = origin_common_ground }
-			NOT = { has_origin = origin_common_ground_npc }
-			NOT = { has_origin = origin_symbiote }
-			NOT = { has_valid_civic = civic_hive_empath }
-			NOT = { has_valid_civic = civic_harm_hive }
+			NOT = {
+				has_origin = origin_common_ground
+			}
+			NOT = {
+				has_origin = origin_common_ground_npc
+			}
+			NOT = {
+				has_origin = origin_symbiote
+			}
+			NOT = {
+				has_valid_civic = civic_hive_empath
+			}
+			NOT = {
+				has_valid_civic = civic_harm_hive
+			}
 		}
-
 		custom_tooltip = "FED_WE_WILL_BE_IN_BREACH"
 		custom_tooltip = "federations.10400.refuse_2_tooltip"
 		custom_tooltip = "federations.10400.execute_tooltip"
-
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier3unityreward
 			min = @tier3unitymin
 			max = @tier3unitymax
 		}
-
 		add_monthly_resource_mult = {
 			resource = food
 			value = 1
 			min = 1
 			max = 1
 		}
-
 		if = {
 			limit = {
 				exists = event_target:executed_envoy
@@ -1253,11 +1159,9 @@ country_event = {
 				}
 			}
 		}
-
 		hidden_effect = {
 			set_country_flag = fed_10400_ignore
 			set_country_flag = executed_galcom_envoys
-
 			every_playable_country = {
 				limit = {
 					is_galactic_community_member = yes
@@ -1272,7 +1176,6 @@ country_event = {
 				}
 			}
 		}
-
 		ai_chance = {
 			factor = 0
 		}
