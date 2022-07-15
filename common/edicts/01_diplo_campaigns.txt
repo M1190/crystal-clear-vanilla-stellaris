@@ -2,17 +2,13 @@
 # Campaigns
 # shorter duration, cost energy
 #################
-
 @Edict1Cost = 100
 @Edict2Cost = 200
 @Edict3Cost = 300
-
 @EdictDuration = 3600
-
 # Sets the cost for all campaigns with this variable
 @campaignCost = 1000
 @campaignDuration = 3600
-
 republic_election_campaign = {
 	length = @campaignDuration
 	icon = "GFX_edict_type_time"
@@ -23,27 +19,35 @@ republic_election_campaign = {
 			influence = 50
 		}
 	}
-
 	potential = {
 		has_global_flag = ongoing_republic_election
 		is_galactic_community_member = yes
 		is_galactic_custodian = no
 		is_subject = no
-		NOT = { has_country_flag = republic_not_electable }
+		NOT = {
+			has_country_flag = republic_not_electable
+		}
 		OR = {
 			has_edict = republic_election_campaign
-			NOT = { has_country_flag = republic_campaign }
+			NOT = {
+				has_country_flag = republic_campaign
+			}
 		}
 	}
-	
 	effect = {
 		custom_tooltip = edict_republic_election_campaign_effects
 		hidden_effect = {
 			set_country_flag = republic_campaign
-			set_variable = { which = campaign_rating value = 0 }
+			set_variable = {
+				which = campaign_rating
+				value = 0
+			}
 			random_list = {
 				16 = {
-					change_variable = { which = campaign_rating value = 1 }
+					change_variable = {
+						which = campaign_rating
+						value = 1
+					}
 					modifier = {
 						factor = 3
 						is_xenophobic_isolationists = yes
@@ -115,7 +119,10 @@ republic_election_campaign = {
 					}
 				}
 				8 = {
-					change_variable = { which = campaign_rating value = 2 }
+					change_variable = {
+						which = campaign_rating
+						value = 2
+					}
 					modifier = {
 						factor = 2
 						is_xenophobic_isolationists = yes
@@ -183,10 +190,16 @@ republic_election_campaign = {
 					}
 				}
 				4 = {
-					change_variable = { which = campaign_rating value = 3 }
+					change_variable = {
+						which = campaign_rating
+						value = 3
+					}
 				}
 				2 = {
-					change_variable = { which = campaign_rating value = 4 }
+					change_variable = {
+						which = campaign_rating
+						value = 4
+					}
 					modifier = {
 						factor = 0.5
 						is_xenophobic_isolationists = yes
@@ -254,7 +267,10 @@ republic_election_campaign = {
 					}
 				}
 				1 = {
-					change_variable = { which = campaign_rating value = 5 }
+					change_variable = {
+						which = campaign_rating
+						value = 5
+					}
 					modifier = {
 						factor = 0.25
 						is_xenophobic_isolationists = yes
@@ -324,7 +340,6 @@ republic_election_campaign = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 50
 		modifier = {

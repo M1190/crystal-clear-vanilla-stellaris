@@ -3,10 +3,12 @@
 can_colonize_with_species = {
 	has_colonization_control = {
 		value = no
-		country =root
+		country = root
 	}
 	OR = {
-		NOT = { has_trait = trait_self_modified }
+		NOT = {
+			has_trait = trait_self_modified
+		}
 		is_same_species = root
 	}
 	if = {
@@ -18,16 +20,26 @@ can_colonize_with_species = {
 		}
 	}
 	else_if = {
-		limit = { has_trait = trait_hive_mind }
-		root = { is_hive_empire = yes }
+		limit = {
+			has_trait = trait_hive_mind
+		}
+		root = {
+			is_hive_empire = yes
+		}
 	}
 	else_if = {
-		limit = { has_trait = trait_machine_unit }
-		root = { is_machine_empire = yes }
+		limit = {
+			has_trait = trait_machine_unit
+		}
+		root = {
+			is_machine_empire = yes
+		}
 	}
- ###################################
+	###################################
 	else_if = {
-		limit = { is_symbiote = yes }
+		limit = {
+			is_symbiote = yes
+		}
 		OR = {
 			root = {
 				any_owned_species = {
@@ -42,7 +54,7 @@ can_colonize_with_species = {
 			}
 		}
 	}
- ###################################
+	###################################
 	else = {
 		always = yes
 	}
@@ -53,10 +65,15 @@ can_resettle_pop = {
 	# Self-modified Pops won't leave
 	custom_tooltip = {
 		fail_text = "self_modified_refuse"
-		NOT = { has_trait = trait_self_modified }
+		NOT = {
+			has_trait = trait_self_modified
+		}
 	}
-	if = { #Done as an IF/ELSE so the tooltip isn't hideous and unreadable
-		limit = { is_shackled_robot = yes }
+	if = {
+		#Done as an IF/ELSE so the tooltip isn't hideous and unreadable
+		limit = {
+			is_shackled_robot = yes
+		}
 		always = yes
 	}
 	else_if = {
@@ -82,7 +99,9 @@ can_resettle_pop = {
 		OR = {
 			is_same_species = planet.owner
 			planet = {
-				NOT = { has_modifier = planet_culture_shock }
+				NOT = {
+					has_modifier = planet_culture_shock
+				}
 			}
 		}
 	}
@@ -94,7 +113,7 @@ can_resettle_pop = {
 		}
 		always = yes
 	}
- ######################################
+	######################################
 	else_if = {
 		limit = {
 			is_symbiote = yes
@@ -113,14 +132,18 @@ can_resettle_pop = {
 						planet = {
 							any_owned_pop = {
 								is_same_species = prevprev
-								NOT = { is_same_value = prevprev }
+								NOT = {
+									is_same_value = prevprev
+								}
 							}
 						}
 					}
 					NOT = {
 						any_owned_pop = {
 							is_same_species = prevprev
-							NOT = { is_same_value = prevprev }
+							NOT = {
+								is_same_value = prevprev
+							}
 						}
 					}
 				}
@@ -143,7 +166,7 @@ can_resettle_pop = {
 		}
 		always = yes
 	}
- #####################################
+	#####################################
 	else = {
 		custom_tooltip = {
 			fail_text = RESETTLEMENT_POLICY_FAIL
@@ -162,7 +185,8 @@ can_country_resettle = {
 			text = owns_non_sapient_robots
 			country_has_shackled_robots = yes
 		}
-		hidden_trigger = { #don't need to show this as tooltip only shown when all game rule fails, and this is a special case
+		hidden_trigger = {
+			#don't need to show this as tooltip only shown when all game rule fails, and this is a special case
 			any_owned_planet = {
 				OR = {
 					has_modifier = doomsday_1
@@ -173,7 +197,7 @@ can_country_resettle = {
 				}
 			}
 		}
- #######################################
+		#######################################
 		hidden_trigger = {
 			any_owned_pop = {
 				is_symbiote = yes
@@ -181,7 +205,7 @@ can_country_resettle = {
 				planet_has_symbiotes = no
 			}
 		}
- #########################################
+		#########################################
 	}
 }
 
@@ -205,18 +229,27 @@ should_force_decline_species = {
 						exists = owner
 						owner = {
 							OR = {
-								NOT = { has_origin = origin_clone_army }					# Can't have Vats.
-								has_country_flag = clone_army_fertility_unlocked			# Can't have Vats anymore.
-								NOT = { owner_main_species = { is_same_species = root } }	# Our Vats can't build this species.
+								NOT = {
+									has_origin = origin_clone_army
+								}								# Can't have Vats.
+								has_country_flag = clone_army_fertility_unlocked								# Can't have Vats anymore.
+								NOT = {
+									owner_main_species = {
+										is_same_species = root
+									}
+								}								# Our Vats can't build this species.
 							}
 						}
 					}
 					# Vats check out, but are there more pops than Vats support?
-					check_variable = { which = clone_pops_missing value < 0 }
+					check_variable = {
+						which = clone_pops_missing
+						value < 0
+					}
 				}
 			}
 		}
- #####################################################
+		#####################################################
 		custom_tooltip = {
 			success_text = SYMBIOTE_FORCE_DECLINE
 			AND = {
@@ -235,7 +268,7 @@ should_force_decline_species = {
 				}
 			}
 		}
- #####################################################
+		#####################################################
 	}
 }
 
@@ -248,8 +281,10 @@ can_be_sold_on_slave_market = {
 		is_non_sapient_robot = yes
 		is_shackled_robot = yes
 	}
-	OR ={
-		ROOT = { is_ai = no }
+	OR = {
+		ROOT = {
+			is_ai = no
+		}
 		has_citizenship_rights = no
 		AND = {
 			is_unemployed = yes
@@ -274,9 +309,9 @@ can_be_sold_on_slave_market = {
 		# Since they can't reproduce, they die out too fast for anyone to want to buy them.
 		has_trait = trait_clone_soldier_infertile
 		has_trait = trait_clone_soldier_infertile_full_potential
- #############################
+		#############################
 		is_symbiote = yes
- #############################
+		#############################
 	}
 }
 
@@ -295,7 +330,7 @@ can_pop_auto_migrate = {
 			has_building = building_slave_processing
 		}
 	}
- ###################################
+	###################################
 	if = {
 		limit = {
 			is_symbiote = yes
@@ -304,9 +339,11 @@ can_pop_auto_migrate = {
 		root = {
 			any_owned_pop = {
 				is_same_species = prevprev
-				NOT = { is_same_value = prev }
+				NOT = {
+					is_same_value = prev
+				}
 			}
 		}
 	}
- ###################################
+	###################################
 }

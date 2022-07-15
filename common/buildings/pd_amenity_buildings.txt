@@ -3,12 +3,10 @@
 #############
 building_luxury_residence = {
 	base_buildtime = @b1_time
-
 	category = amenity
-
 	potential = {
 		OR = {
-			NOT = { 
+			NOT = {
 				OR = {
 					is_planet_class = pc_habitat
 					is_pd_habitat = yes
@@ -16,14 +14,17 @@ building_luxury_residence = {
 			}
 			has_planet_flag = advanced_habitat
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 		exists = owner
 		owner = {
 			is_regular_empire = yes
-			NOT = { has_valid_civic = civic_shared_burden }
+			NOT = {
+				has_valid_civic = civic_shared_burden
+			}
 		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -35,23 +36,24 @@ building_luxury_residence = {
 					is_ai = yes
 				}
 			}
-			owner = { is_regular_empire = no }
-			owner = { has_valid_civic = civic_shared_burden }
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				has_valid_civic = civic_shared_burden
+			}
 			has_modifier = slave_colony
 		}
 	}
-
 	convert_to = {
 		building_drone_storage
 		building_hive_warren
 		building_communal_housing
 	}
-
 	planet_modifier = {
 		planet_housing_add = 3
 		planet_amenities_add = 5
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -63,7 +65,6 @@ building_luxury_residence = {
 			planet_housing_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -73,7 +74,6 @@ building_luxury_residence = {
 			energy = 2
 		}
 	}
-
 	upgrades = {
 		"building_paradise_dome"
 	}
@@ -82,13 +82,11 @@ building_luxury_residence = {
 building_paradise_dome = {
 	base_buildtime = @b2_time
 	can_build = no
-
 	category = amenity
-
 	potential = {
 		has_building = building_luxury_residence
 		OR = {
-			NOT = { 
+			NOT = {
 				OR = {
 					is_planet_class = pc_habitat
 					is_pd_habitat = yes
@@ -103,33 +101,32 @@ building_paradise_dome = {
 			}
 		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
-			owner = { has_valid_civic = civic_shared_burden }
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				has_valid_civic = civic_shared_burden
+			}
 			buildings_no_crystals = yes
 			has_modifier = slave_colony
 		}
 	}
-
 	convert_to = {
 		building_organic_paradise
 		building_drone_megastorage
 		building_expanded_warren
 		building_communal_housing_large
 	}
-
 	planet_modifier = {
 		planet_housing_add = 6
 		planet_amenities_add = 10
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -141,7 +138,6 @@ building_paradise_dome = {
 			planet_housing_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -153,15 +149,15 @@ building_paradise_dome = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
-
 	prerequisites = {
 		"tech_paradise_dome"
 	}
-
 	show_tech_unlock_if = {
 		owner = {
 			is_regular_empire = yes
-			NOT = { has_valid_civic = civic_shared_burden }
+			NOT = {
+				has_valid_civic = civic_shared_burden
+			}
 		}
 	}
 }
@@ -169,12 +165,10 @@ building_paradise_dome = {
 building_communal_housing = {
 	base_buildtime = @b1_time
 	icon = building_residence
-
 	category = amenity
-
 	potential = {
 		OR = {
-			NOT = { 
+			NOT = {
 				OR = {
 					is_planet_class = pc_habitat
 					is_pd_habitat = yes
@@ -182,30 +176,34 @@ building_communal_housing = {
 			}
 			has_planet_flag = advanced_habitat
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 		exists = owner
 		owner = {
 			is_regular_empire = yes
 			has_valid_civic = civic_shared_burden
 		}
 	}
-
 	allow = {
 		buildings_simple_allow = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			AND = {
-				owner = { is_ai = yes }
+				owner = {
+					is_ai = yes
+				}
 				free_building_slots = 0
 				free_jobs < 1
 				free_housing > 10
 			}
 			AND = {
 				is_planet_class = pc_habitat
-				NOT = { has_planet_flag = advanced_habitat }
+				NOT = {
+					has_planet_flag = advanced_habitat
+				}
 			}
 			has_modifier = slave_colony
 			NOT = {
@@ -216,18 +214,15 @@ building_communal_housing = {
 			}
 		}
 	}
-
 	convert_to = {
 		building_drone_storage
 		building_hive_warren
 		building_luxury_residence
 	}
-
 	planet_modifier = {
 		planet_housing_add = 5
 		planet_amenities_add = 3
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -239,7 +234,6 @@ building_communal_housing = {
 			planet_housing_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -249,7 +243,6 @@ building_communal_housing = {
 			energy = 2
 		}
 	}
-
 	upgrades = {
 		"building_communal_housing_large"
 	}
@@ -259,18 +252,16 @@ building_communal_housing_large = {
 	base_buildtime = @b2_time
 	can_build = no
 	icon = building_paradise_dome
-
 	category = amenity
-
 	potential = {
 		has_building = building_communal_housing
-			OR = {
-				NOT = { 
-					OR = {
-						is_planet_class = pc_habitat
-						is_pd_habitat = yes
-					}
+		OR = {
+			NOT = {
+				OR = {
+					is_planet_class = pc_habitat
+					is_pd_habitat = yes
 				}
+			}
 			AND = {
 				has_planet_flag = advanced_habitat
 				exists = owner
@@ -280,11 +271,9 @@ building_communal_housing_large = {
 			}
 		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -292,25 +281,21 @@ building_communal_housing_large = {
 			buildings_no_crystals = yes
 		}
 	}
-
 	show_tech_unlock_if = {
 		owner = {
 			is_regular_empire = yes
 			has_valid_civic = civic_shared_burden
 		}
 	}
-
 	convert_to = {
 		building_drone_megastorage
 		building_expanded_warren
 		building_paradise_dome
 	}
-
 	planet_modifier = {
 		planet_housing_add = 10
 		planet_amenities_add = 6
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -322,7 +307,6 @@ building_communal_housing_large = {
 			planet_housing_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -334,7 +318,6 @@ building_communal_housing_large = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
-
 	prerequisites = {
 		"tech_paradise_dome"
 	}

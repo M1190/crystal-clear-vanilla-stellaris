@@ -3,8 +3,6 @@
 # right now it ignores the "cost" part of it
 # subjects upkeep/production is not stored here, but in the subject type
 #
-
-
 once = {
 	# this is applied only once per country
 	federation = {
@@ -34,7 +32,6 @@ per_relation = {
 			}
 		}
 	}
-
 	non_aggression_pact = {
 		trigger = {
 			has_non_aggression_pact = FROM
@@ -46,22 +43,33 @@ per_relation = {
 			}
 		}
 	}
-
 	migration_pact = {
 		trigger = {
 			has_diplo_migration_treaty = FROM
 			NOT = {
 				AND = {
 					has_federation = yes
-					federation = { has_federation_perk = diplomacy_upkeep_1 }
-					federation = { any_member = { is_same_value = FROM } }
+					federation = {
+						has_federation_perk = diplomacy_upkeep_1
+					}
+					federation = {
+						any_member = {
+							is_same_value = FROM
+						}
+					}
 				}
 			}
 			NOT = {
 				AND = {
 					has_federation = yes
-					federation = { has_federation_law = free_migration_yes }
-					federation = { any_member = { is_same_value = FROM } }
+					federation = {
+						has_federation_law = free_migration_yes
+					}
+					federation = {
+						any_member = {
+							is_same_value = FROM
+						}
+					}
 				}
 			}
 		}
@@ -72,19 +80,23 @@ per_relation = {
 			}
 		}
 	}
-
 	research_agreement = {
 		trigger = {
 			has_research_agreement = FROM
 			NOT = {
 				AND = {
 					has_federation = yes
-					federation = { has_federation_perk = diplomacy_upkeep_1 }
-					federation = { any_member = { is_same_value = FROM } }
+					federation = {
+						has_federation_perk = diplomacy_upkeep_1
+					}
+					federation = {
+						any_member = {
+							is_same_value = FROM
+						}
+					}
 				}
 			}
 		}
-
 		resources = {
 			category = research_agreements
 			upkeep = {
@@ -92,13 +104,13 @@ per_relation = {
 			}
 		}
 	}
-
 	commercial_pact = {
 		trigger = {
 			has_commercial_pact = FROM
-			NOT = { has_ascension_perk = ap_universal_transactions }
+			NOT = {
+				has_ascension_perk = ap_universal_transactions
+			}
 		}
-
 		resources = {
 			category = commercial_pacts
 			upkeep = {
@@ -106,12 +118,10 @@ per_relation = {
 			}
 		}
 	}
-
 	defensive_pact = {
 		trigger = {
 			has_defensive_pact = FROM
 		}
-
 		resources = {
 			category = defensive_pacts
 			upkeep = {
@@ -119,7 +129,6 @@ per_relation = {
 			}
 		}
 	}
-
 	guarantee = {
 		trigger = {
 			is_guaranteeing = FROM
@@ -131,7 +140,6 @@ per_relation = {
 			}
 		}
 	}
-
 	improving_relations = {
 		trigger = {
 			is_improving_relations_with = FROM
@@ -148,7 +156,6 @@ per_relation = {
 			}
 		}
 	}
-
 	harming_relations = {
 		trigger = {
 			is_harming_relations_with = FROM
@@ -164,11 +171,9 @@ per_relation = {
 			}
 		}
 	}
-
 	diplo_stance_closed_borders = {
 		trigger = {
 			has_policy_flag = diplo_stance_mercantile
-
 			has_closed_borders = FROM
 			NOT = {
 				has_rival = FROM
@@ -181,7 +186,6 @@ per_relation = {
 			}
 		}
 	}
-
 	embassy = {
 		trigger = {
 			has_active_tradition = tr_diplomacy_diplomatic_networking
@@ -194,7 +198,6 @@ per_relation = {
 			}
 		}
 	}
-
 	rls_embassy = {
 		trigger = {
 			has_edict = play_as_ruler_campaign_trust_focus

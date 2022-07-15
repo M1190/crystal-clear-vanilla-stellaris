@@ -1,14 +1,11 @@
 ##########################################################################
 # Decisions
 ##########################################################################
-
 # Remove Exotic From Unique World
 decision_unexotic_uniques = {
 	icon = decision_ashhabs
 	owned_planets_only = yes
-
 	enactment_time = 1800
-
 	resources = {
 		category = decisions
 		cost = {
@@ -16,7 +13,6 @@ decision_unexotic_uniques = {
 			alloys = 1500
 		}
 	}
-
 	potential = {
 		OR = {
 			is_planet_class = pc_crystal
@@ -30,14 +26,21 @@ decision_unexotic_uniques = {
 			has_modifier = pdsulfuratmosphere
 			has_modifier = pdammoniaatmosphere
 		}
-		NOR = { 
-			owner = { has_trait = trait_pc_ash_preference }
-			owner = { has_trait = trait_pc_ammonia_preference }
-			owner = { has_trait = trait_pc_methane_preference }
-			owner = { has_trait = trait_pc_sulfur_preference }
+		NOR = {
+			owner = {
+				has_trait = trait_pc_ash_preference
+			}
+			owner = {
+				has_trait = trait_pc_ammonia_preference
+			}
+			owner = {
+				has_trait = trait_pc_methane_preference
+			}
+			owner = {
+				has_trait = trait_pc_sulfur_preference
+			}
 		}
-	}	
-
+	}
 	effect = {
 		hidden_effect = {
 			remove_planet_flag = uniqueexotichab
@@ -47,24 +50,39 @@ decision_unexotic_uniques = {
 			remove_modifier = pdammoniaatmosphere
 			remove_modifier = exoticuniquehab
 			IF = {
-				limit = { is_planet_class = pc_crystal }
-				set_planet_entity = { picture = pc_crystal }
+				limit = {
+					is_planet_class = pc_crystal
+				}
+				set_planet_entity = {
+					picture = pc_crystal
+				}
 			}
 			IF = {
-				limit = { is_planet_class = pc_floating }
-				set_planet_entity = { picture = pc_floating }
+				limit = {
+					is_planet_class = pc_floating
+				}
+				set_planet_entity = {
+					picture = pc_floating
+				}
 			}
 			IF = {
-				limit = { is_planet_class = pc_graveyard }
-				set_planet_entity = { picture = pc_graveyard }
+				limit = {
+					is_planet_class = pc_graveyard
+				}
+				set_planet_entity = {
+					picture = pc_graveyard
+				}
 			}
 			IF = {
-				limit = { is_planet_class = pc_technoorganic }
-				set_planet_entity = { picture = pc_technoorganic }
+				limit = {
+					is_planet_class = pc_technoorganic
+				}
+				set_planet_entity = {
+					picture = pc_technoorganic
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 100
 	}
@@ -74,16 +92,13 @@ decision_unexotic_uniques = {
 decision_stopexotic_uniques = {
 	icon = default
 	#owned_planets_only = yes
-
 	#enactment_time = 1800
-
 	resources = {
 		category = decisions
 		cost = {
 			energy = 500
 		}
 	}
-
 	potential = {
 		OR = {
 			is_planet_class = pc_crystal
@@ -98,15 +113,13 @@ decision_stopexotic_uniques = {
 		#	owner = { has_trait = trait_pc_methane_preference }
 		#	owner = { has_trait = trait_pc_sulfur_preference }
 		#}
-	}	
-
+	}
 	effect = {
 		remove_modifier = buildinexotichhab
 		hidden_effect = {
 			remove_planet_flag = uniqueexotichab
 		}
 	}
-
 	ai_weight = {
 		weight = 100
 	}
@@ -115,7 +128,6 @@ decision_stopexotic_uniques = {
 # Add Ash Habs to Unique Worlds
 decision_unique_ash_habs = {
 	icon = decision_ashhabs
-
 	resources = {
 		category = decisions
 		cost = {
@@ -123,7 +135,6 @@ decision_unique_ash_habs = {
 			alloys = 1500
 		}
 	}
-
 	potential = {
 		OR = {
 			is_planet_class = pc_crystal
@@ -131,23 +142,30 @@ decision_unique_ash_habs = {
 			is_planet_class = pc_floating
 			is_planet_class = pc_technoorganic
 		}
-		NOT = { has_modifier = pdashatmosphere }
-		NOT = { has_planet_flag = uniqueexotichab }
-		space_owner = { has_trait = trait_pc_ash_preference }
-	}	
-
+		NOT = {
+			has_modifier = pdashatmosphere
+		}
+		NOT = {
+			has_planet_flag = uniqueexotichab
+		}
+		space_owner = {
+			has_trait = trait_pc_ash_preference
+		}
+	}
 	effect = {
 		custom_tooltip = exoticuniquehabtooltip
 		hidden_effect = {
 			set_planet_flag = uniqueexotichab
 			add_modifier = {
-				modifier = buildinexotichhab 
+				modifier = buildinexotichhab
 				days = 1800
 			}
-			planet_event = { id = pdexotic.08 days = 1800 } 
+			planet_event = {
+				id = pdexotic.08
+				days = 1800
+			}
 		}
 	}
-
 	ai_weight = {
 		weight = 100
 	}
@@ -156,7 +174,6 @@ decision_unique_ash_habs = {
 # Add Sulfur Habs to Unique Worlds
 decision_unique_sulfur_habs = {
 	icon = decision_sulfurhabs
-
 	resources = {
 		category = decisions
 		cost = {
@@ -164,7 +181,6 @@ decision_unique_sulfur_habs = {
 			alloys = 1500
 		}
 	}
-
 	potential = {
 		OR = {
 			is_planet_class = pc_crystal
@@ -172,23 +188,30 @@ decision_unique_sulfur_habs = {
 			is_planet_class = pc_floating
 			is_planet_class = pc_technoorganic
 		}
-		NOT = { has_modifier = pdsulfuratmosphere }
-		NOT = { has_planet_flag = uniqueexotichab }
-		space_owner = { has_trait = trait_pc_sulfur_preference }
-	}	
-
+		NOT = {
+			has_modifier = pdsulfuratmosphere
+		}
+		NOT = {
+			has_planet_flag = uniqueexotichab
+		}
+		space_owner = {
+			has_trait = trait_pc_sulfur_preference
+		}
+	}
 	effect = {
 		custom_tooltip = exoticuniquehabtooltip
 		hidden_effect = {
 			set_planet_flag = uniqueexotichab
 			add_modifier = {
-				modifier = buildinexotichhab 
+				modifier = buildinexotichhab
 				days = 1800
 			}
-			planet_event = { id = pdexotic.08 days = 1800 } 
+			planet_event = {
+				id = pdexotic.08
+				days = 1800
+			}
 		}
 	}
-
 	ai_weight = {
 		weight = 100
 	}
@@ -197,7 +220,6 @@ decision_unique_sulfur_habs = {
 # Add Methane Habs to Unique Worlds
 decision_unique_methane_habs = {
 	icon = decision_methanehabs
-
 	resources = {
 		category = decisions
 		cost = {
@@ -205,7 +227,6 @@ decision_unique_methane_habs = {
 			alloys = 1500
 		}
 	}
-
 	potential = {
 		OR = {
 			is_planet_class = pc_crystal
@@ -213,23 +234,30 @@ decision_unique_methane_habs = {
 			is_planet_class = pc_floating
 			is_planet_class = pc_technoorganic
 		}
-		NOT = { has_modifier = pdmethaneatmosphere }
-		NOT = { has_planet_flag = uniqueexotichab }
-		space_owner = { has_trait = trait_pc_methane_preference }
-	}	
-
+		NOT = {
+			has_modifier = pdmethaneatmosphere
+		}
+		NOT = {
+			has_planet_flag = uniqueexotichab
+		}
+		space_owner = {
+			has_trait = trait_pc_methane_preference
+		}
+	}
 	effect = {
 		custom_tooltip = exoticuniquehabtooltip
 		hidden_effect = {
 			set_planet_flag = uniqueexotichab
 			add_modifier = {
-				modifier = buildinexotichhab 
+				modifier = buildinexotichhab
 				days = 1800
 			}
-			planet_event = { id = pdexotic.08 days = 1800 } 
+			planet_event = {
+				id = pdexotic.08
+				days = 1800
+			}
 		}
 	}
-
 	ai_weight = {
 		weight = 100
 	}
@@ -238,7 +266,6 @@ decision_unique_methane_habs = {
 # Add Ammonia Habs to Unique Worlds
 decision_unique_ammonia_habs = {
 	icon = decision_ammoniahabs
-
 	resources = {
 		category = decisions
 		cost = {
@@ -246,7 +273,6 @@ decision_unique_ammonia_habs = {
 			alloys = 1500
 		}
 	}
-
 	potential = {
 		OR = {
 			is_planet_class = pc_crystal
@@ -254,23 +280,30 @@ decision_unique_ammonia_habs = {
 			is_planet_class = pc_floating
 			is_planet_class = pc_technoorganic
 		}
-		NOT = { has_modifier = pdammoniaatmosphere }
-		NOT = { has_planet_flag = uniqueexotichab }
-		space_owner = { has_trait = trait_pc_ammonia_preference }
-	}	
-
+		NOT = {
+			has_modifier = pdammoniaatmosphere
+		}
+		NOT = {
+			has_planet_flag = uniqueexotichab
+		}
+		space_owner = {
+			has_trait = trait_pc_ammonia_preference
+		}
+	}
 	effect = {
 		custom_tooltip = exoticuniquehabtooltip
 		hidden_effect = {
 			set_planet_flag = uniqueexotichab
 			add_modifier = {
-				modifier = buildinexotichhab 
+				modifier = buildinexotichhab
 				days = 1800
 			}
-			planet_event = { id = pdexotic.08 days = 1800 } 
+			planet_event = {
+				id = pdexotic.08
+				days = 1800
+			}
 		}
 	}
-
 	ai_weight = {
 		weight = 100
 	}

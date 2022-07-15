@@ -1,13 +1,16 @@
 @cooldown = 3600
-
 # Arena Combat Challenge Type
 challenge_type_arena_combat = {
-	potential = { has_federation_law = succession_type_challenge }
+	potential = {
+		has_federation_law = succession_type_challenge
+	}
 	allow = {
 		custom_tooltip = {
 			NOT = {
 				AND = {
-					NOT = { has_federation_law = challenge_type_arena_combat }
+					NOT = {
+						has_federation_law = challenge_type_arena_combat
+					}
 					has_modifier = federation_law_category_challenge_cooldown
 					has_any_federation_law_in_category = law_category_challenge
 				}
@@ -22,23 +25,22 @@ challenge_type_arena_combat = {
 			remove_federation_flag = challenge_type_no_cooldown
 		}
 		else_if = {
-			limit = { has_federation_flag = enable_federation_cooldowns }
+			limit = {
+				has_federation_flag = enable_federation_cooldowns
+			}
 			add_modifier = {
 				modifier = federation_law_category_challenge_cooldown
 				days = @cooldown
 			}
 		}
 	}
-
 	ai_weight = {
 		base = 0
-
 		#Default support
 		modifier = {
 			desc = federation_acceptance_generally_positive
 			add = 51
 		}
-
 		#Behaviour-specific
 		modifier = {
 			desc = federation_acceptance_ruler_cyborg
@@ -124,7 +126,9 @@ challenge_type_arena_combat = {
 
 # Psionic Battle Challenge Type
 challenge_type_psionic_battle = {
-	potential = { has_federation_law = succession_type_challenge }
+	potential = {
+		has_federation_law = succession_type_challenge
+	}
 	allow = {
 		custom_tooltip = {
 			fail_text = "requires_psionic_pops"
@@ -140,7 +144,9 @@ challenge_type_psionic_battle = {
 		custom_tooltip = {
 			NOT = {
 				AND = {
-					NOT = { has_federation_law = challenge_type_psionic_battle }
+					NOT = {
+						has_federation_law = challenge_type_psionic_battle
+					}
 					has_modifier = federation_law_category_challenge_cooldown
 					has_any_federation_law_in_category = law_category_challenge
 				}
@@ -149,23 +155,22 @@ challenge_type_psionic_battle = {
 	}
 	on_enact = {
 		if = {
-			limit = { has_federation_flag = enable_federation_cooldowns }
+			limit = {
+				has_federation_flag = enable_federation_cooldowns
+			}
 			add_modifier = {
 				modifier = federation_law_category_challenge_cooldown
 				days = @cooldown
 			}
 		}
 	}
-
 	ai_weight = {
 		base = 0
-
 		#Default support
 		modifier = {
 			desc = federation_acceptance_generally_positive
 			add = 26
 		}
-
 		# Psionic empires should like it
 		modifier = {
 			desc = federation_acceptance_no_psionic
@@ -253,7 +258,6 @@ challenge_type_psionic_battle = {
 				has_trait = leader_trait_ruler_chosen
 			}
 		}
-
 		#Behaviour-specific
 		modifier = {
 			desc = federation_acceptance_gestalt
@@ -265,12 +269,16 @@ challenge_type_psionic_battle = {
 
 # Bidding War Challenge Type
 challenge_type_bidding_war = {
-	potential = { has_federation_law = succession_type_challenge }
+	potential = {
+		has_federation_law = succession_type_challenge
+	}
 	allow = {
 		custom_tooltip = {
 			NOT = {
 				AND = {
-					NOT = { has_federation_law = challenge_type_bidding_war }
+					NOT = {
+						has_federation_law = challenge_type_bidding_war
+					}
 					has_modifier = federation_law_category_challenge_cooldown
 					has_any_federation_law_in_category = law_category_challenge
 				}
@@ -279,23 +287,22 @@ challenge_type_bidding_war = {
 	}
 	on_enact = {
 		if = {
-			limit = { has_federation_flag = enable_federation_cooldowns }
+			limit = {
+				has_federation_flag = enable_federation_cooldowns
+			}
 			add_modifier = {
 				modifier = federation_law_category_challenge_cooldown
 				days = @cooldown
 			}
 		}
 	}
-
 	ai_weight = {
 		base = 0
-
 		#Default support
 		modifier = {
 			desc = federation_acceptance_generally_positive
 			add = 26
 		}
-
 		#Behaviour-specific
 		modifier = {
 			desc = federation_acceptance_trade_league
@@ -328,12 +335,16 @@ challenge_type_bidding_war = {
 
 # Thesis Challenge Type
 challenge_type_thesis = {
-	potential = { has_federation_law = succession_type_challenge }
+	potential = {
+		has_federation_law = succession_type_challenge
+	}
 	allow = {
 		custom_tooltip = {
 			NOT = {
 				AND = {
-					NOT = { has_federation_law = challenge_type_thesis }
+					NOT = {
+						has_federation_law = challenge_type_thesis
+					}
 					has_modifier = federation_law_category_challenge_cooldown
 					has_any_federation_law_in_category = law_category_challenge
 				}
@@ -342,35 +353,32 @@ challenge_type_thesis = {
 	}
 	on_enact = {
 		if = {
-			limit = { has_federation_flag = enable_federation_cooldowns }
+			limit = {
+				has_federation_flag = enable_federation_cooldowns
+			}
 			add_modifier = {
 				modifier = federation_law_category_challenge_cooldown
 				days = @cooldown
 			}
 		}
 	}
-
 	ai_weight = {
 		base = 0
-
 		#Default support
 		modifier = {
 			desc = federation_acceptance_generally_positive
 			add = 26
 		}
-
 		modifier = {
 			desc = federation_acceptance_materialist
 			add = 5
 			is_materialist = yes
 		}
-
 		modifier = {
 			desc = federation_acceptance_erudite_explorers
 			add = 26
 			is_erudite_explorers = yes
 		}
-
 		#Technocrats and materialists will relish it
 		modifier = {
 			desc = federation_acceptance_technocracy

@@ -2,7 +2,6 @@
 decision_arcmas_restore_arcology = {
 	owned_planets_only = yes
 	icon = decision_arcology_project
-
 	enactment_time = 1000
 	resources = {
 		category = decisions
@@ -11,22 +10,26 @@ decision_arcmas_restore_arcology = {
 			influence = 150
 		}
 	}
-	
 	potential = {
 		is_planet_class = pc_city
 		exists = owner
-		owner = { has_origin = origin_arcology }
+		owner = {
+			has_origin = origin_arcology
+		}
 		has_planet_flag = arcmas_origin_project_flag
-		NOT = { has_planet_flag = arcmas_origin_project_complete }
+		NOT = {
+			has_planet_flag = arcmas_origin_project_complete
+		}
 	}
 	allow = {
-		owner = { has_technology = tech_housing_1 }
+		owner = {
+			has_technology = tech_housing_1
+		}
 	}
-	
 	effect = {
 		#Clear up problems on the planet
 		custom_tooltip = decision_arcmas_restore_arcology_effects
-		hidden_effect = {		
+		hidden_effect = {
 			remove_modifier = arcology_starting_modifier
 			remove_modifier = arcmas_resource_1
 			remove_modifier = arcmas_resource_2
@@ -37,13 +40,12 @@ decision_arcmas_restore_arcology = {
 			remove_deposit = d_failing_cities_3
 			add_deposit = d_plentiful_stockpile
 			add_deposit = d_renewed_city
-			
 			set_planet_flag = arcmas_origin_project_complete
-			planet_event = { id = arcmas.27 }
-			
+			planet_event = {
+				id = arcmas.27
+			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
@@ -54,7 +56,6 @@ decision_lockdown = {
 	owned_planets_only = yes
 	icon = decision_penal_colony
 	sound = event_administrative_work
-
 	enactment_time = 0
 	resources = {
 		category = decisions
@@ -62,7 +63,6 @@ decision_lockdown = {
 			influence = 100
 		}
 	}
-	
 	potential = {
 		exists = owner
 		owner = {
@@ -76,14 +76,14 @@ decision_lockdown = {
 		}
 		is_homeworld = yes
 	}
-	
 	allow = {
 	}
-	
-	effect = {	
-		add_modifier = { modifier = "under_lockdown" days = -1 }
+	effect = {
+		add_modifier = {
+			modifier = "under_lockdown"
+			days = -1
+		}
 	}
-	
 	ai_weight = {
 		weight = 10
 	}
@@ -94,7 +94,6 @@ decision_end_lockdown = {
 	owned_planets_only = yes
 	icon = decision_penal_colony
 	sound = event_administrative_work
-
 	enactment_time = 0
 	resources = {
 		category = decisions
@@ -102,21 +101,17 @@ decision_end_lockdown = {
 			influence = 25
 		}
 	}
-	
 	potential = {
 		has_modifier = under_lockdown
 	}
-	
 	allow = {
 	}
-	
-	effect = {	
+	effect = {
 		custom_tooltip = decision_end_lockdown_tt
 		hidden_effect = {
 			remove_modifier = under_lockdown
 		}
 	}
-	
 	ai_weight = {
 		weight = 1
 	}
@@ -127,7 +122,6 @@ decision_increase_diversity = {
 	owned_planets_only = yes
 	icon = decision_alien_propaganda
 	sound = event_administrative_work
-
 	enactment_time = 30
 	resources = {
 		category = decisions
@@ -210,7 +204,6 @@ decision_increase_diversity = {
 			consumer_goods = 1500
 		}
 	}
-
 	potential = {
 		NOR = {
 			has_planet_flag = diversity_strengthened
@@ -222,22 +215,28 @@ decision_increase_diversity = {
 			has_valid_civic = civic_multiculturalism
 		}
 	}
-	
 	allow = {
 		owner = {
 			num_communications > 1
 		}
 	}
-
-	effect = {	
-		add_modifier = { modifier = "diversity_strengthened" days = 1800 }
+	effect = {
+		add_modifier = {
+			modifier = "diversity_strengthened"
+			days = 1800
+		}
 		hidden_effect = {
-			planet_event = { id = civic.3 days = 1800 }
-			planet_event = { id = civic.4 days = 3650 }
+			planet_event = {
+				id = civic.3
+				days = 1800
+			}
+			planet_event = {
+				id = civic.4
+				days = 3650
+			}
 			set_planet_flag = diversity_strengthened
 		}
 	}
-
 	ai_weight = {
 		weight = 1
 		modifier = {
@@ -251,17 +250,17 @@ decision_increase_diversity = {
 decision_sanctify_singularity = {
 	icon = decision_surreal_visions
 	sound = event_administrative_work
-	
 	resources = {
 		category = decisions
 		cost = {
 			influence = 75
 		}
 	}
-
 	potential = {
 		exists = space_owner
-		space_owner = { is_same_value = from }
+		space_owner = {
+			is_same_value = from
+		}
 		from = {
 			has_valid_civic = civic_physics_cult
 			has_ascension_perk = ap_consecrated_worlds_nihilistic
@@ -272,7 +271,6 @@ decision_sanctify_singularity = {
 			has_modifier = sanctify_1
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			from = {
@@ -284,17 +282,22 @@ decision_sanctify_singularity = {
 			fail_text = sanctified_worlds_too_many
 		}
 	}
-
 	effect = {
 		add_modifier = {
 			modifier = "sanctify_1"
 			days = -1
 		}
-		hidden_effect = { #make similar to cw ap
+		hidden_effect = {
+			#make similar to cw ap
 			set_planet_flag = sanctified@from
 			from = {
 				if = {
-					limit = { check_variable = { which = num_sanctified_worlds value < 1 }	}
+					limit = {
+						check_variable = {
+							which = num_sanctified_worlds
+							value < 1
+						}
+					}
 					set_variable = {
 						which = num_sanctified_worlds
 						value = 0
@@ -345,7 +348,6 @@ decision_sanctify_singularity = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 0
 		modifier = {
@@ -354,7 +356,12 @@ decision_sanctify_singularity = {
 			NOT = {
 				space_owner = {
 					any_owned_species = {
-						prevprev = { habitability = { who = prev value > 0.35 }	}
+						prevprev = {
+							habitability = {
+								who = prev
+								value > 0.35
+							}
+						}
 					}
 				}
 			}
@@ -370,10 +377,11 @@ decision_consecrated_worlds_nihilistic = {
 			influence = 50
 		}
 	}
-
 	potential = {
 		exists = space_owner
-		space_owner = { is_same_value = from }
+		space_owner = {
+			is_same_value = from
+		}
 		from = {
 			has_ascension_perk = ap_consecrated_worlds_nihilistic
 		}
@@ -388,7 +396,6 @@ decision_consecrated_worlds_nihilistic = {
 			has_modifier = consecrated_quality_4
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			from = {
@@ -400,11 +407,12 @@ decision_consecrated_worlds_nihilistic = {
 			fail_text = consecrated_worlds_too_many
 		}
 		custom_tooltip = {
-			NOT = { exists = owner }
+			NOT = {
+				exists = owner
+			}
 			fail_text = consecrated_worlds_planet_owned
 		}
 	}
-
 	effect = {
 		custom_tooltip = decision_consecrated_worlds_effects_custom
 		# determine quality tier, set variable
@@ -412,7 +420,12 @@ decision_consecrated_worlds_nihilistic = {
 			set_planet_flag = consecrated@from
 			from = {
 				if = {
-					limit = { check_variable = { which = num_consecrated_worlds value < 1 }	}
+					limit = {
+						check_variable = {
+							which = num_consecrated_worlds
+							value < 1
+						}
+					}
 					set_variable = {
 						which = num_consecrated_worlds
 						value = 0
@@ -443,10 +456,14 @@ decision_consecrated_worlds_nihilistic = {
 						has_planet_flag = holy_world_3
 						has_planet_flag = holy_world_4
 					}
-					any_country = { has_country_flag = fallen_empire_2 }
+					any_country = {
+						has_country_flag = fallen_empire_2
+					}
 				}
 				random_country = {
-					limit = { has_country_flag = fallen_empire_2 }
+					limit = {
+						has_country_flag = fallen_empire_2
+					}
 					add_opinion_modifier = {
 						who = from
 						modifier = opinion_worships_our_holy_world
@@ -529,7 +546,9 @@ decision_consecrated_worlds_nihilistic = {
 				}
 			}
 			else_if = {
-				limit = { uninhabitable_regular_planet = yes }
+				limit = {
+					uninhabitable_regular_planet = yes
+				}
 				custom_tooltip = consecrated_worlds_unsuitable
 				random_list = {
 					10 = {
@@ -585,7 +604,9 @@ decision_consecrated_worlds_nihilistic = {
 			else_if = {
 				limit = {
 					habitable_planet = yes
-					NOT = { is_planet_class = pc_nuked }
+					NOT = {
+						is_planet_class = pc_nuked
+					}
 				}
 				custom_tooltip = consecrated_worlds_suitable
 				random_list = {
@@ -640,7 +661,9 @@ decision_consecrated_worlds_nihilistic = {
 				}
 			}
 			else_if = {
-				limit = { is_planet_class = pc_nuked }
+				limit = {
+					is_planet_class = pc_nuked
+				}
 				custom_tooltip = consecrated_worlds_perfect_for_nihilists
 				random_list = {
 					0 = {
@@ -712,7 +735,6 @@ decision_consecrated_worlds_nihilistic = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 0
 		modifier = {
@@ -721,7 +743,12 @@ decision_consecrated_worlds_nihilistic = {
 			NOT = {
 				space_owner = {
 					any_owned_species = {
-						prevprev = { habitability = { who = prev value > 0.35 }	}
+						prevprev = {
+							habitability = {
+								who = prev
+								value > 0.35
+							}
+						}
 					}
 				}
 			}
@@ -737,14 +764,12 @@ decision_unconsecrated_worlds_nihilistic = {
 			influence = 50
 		}
 	}
-
 	potential = {
 		from = {
 			has_ascension_perk = ap_consecrated_worlds_nihilistic
 		}
 		has_planet_flag = consecrated@from
 	}
-
 	allow = {
 		OR = {
 			has_modifier = consecrated_quality_1
@@ -753,7 +778,6 @@ decision_unconsecrated_worlds_nihilistic = {
 			has_modifier = consecrated_quality_4
 		}
 	}
-
 	effect = {
 		hidden_effect = {
 			from = {
@@ -811,11 +835,16 @@ decision_unconsecrated_worlds_nihilistic = {
 						has_planet_flag = holy_world_3
 						has_planet_flag = holy_world_4
 					}
-					any_country = { has_country_flag = fallen_empire_2 }
+					any_country = {
+						has_country_flag = fallen_empire_2
+					}
 				}
 				random_country = {
-					limit = { has_country_flag = fallen_empire_2 }
-					remove_opinion_modifier = { # Currently removes all instances of this modifier, even if several have been added
+					limit = {
+						has_country_flag = fallen_empire_2
+					}
+					remove_opinion_modifier = {
+						# Currently removes all instances of this modifier, even if several have been added
 						who = from
 						modifier = opinion_worships_our_holy_world
 					}
@@ -834,7 +863,6 @@ decision_cegv2_convert_planet = {
 	owned_planets_only = yes
 	icon = decision_divine_algorithm
 	sound = event_administrative_work
-
 	enactment_time = 0
 	resources = {
 		category = decisions
@@ -843,7 +871,6 @@ decision_cegv2_convert_planet = {
 			rare_crystals = 10
 		}
 	}
-	
 	potential = {
 		exists = owner
 		owner = {
@@ -853,14 +880,14 @@ decision_cegv2_convert_planet = {
 			has_modifier = pm_crystal_energy_planet
 		}
 	}
-	
 	allow = {
 	}
-	
 	effect = {
-		add_modifier = { modifier = "pm_crystal_energy_planet" days = -1 }
+		add_modifier = {
+			modifier = "pm_crystal_energy_planet"
+			days = -1
+		}
 	}
-	
 	ai_weight = {
 		weight = 10
 	}
@@ -871,7 +898,6 @@ decision_cegv2_convert_planet_back = {
 	owned_planets_only = yes
 	icon = decision_divine_algorithm
 	sound = event_administrative_work
-
 	enactment_time = 0
 	resources = {
 		category = decisions
@@ -879,21 +905,17 @@ decision_cegv2_convert_planet_back = {
 			minerals = 200
 		}
 	}
-	
 	potential = {
 		has_modifier = pm_crystal_energy_planet
 	}
-	
 	allow = {
 	}
-	
-	effect = {	
+	effect = {
 		custom_tooltip = decision_cegv2_pm_tt2
 		hidden_effect = {
 			remove_modifier = pm_crystal_energy_planet
 		}
 	}
-	
 	ai_weight = {
 		weight = 1
 	}
@@ -904,7 +926,6 @@ decision_tma_intelligence = {
 	owned_planets_only = yes
 	icon = decision_synth_sabotage
 	sound = event_administrative_work
-
 	enactment_time = 0
 	resources = {
 		category = decisions
@@ -913,26 +934,28 @@ decision_tma_intelligence = {
 			unity = 100
 		}
 	}
-	
 	potential = {
 		exists = owner
 		owner = {
 			has_country_flag = maai_creator
 		}
 		has_global_flag = master_ai_project_complete
-		NOT = { has_global_flag = tma_hostile }
+		NOT = {
+			has_global_flag = tma_hostile
+		}
 	}
-	
 	allow = {
 		NOT = {
 			has_modifier = tma_boost_planet
 		}
 		num_pops > 5
 	}
-	
 	effect = {
 		custom_tooltip = tma_intelligence_planet_tt
-		add_modifier = { modifier = "tma_boost_planet" days = 720 }
+		add_modifier = {
+			modifier = "tma_boost_planet"
+			days = 720
+		}
 		hidden_effect = {
 			owner = {
 				if = {
@@ -948,7 +971,6 @@ decision_tma_intelligence = {
 					limit = {
 						num_pops >= 10
 						num_pops < 20
-						
 					}
 					change_variable = {
 						which = tma_intelligence
@@ -959,7 +981,6 @@ decision_tma_intelligence = {
 					limit = {
 						num_pops >= 20
 						num_pops < 30
-						
 					}
 					change_variable = {
 						which = tma_intelligence
@@ -970,7 +991,6 @@ decision_tma_intelligence = {
 					limit = {
 						num_pops >= 30
 						num_pops < 40
-						
 					}
 					change_variable = {
 						which = tma_intelligence
@@ -981,7 +1001,6 @@ decision_tma_intelligence = {
 					limit = {
 						num_pops >= 40
 						num_pops < 50
-						
 					}
 					change_variable = {
 						which = tma_intelligence
@@ -991,7 +1010,6 @@ decision_tma_intelligence = {
 				else_if = {
 					limit = {
 						num_pops >= 50
-						
 					}
 					change_variable = {
 						which = tma_intelligence
@@ -1017,7 +1035,6 @@ decision_tma_intelligence = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 10
 	}

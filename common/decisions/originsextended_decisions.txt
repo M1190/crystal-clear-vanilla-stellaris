@@ -1,31 +1,24 @@
-
 ### ORIGINS EXTENDED DECISIONS
-
 decision_transplant_gaia = {
 	owned_planets_only = yes
 	sound = event_laboratory_sound
 	icon = decision_resources
-
 	enactment_time = 180
-
 	resources = {
 		category = decisions
 		cost = {
 			food = 750
 		}
 	}
-
 	potential = {
 		has_modifier = originsextended_no_gaia
 	}
-
-	allow = {}
-
+	allow = {
+	}
 	effect = {
 		add_deposit = d_oe_gaia_colony
 		remove_modifier = originsextended_no_gaia
 	}
-
 	ai_weight = {
 		weight = 10
 	}
@@ -34,7 +27,6 @@ decision_transplant_gaia = {
 originsextended_decision_infest_world = {
 	owned_planets_only = yes
 	icon = decision_animal_wildlife
-
 	enactment_time = 4000
 	resources = {
 		category = decisions
@@ -43,7 +35,6 @@ originsextended_decision_infest_world = {
 			food = 25000
 		}
 	}
-
 	potential = {
 		NOR = {
 			is_planet_class = pc_city
@@ -61,10 +52,13 @@ originsextended_decision_infest_world = {
 			has_origin = originsextended_infest
 		}
 	}
-
 	allow = {
 		if = {
-			limit = { owner = { is_ai = no } }
+			limit = {
+				owner = {
+					is_ai = no
+				}
+			}
 			custom_tooltip = {
 				fail_text = originsextended_decision_infest_world_requirements_1
 				free_district_slots < 1
@@ -84,7 +78,6 @@ originsextended_decision_infest_world = {
 			}
 		}
 	}
-
 	on_queued = {
 		owner = {
 			set_country_flag = originsextended_infest_decision_on
@@ -100,7 +93,6 @@ originsextended_decision_infest_world = {
 			remove_country_flag = originsextended_infest_decision_on
 		}
 	}
-
 	effect = {
 		change_pc = pc_hive
 		custom_tooltip = originsextended_decision_infest_world_effects
@@ -122,7 +114,9 @@ originsextended_decision_infest_world = {
 				graphical_culture = owner
 			}
 			owner = {
-				country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
+				country_event = {
+					id = distar.201
+				}				# port for living planet distar.197, triggers in event
 			}
 			#planet_event = { id = mega.200 }
 			if = {
@@ -133,12 +127,14 @@ originsextended_decision_infest_world = {
 					}
 				}
 				owner = {
-					set_timed_country_flag = { flag = resolution_breached_terraformed days = 4000 }
+					set_timed_country_flag = {
+						flag = resolution_breached_terraformed
+						days = 4000
+					}
 				}
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 1
 		modifier = {

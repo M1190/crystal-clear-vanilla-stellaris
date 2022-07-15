@@ -1,20 +1,18 @@
 ##########
 # NORMAL #
 ##########
-
 building_temple = {
 	base_buildtime = @b1_time
-
 	category = unity
-
 	potential = {
 		exists = owner
 		owner = {
 			is_spiritualist = yes
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -24,13 +22,11 @@ building_temple = {
 			has_modifier = slave_colony
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_1
 		building_hive_node
 		building_uplink_node
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -40,54 +36,58 @@ building_temple = {
 			energy = @b1_upkeep
 		}
 	}
-
 	planet_modifier = {
 		job_priest_add = 1
 		pop_ethic_spiritualist_attraction_mult = 0.05
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_megacorp = no }
+			owner = {
+				is_megacorp = no
+			}
 		}
 		modifier = {
 			job_priest_add = 1
 		}
 	}
-
 	triggered_desc = {
 		text = job_priest_effect_desc
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_megacorp = yes }
+			owner = {
+				is_megacorp = yes
+			}
 		}
 		modifier = {
 			job_manager_add = 1
 		}
 	}
-#Bug Branch
+	#Bug Branch
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_bugged_militant_zealots = yes }
+			owner = {
+				is_bugged_militant_zealots = yes
+			}
 		}
 		modifier = {
 			job_bugged_templar_add = 1
 		}
 	}
-#Normal Code
+	#Normal Code
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_megacorp = yes }
+			owner = {
+				is_megacorp = yes
+			}
 		}
 		text = job_manager_effect_desc
 	}
-#Bug Branch
+	#Bug Branch
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -97,15 +97,13 @@ building_temple = {
 		}
 		text = job_bugged_templar_effect_desc
 	}
-#Normal Code
+	#Normal Code
 	upgrades = {
 		building_holotemple
 	}
-
 	prerequisites = {
 		"tech_cultural_heritage"
 	}
-
 	show_tech_unlock_if = {
 		is_spiritualist = yes
 	}
@@ -114,21 +112,19 @@ building_temple = {
 building_holotemple = {
 	base_buildtime = @b2_time
 	can_build = no
-
 	category = unity
-
 	potential = {
 		exists = owner
 		owner = {
 			is_spiritualist = yes
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -139,13 +135,11 @@ building_holotemple = {
 			buildings_no_crystals = yes
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_2
 		building_hive_cluster
 		building_network_junction
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -157,36 +151,36 @@ building_holotemple = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
-
 	planet_modifier = {
 		job_priest_add = 2
-		pop_ethic_spiritualist_attraction_mult = 0.10
+		pop_ethic_spiritualist_attraction_mult = 0.1
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_megacorp = no }
+			owner = {
+				is_megacorp = no
+			}
 		}
 		modifier = {
 			job_priest_add = 2
 		}
 	}
-
 	triggered_desc = {
 		text = job_priest_effect_desc
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_megacorp = yes }
+			owner = {
+				is_megacorp = yes
+			}
 		}
 		modifier = {
 			job_manager_add = 2
 		}
 	}
-#Bug Branch
+	#Bug Branch
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -198,15 +192,17 @@ building_holotemple = {
 			job_bugged_templar_add = 2
 		}
 	}
-#Normal Code
+	#Normal Code
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_megacorp = yes }
+			owner = {
+				is_megacorp = yes
+			}
 		}
 		text = job_manager_effect_desc
 	}
-#Bug Branch
+	#Bug Branch
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -218,15 +214,13 @@ building_holotemple = {
 		}
 		text = job_bugged_templar_effect_desc
 	}
-#Normal Code
+	#Normal Code
 	upgrades = {
 		building_sacred_nexus
 	}
-
 	prerequisites = {
 		"tech_holographic_rituals"
 	}
-
 	show_tech_unlock_if = {
 		is_spiritualist = yes
 	}
@@ -235,21 +229,19 @@ building_holotemple = {
 building_sacred_nexus = {
 	base_buildtime = @b3_time
 	can_build = no
-
 	category = unity
-
 	potential = {
 		exists = owner
 		owner = {
 			is_spiritualist = yes
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -260,13 +252,11 @@ building_sacred_nexus = {
 			buildings_no_crystals = yes
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_3
 		building_hive_confluence
 		building_system_conflux
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -278,36 +268,36 @@ building_sacred_nexus = {
 			rare_crystals = @b3_rare_upkeep
 		}
 	}
-
 	planet_modifier = {
 		job_priest_add = 3
 		pop_ethic_spiritualist_attraction_mult = 0.15
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_megacorp = no }
+			owner = {
+				is_megacorp = no
+			}
 		}
 		modifier = {
 			job_priest_add = 3
 		}
 	}
-
 	triggered_desc = {
 		text = job_priest_effect_desc
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_megacorp = yes }
+			owner = {
+				is_megacorp = yes
+			}
 		}
 		modifier = {
 			job_manager_add = 3
 		}
 	}
-#Bug Branch
+	#Bug Branch
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -319,7 +309,6 @@ building_sacred_nexus = {
 			job_bugged_templar_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -331,15 +320,17 @@ building_sacred_nexus = {
 			job_high_priest_add = 2
 		}
 	}
-#Normal Code
+	#Normal Code
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_megacorp = yes }
+			owner = {
+				is_megacorp = yes
+			}
 		}
 		text = job_manager_effect_desc
 	}
-#Bug Branch
+	#Bug Branch
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -349,7 +340,6 @@ building_sacred_nexus = {
 		}
 		text = job_high_priest_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -359,12 +349,10 @@ building_sacred_nexus = {
 		}
 		text = job_bugged_templar_effect_desc
 	}
-#Normal Code
-
+	#Normal Code
 	prerequisites = {
 		"tech_consecration_fields"
 	}
-
 	show_tech_unlock_if = {
 		is_spiritualist = yes
 	}
@@ -373,24 +361,21 @@ building_sacred_nexus = {
 ###################
 # LUMINOSITY CULT #
 ###################
-
 # Altar Of Light
 building_bugged_light_temple_1 = {
 	base_buildtime = @b1_time
 	position_priority = 100
-
 	base_cap_amount = 5
-
 	category = unity
-
 	potential = {
 		exists = owner
 		owner = {
 			is_bugged_luminosity_cult = yes
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -400,29 +385,27 @@ building_bugged_light_temple_1 = {
 			has_modifier = slave_colony
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_1
 		building_temple
 		building_hive_node
 		building_uplink_node
 	}
-
 	planet_modifier = {
 		job_bugged_luminosity_priest_add = 2
 		pop_ethic_spiritualist_attraction_mult = 0.05
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_bugged_militant_zealots = yes }
+			owner = {
+				is_bugged_militant_zealots = yes
+			}
 		}
 		modifier = {
 			job_bugged_templar_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -432,18 +415,18 @@ building_bugged_light_temple_1 = {
 			energy = @b1_upkeep
 		}
 	}
-
-	upgrades = { building_bugged_light_temple_2 }
-
-	prerequisites = { "tech_cultural_heritage" }
-
+	upgrades = {
+		building_bugged_light_temple_2
+	}
+	prerequisites = {
+		"tech_cultural_heritage"
+	}
 	show_tech_unlock_if = {
 		is_bugged_luminosity_cult = yes
 	}
-
-	triggered_desc = { text = job_bugged_luminosity_priest_effect_desc }
-
-	
+	triggered_desc = {
+		text = job_bugged_luminosity_priest_effect_desc
+	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -460,17 +443,16 @@ building_bugged_light_temple_2 = {
 	base_buildtime = @b2_time
 	can_build = no
 	position_priority = 100
-
 	category = unity
-
 	potential = {
 		exists = owner
 		owner = {
 			is_bugged_luminosity_cult = yes
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -480,29 +462,27 @@ building_bugged_light_temple_2 = {
 			has_modifier = slave_colony
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_1
 		building_temple
 		building_hive_node
 		building_uplink_node
 	}
-
 	planet_modifier = {
 		job_bugged_luminosity_priest_add = 4
 		pop_ethic_spiritualist_attraction_mult = 0.1
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_bugged_militant_zealots = yes }
+			owner = {
+				is_bugged_militant_zealots = yes
+			}
 		}
 		modifier = {
 			job_bugged_templar_add = 2
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -514,17 +494,18 @@ building_bugged_light_temple_2 = {
 			exotic_gases = @b3_rare_upkeep
 		}
 	}
-
-	upgrades = { building_bugged_light_temple_3 }
-
-	prerequisites = { "tech_holographic_rituals" }
-
+	upgrades = {
+		building_bugged_light_temple_3
+	}
+	prerequisites = {
+		"tech_holographic_rituals"
+	}
 	show_tech_unlock_if = {
 		is_bugged_luminosity_cult = yes
 	}
-
-	triggered_desc = { text = job_bugged_luminosity_priest_effect_desc }
-
+	triggered_desc = {
+		text = job_bugged_luminosity_priest_effect_desc
+	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -541,21 +522,19 @@ building_bugged_light_temple_3 = {
 	base_buildtime = @b3_time
 	can_build = no
 	position_priority = 100
-
 	category = unity
-
 	potential = {
 		exists = owner
 		owner = {
 			is_bugged_luminosity_cult = yes
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -565,30 +544,27 @@ building_bugged_light_temple_3 = {
 			has_modifier = slave_colony
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_1
 		building_temple
 		building_hive_node
 		building_uplink_node
 	}
-
-
 	planet_modifier = {
 		job_bugged_luminosity_priest_add = 6
 		pop_ethic_spiritualist_attraction_mult = 0.15
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_bugged_militant_zealots = yes }
+			owner = {
+				is_bugged_militant_zealots = yes
+			}
 		}
 		modifier = {
 			job_bugged_templar_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -600,7 +576,6 @@ building_bugged_light_temple_3 = {
 			job_high_priest_add = 2
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -613,15 +588,15 @@ building_bugged_light_temple_3 = {
 			volatile_motes = @b2_rare_upkeep
 		}
 	}
-
-	prerequisites = { "tech_consecration_fields" }
-
+	prerequisites = {
+		"tech_consecration_fields"
+	}
 	show_tech_unlock_if = {
 		is_bugged_luminosity_cult = yes
 	}
-
-	triggered_desc = { text = job_bugged_luminosity_priest_effect_desc }
-	
+	triggered_desc = {
+		text = job_bugged_luminosity_priest_effect_desc
+	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -631,8 +606,6 @@ building_bugged_light_temple_3 = {
 		}
 		text = job_high_priest_effect_desc
 	}
-
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -647,22 +620,20 @@ building_bugged_light_temple_3 = {
 ##############
 # DEATH CULT #
 ##############
-
 # Sacrificial Temple (basic)
 building_sacrificial_temple_1 = {
 	base_buildtime = @b1_time
 	position_priority = 100
-
 	category = unity
-
 	potential = {
 		exists = owner
 		owner = {
 			is_death_cult_empire = yes
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -672,14 +643,12 @@ building_sacrificial_temple_1 = {
 			has_modifier = slave_colony
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_1
 		building_temple
 		building_hive_node
 		building_uplink_node
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -689,29 +658,31 @@ building_sacrificial_temple_1 = {
 			energy = @b1_upkeep
 		}
 	}
-
 	planet_modifier = {
 		pop_ethic_spiritualist_attraction_mult = 0.05
 		job_death_priest_add = 1
 		job_mortal_initiate_add = 1
 	}
-#Bug Branch
+	#Bug Branch
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_bugged_militant_zealots = yes }
+			owner = {
+				is_bugged_militant_zealots = yes
+			}
 		}
 		modifier = {
 			job_bugged_templar_add = 1
 		}
 	}
-#Normal Code
-
-	triggered_desc = { text = job_death_priest_effect_desc }
-
-	triggered_desc = { text = job_mortal_initiate_effect_desc }
-
-#Bug Branch
+	#Normal Code
+	triggered_desc = {
+		text = job_death_priest_effect_desc
+	}
+	triggered_desc = {
+		text = job_mortal_initiate_effect_desc
+	}
+	#Bug Branch
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -721,16 +692,13 @@ building_sacrificial_temple_1 = {
 		}
 		text = job_bugged_templar_effect_desc
 	}
-#Normal Code
-
+	#Normal Code
 	prerequisites = {
 		"tech_cultural_heritage"
 	}
-
 	upgrades = {
 		building_sacrificial_temple_2
 	}
-
 	show_tech_unlock_if = {
 		is_death_cult_empire = yes
 	}
@@ -741,26 +709,26 @@ building_sacrificial_temple_2 = {
 	base_buildtime = @b2_time
 	can_build = no
 	position_priority = 100
-
 	category = unity
-
 	potential = {
 		exists = owner
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 		owner = {
 			is_death_cult_empire = yes
 		}
 	}
-
 	allow = {
 		exists = owner
 		has_upgraded_capital = yes
 		owner = {
 			is_death_cult_empire = yes
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -771,14 +739,12 @@ building_sacrificial_temple_2 = {
 			has_modifier = slave_colony
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_2
 		building_holotemple
 		building_hive_cluster
 		building_network_junction
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -790,28 +756,31 @@ building_sacrificial_temple_2 = {
 			exotic_gases = @b3_rare_upkeep
 		}
 	}
-
 	planet_modifier = {
 		pop_ethic_spiritualist_attraction_mult = 0.1
 		job_death_priest_add = 1
 		job_mortal_initiate_add = 1
 	}
-#Bug Branch
+	#Bug Branch
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_bugged_militant_zealots = yes }
+			owner = {
+				is_bugged_militant_zealots = yes
+			}
 		}
 		modifier = {
 			job_bugged_templar_add = 2
 		}
 	}
-#Normal Code
-
-	triggered_desc = { text = job_death_priest_effect_desc }
-
-	triggered_desc = { text = job_mortal_initiate_effect_desc }
-#Bug Branch
+	#Normal Code
+	triggered_desc = {
+		text = job_death_priest_effect_desc
+	}
+	triggered_desc = {
+		text = job_mortal_initiate_effect_desc
+	}
+	#Bug Branch
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -821,45 +790,45 @@ building_sacrificial_temple_2 = {
 		}
 		text = job_bugged_templar_effect_desc
 	}
-#Normal Code
-
+	#Normal Code
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_megacorp = no }
+			owner = {
+				is_megacorp = no
+			}
 		}
 		modifier = {
 			job_death_priest_add = 1
 			job_mortal_initiate_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_megacorp = yes }
+			owner = {
+				is_megacorp = yes
+			}
 		}
 		modifier = {
 			job_manager_add = 2
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_megacorp = yes }
+			owner = {
+				is_megacorp = yes
+			}
 		}
 		text = job_manager_effect_desc
 	}
-
 	prerequisites = {
 		"tech_holographic_rituals"
 	}
-
 	upgrades = {
 		building_sacrificial_temple_3
 	}
-
 	show_tech_unlock_if = {
 		is_death_cult_empire = yes
 	}
@@ -870,32 +839,29 @@ building_sacrificial_temple_3 = {
 	base_buildtime = @b3_time
 	can_build = no
 	position_priority = 100
-
 	category = unity
-
 	potential = {
 		exists = owner
 		owner = {
 			is_death_cult_empire = yes
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			buildings_no_exotic_gases = yes
 			owner = {
-				 is_death_cult_empire = no
+				is_death_cult_empire = no
 			}
 			has_modifier = slave_colony
 		}
 	}
-
 	convert_to = {
 		building_hypercomms_forum
 		building_hive_confluence
@@ -903,7 +869,6 @@ building_sacrificial_temple_3 = {
 		building_corporate_forum
 		building_sacred_nexus
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -916,23 +881,23 @@ building_sacrificial_temple_3 = {
 			volatile_motes = @b2_rare_upkeep
 		}
 	}
-
 	planet_modifier = {
 		pop_ethic_spiritualist_attraction_mult = 0.15
 		job_death_priest_add = 2
 		job_mortal_initiate_add = 2
 	}
-#Bug Branch
+	#Bug Branch
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_bugged_militant_zealots = yes }
+			owner = {
+				is_bugged_militant_zealots = yes
+			}
 		}
 		modifier = {
 			job_bugged_templar_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -944,41 +909,46 @@ building_sacrificial_temple_3 = {
 			job_high_priest_add = 2
 		}
 	}
-#Normal Code
-
-	triggered_desc = { text = job_death_priest_effect_desc }
-
-	triggered_desc = { text = job_mortal_initiate_effect_desc }
-
+	#Normal Code
+	triggered_desc = {
+		text = job_death_priest_effect_desc
+	}
+	triggered_desc = {
+		text = job_mortal_initiate_effect_desc
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_megacorp = no }
+			owner = {
+				is_megacorp = no
+			}
 		}
 		modifier = {
 			job_death_priest_add = 1
 			job_mortal_initiate_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_megacorp = yes }
+			owner = {
+				is_megacorp = yes
+			}
 		}
 		modifier = {
 			job_manager_add = 2
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_megacorp = yes }
+			owner = {
+				is_megacorp = yes
+			}
 		}
 		text = job_manager_effect_desc
 	}
-#Bug Branch
+	#Bug Branch
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -988,8 +958,6 @@ building_sacrificial_temple_3 = {
 		}
 		text = job_high_priest_effect_desc
 	}
-
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -999,40 +967,33 @@ building_sacrificial_temple_3 = {
 		}
 		text = job_bugged_templar_effect_desc
 	}
-#Normal Code
-
+	#Normal Code
 	prerequisites = {
 		"tech_consecration_fields"
 	}
-
 	show_tech_unlock_if = {
 		is_death_cult_empire = yes
 	}
 }
 
-
 ############
 # WAR CULT #
 ############
-
 # Altar Of Battle
 building_bugged_war_temple_1 = {
 	base_buildtime = @b1_time
 	position_priority = 100
-
 	base_cap_amount = 5
-
 	category = unity
-
-
 	potential = {
 		exists = owner
 		owner = {
 			is_bugged_war_cult = yes
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -1042,30 +1003,27 @@ building_bugged_war_temple_1 = {
 			has_modifier = slave_colony
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_1
 		building_temple
 		building_hive_node
 		building_uplink_node
 	}
-
 	planet_modifier = {
 		job_bugged_warrior_priest_add = 1
 		pop_ethic_spiritualist_attraction_mult = 0.05
 	}
-
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_bugged_militant_zealots = yes }
+			owner = {
+				is_bugged_militant_zealots = yes
+			}
 		}
 		modifier = {
 			job_bugged_templar_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1075,17 +1033,18 @@ building_bugged_war_temple_1 = {
 			energy = @b1_upkeep
 		}
 	}
-
-	upgrades = { building_bugged_war_temple_2 }
-
-	prerequisites = { "tech_cultural_heritage" }
-
+	upgrades = {
+		building_bugged_war_temple_2
+	}
+	prerequisites = {
+		"tech_cultural_heritage"
+	}
 	show_tech_unlock_if = {
 		is_bugged_war_cult = yes
 	}
-
-	triggered_desc = { text = job_bugged_warrior_priest_effect_desc }
-
+	triggered_desc = {
+		text = job_bugged_warrior_priest_effect_desc
+	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1102,17 +1061,16 @@ building_bugged_war_temple_2 = {
 	base_buildtime = @b2_time
 	can_build = no
 	position_priority = 100
-
 	category = unity
-
 	potential = {
 		exists = owner
 		owner = {
 			is_bugged_war_cult = yes
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -1122,29 +1080,27 @@ building_bugged_war_temple_2 = {
 			has_modifier = slave_colony
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_1
 		building_temple
 		building_hive_node
 		building_uplink_node
 	}
-
 	planet_modifier = {
 		job_bugged_warrior_priest_add = 2
 		pop_ethic_spiritualist_attraction_mult = 0.1
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_bugged_militant_zealots = yes }
+			owner = {
+				is_bugged_militant_zealots = yes
+			}
 		}
 		modifier = {
 			job_bugged_templar_add = 2
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1156,17 +1112,18 @@ building_bugged_war_temple_2 = {
 			exotic_gases = @b3_rare_upkeep
 		}
 	}
-
-	upgrades = { building_bugged_war_temple_3 }
-
-	prerequisites = { "tech_holographic_rituals" }
-
+	upgrades = {
+		building_bugged_war_temple_3
+	}
+	prerequisites = {
+		"tech_holographic_rituals"
+	}
 	show_tech_unlock_if = {
 		is_bugged_war_cult = yes
 	}
-
-	triggered_desc = { text = job_bugged_warrior_priest_effect_desc }
-	
+	triggered_desc = {
+		text = job_bugged_warrior_priest_effect_desc
+	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1183,21 +1140,19 @@ building_bugged_war_temple_3 = {
 	base_buildtime = @b3_time
 	can_build = no
 	position_priority = 100
-
 	category = unity
-
 	potential = {
 		exists = owner
 		owner = {
 			is_bugged_war_cult = yes
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -1207,29 +1162,27 @@ building_bugged_war_temple_3 = {
 			has_modifier = slave_colony
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_1
 		building_temple
 		building_hive_node
 		building_uplink_node
 	}
-
 	planet_modifier = {
 		job_bugged_warrior_priest_add = 3
 		pop_ethic_spiritualist_attraction_mult = 0.15
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_bugged_militant_zealots = yes }
+			owner = {
+				is_bugged_militant_zealots = yes
+			}
 		}
 		modifier = {
 			job_bugged_templar_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1241,7 +1194,6 @@ building_bugged_war_temple_3 = {
 			job_high_priest_add = 2
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1254,15 +1206,15 @@ building_bugged_war_temple_3 = {
 			volatile_motes = @b2_rare_upkeep
 		}
 	}
-
-	prerequisites = { "tech_consecration_fields" }
-
+	prerequisites = {
+		"tech_consecration_fields"
+	}
 	show_tech_unlock_if = {
 		is_bugged_war_cult = yes
 	}
-
-	triggered_desc = { text = job_bugged_warrior_priest_effect_desc }
-
+	triggered_desc = {
+		text = job_bugged_warrior_priest_effect_desc
+	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1272,7 +1224,6 @@ building_bugged_war_temple_3 = {
 		}
 		text = job_high_priest_effect_desc
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1287,20 +1238,18 @@ building_bugged_war_temple_3 = {
 ################
 # GRAVITY CULT #
 ################
-
 #Gravitic Abbey
 building_bugged_gravity_monastery = {
-
 	base_buildtime = 360
 	base_cap_amount = 1
-
 	category = unity
-
 	potential = {
-		owner = { 
+		owner = {
 			is_bugged_gravity_cult = yes
 		}
-        NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
 	destroy_trigger = {
 		exists = owner
@@ -1324,7 +1273,6 @@ building_bugged_gravity_monastery = {
 	planet_modifier = {
 		job_bugged_gravity_priest_add = 3
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1334,15 +1282,12 @@ building_bugged_gravity_monastery = {
 			energy = 2
 		}
 	}
-
 	show_tech_unlock_if = {
 		is_bugged_gravity_cult = yes
 	}
-
 	triggered_desc = {
 		text = job_bugged_gravity_priest_effect_desc
 	}
-
 	ai_weight = {
 		weight = 1
 		modifier = {
@@ -1354,17 +1299,16 @@ building_bugged_gravity_monastery = {
 
 #Sanctorium Of Reality's Tears
 building_bugged_gravity_monastery_two = {
-
 	base_buildtime = 360
 	can_build = no
-
 	category = unity
-
 	potential = {
-		owner = { 
+		owner = {
 			is_bugged_gravity_cult = yes
 		}
-        	NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
 	destroy_trigger = {
 		exists = owner
@@ -1389,32 +1333,27 @@ building_bugged_gravity_monastery_two = {
 	planet_modifier = {
 		job_bugged_priest_of_the_dark_sun_add = 1
 		job_bugged_gravity_priest_add = 4
-
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
 			minerals = @b2_minerals
-			exotic_gases =  @b2_rare_cost
+			exotic_gases = @b2_rare_cost
 		}
 		upkeep = {
 			energy = @b2_upkeep
-			exotic_gases =  @b2_rare_upkeep
+			exotic_gases = @b2_rare_upkeep
 		}
 	}
-
 	triggered_desc = {
 		text = job_bugged_priest_of_the_dark_sun_effect_desc
 	}
 	triggered_desc = {
 		text = job_bugged_gravity_priest_effect_desc
 	}
-
 	show_tech_unlock_if = {
 		is_bugged_gravity_cult = yes
 	}
-
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -1427,22 +1366,19 @@ building_bugged_gravity_monastery_two = {
 #############
 # LIFE CULT #
 #############
-
 #Gene Cloister
 building_bugged_life_monastery = {
-
 	base_buildtime = 360
 	base_cap_amount = 1
-
 	category = pop_assembly
-
 	potential = {
-		owner = { 
+		owner = {
 			is_bugged_life_cult = yes
 		}
-        	NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -1452,7 +1388,6 @@ building_bugged_life_monastery = {
 			has_modifier = slave_colony
 		}
 	}
-	
 	allow = {
 		always = yes
 	}
@@ -1464,11 +1399,8 @@ building_bugged_life_monastery = {
 		building_bugged_mecha_monastery
 	}
 	planet_modifier = {
-
 		job_bugged_lifescribe_add = 3
-
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1478,12 +1410,9 @@ building_bugged_life_monastery = {
 			energy = 2
 		}
 	}
-
-
 	triggered_desc = {
 		text = job_bugged_lifescribe_effect_desc
 	}
-
 	ai_weight = {
 		weight = 1
 		modifier = {
@@ -1495,19 +1424,17 @@ building_bugged_life_monastery = {
 
 #Archive Of Life
 building_bugged_life_monastery_two = {
-
 	base_buildtime = 360
 	can_build = no
-
 	category = pop_assembly
-
 	potential = {
-		owner = { 
+		owner = {
 			is_bugged_life_cult = yes
 		}
-        NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -1518,7 +1445,6 @@ building_bugged_life_monastery_two = {
 			has_modifier = slave_colony
 		}
 	}
-
 	prerequisites = {
 		tech_gene_tailoring
 	}
@@ -1529,13 +1455,10 @@ building_bugged_life_monastery_two = {
 		building_bugged_gravity_monastery_two
 		building_bugged_mecha_monastery_two
 	}
-
 	planet_modifier = {
 		job_bugged_herald_of_lifes_path_add = 1
 		job_bugged_lifescribe_add = 4
-
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1547,18 +1470,15 @@ building_bugged_life_monastery_two = {
 			volatile_motes = @b2_rare_upkeep
 		}
 	}
-
 	triggered_desc = {
 		text = job_bugged_herald_of_lifes_path_effect_desc
 	}
 	triggered_desc = {
 		text = job_bugged_lifescribe_effect_desc
 	}
-
 	show_tech_unlock_if = {
 		is_bugged_life_cult = yes
 	}
-
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -1571,20 +1491,18 @@ building_bugged_life_monastery_two = {
 ################
 # MACHINE CULT #
 ################
-
 #Mecha-Monastery
 building_bugged_mecha_monastery = {
-
 	base_buildtime = 360
 	base_cap_amount = 1
-
 	category = pop_assembly
-
 	potential = {
-		owner = { 
+		owner = {
 			is_bugged_machine_cult = yes
 		}
-        NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
 	destroy_trigger = {
 		exists = owner
@@ -1608,7 +1526,6 @@ building_bugged_mecha_monastery = {
 	planet_modifier = {
 		job_bugged_techno_priest_add = 3
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1618,11 +1535,9 @@ building_bugged_mecha_monastery = {
 			energy = 2
 		}
 	}
-
 	triggered_desc = {
 		text = job_bugged_techno_priest_effect_desc
 	}
-
 	ai_weight = {
 		weight = 1
 		modifier = {
@@ -1634,19 +1549,17 @@ building_bugged_mecha_monastery = {
 
 #Mecha-Repositorium
 building_bugged_mecha_monastery_two = {
-
 	base_buildtime = 360
 	can_build = no
-
 	category = pop_assembly
-
 	potential = {
-		owner = { 
+		owner = {
 			is_bugged_machine_cult = yes
 		}
-        NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -1657,7 +1570,6 @@ building_bugged_mecha_monastery_two = {
 			has_modifier = slave_colony
 		}
 	}
-
 	prerequisites = {
 		tech_droid_workers
 	}
@@ -1671,9 +1583,7 @@ building_bugged_mecha_monastery_two = {
 	planet_modifier = {
 		job_bugged_intricate_techno_priest_add = 1
 		job_bugged_techno_priest_add = 4
-
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1685,18 +1595,15 @@ building_bugged_mecha_monastery_two = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
-
 	triggered_desc = {
 		text = job_bugged_intricate_techno_priest_effect_desc
 	}
 	triggered_desc = {
 		text = job_bugged_techno_priest_effect_desc
 	}
-
 	show_tech_unlock_if = {
 		is_bugged_machine_cult = yes
 	}
-
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -1709,45 +1616,42 @@ building_bugged_mecha_monastery_two = {
 ####################
 # CITADEL OF FAITH #
 ####################
-
 building_citadel_of_faith = {
 	base_buildtime = @b2_time
 	base_cap_amount = 1
-
 	category = unity
-
 	potential = {
 		exists = owner
-		owner = { is_spiritualist = yes }
-		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_spiritualist = yes
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		has_fully_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_spiritualist = no }
+			owner = {
+				is_spiritualist = no
+			}
 			has_modifier = slave_colony
 			buildings_no_crystals = yes
 		}
 	}
-
 	convert_to = {
 		building_autocurating_vault
 		building_alpha_hub
 		building_corporate_vault
 	}
-
 	planet_modifier = {
 		job_priest_add = 4
 		job_high_priest_add = 1
 		pop_ethic_spiritualist_attraction_mult = 0.2
-		
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1762,7 +1666,6 @@ building_citadel_of_faith = {
 			pop_ethic_spiritualist_attraction_mult = 0.2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1774,7 +1677,6 @@ building_citadel_of_faith = {
 			job_bugged_transcended_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1786,7 +1688,6 @@ building_citadel_of_faith = {
 			job_high_priest_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1798,15 +1699,12 @@ building_citadel_of_faith = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
-
 	prerequisites = {
 		"tech_transcendent_faith"
 	}
-
 	triggered_desc = {
 		text = job_priest_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1816,7 +1714,6 @@ building_citadel_of_faith = {
 		}
 		text = job_bugged_transcended_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1826,11 +1723,9 @@ building_citadel_of_faith = {
 		}
 		text = job_bugged_templar_effect_desc
 	}
-
 	triggered_desc = {
 		text = job_high_priest_effect_desc
 	}
-
 	ai_weight = {
 		weight = 0
 		modifier = {
@@ -1845,9 +1740,9 @@ building_citadel_of_faith = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_country_flag = buildings_new_crystal_building }
+			owner = {
+				has_country_flag = buildings_new_crystal_building
+			}
 		}
 	}
-
-
 }

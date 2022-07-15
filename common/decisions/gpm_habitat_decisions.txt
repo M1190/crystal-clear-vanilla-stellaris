@@ -2,69 +2,64 @@
 # Decisions
 ##########################################################################
 # decision_gpm_habitat_ = {
-    # owned_planets_only = yes
-	# sound = event_administrative_work
-	# icon = gpm_decision_seasonal_flooding
-	# enactment_time = 360
-
-    # resources = {
-		# category = decisions
-		# cost = {
-			# alloys = 1000
-		# }
-	# }
-
-    # potential = {
-		# # owner = { is_regular_empire = yes }
-		# NOT = { has_modifier = 000000000000000 }
-		# gpm_is_planet_class_habitat = yes
-	# }
-	
-	# allow = {
-		# NOT = { has_modifier = 000000000000000 }
-	# }
-
-    # effect = {
-		# add_modifier = { modifier = 000000000000000 }
-	# }
-	
-	# ai_weight = {
-		# weight = 1000
-	# }
+# owned_planets_only = yes
+# sound = event_administrative_work
+# icon = gpm_decision_seasonal_flooding
+# enactment_time = 360
+# resources = {
+# category = decisions
+# cost = {
+# alloys = 1000
 # }
-
+# }
+# potential = {
+# # owner = { is_regular_empire = yes }
+# NOT = { has_modifier = 000000000000000 }
+# gpm_is_planet_class_habitat = yes
+# }
+# allow = {
+# NOT = { has_modifier = 000000000000000 }
+# }
+# effect = {
+# add_modifier = { modifier = 000000000000000 }
+# }
+# ai_weight = {
+# weight = 1000
+# }
+# }
 decision_gpm_habitat_stadium = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_stadium
 	enactment_time = 360
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 1000
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
 		owner = {
 			is_gestalt = no
-			NOT = { has_civic = civic_machine_servitor }
+			NOT = {
+				has_civic = civic_machine_servitor
+			}
 		}
-		NOT = { has_modifier = gpm_habitat_stadium }
+		NOT = {
+			has_modifier = gpm_habitat_stadium
+		}
 		gpm_is_planet_class_habitat = yes
 	}
-	
 	allow = {
 		num_pops > 40
 	}
-
-    effect = {
-		add_modifier = { modifier = gpm_habitat_stadium }
+	effect = {
+		add_modifier = {
+			modifier = gpm_habitat_stadium
+		}
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -91,7 +86,9 @@ decision_gpm_habitat_stadium = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -110,31 +107,35 @@ decision_gpm_habitat_stadium = {
 
 # trade decision
 decision_gpm_habitat_trade_docks = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	icon = decision_gpm_habitat_trade_docks
 	enactment_time = 360
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 500
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		owner = { is_gestalt = no }
-		NOT = { has_modifier = gpm_habitat_trade_docks }
+		owner = {
+			is_gestalt = no
+		}
+		NOT = {
+			has_modifier = gpm_habitat_trade_docks
+		}
 		gpm_is_planet_class_habitat = yes
 	}
-	
 	allow = {
-		solar_system = { has_collected_system_trade_value >= 100 }
+		solar_system = {
+			has_collected_system_trade_value >= 100
+		}
 	}
-
-    effect = {
-		add_modifier = { modifier = gpm_habitat_trade_docks }
+	effect = {
+		add_modifier = {
+			modifier = gpm_habitat_trade_docks
+		}
 		hidden_effect = {
 			if = {
 				limit = {
@@ -149,7 +150,6 @@ decision_gpm_habitat_trade_docks = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -176,7 +176,9 @@ decision_gpm_habitat_trade_docks = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -195,38 +197,46 @@ decision_gpm_habitat_trade_docks = {
 
 # trade decision for megacorps
 decision_gpm_habitat_hub = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_hub
 	enactment_time = 90
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		owner = { is_gestalt = no }
-		NOT = { has_modifier = gpm_habitat_spaceroute_hub }
+		owner = {
+			is_gestalt = no
+		}
+		NOT = {
+			has_modifier = gpm_habitat_spaceroute_hub
+		}
 		gpm_is_planet_class_habitat = yes
-		owner = { has_authority = auth_corporate }
+		owner = {
+			has_authority = auth_corporate
+		}
 	}
-	
 	allow = {
-		solar_system = { has_collected_system_trade_value >= 200 }
+		solar_system = {
+			has_collected_system_trade_value >= 200
+		}
 		solar_system = {
 			any_system_planet = {
-				NOT = { has_modifier = gpm_habitat_spaceroute_hub }
+				NOT = {
+					has_modifier = gpm_habitat_spaceroute_hub
+				}
 			}
 		}
 		has_modifier = gpm_habitat_trade_docks
 	}
-
-    effect = {
-		add_modifier = { modifier = gpm_habitat_spaceroute_hub }
+	effect = {
+		add_modifier = {
+			modifier = gpm_habitat_spaceroute_hub
+		}
 		hidden_effect = {
 			if = {
 				limit = {
@@ -241,7 +251,6 @@ decision_gpm_habitat_hub = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -268,7 +277,9 @@ decision_gpm_habitat_hub = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -286,38 +297,39 @@ decision_gpm_habitat_hub = {
 }
 
 decision_gpm_habitat_holo_entertainment = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_holo_entertainment
 	enactment_time = 180
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 500
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
 		owner = {
 			is_gestalt = no
-			NOT = { has_civic = civic_machine_servitor }
+			NOT = {
+				has_civic = civic_machine_servitor
+			}
 		}
-		NOT = { has_modifier = gpm_habitat_holonet_entertainment_systems }
+		NOT = {
+			has_modifier = gpm_habitat_holonet_entertainment_systems
+		}
 		gpm_is_planet_class_habitat = yes
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_holonet_entertainment_systems }
 		num_pops > 10
 	}
-
-    effect = {
-		add_modifier = { modifier = gpm_habitat_holonet_entertainment_systems }
+	effect = {
+		add_modifier = {
+			modifier = gpm_habitat_holonet_entertainment_systems
+		}
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -344,7 +356,9 @@ decision_gpm_habitat_holo_entertainment = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -362,35 +376,38 @@ decision_gpm_habitat_holo_entertainment = {
 }
 
 decision_gpm_habitat_replicators = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_replicators
 	enactment_time = 180
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 500
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		owner = { is_machine_empire = no }
-		NOT = { has_modifier = gpm_habitat_replicator_systems }
+		owner = {
+			is_machine_empire = no
+		}
+		NOT = {
+			has_modifier = gpm_habitat_replicator_systems
+		}
 		gpm_is_planet_class_habitat = yes
 	}
-	
 	allow = {
 		has_modifier = gpm_habitat_experimental_food_recycling
-		owner = { has_technology = tech_habitat_3 }
+		owner = {
+			has_technology = tech_habitat_3
+		}
 	}
-
-    effect = {
-		add_modifier = { modifier = gpm_habitat_replicator_systems }
+	effect = {
+		add_modifier = {
+			modifier = gpm_habitat_replicator_systems
+		}
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -417,7 +434,9 @@ decision_gpm_habitat_replicators = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -435,33 +454,33 @@ decision_gpm_habitat_replicators = {
 }
 
 decision_gpm_habitat_moon_mining = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_moon_mining
 	enactment_time = 360
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 250
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_extensive_moon_mining }
+		NOT = {
+			has_modifier = gpm_habitat_extensive_moon_mining
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_extensive_moon_mining_habitat
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_extensive_moon_mining }
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_extensive_moon_mining }
+			add_modifier = {
+				modifier = gpm_habitat_extensive_moon_mining
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -476,7 +495,6 @@ decision_gpm_habitat_moon_mining = {
 		}
 		add_deposit = gpm_d_moon_mining_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -503,7 +521,9 @@ decision_gpm_habitat_moon_mining = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -521,43 +541,43 @@ decision_gpm_habitat_moon_mining = {
 }
 
 decision_gpm_habitat_belt_mining = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_belt_mining
 	enactment_time = 360
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 250
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_asteroid_belt_mining }
+		NOT = {
+			has_modifier = gpm_habitat_asteroid_belt_mining
+		}
 		gpm_is_planet_class_habitat = yes
 		solar_system = {
 			any_system_planet = {
 				OR = {
-					has_modifier = gpm_large_asteroid 
+					has_modifier = gpm_large_asteroid
 					has_modifier = gpm_asteroid_moon
-					has_modifier = gpm_metal_asteroid 
-					has_modifier = gpm_dense_core 
-					has_modifier = gpm_abandoned_mining_platforms 
+					has_modifier = gpm_metal_asteroid
+					has_modifier = gpm_dense_core
+					has_modifier = gpm_abandoned_mining_platforms
 				}
 			}
 		}
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_asteroid_belt_mining }
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_asteroid_belt_mining }
+			add_modifier = {
+				modifier = gpm_habitat_asteroid_belt_mining
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -572,7 +592,6 @@ decision_gpm_habitat_belt_mining = {
 		}
 		add_deposit = gpm_d_asteroid_mining_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -599,7 +618,9 @@ decision_gpm_habitat_belt_mining = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -617,33 +638,33 @@ decision_gpm_habitat_belt_mining = {
 }
 
 decision_gpm_habitat_thunderstorm_research = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_thunderstorm_research
 	enactment_time = 360
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 250
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_frequent_thunderstorms_research }
+		NOT = {
+			has_modifier = gpm_habitat_frequent_thunderstorms_research
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_frequent_thunderstorms_research_habitat
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_frequent_thunderstorms_research }
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_frequent_thunderstorms_research }
+			add_modifier = {
+				modifier = gpm_habitat_frequent_thunderstorms_research
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -658,7 +679,6 @@ decision_gpm_habitat_thunderstorm_research = {
 		}
 		add_deposit = gpm_d_orbital_research_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -685,7 +705,9 @@ decision_gpm_habitat_thunderstorm_research = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -703,33 +725,33 @@ decision_gpm_habitat_thunderstorm_research = {
 }
 
 decision_gpm_habitat_radioactive_mining = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_radioactive_mining
 	enactment_time = 360
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 250
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_radioactive_mantle_mining }
+		NOT = {
+			has_modifier = gpm_habitat_radioactive_mantle_mining
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_radioactive_mantle_mining_habitat
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_radioactive_mantle_mining }
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_radioactive_mantle_mining }
+			add_modifier = {
+				modifier = gpm_habitat_radioactive_mantle_mining
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -744,7 +766,6 @@ decision_gpm_habitat_radioactive_mining = {
 		}
 		add_deposit = gpm_d_alloy_mining_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -771,7 +792,9 @@ decision_gpm_habitat_radioactive_mining = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -789,33 +812,33 @@ decision_gpm_habitat_radioactive_mining = {
 }
 
 decision_gpm_habitat_asteroid_catchers = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_asteroid_catchers
 	enactment_time = 360
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 250
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_frequent_asteroid_flybys }
+		NOT = {
+			has_modifier = gpm_habitat_frequent_asteroid_flybys
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_frequent_asteroid_flybys_habitat
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_frequent_asteroid_flybys }
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_frequent_asteroid_flybys }
+			add_modifier = {
+				modifier = gpm_habitat_frequent_asteroid_flybys
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -830,7 +853,6 @@ decision_gpm_habitat_asteroid_catchers = {
 		}
 		add_deposit = gpm_d_asteroid_mining_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -857,7 +879,9 @@ decision_gpm_habitat_asteroid_catchers = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -875,33 +899,33 @@ decision_gpm_habitat_asteroid_catchers = {
 }
 
 decision_gpm_habitat_particle_collectors = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_particle_collectors
 	enactment_time = 360
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 250
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_highly_charged_particle_collection }
+		NOT = {
+			has_modifier = gpm_habitat_highly_charged_particle_collection
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_highly_charged_particle_collection_habitat
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_highly_charged_particle_collection }
 	}
-
-    effect = {		
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_highly_charged_particle_collection }
+			add_modifier = {
+				modifier = gpm_habitat_highly_charged_particle_collection
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -916,7 +940,6 @@ decision_gpm_habitat_particle_collectors = {
 		}
 		add_deposit = gpm_d_particle_collecting_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -943,7 +966,9 @@ decision_gpm_habitat_particle_collectors = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -961,33 +986,33 @@ decision_gpm_habitat_particle_collectors = {
 }
 
 decision_gpm_habitat_expedition_section = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_expedition_section
 	enactment_time = 720
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 500
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_ancient_temple_expeditions }
+		NOT = {
+			has_modifier = gpm_habitat_ancient_temple_expeditions
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_ancient_temple_expeditions_habitat
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_ancient_temple_expeditions }
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_ancient_temple_expeditions }
+			add_modifier = {
+				modifier = gpm_habitat_ancient_temple_expeditions
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -1002,7 +1027,6 @@ decision_gpm_habitat_expedition_section = {
 		}
 		add_deposit = gpm_d_archeology_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -1029,7 +1053,9 @@ decision_gpm_habitat_expedition_section = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -1047,34 +1073,37 @@ decision_gpm_habitat_expedition_section = {
 }
 
 decision_gpm_habitat_food_recyclers = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_food_recyclers
 	enactment_time = 180
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 500
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		owner = { is_machine_empire = no }
-		NOT = { has_modifier = gpm_habitat_experimental_food_recycling }
+		owner = {
+			is_machine_empire = no
+		}
+		NOT = {
+			has_modifier = gpm_habitat_experimental_food_recycling
+		}
 		gpm_is_planet_class_habitat = yes
 	}
-	
 	allow = {
-		owner = { has_technology = tech_habitat_2 }
+		owner = {
+			has_technology = tech_habitat_2
+		}
 	}
-
-    effect = {
-		add_modifier = { modifier = gpm_habitat_experimental_food_recycling }
+	effect = {
+		add_modifier = {
+			modifier = gpm_habitat_experimental_food_recycling
+		}
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -1101,7 +1130,9 @@ decision_gpm_habitat_food_recyclers = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -1119,33 +1150,33 @@ decision_gpm_habitat_food_recyclers = {
 }
 
 decision_gpm_habitat_chronoton_sensors = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_chronoton_sensors
 	enactment_time = 720
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 500
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_time_displaced_planet_research }
+		NOT = {
+			has_modifier = gpm_habitat_time_displaced_planet_research
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_time_displaced_planet_research_habitat
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_time_displaced_planet_research }
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_time_displaced_planet_research }
+			add_modifier = {
+				modifier = gpm_habitat_time_displaced_planet_research
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -1160,7 +1191,6 @@ decision_gpm_habitat_chronoton_sensors = {
 		}
 		add_deposit = gpm_d_particle_collecting_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -1187,7 +1217,9 @@ decision_gpm_habitat_chronoton_sensors = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -1205,33 +1237,33 @@ decision_gpm_habitat_chronoton_sensors = {
 }
 
 decision_gpm_habitat_mining_bays = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_mining_bays
 	enactment_time = 360
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 250
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_surface_mining }
+		NOT = {
+			has_modifier = gpm_habitat_surface_mining
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_surface_mining_habitat
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_surface_mining }
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_surface_mining }
+			add_modifier = {
+				modifier = gpm_habitat_surface_mining
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -1246,7 +1278,6 @@ decision_gpm_habitat_mining_bays = {
 		}
 		add_deposit = gpm_d_mineral_mining_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -1273,7 +1304,9 @@ decision_gpm_habitat_mining_bays = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -1292,33 +1325,33 @@ decision_gpm_habitat_mining_bays = {
 
 #precursor ones
 decision_gpm_habitat_archaeology_section = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_archaeology_section
 	enactment_time = 720
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 500
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_surface_expeditions }
+		NOT = {
+			has_modifier = gpm_habitat_surface_expeditions
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_surface_expeditions_habitat
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_surface_expeditions }
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_surface_expeditions }
+			add_modifier = {
+				modifier = gpm_habitat_surface_expeditions
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -1333,7 +1366,6 @@ decision_gpm_habitat_archaeology_section = {
 		}
 		add_deposit = gpm_d_archeology_precursor_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -1360,7 +1392,9 @@ decision_gpm_habitat_archaeology_section = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -1378,23 +1412,25 @@ decision_gpm_habitat_archaeology_section = {
 }
 
 decision_gpm_habitat_pleasure_palace = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_pleasure_palace
 	enactment_time = 360
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 500
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		owner = { is_gestalt = no }
-		NOT = { has_modifier = gpm_habitat_android_pleasure_palace_tourism }
+		owner = {
+			is_gestalt = no
+		}
+		NOT = {
+			has_modifier = gpm_habitat_android_pleasure_palace_tourism
+		}
 		gpm_is_planet_class_habitat = yes
 		solar_system = {
 			any_system_planet = {
@@ -1402,15 +1438,14 @@ decision_gpm_habitat_pleasure_palace = {
 			}
 		}
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_android_pleasure_palace_tourism }
 	}
-
-    effect = {
-		add_modifier = { modifier = gpm_habitat_android_pleasure_palace_tourism }
+	effect = {
+		add_modifier = {
+			modifier = gpm_habitat_android_pleasure_palace_tourism
+		}
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -1437,7 +1472,9 @@ decision_gpm_habitat_pleasure_palace = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -1455,33 +1492,35 @@ decision_gpm_habitat_pleasure_palace = {
 }
 
 decision_gpm_habitat_spice_markets = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_spice_markets
 	enactment_time = 90
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		owner = { is_gestalt = no }
-		NOT = { has_modifier = gpm_habitat_delicious_ingredients_trade }
+		owner = {
+			is_gestalt = no
+		}
+		NOT = {
+			has_modifier = gpm_habitat_delicious_ingredients_trade
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_delicious_ingredients_trade_habitat
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_delicious_ingredients_trade }
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_delicious_ingredients_trade }
+			add_modifier = {
+				modifier = gpm_habitat_delicious_ingredients_trade
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -1496,7 +1535,6 @@ decision_gpm_habitat_spice_markets = {
 		}
 		add_deposit = gpm_d_spice_collecting_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -1523,7 +1561,9 @@ decision_gpm_habitat_spice_markets = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -1541,32 +1581,34 @@ decision_gpm_habitat_spice_markets = {
 }
 
 decision_gpm_habitat_gambling_licence = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_gambling_licence
 	enactment_time = 90
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		owner = { is_gestalt = no }
-		NOT = { has_modifier = gpm_habitat_flat_terrain_racing }
+		owner = {
+			is_gestalt = no
+		}
+		NOT = {
+			has_modifier = gpm_habitat_flat_terrain_racing
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_flat_terrain_racing_habitat
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_flat_terrain_racing }
 	}
-
-    effect = {
-		add_modifier = { modifier = gpm_habitat_flat_terrain_racing }
+	effect = {
+		add_modifier = {
+			modifier = gpm_habitat_flat_terrain_racing
+		}
 		if = {
 			limit = {
 				NOR = {
@@ -1579,7 +1621,6 @@ decision_gpm_habitat_gambling_licence = {
 			set_planet_flag = commercial_habitat
 		}
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -1606,7 +1647,9 @@ decision_gpm_habitat_gambling_licence = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -1624,33 +1667,33 @@ decision_gpm_habitat_gambling_licence = {
 }
 
 decision_gpm_habitat_egg_containment_facility = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_egg_containment_facility
 	enactment_time = 720
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 1000
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_strange_alien_eggs_restriction }
+		NOT = {
+			has_modifier = gpm_habitat_strange_alien_eggs_restriction
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_strange_alien_eggs_restriction_habitat
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_strange_alien_eggs_restriction }
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_strange_alien_eggs_restriction }
+			add_modifier = {
+				modifier = gpm_habitat_strange_alien_eggs_restriction
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -1665,7 +1708,6 @@ decision_gpm_habitat_egg_containment_facility = {
 		}
 		add_deposit = gpm_d_alien_egg_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -1692,7 +1734,9 @@ decision_gpm_habitat_egg_containment_facility = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -1710,33 +1754,33 @@ decision_gpm_habitat_egg_containment_facility = {
 }
 
 decision_gpm_habitat_hydrogen_extraction = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_hydrogen_extraction
 	enactment_time = 360
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 250
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_hydrogen_extraction }
+		NOT = {
+			has_modifier = gpm_habitat_hydrogen_extraction
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_hydrogen_extraction_habitat
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_hydrogen_extraction }
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_hydrogen_extraction }
+			add_modifier = {
+				modifier = gpm_habitat_hydrogen_extraction
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -1751,7 +1795,6 @@ decision_gpm_habitat_hydrogen_extraction = {
 		}
 		add_deposit = gpm_d_particle_collecting_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -1778,7 +1821,9 @@ decision_gpm_habitat_hydrogen_extraction = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -1796,33 +1841,33 @@ decision_gpm_habitat_hydrogen_extraction = {
 }
 
 decision_gpm_habitat_nitrogen_extraction = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_nitrogen_extraction
 	enactment_time = 360
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 250
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_nitrogen_extraction }
+		NOT = {
+			has_modifier = gpm_habitat_nitrogen_extraction
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_nitrogen_extraction_habitat
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_nitrogen_extraction }
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_nitrogen_extraction }
+			add_modifier = {
+				modifier = gpm_habitat_nitrogen_extraction
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -1837,7 +1882,6 @@ decision_gpm_habitat_nitrogen_extraction = {
 		}
 		add_deposit = gpm_d_particle_collecting_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -1864,7 +1908,9 @@ decision_gpm_habitat_nitrogen_extraction = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -1882,33 +1928,33 @@ decision_gpm_habitat_nitrogen_extraction = {
 }
 
 decision_gpm_habitat_chlorine_extraction = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_chlorine_extraction
 	enactment_time = 360
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 250
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_chlorine_extraction }
+		NOT = {
+			has_modifier = gpm_habitat_chlorine_extraction
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_chlorine_extraction_habitat
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_chlorine_extraction }
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_chlorine_extraction }
+			add_modifier = {
+				modifier = gpm_habitat_chlorine_extraction
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -1923,7 +1969,6 @@ decision_gpm_habitat_chlorine_extraction = {
 		}
 		add_deposit = gpm_d_particle_collecting_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -1950,7 +1995,9 @@ decision_gpm_habitat_chlorine_extraction = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -1968,33 +2015,33 @@ decision_gpm_habitat_chlorine_extraction = {
 }
 
 decision_gpm_habitat_phospherus_extraction = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_phospherus_extraction
 	enactment_time = 360
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 250
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_phosphorus_extraction }
+		NOT = {
+			has_modifier = gpm_habitat_phosphorus_extraction
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_phosphorus_extraction_habitat
 	}
-	
 	allow = {
 		# NOT = { has_modifier = gpm_habitat_phosphorus_extraction }
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_phosphorus_extraction }
+			add_modifier = {
+				modifier = gpm_habitat_phosphorus_extraction
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -2009,7 +2056,6 @@ decision_gpm_habitat_phospherus_extraction = {
 		}
 		add_deposit = gpm_d_particle_collecting_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -2036,7 +2082,9 @@ decision_gpm_habitat_phospherus_extraction = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -2054,32 +2102,32 @@ decision_gpm_habitat_phospherus_extraction = {
 }
 
 decision_gpm_habitat_sulfur_extraction = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_gpm_habitat_sulfur_extraction
 	enactment_time = 360
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 250
 		}
 	}
-
 	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_sulfur_extraction }
+		NOT = {
+			has_modifier = gpm_habitat_sulfur_extraction
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_sulfur_extraction_habitat
 	}
-	
 	allow = {
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_sulfur_extraction }
+			add_modifier = {
+				modifier = gpm_habitat_sulfur_extraction
+			}
 			if = {
 				limit = {
 					NOR = {
@@ -2094,7 +2142,6 @@ decision_gpm_habitat_sulfur_extraction = {
 		}
 		add_deposit = gpm_d_particle_collecting_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -2121,7 +2168,9 @@ decision_gpm_habitat_sulfur_extraction = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1
@@ -2139,35 +2188,34 @@ decision_gpm_habitat_sulfur_extraction = {
 }
 
 decision_gpm_habitat_iron_extraction = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	icon = decision_gpm_habitat_iron_extraction
 	enactment_time = 360
-
-    resources = {
+	resources = {
 		category = decisions
 		cost = {
 			unity = 150
 			alloys = 250
 		}
 	}
-
-    potential = {
+	potential = {
 		# owner = { is_regular_empire = yes }
-		NOT = { has_modifier = gpm_habitat_iron_extraction }
+		NOT = {
+			has_modifier = gpm_habitat_iron_extraction
+		}
 		gpm_is_planet_class_habitat = yes
 		has_planet_flag = gpm_is_iron_mining_habitat
 	}
-	
 	allow = {
 	}
-
-    effect = {
+	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = gpm_habitat_iron_extraction }
+			add_modifier = {
+				modifier = gpm_habitat_iron_extraction
+			}
 		}
 		add_deposit = gpm_d_mineral_mining_infrastructure
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {
@@ -2194,7 +2242,9 @@ decision_gpm_habitat_iron_extraction = {
 		}
 		modifier = {
 			factor = 0
-			from = { is_at_war = yes }
+			from = {
+				is_at_war = yes
+			}
 		}
 		modifier = {
 			factor = 1

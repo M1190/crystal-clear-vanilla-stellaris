@@ -1,11 +1,8 @@
 @expand_planetary_sea_length = 720
-
 decision_expand_planetary_sea = {
 	owned_planets_only = yes
 	icon = decision_arctic_planet
-
 	enactment_time = @expand_planetary_sea_length
-
 	potential = {
 		OR = {
 			is_planet_class = pc_ocean
@@ -16,7 +13,6 @@ decision_expand_planetary_sea = {
 			has_ascension_perk = ap_hydrocentric
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = requires_free_ice_mining_station
@@ -24,7 +20,9 @@ decision_expand_planetary_sea = {
 				any_owned_starbase = {
 					has_starbase_building = ice_mining_station
 					solar_system = {
-						NOT = { has_star_flag = ice_mining_in_progress }
+						NOT = {
+							has_star_flag = ice_mining_in_progress
+						}
 					}
 				}
 			}
@@ -49,7 +47,6 @@ decision_expand_planetary_sea = {
 			}
 		}
 	}
-
 	resources = {
 		category = decisions
 		cost = {
@@ -57,7 +54,6 @@ decision_expand_planetary_sea = {
 			energy = 1000
 		}
 	}
-
 	on_queued = {
 		set_variable = {
 			which = decision_length
@@ -75,17 +71,19 @@ decision_expand_planetary_sea = {
 			which = decision_length
 			value = decision_mult_var
 		}
-		change_variable = { #ideally, may as well refer to this in the final effect
+		change_variable = {
+			#ideally, may as well refer to this in the final effect
 			which = decision_length
 			value = 1
 		}
-
 		owner = {
 			random_owned_starbase = {
 				limit = {
 					has_starbase_building = ice_mining_station
 					solar_system = {
-						NOT = { has_star_flag = ice_mining_in_progress }
+						NOT = {
+							has_star_flag = ice_mining_in_progress
+						}
 					}
 				}
 				solar_system = {
@@ -103,7 +101,6 @@ decision_expand_planetary_sea = {
 		clear_variable = decision_length
 		clear_variable = decision_mult_var
 	}
-
 	abort_trigger = {
 		NOT = {
 			owner = {
@@ -113,7 +110,6 @@ decision_expand_planetary_sea = {
 			}
 		}
 	}
-
 	on_unqueued = {
 		owner = {
 			random_owned_starbase = {
@@ -129,7 +125,6 @@ decision_expand_planetary_sea = {
 			}
 		}
 	}
-
 	abort_effect = {
 		owner = {
 			random_owned_starbase = {
@@ -151,14 +146,11 @@ decision_expand_planetary_sea = {
 			target = root
 		}
 	}
-
 	effect = {
 		change_planet_size = 1
-
 		custom_tooltip = decision_expand_planetary_sea_tooltip
 		hidden_effect = {
 			ice_mining_depletion_effect = yes
-
 			if = {
 				limit = {
 					has_planet_flag = temp_ice_mine_exhausted_flag
@@ -199,7 +191,6 @@ decision_expand_planetary_sea = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 1
 		modifier = {
@@ -216,9 +207,7 @@ decision_expand_planetary_sea = {
 decision_flood_habitat = {
 	owned_planets_only = yes
 	icon = decision_satellite_in_orbit
-
 	enactment_time = @expand_planetary_sea_length
-
 	potential = {
 		OR = {
 			is_planet_class = pc_habitat
@@ -232,7 +221,6 @@ decision_flood_habitat = {
 			has_modifier = flooded_habitat
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = requires_free_ice_mining_station
@@ -240,13 +228,14 @@ decision_flood_habitat = {
 				any_owned_starbase = {
 					has_starbase_building = ice_mining_station
 					solar_system = {
-						NOT = { has_star_flag = ice_mining_in_progress }
+						NOT = {
+							has_star_flag = ice_mining_in_progress
+						}
 					}
 				}
 			}
 		}
 	}
-
 	resources = {
 		category = decisions
 		cost = {
@@ -254,7 +243,6 @@ decision_flood_habitat = {
 			energy = 1000
 		}
 	}
-
 	on_queued = {
 		set_variable = {
 			which = decision_length
@@ -272,17 +260,19 @@ decision_flood_habitat = {
 			which = decision_length
 			value = decision_mult_var
 		}
-		change_variable = { #ideally, may as well refer to this in the final effect
+		change_variable = {
+			#ideally, may as well refer to this in the final effect
 			which = decision_length
 			value = 1
 		}
-
 		owner = {
 			random_owned_starbase = {
 				limit = {
 					has_starbase_building = ice_mining_station
 					solar_system = {
-						NOT = { has_star_flag = ice_mining_in_progress }
+						NOT = {
+							has_star_flag = ice_mining_in_progress
+						}
 					}
 				}
 				solar_system = {
@@ -300,7 +290,6 @@ decision_flood_habitat = {
 		clear_variable = decision_length
 		clear_variable = decision_mult_var
 	}
-
 	abort_trigger = {
 		NOT = {
 			owner = {
@@ -310,7 +299,6 @@ decision_flood_habitat = {
 			}
 		}
 	}
-
 	on_unqueued = {
 		owner = {
 			random_owned_starbase = {
@@ -326,7 +314,6 @@ decision_flood_habitat = {
 			}
 		}
 	}
-
 	abort_effect = {
 		owner = {
 			random_owned_starbase = {
@@ -348,7 +335,6 @@ decision_flood_habitat = {
 			target = root
 		}
 	}
-
 	effect = {
 		custom_tooltip = decision_flood_habitat_tooltip
 		hidden_effect = {
@@ -357,7 +343,6 @@ decision_flood_habitat = {
 				days = -1
 			}
 			ice_mining_depletion_effect = yes
-
 			if = {
 				limit = {
 					has_planet_flag = temp_ice_mine_exhausted_flag
@@ -397,64 +382,167 @@ decision_flood_habitat = {
 				value = 1
 			}
 			if = {
-				limit = { is_planet_class = pc_pd_barren_hab }
-				IF = { limit = { has_planet_flag = pdmars } set_planet_entity = { picture = pc_pd_mars_aquahab } }
-				IF = { limit = { NOT = { has_planet_flag = pdmars } } set_planet_entity = { picture = pc_pd_barren_aquahab } }
-			}
-			if = {
-				limit = { is_planet_class = pc_pd_asteroid_hab }
-				IF = { limit = { has_planet_flag = pdasteroidhab } set_planet_entity = { picture = pc_pd_asteroid_aquahab } }
-				IF = { limit = { has_planet_flag = pdiceasteroidhab } set_planet_entity = { picture = pc_pd_ice_asteroid_aquahab } }
-				IF = { limit = { has_planet_flag = pdcrystalasteroidhab } set_planet_entity = { picture = pc_pd_crystal_asteroid_aquahab } }
-			}
-			if = {
-				limit = { is_planet_class = pc_pd_barren_cold_hab }
-				set_planet_entity = { picture = pc_pd_barren_cold_aquahab }
-			}
-			if = {
-				limit = { is_planet_class = pc_pd_frozen_hab }
-				set_planet_entity = { picture = pc_pd_frozen_aquahab }
-			}
-			if = {
-				limit = { is_planet_class = pc_pd_gas_giant_hab }
-				set_planet_entity = { picture = pc_pd_gas_giant_aquahab }
-			}
-			if = {
-				limit = { is_planet_class = pc_pd_hothouse_hab }
-				set_planet_entity = { picture = pc_pd_hothouse_aquahab }
-			}
-			if = {
-				limit = { is_planet_class = pc_pd_molten_hab }
-				IF = { limit = { has_planet_flag = pdhab_volcanic } set_planet_entity = { picture = pc_pd_molten_aquahab } }
-				IF = { limit = { NOT = { has_planet_flag = pdhab_volcanic } } set_planet_entity = { picture = pc_pd_volcanic_aquahab } }
-			}
-			if = {
-				limit = { is_planet_class = pc_pd_toxic_hab }
-				set_planet_entity = { picture = pc_pd_toxic_aquahab }
-			}
-			if = {
-				limit = { is_planet_class = pc_habitat }
-				IF = {
-					limit = { NOT = { OR = { has_planet_flag = advanced_habitat	has_planet_flag = advanced_habitat_2 } } }
-					set_planet_entity = { picture = pc_aquahabitat entity = "habitat_phase_01_entity" graphical_culture = owner }
+				limit = {
+					is_planet_class = pc_pd_barren_hab
 				}
 				IF = {
-					limit = { has_planet_flag = advanced_habitat }
-					set_planet_entity = { picture = pc_aquahabitat entity = "habitat_phase_02_entity" graphical_culture = owner }
+					limit = {
+						has_planet_flag = pdmars
+					}
+					set_planet_entity = {
+						picture = pc_pd_mars_aquahab
+					}
 				}
 				IF = {
-					limit = { has_planet_flag = advanced_habitat_2 }
-					set_planet_entity = { picture = pc_aquahabitat entity = "habitat_phase_03_entity" graphical_culture = owner }
+					limit = {
+						NOT = {
+							has_planet_flag = pdmars
+						}
+					}
+					set_planet_entity = {
+						picture = pc_pd_barren_aquahab
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_planet_class = pc_pd_asteroid_hab
+				}
+				IF = {
+					limit = {
+						has_planet_flag = pdasteroidhab
+					}
+					set_planet_entity = {
+						picture = pc_pd_asteroid_aquahab
+					}
+				}
+				IF = {
+					limit = {
+						has_planet_flag = pdiceasteroidhab
+					}
+					set_planet_entity = {
+						picture = pc_pd_ice_asteroid_aquahab
+					}
+				}
+				IF = {
+					limit = {
+						has_planet_flag = pdcrystalasteroidhab
+					}
+					set_planet_entity = {
+						picture = pc_pd_crystal_asteroid_aquahab
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_planet_class = pc_pd_barren_cold_hab
+				}
+				set_planet_entity = {
+					picture = pc_pd_barren_cold_aquahab
+				}
+			}
+			if = {
+				limit = {
+					is_planet_class = pc_pd_frozen_hab
+				}
+				set_planet_entity = {
+					picture = pc_pd_frozen_aquahab
+				}
+			}
+			if = {
+				limit = {
+					is_planet_class = pc_pd_gas_giant_hab
+				}
+				set_planet_entity = {
+					picture = pc_pd_gas_giant_aquahab
+				}
+			}
+			if = {
+				limit = {
+					is_planet_class = pc_pd_hothouse_hab
+				}
+				set_planet_entity = {
+					picture = pc_pd_hothouse_aquahab
+				}
+			}
+			if = {
+				limit = {
+					is_planet_class = pc_pd_molten_hab
+				}
+				IF = {
+					limit = {
+						has_planet_flag = pdhab_volcanic
+					}
+					set_planet_entity = {
+						picture = pc_pd_molten_aquahab
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_planet_flag = pdhab_volcanic
+						}
+					}
+					set_planet_entity = {
+						picture = pc_pd_volcanic_aquahab
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_planet_class = pc_pd_toxic_hab
+				}
+				set_planet_entity = {
+					picture = pc_pd_toxic_aquahab
+				}
+			}
+			if = {
+				limit = {
+					is_planet_class = pc_habitat
+				}
+				IF = {
+					limit = {
+						NOT = {
+							OR = {
+								has_planet_flag = advanced_habitat
+								has_planet_flag = advanced_habitat_2
+							}
+						}
+					}
+					set_planet_entity = {
+						picture = pc_aquahabitat
+						entity = "habitat_phase_01_entity"
+						graphical_culture = owner
+					}
+				}
+				IF = {
+					limit = {
+						has_planet_flag = advanced_habitat
+					}
+					set_planet_entity = {
+						picture = pc_aquahabitat
+						entity = "habitat_phase_02_entity"
+						graphical_culture = owner
+					}
+				}
+				IF = {
+					limit = {
+						has_planet_flag = advanced_habitat_2
+					}
+					set_planet_entity = {
+						picture = pc_aquahabitat
+						entity = "habitat_phase_03_entity"
+						graphical_culture = owner
+					}
 				}
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 1
 		modifier = {
 			factor = 2
-			has_planet_flag = advanced_habitat 
+			has_planet_flag = advanced_habitat
 		}
 		modifier = {
 			factor = 3

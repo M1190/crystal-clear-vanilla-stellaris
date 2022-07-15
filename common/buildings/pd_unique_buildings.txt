@@ -1,51 +1,54 @@
 #Floating
-
 building_eludium_mine = {
 	base_buildtime = @b1_time
 	icon = building_eludium_mines
-
 	is_capped_by_modifier = yes
-
 	category = resource
-	
 	potential = {
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 	}
-
 	show_tech_unlock_if = {
-		owner = { any_owned_planet = { is_planet_class = pc_floating } }
+		owner = {
+			any_owned_planet = {
+				is_planet_class = pc_floating
+			}
+		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			job_eludium_expert_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_eludium_drone_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_eludium_drone_add = 1
 		}
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -54,8 +57,7 @@ building_eludium_mine = {
 		upkeep = {
 			energy = 20
 		}
-	}	 
-	
+	}
 	prerequisites = {
 		"tech_eludium_mine"
 	}
@@ -64,12 +66,14 @@ building_eludium_mine = {
 building_eludium_institute = {
 	base_buildtime = @b3_time
 	base_cap_amount = 1
-
 	category = research
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 		exists = owner
 		text = EMPIRE_UNIQUE_BUILDING
 		owner = {
@@ -78,7 +82,6 @@ building_eludium_institute = {
 			}
 		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -86,15 +89,12 @@ building_eludium_institute = {
 			has_modifier = slave_colony
 		}
 	}
-
 	#convert_to = {
 	#	building_supercomputer
 	#}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -106,51 +106,68 @@ building_eludium_institute = {
 			sr_eludium = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_eludium } }
-			owner = { is_regular_empire = yes }
+			owner = {
+				NOT = {
+					has_deficit = sr_eludium
+				}
+			}
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		planet_researchers_produces_mult = 0.1
 		job_head_researcher_add = 1
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_eludium } }
-			owner = { is_hive_empire = yes }
+			owner = {
+				NOT = {
+					has_deficit = sr_eludium
+				}
+			}
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		planet_researchers_produces_mult = 0.1
 		job_brain_drone_add = 2
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_eludium } }
-			owner = { is_machine_empire = yes }
+			owner = {
+				NOT = {
+					has_deficit = sr_eludium
+				}
+			}
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		planet_researchers_produces_mult = 0.1
 		job_calculator_add = 2
 	}
-
 	country_modifier = {
 		all_technology_research_speed = 0.05
 	}
-
 	prerequisites = {
 		"tech_eludium_research_initiative"
 	}
-
 	show_tech_unlock_if = {
-		owner = { any_owned_planet = { is_planet_class = pc_floating } }
+		owner = {
+			any_owned_planet = {
+				is_planet_class = pc_floating
+			}
+		}
 	}
-
 	ai_resource_production = {
-		trigger = { always = yes }
+		trigger = {
+			always = yes
+		}
 		physics_research = 3
 		society_research = 3
 		engineering_research = 3
@@ -177,11 +194,11 @@ building_eludium_institute = {
 		society_research = 3
 		engineering_research = 3
 	}
-
 	on_built = {
-		owner = { set_country_flag = building_eludium_institute }
+		owner = {
+			set_country_flag = building_eludium_institute
+		}
 	}
-
 	on_destroy = {
 		owner = {
 			if = {
@@ -200,26 +217,25 @@ building_eludium_floating_islands = {
 	can_be_ruined = no
 	can_demolish = no
 	base_cap_amount = 1
-	
-
 	category = amenity
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
-		NOR = { 
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+		NOR = {
 			is_planet_class = pc_floating
 			is_planet_class = pc_crystal
 			is_planet_class = pc_graveyard
 			is_planet_class = pc_technoorganic
 		}
 	}
-
 	allow = {
 		buildings_simple_allow = yes
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -227,7 +243,6 @@ building_eludium_floating_islands = {
 			has_modifier = resort_colony
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			is_artificial = no
@@ -236,7 +251,6 @@ building_eludium_floating_islands = {
 		planet_housing_add = 20
 		planet_amenities_add = 20
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			is_artificial = yes
@@ -245,7 +259,6 @@ building_eludium_floating_islands = {
 		planet_housing_add = 20
 		planet_amenities_add = 20
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -256,57 +269,56 @@ building_eludium_floating_islands = {
 			energy = @b3_upkeep
 		}
 	}
-
 	prerequisites = {
 		"tech_eludium_floating_islands"
 	}
 }
 
 #Graveyard
-
 building_graveyard_well = {
 	base_buildtime = 360
-
 	is_capped_by_modifier = yes
-
 	category = resource
-	
 	potential = {
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-	
 	prerequisites = {
 		"tech_mine_tiyanki_butcher"
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			job_graveyard_driller_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_graveyard_drone_add = 1
 		}
 	}
-
 	show_tech_unlock_if = {
-		owner = { any_owned_planet = { is_planet_class = pc_graveyard } }
-	}	
-	
+		owner = {
+			any_owned_planet = {
+				is_planet_class = pc_graveyard
+			}
+		}
+	}
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -315,18 +327,20 @@ building_graveyard_well = {
 		upkeep = {
 			energy = 20
 		}
-	} 
+	}
 }
 
 building_tiyanki_research_centre = {
 	base_buildtime = @b3_time
 	base_cap_amount = 1
-
 	category = research
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 		exists = owner
 		text = EMPIRE_UNIQUE_BUILDING
 		owner = {
@@ -335,20 +349,21 @@ building_tiyanki_research_centre = {
 			}
 		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 		}
-		NOT = { owner = { has_country_flag = pdtiyankiharvest } }
+		NOT = {
+			owner = {
+				has_country_flag = pdtiyankiharvest
+			}
+		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -360,47 +375,61 @@ building_tiyanki_research_centre = {
 			sr_tiyanki_parts = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_tiyanki_parts } }
-			owner = { is_regular_empire = yes }
+			owner = {
+				NOT = {
+					has_deficit = sr_tiyanki_parts
+				}
+			}
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		planet_jobs_society_research_produces_mult = 0.25
 		job_head_researcher_add = 2
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_tiyanki_parts } }
-			owner = { is_hive_empire = yes }
+			owner = {
+				NOT = {
+					has_deficit = sr_tiyanki_parts
+				}
+			}
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		planet_jobs_society_research_produces_mult = 0.25
 		job_brain_drone_add = 4
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_tiyanki_parts } }
-			owner = { is_machine_empire = yes }
+			owner = {
+				NOT = {
+					has_deficit = sr_tiyanki_parts
+				}
+			}
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		planet_jobs_society_research_produces_mult = 0.25
 		job_calculator_add = 4
 	}
-
 	country_modifier = {
 		all_technology_research_speed = 0.05
 	}
-
 	prerequisites = {
 		"tech_tiyanki_research_centre"
 	}
-
 	ai_resource_production = {
-		trigger = { always = yes }
+		trigger = {
+			always = yes
+		}
 		physics_research = 3
 		society_research = 3
 		engineering_research = 3
@@ -427,11 +456,11 @@ building_tiyanki_research_centre = {
 		society_research = 3
 		engineering_research = 3
 	}
-
 	on_built = {
-		owner = { set_country_flag = building_tiyanki_research_centre }
+		owner = {
+			set_country_flag = building_tiyanki_research_centre
+		}
 	}
-
 	on_destroy = {
 		owner = {
 			if = {
@@ -447,39 +476,49 @@ building_tiyanki_research_centre = {
 building_tiyanki_parts_market = {
 	base_buildtime = @b3_time
 	base_cap_amount = 1
-
 	category = trade
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		buildings_simple_allow = yes
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
+			owner = {
+				is_regular_empire = no
+			}
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 		}
-		NOT = { owner = { has_country_flag = pdtiyankiharvest } }
+		NOT = {
+			owner = {
+				has_country_flag = pdtiyankiharvest
+			}
+		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_tiyanki_parts } }
-			owner = { is_regular_empire = yes }
+			owner = {
+				NOT = {
+					has_deficit = sr_tiyanki_parts
+				}
+			}
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		job_merchant_add = 2
-		trade_value_mult = 0.20
+		trade_value_mult = 0.2
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -491,15 +530,12 @@ building_tiyanki_parts_market = {
 			sr_tiyanki_parts = 1
 		}
 	}
-
 	prerequisites = {
 		"tech_tiyanki_parts_market"
 	}
-
 	triggered_desc = {
 		text = job_merchant_effect_desc
 	}
-
 	ai_resource_production = {
 		energy = 3
 		trigger = {
@@ -527,39 +563,49 @@ building_tiyanki_parts_market = {
 building_tiyanki_power_plant = {
 	base_buildtime = @b3_time
 	base_cap_amount = 1
-
 	category = trade
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		buildings_simple_allow = yes
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 		}
-		NOT = { owner = { has_country_flag = pdtiyankiharvest } }
+		NOT = {
+			owner = {
+				has_country_flag = pdtiyankiharvest
+			}
+		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_tiyanki_parts } }
-			owner = { is_gestalt = yes }
+			owner = {
+				NOT = {
+					has_deficit = sr_tiyanki_parts
+				}
+			}
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		job_technician_drone_add = 4
-		planet_jobs_energy_produces_mult = 0.20
+		planet_jobs_energy_produces_mult = 0.2
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -571,15 +617,12 @@ building_tiyanki_power_plant = {
 			sr_tiyanki_parts = 1
 		}
 	}
-
 	prerequisites = {
 		"tech_tiyanki_power_plant"
 	}
-
 	triggered_desc = {
 		text = job_technician_drone_desc
 	}
-
 	ai_resource_production = {
 		energy = 6
 		trigger = {
@@ -611,12 +654,14 @@ building_tiyanki_power_plant = {
 building_tiyanki_observation_headquarters = {
 	base_buildtime = @b3_time
 	base_cap_amount = 1
-
 	category = research
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 		exists = owner
 		text = EMPIRE_UNIQUE_BUILDING
 		owner = {
@@ -626,20 +671,21 @@ building_tiyanki_observation_headquarters = {
 		}
 		is_planet_class = pc_graveyard
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 		}
-		NOT = { owner = { has_country_flag = pdtiyankistudyonly } }
+		NOT = {
+			owner = {
+				has_country_flag = pdtiyankistudyonly
+			}
+		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -651,60 +697,69 @@ building_tiyanki_observation_headquarters = {
 			exotic_gases = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
-			owner = { NOT = { is_spiritualist = yes } }
+			owner = {
+				is_regular_empire = yes
+			}
+			owner = {
+				NOT = {
+					is_spiritualist = yes
+				}
+			}
 		}
 		planet_jobs_society_research_produces_mult = 0.25
 		planet_jobs_unity_produces_mult = 0.25
 		job_head_researcher_add = 4
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
-			owner = { is_spiritualist = yes }
+			owner = {
+				is_regular_empire = yes
+			}
+			owner = {
+				is_spiritualist = yes
+			}
 		}
 		planet_jobs_society_research_produces_mult = 0.25
 		planet_jobs_unity_produces_mult = 0.25
 		job_head_researcher_add = 2
 		job_high_priest_add = 2
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		planet_jobs_society_research_produces_mult = 0.25
 		planet_jobs_unity_produces_mult = 0.25
 		job_brain_drone_add = 6
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		planet_jobs_society_research_produces_mult = 0.25
 		planet_jobs_unity_produces_mult = 0.25
 		job_calculator_add = 6
 	}
-
 	country_modifier = {
 		all_technology_research_speed = 0.1
 	}
-
 	prerequisites = {
 		"tech_tiyanki_observation_headquarters"
 	}
-
 	ai_resource_production = {
-		trigger = { always = yes }
+		trigger = {
+			always = yes
+		}
 		physics_research = 3
 		society_research = 3
 		engineering_research = 3
@@ -731,11 +786,11 @@ building_tiyanki_observation_headquarters = {
 		society_research = 3
 		engineering_research = 3
 	}
-
 	on_built = {
-		owner = { set_country_flag = building_tiyanki_observation_headquarters }
+		owner = {
+			set_country_flag = building_tiyanki_observation_headquarters
+		}
 	}
-
 	on_destroy = {
 		owner = {
 			if = {
@@ -751,72 +806,87 @@ building_tiyanki_observation_headquarters = {
 building_tiyanki_observation_lab = {
 	base_buildtime = @b3_time
 	base_cap_amount = 1
-
 	category = trade
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
-		NOT = { is_planet_class = pc_graveyard }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+		NOT = {
+			is_planet_class = pc_graveyard
+		}
 	}
-
 	allow = {
 		buildings_simple_allow = yes
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 		}
-		NOT = { owner = { has_country_flag = pdtiyankistudyonly } }
+		NOT = {
+			owner = {
+				has_country_flag = pdtiyankistudyonly
+			}
+		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
-			owner = { NOT = { is_spiritualist = yes } }
+			owner = {
+				is_regular_empire = yes
+			}
+			owner = {
+				NOT = {
+					is_spiritualist = yes
+				}
+			}
 		}
 		planet_jobs_society_research_produces_mult = 0.1
 		planet_jobs_unity_produces_mult = 0.1
 		job_head_researcher_add = 2
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
-			owner = { is_spiritualist = yes }
+			owner = {
+				is_regular_empire = yes
+			}
+			owner = {
+				is_spiritualist = yes
+			}
 		}
 		planet_jobs_society_research_produces_mult = 0.1
 		planet_jobs_unity_produces_mult = 0.1
 		job_head_researcher_add = 1
 		job_high_priest_add = 1
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		planet_jobs_society_research_produces_mult = 0.1
 		planet_jobs_unity_produces_mult = 0.1
 		job_brain_drone_add = 3
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		planet_jobs_society_research_produces_mult = 0.1
 		planet_jobs_unity_produces_mult = 0.1
 		job_calculator_add = 3
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -828,17 +898,16 @@ building_tiyanki_observation_lab = {
 			exotic_gases = 1
 		}
 	}
-
 	prerequisites = {
 		"tech_tiyanki_observation_lab"
 	}
-
 	triggered_desc = {
 		text = job_head_researcher_effect_desc
 	}
-
 	ai_resource_production = {
-		trigger = { always = yes }
+		trigger = {
+			always = yes
+		}
 		physics_research = 3
 		society_research = 3
 		engineering_research = 3
@@ -868,60 +937,61 @@ building_tiyanki_observation_lab = {
 }
 
 #Crystal
-
 building_crystal_carver = {
 	base_buildtime = 360
-
 	is_capped_by_modifier = yes
-
 	category = resource
-	
 	potential = {
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 	}
-	
 	prerequisites = {
 		"tech_acean_mine"
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	show_tech_unlock_if = {
-		owner = { any_owned_planet = { is_planet_class = pc_crystal } }
+		owner = {
+			any_owned_planet = {
+				is_planet_class = pc_crystal
+			}
+		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			job_crystal_carver_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_crystal_hive_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_crystal_robot_add = 1
 		}
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -930,26 +1000,28 @@ building_crystal_carver = {
 		upkeep = {
 			energy = 1
 		}
-	}	
-} 
+	}
+}
 
 building_acean_farm = {
 	base_buildtime = @b3_time
 	base_cap_amount = 1
-
 	category = resource
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
-		NOT = { is_planet_class = pc_crystal }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+		NOT = {
+			is_planet_class = pc_crystal
+		}
 	}
-
 	allow = {
 		buildings_simple_allow = yes
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -958,29 +1030,38 @@ building_acean_farm = {
 			has_modifier = resort_colony
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_acean } }
-			owner = { is_regular_empire = yes }
+			owner = {
+				NOT = {
+					has_deficit = sr_acean
+				}
+			}
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		planet_jobs_food_produces_mult = 0.2
 		BIOLOGICAL_pop_growth_speed = 0.1
 		job_farmer_add = 4
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_acean } }
-			owner = { is_gestalt = yes }
+			owner = {
+				NOT = {
+					has_deficit = sr_acean
+				}
+			}
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		planet_jobs_food_produces_mult = 0.2
 		BIOLOGICAL_pop_growth_speed = 0.1
 		job_agri_drone_add = 4
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -992,11 +1073,9 @@ building_acean_farm = {
 			sr_acean = 1
 		}
 	}
-
 	prerequisites = {
 		"tech_acean_farm"
 	}
-
 	ai_resource_production = {
 		food = 3
 		trigger = {
@@ -1028,20 +1107,22 @@ building_acean_farm = {
 building_acean_patch = {
 	base_buildtime = @b3_time
 	base_cap_amount = 1
-
 	category = resource
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
-		NOT = { is_planet_class = pc_crystal }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+		NOT = {
+			is_planet_class = pc_crystal
+		}
 	}
-
 	allow = {
 		buildings_simple_allow = yes
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -1050,29 +1131,36 @@ building_acean_patch = {
 			has_modifier = resort_colony
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_acean } }
+			owner = {
+				NOT = {
+					has_deficit = sr_acean
+				}
+			}
 			#owner = { is_regular_empire = yes }
 		}
 		planet_jobs_minerals_produces_mult = 0.2
 		job_crystal_miner_add = 1
 		job_miner_add = 4
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_acean } }
-			owner = { is_gestalt = yes }
+			owner = {
+				NOT = {
+					has_deficit = sr_acean
+				}
+			}
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		planet_jobs_minerals_produces_mult = 0.2
 		job_crystal_mining_drone_add = 1
 		job_mining_drone_add = 4
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1084,11 +1172,9 @@ building_acean_patch = {
 			sr_acean = 1
 		}
 	}
-
 	prerequisites = {
 		"tech_acean_patch"
 	}
-
 	ai_resource_production = {
 		minerals = 3
 		trigger = {
@@ -1125,162 +1211,163 @@ building_archive_major_capital = {
 	can_be_ruined = no
 	can_be_disabled = no
 	icon = building_major_capital
-
 	category = government
-	
 	potential = {
 		is_planet_class = pc_archive
 	}
-	
 	allow = {
 		num_pops >= 10
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
 			minerals = 500
-		}		
+		}
 		upkeep = {
 			energy = 5
 			alloys = 5
-		}		
+		}
 	}
-	
 	planet_modifier = {
 		planet_housing_add = 5
-		planet_amenities_add = 5	
+		planet_amenities_add = 5
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		job_enforcer_add = 1
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		job_synapse_drone_add = 2
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		job_coordinator_add = 2
 		job_replicator_add = 1
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_mechanical_empire = yes }		
+			owner = {
+				is_mechanical_empire = yes
+			}
 		}
 		job_roboticist_add = 2
-	}	
-	
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_regular_empire = yes
 				NOR = {
 					has_authority = auth_corporate
-					has_civic = civic_exalted_priesthood 
+					has_civic = civic_exalted_priesthood
 					has_civic = civic_aristocratic_elite
 					has_civic = civic_merchant_guilds
 					has_civic = civic_technocracy
 				}
-			}					
+			}
 		}
 		modifier = {
 			job_politician_add = 2
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_authority = auth_corporate }
+			owner = {
+				has_authority = auth_corporate
+			}
 		}
 		modifier = {
 			job_executive_add = 2
 		}
-	}	
-	
-	
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_exalted_priesthood }					
+			owner = {
+				has_civic = civic_exalted_priesthood
+			}
 		}
 		modifier = {
 			job_politician_add = 1
 			job_high_priest_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_aristocratic_elite }					
+			owner = {
+				has_civic = civic_aristocratic_elite
+			}
 		}
 		modifier = {
 			job_politician_add = 1
 			job_noble_add = 1
-		} 
+		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_technocracy }					
+			owner = {
+				has_civic = civic_technocracy
+			}
 		}
 		modifier = {
-			job_head_researcher_add = 1		
+			job_head_researcher_add = 1
 			job_politician_add = 1
-		} 
+		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_merchant_guilds }					
+			owner = {
+				has_civic = civic_merchant_guilds
+			}
 		}
 		modifier = {
 			job_politician_add = 1
 			job_merchant_add = 1
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { 
+			owner = {
 				has_civic = civic_exalted_priesthood
 			}
 		}
 		text = job_high_priest_effect_desc
-	}	
+	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { 
+			owner = {
 				has_civic = civic_aristocratic_elite
 			}
 		}
 		text = job_noble_effect_desc
-	}			
+	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { 
+			owner = {
 				has_civic = civic_merchant_guilds
 			}
 		}
@@ -1289,136 +1376,145 @@ building_archive_major_capital = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { 
-				NOT = { has_authority = auth_corporate }
-				is_regular_empire = yes 
+			owner = {
+				NOT = {
+					has_authority = auth_corporate
+				}
+				is_regular_empire = yes
 			}
-		}	
+		}
 		text = job_politician_effect_desc
 	}
-	
 	triggered_desc = {
-		trigger = { 
+		trigger = {
 			exists = owner
-			owner = { is_mechanical_empire = yes }		
+			owner = {
+				is_mechanical_empire = yes
+			}
 		}
 		text = job_roboticist_effect_desc
-	}	
-	
+	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { 
+			owner = {
 				has_authority = auth_corporate
 			}
-		}	
+		}
 		text = job_executive_effect_desc
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_regular_empire = yes }
-		}		
+			owner = {
+				is_regular_empire = yes
+			}
+		}
 		text = job_enforcer_effect_desc
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_machine_empire = yes }
-		}		
+			owner = {
+				is_machine_empire = yes
+			}
+		}
 		text = job_coordinator_effect_desc
-	}		
-	
+	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_machine_empire = yes }
-		}	
+			owner = {
+				is_machine_empire = yes
+			}
+		}
 		text = job_replicator_effect_desc
-	}	
-	
+	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_hive_empire = yes }
-		}	
+			owner = {
+				is_hive_empire = yes
+			}
+		}
 		text = job_synapse_drone_effect_desc
-	}		 
+	}
 }
 
 #Techno-Organic
-
 building_subsurface_assembly = {
 	base_buildtime = 360
-
 	is_capped_by_modifier = yes
-
 	category = resource
-	
 	potential = {
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
- 
 	#Regular Empire (With Robots)
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
-			planet = { has_building = building_robot_assembly_plant }
+			owner = {
+				is_regular_empire = yes
+			}
+			planet = {
+				has_building = building_robot_assembly_plant
+			}
 		}
 		modifier = {
 			job_techno_eng_add = 4
-		    #planet_pop_assembly_add = 2
+			#planet_pop_assembly_add = 2
 		}
 	}
- 
 	#Regular Empire (Without Robots)
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
-			planet = { NOT = { has_building = building_robot_assembly_plant } }
+			owner = {
+				is_regular_empire = yes
+			}
+			planet = {
+				NOT = {
+					has_building = building_robot_assembly_plant
+				}
+			}
 		}
 		modifier = {
 			job_techno_eng_add = 4
 		}
 	}
-
 	#Hives (Without Robots)
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_techno_drone_add = 4
 		}
 	}
-	
 	#Machine Empires
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_techno_drone_add = 4
-		    #planet_pop_assembly_add = 2
+			#planet_pop_assembly_add = 2
 		}
 	}
-
 	prerequisites = {
 		"tech_subsurface_assembly"
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1427,60 +1523,76 @@ building_subsurface_assembly = {
 		upkeep = {
 			energy = 1
 		}
-	}	
+	}
 }
 
 building_techno_canal = {
 	base_buildtime = @b3_time
 	base_cap_amount = 1
-
 	category = resource
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
-		NOT = { is_planet_class = pc_technoorganic }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+		NOT = {
+			is_planet_class = pc_technoorganic
+		}
 		is_pd_arcology = no
 		is_pd_robot_arcology = no
-		is_pd_hive_arcology = no  
+		is_pd_hive_arcology = no
 	}
-
 	allow = {
 		buildings_simple_allow = yes
 		has_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_machine_empire = yes NOT = { has_civic = civic_machine_servitor } }
+			owner = {
+				is_machine_empire = yes
+				NOT = {
+					has_civic = civic_machine_servitor
+				}
+			}
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_living_metal } }
-			owner = { is_regular_empire = yes }
+			owner = {
+				NOT = {
+					has_deficit = sr_living_metal
+				}
+			}
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		planet_jobs_food_produces_mult = 0.2
 		planet_jobs_engineering_research_produces_mult = 0.2
 		job_farmer_add = 4
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_living_metal } }
-			owner = { is_gestalt = yes }
+			owner = {
+				NOT = {
+					has_deficit = sr_living_metal
+				}
+			}
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		planet_jobs_food_produces_mult = 0.2
 		planet_jobs_engineering_research_produces_mult = 0.2
 		job_agri_drone_add = 4
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1492,11 +1604,9 @@ building_techno_canal = {
 			sr_living_metal = 1
 		}
 	}
-
 	prerequisites = {
 		"tech_techno_canal"
 	}
-
 	ai_resource_production = {
 		food = 3
 		trigger = {
@@ -1528,20 +1638,22 @@ building_techno_canal = {
 building_techno_synth_workshop = {
 	base_buildtime = @b3_time
 	base_cap_amount = 1
-
 	category = research
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
-		NOT = { is_planet_class = pc_technoorganic }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+		NOT = {
+			is_planet_class = pc_technoorganic
+		}
 	}
-
 	allow = {
 		buildings_simple_allow = yes
 		has_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -1549,40 +1661,54 @@ building_techno_synth_workshop = {
 			has_modifier = resort_colony
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_living_metal } }
-			owner = { is_regular_empire = yes }
+			owner = {
+				NOT = {
+					has_deficit = sr_living_metal
+				}
+			}
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		planet_amenities_add = 20
-		planet_jobs_produces_mult = 0.10
+		planet_jobs_produces_mult = 0.1
 		job_researcher_add = 4
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_living_metal } }
-			owner = { is_hive_empire = yes }
+			owner = {
+				NOT = {
+					has_deficit = sr_living_metal
+				}
+			}
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		planet_amenities_add = 20
-		planet_jobs_produces_mult = 0.10
+		planet_jobs_produces_mult = 0.1
 		job_brain_drone_add = 4
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_deficit = sr_living_metal } }
-			owner = { is_machine_empire = yes }
+			owner = {
+				NOT = {
+					has_deficit = sr_living_metal
+				}
+			}
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		planet_amenities_add = 20
-		planet_jobs_produces_mult = 0.10
+		planet_jobs_produces_mult = 0.1
 		job_brain_drone_add = 4
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1594,7 +1720,6 @@ building_techno_synth_workshop = {
 			sr_living_metal = 1
 		}
 	}
-
 	prerequisites = {
 		"tech_techno_synth_workshop"
 	}
@@ -1602,45 +1727,54 @@ building_techno_synth_workshop = {
 
 building_biosynth_lm_refinery = {
 	base_buildtime = @b3_time
-
 	category = manufacturing
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		buildings_simple_allow = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			has_modifier = slave_colony
 			has_modifier = resort_colony
-			owner = { NOT = { has_origin = origin_techno_world } }
+			owner = {
+				NOT = {
+					has_origin = origin_techno_world
+				}
+			}
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_origin = origin_techno_world }
-			owner = { is_regular_empire = yes }
+			owner = {
+				has_origin = origin_techno_world
+			}
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		job_pd_lm_refiner_add = 1
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_origin = origin_techno_world }
-			owner = { is_hive_empire = yes }
+			owner = {
+				has_origin = origin_techno_world
+			}
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		job_pd_lm_refiner_drone_add = 1
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1650,7 +1784,6 @@ building_biosynth_lm_refinery = {
 			energy = @b3_upkeep
 		}
 	}
-
 	prerequisites = {
 		"tech_biosynth_lm_refinery"
 	}

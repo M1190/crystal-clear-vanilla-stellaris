@@ -1,16 +1,19 @@
 building_institute = {
 	base_buildtime = @b2_time
 	base_cap_amount = 1
-
 	category = research
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 		exists = owner
-		owner = { is_regular_empire = yes }
+		owner = {
+			is_regular_empire = yes
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -23,15 +26,12 @@ building_institute = {
 			buildings_no_exotic_gases = yes
 		}
 	}
-
 	convert_to = {
 		building_supercomputer
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -43,13 +43,10 @@ building_institute = {
 			exotic_gases = @b2_rare_upkeep
 		}
 	}
-
 	planet_modifier = {
 		planet_researchers_produces_mult = 0.15
 		job_head_researcher_add = 1
 	}
-
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -59,25 +56,21 @@ building_institute = {
 		}
 		modifier = {
 			planet_jobs_unity_produces_mult = 0.05
-
 		}
 	}
-
-
 	prerequisites = {
 		"tech_global_research_initiative"
 	}
-
 	triggered_desc = {
 		text = job_head_researcher_effect_desc
 	}
-
 	show_tech_unlock_if = {
 		is_regular_empire = yes
 	}
-
 	ai_resource_production = {
-		trigger = { always = yes }
+		trigger = {
+			always = yes
+		}
 		physics_research = 3
 		society_research = 3
 		engineering_research = 3
@@ -110,22 +103,20 @@ building_supercomputer = {
 	base_buildtime = @b2_time
 	base_cap_amount = 1
 	icon = building_institute
-
 	category = research
-
 	potential = {
 		exists = owner
-		owner = { is_gestalt = yes }
+		owner = {
+			is_gestalt = yes
+		}
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -137,11 +128,9 @@ building_supercomputer = {
 			}
 		}
 	}
-
 	convert_to = {
 		building_institute
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -151,77 +140,81 @@ building_supercomputer = {
 			energy = @b2_upkeep
 		}
 	}
-
 	planet_modifier = {
 		planet_researchers_produces_mult = 0.15
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_brain_drone_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_calculator_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_bugged_machine_researcher }
+			owner = {
+				has_civic = civic_bugged_machine_researcher
+			}
 		}
 		modifier = {
 			job_bugged_examinatron_add = 1
-#			job_calculator_add = -1
+			#			job_calculator_add = -1
 		}
 	}
-
 	prerequisites = {
 		"tech_global_research_initiative"
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		text = job_brain_drone_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_machine_empire = yes }
-#			owner = { NOT = { has_civic = civic_ukn_machine_researcher } }
+			owner = {
+				is_machine_empire = yes
+			}
+			#			owner = { NOT = { has_civic = civic_ukn_machine_researcher } }
 		}
 		text = job_calculator_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { has_civic = civic_bugged_machine_researcher }
+			owner = {
+				has_civic = civic_bugged_machine_researcher
+			}
 		}
 		text = job_bugged_examinatron_effect_desc
 	}
-
 	show_tech_unlock_if = {
 		is_gestalt = yes
 	}
-
 	ai_resource_production = {
-		trigger = { always = yes }
+		trigger = {
+			always = yes
+		}
 		physics_research = 3
 		society_research = 3
 		engineering_research = 3

@@ -1,13 +1,11 @@
 decision_gray_goo_harvest_planet = {
 	icon = decision_shattered_planet
 	sound = event_structural_collapse
-
 	enactment_time = 30
 	resources = {
 		category = decisions
 	}
 	owned_planets_only = yes
-
 	potential = {
 		owner = {
 			is_machine_empire = yes
@@ -18,32 +16,45 @@ decision_gray_goo_harvest_planet = {
 	}
 	allow = {
 		count_owned_pop = {
-			limit = { has_trait = trait_nanomachines }
+			limit = {
+				has_trait = trait_nanomachines
+			}
 			count >= 2
 		}
 	}
-
 	effect = {
 		#custom_tooltip = decision_gray_goo_harvest_planet_effect_desc
 		save_event_target_as = gray_gooed_planet
 		hidden_effect = {
-			owner = { country_event = { id = eo_gray_goo.2 days = 1 } } 
+			owner = {
+				country_event = {
+					id = eo_gray_goo.2
+					days = 1
+				}
+			}
 		}
 		random_owned_pop = {
-			limit = { has_trait = trait_nanomachines }
+			limit = {
+				has_trait = trait_nanomachines
+			}
 			kill_pop = yes
 		}
 		random_owned_pop = {
-			limit = { has_trait = trait_nanomachines }
+			limit = {
+				has_trait = trait_nanomachines
+			}
 			kill_pop = yes
 		}
 		every_owned_pop = {
 			limit = {
 				is_being_purged = yes
-				has_purge_type = { type = purge_displacement country = root.owner }
+				has_purge_type = {
+					type = purge_displacement
+					country = root.owner
+				}
 				is_valid_refugee_pop = yes
 			}
-			save_event_target_as = refugee_pop #Must be saved for refugee_pop_effect to work
+			save_event_target_as = refugee_pop			#Must be saved for refugee_pop_effect to work
 			refugee_pop_effect = yes
 		}
 		every_owned_pop = {
@@ -53,8 +64,8 @@ decision_gray_goo_harvest_planet = {
 			kill_pop = yes
 			if = {
 				limit = {
-						is_robotic_species = no
-						is_lithoid = no
+					is_robotic_species = no
+					is_lithoid = no
 				}
 				from = {
 					add_resource = {
@@ -97,10 +108,8 @@ decision_gray_goo_harvest_planet = {
 		add_deposit = d_gray_goo_resources
 		custom_tooltip = gray_goo_resource_cache_from_harvest
 	}
-
 	ai_weight = {
 		weight = 5
-
 		# don't wreck worlds you want to keep
 		modifier = {
 			factor = 0
@@ -108,8 +117,14 @@ decision_gray_goo_harvest_planet = {
 			OR = {
 				planet_size > 15
 				AND = {
-					num_free_districts = { type = district_mining value > 2 }
-					num_free_districts = { type = district_generator value > 2 }
+					num_free_districts = {
+						type = district_mining
+						value > 2
+					}
+					num_free_districts = {
+						type = district_generator
+						value > 2
+					}
 				}
 				is_planet_class = pc_city
 				is_planet_class = pc_relic

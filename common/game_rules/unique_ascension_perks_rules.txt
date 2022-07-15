@@ -26,7 +26,9 @@ can_build_branch_office_on_planet = {
 		owner = {
 			OR = {
 				is_same_species = root
-				NOT = { has_valid_civic = civic_fanatic_purifiers }
+				NOT = {
+					has_valid_civic = civic_fanatic_purifiers
+				}
 			}
 		}
 	}
@@ -35,12 +37,20 @@ can_build_branch_office_on_planet = {
 		exists = owner
 		OR = {
 			AND = {
-				owner = { merg_is_default_empire = yes }
+				owner = {
+					merg_is_default_empire = yes
+				}
 				# NOT = { root = { has_authority = auth_corporate } }
 				OR = {
-					root = { is_criminal_syndicate = yes }
-					owner = { has_commercial_pact = root }
-					owner = { is_in_federation_with = root }
+					root = {
+						is_criminal_syndicate = yes
+					}
+					owner = {
+						has_commercial_pact = root
+					}
+					owner = {
+						is_in_federation_with = root
+					}
 					# Allow branch offices in subsidiaries and vice versa.
 					root = {
 						is_subject = yes
@@ -74,21 +84,35 @@ can_build_branch_office_on_planet = {
 						}
 					}
 					AND = {
-						root = { has_valid_civic = civic_galactic_sovereign_megacorp }
-						owner = { is_galactic_community_member = yes }
+						root = {
+							has_valid_civic = civic_galactic_sovereign_megacorp
+						}
+						owner = {
+							is_galactic_community_member = yes
+						}
 					}
 					AND = {
-						root = { has_modifier = imperial_charter }
-						owner = { is_galactic_community_member = yes }
+						root = {
+							has_modifier = imperial_charter
+						}
+						owner = {
+							is_galactic_community_member = yes
+						}
 					}
 					# Imposed Megacorp allows branch offices without commercial (MOD)
-					root = { has_ascension_perk = ap_megacorp }
+					root = {
+						has_ascension_perk = ap_megacorp
+					}
 				}
 			}
 			# Imposed Megacorp allows branch offices on Gesalt Empire (MOD)
 			AND = {
-				owner = { is_gestalt = yes }
-				root = { has_ascension_perk = ap_megacorp }
+				owner = {
+					is_gestalt = yes
+				}
+				root = {
+					has_ascension_perk = ap_megacorp
+				}
 			}
 			# Imposed Megacorp allows branch offices on other MegaCorp (MOD)
 			# AND = { owner = { has_authority = auth_corporate } root = { has_ascension_perk = ap_megacorp } }
@@ -102,7 +126,9 @@ can_build_branch_office_on_planet = {
 			limit = {
 				OR = {
 					# Not valid if you aren't a subject.
-					root = { is_subject = no }
+					root = {
+						is_subject = no
+					}
 					# Or if your overlord isn't a megacorp.
 					root = {
 						is_subject = yes
@@ -116,7 +142,8 @@ can_build_branch_office_on_planet = {
 				}
 			}
 			always = yes
-		} else = {
+		}
+		else = {
 			AND = {
 				root = {
 					is_subject = yes
@@ -132,7 +159,11 @@ can_build_branch_office_on_planet = {
 						is_subject = no
 						AND = {
 							is_subject = yes
-							overlord = { NOT = { is_same_empire = root.overlord } }
+							overlord = {
+								NOT = {
+									is_same_empire = root.overlord
+								}
+							}
 						}
 					}
 				}
@@ -143,7 +174,9 @@ can_build_branch_office_on_planet = {
 		fail_text = BRANCH_OFFICE_CRIMINAL_HERITAGE_HAS_TRUCE
 		exists = owner
 		OR = {
-			root = { is_criminal_syndicate = no }
+			root = {
+				is_criminal_syndicate = no
+			}
 			owner = {
 				NOR = {
 					has_truce = root
@@ -156,10 +189,16 @@ can_build_branch_office_on_planet = {
 		fail_text = BRANCH_OFFICE_CRIMINAL_COOLDOWN
 		exists = owner
 		OR = {
-			root = { is_criminal_syndicate = no }
+			root = {
+				is_criminal_syndicate = no
+			}
 			AND = {
-				root = { is_criminal_syndicate = yes }
-				NOT = { has_planet_flag = criminal_branch_closed_cooldown_planet@root }
+				root = {
+					is_criminal_syndicate = yes
+				}
+				NOT = {
+					has_planet_flag = criminal_branch_closed_cooldown_planet@root
+				}
 			}
 		}
 	}

@@ -1,25 +1,28 @@
 decision_gpm_machine_world_core_relic = {
-    owned_planets_only = no
+	owned_planets_only = no
 	sound = event_administrative_work
 	icon = gpm_decision_machine_world_core_relic
 	#enactment_time = 0
-
-    potential = {
+	potential = {
 		OR = {
 			gpm_is_planet_class_normal_uninhabitable = yes
 			gpm_is_planet_class_gas_giant = yes
 			is_planet_class = pc_broken
 		}
 		exists = space_owner
-		space_owner = { has_country_flag = relic_machine_world_core_activated }
+		space_owner = {
+			has_country_flag = relic_machine_world_core_activated
+		}
 	}
-	
 	allow = {
 		custom_tooltip = decision_gpm_machine_world_core_relic_tt
 	}
-
-    effect = {
-		hidden_effect = { space_owner = { remove_country_flag = relic_machine_world_core_activated } }
+	effect = {
+		hidden_effect = {
+			space_owner = {
+				remove_country_flag = relic_machine_world_core_activated
+			}
+		}
 		custom_tooltip = decision_gpm_machine_world_core_relic_tt
 		change_pc = pc_machine
 		hidden_effect = {
@@ -28,7 +31,6 @@ decision_gpm_machine_world_core_relic = {
 		}
 		change_planet_size = 5
 	}
-	
 	ai_weight = {
 		weight = 0
 		modifier = {
@@ -42,11 +44,10 @@ decision_gpm_machine_world_core_relic = {
 }
 
 decision_gpm_shield_generator_arrays = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = gpm_decision_gpm_shield_generator_arrays
 	# enactment_time = 180
-
 	resources = {
 		category = decisions
 		cost = {
@@ -54,8 +55,7 @@ decision_gpm_shield_generator_arrays = {
 			minerals = 1000
 		}
 	}
-
-    potential = {
+	potential = {
 		exists = owner
 		owner = {
 			check_variable = {
@@ -63,7 +63,9 @@ decision_gpm_shield_generator_arrays = {
 				value > 0
 			}
 		}
-		NOT = { has_deposit = gpm_d_planetary_shield_array }
+		NOT = {
+			has_deposit = gpm_d_planetary_shield_array
+		}
 		OR = {
 			gpm_is_planet_class_normal_habitable = yes
 			gpm_is_planet_class_nuked = yes
@@ -72,11 +74,9 @@ decision_gpm_shield_generator_arrays = {
 			gpm_is_planet_class_hive = yes
 		}
 	}
-	
 	allow = {
 	}
-
-    effect = {
+	effect = {
 		custom_tooltip = decision_gpm_shield_generator_arrays_tt
 		hidden_effect = {
 			owner = {
@@ -87,10 +87,13 @@ decision_gpm_shield_generator_arrays = {
 			}
 		}
 		add_deposit = gpm_d_planetary_shield_array
-		add_modifier = { modifier = gpm_precursor_planetary_shield_on }
-		hidden_effect = { gpm_set_precursor_planetary_shields = yes }
+		add_modifier = {
+			modifier = gpm_precursor_planetary_shield_on
+		}
+		hidden_effect = {
+			gpm_set_precursor_planetary_shields = yes
+		}
 	}
-	
 	ai_weight = {
 		weight = 500
 		modifier = {
@@ -121,19 +124,17 @@ decision_gpm_shield_generator_arrays = {
 }
 
 decision_gpm_Floating_Island_Housing = {
-    owned_planets_only = yes
+	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = gpm_decision_floating_islands
 	# enactment_time = 0
-
-    # resources = {
+	# resources = {
 	# 	category = decisions
 	# 	cost = {
 	# 		minerals = 1000
 	# 	}
 	# }
-
-    potential = {
+	potential = {
 		exists = owner
 		owner = {
 			check_variable = {
@@ -141,7 +142,9 @@ decision_gpm_Floating_Island_Housing = {
 				value > 0
 			}
 		}
-		NOT = { has_deposit = gpm_d_floating_islands_housing }
+		NOT = {
+			has_deposit = gpm_d_floating_islands_housing
+		}
 		OR = {
 			gpm_is_planet_class_normal_habitable = yes
 			gpm_is_planet_class_nuked = yes
@@ -150,11 +153,9 @@ decision_gpm_Floating_Island_Housing = {
 			gpm_is_planet_class_hive = yes
 		}
 	}
-	
 	allow = {
 	}
-
-    effect = {
+	effect = {
 		add_deposit = gpm_d_floating_islands_housing
 		# custom_tooltip = decision_gpm_Floating_Island_Housing_effects
 		hidden_effect = {
@@ -166,7 +167,6 @@ decision_gpm_Floating_Island_Housing = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 100
 		modifier = {

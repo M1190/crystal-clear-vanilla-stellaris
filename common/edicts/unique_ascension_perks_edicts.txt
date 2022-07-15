@@ -2,8 +2,12 @@ enable_spacen_engineers_project = {
 	icon = "GFX_station_icon"
 	length = 3
 	# resources = { category = edicts cost = { } }
-	potential = { has_ascension_perk = ap_space_engineers }
-	ai_weight = { weight = 0 }
+	potential = {
+		has_ascension_perk = ap_space_engineers
+	}
+	ai_weight = {
+		weight = 0
+	}
 }
 
 enable_planetary_project = {
@@ -16,7 +20,9 @@ enable_planetary_project = {
 			has_global_flag = ap_stellar_manipulation
 		}
 	}
-	ai_weight = { weight = 0 }
+	ai_weight = {
+		weight = 0
+	}
 }
 
 active_nano_auto_upgrade = {
@@ -25,10 +31,16 @@ active_nano_auto_upgrade = {
 	# resources = { category = edicts cost = { } }
 	potential = {
 		has_ascension_perk = ap_nano_drones
-		NOT = { has_country_flag = nano_auto_upgrade }
+		NOT = {
+			has_country_flag = nano_auto_upgrade
+		}
 	}
-	ai_weight = { weight = 0 }
-	effect = { set_country_flag = nano_auto_upgrade }
+	ai_weight = {
+		weight = 0
+	}
+	effect = {
+		set_country_flag = nano_auto_upgrade
+	}
 }
 
 deactive_nano_auto_upgrade = {
@@ -39,8 +51,12 @@ deactive_nano_auto_upgrade = {
 		has_ascension_perk = ap_nano_drones
 		has_country_flag = nano_auto_upgrade
 	}
-	ai_weight = { weight = 0 }
-	effect = { remove_country_flag = nano_auto_upgrade }
+	ai_weight = {
+		weight = 0
+	}
+	effect = {
+		remove_country_flag = nano_auto_upgrade
+	}
 }
 
 enable_system_localization = {
@@ -48,20 +64,34 @@ enable_system_localization = {
 	length = -1
 	# resources = { category = edicts cost = { } }
 	potential = {
-		NOT = { has_country_flag = system_localization_cooldown }
+		NOT = {
+			has_country_flag = system_localization_cooldown
+		}
 	}
 	allow = {
 		custom_tooltip = {
 			fail_text = "edict_enable_system_localization_req"
-			any_system_within_border = { has_star_flag = lh_basic_system }
+			any_system_within_border = {
+				has_star_flag = lh_basic_system
+			}
 		}
-		NOT = { has_active_event = { UniqueAscensionPerksEvents.23 } }
+		NOT = {
+			has_active_event = {
+				UniqueAscensionPerksEvents.23
+			}
+		}
 	}
-	prerequisites = { "tech_new_systems_localization" }
-	ai_weight = { weight = 0 }
+	prerequisites = {
+		"tech_new_systems_localization"
+	}
+	ai_weight = {
+		weight = 0
+	}
 	effect = {
 		custom_tooltip = "edict_enable_system_localization_tooltip"
-		country_event = { id = UniqueAscensionPerksEvents.23 }
+		country_event = {
+			id = UniqueAscensionPerksEvents.23
+		}
 	}
 }
 
@@ -71,26 +101,50 @@ active_cortana_ai = {
 	# resources = { category = edicts cost = { } }
 	allow = {
 		OR = {
-			resource_stockpile_compare = { resource = energy value > 5000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value > 5000
+			}
 			AND = {
 				has_technology = tech_cortana_optimized
-				resource_stockpile_compare = { resource = energy value > 4000 }
+				resource_stockpile_compare = {
+					resource = energy
+					value > 4000
+				}
 			}
 		}
-		NOT = { has_active_event = { CortanaEvent.0 CortanaEvent.1 } }
+		NOT = {
+			has_active_event = {
+				CortanaEvent.0
+				CortanaEvent.1
+			}
+		}
 	}
 	potential = {
 		has_ascension_perk = ap_ai_cortana
-		NOT = { has_country_flag = cortana_cooldown }
+		NOT = {
+			has_country_flag = cortana_cooldown
+		}
 	}
 	# resources = { category = edicts cost = { energy = 5000 } }
-	ai_weight = { weight = 0 }
+	ai_weight = {
+		weight = 0
+	}
 	effect = {
-		add_resource = { energy = -5000 }
-		if = { limit = { has_technology = tech_cortana_optimized }
-			add_resource = { energy = 1000 }
+		add_resource = {
+			energy = -5000
 		}
-		country_event = { id = CortanaEvent.1 }
+		if = {
+			limit = {
+				has_technology = tech_cortana_optimized
+			}
+			add_resource = {
+				energy = 1000
+			}
+		}
+		country_event = {
+			id = CortanaEvent.1
+		}
 		custom_tooltip = "edict_enable_system_localization_tooltip"
 	}
 }
@@ -100,19 +154,37 @@ space_domestication_menu = {
 	length = -1
 	# resources = { category = edicts cost = { } }
 	allow = {
-		NOT = { has_active_event = { UniqueAscensionPerksEvents.1000 UniqueAscensionPerksEvents.1002 } }
+		NOT = {
+			has_active_event = {
+				UniqueAscensionPerksEvents.1000
+				UniqueAscensionPerksEvents.1002
+			}
+		}
 	}
-	potential = { has_ascension_perk = ap_space_domestication }
-	ai_weight = { weight = 0 }
+	potential = {
+		has_ascension_perk = ap_space_domestication
+	}
+	ai_weight = {
+		weight = 0
+	}
 	effect = {
 		if = {
 			limit = {
-				NOT = { has_country_flag = space_domestication_selected }
+				NOT = {
+					has_country_flag = space_domestication_selected
+				}
 			}
-			country_event = { id = UniqueAscensionPerksEvents.1000 }
-		} else_if = {
-			limit = { has_country_flag = space_domestication_project_completed }
-			country_event = { id = UniqueAscensionPerksEvents.1002 }
+			country_event = {
+				id = UniqueAscensionPerksEvents.1000
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = space_domestication_project_completed
+			}
+			country_event = {
+				id = UniqueAscensionPerksEvents.1002
+			}
 		}
 	}
 }
@@ -122,12 +194,22 @@ contact_leviathan_master = {
 	length = -1
 	# resources = { category = edicts cost = { } }
 	allow = {
-		NOT = { has_active_event = { UniqueAscensionPerksEvents.1055 } }
+		NOT = {
+			has_active_event = {
+				UniqueAscensionPerksEvents.1055
+			}
+		}
 	}
-	potential = { has_country_flag = leviathan_master_project }
-	ai_weight = { weight = 0 }
+	potential = {
+		has_country_flag = leviathan_master_project
+	}
+	ai_weight = {
+		weight = 0
+	}
 	effect = {
-		country_event = { id = UniqueAscensionPerksEvents.1055 }
+		country_event = {
+			id = UniqueAscensionPerksEvents.1055
+		}
 	}
 }
 
@@ -136,13 +218,26 @@ leader_cloning = {
 	length = -1
 	# resources = { category = edicts cost = { } }
 	allow = {
-		resource_stockpile_compare = { resource = influence value > 75 }
-		NOT = { has_active_event = { UniqueAscensionPerksEvents.103 } }
+		resource_stockpile_compare = {
+			resource = influence
+			value > 75
+		}
+		NOT = {
+			has_active_event = {
+				UniqueAscensionPerksEvents.103
+			}
+		}
 	}
-	potential = { has_country_flag = super_hivemind_project }
-	ai_weight = { weight = 0 }
+	potential = {
+		has_country_flag = super_hivemind_project
+	}
+	ai_weight = {
+		weight = 0
+	}
 	effect = {
-		country_event = { id = UniqueAscensionPerksEvents.103 }
+		country_event = {
+			id = UniqueAscensionPerksEvents.103
+		}
 	}
 }
 
@@ -150,17 +245,29 @@ contact_mega_hivemind = {
 	icon = "GFX_edict_type_alien"
 	length = -1
 	# resources = { category = edicts cost = { } }
-	potential = { has_country_flag = mega_hivemind_project }
-	ai_weight = { weight = 0 }
+	potential = {
+		has_country_flag = mega_hivemind_project
+	}
+	ai_weight = {
+		weight = 0
+	}
 	allow = {
 		custom_tooltip = {
 			fail_text = "edict_contact_mega_hivemind_req_1"
-			NOT = { has_country_flag = realm_destination_entrance_cooldown }
+			NOT = {
+				has_country_flag = realm_destination_entrance_cooldown
+			}
 		}
-		NOT = { has_active_event = { UniqueAscensionPerksEvents.112 } }
+		NOT = {
+			has_active_event = {
+				UniqueAscensionPerksEvents.112
+			}
+		}
 	}
 	effect = {
-		country_event = { id = UniqueAscensionPerksEvents.112 }
+		country_event = {
+			id = UniqueAscensionPerksEvents.112
+		}
 	}
 }
 
@@ -169,12 +276,22 @@ science_ship_escort = {
 	length = -1
 	# resources = { category = edicts cost = { } }
 	allow = {
-		NOT = { has_active_event = { UniqueAscensionPerksEvents.8059 } }
+		NOT = {
+			has_active_event = {
+				UniqueAscensionPerksEvents.8059
+			}
+		}
 	}
-	potential = { has_ascension_perk = ap_advanced_security }
-	ai_weight = { weight = 0 }
+	potential = {
+		has_ascension_perk = ap_advanced_security
+	}
+	ai_weight = {
+		weight = 0
+	}
 	effect = {
-		country_event = { id = UniqueAscensionPerksEvents.8059 }
+		country_event = {
+			id = UniqueAscensionPerksEvents.8059
+		}
 	}
 }
 
@@ -186,8 +303,12 @@ stability_celebration_warn_me_again = {
 		has_ascension_perk = ap_stability_celebration
 		has_country_flag = ap_stability_celebration_no_warning
 	}
-	ai_weight = { weight = 0 }
-	effect = { remove_country_flag = ap_stability_celebration_no_warning }
+	ai_weight = {
+		weight = 0
+	}
+	effect = {
+		remove_country_flag = ap_stability_celebration_no_warning
+	}
 }
 
 hivemind_reserve_warn_me_again = {
@@ -198,8 +319,12 @@ hivemind_reserve_warn_me_again = {
 		has_ascension_perk = ap_hivemind_reserve
 		has_country_flag = ap_hivemind_reserve_new_pop_no_warning
 	}
-	ai_weight = { weight = 0 }
-	effect = { remove_country_flag = ap_hivemind_reserve_new_pop_no_warning }
+	ai_weight = {
+		weight = 0
+	}
+	effect = {
+		remove_country_flag = ap_hivemind_reserve_new_pop_no_warning
+	}
 }
 
 recycling_expedition_spawn_system = {
@@ -208,7 +333,9 @@ recycling_expedition_spawn_system = {
 	# resources = { category = edicts cost = { } }
 	allow = {
 		NOT = {
-			has_active_event = { UniqueAscensionPerksEvents.3055 }
+			has_active_event = {
+				UniqueAscensionPerksEvents.3055
+			}
 		}
 	}
 	potential = {
@@ -217,9 +344,13 @@ recycling_expedition_spawn_system = {
 			has_country_flag = aggressive_hivemind_project
 		}
 	}
-	ai_weight = { weight = 0 }
+	ai_weight = {
+		weight = 0
+	}
 	effect = {
-		country_event = { id = UniqueAscensionPerksEvents.3055 }
+		country_event = {
+			id = UniqueAscensionPerksEvents.3055
+		}
 	}
 }
 
@@ -231,8 +362,12 @@ expansion_infinity_warn_me_again = {
 		has_ascension_perk = ap_expansion_infinity
 		has_country_flag = ap_expansion_infinity_collection_no_warning
 	}
-	ai_weight = { weight = 0 }
-	effect = { remove_country_flag = ap_expansion_infinity_collection_no_warning }
+	ai_weight = {
+		weight = 0
+	}
+	effect = {
+		remove_country_flag = ap_expansion_infinity_collection_no_warning
+	}
 }
 
 chosen_ruler_warn_me_again = {
@@ -243,8 +378,12 @@ chosen_ruler_warn_me_again = {
 		has_ascension_perk = ap_chosen_ruler
 		has_country_flag = ap_chosen_ruler_no_warning
 	}
-	ai_weight = { weight = 0 }
-	effect = { remove_country_flag = ap_chosen_ruler_no_warning }
+	ai_weight = {
+		weight = 0
+	}
+	effect = {
+		remove_country_flag = ap_chosen_ruler_no_warning
+	}
 }
 
 civilian_activities_warn_me_again = {
@@ -255,8 +394,12 @@ civilian_activities_warn_me_again = {
 		has_ascension_perk = ap_civilian_activities
 		has_country_flag = ap_civilian_activities_no_warning
 	}
-	ai_weight = { weight = 0 }
-	effect = { remove_country_flag = ap_civilian_activities_no_warning }
+	ai_weight = {
+		weight = 0
+	}
+	effect = {
+		remove_country_flag = ap_civilian_activities_no_warning
+	}
 }
 
 awaken_fallen_empire = {
@@ -264,15 +407,30 @@ awaken_fallen_empire = {
 	length = -1
 	# resources = { category = edicts cost = { } }
 	allow = {
-		resource_stockpile_compare = { resource = influence value >= 950 }
-		NOT = { has_active_event = { UniqueAscensionPerksEvents.72 } }
+		resource_stockpile_compare = {
+			resource = influence
+			value >= 950
+		}
+		NOT = {
+			has_active_event = {
+				UniqueAscensionPerksEvents.72
+			}
+		}
 	}
-	potential = { has_country_flag = fallen_disciple_project }
+	potential = {
+		has_country_flag = fallen_disciple_project
+	}
 	# resources = { category = edicts cost = { influence = 950 } }
-	ai_weight = { weight = 0 }
+	ai_weight = {
+		weight = 0
+	}
 	effect = {
-		add_resource = { influence = -950 }
-		country_event = { id = UniqueAscensionPerksEvents.72 }
+		add_resource = {
+			influence = -950
+		}
+		country_event = {
+			id = UniqueAscensionPerksEvents.72
+		}
 	}
 }
 
@@ -280,20 +438,47 @@ void_expedition_menu = {
 	icon = "GFX_colonies"
 	length = 90
 	edict_cap_usage = 0
-	resources = { category = edicts cost = { } }
+	resources = {
+		category = edicts
+		cost = {
+		}
+	}
 	allow = {
-		NOT = { has_active_event = { UniqueAscensionPerksEvents.145 } }
-		resource_stockpile_compare = { resource = energy value > 500 }
+		NOT = {
+			has_active_event = {
+				UniqueAscensionPerksEvents.145
+			}
+		}
+		resource_stockpile_compare = {
+			resource = energy
+			value > 500
+		}
 		OR = {
 			AND = {
-				NOT = { has_country_flag = move_to_next_sector_cooldown }
-				resource_stockpile_compare = { resource = energy value > 3000 }
-				resource_stockpile_compare = { resource = sr_dark_matter value > 50 }
+				NOT = {
+					has_country_flag = move_to_next_sector_cooldown
+				}
+				resource_stockpile_compare = {
+					resource = energy
+					value > 3000
+				}
+				resource_stockpile_compare = {
+					resource = sr_dark_matter
+					value > 50
+				}
 			}
 			AND = {
-				NOT = { has_country_flag = build_expedition_ship_cooldown }
-				resource_stockpile_compare = { resource = alloys value > 600 }
-				check_variable = { which = expedition_research_ships value < 40 }
+				NOT = {
+					has_country_flag = build_expedition_ship_cooldown
+				}
+				resource_stockpile_compare = {
+					resource = alloys
+					value > 600
+				}
+				check_variable = {
+					which = expedition_research_ships
+					value < 40
+				}
 			}
 		}
 	}
@@ -313,10 +498,14 @@ void_expedition_menu = {
 					has_country_flag = move_to_next_sector_cooldown
 				}
 			}
-			country_event = { id = UniqueAscensionPerksEvents.145 }
+			country_event = {
+				id = UniqueAscensionPerksEvents.145
+			}
 		}
 	}
-	ai_weight = { weight = 0 }
+	ai_weight = {
+		weight = 0
+	}
 }
 
 mechanical_prophet_menu = {
@@ -325,15 +514,34 @@ mechanical_prophet_menu = {
 	# resources = { category = edicts cost = { } }
 	# resources = { category = edicts cost = { energy = 50000 influence = 200 } }
 	allow = {
-		resource_stockpile_compare = { resource = energy value > 50000 }
-		resource_stockpile_compare = { resource = influence value > 200 }
-		NOT = { has_active_event = { UniqueAscensionPerksEvents.202 } }
+		resource_stockpile_compare = {
+			resource = energy
+			value > 50000
+		}
+		resource_stockpile_compare = {
+			resource = influence
+			value > 200
+		}
+		NOT = {
+			has_active_event = {
+				UniqueAscensionPerksEvents.202
+			}
+		}
 	}
-	potential = { has_country_flag = ap_mechanical_prophet_project }
-	ai_weight = { weight = 0 }
+	potential = {
+		has_country_flag = ap_mechanical_prophet_project
+	}
+	ai_weight = {
+		weight = 0
+	}
 	effect = {
-		add_resource = { energy = -50000 influence = -200 }
-		country_event = { id = UniqueAscensionPerksEvents.202 }
+		add_resource = {
+			energy = -50000
+			influence = -200
+		}
+		country_event = {
+			id = UniqueAscensionPerksEvents.202
+		}
 	}
 }
 
@@ -343,16 +551,39 @@ machine_infiltration_menu = {
 	# resources = { category = edicts cost = { } }
 	# resources = { category = edicts cost = { energy = 10000 unity = 1000 influence = 50 } }
 	allow = {
-		resource_stockpile_compare = { resource = energy value > 10000 }
-		resource_stockpile_compare = { resource = unity value > 1000 }
-		resource_stockpile_compare = { resource = influence value > 50 }
-		NOT = { has_active_event = { UniqueAscensionPerksEvents.206 } }
+		resource_stockpile_compare = {
+			resource = energy
+			value > 10000
+		}
+		resource_stockpile_compare = {
+			resource = unity
+			value > 1000
+		}
+		resource_stockpile_compare = {
+			resource = influence
+			value > 50
+		}
+		NOT = {
+			has_active_event = {
+				UniqueAscensionPerksEvents.206
+			}
+		}
 	}
-	potential = { has_ascension_perk = ap_mechanical_prophet }
-	ai_weight = { weight = 0 }
+	potential = {
+		has_ascension_perk = ap_mechanical_prophet
+	}
+	ai_weight = {
+		weight = 0
+	}
 	effect = {
-		add_resource = { energy = -10000 unity = -1000 influence = -50 }
-		country_event = { id = UniqueAscensionPerksEvents.206 }
+		add_resource = {
+			energy = -10000
+			unity = -1000
+			influence = -50
+		}
+		country_event = {
+			id = UniqueAscensionPerksEvents.206
+		}
 	}
 }
 
@@ -360,11 +591,23 @@ machine_core_menu = {
 	icon = "GFX_edict_type_robot"
 	length = -1
 	# resources = { category = edicts cost = { } }
-	allow = { NOT = { has_active_event = { UniqueAscensionPerksEvents.212 } } }
-	potential = { has_country_flag = ap_machine_core_project }
-	ai_weight = { weight = 0 }
+	allow = {
+		NOT = {
+			has_active_event = {
+				UniqueAscensionPerksEvents.212
+			}
+		}
+	}
+	potential = {
+		has_country_flag = ap_machine_core_project
+	}
+	ai_weight = {
+		weight = 0
+	}
 	effect = {
-		country_event = { id = UniqueAscensionPerksEvents.212 }
+		country_event = {
+			id = UniqueAscensionPerksEvents.212
+		}
 	}
 }
 
@@ -374,18 +617,30 @@ leader_uploading = {
 	# resources = { category = edicts cost = { } }
 	# resources = { category = edicts cost = { energy = 100 } }
 	allow = {
-		resource_stockpile_compare = { resource = energy value > 800 }
+		resource_stockpile_compare = {
+			resource = energy
+			value > 800
+		}
 		NOT = {
-			has_active_event = { UniqueAscensionPerksEvents.251 }
+			has_active_event = {
+				UniqueAscensionPerksEvents.251
+			}
 		}
 	}
-	potential = { has_ascension_perk = ap_leadership_transfer }
-	ai_weight = { weight = 0 }
+	potential = {
+		has_ascension_perk = ap_leadership_transfer
+	}
+	ai_weight = {
+		weight = 0
+	}
 	effect = {
 		# add_resource = { energy = -800 }
-		country_event = { id = UniqueAscensionPerksEvents.251 }
+		country_event = {
+			id = UniqueAscensionPerksEvents.251
+		}
 	}
 }
+
 # TODO
 # enable_sector_menu = {
 # 	icon = "GFX_edict_type_time"
@@ -408,7 +663,6 @@ leader_uploading = {
 # 		country_event = { id = UniqueAscensionPerksEvents.271 }
 # 	}
 # }
-
 subject_navy_investment = {
 	icon = "GFX_text_navy_size"
 	length = -1
@@ -416,7 +670,9 @@ subject_navy_investment = {
 	allow = {
 		is_overlord = yes
 		NOT = {
-			has_active_event = { UniqueAscensionPerksEvents.8143 }
+			has_active_event = {
+				UniqueAscensionPerksEvents.8143
+			}
 		}
 	}
 	potential = {
@@ -425,9 +681,13 @@ subject_navy_investment = {
 			has_ascension_perk = ap_powerful_vassals
 		}
 	}
-	ai_weight = { weight = 0 }
+	ai_weight = {
+		weight = 0
+	}
 	effect = {
-		country_event = { id = UniqueAscensionPerksEvents.8143 }
+		country_event = {
+			id = UniqueAscensionPerksEvents.8143
+		}
 	}
 }
 
@@ -437,10 +697,16 @@ active_surgical_strike = {
 	# resources = { category = edicts cost = { } }
 	potential = {
 		has_ascension_perk = ap_orbital_surgical_strike
-		NOT = { has_country_flag = surgical_strike_active }
+		NOT = {
+			has_country_flag = surgical_strike_active
+		}
 	}
-	ai_weight = { weight = 0 }
-	effect = { set_country_flag = surgical_strike_active }
+	ai_weight = {
+		weight = 0
+	}
+	effect = {
+		set_country_flag = surgical_strike_active
+	}
 }
 
 deactive_surgical_strike = {
@@ -451,8 +717,12 @@ deactive_surgical_strike = {
 		has_ascension_perk = ap_orbital_surgical_strike
 		has_country_flag = surgical_strike_active
 	}
-	ai_weight = { weight = 0 }
-	effect = { remove_country_flag = surgical_strike_active }
+	ai_weight = {
+		weight = 0
+	}
+	effect = {
+		remove_country_flag = surgical_strike_active
+	}
 }
 
 treasures_menu = {
@@ -460,13 +730,23 @@ treasures_menu = {
 	length = -1
 	# resources = { category = edicts cost = { } }
 	allow = {
-		NOT = { has_active_event = { UniqueAscensionPerksEvents.342 } }
+		NOT = {
+			has_active_event = {
+				UniqueAscensionPerksEvents.342
+			}
+		}
 	}
-	potential = { has_ascension_perk = ap_wheel_fortune }
+	potential = {
+		has_ascension_perk = ap_wheel_fortune
+	}
 	effect = {
-		country_event = { id = UniqueAscensionPerksEvents.342 }
+		country_event = {
+			id = UniqueAscensionPerksEvents.342
+		}
 	}
-	ai_weight = { weight = 0 }
+	ai_weight = {
+		weight = 0
+	}
 }
 
 underworld_menu = {
@@ -474,43 +754,87 @@ underworld_menu = {
 	length = -1
 	# resources = { category = edicts cost = { } }
 	allow = {
-		NOT = { has_active_event = { UniqueAscensionPerksEvents.371 } }
+		NOT = {
+			has_active_event = {
+				UniqueAscensionPerksEvents.371
+			}
+		}
 	}
-	potential = { has_ascension_perk = ap_underworld }
+	potential = {
+		has_ascension_perk = ap_underworld
+	}
 	effect = {
-		country_event = { id = UniqueAscensionPerksEvents.371 }
+		country_event = {
+			id = UniqueAscensionPerksEvents.371
+		}
 	}
-	ai_weight = { weight = 0 }
+	ai_weight = {
+		weight = 0
+	}
 }
 
 anti_matter_menu = {
 	icon = "GFX_edict_type_menu"
 	length = -1
-	resources = { category = edicts cost = { } }
+	resources = {
+		category = edicts
+		cost = {
+		}
+	}
 	allow = {
 		OR = {
-			resource_stockpile_compare = { resource = anti_matter value > 400 }
+			resource_stockpile_compare = {
+				resource = anti_matter
+				value > 400
+			}
 			NAND = {
 				has_country_flag = white_hole_detection_cooldown
 				has_country_flag = space_clouds_generation_cooldown
 			}
 			AND = {
-				check_variable = { which = white_hole_systems value < 9 }
-				event_target:global_event_country = { check_variable = { which = white_hole_systems value < 36 } }
+				check_variable = {
+					which = white_hole_systems
+					value < 9
+				}
+				event_target:global_event_country = {
+					check_variable = {
+						which = white_hole_systems
+						value < 36
+					}
+				}
 			}
 			AND = {
-				resource_stockpile_compare = { resource = anti_matter value > 500 }
+				resource_stockpile_compare = {
+					resource = anti_matter
+					value > 500
+				}
 				has_technology = tech_space_cloud_weapon_1
-				count_owned_fleet = { count < 21 limit = { is_civilian = no has_fleet_flag = space_clouds_generation_fleet } }
+				count_owned_fleet = {
+					count < 21
+					limit = {
+						is_civilian = no
+						has_fleet_flag = space_clouds_generation_fleet
+					}
+				}
 			}
 		}
-		NOT = { has_active_event = { UniqueAscensionPerksEvents.434 } }
+		NOT = {
+			has_active_event = {
+				UniqueAscensionPerksEvents.434
+			}
+		}
 	}
-	potential = { has_ascension_perk = ap_antimatter }
+	potential = {
+		has_ascension_perk = ap_antimatter
+	}
 	effect = {
-		country_event = { id = UniqueAscensionPerksEvents.434 }
+		country_event = {
+			id = UniqueAscensionPerksEvents.434
+		}
 	}
-	ai_weight = { weight = 0 }
+	ai_weight = {
+		weight = 0
+	}
 }
 
 dark_galaxy_web_menu = {
@@ -518,13 +842,23 @@ dark_galaxy_web_menu = {
 	length = -1
 	# resources = { category = edicts cost = { } }
 	allow = {
-		NOT = { has_active_event = { UniqueAscensionPerksEvents.542 } }
+		NOT = {
+			has_active_event = {
+				UniqueAscensionPerksEvents.542
+			}
+		}
 	}
-	potential = { has_country_flag = ap_dark_galaxy_web_project }
+	potential = {
+		has_country_flag = ap_dark_galaxy_web_project
+	}
 	effect = {
-		country_event = { id = UniqueAscensionPerksEvents.542 }
+		country_event = {
+			id = UniqueAscensionPerksEvents.542
+		}
 	}
-	ai_weight = { weight = 0 }
+	ai_weight = {
+		weight = 0
+	}
 }
 
 unique_perk_menu = {
@@ -534,13 +868,23 @@ unique_perk_menu = {
 	edict_cap_usage = 0
 	potential = {
 		is_ai = no
-		NOT = { has_global_flag = dmm_installed }
+		NOT = {
+			has_global_flag = dmm_installed
+		}
 	}
 	allow = {
-		NOT = { has_active_event = { UniqueAscensionPerksMenuEvents.1 } }
+		NOT = {
+			has_active_event = {
+				UniqueAscensionPerksMenuEvents.1
+			}
+		}
 	}
 	effect = {
-		country_event = { id = UniqueAscensionPerksMenuEvents.1 }
+		country_event = {
+			id = UniqueAscensionPerksMenuEvents.1
+		}
 	}
-	ai_weight = { weight = 0 }
+	ai_weight = {
+		weight = 0
+	}
 }

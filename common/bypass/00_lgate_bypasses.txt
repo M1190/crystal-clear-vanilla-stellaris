@@ -1,4 +1,3 @@
-
 # Compat. with DSO - ADT - CM-MidGame
 lgate = {
 	name = LGATE_GALACTIC
@@ -33,11 +32,18 @@ lgate = {
 					limit = {
 						# CmtTriggerIsClosedLgate = yes
 						is_megastructure_type = lgate_base
-						NOT = { has_megastructure_flag = lgate_activated }
+						NOT = {
+							has_megastructure_flag = lgate_activated
+						}
 					}
 					# Enable L-Gates over time
-					prev.owner = { country_event = { id = distar.10960 } }
-				} else = {
+					prev.owner = {
+						country_event = {
+							id = distar.10960
+						}
+					}
+				}
+				else = {
 					# CmtEffectOpenLgate = yes
 					activate_gateway = this
 					set_megastructure_flag = lgate_activated
@@ -73,7 +79,7 @@ lgate = {
 			}
 		}
 	}
-	on_action = "on_entering_lgate" # For compatibility (key free to use)
+	on_action = "on_entering_lgate"	# For compatibility (key free to use)
 	scripted_connection = {
 		# Defines endpoints that can only reach the "nexus"
 		node = {

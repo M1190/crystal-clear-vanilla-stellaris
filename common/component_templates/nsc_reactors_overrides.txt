@@ -1,96 +1,83 @@
 #############
 ### POWER ###
 #############
-
 @colossus_power = 10000
-
 @StrikeCruiser_power_1 = 370
 @StrikeCruiser_power_2 = 470
 @StrikeCruiser_power_3 = 620
 @StrikeCruiser_power_4 = 800
 @StrikeCruiser_power_5 = 1035
 @StrikeCruiser_power_6 = 1325
-
 @Battlecruiser_power_1 = 675
 @Battlecruiser_power_2 = 825
 @Battlecruiser_power_3 = 1125
 @Battlecruiser_power_4 = 1455
 @Battlecruiser_power_5 = 1890
 @Battlecruiser_power_6 = 2415
-
 @Carrier_power_1 = 1400
 @Carrier_power_2 = 2000
 @Carrier_power_3 = 3000
 @Carrier_power_4 = 4000
 @Carrier_power_5 = 5000
 @Carrier_power_6 = 6000
-
 @Dreadnought_power_1 = 3000
 @Dreadnought_power_2 = 4000
 @Dreadnought_power_3 = 5000
 @Dreadnought_power_4 = 6000
 @Dreadnought_power_5 = 7000
 @Dreadnought_power_6 = 8000
-
 @hqpower = 30000
-
 ############
 ### COST ###
 ############
-
 @battleship_cost_1 = 80
 @battleship_cost_2 = 104
 @battleship_cost_3 = 136
 @battleship_cost_4 = 176
 @battleship_cost_5 = 224
 @battleship_cost_6 = 296
-
 @colossus_cost_1 = 0
-
 @StrikeCruiser_cost_1 = 50
 @StrikeCruiser_cost_2 = 65
 @StrikeCruiser_cost_3 = 85
 @StrikeCruiser_cost_4 = 110
 @StrikeCruiser_cost_5 = 140
 @StrikeCruiser_cost_6 = 185
-
 @Battlecruiser_cost_1 = 60
 @Battlecruiser_cost_2 = 78
 @Battlecruiser_cost_3 = 102
 @Battlecruiser_cost_4 = 132
 @Battlecruiser_cost_5 = 168
 @Battlecruiser_cost_6 = 222
-
 @Dreadnought_cost_1 = 120
 @Dreadnought_cost_2 = 156
 @Dreadnought_cost_3 = 204
 @Dreadnought_cost_4 = 264
 @Dreadnought_cost_5 = 336
 @Dreadnought_cost_6 = 444
-
 @Flagship_cost = 3070
-
 ##################################
 ### FISSION REACTOR COMPONENTS ###
 ##################################
-
 utility_component_template = {
 	key = "STRIKECRUISER_FISSION_REACTOR"
 	size = small
 	icon = "GFX_ship_part_reactor_1"
 	icon_frame = 1
 	power = @StrikeCruiser_power_1
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @StrikeCruiser_cost_1 }
+		cost = {
+			alloys = @StrikeCruiser_cost_1
+		}
 		upkeep = {
 			energy = 0.5
 			alloys = 0.05
 		}
 	}
-
-	prerequisites = { "tech_fission_power" }
+	prerequisites = {
+		"tech_fission_power"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
@@ -99,8 +86,9 @@ utility_component_template = {
 		@NSC_StrikeCruiser
 	}
 	upgrades_to = "STRIKECRUISER_FUSION_REACTOR"
-
-	ai_weight = { weight = 1 }
+	ai_weight = {
+		weight = 1
+	}
 }
 
 utility_component_template = {
@@ -109,27 +97,32 @@ utility_component_template = {
 	icon = "GFX_ship_part_reactor_1"
 	icon_frame = 1
 	power = @Battlecruiser_power_1
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @Battlecruiser_cost_1 }
+		cost = {
+			alloys = @Battlecruiser_cost_1
+		}
 		upkeep = {
 			energy = 0.6
 			alloys = 0.06
 		}
 	}
-
-	prerequisites = { "tech_fission_power" }
+	prerequisites = {
+		"tech_fission_power"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
 		esc_dummy_battle_cruiser
 		# NSC ships
-		@NSC_BattleCruiser @NSC_ExplorationShip @NSC_EscortCarrier
+		@NSC_BattleCruiser
+		@NSC_ExplorationShip
+		@NSC_EscortCarrier
 	}
 	upgrades_to = "BATTLECRUISER_FUSION_REACTOR"
-
-	ai_weight = { weight = 1 }
+	ai_weight = {
+		weight = 1
+	}
 }
 
 utility_component_template = {
@@ -138,17 +131,19 @@ utility_component_template = {
 	icon = "GFX_ship_part_reactor_1"
 	icon_frame = 1
 	power = @Carrier_power_1
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @battleship_cost_1 }
+		cost = {
+			alloys = @battleship_cost_1
+		}
 		upkeep = {
-			energy = 0.80
+			energy = 0.8
 			alloys = 0.08
 		}
 	}
-
-	prerequisites = { "tech_fission_power" }
+	prerequisites = {
+		"tech_fission_power"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
@@ -157,8 +152,9 @@ utility_component_template = {
 		@NSC_Carrier
 	}
 	upgrades_to = "CARRIER_FUSION_REACTOR"
-
-	ai_weight = { weight = 1 }
+	ai_weight = {
+		weight = 1
+	}
 }
 
 utility_component_template = {
@@ -167,50 +163,54 @@ utility_component_template = {
 	icon = "GFX_ship_part_reactor_1"
 	icon_frame = 1
 	power = @Dreadnought_power_1
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @Dreadnought_cost_1 }
+		cost = {
+			alloys = @Dreadnought_cost_1
+		}
 		upkeep = {
 			energy = 1
 			alloys = 0.1
 		}
 	}
-
-	prerequisites = { "tech_fission_power" }
+	prerequisites = {
+		"tech_fission_power"
+	}
 	component_set = "power_core"
-		size_restriction = {
+	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
 		esc_dummy_dreadnought
 		# NSC ships
 		@NSC_Dreadnought
 	}
 	upgrades_to = "DREADNOUGHT_FUSION_REACTOR"
-
-	ai_weight = { weight = 1 }
+	ai_weight = {
+		weight = 1
+	}
 }
 
 #################################
 ### FUSION REACTOR COMPONENTS ###
 #################################
-
 utility_component_template = {
 	key = "STRIKECRUISER_FUSION_REACTOR"
 	size = small
 	icon = "GFX_ship_part_reactor_2"
 	icon_frame = 1
 	power = @StrikeCruiser_power_2
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @StrikeCruiser_cost_2 }
+		cost = {
+			alloys = @StrikeCruiser_cost_2
+		}
 		upkeep = {
 			energy = 0.65
 			alloys = 0.065
 		}
 	}
-
-	prerequisites = { "tech_fusion_power" }
+	prerequisites = {
+		"tech_fusion_power"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
@@ -219,8 +219,9 @@ utility_component_template = {
 		@NSC_StrikeCruiser
 	}
 	upgrades_to = "STRIKECRUISER_COLD_FUSION_REACTOR"
-
-	ai_weight = { weight = 2 }
+	ai_weight = {
+		weight = 2
+	}
 }
 
 utility_component_template = {
@@ -229,27 +230,32 @@ utility_component_template = {
 	icon = "GFX_ship_part_reactor_2"
 	icon_frame = 1
 	power = @Battlecruiser_power_2
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @Battlecruiser_cost_2 }
+		cost = {
+			alloys = @Battlecruiser_cost_2
+		}
 		upkeep = {
 			energy = 0.78
 			alloys = 0.078
 		}
 	}
-
-	prerequisites = { "tech_fusion_power" }
+	prerequisites = {
+		"tech_fusion_power"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
 		esc_dummy_battle_cruiser
 		# NSC ships
-		@NSC_BattleCruiser @NSC_ExplorationShip @NSC_EscortCarrier
+		@NSC_BattleCruiser
+		@NSC_ExplorationShip
+		@NSC_EscortCarrier
 	}
 	upgrades_to = "BATTLECRUISER_COLD_FUSION_REACTOR"
-
-	ai_weight = { weight = 2 }
+	ai_weight = {
+		weight = 2
+	}
 }
 
 utility_component_template = {
@@ -258,17 +264,19 @@ utility_component_template = {
 	icon = "GFX_ship_part_reactor_2"
 	icon_frame = 1
 	power = @Carrier_power_2
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @battleship_cost_2 }
+		cost = {
+			alloys = @battleship_cost_2
+		}
 		upkeep = {
 			energy = 1.04
 			alloys = 0.104
 		}
 	}
-
-	prerequisites = { "tech_fusion_power" }
+	prerequisites = {
+		"tech_fusion_power"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
@@ -277,8 +285,9 @@ utility_component_template = {
 		@NSC_Carrier
 	}
 	upgrades_to = "CARRIER_COLD_FUSION_REACTOR"
-
-	ai_weight = { weight = 2 }
+	ai_weight = {
+		weight = 2
+	}
 }
 
 utility_component_template = {
@@ -287,50 +296,54 @@ utility_component_template = {
 	icon = "GFX_ship_part_reactor_2"
 	icon_frame = 1
 	power = @Dreadnought_power_2
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @Dreadnought_cost_2 }
+		cost = {
+			alloys = @Dreadnought_cost_2
+		}
 		upkeep = {
 			energy = 1.3
 			alloys = 0.13
 		}
 	}
-
-	prerequisites = { "tech_fusion_power" }
+	prerequisites = {
+		"tech_fusion_power"
+	}
 	component_set = "power_core"
-		size_restriction = {
+	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
 		esc_dummy_dreadnought
 		# NSC ships
 		@NSC_Dreadnought
 	}
 	upgrades_to = "DREADNOUGHT_COLD_FUSION_REACTOR"
-
-	ai_weight = { weight = 2 }
+	ai_weight = {
+		weight = 2
+	}
 }
 
 ######################################
 ### COLD FUSION REACTOR COMPONENTS ###
 ######################################
-
 utility_component_template = {
 	key = "STRIKECRUISER_COLD_FUSION_REACTOR"
 	size = small
 	icon = "GFX_ship_part_reactor_3"
 	icon_frame = 1
 	power = @StrikeCruiser_power_3
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @StrikeCruiser_cost_3 }
+		cost = {
+			alloys = @StrikeCruiser_cost_3
+		}
 		upkeep = {
 			energy = 0.85
 			alloys = 0.085
 		}
 	}
-
-	prerequisites = { "tech_cold_fusion_power" }
+	prerequisites = {
+		"tech_cold_fusion_power"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
@@ -339,8 +352,9 @@ utility_component_template = {
 		@NSC_StrikeCruiser
 	}
 	upgrades_to = "STRIKECRUISER_ANTIMATTER_REACTOR"
-
-	ai_weight = { weight = 3 }
+	ai_weight = {
+		weight = 3
+	}
 }
 
 utility_component_template = {
@@ -349,27 +363,32 @@ utility_component_template = {
 	icon = "GFX_ship_part_reactor_3"
 	icon_frame = 1
 	power = @Battlecruiser_power_3
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @Battlecruiser_cost_3 }
+		cost = {
+			alloys = @Battlecruiser_cost_3
+		}
 		upkeep = {
 			energy = 1.02
 			alloys = 0.102
 		}
 	}
-
-	prerequisites = { "tech_cold_fusion_power" }
+	prerequisites = {
+		"tech_cold_fusion_power"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
 		esc_dummy_battle_cruiser
 		# NSC ships
-		@NSC_BattleCruiser @NSC_ExplorationShip @NSC_EscortCarrier
+		@NSC_BattleCruiser
+		@NSC_ExplorationShip
+		@NSC_EscortCarrier
 	}
 	upgrades_to = "BATTLECRUISER_ANTIMATTER_REACTOR"
-
-	ai_weight = { weight = 3 }
+	ai_weight = {
+		weight = 3
+	}
 }
 
 utility_component_template = {
@@ -378,17 +397,19 @@ utility_component_template = {
 	icon = "GFX_ship_part_reactor_3"
 	icon_frame = 1
 	power = @Carrier_power_3
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @battleship_cost_3 }
+		cost = {
+			alloys = @battleship_cost_3
+		}
 		upkeep = {
 			energy = 1.35
 			alloys = 0.135
 		}
 	}
-
-	prerequisites = { "tech_cold_fusion_power" }
+	prerequisites = {
+		"tech_cold_fusion_power"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
@@ -397,8 +418,9 @@ utility_component_template = {
 		@NSC_Carrier
 	}
 	upgrades_to = "CARRIER_ANTIMATTER_REACTOR"
-
-	ai_weight = { weight = 3 }
+	ai_weight = {
+		weight = 3
+	}
 }
 
 utility_component_template = {
@@ -407,50 +429,54 @@ utility_component_template = {
 	icon = "GFX_ship_part_reactor_3"
 	icon_frame = 1
 	power = @Dreadnought_power_3
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @Dreadnought_cost_3 }
+		cost = {
+			alloys = @Dreadnought_cost_3
+		}
 		upkeep = {
 			energy = 1.69
 			alloys = 0.169
 		}
 	}
-
-	prerequisites = { "tech_cold_fusion_power" }
+	prerequisites = {
+		"tech_cold_fusion_power"
+	}
 	component_set = "power_core"
-		size_restriction = {
+	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
 		esc_dummy_dreadnought
 		# NSC ships
 		@NSC_Dreadnought
 	}
 	upgrades_to = "DREADNOUGHT_ANTIMATTER_REACTOR"
-
-	ai_weight = { weight = 3 }
+	ai_weight = {
+		weight = 3
+	}
 }
 
 #####################################
 ### ANTIMATTER REACTOR COMPONENTS ###
 #####################################
-
 utility_component_template = {
 	key = "STRIKECRUISER_ANTIMATTER_REACTOR"
 	size = small
 	icon = "GFX_ship_part_reactor_4"
 	icon_frame = 1
 	power = @StrikeCruiser_power_4
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @StrikeCruiser_cost_4 }
+		cost = {
+			alloys = @StrikeCruiser_cost_4
+		}
 		upkeep = {
 			energy = 1.1
 			alloys = 0.11
 		}
 	}
-
-	prerequisites = { "tech_antimatter_power" }
+	prerequisites = {
+		"tech_antimatter_power"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
@@ -459,8 +485,9 @@ utility_component_template = {
 		@NSC_StrikeCruiser
 	}
 	upgrades_to = "STRIKECRUISER_ZERO_POINT_REACTOR"
-
-	ai_weight = { weight = 4 }
+	ai_weight = {
+		weight = 4
+	}
 }
 
 utility_component_template = {
@@ -469,27 +496,32 @@ utility_component_template = {
 	icon = "GFX_ship_part_reactor_4"
 	icon_frame = 1
 	power = @Battlecruiser_power_4
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @Battlecruiser_cost_4 }
+		cost = {
+			alloys = @Battlecruiser_cost_4
+		}
 		upkeep = {
 			energy = 1.32
 			alloys = 0.132
 		}
 	}
-
-	prerequisites = { "tech_antimatter_power" }
+	prerequisites = {
+		"tech_antimatter_power"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
 		esc_dummy_battle_cruiser
 		# NSC ships
-		@NSC_BattleCruiser @NSC_ExplorationShip @NSC_EscortCarrier
+		@NSC_BattleCruiser
+		@NSC_ExplorationShip
+		@NSC_EscortCarrier
 	}
 	upgrades_to = "BATTLECRUISER_ZERO_POINT_REACTOR"
-
-	ai_weight = { weight = 4 }
+	ai_weight = {
+		weight = 4
+	}
 }
 
 utility_component_template = {
@@ -498,17 +530,19 @@ utility_component_template = {
 	icon = "GFX_ship_part_reactor_4"
 	icon_frame = 1
 	power = @Carrier_power_4
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @battleship_cost_4 }
+		cost = {
+			alloys = @battleship_cost_4
+		}
 		upkeep = {
 			energy = 1.76
 			alloys = 0.176
 		}
 	}
-
-	prerequisites = { "tech_antimatter_power" }
+	prerequisites = {
+		"tech_antimatter_power"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
@@ -517,8 +551,9 @@ utility_component_template = {
 		@NSC_Carrier
 	}
 	upgrades_to = "CARRIER_ZERO_POINT_REACTOR"
-
-	ai_weight = { weight = 4 }
+	ai_weight = {
+		weight = 4
+	}
 }
 
 utility_component_template = {
@@ -527,50 +562,54 @@ utility_component_template = {
 	icon = "GFX_ship_part_reactor_4"
 	icon_frame = 1
 	power = @Dreadnought_power_4
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @Dreadnought_cost_4 }
+		cost = {
+			alloys = @Dreadnought_cost_4
+		}
 		upkeep = {
 			energy = 2.2
 			alloys = 0.22
 		}
 	}
-
-	prerequisites = { "tech_antimatter_power" }
+	prerequisites = {
+		"tech_antimatter_power"
+	}
 	component_set = "power_core"
-		size_restriction = {
+	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
 		esc_dummy_dreadnought
 		# NSC ships
 		@NSC_Dreadnought
 	}
 	upgrades_to = "DREADNOUGHT_ZERO_POINT_REACTOR"
-
-	ai_weight = { weight = 4 }
+	ai_weight = {
+		weight = 4
+	}
 }
 
 #####################################
 ### ZERO POINT REACTOR COMPONENTS ###
 #####################################
-
 utility_component_template = {
 	key = "STRIKECRUISER_ZERO_POINT_REACTOR"
 	size = small
 	icon = "GFX_ship_part_reactor_5"
 	icon_frame = 1
 	power = @StrikeCruiser_power_5
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @StrikeCruiser_cost_5 }
+		cost = {
+			alloys = @StrikeCruiser_cost_5
+		}
 		upkeep = {
 			energy = 1.42
 			alloys = 0.142
 		}
 	}
-
-	prerequisites = { "tech_zero_point_power" }
+	prerequisites = {
+		"tech_zero_point_power"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
@@ -579,8 +618,9 @@ utility_component_template = {
 		@NSC_StrikeCruiser
 	}
 	upgrades_to = STRIKECRUISER_ESC_REACTOR_6
-
-	ai_weight = { weight = 5 }
+	ai_weight = {
+		weight = 5
+	}
 }
 
 utility_component_template = {
@@ -589,27 +629,32 @@ utility_component_template = {
 	icon = "GFX_ship_part_reactor_5"
 	icon_frame = 1
 	power = @Battlecruiser_power_5
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @Battlecruiser_cost_5 }
+		cost = {
+			alloys = @Battlecruiser_cost_5
+		}
 		upkeep = {
 			energy = 1.7
 			alloys = 0.17
 		}
 	}
-
-	prerequisites = { "tech_zero_point_power" }
+	prerequisites = {
+		"tech_zero_point_power"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
 		esc_dummy_battle_cruiser
 		# NSC ships
-		@NSC_BattleCruiser @NSC_ExplorationShip @NSC_EscortCarrier
+		@NSC_BattleCruiser
+		@NSC_ExplorationShip
+		@NSC_EscortCarrier
 	}
 	upgrades_to = BATTLECRUISER_ESC_REACTOR_6
-
-	ai_weight = { weight = 5 }
+	ai_weight = {
+		weight = 5
+	}
 }
 
 utility_component_template = {
@@ -618,17 +663,19 @@ utility_component_template = {
 	icon = "GFX_ship_part_reactor_5"
 	icon_frame = 1
 	power = @Carrier_power_5
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @battleship_cost_5 }
+		cost = {
+			alloys = @battleship_cost_5
+		}
 		upkeep = {
 			energy = 2.29
 			alloys = 0.229
 		}
 	}
-
-	prerequisites = { "tech_zero_point_power" }
+	prerequisites = {
+		"tech_zero_point_power"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
@@ -637,8 +684,9 @@ utility_component_template = {
 		@NSC_Carrier
 	}
 	upgrades_to = CARRIER_ESC_REACTOR_6
-
-	ai_weight = { weight = 5 }
+	ai_weight = {
+		weight = 5
+	}
 }
 
 utility_component_template = {
@@ -647,27 +695,30 @@ utility_component_template = {
 	icon = "GFX_ship_part_reactor_5"
 	icon_frame = 1
 	power = @Dreadnought_power_5
-
 	resources = {
 		category = ship_components
-		cost = { alloys = @Dreadnought_cost_5 }
+		cost = {
+			alloys = @Dreadnought_cost_5
+		}
 		upkeep = {
 			energy = 2.86
 			alloys = 0.286
 		}
 	}
-
-	prerequisites = { "tech_zero_point_power" }
+	prerequisites = {
+		"tech_zero_point_power"
+	}
 	component_set = "power_core"
-		size_restriction = {
+	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
 		esc_dummy_dreadnought
 		# NSC ships
 		@NSC_Dreadnought
 	}
 	upgrades_to = DREADNOUGHT_ESC_REACTOR_6
-
-	ai_weight = { weight = 5 }
+	ai_weight = {
+		weight = 5
+	}
 }
 
 ### NSC REACTOR COMPONENTS ###
@@ -677,7 +728,6 @@ utility_component_template = {
 	icon = "GFX_ship_part_dark_matter_power_core"
 	icon_frame = 1
 	power = @StrikeCruiser_power_6
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -689,8 +739,9 @@ utility_component_template = {
 			alloys = 0.185
 		}
 	}
-
-	prerequisites = { "tech_dark_matter_power_core" }
+	prerequisites = {
+		"tech_dark_matter_power_core"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
@@ -699,8 +750,9 @@ utility_component_template = {
 		@NSC_StrikeCruiser
 	}
 	upgrades_to = STRIKECRUISER_ESC_DARK_MATTER_CORE_2
-
-	ai_weight = { weight = 6 }
+	ai_weight = {
+		weight = 6
+	}
 }
 
 utility_component_template = {
@@ -709,7 +761,6 @@ utility_component_template = {
 	icon = "GFX_ship_part_dark_matter_power_core"
 	icon_frame = 1
 	power = @Battlecruiser_power_6
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -721,18 +772,22 @@ utility_component_template = {
 			alloys = 0.222
 		}
 	}
-
-	prerequisites = { "tech_dark_matter_power_core" }
+	prerequisites = {
+		"tech_dark_matter_power_core"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
 		esc_dummy_battle_cruiser
 		# NSC ships
-		@NSC_BattleCruiser @NSC_ExplorationShip @NSC_EscortCarrier
+		@NSC_BattleCruiser
+		@NSC_ExplorationShip
+		@NSC_EscortCarrier
 	}
 	upgrades_to = BATTLECRUISER_ESC_DARK_MATTER_CORE_2
-
-	ai_weight = { weight = 6 }
+	ai_weight = {
+		weight = 6
+	}
 }
 
 utility_component_template = {
@@ -741,7 +796,6 @@ utility_component_template = {
 	icon = "GFX_ship_part_dark_matter_power_core"
 	icon_frame = 1
 	power = @Carrier_power_6
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -753,19 +807,20 @@ utility_component_template = {
 			alloys = 0.298
 		}
 	}
-
-	prerequisites = { "tech_dark_matter_power_core" }
+	prerequisites = {
+		"tech_dark_matter_power_core"
+	}
 	component_set = "power_core"
 	upgrades_to = CARRIER_ESC_DARK_MATTER_CORE_2
-
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
 		esc_dummy_carrier
 		# NSC ships
 		@NSC_Carrier
 	}
-
-	ai_weight = { weight = 6 }
+	ai_weight = {
+		weight = 6
+	}
 }
 
 utility_component_template = {
@@ -774,7 +829,6 @@ utility_component_template = {
 	icon = "GFX_ship_part_dark_matter_power_core"
 	icon_frame = 1
 	power = @Dreadnought_power_6
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -786,52 +840,60 @@ utility_component_template = {
 			alloys = 0.372
 		}
 	}
-
-	prerequisites = { "tech_dark_matter_power_core" }
+	prerequisites = {
+		"tech_dark_matter_power_core"
+	}
 	component_set = "power_core"
-		size_restriction = {
+	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
 		esc_dummy_dreadnought
 		# NSC ships
 		@NSC_Dreadnought
 	}
 	upgrades_to = DREADNOUGHT_ESC_DARK_MATTER_CORE_2
-
-	ai_weight = { weight = 6 }
+	ai_weight = {
+		weight = 6
+	}
 }
 
 ##################################
 ### CITADEL REACTOR COMPONENTS ###
 ##################################
-
 utility_component_template = {
 	key = "CITADEL_DARK_MATTER_REACTOR"
 	size = large
 	icon = "GFX_ship_part_dark_matter_power_core"
 	icon_frame = 1
 	power = @hqpower
-
 	component_set = "power_core"
-	class_restriction = { shipclass_starbase }
-	size_restriction = { starbase_citadel @NSC_GrandCitadel @NSC_SolarStronghold juggernaut @NSC_Headquarters }
-
-	ai_weight = { weight = 10000 }
+	class_restriction = {
+		shipclass_starbase
+	}
+	size_restriction = {
+		starbase_citadel
+		@NSC_GrandCitadel
+		@NSC_SolarStronghold
+		juggernaut
+		@NSC_Headquarters
+	}
+	ai_weight = {
+		weight = 10000
+	}
 }
 
 ###########################################
 ### DEFENSE STATIONS REACTOR COMPONENTS ###
 ###########################################
-
 ### Annihilator cannon reactors
-
 utility_component_template = {
 	key = "XL_CANNON_ZERO_POINT_REACTOR"
 	size = small
 	icon = "GFX_ship_part_reactor_5"
 	icon_frame = 1
 	power = 8000
-
-	prerequisites = { "tech_zero_point_power" }
+	prerequisites = {
+		"tech_zero_point_power"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
@@ -840,8 +902,9 @@ utility_component_template = {
 		@NSC_AnnihilatorCannon
 	}
 	upgrades_to = XLCANNON_ESC_REACTOR_6
-
-	ai_weight = { weight = 5 }
+	ai_weight = {
+		weight = 5
+	}
 }
 
 utility_component_template = {
@@ -850,8 +913,9 @@ utility_component_template = {
 	icon = "GFX_ship_part_dark_matter_power_core"
 	icon_frame = 1
 	power = 12000
-
-	prerequisites = { "tech_dark_matter_power_core" }
+	prerequisites = {
+		"tech_dark_matter_power_core"
+	}
 	component_set = "power_core"
 	size_restriction = {
 		# dummy ship class to sidestep 'bugs' with size_restriction
@@ -860,6 +924,7 @@ utility_component_template = {
 		@NSC_AnnihilatorCannon
 	}
 	upgrades_to = XLCANNON_ESC_DARK_MATTER_CORE_2
-
-	ai_weight = { weight = 6 }
+	ai_weight = {
+		weight = 6
+	}
 }

@@ -1,27 +1,22 @@
 @hab_cost = 500
 @hab_maintenance = 2
-
 district_pdhab_housing = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
-
 	show_on_uncolonized = {
 		uses_district_set = pdplanethab
 		#NOT = { is_planet_class = pc_pd_asteroid_hab }
 	}
-
 	potential = {
 		uses_district_set = pdplanethab
 		#NOT = { is_planet_class = pc_pd_asteroid_hab }
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_city
 		district_nexus
 		district_hive
 	}
-
 	resources = {
 		category = planet_districts
 		cost = {
@@ -31,25 +26,26 @@ district_pdhab_housing = {
 			energy = @hab_maintenance
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 8
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_maintenance_drone_add = 2
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_maintenance_drone_effect_desc
 	}
@@ -58,39 +54,38 @@ district_pdhab_housing = {
 district_pdhab_energy = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
-	
 	show_on_uncolonized = {
 		uses_district_set = pdplanethab
 		OR = {
 			has_planet_flag = pd_energy_hab
 			AND = {
 				exists = from
-				from = { is_gestalt = yes }
+				from = {
+					is_gestalt = yes
+				}
 			}
 		}
 	}
-
 	potential = {
 		uses_district_set = pdplanethab
 		OR = {
 			has_planet_flag = pd_energy_hab
 			AND = {
 				exists = owner
-				owner = { is_gestalt = yes }
+				owner = {
+					is_gestalt = yes
+				}
 			}
 		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_generator
 		district_generator_uncapped
 	}
-
 	planet_modifier = {
 		planet_housing_add = 3
 	}
-	
 	resources = {
 		category = planet_districts_hab_energy
 		cost = {
@@ -98,13 +93,12 @@ district_pdhab_energy = {
 		}
 		upkeep = {
 			energy = @hab_maintenance
-		}		
+		}
 	}
-		
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_gestalt = no
 				is_fallen_empire_spiritualist = no
 			}
@@ -113,44 +107,48 @@ district_pdhab_energy = {
 			job_technician_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_generator_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
-		}		
+			owner = {
+				is_machine_empire = yes
+			}
+		}
 		job_technician_drone_add = 3
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
-		}	
+			owner = {
+				is_hive_empire = yes
+			}
+		}
 		job_technician_drone_add = 4
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_technician_drone_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_gestalt = no
 				is_fallen_empire_spiritualist = no
 			}
@@ -160,11 +158,12 @@ district_pdhab_energy = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_fe_acolyte_generator_effect_desc
 	}
-
 	ai_resource_production = {
 		energy = 1
 		trigger = {
@@ -176,22 +175,18 @@ district_pdhab_energy = {
 district_pdhab_industrial = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
-
 	show_on_uncolonized = {
 		uses_district_set = pdplanethab
 		#NOT = { is_planet_class = pc_pd_asteroid_hab }
 	}
-
 	potential = {
 		uses_district_set = pdplanethab
 		#NOT = { is_planet_class = pc_pd_asteroid_hab }
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_industrial
 	}
-
 	resources = {
 		category = planet_districts_hab_industrial
 		cost = {
@@ -210,18 +205,16 @@ district_pdhab_industrial = {
 			energy = 2
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 3
 	}
-
 	# Extra jobs modifier
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_regular_empire = yes
-				is_catalytic_empire = no 
+				is_catalytic_empire = no
 			}
 			has_modifier = pdhabvolcanicminerals
 		}
@@ -229,25 +222,23 @@ district_pdhab_industrial = {
 			job_foundry_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_machine_empire = yes
 				is_catalytic_empire = no
-		}
+			}
 			has_modifier = pdhabvolcanicminerals
 		}
 		modifier = {
 			job_fabricator_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_hive_empire = yes
 				is_catalytic_empire = no
 			}
@@ -257,7 +248,6 @@ district_pdhab_industrial = {
 			job_alloy_drone_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -272,7 +262,6 @@ district_pdhab_industrial = {
 			job_foundry_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -287,7 +276,6 @@ district_pdhab_industrial = {
 			job_foundry_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -302,7 +290,6 @@ district_pdhab_industrial = {
 			job_catalytic_technician_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -317,7 +304,6 @@ district_pdhab_industrial = {
 			job_catalytic_technician_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -330,7 +316,6 @@ district_pdhab_industrial = {
 			job_alloy_drone_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -343,7 +328,6 @@ district_pdhab_industrial = {
 			job_fabricator_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -356,9 +340,6 @@ district_pdhab_industrial = {
 			job_catalytic_drone_add = 2
 		}
 	}
-
-
-
 	# Designation Job Changes
 	triggered_planet_modifier = {
 		potential = {
@@ -375,7 +356,6 @@ district_pdhab_industrial = {
 			job_foundry_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_designation = col_dome_foundry
@@ -391,7 +371,6 @@ district_pdhab_industrial = {
 			job_foundry_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_designation = col_dome_factory
@@ -407,7 +386,6 @@ district_pdhab_industrial = {
 			job_foundry_add = -1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_designation = col_dome_factory
@@ -423,7 +401,6 @@ district_pdhab_industrial = {
 			job_foundry_add = -1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_designation = col_dome_foundry
@@ -439,7 +416,6 @@ district_pdhab_industrial = {
 			job_catalytic_technician_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_designation = col_dome_foundry
@@ -455,7 +431,6 @@ district_pdhab_industrial = {
 			job_catalytic_technician_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_designation = col_dome_factory
@@ -471,7 +446,6 @@ district_pdhab_industrial = {
 			job_catalytic_technician_add = -1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_designation = col_dome_factory
@@ -487,7 +461,6 @@ district_pdhab_industrial = {
 			job_catalytic_technician_add = -1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_designation = col_dome_factory
@@ -503,7 +476,6 @@ district_pdhab_industrial = {
 			job_fabricator_add = -2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_designation = col_dome_factory
@@ -519,7 +491,6 @@ district_pdhab_industrial = {
 			job_catalytic_drone_add = -2
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -530,7 +501,6 @@ district_pdhab_industrial = {
 		}
 		text = job_artisan_drone_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -540,7 +510,6 @@ district_pdhab_industrial = {
 		}
 		text = job_artificer_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -551,7 +520,6 @@ district_pdhab_industrial = {
 		}
 		text = job_foundry_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -562,7 +530,6 @@ district_pdhab_industrial = {
 		}
 		text = job_catalytic_technician_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -573,7 +540,6 @@ district_pdhab_industrial = {
 		}
 		text = job_fabricator_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -584,7 +550,6 @@ district_pdhab_industrial = {
 		}
 		text = job_alloy_drone_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -595,7 +560,6 @@ district_pdhab_industrial = {
 		}
 		text = job_catalytic_drone_effect_desc
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -608,7 +572,6 @@ district_pdhab_industrial = {
 			job_maintenance_drone_add = 1
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -624,25 +587,20 @@ district_pdhab_industrial = {
 district_pdhab_food = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
-
 	show_on_uncolonized = {
 		has_planet_flag = pd_farming_hab
 	}
-	
 	potential = {
 		has_planet_flag = pd_farming_hab
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_farming
 		district_farming_uncapped
 	}
-
 	planet_modifier = {
 		planet_housing_add = 3
 	}
-	
 	resources = {
 		category = planet_districts_cities
 		cost = {
@@ -650,13 +608,12 @@ district_pdhab_food = {
 		}
 		upkeep = {
 			energy = @hab_maintenance
-		}		
+		}
 	}
-		
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_gestalt = no
 				is_fallen_empire_spiritualist = no
 			}
@@ -664,45 +621,49 @@ district_pdhab_food = {
 		modifier = {
 			job_farmer_add = 3
 		}
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_farm_add = 3
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
-		}	
+			owner = {
+				is_hive_empire = yes
+			}
+		}
 		job_agri_drone_add = 4
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
-		}	
+			owner = {
+				is_machine_empire = yes
+			}
+		}
 		job_agri_drone_add = 3
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_agri_drone_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_gestalt = no
 				is_fallen_empire_spiritualist = no
 			}
@@ -712,11 +673,12 @@ district_pdhab_food = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_fe_acolyte_farm_effect_desc
 	}
-
 	ai_resource_production = {
 		energy = 1
 		trigger = {
@@ -728,15 +690,12 @@ district_pdhab_food = {
 district_pdhab_science = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
-
 	show_on_uncolonized = {
 		has_planet_flag = pd_science_hab
 	}
-	
 	potential = {
 		has_planet_flag = pd_science_hab
 	}
-	
 	resources = {
 		category = planet_districts_hab_research
 		cost = {
@@ -744,80 +703,82 @@ district_pdhab_science = {
 		}
 		upkeep = {
 			energy = @hab_maintenance
-		}		
+		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 3
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			job_researcher_add = 3
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_brain_drone_add = 3
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			job_calculator_add = 3
 		}
 	}
-	
 	triggered_desc = {
-		trigger = { 
+		trigger = {
 			exists = owner
-			owner = { is_regular_empire = yes } 
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		text = job_researcher_effect_desc
 	}
-
 	triggered_desc = {
-		trigger = { 
+		trigger = {
 			exists = owner
-			owner = { is_hive_empire = yes } 
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		text = job_brain_drone_effect_desc
 	}
-
 	triggered_desc = {
-		trigger = { 
+		trigger = {
 			exists = owner
-			owner = { is_machine_empire = yes } 
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		text = job_calculator_effect_desc
-	}	
+	}
 }
 
 district_pdhab_commercial = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
-	
 	show_on_uncolonized = {
 		has_planet_flag = pd_commercial_hab
 	}
-	
 	potential = {
 		has_planet_flag = pd_commercial_hab
 	}
-	
 	resources = {
 		category = planet_districts_hab_trade
 		cost = {
@@ -825,48 +786,48 @@ district_pdhab_commercial = {
 		}
 		upkeep = {
 			energy = @hab_maintenance
-		}		
+		}
 	}
-
 	conversion_ratio = 0.5
 	convert_to = {
 		district_pdhab_energy
 	}
-		
 	planet_modifier = {
 		planet_housing_add = 3
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_active_tradition = tr_prosperity_interstellar_franchising }
+			owner = {
+				has_active_tradition = tr_prosperity_interstellar_franchising
+			}
 		}
 		modifier = {
 			job_clerk_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = no }
+			owner = {
+				is_fallen_empire_spiritualist = no
+			}
 		}
 		modifier = {
 			job_clerk_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_manager_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -878,7 +839,6 @@ district_pdhab_commercial = {
 			job_merchant_add = 1
 		}
 	}
-
 	triggered_desc = {
 		text = job_clerk_effect_desc
 	}
@@ -891,7 +851,6 @@ district_pdhab_commercial = {
 			}
 		}
 	}
-
 	ai_resource_production = {
 		consumer_goods = 1
 		trigger = {
@@ -903,25 +862,20 @@ district_pdhab_commercial = {
 district_pdhab_mining = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
-
 	show_on_uncolonized = {
 		has_planet_flag = pd_mining_hab
 	}
-	
 	potential = {
 		has_planet_flag = pd_mining_hab
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_mining
 		district_mining_uncapped
-	}	
-	
+	}
 	planet_modifier = {
 		planet_housing_add = 3
 	}
-	
 	resources = {
 		category = planet_districts_hab_mining
 		cost = {
@@ -929,29 +883,30 @@ district_pdhab_mining = {
 		}
 		upkeep = {
 			energy = @hab_maintenance
-		}		
+		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_mining_drone_add = 4
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_mining_drone_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -964,44 +919,45 @@ district_pdhab_mining = {
 			job_miner_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_mine_add = 3
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_mining_drone_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_gestalt = no
 				is_fallen_empire_spiritualist = no
 			}
 		}
 		text = job_miner_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_fe_acolyte_mine_effect_desc
-	}	
-
+	}
 	ai_resource_production = {
 		minerals = 1
 		trigger = {
@@ -1010,14 +966,11 @@ district_pdhab_mining = {
 	}
 }
 
-
 district_pdhab_cultural = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
-
 	show_on_uncolonized = {
 		uses_district_set = pdplanethab
-
 		exists = from
 		from = {
 			OR = {
@@ -1026,10 +979,8 @@ district_pdhab_cultural = {
 			}
 		}
 	}
-
 	potential = {
 		uses_district_set = pdplanethab
-
 		exists = owner
 		owner = {
 			OR = {
@@ -1038,12 +989,10 @@ district_pdhab_cultural = {
 			}
 		}
 	}
-
 	conversion_ratio = 0.5
 	convert_to = {
 		district_pdhab_energy
 	}
-
 	resources = {
 		category = planet_districts_hab_leisure
 		cost = {
@@ -1053,24 +1002,23 @@ district_pdhab_cultural = {
 			energy = @hab_maintenance
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 3
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_regular_empire = yes
-				NOT = { has_valid_civic = civic_warrior_culture }
+				NOT = {
+					has_valid_civic = civic_warrior_culture
+				}
 			}
 		}
 		modifier = {
 			job_entertainer_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1083,7 +1031,6 @@ district_pdhab_cultural = {
 			job_duelist_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1097,7 +1044,6 @@ district_pdhab_cultural = {
 			job_maintenance_drone_add = 1
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1108,29 +1054,30 @@ district_pdhab_cultural = {
 		}
 		text = job_duelist_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
 			owner = {
 				is_regular_empire = yes
-				NOT = { has_valid_civic = civic_warrior_culture }
+				NOT = {
+					has_valid_civic = civic_warrior_culture
+				}
 			}
 		}
 		text = job_entertainer_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
 			owner = {
 				is_regular_empire = yes
-				NOT = { has_valid_civic = civic_warrior_culture }
+				NOT = {
+					has_valid_civic = civic_warrior_culture
+				}
 			}
 		}
 		text = job_entertainer_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1141,7 +1088,6 @@ district_pdhab_cultural = {
 		}
 		text = job_maintenance_drone_effect_desc
 	}
-
 	ai_resource_production = {
 		unity = 1
 		trigger = {
@@ -1153,26 +1099,21 @@ district_pdhab_cultural = {
 district_pdhab_mil = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
-
 	show_on_uncolonized = {
 		has_planet_flag = pd_mil_hab
 	}
-	
 	potential = {
 		AND = {
 			has_planet_flag = pd_mil_hab
 		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_city
-	}	
-	
+	}
 	planet_modifier = {
 		planet_housing_add = 2
 	}
-	
 	resources = {
 		category = planet_districts_hab_mining
 		cost = {
@@ -1180,33 +1121,34 @@ district_pdhab_mil = {
 		}
 		upkeep = {
 			energy = @hab_maintenance
-		}		
+		}
 	}
-		
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_warrior_drone_add = 2
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_warrior_drone_add = 2
 		}
-	}	
-		
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_gestalt = no
 				is_fallen_empire_spiritualist = no
 			}
@@ -1215,7 +1157,6 @@ district_pdhab_mil = {
 			job_soldier_add = 2
 		}
 	}
-
 	#triggered_planet_modifier = {
 	#	potential = {
 	#		exists = owner
@@ -1225,25 +1166,25 @@ district_pdhab_mil = {
 	#	job_maintenance_drone_add = 1
 	#	planet_housing_add = 1
 	#}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_warrior_drone_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_gestalt = no
 				is_fallen_empire_spiritualist = no
 			}
 		}
 		text = job_soldier_effect_desc
 	}
-
 	ai_resource_production = {
 		minerals = 1
 		trigger = {

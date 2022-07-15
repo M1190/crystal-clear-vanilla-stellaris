@@ -1,56 +1,57 @@
 ##########################################################################
 # Exotic Decisions
 ##########################################################################
-
-
 # Upgrade Rad-Bloom Transplant Deposit
 decision_radiotrophic_upgrade_radblooms = {
 	icon = decision_radiotrophic
 	owned_planets_only = yes
-
 	enactment_time = 1800
 	resources = {
 		category = decisions
 		cost = {
-			energy =  500
+			energy = 500
 			sr_rad_bloom = 500
 		}
 	}
-		
-	prerequisites = { "tech_upgrade_rad_blooms" }
-	
+	prerequisites = {
+		"tech_upgrade_rad_blooms"
+	}
 	potential = {
-		from = { 
-			has_trait = trait_pc_irradiated_preference 
+		from = {
+			has_trait = trait_pc_irradiated_preference
 			has_technology = tech_upgrade_rad_blooms
 		}
 		is_planet_class = pc_irradiated
 		has_deposit = d_rad_blooms_transplant
 	}
-
 	effect = {
 		custom_tooltip = decision_radiotrophic_upgrade_radblooms_effects
 		hidden_effect = {
 			remove_deposit = d_rad_blooms_transplant
 			add_deposit = d_rad_blooms_transplant_upgrade
 		}
-	}   
-
+	}
 	ai_weight = {
-        weight = 0
-        modifier = {
-            factor = 0
-            or = {
-                free_building_slots > 0
-                owner = {
-                    or = {
-                        resource_stockpile_compare = { resource = energy value < 6000 } 
-                        resource_stockpile_compare = { resource = influence value < 150 }
-                     } 
+		weight = 0
+		modifier = {
+			factor = 0
+			or = {
+				free_building_slots > 0
+				owner = {
+					or = {
+						resource_stockpile_compare = {
+							resource = energy
+							value < 6000
+						}
+						resource_stockpile_compare = {
+							resource = influence
+							value < 150
+						}
+					}
 				}
-            }
-        }
-    }
+			}
+		}
+	}
 }
 
 # Add Tectonic Drilling Deposit
@@ -59,28 +60,26 @@ decision_pd_tectonic_drilling = {
 	resources = {
 		category = decisions
 		cost = {
-			energy =  2000
+			energy = 2000
 			rare_crystals = 50
 		}
 	}
-
 	allow = {
 		space_owner = {
 			has_technology = tech_terrestrial_sculpting
 		}
 	}
-
 	potential = {
 		exists = space_owner
 		exists = from
-		space_owner = { 
-			is_same_value = from 
+		space_owner = {
+			is_same_value = from
 			has_origin = origin_pd_ash_tectonic_drillers
 		}
 		is_star = no
 		is_artificial = no
 		is_ringworld = no
-		NOR = {			
+		NOR = {
 			is_planet_class = pc_ash
 			is_planet_class = pc_city
 			is_pd_arcology = yes
@@ -92,7 +91,6 @@ decision_pd_tectonic_drilling = {
 			has_deposit = d_pd_tectonic_fissure
 		}
 	}
-
 	effect = {
 		add_deposit = d_pd_tectonic_fissure
 		hidden_effect = {
@@ -101,11 +99,10 @@ decision_pd_tectonic_drilling = {
 			add_deposit = d_active_volcano
 			add_deposit = d_active_volcano
 		}
-	}   
-
+	}
 	ai_weight = {
-        weight = 1000
-    }
+		weight = 1000
+	}
 }
 
 # Add Tectonic Drilling Deposit
@@ -116,26 +113,24 @@ decision_pd_tectonic_drilling_planetside = {
 	resources = {
 		category = decisions
 		cost = {
-			energy =  2000
+			energy = 2000
 			rare_crystals = 50
 		}
 	}
-
 	allow = {
 		owner = {
 			has_technology = tech_terrestrial_sculpting
 		}
 	}
-
 	potential = {
-		owner = { 
+		owner = {
 			has_origin = origin_pd_ash_tectonic_drillers
 		}
 		is_star = no
 		is_artificial = no
 		is_ringworld = no
-		NOT = { 
-			OR = {			
+		NOT = {
+			OR = {
 				is_planet_class = pc_ash
 				is_planet_class = pc_city
 				is_pd_arcology = yes
@@ -149,7 +144,6 @@ decision_pd_tectonic_drilling_planetside = {
 			}
 		}
 	}
-
 	effect = {
 		add_deposit = d_pd_tectonic_fissure
 		hidden_effect = {
@@ -158,41 +152,36 @@ decision_pd_tectonic_drilling_planetside = {
 			add_deposit = d_active_volcano
 			add_deposit = d_active_volcano
 		}
-	}   
-
+	}
 	ai_weight = {
-        weight = 1000
-    }
+		weight = 1000
+	}
 }
 
 # Remove Tectonic Drilling Deposit, other races
 decision_pd_remove_tectonic_drilling = {
 	owned_planets_only = yes
-
 	enactment_time = 360
-		
 	#prerequisites = { "tech_terrestrial_sculpting" }
-
 	icon = decision_pd_tectonic_drilling
 	resources = {
 		category = decisions
 		cost = {
-			energy =  1000
+			energy = 1000
 		}
 	}
-
 	potential = {
 		owner = {
-			NOT = { has_origin = origin_pd_ash_tectonic_drillers }
+			NOT = {
+				has_origin = origin_pd_ash_tectonic_drillers
+			}
 		}
 		has_deposit = d_pd_tectonic_fissure
 	}
-
 	effect = {
 		remove_deposit = d_pd_tectonic_fissure
-	}   
-
+	}
 	ai_weight = {
-        weight = 1000
-    }
+		weight = 1000
+	}
 }

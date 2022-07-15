@@ -1,41 +1,40 @@
 building_commercial_zone = {
-    base_buildtime = @b1_time
-
-    category = trade
-
-    potential = {
-        exists = owner
-        owner = { is_regular_empire = yes }
-        NOT = { has_modifier = slave_colony }
-    }
-
-    allow = {
-        buildings_simple_allow = yes
-    }
-
-    planet_modifier = {
-        job_bugged_trader_add = 1
-        job_clerk_add = 2
-    }
-
-    destroy_trigger = {
-        exists = owner
-        OR = {
-            owner = { is_regular_empire = no }
-            has_modifier = slave_colony
-        }
-    }
-
-    resources = {
-        category = planet_buildings
-        cost = {
-            minerals = @b1_minerals
-        }
-        upkeep = {
-            energy = @b1_upkeep
-        }
-    }
-
+	base_buildtime = @b1_time
+	category = trade
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+	}
+	allow = {
+		buildings_simple_allow = yes
+	}
+	planet_modifier = {
+		job_bugged_trader_add = 1
+		job_clerk_add = 2
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				is_regular_empire = no
+			}
+			has_modifier = slave_colony
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -47,15 +46,12 @@ building_commercial_zone = {
 			job_merchant_add = 1
 		}
 	}
-
-    prerequisites = {
-        "tech_interplanetary_commerce"
-    }
-
-    show_tech_unlock_if = {
-        is_regular_empire = yes
-    }
-
+	prerequisites = {
+		"tech_interplanetary_commerce"
+	}
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -65,77 +61,75 @@ building_commercial_zone = {
 		}
 		text = job_merchant_effect_desc
 	}
-    triggered_desc = {
-        text = job_clerk_effect_desc
-    }
-    triggered_desc = {
-        text = job_bugged_trader_effect_desc
-    }
-
-    upgrades = {
-        "building_commercial_megaplex"
-    }
-
-    ai_resource_production = {
-        energy = 2
-        trigger = {
-            always = yes
-        }
-    }
-    ai_resource_production = {
-        energy = 3
-        trigger = {
-            OR = {
-                num_unemployed >= 10
-                num_assigned_jobs = {
-                    job = servant
-                    value >= 10
-                }
-            }
-        }
-    }
+	triggered_desc = {
+		text = job_clerk_effect_desc
+	}
+	triggered_desc = {
+		text = job_bugged_trader_effect_desc
+	}
+	upgrades = {
+		"building_commercial_megaplex"
+	}
+	ai_resource_production = {
+		energy = 2
+		trigger = {
+			always = yes
+		}
+	}
+	ai_resource_production = {
+		energy = 3
+		trigger = {
+			OR = {
+				num_unemployed >= 10
+				num_assigned_jobs = {
+					job = servant
+					value >= 10
+				}
+			}
+		}
+	}
 }
 
 building_commercial_megaplex = {
-    base_buildtime = @b2_time
-    can_build = no
-
-    category = trade
-
-    potential = {
-        exists = owner
-        owner = { is_regular_empire = yes }
-        NOT = { has_modifier = slave_colony }
-        has_building = building_commercial_zone
-    }
-
-    destroy_trigger = {
-        exists = owner
-        OR = {
-            owner = { is_regular_empire = no }
-            has_modifier = slave_colony
-            buildings_no_crystals = yes
-        }
-    }
-
-    planet_modifier = {
-        job_merchant_add = 1
+	base_buildtime = @b2_time
+	can_build = no
+	category = trade
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+		has_building = building_commercial_zone
+	}
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				is_regular_empire = no
+			}
+			has_modifier = slave_colony
+			buildings_no_crystals = yes
+		}
+	}
+	planet_modifier = {
+		job_merchant_add = 1
 		job_bugged_trader_add = 2
-        job_clerk_add = 4
-    }
-
-    resources = {
-        category = planet_buildings
-        cost = {
-            minerals = @b2_minerals
-            rare_crystals = @b2_rare_cost
-        }
-        upkeep = {
-            energy = @b2_upkeep
-            rare_crystals = @b2_rare_upkeep
-        }
-    }
-
+		job_clerk_add = 4
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -147,70 +141,66 @@ building_commercial_megaplex = {
 			job_merchant_add = 1
 		}
 	}
-
-    prerequisites = {
-        "tech_interstellar_economics"
-    }
-
-    show_tech_unlock_if = {
-        is_regular_empire = yes
-    }
-
-    triggered_desc = {
-        text = job_merchant_effect_desc
-    }
-    triggered_desc = {
-        text = job_clerk_effect_desc
-    }
+	prerequisites = {
+		"tech_interstellar_economics"
+	}
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
 	triggered_desc = {
-        text = job_bugged_trader_effect_desc
-    }
-
-    ai_resource_production = {
-        energy = 6
-        trigger = {
-            OR = {
-                num_unemployed >= 10
-                num_assigned_jobs = {
-                    job = servant
-                    value >= 10
-                }
-            }
-        }
-    }
+		text = job_merchant_effect_desc
+	}
+	triggered_desc = {
+		text = job_clerk_effect_desc
+	}
+	triggered_desc = {
+		text = job_bugged_trader_effect_desc
+	}
+	ai_resource_production = {
+		energy = 6
+		trigger = {
+			OR = {
+				num_unemployed >= 10
+				num_assigned_jobs = {
+					job = servant
+					value >= 10
+				}
+			}
+		}
+	}
 }
 
 building_bugged_planetary_stock_exchange = {
 	base_buildtime = 480
 	base_cap_amount = 1
-
 	category = trade
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		buildings_simple_allow = yes
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
+			owner = {
+				is_regular_empire = no
+			}
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 			buildings_no_crystals = yes
 		}
 	}
-
 	planet_modifier = {
 		job_merchant_add = 1
 		trade_value_mult = 0.05
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -226,7 +216,6 @@ building_bugged_planetary_stock_exchange = {
 			trade_value_mult = 0.05
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -238,11 +227,9 @@ building_bugged_planetary_stock_exchange = {
 			rare_crystals = 2
 		}
 	}
-
 	prerequisites = {
 		"tech_galactic_markets"
 	}
-
 	upgrades = {
 		"building_galactic_stock_exchange"
 	}
@@ -252,7 +239,6 @@ building_bugged_planetary_stock_exchange = {
 	triggered_desc = {
 		text = job_merchant_effect_desc
 	}
-
 	ai_resource_production = {
 		energy = 3
 		trigger = {
@@ -281,32 +267,30 @@ building_galactic_stock_exchange = {
 	base_buildtime = 600
 	category = trade
 	can_build = no
-   	potential = {
-        	NOR = {
+	potential = {
+		NOR = {
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 		}
-   	}
-
-    	allow = {
+	}
+	allow = {
 		has_global_flag = galactic_market_founded
-    	}
-
+	}
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
+			owner = {
+				is_regular_empire = no
+			}
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 			buildings_no_crystals = yes
 		}
 	}
-
 	planet_modifier = {
 		job_merchant_add = 2
 		trade_value_mult = 0.1
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -322,7 +306,6 @@ building_galactic_stock_exchange = {
 			trade_value_mult = 0.1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -334,18 +317,15 @@ building_galactic_stock_exchange = {
 			rare_crystals = 4
 		}
 	}
-
 	prerequisites = {
 		"tech_galactic_markets"
 	}
-
 	triggered_desc = {
 		text = building_galactic_stock_exchange_effect_desc
 	}
 	triggered_desc = {
 		text = job_merchant_effect_desc
 	}
-
 	ai_resource_production = {
 		energy = 3
 		trigger = {

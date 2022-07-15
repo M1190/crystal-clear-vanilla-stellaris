@@ -3,15 +3,12 @@
 ##########################################################################
 @minor_artifact_decision_cost = 2
 @minor_artifact_decision_duration = 3600
-
 # Baol Organism Lifeseed
 decision_baol_life_seed = {
 	owned_planets_only = yes
 	sound = event_laboratory_sound
 	icon = decision_resort_colony
-
 	#enactment_time = 20
-	
 	potential = {
 		NOR = {
 			is_planet_class = pc_pdshroud
@@ -25,18 +22,21 @@ decision_baol_life_seed = {
 		is_pd_unique = no
 		is_pd_arcology = no
 		exists = owner
-		owner = { has_country_flag = relic_last_baol_activated }
+		owner = {
+			has_country_flag = relic_last_baol_activated
+		}
 	}
-	
-	allow = { }
-	
+	allow = {
+	}
 	effect = {
 		# Convert to Gaia world, spawn Nu-Baol pops
 		custom_tooltip = decision_baol_life_seed_effects
 		hidden_effect = {
-			owner = { remove_country_flag = relic_last_baol_activated }
+			owner = {
+				remove_country_flag = relic_last_baol_activated
+			}
 			if = {
-				limit = { 
+				limit = {
 					OR = {
 						is_planet_class = pc_tidallylocked
 						is_planet_class = pc_eyeball
@@ -45,13 +45,19 @@ decision_baol_life_seed = {
 				change_pc = pc_tidallygaia
 			}
 			if = {
-				limit = { 
-					NOT = { is_planet_class = pc_tidallygaia }
+				limit = {
+					NOT = {
+						is_planet_class = pc_tidallygaia
+					}
 				}
 				change_pc = pc_gaia
 			}
 			if = {
-				limit = { NOT = { exists = event_target:nu_baol_species } }
+				limit = {
+					NOT = {
+						exists = event_target:nu_baol_species
+					}
+				}
 				create_nu_baol_effect = yes
 			}
 			while = {
@@ -66,9 +72,11 @@ decision_baol_life_seed = {
 			pd_remove_special_deposits_modifiers = yes
 			remove_deposit = d_pdgaia
 			add_deposit = d_pdgaia
-			planet_event = { id = ancrel.2025 } #Notification event
+			planet_event = {
+				id = ancrel.2025
+			}			#Notification event
 			if = {
-				limit = { 
+				limit = {
 					has_planet_flag = planet_earth
 				}
 				set_planet_entity = {
@@ -76,7 +84,7 @@ decision_baol_life_seed = {
 				}
 			}
 			if = {
-				limit = { 
+				limit = {
 					has_planet_flag = pdmars
 				}
 				set_planet_entity = {
@@ -85,7 +93,7 @@ decision_baol_life_seed = {
 				}
 			}
 			if = {
-				limit = { 
+				limit = {
 					has_planet_flag = pdvenus
 				}
 				set_planet_entity = {
@@ -94,16 +102,14 @@ decision_baol_life_seed = {
 				}
 			}
 			if = {
-				limit = { 
+				limit = {
 					has_planet_flag = pdaquapicture
 				}
 				remove_planet_flag = pdaquapicture
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
 }
-

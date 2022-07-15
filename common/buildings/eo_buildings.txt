@@ -1,26 +1,28 @@
 building_cloning_facility = {
 	base_buildtime = @b1_time
-
 	category = government
-
 	base_cap_amount = 1
-
 	potential = {
 		exists = owner
 		owner = {
 			has_origin = origin_vat_grown
 		}
 		OR = {
-			owner = { is_ai = no }
-			NOT = { has_building = building_robot_assembly_plant }
+			owner = {
+				is_ai = no
+			}
+			NOT = {
+				has_building = building_robot_assembly_plant
+			}
 		}
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			AND = {
-				owner = { is_ai = yes }
+				owner = {
+					is_ai = yes
+				}
 				planet = {
 					free_district_slots = 0
 					free_building_slots = 0
@@ -36,11 +38,9 @@ building_cloning_facility = {
 			}
 		}
 	}
-
 	planet_modifier = {
 		planet_pop_assembly_organic_add = 2
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -52,7 +52,6 @@ building_cloning_facility = {
 			food = 25
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			has_building = building_robot_assembly_plant

@@ -1,7 +1,6 @@
 ############################################################
 ##                 ESC : Kinetic Weapons                  ##
 ############################################################
-
 # - Advanced Gauss Cannon				S/M/L
 # - Strike Cannon						S/M/L
 # - Improved Stromfire Autocannon		S/M/L
@@ -19,43 +18,36 @@
 # - Ferromagnetic Liquid Cannon			X
 # - Imp. Ferromagnetic Liquid Cannon	X
 # - MagnetoHydroDynamic Cannon			Titanic + Juggernaut
-
-@ESC_WEAPON_mass_driver_hull_damage = 1.0
+@ESC_WEAPON_mass_driver_hull_damage = 1
 @ESC_WEAPON_mass_driver_armor_damage = 0.5
-@ESC_WEAPON_mass_driver_armor_penetration = 0.0
+@ESC_WEAPON_mass_driver_armor_penetration = 0
 @ESC_WEAPON_mass_driver_shield_damage = 1.5
-@ESC_WEAPON_mass_driver_shield_penetration = 0.0
-
+@ESC_WEAPON_mass_driver_shield_penetration = 0
 @ESC_WEAPON_autocannon_hull_damage = 1.25
 @ESC_WEAPON_autocannon_armor_damage = 0.25
 @ESC_WEAPON_autocannon_xl_armor_damage = 0.5
-@ESC_WEAPON_autocannon_armor_penetration = 0.0
+@ESC_WEAPON_autocannon_armor_penetration = 0
 @ESC_WEAPON_autocannon_shield_damage = 1.5
-@ESC_WEAPON_autocannon_shield_penetration = 0.0
-
+@ESC_WEAPON_autocannon_shield_penetration = 0
 @ESC_WEAPON_artillery_hull_damage = 1.25
 @ESC_WEAPON_artillery_armor_damage = 0.5
-@ESC_WEAPON_artillery_armor_penetration = 0.0
-@ESC_WEAPON_artillery_shield_damage = 2.0
-@ESC_WEAPON_artillery_shield_penetration = 0.0
-
+@ESC_WEAPON_artillery_armor_penetration = 0
+@ESC_WEAPON_artillery_shield_damage = 2
+@ESC_WEAPON_artillery_shield_penetration = 0
 @ESC_WEAPON_megacannon_hull_damage = 1.25
 @ESC_WEAPON_megacannon_armor_damage = 0.75
 @ESC_WEAPON_rkkv_armor_damage = 0.75
-@ESC_WEAPON_megacannon_armor_penetration = 0.0
+@ESC_WEAPON_megacannon_armor_penetration = 0
 @ESC_WEAPON_megacannon_shield_damage = 1.5
-@ESC_WEAPON_megacannon_shield_penetration = 0.0
-
+@ESC_WEAPON_megacannon_shield_penetration = 0
 @ESC_WEAPON_mhd_cannon_hull_damage = 1.25
-@ESC_WEAPON_mhd_cannon_armor_damage = 1.0
+@ESC_WEAPON_mhd_cannon_armor_damage = 1
 @ESC_WEAPON_mhd_cannon_armor_penetration = 0.5
 @ESC_WEAPON_mhd_cannon_shield_damage = 1.25
-@ESC_WEAPON_mhd_cannon_shield_penetration = 0.0
-
+@ESC_WEAPON_mhd_cannon_shield_penetration = 0
 ############################################################
 ##                Advanced Gauss Cannon                   ##
 ############################################################
-
 # small
 weapon_component_template = {
 	key = SMALL_ESC_MASS_DRIVER_6
@@ -63,14 +55,18 @@ weapon_component_template = {
 	icon = GFX_esc_mass_driver_6
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 18 max = 57 }
-	windup = { min = 1.0 max = 18.0 }
+	damage = {
+		min = 18
+		max = 57
+	}
+	windup = {
+		min = 1
+		max = 18
+	}
 	total_fire_time = 25
 	range = @ESC_WEAPON_RANGE_S_3
 	accuracy = 0.75
 	power = -20
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -82,27 +78,32 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_s_t6_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_mass_driver_hull_damage
 	armor_penetration = @ESC_WEAPON_mass_driver_armor_penetration
 	armor_damage = @ESC_WEAPON_mass_driver_armor_damage
 	shield_penetration = @ESC_WEAPON_mass_driver_shield_penetration
 	shield_damage = @ESC_WEAPON_mass_driver_shield_damage
 	tracking = 0.5
-
-	prerequisites = { "esc_tech_mass_driver_6" }
+	prerequisites = {
+		"esc_tech_mass_driver_6"
+	}
 	component_set = ESC_MASS_DRIVER_6
 	projectile_gfx = "gauss_cannon_s"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_anti_shield }
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_anti_shield
+	}
 	upgrades_to = SMALL_ESC_MASS_DRIVER_7
-
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -114,14 +115,18 @@ weapon_component_template = {
 	icon = GFX_esc_mass_driver_6
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 44 max = 148 }
-	windup = { min = 1.0 max = 18.0 }
+	damage = {
+		min = 44
+		max = 148
+	}
+	windup = {
+		min = 1
+		max = 18
+	}
 	total_fire_time = 25
 	range = @ESC_WEAPON_RANGE_M_4
 	accuracy = 0.75
 	power = -34
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -133,27 +138,32 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_m_t6_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_mass_driver_hull_damage
 	armor_penetration = @ESC_WEAPON_mass_driver_armor_penetration
 	armor_damage = @ESC_WEAPON_mass_driver_armor_damage
 	shield_penetration = @ESC_WEAPON_mass_driver_shield_penetration
 	shield_damage = @ESC_WEAPON_mass_driver_shield_damage
 	tracking = 0.3
-
-	prerequisites = { "esc_tech_mass_driver_6" }
+	prerequisites = {
+		"esc_tech_mass_driver_6"
+	}
 	component_set = ESC_MASS_DRIVER_6
 	projectile_gfx = "gauss_cannon_m"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_anti_shield }
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_anti_shield
+	}
 	upgrades_to = MEDIUM_ESC_MASS_DRIVER_7
-
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -165,14 +175,18 @@ weapon_component_template = {
 	icon = GFX_esc_mass_driver_6
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 104 max = 318 }
-	windup = { min = 1.0 max = 18.0 }
+	damage = {
+		min = 104
+		max = 318
+	}
+	windup = {
+		min = 1
+		max = 18
+	}
 	total_fire_time = 25
 	range = @ESC_WEAPON_RANGE_L_4
 	accuracy = 0.75
 	power = -64
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -184,27 +198,32 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_l_t6_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_mass_driver_hull_damage
 	armor_penetration = @ESC_WEAPON_mass_driver_armor_penetration
 	armor_damage = @ESC_WEAPON_mass_driver_armor_damage
 	shield_penetration = @ESC_WEAPON_mass_driver_shield_penetration
 	shield_damage = @ESC_WEAPON_mass_driver_shield_damage
 	tracking = 0.05
-
-	prerequisites = { "esc_tech_mass_driver_6" }
+	prerequisites = {
+		"esc_tech_mass_driver_6"
+	}
 	component_set = ESC_MASS_DRIVER_6
 	projectile_gfx = "gauss_cannon_l"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_anti_shield }
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_anti_shield
+	}
 	upgrades_to = LARGE_ESC_MASS_DRIVER_7
-
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -212,7 +231,6 @@ weapon_component_template = {
 ############################################################
 ##                     Strike Cannon                      ##
 ############################################################
-
 # small
 weapon_component_template = {
 	key = SMALL_ESC_MASS_DRIVER_7
@@ -220,14 +238,18 @@ weapon_component_template = {
 	icon = GFX_esc_mass_driver_7
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 24 max = 74 }
-	windup = { min = 1.0 max = 18.0 }
+	damage = {
+		min = 24
+		max = 74
+	}
+	windup = {
+		min = 1
+		max = 18
+	}
 	total_fire_time = 25
 	range = @ESC_WEAPON_RANGE_S_3
 	accuracy = 0.75
 	power = -24
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -239,26 +261,31 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_s_t7_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_mass_driver_hull_damage
 	armor_penetration = @ESC_WEAPON_mass_driver_armor_penetration
 	armor_damage = @ESC_WEAPON_mass_driver_armor_damage
 	shield_penetration = @ESC_WEAPON_mass_driver_shield_penetration
 	shield_damage = @ESC_WEAPON_mass_driver_shield_damage
 	tracking = 0.5
-
-	prerequisites = { "esc_tech_mass_driver_7" }
+	prerequisites = {
+		"esc_tech_mass_driver_7"
+	}
 	component_set = ESC_MASS_DRIVER_7
 	projectile_gfx = "gauss_cannon_s"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_anti_shield }
-
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_anti_shield
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -270,14 +297,18 @@ weapon_component_template = {
 	icon = GFX_esc_mass_driver_7
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 67 max = 192 }
-	windup = { min = 1.0 max = 18.0 }
+	damage = {
+		min = 67
+		max = 192
+	}
+	windup = {
+		min = 1
+		max = 18
+	}
 	total_fire_time = 25
 	range = @ESC_WEAPON_RANGE_M_4
 	accuracy = 0.75
 	power = -46
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -289,26 +320,31 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_m_t7_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_mass_driver_hull_damage
 	armor_penetration = @ESC_WEAPON_mass_driver_armor_penetration
 	armor_damage = @ESC_WEAPON_mass_driver_armor_damage
 	shield_penetration = @ESC_WEAPON_mass_driver_shield_penetration
 	shield_damage = @ESC_WEAPON_mass_driver_shield_damage
 	tracking = 0.3
-
-	prerequisites = { "esc_tech_mass_driver_7" }
+	prerequisites = {
+		"esc_tech_mass_driver_7"
+	}
 	component_set = ESC_MASS_DRIVER_7
 	projectile_gfx = "gauss_cannon_m"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_anti_shield }
-
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_anti_shield
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -320,14 +356,18 @@ weapon_component_template = {
 	icon = GFX_esc_mass_driver_7
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 158 max = 378 }
-	windup = { min = 1.0 max = 18.0 }
+	damage = {
+		min = 158
+		max = 378
+	}
+	windup = {
+		min = 1
+		max = 18
+	}
 	total_fire_time = 25
 	range = @ESC_WEAPON_RANGE_L_4
 	accuracy = 0.75
 	power = -90
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -339,26 +379,31 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_l_t7_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_mass_driver_hull_damage
 	armor_penetration = @ESC_WEAPON_mass_driver_armor_penetration
 	armor_damage = @ESC_WEAPON_mass_driver_armor_damage
 	shield_penetration = @ESC_WEAPON_mass_driver_shield_penetration
 	shield_damage = @ESC_WEAPON_mass_driver_shield_damage
 	tracking = 0.05
-
-	prerequisites = { "esc_tech_mass_driver_7" }
+	prerequisites = {
+		"esc_tech_mass_driver_7"
+	}
 	component_set = ESC_MASS_DRIVER_7
 	projectile_gfx = "gauss_cannon_l"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_anti_shield }
-
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_anti_shield
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -366,7 +411,6 @@ weapon_component_template = {
 ############################################################
 ##            Improved Stormfire Autocannon               ##
 ############################################################
-
 # small
 weapon_component_template = {
 	key = SMALL_ESC_AUTOCANNON_4
@@ -374,14 +418,18 @@ weapon_component_template = {
 	icon = GFX_esc_autocannon_4
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 19 max = 38 }
-	windup = { min = 2 max = 14 }
+	damage = {
+		min = 19
+		max = 38
+	}
+	windup = {
+		min = 2
+		max = 14
+	}
 	total_fire_time = 15
 	range = @ESC_WEAPON_RANGE_S_1
 	accuracy = 0.85
 	power = -20
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -393,27 +441,32 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_s_t6_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_autocannon_hull_damage
 	armor_penetration = @ESC_WEAPON_autocannon_armor_penetration
 	armor_damage = @ESC_WEAPON_autocannon_armor_damage
 	shield_penetration = @ESC_WEAPON_autocannon_shield_penetration
 	shield_damage = @ESC_WEAPON_autocannon_shield_damage
 	tracking = 0.75
-
-	prerequisites = { "esc_tech_autocannon_4" }
+	prerequisites = {
+		"esc_tech_autocannon_4"
+	}
 	component_set = ESC_AUTOCANNON_4
 	projectile_gfx = "esc_autocannon_4_small"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_anti_shield }
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_anti_shield
+	}
 	upgrades_to = SMALL_ESC_AUTOCANNON_5
-
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -425,14 +478,18 @@ weapon_component_template = {
 	icon = GFX_esc_autocannon_4
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 40 max = 95 }
-	windup = { min = 2 max = 14 }
+	damage = {
+		min = 40
+		max = 95
+	}
+	windup = {
+		min = 2
+		max = 14
+	}
 	total_fire_time = 15
 	range = @ESC_WEAPON_RANGE_M_1
 	accuracy = 0.85
 	power = -34
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -444,27 +501,33 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_m_t6_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_autocannon_hull_damage
 	armor_penetration = @ESC_WEAPON_autocannon_armor_penetration
 	armor_damage = @ESC_WEAPON_autocannon_armor_damage
 	shield_penetration = @ESC_WEAPON_autocannon_shield_penetration
 	shield_damage = @ESC_WEAPON_autocannon_shield_damage
 	tracking = 0.5
-
-	prerequisites = { "esc_tech_autocannon_4" "esc_tech_autocannons_m" }
+	prerequisites = {
+		"esc_tech_autocannon_4"
+		"esc_tech_autocannons_m"
+	}
 	component_set = ESC_AUTOCANNON_4
 	projectile_gfx = "esc_autocannon_4_medium"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_anti_shield }
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_anti_shield
+	}
 	upgrades_to = MEDIUM_ESC_AUTOCANNON_5
-
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -476,14 +539,18 @@ weapon_component_template = {
 	icon = GFX_esc_autocannon_4
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 90 max = 190 }
-	windup = { min = 2 max = 14 }
+	damage = {
+		min = 90
+		max = 190
+	}
+	windup = {
+		min = 2
+		max = 14
+	}
 	total_fire_time = 15
 	range = @ESC_WEAPON_RANGE_L_1
 	accuracy = 0.85
 	power = -64
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -495,27 +562,33 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_l_t6_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_autocannon_hull_damage
 	armor_penetration = @ESC_WEAPON_autocannon_armor_penetration
 	armor_damage = @ESC_WEAPON_autocannon_armor_damage
 	shield_penetration = @ESC_WEAPON_autocannon_shield_penetration
 	shield_damage = @ESC_WEAPON_autocannon_shield_damage
 	tracking = 0.35
-
-	prerequisites = { "esc_tech_autocannon_4" "esc_tech_autocannons_l" }
+	prerequisites = {
+		"esc_tech_autocannon_4"
+		"esc_tech_autocannons_l"
+	}
 	component_set = ESC_AUTOCANNON_4
 	projectile_gfx = "esc_autocannon_4_large"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_anti_shield }
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_anti_shield
+	}
 	upgrades_to = LARGE_ESC_AUTOCANNON_5
-
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -523,7 +596,6 @@ weapon_component_template = {
 ############################################################
 ##                  Shredder Autocannon                   ##
 ############################################################
-
 # small
 weapon_component_template = {
 	key = SMALL_ESC_AUTOCANNON_5
@@ -531,14 +603,18 @@ weapon_component_template = {
 	icon = GFX_esc_autocannon_5
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 24 max = 50 }
-	windup = { min = 2 max = 14 }
+	damage = {
+		min = 24
+		max = 50
+	}
+	windup = {
+		min = 2
+		max = 14
+	}
 	total_fire_time = 15
 	range = @ESC_WEAPON_RANGE_S_1
 	accuracy = 0.85
 	power = -24
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -550,26 +626,31 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_s_t7_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_autocannon_hull_damage
 	armor_penetration = @ESC_WEAPON_autocannon_armor_penetration
 	armor_damage = @ESC_WEAPON_autocannon_armor_damage
 	shield_penetration = @ESC_WEAPON_autocannon_shield_penetration
 	shield_damage = @ESC_WEAPON_autocannon_shield_damage
 	tracking = 0.75
-
-	prerequisites = { "esc_tech_autocannon_5" }
+	prerequisites = {
+		"esc_tech_autocannon_5"
+	}
 	component_set = ESC_AUTOCANNON_5
 	projectile_gfx = "esc_autocannon_5_small"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_anti_shield }
-
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_anti_shield
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -581,14 +662,18 @@ weapon_component_template = {
 	icon = GFX_esc_autocannon_5
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 50 max = 130 }
-	windup = { min = 2 max = 14 }
+	damage = {
+		min = 50
+		max = 130
+	}
+	windup = {
+		min = 2
+		max = 14
+	}
 	total_fire_time = 15
 	range = @ESC_WEAPON_RANGE_M_1
 	accuracy = 0.85
 	power = -46
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -600,26 +685,32 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_m_t7_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_autocannon_hull_damage
 	armor_penetration = @ESC_WEAPON_autocannon_armor_penetration
 	armor_damage = @ESC_WEAPON_autocannon_armor_damage
 	shield_penetration = @ESC_WEAPON_autocannon_shield_penetration
 	shield_damage = @ESC_WEAPON_autocannon_shield_damage
 	tracking = 0.5
-
-	prerequisites = { "esc_tech_autocannon_5" "esc_tech_autocannons_m" }
+	prerequisites = {
+		"esc_tech_autocannon_5"
+		"esc_tech_autocannons_m"
+	}
 	component_set = ESC_AUTOCANNON_5
 	projectile_gfx = "esc_autocannon_5_medium"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_anti_shield }
-
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_anti_shield
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -631,14 +722,18 @@ weapon_component_template = {
 	icon = GFX_esc_autocannon_5
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 115 max = 235 }
-	windup = { min = 2 max = 14 }
+	damage = {
+		min = 115
+		max = 235
+	}
+	windup = {
+		min = 2
+		max = 14
+	}
 	total_fire_time = 15
 	range = @ESC_WEAPON_RANGE_L_1
 	accuracy = 0.85
 	power = -90
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -650,26 +745,32 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_l_t7_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_autocannon_hull_damage
 	armor_penetration = @ESC_WEAPON_autocannon_armor_penetration
 	armor_damage = @ESC_WEAPON_autocannon_armor_damage
 	shield_penetration = @ESC_WEAPON_autocannon_shield_penetration
 	shield_damage = @ESC_WEAPON_autocannon_shield_damage
 	tracking = 0.35
-
-	prerequisites = { "esc_tech_autocannon_5" "esc_tech_autocannons_l" }
+	prerequisites = {
+		"esc_tech_autocannon_5"
+		"esc_tech_autocannons_l"
+	}
 	component_set = ESC_AUTOCANNON_5
 	projectile_gfx = "esc_autocannon_5_large"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_anti_shield }
-
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_anti_shield
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -677,21 +778,24 @@ weapon_component_template = {
 ############################################################
 ##                Improved Kinetic Artillery              ##
 ############################################################
-
 weapon_component_template = {
 	key = ESC_ARTILLERY_3
 	size = large
 	icon = GFX_esc_kinetic_artillery_3
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 245 max = 720 }
-	windup = { min = 3 max = 25 }
+	damage = {
+		min = 245
+		max = 720
+	}
+	windup = {
+		min = 3
+		max = 25
+	}
 	total_fire_time = 50
 	range = @ESC_WEAPON_RANGE_L_5
 	accuracy = 0.75
 	power = -110
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -703,27 +807,33 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_l_t7_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_artillery_hull_damage
 	armor_penetration = @ESC_WEAPON_artillery_armor_penetration
 	armor_damage = @ESC_WEAPON_artillery_armor_damage
 	shield_penetration = @ESC_WEAPON_artillery_shield_penetration
 	shield_damage = @ESC_WEAPON_artillery_shield_damage
 	tracking = 0.05
-
-	prerequisites = { "esc_tech_kinetic_artillery_3" }
+	prerequisites = {
+		"esc_tech_kinetic_artillery_3"
+	}
 	component_set = ESC_ARTILLERY_3
 	projectile_gfx = "adv_kinetic_artillery"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_artillery weapon_role_anti_shield }
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_artillery
+		weapon_role_anti_shield
+	}
 	upgrades_to = ESC_ARTILLERY_4
-
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -731,21 +841,24 @@ weapon_component_template = {
 ############################################################
 ##                  Skypiercer Artillery                  ##
 ############################################################
-
 weapon_component_template = {
 	key = ESC_ARTILLERY_4
 	size = large
 	icon = GFX_esc_kinetic_artillery_4
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 300 max = 870 }
-	windup = { min = 3 max = 25 }
+	damage = {
+		min = 300
+		max = 870
+	}
+	windup = {
+		min = 3
+		max = 25
+	}
 	total_fire_time = 50
 	range = @ESC_WEAPON_RANGE_L_5
 	accuracy = 0.75
 	power = -130
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -757,26 +870,32 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_l_t8_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_artillery_hull_damage
 	armor_penetration = @ESC_WEAPON_artillery_armor_penetration
 	armor_damage = @ESC_WEAPON_artillery_armor_damage
 	shield_penetration = @ESC_WEAPON_artillery_shield_penetration
 	shield_damage = @ESC_WEAPON_artillery_shield_damage
 	tracking = 0.05
-
-	prerequisites = { "esc_tech_kinetic_artillery_4" }
+	prerequisites = {
+		"esc_tech_kinetic_artillery_4"
+	}
 	component_set = ESC_ARTILLERY_4
 	projectile_gfx = "adv_kinetic_artillery"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_artillery weapon_role_anti_shield }
-
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_artillery
+		weapon_role_anti_shield
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -784,21 +903,24 @@ weapon_component_template = {
 ############################################################
 ##                  Improved Giga-Cannon                  ##
 ############################################################
-
 weapon_component_template = {
 	key = ESC_MASS_ACCELERATOR_3
 	size = extra_large
 	icon = GFX_esc_mass_accelerator_3
 	icon_frame = 1
 	type = instant
-
-    damage = { min = 1200 max = 3000 }
-	windup = { min = 1 max = 19 }
+	damage = {
+		min = 1200
+		max = 3000
+	}
+	windup = {
+		min = 1
+		max = 19
+	}
 	total_fire_time = 80
 	range = @ESC_WEAPON_RANGE_X_3
 	accuracy = 0.75
 	power = -280
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -810,31 +932,35 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_xl_t7_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_megacannon_hull_damage
 	armor_penetration = @ESC_WEAPON_megacannon_armor_penetration
 	armor_damage = @ESC_WEAPON_megacannon_armor_damage
 	shield_penetration = @ESC_WEAPON_megacannon_shield_penetration
 	shield_damage = @ESC_WEAPON_megacannon_shield_damage
-	tracking = 0.0
-
-	firing_arc = 25.0
+	tracking = 0
+	firing_arc = 25
 	min_range = @ESC_WEAPON_MIN_RANGE_2
 	use_ship_kill_target = no
-
-	prerequisites = { "esc_tech_giga_cannon_3" }
+	prerequisites = {
+		"esc_tech_giga_cannon_3"
+	}
 	component_set = ESC_MASS_ACCELERATOR_3
 	projectile_gfx = "adv_kinetic_artillery"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_artillery }
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_artillery
+	}
 	upgrades_to = ESC_MASS_ACCELERATOR_4
-
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -842,21 +968,24 @@ weapon_component_template = {
 ############################################################
 ##                    The Grand Cannon                    ##
 ############################################################
-
 weapon_component_template = {
 	key = ESC_MASS_ACCELERATOR_4
 	size = extra_large
 	icon = GFX_esc_mass_accelerator_4
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 1500 max = 3400 }
-	windup = { min = 1 max = 19 }
+	damage = {
+		min = 1500
+		max = 3400
+	}
+	windup = {
+		min = 1
+		max = 19
+	}
 	total_fire_time = 80
 	range = @ESC_WEAPON_RANGE_X_3
 	accuracy = 0.75
 	power = -330
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -868,31 +997,35 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_xl_t8_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_megacannon_hull_damage
 	armor_penetration = @ESC_WEAPON_megacannon_armor_penetration
 	armor_damage = @ESC_WEAPON_megacannon_armor_damage
 	shield_penetration = @ESC_WEAPON_megacannon_shield_penetration
 	shield_damage = @ESC_WEAPON_megacannon_shield_damage
 	tracking = 0.05
-
-	firing_arc = 25.0
+	firing_arc = 25
 	min_range = @ESC_WEAPON_MIN_RANGE_2
 	use_ship_kill_target = no
-
-	prerequisites = { "esc_tech_giga_cannon_4" }
+	prerequisites = {
+		"esc_tech_giga_cannon_4"
+	}
 	component_set = ESC_MASS_ACCELERATOR_4
 	projectile_gfx = "adv_kinetic_artillery"
 	upgrades_to = ESC_MASS_ACCELERATOR_JUGGERNAUT
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_artillery }
-
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_artillery
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -900,7 +1033,6 @@ weapon_component_template = {
 ############################################################
 ##           Relativistic Kinetic Kill Vehicle            ##
 ############################################################
-
 # titan
 weapon_component_template = {
 	key = ESC_MASS_ACCELERATOR_TITANIC
@@ -908,14 +1040,18 @@ weapon_component_template = {
 	icon = GFX_esc_mass_accelerator_titanic
 	icon_frame = 1
 	type = instant
-
-    damage = { min = 5500 max = 10000 }
-	windup = { min = 20 max = 40 }
+	damage = {
+		min = 5500
+		max = 10000
+	}
+	windup = {
+		min = 20
+		max = 40
+	}
 	total_fire_time = 155
 	range = @ESC_WEAPON_RANGE_T_3
 	accuracy = 0.8
 	power = -500
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -927,30 +1063,34 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_t_t6_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_megacannon_hull_damage
 	armor_penetration = @ESC_WEAPON_megacannon_armor_penetration
 	armor_damage = @ESC_WEAPON_megacannon_armor_damage
 	shield_penetration = @ESC_WEAPON_megacannon_shield_penetration
 	shield_damage = @ESC_WEAPON_megacannon_shield_damage
 	tracking = 0.05
-
-	firing_arc = 25.0
+	firing_arc = 25
 	min_range = @ESC_WEAPON_MIN_RANGE_3
 	use_ship_kill_target = no
-
-	prerequisites = { "esc_tech_giga_cannon_titanic" }
-	component_set =ESC_MASS_ACCELERATOR_TITANIC
+	prerequisites = {
+		"esc_tech_giga_cannon_titanic"
+	}
+	component_set = ESC_MASS_ACCELERATOR_TITANIC
 	projectile_gfx = "adv_kinetic_artillery"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_artillery }
-
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_artillery
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -962,14 +1102,18 @@ weapon_component_template = {
 	icon = GFX_esc_mass_accelerator_titanic
 	icon_frame = 1
 	type = instant
-
-    damage = { min = 5500 max = 10000 }
-	windup = { min = 20 max = 40 }
+	damage = {
+		min = 5500
+		max = 10000
+	}
+	windup = {
+		min = 20
+		max = 40
+	}
 	total_fire_time = 155
 	range = @ESC_WEAPON_RANGE_J_3
 	accuracy = 0.8
 	power = -500
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -981,31 +1125,38 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_t_t6_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_megacannon_hull_damage
 	armor_penetration = @ESC_WEAPON_megacannon_armor_penetration
 	armor_damage = @ESC_WEAPON_megacannon_armor_damage
 	shield_penetration = @ESC_WEAPON_megacannon_shield_penetration
 	shield_damage = @ESC_WEAPON_megacannon_shield_damage
 	tracking = 0.05
-
-	firing_arc = 25.0
+	firing_arc = 25
 	min_range = @ESC_WEAPON_MIN_RANGE_3
 	use_ship_kill_target = no
-
-	prerequisites = { "esc_tech_giga_cannon_titanic" }
+	prerequisites = {
+		"esc_tech_giga_cannon_titanic"
+	}
 	component_set = ESC_MASS_ACCELERATOR_JUGGERNAUT
 	projectile_gfx = "adv_kinetic_artillery"
-	size_restriction = { juggernaut @MISC_WarJuggernaut }
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_artillery }
-
+	size_restriction = {
+		juggernaut
+		@MISC_WarJuggernaut
+	}
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_artillery
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -1013,21 +1164,24 @@ weapon_component_template = {
 ############################################################
 ##                 Hailstorm Autocannon                   ##
 ############################################################
-
 weapon_component_template = {
 	key = ESC_AUTOCANNON_X_1
 	size = extra_large
 	icon = GFX_esc_x_autocannon_1
 	icon_frame = 1
 	type = instant
-
-    damage = { min = 400 max = 750 }
-	windup = { min = 2 max = 14 }
+	damage = {
+		min = 400
+		max = 750
+	}
+	windup = {
+		min = 2
+		max = 14
+	}
 	total_fire_time = 15
 	range = @ESC_WEAPON_RANGE_X_1
 	accuracy = 0.85
 	power = -275
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -1039,31 +1193,35 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_xl_t7_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_autocannon_hull_damage
 	armor_penetration = @ESC_WEAPON_autocannon_armor_penetration
 	armor_damage = @ESC_WEAPON_autocannon_xl_armor_damage
 	shield_penetration = @ESC_WEAPON_autocannon_shield_penetration
 	shield_damage = @ESC_WEAPON_autocannon_shield_damage
 	tracking = 0.25
-
-	firing_arc = 25.0
+	firing_arc = 25
 	min_range = @ESC_WEAPON_MIN_RANGE_1
 	use_ship_kill_target = no
-
-	prerequisites = { esc_tech_autocannon_x_1 }
+	prerequisites = {
+		esc_tech_autocannon_x_1
+	}
 	component_set = ESC_AUTOCANNON_X_1
 	projectile_gfx = "esc_autocannon_5_large"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_anti_shield }
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_anti_shield
+	}
 	upgrades_to = ESC_AUTOCANNON_X_2
-
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -1071,21 +1229,24 @@ weapon_component_template = {
 ############################################################
 ##                  Firestorm Autocannon                  ##
 ############################################################
-
 weapon_component_template = {
 	key = ESC_AUTOCANNON_X_2
 	size = extra_large
 	icon = GFX_esc_x_autocannon_2
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 500 max = 850 }
-	windup = { min = 2 max = 14 }
+	damage = {
+		min = 500
+		max = 850
+	}
+	windup = {
+		min = 2
+		max = 14
+	}
 	total_fire_time = 15
 	range = @ESC_WEAPON_RANGE_X_1
 	accuracy = 0.85
 	power = -325
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -1097,31 +1258,35 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_xl_t8_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_autocannon_hull_damage
 	armor_penetration = @ESC_WEAPON_autocannon_armor_penetration
 	armor_damage = @ESC_WEAPON_autocannon_xl_armor_damage
 	shield_penetration = @ESC_WEAPON_autocannon_shield_penetration
 	shield_damage = @ESC_WEAPON_autocannon_shield_damage
 	tracking = 0.25
-
-	firing_arc = 25.0
+	firing_arc = 25
 	min_range = @ESC_WEAPON_MIN_RANGE_1
 	use_ship_kill_target = no
-
-	prerequisites = { "esc_tech_autocannon_x_2" }
+	prerequisites = {
+		"esc_tech_autocannon_x_2"
+	}
 	component_set = ESC_AUTOCANNON_X_2
 	projectile_gfx = "stormfire_auto_cannons_l"
 	upgrades_to = ESC_AUTOCANNON_J
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_anti_shield }
-
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_anti_shield
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -1129,7 +1294,6 @@ weapon_component_template = {
 ############################################################
 ##                   Tempest Autocannon                   ##
 ############################################################
-
 # titan
 weapon_component_template = {
 	key = ESC_AUTOCANNON_T
@@ -1137,14 +1301,18 @@ weapon_component_template = {
 	icon = GFX_esc_x_autocannon_3
 	icon_frame = 1
 	type = instant
-
-    damage = { min = 750 max = 1250 }
-	windup = { min = 2 max = 14 }
+	damage = {
+		min = 750
+		max = 1250
+	}
+	windup = {
+		min = 2
+		max = 14
+	}
 	total_fire_time = 15
 	range = @ESC_WEAPON_RANGE_T_1
 	accuracy = 0.85
 	power = -500
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -1156,30 +1324,35 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_t_t6_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_autocannon_hull_damage
 	armor_penetration = @ESC_WEAPON_autocannon_armor_penetration
 	armor_damage = @ESC_WEAPON_autocannon_xl_armor_damage
 	shield_penetration = @ESC_WEAPON_autocannon_shield_penetration
 	shield_damage = @ESC_WEAPON_autocannon_shield_damage
 	tracking = 0.25
-
-	firing_arc = 25.0
+	firing_arc = 25
 	min_range = @ESC_WEAPON_MIN_RANGE_2
 	use_ship_kill_target = no
-
-	prerequisites = { "esc_tech_autocannon_titanic" }
+	prerequisites = {
+		"esc_tech_autocannon_titanic"
+	}
 	component_set = ESC_AUTOCANNON_T
 	projectile_gfx = "esc_autocannon_4_large"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_artillery weapon_role_anti_shield }
-
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_artillery
+		weapon_role_anti_shield
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -1191,14 +1364,18 @@ weapon_component_template = {
 	icon = GFX_esc_x_autocannon_3
 	icon_frame = 1
 	type = instant
-
-    damage = { min = 750 max = 1250 }
-	windup = { min = 2 max = 14 }
+	damage = {
+		min = 750
+		max = 1250
+	}
+	windup = {
+		min = 2
+		max = 14
+	}
 	total_fire_time = 15
 	range = @ESC_WEAPON_RANGE_J_1
 	accuracy = 0.85
 	power = -500
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -1210,31 +1387,39 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_t_t6_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_autocannon_hull_damage
 	armor_penetration = @ESC_WEAPON_autocannon_armor_penetration
 	armor_damage = @ESC_WEAPON_autocannon_xl_armor_damage
 	shield_penetration = @ESC_WEAPON_autocannon_shield_penetration
 	shield_damage = @ESC_WEAPON_autocannon_shield_damage
 	tracking = 0.25
-
-	firing_arc = 25.0
+	firing_arc = 25
 	min_range = @ESC_WEAPON_MIN_RANGE_2
 	use_ship_kill_target = no
-
-	prerequisites = { "esc_tech_autocannon_titanic" }
+	prerequisites = {
+		"esc_tech_autocannon_titanic"
+	}
 	component_set = ESC_AUTOCANNON_J
 	projectile_gfx = "esc_autocannon_4_large"
-	size_restriction = { juggernaut @MISC_WarJuggernaut }
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_artillery weapon_role_anti_shield }
-
+	size_restriction = {
+		juggernaut
+		@MISC_WarJuggernaut
+	}
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_artillery
+		weapon_role_anti_shield
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -1242,21 +1427,24 @@ weapon_component_template = {
 ############################################################
 ##                  Juggernaut Artillery                  ##
 ############################################################
-
 weapon_component_template = {
 	key = ESC_JUGGERNAUT_ARTILLERY_1
 	size = medium
 	icon = GFX_esc_juggernaut_cannon_1
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 220 max = 650 }
-	windup = { min = 3 max = 25 }
+	damage = {
+		min = 220
+		max = 650
+	}
+	windup = {
+		min = 3
+		max = 25
+	}
 	total_fire_time = 50
 	range = @ESC_WEAPON_RANGE_L_5
-	accuracy = 0.80
+	accuracy = 0.8
 	power = -110
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -1268,28 +1456,37 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_l_t7_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_artillery_hull_damage
 	armor_penetration = @ESC_WEAPON_artillery_armor_penetration
 	armor_damage = @ESC_WEAPON_artillery_armor_damage
 	shield_penetration = @ESC_WEAPON_artillery_shield_penetration
 	shield_damage = @ESC_WEAPON_artillery_shield_damage
 	tracking = 0.05
-
-	prerequisites = { "esc_tech_juggernaut_artillery_1" }
+	prerequisites = {
+		"esc_tech_juggernaut_artillery_1"
+	}
 	component_set = ESC_JUGGERNAUT_ARTILLERY_1
 	projectile_gfx = "adv_kinetic_artillery"
-	size_restriction = { juggernaut @MISC_WarJuggernaut }
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_artillery weapon_role_anti_shield }
+	size_restriction = {
+		juggernaut
+		@MISC_WarJuggernaut
+	}
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_artillery
+		weapon_role_anti_shield
+	}
 	upgrades_to = ESC_JUGGERNAUT_ARTILLERY_2
-
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -1297,21 +1494,24 @@ weapon_component_template = {
 ############################################################
 ##              Improved Juggernaut Artillery             ##
 ############################################################
-
 weapon_component_template = {
 	key = ESC_JUGGERNAUT_ARTILLERY_2
 	size = medium
 	icon = GFX_esc_juggernaut_cannon_2
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 280 max = 760 }
-	windup = { min = 3 max = 25 }
+	damage = {
+		min = 280
+		max = 760
+	}
+	windup = {
+		min = 3
+		max = 25
+	}
 	total_fire_time = 50
 	range = @ESC_WEAPON_RANGE_L_5
 	accuracy = 0.8
 	power = -130
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -1323,27 +1523,36 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_l_t8_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_artillery_hull_damage
 	armor_penetration = @ESC_WEAPON_artillery_armor_penetration
 	armor_damage = @ESC_WEAPON_artillery_armor_damage
 	shield_penetration = @ESC_WEAPON_artillery_shield_penetration
 	shield_damage = @ESC_WEAPON_artillery_shield_damage
 	tracking = 0.05
-
-	prerequisites = { "esc_tech_juggernaut_artillery_2" }
+	prerequisites = {
+		"esc_tech_juggernaut_artillery_2"
+	}
 	component_set = ESC_JUGGERNAUT_ARTILLERY_2
 	projectile_gfx = "adv_kinetic_artillery"
-	size_restriction = { juggernaut @MISC_WarJuggernaut }
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_artillery weapon_role_anti_shield }
-
+	size_restriction = {
+		juggernaut
+		@MISC_WarJuggernaut
+	}
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_artillery
+		weapon_role_anti_shield
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -1351,21 +1560,24 @@ weapon_component_template = {
 ############################################################
 ##                     Asteroid Thrower                   ##
 ############################################################
-
 weapon_component_template = {
 	key = ESC_ASTEROID_THROWER
 	size = titanic
 	icon = GFX_esc_asteroid_cannon
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 7000 max = 10000 }
-	windup = { min = 20.0 max = 40.0 }
+	damage = {
+		min = 7000
+		max = 10000
+	}
+	windup = {
+		min = 20
+		max = 40
+	}
 	total_fire_time = 180
 	range = @ESC_WEAPON_RANGE_T_3
 	accuracy = 0.75
 	power = -500
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -1376,45 +1588,53 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_t_t6_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_artillery_hull_damage
 	armor_penetration = @ESC_WEAPON_artillery_armor_penetration
 	armor_damage = @ESC_WEAPON_rkkv_armor_damage
 	shield_penetration = @ESC_WEAPON_artillery_shield_penetration
 	shield_damage = @ESC_WEAPON_autocannon_shield_damage
-	tracking = 0.0
-
-	firing_arc = 25.0
+	tracking = 0
+	firing_arc = 25
 	min_range = @ESC_WEAPON_MIN_RANGE_3
 	use_ship_kill_target = no
-
-	prerequisites = { "tech_titans" }
+	prerequisites = {
+		"tech_titans"
+	}
 	component_set = ESC_ASTEROID_THROWER
 	projectile_gfx = "esc_asteroid_thrower_projectile"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_artillery weapon_role_anti_shield }
-
-	ai_weight = { weight = 1 }
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_artillery
+		weapon_role_anti_shield
+	}
+	ai_weight = {
+		weight = 1
+	}
 }
 
 ############################################################
 ##                Ferromagnetic Liquid Cannon             ##
 ############################################################
-
 weapon_component_template = {
 	key = ESC_MHD_CANNON_1
 	size = extra_large
 	icon = GFX_esc_mhd_cannon_1
 	icon_frame = 1
 	type = instant
-
-    damage = { min = 1250 max = 2500 }
-	windup = { min = 2 max = 20 }
+	damage = {
+		min = 1250
+		max = 2500
+	}
+	windup = {
+		min = 2
+		max = 20
+	}
 	total_fire_time = 80
 	range = @ESC_WEAPON_RANGE_X_2
 	accuracy = 0.85
 	power = -280
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -1426,31 +1646,35 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_xl_t7_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_mhd_cannon_hull_damage
 	armor_penetration = @ESC_WEAPON_mhd_cannon_armor_penetration
 	armor_damage = @ESC_WEAPON_mhd_cannon_armor_damage
 	shield_penetration = @ESC_WEAPON_mhd_cannon_shield_penetration
 	shield_damage = @ESC_WEAPON_mhd_cannon_shield_damage
 	tracking = 0.05
-
-	firing_arc = 25.0
+	firing_arc = 25
 	min_range = @ESC_WEAPON_MIN_RANGE_2
 	use_ship_kill_target = no
-
-	prerequisites = { "esc_tech_mhd_cannon_1" }
+	prerequisites = {
+		"esc_tech_mhd_cannon_1"
+	}
 	component_set = ESC_MHD_CANNON_1
 	projectile_gfx = "esc_mhd_cannon_1"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_artillery }
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_artillery
+	}
 	upgrades_to = ESC_MHD_CANNON_2
-
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -1458,21 +1682,24 @@ weapon_component_template = {
 ############################################################
 ##           Improved Ferromagnetic Liquid Cannon         ##
 ############################################################
-
 weapon_component_template = {
 	key = ESC_MHD_CANNON_2
 	size = extra_large
 	icon = GFX_esc_mhd_cannon_2
 	icon_frame = 1
 	type = instant
-
-	damage = { min = 1500 max = 2750 }
-	windup = { min = 2 max = 20 }
+	damage = {
+		min = 1500
+		max = 2750
+	}
+	windup = {
+		min = 2
+		max = 20
+	}
 	total_fire_time = 80
 	range = @ESC_WEAPON_RANGE_X_2
 	accuracy = 0.85
 	power = -330
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -1484,31 +1711,35 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_xl_t8_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_mhd_cannon_hull_damage
 	armor_penetration = @ESC_WEAPON_mhd_cannon_armor_penetration
 	armor_damage = @ESC_WEAPON_mhd_cannon_armor_damage
 	shield_penetration = @ESC_WEAPON_mhd_cannon_shield_penetration
 	shield_damage = @ESC_WEAPON_mhd_cannon_shield_damage
 	tracking = 0.05
-
-	firing_arc = 25.0
+	firing_arc = 25
 	min_range = @ESC_WEAPON_MIN_RANGE_2
 	use_ship_kill_target = no
-
-	prerequisites = { "esc_tech_mhd_cannon_2" }
+	prerequisites = {
+		"esc_tech_mhd_cannon_2"
+	}
 	component_set = ESC_MHD_CANNON_2
 	projectile_gfx = "esc_mhd_cannon_2"
 	upgrades_to = ESC_MHD_CANNON_JUGGERNAUT
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_artillery }
-
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_artillery
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -1516,22 +1747,25 @@ weapon_component_template = {
 ############################################################
 ##               MagnetoHydroDynamic Cannon               ##
 ############################################################
-
 # titan
 weapon_component_template = {
-	key =  ESC_MHD_CANNON_TITANIC
+	key = ESC_MHD_CANNON_TITANIC
 	size = titanic
 	icon = GFX_esc_mhd_cannon_3
 	icon_frame = 1
 	type = instant
-
-    damage = { min = 4000 max = 9000 }
-	windup = { min = 20 max = 40 }
+	damage = {
+		min = 4000
+		max = 9000
+	}
+	windup = {
+		min = 20
+		max = 40
+	}
 	total_fire_time = 160
 	range = @ESC_WEAPON_RANGE_T_3
 	accuracy = 0.85
 	power = -500
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -1543,30 +1777,34 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_t_t6_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_mhd_cannon_hull_damage
 	armor_penetration = @ESC_WEAPON_mhd_cannon_armor_penetration
 	armor_damage = @ESC_WEAPON_mhd_cannon_armor_damage
 	shield_penetration = @ESC_WEAPON_mhd_cannon_shield_penetration
 	shield_damage = @ESC_WEAPON_mhd_cannon_shield_damage
 	tracking = 0.05
-
-	firing_arc = 25.0
+	firing_arc = 25
 	min_range = @ESC_WEAPON_MIN_RANGE_3
 	use_ship_kill_target = no
-
-	prerequisites = { "esc_tech_mhd_cannon_titanic" }
+	prerequisites = {
+		"esc_tech_mhd_cannon_titanic"
+	}
 	component_set = ESC_MHD_CANNON_TITANIC
 	projectile_gfx = "esc_mhd_cannon_3_titanic"
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_artillery }
-
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_artillery
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }
@@ -1578,14 +1816,18 @@ weapon_component_template = {
 	icon = GFX_esc_mhd_cannon_3
 	icon_frame = 1
 	type = instant
-
-    damage = { min = 4000 max = 9000 }
-	windup = { min = 20 max = 40 }
+	damage = {
+		min = 4000
+		max = 9000
+	}
+	windup = {
+		min = 20
+		max = 40
+	}
 	total_fire_time = 160
 	range = @ESC_WEAPON_RANGE_J_3
 	accuracy = 0.85
 	power = -500
-
 	resources = {
 		category = ship_components
 		cost = {
@@ -1597,31 +1839,38 @@ weapon_component_template = {
 			alloys = @ESC_WEAPON_t_t6_upkeep_alloys
 		}
 	}
-
 	hull_damage = @ESC_WEAPON_mhd_cannon_hull_damage
 	armor_penetration = @ESC_WEAPON_mhd_cannon_armor_penetration
 	armor_damage = @ESC_WEAPON_mhd_cannon_armor_damage
 	shield_penetration = @ESC_WEAPON_mhd_cannon_shield_penetration
 	shield_damage = @ESC_WEAPON_mhd_cannon_shield_damage
 	tracking = 0.05
-
-	firing_arc = 25.0
+	firing_arc = 25
 	min_range = @ESC_WEAPON_MIN_RANGE_3
 	use_ship_kill_target = no
-
-	prerequisites = { "esc_tech_mhd_cannon_titanic" }
+	prerequisites = {
+		"esc_tech_mhd_cannon_titanic"
+	}
 	component_set = ESC_MHD_CANNON_JUGGERNAUT
 	projectile_gfx = "esc_mhd_cannon_3"
-	size_restriction = { juggernaut @MISC_WarJuggernaut }
-	tags = { weapon_type_kinetic }
-	ai_tags = { weapon_role_artillery }
-
+	size_restriction = {
+		juggernaut
+		@MISC_WarJuggernaut
+	}
+	tags = {
+		weapon_type_kinetic
+	}
+	ai_tags = {
+		weapon_role_artillery
+	}
 	ai_weight = {
 		weight = 1
 		### AI shouldn't use this component if it can't afford at least some upgrades right away
 		modifier = {
-			factor = 0.0
-			no_resource_for_component = { RESOURCE = volatile_motes }
+			factor = 0
+			no_resource_for_component = {
+				RESOURCE = volatile_motes
+			}
 		}
 	}
 }

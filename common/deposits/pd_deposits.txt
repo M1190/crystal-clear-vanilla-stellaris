@@ -1,57 +1,53 @@
 @high = 16
 @med = 8
 @low = 4
-
 @high_rare = 0.5
 @mid_rare = 0.25
 @low_rare = 0.1
-
 @planet_type_bonus = 1.5
-
 #Event Deposits
 #Biolumen World 
-
 d_hunterreserve = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-	
 	use_weights_for_terraforming_swap_types = no
-		
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			planet_max_districts_add = -4
 			job_researcher_add = 6
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_brain_drone_add = 6
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			job_calculator_add = 6
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_biolumen
+		is_planet_class = pc_biolumen
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -61,43 +57,43 @@ d_hunterreserve = {
 d_zro_dune = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = no
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_pdzro_harvester_max = 3
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_pdzro_harvester_max = 3
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_pdzro_harvester_max = 3
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_sandsea
+		is_planet_class = pc_sandsea
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -105,46 +101,40 @@ d_zro_dune = {
 
 d_pdsandworms = {
 	icon = d_pdsandworms
-	
 	is_for_colonizable = yes
-	category = deposit_cat_blockers	
-	
-	potential = { always = no }
-	can_be_cleared = { always = no }
-
-	planet_modifier = {	
+	category = deposit_cat_blockers
+	potential = {
+		always = no
+	}
+	can_be_cleared = {
+		always = no
+	}
+	planet_modifier = {
 		planet_max_districts_add = -6
 	}
-	
 	resources = {
 		category = deposit_blockers
 	}
 }
 
 #Karst Caves
-
 d_potential_cave = {
 	time = 270
 	icon = d_potential_cave
-	
 	is_for_colonizable = yes
-	category = deposit_cat_blockers	
-	
+	category = deposit_cat_blockers
 	potential = {
 		is_planet_class = pc_karst
 	}
-
-	planet_modifier = {	
+	planet_modifier = {
 		planet_max_districts_add = -2
 	}
-	
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 500
 		}
 	}
-	
 	blocker_swap_types = {
 		d_mineral_cave
 		d_livable_cave
@@ -153,7 +143,6 @@ d_potential_cave = {
 		d_ore_rich_caverns
 		d_fungal_caves
 	}
-	
 	drop_weight = {
 		weight = 100
 		modifier = {
@@ -172,22 +161,18 @@ d_mineral_cave = {
 	category = deposit_cat_minerals
 	use_for_min_max_adjustments = yes
 	use_weights_for_terraforming_swap_types = yes
-
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
 		d_mineral_fields
 		d_veiny_cliffs
-		d_mineral_striations # gaia
+		d_mineral_striations		# gaia
 	}
-	
 	potential = {
 		is_planet_class = pc_karst
 	}
-
-	planet_modifier = {	
+	planet_modifier = {
 		district_mining_max = 1
 	}
-
 	drop_weight = {
 		weight = @high
 	}
@@ -197,25 +182,22 @@ d_livable_cave = {
 	icon = d_livable_cave
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-	
 	potential = {
 		is_planet_class = pc_karst
 	}
-
-	planet_modifier = {	
+	planet_modifier = {
 		planet_max_districts_add = 2
 	}
-	
-	drop_weight = {	weight = 0 }
+	drop_weight = {
+		weight = 0
+	}
 }
 
 #Changable Rare Planets
 #Geothermal
-
 d_geothermal_slurry_site = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -243,56 +225,55 @@ d_geothermal_slurry_site = {
 		d_glacio_lake
 		d_lanthanide_deposit
 		d_supercon_site
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_geothermal_slurry_site_max = 1
 			#building_gas_extractors_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_geothermal_slurry_site_max = 1
 			#building_gas_extractors_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_geothermal_slurry_site_max = 1
 			#building_gas_extractors_max = 1
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_geothermal
+		is_planet_class = pc_geothermal
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
 }
 
 #Tidally-Locked
-
 d_nightside_mining_operations = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -320,57 +301,55 @@ d_nightside_mining_operations = {
 		d_glacio_lake
 		d_lanthanide_deposit
 		d_supercon_site
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_nightside_mining_max = 1
 			#building_crystal_mines_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_nightside_mining_max = 1
 			#building_crystal_mines_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			building_nightside_mining_max = 1
 			#building_crystal_mines_max = 1
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_tidallylocked
+		is_planet_class = pc_tidallylocked
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
-	
 }
 
 #Supercontinet
-
 d_supercon_site = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -398,57 +377,55 @@ d_supercon_site = {
 		d_glacio_lake
 		d_lanthanide_deposit
 		#d_supercon_site
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_supercon_lab_max = 1
 			##building_crystal_mines_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_supercon_lab_max = 1
 			##building_crystal_mines_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			building_supercon_lab_max = 1
 			##building_crystal_mines_max = 1
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_supercon
+		is_planet_class = pc_supercon
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
-	
 }
 
 #Superhabitable
-
 d_ancient_motes = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -476,56 +453,55 @@ d_ancient_motes = {
 		d_glacio_lake
 		d_lanthanide_deposit
 		d_supercon_site
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_volatiles_mine_max = 1
 			#building_mote_harvesters_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_volatiles_mine_max = 1
 			#building_mote_harvesters_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_volatiles_mine_max = 1
 			#building_mote_harvesters_max = 1
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_superhabitable
+		is_planet_class = pc_superhabitable
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
 }
 
 #Karst
-
 d_karst_cave = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -552,56 +528,55 @@ d_karst_cave = {
 		d_glacio_lake
 		d_lanthanide_deposit
 		d_supercon_site
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_karst_mine_max = 1
 			#building_crystal_mines_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_karst_mine_max = 1
 			#building_crystal_mines_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_karst_mine_max = 1
 			#building_crystal_mines_max = 1
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_karst
+		is_planet_class = pc_karst
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
 }
 
 #Reef
-
 d_great_reef = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -629,42 +604,43 @@ d_great_reef = {
 		d_glacio_lake
 		d_lanthanide_deposit
 		d_supercon_site
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_reef_lab_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_reef_lab_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_reef_lab_max = 1
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_reef
+		is_planet_class = pc_reef
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -673,7 +649,6 @@ d_great_reef = {
 d_biolumen_nature_preserve = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -701,45 +676,46 @@ d_biolumen_nature_preserve = {
 		d_glacio_lake
 		d_lanthanide_deposit
 		d_supercon_site
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_nature_preserve_max = 1
 			#building_gas_extractors_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_nature_preserve_max = 1
 			#building_gas_extractors_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_nature_preserve_max = 1
 			#building_gas_extractors_max = 1
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_biolumen
+		is_planet_class = pc_biolumen
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -748,7 +724,6 @@ d_biolumen_nature_preserve = {
 d_aquatic_trench = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -776,45 +751,46 @@ d_aquatic_trench = {
 		d_glacio_lake
 		d_lanthanide_deposit
 		d_supercon_site
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_undersea_gasmine_max = 1
 			#building_gas_extractors_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_undersea_gasmine_max = 1
 			#building_gas_extractors_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_undersea_gasmine_max = 1
 			#building_gas_extractors_max = 1
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_aquatic
+		is_planet_class = pc_aquatic
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -823,7 +799,6 @@ d_aquatic_trench = {
 d_coral_fields = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -851,45 +826,46 @@ d_coral_fields = {
 		d_glacio_lake
 		d_lanthanide_deposit
 		d_supercon_site
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_coral_mine_max = 1
 			#building_mote_harvesters_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_coral_mine_max = 1
 			#building_mote_harvesters_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_coral_mine_max = 1
 			#building_mote_harvesters_max = 1
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_coral
+		is_planet_class = pc_coral
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -898,7 +874,6 @@ d_coral_fields = {
 d_salt_caves = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -926,45 +901,46 @@ d_salt_caves = {
 		d_glacio_lake
 		d_lanthanide_deposit
 		d_supercon_site
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_salt_mine_max = 1
 			#building_crystal_mines_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_salt_mine_max = 1
 			#building_crystal_mines_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_salt_mine_max = 1
 			#building_crystal_mines_max = 1
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_salt
+		is_planet_class = pc_salt
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -973,7 +949,6 @@ d_salt_caves = {
 d_aquifer_cave = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -1001,45 +976,46 @@ d_aquifer_cave = {
 		d_glacio_lake
 		d_lanthanide_deposit
 		d_supercon_site
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_aquifer_lab_max = 1
 			#building_mote_harvesters_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_aquifer_lab_max = 1
 			#building_mote_harvesters_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_aquifer_lab_max = 1
 			#building_mote_harvesters_max = 1
 		}
 	}
-
 	potential = {
 		is_planet_class = pc_aquifer
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1048,7 +1024,6 @@ d_aquifer_cave = {
 d_storm_corridor = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -1077,8 +1052,7 @@ d_storm_corridor = {
 		d_glacio_lake
 		d_lanthanide_deposit
 		d_supercon_site
-	}	
-
+	}
 	#triggered_planet_modifier = {
 	#	potential = {
 	#		exists = owner
@@ -1088,7 +1062,6 @@ d_storm_corridor = {
 	#		planet_housing_mult = -0.1
 	#	}
 	#}
-
 	#triggered_planet_modifier = {
 	#	potential = {
 	#		exists = owner
@@ -1098,44 +1071,45 @@ d_storm_corridor = {
 	#		planet_housing_mult = -0.1
 	#	}
 	#}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_storm_lab_max = 1
 			#building_gas_extractors_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_storm_lab_max = 1
 			#building_gas_extractors_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_storm_lab_max = 1
 			#building_gas_extractors_max = 1
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_storm
+		is_planet_class = pc_storm
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1144,7 +1118,6 @@ d_storm_corridor = {
 d_eyeball_site = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -1173,45 +1146,46 @@ d_eyeball_site = {
 		d_glacio_lake
 		d_lanthanide_deposit
 		d_supercon_site
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_eyeball_lab_max = 1
 			#building_gas_extractors_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_eyeball_lab_max = 1
 			#building_gas_extractors_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_eyeball_lab_max = 1
 			#building_gas_extractors_max = 1
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_eyeball
+		is_planet_class = pc_eyeball
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1220,7 +1194,6 @@ d_eyeball_site = {
 d_glacio_lake = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -1249,45 +1222,46 @@ d_glacio_lake = {
 		#d_glacio_lake
 		d_supercon_site
 		d_lanthanide_deposit
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_glacio_forge_max = 1
 			#building_mote_harvesters_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_glacio_forge_max = 1
 			#building_mote_harvesters_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_glacio_forge_max = 1
 			#building_mote_harvesters_max = 1
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_glacio
+		is_planet_class = pc_glacio
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1296,7 +1270,6 @@ d_glacio_lake = {
 d_lanthanide_deposit = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -1325,45 +1298,46 @@ d_lanthanide_deposit = {
 		d_glacio_lake
 		d_supercon_site
 		#d_lanthanide_deposit
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_lanthanide_mine_max = 1
 			#building_crystal_mines_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_lanthanide_mine_max = 1
 			#building_crystal_mines_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_lanthanide_mine_max = 1
 			#building_crystal_mines_max = 1
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_lanthanide
+		is_planet_class = pc_lanthanide
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1372,7 +1346,6 @@ d_lanthanide_deposit = {
 d_rogue_geo = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -1401,45 +1374,46 @@ d_rogue_geo = {
 		d_supercon_site
 		d_lanthanide_deposit
 		d_lichen_forest
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_rogue_mine_max = 1
 			#building_crystal_mines_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_rogue_mine_max = 1
 			#building_crystal_mines_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_rogue_mine_max = 1
 			#building_crystal_mines_max = 1
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_rogue
+		is_planet_class = pc_rogue
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1448,7 +1422,6 @@ d_rogue_geo = {
 d_lichen_forest = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -1477,42 +1450,43 @@ d_lichen_forest = {
 		d_supercon_site
 		d_lanthanide_deposit
 		#d_lichen_forest
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_lichen_farm_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_lichen_farm_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_lichen_farm_max = 1
 		}
 	}
-
 	potential = {
-			is_planet_class = pc_lichen
+		is_planet_class = pc_lichen
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1521,7 +1495,6 @@ d_lichen_forest = {
 d_megaflora_deposit = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -1549,41 +1522,43 @@ d_megaflora_deposit = {
 		d_glacio_lake
 		d_lanthanide_deposit
 		d_supercon_site
-	}	
-
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			building_megaflora_mine_max = 1
 			#building_mote_harvesters_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			building_megaflora_mine_max = 1
 			#building_mote_harvesters_max = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			building_megaflora_mine_max = 1
 			#building_mote_harvesters_max = 1
 		}
 	}
-
 	potential = {
 		OR = {
 			is_planet_class = pc_megaflora
@@ -1591,7 +1566,6 @@ d_megaflora_deposit = {
 			is_planet_class = pc_megafloratol
 		}
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1600,26 +1574,23 @@ d_megaflora_deposit = {
 d_pdcrystalpatch = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = no
 	should_swap_deposit_on_terraforming = no
-
 	resources = {
 		category = planet_deposits
 		produces = {
 			rare_crystals = 0.5
 		}
 	}
-
 	planet_modifier = {
 		district_mining_max = 2
 		district_farming_max = 2
 	}
-
 	potential = {
-		NOT = { is_planet_class = pc_crystal }
+		NOT = {
+			is_planet_class = pc_crystal
+		}
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1628,25 +1599,22 @@ d_pdcrystalpatch = {
 d_technocanal = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = no
 	should_swap_deposit_on_terraforming = no
-	
 	resources = {
 		category = planet_deposits
 		produces = {
 			engineering_research = 10
 		}
 	}
-
 	planet_modifier = {
 		district_farming_max = 3
 	}
-
 	potential = {
-		NOT = { is_planet_class = pc_technoorganic }
+		NOT = {
+			is_planet_class = pc_technoorganic
+		}
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1656,15 +1624,12 @@ d_hive_crystal1 = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
 	icon = d_pdhive
-	
 	potential = {
 		can_have_habitable_deposits = yes
 	}
-
-	planet_modifier = { 
+	planet_modifier = {
 		#building_crystal_mines_max = 1
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1674,15 +1639,12 @@ d_hive_crystal2 = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
 	icon = d_pdhive
-	
 	potential = {
 		can_have_habitable_deposits = yes
 	}
-
-	planet_modifier = { 
+	planet_modifier = {
 		building_crystal_mines_max = 2
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1692,15 +1654,12 @@ d_hive_gas1 = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
 	icon = d_pdhive
-	
 	potential = {
 		can_have_habitable_deposits = yes
 	}
-
-	planet_modifier = { 
+	planet_modifier = {
 		#building_gas_extractors_max = 1
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1710,15 +1669,12 @@ d_hive_gas2 = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
 	icon = d_pdhive
-	
 	potential = {
 		can_have_habitable_deposits = yes
 	}
-
-	planet_modifier = { 
+	planet_modifier = {
 		#building_gas_extractors_max = 2
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1728,15 +1684,12 @@ d_hive_motes1 = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
 	icon = d_pdhive
-	
 	potential = {
 		can_have_habitable_deposits = yes
 	}
-
-	planet_modifier = { 
+	planet_modifier = {
 		#building_mote_harvesters_max = 1
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1746,15 +1699,12 @@ d_hive_motes2 = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
 	icon = d_pdhive
-	
 	potential = {
 		can_have_habitable_deposits = yes
 	}
-
-	planet_modifier = { 
+	planet_modifier = {
 		#building_mote_harvesters_max = 2
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1765,30 +1715,25 @@ d_hive_motes2 = {
 d_pd_tree_of_life_3 = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	icon = d_huge_tree2
-
 	potential = {
 		exists = owner
 		owner = {
 			has_origin = origin_pd_tree_of_life
 		}
 	}
-
 	planet_modifier = {
-		pop_growth_speed = 0.20
-		planet_jobs_society_research_produces_mult = 0.10
+		pop_growth_speed = 0.2
+		planet_jobs_society_research_produces_mult = 0.1
 		planet_housing_add = 15
 		district_farming_max = 8
 	}
-
 	resources = {
 		category = planet_deposits
 		upkeep = {
 			food = 8
 		}
 	}
-
 	drop_weight = {
 		weight = 0
 	}
@@ -1798,30 +1743,25 @@ d_pd_tree_of_life_3 = {
 d_pd_tree_of_life_2 = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	icon = d_huge_tree
-
 	potential = {
 		exists = owner
 		owner = {
 			has_origin = origin_pd_tree_of_life
 		}
 	}
-
 	planet_modifier = {
 		pop_growth_speed = 0.15
-		planet_jobs_society_research_produces_mult = 0.10
+		planet_jobs_society_research_produces_mult = 0.1
 		planet_housing_add = 10
 		district_farming_max = 4
 	}
-
 	resources = {
 		category = planet_deposits
 		upkeep = {
 			food = 4
 		}
 	}
-
 	drop_weight = {
 		weight = 0
 	}
@@ -1831,9 +1771,7 @@ d_pd_tree_of_life_2 = {
 d_pd_tree_of_life_1 = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	icon = d_huge_tree
-
 	potential = {
 		exists = owner
 		planet = {
@@ -1842,34 +1780,28 @@ d_pd_tree_of_life_1 = {
 			}
 		}
 	}
-
 	planet_modifier = {
 		pop_growth_speed = 0.1
-		planet_jobs_society_research_produces_mult = 0.10
+		planet_jobs_society_research_produces_mult = 0.1
 		planet_housing_add = 5
 		district_farming_max = 2
 	}
-
 	resources = {
 		category = planet_deposits
 		upkeep = {
 			food = 2
 		}
 	}
-
 	drop_weight = {
 		weight = 0
 	}
 }
 
-
 d_tol_sap = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = no
 	should_swap_deposit_on_terraforming = no
-
 	potential = {
 		exists = owner
 		planet = {
@@ -1878,13 +1810,11 @@ d_tol_sap = {
 			}
 		}
 	}
-
 	planet_modifier = {
 		district_generator_max = 2
 		#building_gas_extractors_max = 1
 		planet_stability_add = 10
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -1894,9 +1824,7 @@ d_tol_sap = {
 d_pd_tree_of_life_dead = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	icon = d_huge_tree
-
 	potential = {
 		exists = owner
 		planet = {
@@ -1905,12 +1833,10 @@ d_pd_tree_of_life_dead = {
 			}
 		}
 	}
-
 	planet_modifier = {
-		planet_jobs_society_research_produces_mult = 0.10
+		planet_jobs_society_research_produces_mult = 0.1
 		district_mining_max = 2
 	}
-
 	drop_weight = {
 		weight = 0
 	}
@@ -1920,30 +1846,25 @@ d_pd_tree_of_life_dead = {
 d_pd_tree_of_life_ringworld = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	icon = d_huge_tree
-
 	potential = {
 		exists = owner
 		owner = {
 			has_origin = origin_pd_tree_of_life
 		}
 	}
-
 	planet_modifier = {
 		pop_growth_speed = 0.15
-		planet_jobs_society_research_produces_mult = 0.10
+		planet_jobs_society_research_produces_mult = 0.1
 		planet_housing_add = 50
-		planet_jobs_food_produces_mult = 0.10
+		planet_jobs_food_produces_mult = 0.1
 	}
-
 	resources = {
 		category = planet_deposits
 		upkeep = {
 			food = 4
 		}
 	}
-
 	drop_weight = {
 		weight = 0
 	}
@@ -1953,29 +1874,24 @@ d_pd_tree_of_life_ringworld = {
 d_pd_tree_of_life_special = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	icon = d_huge_tree
-
 	potential = {
 		exists = owner
 		owner = {
 			has_origin = origin_pd_tree_of_life
 		}
 	}
-
 	planet_modifier = {
 		pop_growth_speed = 0.15
-		planet_jobs_society_research_produces_mult = 0.10
+		planet_jobs_society_research_produces_mult = 0.1
 		planet_housing_add = 10
 	}
-
 	resources = {
 		category = planet_deposits
 		upkeep = {
 			food = 4
 		}
 	}
-
 	drop_weight = {
 		weight = 0
 	}
@@ -1985,30 +1901,25 @@ d_pd_tree_of_life_special = {
 d_pd_tree_of_life_habitat = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	icon = d_huge_tree
-
 	potential = {
 		exists = owner
 		owner = {
 			has_origin = origin_pd_tree_of_life
 		}
 	}
-
 	planet_modifier = {
 		pop_growth_speed = 0.1
-		planet_jobs_society_research_produces_mult = 0.10
+		planet_jobs_society_research_produces_mult = 0.1
 		planet_housing_add = 5
 		planet_max_districts_add = -1
 	}
-
 	resources = {
 		category = planet_deposits
 		upkeep = {
 			food = 4
 		}
 	}
-
 	drop_weight = {
 		weight = 0
 	}
@@ -2018,16 +1929,13 @@ d_pd_hive_world_boost = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
 	icon = d_pdhive
-	
 	potential = {
 		is_planet_class = pc_hive
 	}
-
-	planet_modifier = { 
+	planet_modifier = {
 		pop_growth_speed = 0.25
-		planet_stability_add = 10 
+		planet_stability_add = 10
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -2037,17 +1945,14 @@ d_pd_machine_world_boost = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
 	icon = d_pd_machine_world_boost
-	
 	potential = {
 		is_planet_class = pc_hive
 	}
-
-	planet_modifier = { 
+	planet_modifier = {
 		pop_amenities_usage_mult = -0.15
 		planet_buildings_upkeep_mult = -0.1
 		planet_stability_add = 5
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -2056,19 +1961,16 @@ d_pd_machine_world_boost = {
 d_pdstorm_nice = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	potential = {
 		is_planet_class = pc_storm
 	}
-
-	planet_modifier = { 
+	planet_modifier = {
 		job_researcher_add = 2
 		job_entertainer_add = 2
 		planet_jobs_society_research_produces_mult = 0.1
 		planet_jobs_unity_produces_mult = 0.1
 		planet_max_districts_add = -2
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -2078,7 +1980,6 @@ d_pdstorm_nice_2 = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
 	icon = d_pdstorm_nice
-
 	potential = {
 		NOR = {
 			is_artificial = yes
@@ -2086,13 +1987,11 @@ d_pdstorm_nice_2 = {
 			is_pd_unique = yes
 		}
 	}
-
-	planet_modifier = { 
+	planet_modifier = {
 		job_researcher_add = 2
 		planet_jobs_society_research_produces_mult = 0.1
 		planet_max_districts_add = -1
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -2101,15 +2000,15 @@ d_pdstorm_nice_2 = {
 d_pdstorm_greedy = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	potential = {
 		is_planet_class = pc_storm
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			pop_environment_tolerance = -0.1
@@ -2117,30 +2016,31 @@ d_pdstorm_greedy = {
 			job_gas_extractor_add = 2
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			pop_environment_tolerance = -0.1
 			district_mining_max = 4
 			job_gas_extraction_drone_add = 2
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			district_mining_max = 6
 			job_gas_extraction_drone_add = 2
 		}
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -2150,43 +2050,44 @@ d_pdstorm_greedy_2 = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
 	icon = d_pdstorm_greedy
-
 	potential = {
 		is_planet_class = pc_storm
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			pop_environment_tolerance = -0.05
 			district_mining_max = 2
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
-		modifier = {	
+		modifier = {
 			pop_environment_tolerance = -0.05
 			district_mining_max = 2
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			district_mining_max = 3
 		}
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -2196,16 +2097,13 @@ d_pdstorm_purge = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
 	icon = d_pdstorm_greedy
-
 	potential = {
 		is_planet_class = pc_storm
 	}
-
-	planet_modifier = { 
+	planet_modifier = {
 		job_gas_extractor_add = 4
 		planet_max_districts_add = 2
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -2214,7 +2112,6 @@ d_pdstorm_purge = {
 d_pdgaia = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -2244,7 +2141,6 @@ d_pdgaia = {
 		d_lanthanide_deposit
 		d_supercon_site
 	}
-
 	#resources = {
 	#	category = planet_deposits
 	#	produces = {
@@ -2253,7 +2149,6 @@ d_pdgaia = {
 	#		rare_crystals = 2
 	#	}
 	#}
-
 	planet_modifier = {
 		trade_value_mult = 0.1
 		planet_amenities_mult = 0.1
@@ -2262,7 +2157,6 @@ d_pdgaia = {
 		##building_crystal_mines_max = 1
 		planet_max_districts_add = 2
 	}
-
 	potential = {
 		OR = {
 			is_planet_class = pc_gaia
@@ -2270,20 +2164,18 @@ d_pdgaia = {
 			is_planet_class = pc_cold_gaia
 		}
 	}
-	
 	drop_weight = {
 		weight = 100
 		modifier = {
 			factor = 0
 			has_deposit = d_pdgaia
-		}	
+		}
 	}
 }
 
 d_pdshroud = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -2313,23 +2205,19 @@ d_pdshroud = {
 		d_lanthanide_deposit
 		d_supercon_site
 	}
-
 	resources = {
 		category = planet_deposits
 		produces = {
 			sr_zro = 1
 		}
 	}
-
 	planet_modifier = {
 		planet_amenities_mult = 0.1
 		planet_max_districts_add = 2
 	}
-
 	potential = {
 		is_planet_class = pc_pdshroud
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -2338,18 +2226,14 @@ d_pdshroud = {
 d_pd_orbital_mirrors = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-	
 	use_weights_for_terraforming_swap_types = no
-	
 	planet_modifier = {
 		district_generator_max = 3
 	}
-
 	potential = {
 		is_colonizable = yes
 		is_artificial = no
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -2358,18 +2242,14 @@ d_pd_orbital_mirrors = {
 d_pd_seismic_resonators = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-	
 	use_weights_for_terraforming_swap_types = no
-	
 	planet_modifier = {
 		district_mining_max = 3
 	}
-
 	potential = {
 		is_colonizable = yes
 		is_artificial = no
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -2378,20 +2258,15 @@ d_pd_seismic_resonators = {
 d_pd_bionanite_soil = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-	
 	use_weights_for_terraforming_swap_types = no
-	
 	planet_modifier = {
 		district_farming_max = 3
 	}
-
 	potential = {
 		is_colonizable = yes
 		is_artificial = no
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
 }
-

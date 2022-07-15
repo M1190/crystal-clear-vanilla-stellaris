@@ -5,11 +5,15 @@ gpm_spy_policy_steal_relic = {
 		### END DEBUGGING ###
 		# Dont let AI use this on their subjects or their overlord
 		modifier = {
-			owner = { is_overlord_to = root.target	}
+			owner = {
+				is_overlord_to = root.target
+			}
 			factor = 0
 		}
 		modifier = {
-			root.target = { is_overlord_to = owner	}
+			root.target = {
+				is_overlord_to = owner
+			}
 			factor = 0
 		}
 		# Weigts bases on oppinion levels. We dont steal from friends.
@@ -22,7 +26,6 @@ gpm_spy_policy_steal_relic = {
 			}
 			factor = 0
 		}
-		
 		modifier = {
 			owner = {
 				opinion_level = {
@@ -100,60 +103,84 @@ gpm_spy_policy_steal_relic = {
 		}
 		# With every relic our taste for more increases
 		modifier = {
-			owner = { num_owned_relics = 1 }
+			owner = {
+				num_owned_relics = 1
+			}
 			factor = 1.1
 		}
 		modifier = {
-			owner = { num_owned_relics = 2 }
+			owner = {
+				num_owned_relics = 2
+			}
 			factor = 1.2
 		}
 		modifier = {
-			owner = { num_owned_relics = 3 }
+			owner = {
+				num_owned_relics = 3
+			}
 			factor = 1.3
 		}
 		modifier = {
-			owner = { num_owned_relics = 4 }
+			owner = {
+				num_owned_relics = 4
+			}
 			factor = 1.4
 		}
 		modifier = {
-			owner = { num_owned_relics >= 5 }
+			owner = {
+				num_owned_relics >= 5
+			}
 			factor = 1.5
 		}
 		# some empires like relics a little more than others
 		modifier = {
 			factor = 1.25
-			owner = { has_ethic = ethic_militarist }
+			owner = {
+				has_ethic = ethic_militarist
+			}
 		}
 		modifier = {
 			factor = 1.5
-			owner = { has_ethic = ethic_fanatic_militarist }
+			owner = {
+				has_ethic = ethic_fanatic_militarist
+			}
 		}
 		modifier = {
 			factor = 1.5
-			owner = { has_ethic = ethic_materialist }
+			owner = {
+				has_ethic = ethic_materialist
+			}
 		}
 		modifier = {
 			factor = 2
-			owner = { has_ethic = ethic_fanatic_materialist }
+			owner = {
+				has_ethic = ethic_fanatic_materialist
+			}
 		}
 		# Disable if the target or the targetting empire has "recently" attempted or been victim of a steal relic operation
 		modifier = {
 			factor = 0
 			OR = {
-				owner = { has_country_flag = gpm_recent_heist }
-				root.target = { has_country_flag = gpm_recent_heist }
+				owner = {
+					has_country_flag = gpm_recent_heist
+				}
+				root.target = {
+					has_country_flag = gpm_recent_heist
+				}
 			}
 		}
 		# we help the player a little, it's more fun to see AI's screw eachother over than to be screwed over
 		modifier = {
 			factor = 0.1
-			root.target = { is_ai = no }
+			root.target = {
+				is_ai = no
+			}
 		}
 		# added weights based on difficulty level
 		# Cadet
 		modifier = {
 			is_difficulty = 0
-			factor = 0.50
+			factor = 0.5
 		}
 		# Ensign
 		modifier = {
@@ -184,7 +211,9 @@ gpm_spy_policy_steal_relic = {
 		modifier = {
 			factor = 0
 			AND = {
-				root.target = { is_ai = no }
+				root.target = {
+					is_ai = no
+				}
 				has_global_flag = gpm_relic_heists_AI_disabled
 			}
 		}
@@ -200,11 +229,15 @@ gpm_spy_policy_steal_relic = {
 		}
 		modifier = {
 			factor = 0
-			owner = { is_improving_relations_with = root.target }
+			owner = {
+				is_improving_relations_with = root.target
+			}
 		}
 		modifier = {
 			factor = 0
-			root.target = { is_loyal_to = owner }
+			root.target = {
+				is_loyal_to = owner
+			}
 		}
 	}
 }
@@ -213,14 +246,22 @@ gpm_spy_policy_rival = {
 	weight = {
 		base = 500
 		modifier = {
-			owner = { NOT = { is_neighbor_of = root.target } }
+			owner = {
+				NOT = {
+					is_neighbor_of = root.target
+				}
+			}
 			factor = 0.5
 		}
 		# Dont let AI use this on their subjects or their overlord
 		modifier = {
 			OR = {
-				owner = { is_overlord_to = root.target	}
-				root.target = { is_overlord_to = owner	}
+				owner = {
+					is_overlord_to = root.target
+				}
+				root.target = {
+					is_overlord_to = owner
+				}
 			}
 			factor = 0
 		}
@@ -313,7 +354,7 @@ gpm_spy_policy_rival = {
 		# Cadet
 		modifier = {
 			is_difficulty = 0
-			factor = 0.50
+			factor = 0.5
 		}
 		# Ensign
 		modifier = {
@@ -343,7 +384,9 @@ gpm_spy_policy_rival = {
 		# we help the player a little, it's more fun to see AI's screw eachother over than to be screwed over
 		modifier = {
 			factor = 0.5
-			root.target = { is_ai = no }
+			root.target = {
+				is_ai = no
+			}
 		}
 	}
 }
@@ -352,14 +395,22 @@ gpm_spy_policy_rival_reduced = {
 	weight = {
 		base = 500
 		modifier = {
-			owner = { NOT = { is_neighbor_of = root.target } }
+			owner = {
+				NOT = {
+					is_neighbor_of = root.target
+				}
+			}
 			factor = 0.5
 		}
 		# Dont let AI use this on their subjects or their overlord
 		modifier = {
 			OR = {
-				owner = { is_overlord_to = root.target	}
-				root.target = { is_overlord_to = owner	}
+				owner = {
+					is_overlord_to = root.target
+				}
+				root.target = {
+					is_overlord_to = owner
+				}
 			}
 			factor = 0
 		}
@@ -451,7 +502,9 @@ gpm_spy_policy_rival_reduced = {
 		# we help the player a little, it's more fun to see AI's screw eachother over than to be screwed over
 		modifier = {
 			factor = 0.1
-			root.target = { is_ai = no }
+			root.target = {
+				is_ai = no
+			}
 		}
 	}
 }

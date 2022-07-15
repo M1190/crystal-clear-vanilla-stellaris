@@ -1,38 +1,46 @@
 building_clone_vats = {
 	base_buildtime = @b1_time
-
 	category = government
-
 	base_cap_amount = 1
-
 	potential = {
 		exists = owner
-		owner = { has_ascension_perk = ap_engineered_evolution }
-		NOT = { has_modifier = resort_colony }
+		owner = {
+			has_ascension_perk = ap_engineered_evolution
+		}
+		NOT = {
+			has_modifier = resort_colony
+		}
 		OR = {
-			owner = { is_ai = no }
-			NOT = { has_building = building_robot_assembly_plant }
+			owner = {
+				is_ai = no
+			}
+			NOT = {
+				has_building = building_robot_assembly_plant
+			}
 		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			AND = {
-				owner = { is_ai = yes }
+				owner = {
+					is_ai = yes
+				}
 				planet = {
 					free_district_slots = 0
 					free_building_slots = 0
 				}
 			}
-			NOT = { owner = { has_ascension_perk = ap_engineered_evolution } }
+			NOT = {
+				owner = {
+					has_ascension_perk = ap_engineered_evolution
+				}
+			}
 		}
 	}
-
 	planet_modifier = {
 		planet_pop_assembly_organic_add = 3
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -42,10 +50,8 @@ building_clone_vats = {
 		}
 		modifier = {
 			planet_jobs_unity_produces_mult = 0.2
-
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -57,7 +63,6 @@ building_clone_vats = {
 			food = 30
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			has_building = building_robot_assembly_plant
@@ -70,13 +75,10 @@ building_clone_army_clone_vat = {
 	icon = building_ancient_relics
 	base_buildtime = 90
 	position_priority = 100
-
 	empire_limit = {
 		base = 5
 	}
-
 	category = pop_assembly
-
 	potential = {
 		exists = owner
 		owner = {
@@ -86,53 +88,86 @@ building_clone_army_clone_vat = {
 			}
 		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			owner = {
 				OR = {
-					NOT = { has_origin = origin_clone_army }
+					NOT = {
+						has_origin = origin_clone_army
+					}
 					is_synthetic_empire = yes
 					has_country_flag = clone_army_fertility_unlocked
 				}
 			}
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_ai = yes }
+			owner = {
+				is_ai = yes
+			}
 		}
 		planet_pop_assembly_organic_add = 2
 	}
-
 	# Add growth from 0 to 25 depending on 'clone_pops_missing_per_vat'.
 	triggered_planet_modifier = {
-		potential = { check_variable = { which = clone_pops_missing_per_vat value > 0 } }
-		modifier = { planet_pop_assembly_organic_add = 2 }
+		potential = {
+			check_variable = {
+				which = clone_pops_missing_per_vat
+				value > 0
+			}
+		}
+		modifier = {
+			planet_pop_assembly_organic_add = 2
+		}
 	}
 	triggered_planet_modifier = {
-		potential = { check_variable = { which = clone_pops_missing_per_vat value > 1 } }
-		modifier = { planet_pop_assembly_organic_add = 3 }
+		potential = {
+			check_variable = {
+				which = clone_pops_missing_per_vat
+				value > 1
+			}
+		}
+		modifier = {
+			planet_pop_assembly_organic_add = 3
+		}
 	}
 	triggered_planet_modifier = {
-		potential = { check_variable = { which = clone_pops_missing_per_vat value > 4 } }
-		modifier = { planet_pop_assembly_organic_add = 2 }
+		potential = {
+			check_variable = {
+				which = clone_pops_missing_per_vat
+				value > 4
+			}
+		}
+		modifier = {
+			planet_pop_assembly_organic_add = 2
+		}
 	}
 	triggered_planet_modifier = {
-		potential = { check_variable = { which = clone_pops_missing_per_vat value > 8 } }
-		modifier = { planet_pop_assembly_organic_add = 3 }
+		potential = {
+			check_variable = {
+				which = clone_pops_missing_per_vat
+				value > 8
+			}
+		}
+		modifier = {
+			planet_pop_assembly_organic_add = 3
+		}
 	}
 	triggered_planet_modifier = {
 		potential = {
 			years_passed > 10
-			check_variable = { which = clone_pops_missing_per_vat value > 12 }
+			check_variable = {
+				which = clone_pops_missing_per_vat
+				value > 12
+			}
 		}
-		modifier = { planet_pop_assembly_organic_add = 5 }
+		modifier = {
+			planet_pop_assembly_organic_add = 5
+		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -142,7 +177,6 @@ building_clone_army_clone_vat = {
 		}
 		modifier = {
 			planet_jobs_unity_produces_mult = 0.1
-
 		}
 	}
 	resources = {
@@ -154,13 +188,10 @@ building_clone_army_clone_vat = {
 			energy = @b2_upkeep
 		}
 	}
-
 	upgrades = {
 	}
-
 	prerequisites = {
 	}
-
 	triggered_desc = {
 		text = building_clone_army_clone_vat_effect_desc
 	}
@@ -169,35 +200,36 @@ building_clone_army_clone_vat = {
 ##########
 # CLINIC #
 ##########
-
 building_clinic = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-
 	category = amenity
-
 	potential = {
-		owner = { is_regular_empire = yes }
-		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_regular_empire = yes
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
+			owner = {
+				is_regular_empire = no
+			}
 			has_modifier = slave_colony
 			AND = {
 				buildings_stop_pop = yes
-				owner = { is_ai = yes }
+				owner = {
+					is_ai = yes
+				}
 			}
 		}
 	}
-
-
 	planet_modifier = {
 		job_healthcare_add = 2
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -207,19 +239,15 @@ building_clinic = {
 			energy = @b1_upkeep
 		}
 	}
-
 	prerequisites = {
 		"tech_frontier_health"
 	}
-
 	upgrades = {
 		"building_hospital"
 	}
-
 	triggered_desc = {
 		text = job_healthcare_effect_desc
 	}
-
 	ai_weight = {
 		weight = 50
 		modifier = {
@@ -231,7 +259,12 @@ building_clinic = {
 		}
 		modifier = {
 			factor = 0
-			count_owned_pop = { limit = { is_sapient = yes } count > 75 }
+			count_owned_pop = {
+				limit = {
+					is_sapient = yes
+				}
+				count > 75
+			}
 		}
 	}
 }
@@ -239,34 +272,32 @@ building_clinic = {
 building_hospital = {
 	base_buildtime = @b2_time
 	can_build = no
-
 	category = amenity
-
 	potential = {
-          has_building = building_clinic
+		has_building = building_clinic
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
+			owner = {
+				is_regular_empire = no
+			}
 			has_modifier = slave_colony
 			buildings_no_exotic_gases = yes
 			AND = {
 				buildings_stop_pop = yes
-				owner = { is_ai = yes }
+				owner = {
+					is_ai = yes
+				}
 			}
 		}
 	}
-
 	planet_modifier = {
 		job_healthcare_add = @b2_jobs
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -278,19 +309,15 @@ building_hospital = {
 			exotic_gases = @b2_rare_upkeep
 		}
 	}
-
 	prerequisites = {
 		"tech_frontier_hospital"
 	}
-
 	show_tech_unlock_if = {
 		is_regular_empire = yes
 	}
-
 	triggered_desc = {
 		text = job_healthcare_effect_desc
 	}
-
 	ai_weight = {
 		weight = 0
 		modifier = {
@@ -298,6 +325,4 @@ building_hospital = {
 			buildings_has_exotic_gases = yes
 		}
 	}
-
-
 }

@@ -47,29 +47,33 @@ mom_junction = {
 	icon_frame = 12
 	remember_instances = no
 	animation_time = 1
-	galactic_map_tooltip_header=MOM_JUNCTION_GALACTIC
-	galactic_map_tooltip_desc=MOM_JUNCTION_GALACTIC_DESC
+	galactic_map_tooltip_header = MOM_JUNCTION_GALACTIC
+	galactic_map_tooltip_desc = MOM_JUNCTION_GALACTIC_DESC
 	connection_type = scripted_connection
 	ftl_ship_effect = "wormhole_ftl_ship_effect_entity"
 	ftl_bypass_effect = "wormhole_ftl_bypass_effect_entity"
-	
 	potential = {
 		always = yes
 	}
-
 	country_can_use = {
 		custom_tooltip = {
 			fail_text = MOM_JUNCTION_COUNTRY_CANNOT_USE
 			# Wormhole can be used if...
 			OR = {
 				# System has no owner
-				NOT = { exists = from }
+				NOT = {
+					exists = from
+				}
 				# System's owner has not closed borders to you
-				from = { 
-					NOT = { has_closed_borders = root }
+				from = {
+					NOT = {
+						has_closed_borders = root
+					}
 				}
 				# System's owner is at war with you
-				from = { is_at_war_with = root }
+				from = {
+					is_at_war_with = root
+				}
 				# System's owner is not a proper empire
 				from = {
 					NOR = {
@@ -82,13 +86,22 @@ mom_junction = {
 		}
 	}
 	on_action = "mom_on_entering_junction"
-	
 	scripted_connection = {
-	
 		# defines endpoints that can only reach the "nexus"
-		node = { solar_system = { any_system_megastructure = { is_megastructure_type = mom_junction_termini } } }
-	
+		node = {
+			solar_system = {
+				any_system_megastructure = {
+					is_megastructure_type = mom_junction_termini
+				}
+			}
+		}
 		# defines endpoint(s) that can reach all "nodes" (but not other nexuses)
-		nexus = { solar_system = { any_system_megastructure = { is_megastructure_type = mom_junction_master } } }
+		nexus = {
+			solar_system = {
+				any_system_megastructure = {
+					is_megastructure_type = mom_junction_master
+				}
+			}
+		}
 	}
 }

@@ -2,21 +2,33 @@
 #There are still multiple hard-coded rules that apply in addition to these.
 #If rules here evaluate to true, there might still be other rules that make the action unavailable.
 #If a rule here evaluates to false the action will become unavailable
-
-
 #Root = country
 #This = pop
 can_generate_leader_from_pop = {
 	has_citizenship_rights = yes
-	NOT = { has_trait = trait_syncretic_proles }
-	NOT = { has_trait = trait_bugged_slave_gene }
-	NOT = { has_trait = trait_nerve_stapled }
-	NOT = { has_trait = trait_zombie }
+	NOT = {
+		has_trait = trait_syncretic_proles
+	}
+	NOT = {
+		has_trait = trait_bugged_slave_gene
+	}
+	NOT = {
+		has_trait = trait_nerve_stapled
+	}
+	NOT = {
+		has_trait = trait_zombie
+	}
 	OR = {
 		is_robot_pop = no
-		root = { has_technology = tech_synthetic_leaders }
-		root = { has_authority = auth_machine_intelligence }
-		root = { is_mechanical_empire = yes }
+		root = {
+			has_technology = tech_synthetic_leaders
+		}
+		root = {
+			has_authority = auth_machine_intelligence
+		}
+		root = {
+			is_mechanical_empire = yes
+		}
 	}
 }
 
@@ -27,10 +39,17 @@ can_generate_leader_from_species = {
 	is_sapient = yes
 	OR = {
 		NAND = {
-			NOT = { root = { has_technology = "tech_synthetic_leaders" } }
+			NOT = {
+				root = {
+					has_technology = "tech_synthetic_leaders"
+				}
+			}
 			has_trait = "trait_mechanical"
 		}
-		has_citizenship_type = { type = citizenship_full country = root }
+		has_citizenship_type = {
+			type = citizenship_full
+			country = root
+		}
 	}
 	NOT = {
 		has_trait = "trait_bugged_symbiotic"
@@ -42,34 +61,41 @@ can_generate_leader_from_species = {
 species_can_live_on_planet = {
 	exists = root
 	NAND = {
-		root = { is_planet_class = pc_machine }
+		root = {
+			is_planet_class = pc_machine
+		}
 		NOR = {
 			has_trait = trait_machine_unit
 			has_trait = trait_mechanical
-#			has_trait = trait_bugged_happy_machine
+			#			has_trait = trait_bugged_happy_machine
 			AND = {
 				has_trait = trait_cybernetic
 				exists = root.owner
 				root.owner = {
 					has_authority = auth_machine_intelligence
-					has_civic = civic_machine_assimilator # Assimilator empire
+					has_civic = civic_machine_assimilator					# Assimilator empire
 				}
 			}
 		}
 	}
 	if = {
 		limit = {
-			root = { is_planet_class = pc_hive }
+			root = {
+				is_planet_class = pc_hive
+			}
 		}
 		OR = {
 			has_trait = trait_hive_mind
 			has_trait = trait_bugged_happy_hive
-			AND = { #Necrophage Hive Mind can have Necrophytes
+			AND = {
+				#Necrophage Hive Mind can have Necrophytes
 				exists = root.owner
 				root.owner = {
 					is_hive_empire = yes
 					has_origin = origin_necrophage
-					prev = { species_can_be_necrophaged = yes }
+					prev = {
+						species_can_be_necrophaged = yes
+					}
 				}
 			}
 		}
@@ -119,7 +145,9 @@ can_build_branch_office_on_planet = {
 		owner = {
 			OR = {
 				is_same_species = root
-				NOT = { has_civic = civic_fanatic_purifiers }
+				NOT = {
+					has_civic = civic_fanatic_purifiers
+				}
 			}
 		}
 	}
@@ -127,10 +155,15 @@ can_build_branch_office_on_planet = {
 		fail_text = BRANCH_OFFICE_NOT_COMMERCIAL_PACT
 		exists = owner
 		OR = {
-			root = { is_criminal_syndicate = yes }
-			owner = { has_commercial_pact = root }
-			owner = { is_in_federation_with = root }
-
+			root = {
+				is_criminal_syndicate = yes
+			}
+			owner = {
+				has_commercial_pact = root
+			}
+			owner = {
+				is_in_federation_with = root
+			}
 			# allow branch offices in subsidiaries and vice versa (and fellow subjects)
 			root = {
 				is_subject = yes
@@ -159,12 +192,20 @@ can_build_branch_office_on_planet = {
 				}
 			}
 			AND = {
-				root = { has_civic = civic_galactic_sovereign_megacorp }
-				owner = { is_galactic_community_member = yes }
+				root = {
+					has_civic = civic_galactic_sovereign_megacorp
+				}
+				owner = {
+					is_galactic_community_member = yes
+				}
 			}
 			AND = {
-				root = { has_modifier = imperial_charter }
-				owner = { is_galactic_community_member = yes }
+				root = {
+					has_modifier = imperial_charter
+				}
+				owner = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 	}
@@ -172,7 +213,6 @@ can_build_branch_office_on_planet = {
 		fail_text = BRANCH_OFFICE_MEGACORP_OVERLORD
 		exists = owner
 		# failure message for having a corporate overlord
-
 		if = {
 			limit = {
 				OR = {
@@ -210,7 +250,11 @@ can_build_branch_office_on_planet = {
 						is_subject = no
 						AND = {
 							is_subject = yes
-							overlord = { NOT = { is_same_value = root.overlord } }
+							overlord = {
+								NOT = {
+									is_same_value = root.overlord
+								}
+							}
 						}
 					}
 				}
@@ -221,7 +265,9 @@ can_build_branch_office_on_planet = {
 		fail_text = BRANCH_OFFICE_CRIMINAL_HERITAGE_HAS_TRUCE
 		exists = owner
 		OR = {
-			root = { is_criminal_syndicate = no }
+			root = {
+				is_criminal_syndicate = no
+			}
 			owner = {
 				NOR = {
 					has_truce = root
@@ -234,10 +280,16 @@ can_build_branch_office_on_planet = {
 		fail_text = BRANCH_OFFICE_CRIMINAL_COOLDOWN
 		exists = owner
 		OR = {
-			root = { is_criminal_syndicate = no }
+			root = {
+				is_criminal_syndicate = no
+			}
 			AND = {
-				root = { is_criminal_syndicate = yes }
-				NOT = { has_planet_flag = criminal_branch_closed_cooldown_planet@root }
+				root = {
+					is_criminal_syndicate = yes
+				}
+				NOT = {
+					has_planet_flag = criminal_branch_closed_cooldown_planet@root
+				}
 			}
 		}
 	}
@@ -259,7 +311,9 @@ can_species_be_assembled = {
 			is_organic_species = yes
 			if = {
 				limit = {
-					root.owner = { is_hive_empire = yes }
+					root.owner = {
+						is_hive_empire = yes
+					}
 				}
 				OR = {
 					has_trait = trait_hive_mind
@@ -267,9 +321,13 @@ can_species_be_assembled = {
 				}
 			}
 			else_if = {
-				limit = { has_trait = trait_plantoid_budding }
+				limit = {
+					has_trait = trait_plantoid_budding
+				}
 				root = {
-					any_owned_species = { is_exact_same_species = prevprev }
+					any_owned_species = {
+						is_exact_same_species = prevprev
+					}
 				}
 			}
 			else_if = {
@@ -292,7 +350,9 @@ can_species_be_assembled = {
 			}
 			else_if = {
 				limit = {
-					root.owner = { has_civic = civic_permanent_employment }
+					root.owner = {
+						has_civic = civic_permanent_employment
+					}
 				}
 				root = {
 					has_building = building_posthumous_employment_center

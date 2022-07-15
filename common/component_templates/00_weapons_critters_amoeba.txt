@@ -1,28 +1,25 @@
 @launch_time = 1.5
 @count = 8
 @regen = 1
-
 # ####################
 # Critter Weapons - Space Amoeba
 # ####################
-
 @critter_cost_value = 35
-
-
 ### Standard Amoeba Weapon
-
 weapon_component_template = {
 	key = "LARGE_SPACE_AMOEBA_WEAPON"
-
 	size = large
 	entity = "medium_space_amoeba_weapon_entity"
 	type = instant
 	icon = "GFX_ship_part_space_whale_weapon_1"
 	icon_frame = 1
 	projectile_gfx = "space_amoeba_weapon"
-	tags = { weapon_type_energy }
-	ai_tags = { weapon_role_anti_armor }
-
+	tags = {
+		weapon_type_energy
+	}
+	ai_tags = {
+		weapon_role_anti_armor
+	}
 	resources = {
 		category = ship_components
 		cost = {
@@ -33,16 +30,18 @@ weapon_component_template = {
 
 weapon_component_template = {
 	key = "SMALL_SPACE_AMOEBA_WEAPON"
-
 	size = small
 	entity = "small_space_amoeba_weapon_entity"
 	type = instant
 	icon = "GFX_ship_part_space_whale_weapon_1"
 	icon_frame = 1
 	projectile_gfx = "small_space_amoeba_weapon"
-	tags = { weapon_type_energy }
-	ai_tags = { weapon_role_anti_armor }
-
+	tags = {
+		weapon_type_energy
+	}
+	ai_tags = {
+		weapon_role_anti_armor
+	}
 	resources = {
 		category = ship_components
 		cost = {
@@ -52,10 +51,8 @@ weapon_component_template = {
 }
 
 ### Strike Craft
-
 strike_craft_component_template = {
 	key = "AMOEBA_STRIKE_CRAFT"
-
 	size = LARGE
 	entity = "space_amoeba_small_entity"
 	power = -30
@@ -65,42 +62,42 @@ strike_craft_component_template = {
 			food = 60
 		}
 	}
-
 	count = @count
 	regeneration_per_day = @regen
 	launch_time = @launch_time
-
-	damage = { min = 20 max = 30 }
+	damage = {
+		min = 20
+		max = 30
+	}
 	cooldown = 5
 	range = @ESC_STRIKECRAFT_attack_range_bomber
 	engagement_range = @ESC_STRIKECRAFT_engagement_range
-	accuracy = 0.70
-	tracking = 0.50
-
+	accuracy = 0.7
+	tracking = 0.5
 	health = 50
 	armor = 0
 	shield = 0
-	evasion = 0.50
-
+	evasion = 0.5
 	speed = 500
 	rotation_speed = 0.8
 	acceleration = 1
-
-	shield_damage = 1.0
+	shield_damage = 1
 	shield_penetration = 1
 	armor_damage = 1.5
-
 	ship_behavior = "bombers_behavior"
-
-	weapon_type = instant # Not PD, unlike other strike craft
+	weapon_type = instant	# Not PD, unlike other strike craft
 	projectile_gfx = "small_space_amoeba_weapon"
-
 	component_set = "AMOEBA_STRIKE_CRAFT_1"
-	prerequisites = { "tech_amoeba_strike_craft_1" }
+	prerequisites = {
+		"tech_amoeba_strike_craft_1"
+	}
 	upgrades_to = "ESC_AMOEBA_2"
-
 	icon = "GFX_ship_part_amoeba_strike_craft_1"
 	icon_frame = 1
-	tags = { weapon_type_strike_craft }
-	ai_tags = { weapon_role_anti_shield }
+	tags = {
+		weapon_type_strike_craft
+	}
+	ai_tags = {
+		weapon_role_anti_shield
+	}
 }

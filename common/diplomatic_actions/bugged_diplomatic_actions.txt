@@ -1,5 +1,4 @@
 #civic_universalism
-
 # Set any empire as your rival, gains influence but hurts relations. Usable by regular, fallen & awakened empires.
 action_make_rival = {
 	icon = "GFX_diplomacy_status_rivalry"
@@ -9,32 +8,38 @@ action_make_rival = {
 	should_show_auto_accept_message_recipient = yes
 	should_notify_all_communications = yes
 	action_type = aggressive
-
 	potential = {
 		hidden_trigger = {
 			is_fallen_machine_empire = no
-			from = { is_fallen_machine_empire = no }
+			from = {
+				is_fallen_machine_empire = no
+			}
 		}
 		custom_tooltip = grants_humiliation_cb_originator
 	}
-
 	possible = {
 		custom_tooltip = {
 			fail_text = "requires_actor_not_fanatic_purifiers"
 			OR = {
 				is_same_species = from
-				NOT = { has_valid_civic = civic_fanatic_purifiers }
+				NOT = {
+					has_valid_civic = civic_fanatic_purifiers
+				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_actor_not_devouring_swarm"
-			NOT = { has_valid_civic = civic_hive_devouring_swarm }
+			NOT = {
+				has_valid_civic = civic_hive_devouring_swarm
+			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_actor_not_machine_terminator"
 			OR = {
 				is_same_species = from
-				NOT = { has_civic = civic_machine_terminator }
+				NOT = {
+					has_civic = civic_machine_terminator
+				}
 				AND = {
 					has_civic = civic_machine_terminator
 					from = {
@@ -48,32 +53,46 @@ action_make_rival = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_actor_not_machine_assimilator"
-			NOT = { has_valid_civic = civic_machine_assimilator }
+			NOT = {
+				has_valid_civic = civic_machine_assimilator
+			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_actor_not_inward_perfection"
-			NOT = { has_valid_civic = civic_inwards_perfection }
+			NOT = {
+				has_valid_civic = civic_inwards_perfection
+			}
 		}
 		custom_tooltip = {
 			is_bugged_universalism = no
-		}			
+		}
 		custom_tooltip = {
 			fail_text = "requires_terrible_opinion_or_supremacist"
 			OR = {
-				opinion_level = { who = from level <= terrible }
+				opinion_level = {
+					who = from
+					level <= terrible
+				}
 				is_harming_relations_with = from
-				from = { is_at_war_with = prev }
+				from = {
+					is_at_war_with = prev
+				}
 				OR = {
 					has_policy_flag = "diplo_stance_supremacist"
-					from = { has_policy_flag = "diplo_stance_supremacist" }
+					from = {
+						has_policy_flag = "diplo_stance_supremacist"
+					}
 					is_fallen_empire = yes
-					from = { is_fallen_empire = yes }
+					from = {
+						is_fallen_empire = yes
+					}
 				}
-				from = { is_rival = prev }
+				from = {
+					is_rival = prev
+				}
 			}
 		}
 	}
-
 	on_accept = {
 		hidden_effect = {
 			check_casus_belli_valid = {
@@ -98,23 +117,35 @@ action_form_commercial_pact = {
 			fail_text = "requires_actor_not_fanatic_purifiers"
 			OR = {
 				is_same_species = from
-				NOT = { has_valid_civic = civic_fanatic_purifiers	}
+				NOT = {
+					has_valid_civic = civic_fanatic_purifiers
+				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_recipient_not_fanatic_purifiers"
 			OR = {
 				is_same_species = from
-				from = { NOT = { has_valid_civic = civic_fanatic_purifiers } }
+				from = {
+					NOT = {
+						has_valid_civic = civic_fanatic_purifiers
+					}
+				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_recipient_not_inward_perfection"
-			from = { NOT = { has_valid_civic = civic_inwards_perfection	} }
+			from = {
+				NOT = {
+					has_valid_civic = civic_inwards_perfection
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_actor_not_inward_perfection"
-			NOT = { has_valid_civic = civic_inwards_perfection }
+			NOT = {
+				has_valid_civic = civic_inwards_perfection
+			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_actor_not_gestalt_consciousness"
@@ -132,15 +163,25 @@ action_form_commercial_pact = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_recipient_not_criminal_heritage"
-			from = { is_criminal_syndicate = no }
+			from = {
+				is_criminal_syndicate = no
+			}
 		}
 		custom_tooltip = {
 			fail_text = "federation_actor_no_separate_treaties"
 			NOT = {
 				AND = {
 					has_federation = yes
-					federation = { has_federation_law = treaties_separate_no }
-					NOT = { federation = { any_member = { is_same_value = root.from } } }
+					federation = {
+						has_federation_law = treaties_separate_no
+					}
+					NOT = {
+						federation = {
+							any_member = {
+								is_same_value = root.from
+							}
+						}
+					}
 				}
 			}
 		}
@@ -153,13 +194,23 @@ action_form_commercial_pact = {
 						federation = {
 							has_federation_law = treaties_separate_no
 						}
-						NOT = { federation = { any_member = { is_same_value = root } } }
+						NOT = {
+							federation = {
+								any_member = {
+									is_same_value = root
+								}
+							}
+						}
 					}
 				}
 			}
 		}
 		if = {
-			limit = { from = { has_valid_civic = civic_pompous_purists } }
+			limit = {
+				from = {
+					has_valid_civic = civic_pompous_purists
+				}
+			}
 			if = {
 				limit = {
 					has_intel = {
@@ -181,9 +232,11 @@ action_form_commercial_pact = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_good_or_better_opinion"
-
 			OR = {
-				opinion_level = { who = from level >= good }
+				opinion_level = {
+					who = from
+					level >= good
+				}
 				is_improving_relations_with = from
 			}
 		}
@@ -209,45 +262,66 @@ action_form_research_agreement = {
 	action_type = positive
 	potential = {
 		is_country_type = default
-		from = { is_country_type = default }
+		from = {
+			is_country_type = default
+		}
 	}
-
 	possible = {
 		custom_tooltip = {
 			fail_text = "requires_actor_not_fanatic_purifiers"
 			OR = {
 				is_same_species = from
-				NOT = { has_valid_civic = civic_fanatic_purifiers	}
+				NOT = {
+					has_valid_civic = civic_fanatic_purifiers
+				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_recipient_not_fanatic_purifiers"
 			OR = {
 				is_same_species = from
-				from = { NOT = { has_valid_civic = civic_fanatic_purifiers } }
+				from = {
+					NOT = {
+						has_valid_civic = civic_fanatic_purifiers
+					}
+				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_actor_not_devouring_swarm"
-			NOT = { has_valid_civic = civic_hive_devouring_swarm	}
+			NOT = {
+				has_valid_civic = civic_hive_devouring_swarm
+			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_recipient_not_devouring_swarm"
-			from = { NOT = { has_valid_civic = civic_hive_devouring_swarm } }
+			from = {
+				NOT = {
+					has_valid_civic = civic_hive_devouring_swarm
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_recipient_not_inward_perfection"
-			from = { NOT = { has_valid_civic = civic_inwards_perfection	} }
+			from = {
+				NOT = {
+					has_valid_civic = civic_inwards_perfection
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_actor_not_inward_perfection"
-			NOT = { has_valid_civic = civic_inwards_perfection }
+			NOT = {
+				has_valid_civic = civic_inwards_perfection
+			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_actor_not_machine_terminator"
 			OR = {
 				is_same_species = from
-				NOT = { has_civic = civic_machine_terminator }
+				NOT = {
+					has_civic = civic_machine_terminator
+				}
 				AND = {
 					has_civic = civic_machine_terminator
 					from = {
@@ -264,9 +338,15 @@ action_form_research_agreement = {
 			fail_text = "requires_recipient_not_machine_terminator"
 			OR = {
 				is_same_species = from
-				from = { NOT = { has_civic = civic_machine_terminator } }
+				from = {
+					NOT = {
+						has_civic = civic_machine_terminator
+					}
+				}
 				AND = {
-					from = { has_civic = civic_machine_terminator }
+					from = {
+						has_civic = civic_machine_terminator
+					}
 					OR = {
 						has_country_flag = synthetic_empire
 						has_authority = auth_machine_intelligence
@@ -279,8 +359,16 @@ action_form_research_agreement = {
 			NOT = {
 				AND = {
 					has_federation = yes
-					federation = { has_federation_law = treaties_separate_no }
-					NOT = { federation = { any_member = { is_same_value = root.from } } }
+					federation = {
+						has_federation_law = treaties_separate_no
+					}
+					NOT = {
+						federation = {
+							any_member = {
+								is_same_value = root.from
+							}
+						}
+					}
 				}
 			}
 		}
@@ -293,7 +381,13 @@ action_form_research_agreement = {
 						federation = {
 							has_federation_law = treaties_separate_no
 						}
-						NOT = { federation = { any_member = { is_same_value = root } } }
+						NOT = {
+							federation = {
+								any_member = {
+									is_same_value = root
+								}
+							}
+						}
 					}
 				}
 			}
@@ -303,13 +397,23 @@ action_form_research_agreement = {
 			NOT = {
 				AND = {
 					has_federation = yes
-					federation = { any_member = { is_same_value = root.from } }
-					federation = { has_federation_perk = research_federation_passive }
+					federation = {
+						any_member = {
+							is_same_value = root.from
+						}
+					}
+					federation = {
+						has_federation_perk = research_federation_passive
+					}
 				}
 			}
 		}
 		if = {
-			limit = { from = { has_valid_civic = civic_pompous_purists } }
+			limit = {
+				from = {
+					has_valid_civic = civic_pompous_purists
+				}
+			}
 			if = {
 				limit = {
 					has_intel = {
@@ -331,12 +435,13 @@ action_form_research_agreement = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_good_or_better_opinion"
-
 			OR = {
-				opinion_level = { who = from level >= good }
+				opinion_level = {
+					who = from
+					level >= good
+				}
 				is_improving_relations_with = from
 			}
 		}
 	}
 }
-

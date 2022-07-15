@@ -1,22 +1,19 @@
 #root = planet
-
 # PD Hab
 col_dome = {
 	icon = GFX_colony_type_habitat
-
 	potential = {
 		OR = {
-		is_planet_class = pc_pd_barren_cold_hab
-		is_planet_class = pc_pd_barren_hab
-		is_planet_class = pc_pd_frozen_hab
-		is_planet_class = pc_pd_gas_giant_hab
-		is_planet_class = pc_pd_hothouse_hab
-		is_planet_class = pc_pd_toxic_hab
-		is_planet_class = pc_pd_molten_hab
-		is_planet_class = pc_pd_asteroid_hab
+			is_planet_class = pc_pd_barren_cold_hab
+			is_planet_class = pc_pd_barren_hab
+			is_planet_class = pc_pd_frozen_hab
+			is_planet_class = pc_pd_gas_giant_hab
+			is_planet_class = pc_pd_hothouse_hab
+			is_planet_class = pc_pd_toxic_hab
+			is_planet_class = pc_pd_molten_hab
+			is_planet_class = pc_pd_asteroid_hab
 		}
 	}
-
 	weight_modifier = {
 		base = 500
 	}
@@ -25,7 +22,6 @@ col_dome = {
 # Habitat Energy
 col_dome_energy = {
 	icon = GFX_colony_type_habitat_energy
-
 	potential = {
 		OR = {
 			is_planet_class = pc_pd_barren_cold_hab
@@ -47,11 +43,19 @@ col_dome_energy = {
 		base = 200
 		modifier = {
 			factor = 2
-			owner = { has_monthly_income = { resource = energy value < 0 } }
+			owner = {
+				has_monthly_income = {
+					resource = energy
+					value < 0
+				}
+			}
 		}
 		modifier = {
 			factor = 3
-			num_districts = { type = district_pdhab_energy value >= 4 }
+			num_districts = {
+				type = district_pdhab_energy
+				value >= 4
+			}
 		}
 	}
 }
@@ -59,7 +63,6 @@ col_dome_energy = {
 # Habitat Cultural
 col_dome_leisure = {
 	icon = GFX_colony_type_habitat_leisure
-
 	potential = {
 		OR = {
 			is_planet_class = pc_pd_barren_cold_hab
@@ -72,16 +75,16 @@ col_dome_leisure = {
 			is_planet_class = pc_pd_asteroid_hab
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			OR = {
-				is_gestalt = no 
+				is_gestalt = no
 				has_valid_civic = civic_machine_servitor
 			}
 		}
 	}
 	planet_modifier = {
 		planet_district_hab_cultural_build_speed_mult = 0.25
-		pop_happiness = 0.10
+		pop_happiness = 0.1
 	}
 	weight_modifier = {
 		base = 200
@@ -91,7 +94,10 @@ col_dome_leisure = {
 		}
 		modifier = {
 			factor = 3
-			num_districts = { type = district_pdhab_cultural value >= 4 }
+			num_districts = {
+				type = district_pdhab_cultural
+				value >= 4
+			}
 		}
 	}
 }
@@ -99,7 +105,6 @@ col_dome_leisure = {
 # Habitat Trade
 col_dome_trade = {
 	icon = GFX_colony_type_habitat_trade
-
 	potential = {
 		OR = {
 			is_planet_class = pc_pd_barren_cold_hab
@@ -112,25 +117,34 @@ col_dome_trade = {
 			is_planet_class = pc_pd_asteroid_hab
 		}
 		exists = owner
-		owner = { is_gestalt = no }
+		owner = {
+			is_gestalt = no
+		}
 	}
 	planet_modifier = {
 		planet_district_hab_commercial_build_speed_mult = 0.25
-		trade_value_mult = 0.20
+		trade_value_mult = 0.2
 	}
 	weight_modifier = {
 		base = 500
 		modifier = {
 			factor = 0
-			owner = { has_ethic = ethic_gestalt_consciousness }
+			owner = {
+				has_ethic = ethic_gestalt_consciousness
+			}
 		}
 		modifier = {
 			factor = 2
-			owner = { has_monthly_income = { resource = energy value < 0 } }
+			owner = {
+				has_monthly_income = {
+					resource = energy
+					value < 0
+				}
+			}
 		}
 		modifier = {
 			factor = 0.1
-			has_planet_flag = energy_habitat 
+			has_planet_flag = energy_habitat
 		}
 		modifier = {
 			factor = 2
@@ -138,7 +152,10 @@ col_dome_trade = {
 		}
 		modifier = {
 			factor = 3
-			num_districts = { type = district_pdhab_commercial value >= 4 }
+			num_districts = {
+				type = district_pdhab_commercial
+				value >= 4
+			}
 		}
 	}
 }
@@ -146,7 +163,6 @@ col_dome_trade = {
 # Habitat Research
 col_dome_research = {
 	icon = GFX_colony_type_habitat_research
-
 	potential = {
 		OR = {
 			is_planet_class = pc_pd_barren_cold_hab
@@ -168,9 +184,24 @@ col_dome_research = {
 		modifier = {
 			factor = 2
 			OR = {
-				owner = { has_monthly_income = { resource = physics_research value < 100 } }
-				owner = { has_monthly_income = { resource = society_research value < 100 } }
-				owner = { has_monthly_income = { resource = engineering_research value < 100 } }
+				owner = {
+					has_monthly_income = {
+						resource = physics_research
+						value < 100
+					}
+				}
+				owner = {
+					has_monthly_income = {
+						resource = society_research
+						value < 100
+					}
+				}
+				owner = {
+					has_monthly_income = {
+						resource = engineering_research
+						value < 100
+					}
+				}
 			}
 		}
 		modifier = {
@@ -180,10 +211,22 @@ col_dome_research = {
 		modifier = {
 			factor = 3
 			OR = {
-				num_districts = { type = district_pdhab_science value >= 4 }
-				num_buildings = { type = building_research_lab_1 value >= 4 }
-				num_buildings = { type = building_research_lab_2 value >= 4 }
-				num_buildings = { type = building_research_lab_3 value >= 4 }
+				num_districts = {
+					type = district_pdhab_science
+					value >= 4
+				}
+				num_buildings = {
+					type = building_research_lab_1
+					value >= 4
+				}
+				num_buildings = {
+					type = building_research_lab_2
+					value >= 4
+				}
+				num_buildings = {
+					type = building_research_lab_3
+					value >= 4
+				}
 			}
 		}
 	}
@@ -192,7 +235,6 @@ col_dome_research = {
 # Habitat Mining
 col_dome_mining = {
 	icon = GFX_colony_type_habitat_mining
-
 	potential = {
 		OR = {
 			is_planet_class = pc_pd_barren_cold_hab
@@ -209,12 +251,16 @@ col_dome_mining = {
 		planet_district_hab_mining_build_speed_mult = 0.25
 		planet_miners_produces_mult = 0.1
 	}
-
 	weight_modifier = {
-		base = 5000 
+		base = 5000
 		modifier = {
 			factor = 2
-			owner = { has_monthly_income = { resource = minerals value < 0 } }
+			owner = {
+				has_monthly_income = {
+					resource = minerals
+					value < 0
+				}
+			}
 		}
 		modifier = {
 			factor = 2
@@ -222,7 +268,10 @@ col_dome_mining = {
 		}
 		modifier = {
 			factor = 3
-			num_districts = { type = district_pdhab_mining value >= 4 }
+			num_districts = {
+				type = district_pdhab_mining
+				value >= 4
+			}
 		}
 	}
 }
@@ -230,7 +279,6 @@ col_dome_mining = {
 # Habitat Fortress
 col_dome_fortress = {
 	icon = GFX_colony_type_habitat_fortress
-
 	potential = {
 		OR = {
 			is_planet_class = pc_pd_barren_cold_hab
@@ -245,8 +293,8 @@ col_dome_fortress = {
 	}
 	planet_modifier = {
 		planet_building_stronghold_build_speed_mult = 0.25
-		planet_orbital_bombardment_damage = -0.10
-		army_defense_damage_mult = 0.20
+		planet_orbital_bombardment_damage = -0.1
+		army_defense_damage_mult = 0.2
 	}
 	weight_modifier = {
 		base = 500
@@ -256,16 +304,17 @@ col_dome_fortress = {
 		}
 		modifier = {
 			factor = 3
-			num_buildings = { type = building_stronghold value >= 8 }
+			num_buildings = {
+				type = building_stronghold
+				value >= 8
+			}
 		}
-
 	}
 }
 
 # Habitat Industrial
 col_dome_industrial = {
 	icon = GFX_colony_type_industrial
-
 	potential = {
 		OR = {
 			is_planet_class = pc_pd_barren_cold_hab
@@ -299,7 +348,6 @@ col_dome_industrial = {
 			planet_metallurgists_produces_mult = 0.05
 		}
 	}
-
 	weight_modifier = {
 		base = 600
 		modifier = {
@@ -323,7 +371,10 @@ col_dome_industrial = {
 		}
 		modifier = {
 			factor = 0
-			num_districts = { type = district_pdhab_industrial value = 0 }
+			num_districts = {
+				type = district_pdhab_industrial
+				value = 0
+			}
 		}
 	}
 }
@@ -331,7 +382,6 @@ col_dome_industrial = {
 # Habitat Foundry
 col_dome_foundry = {
 	icon = GFX_colony_type_habitat_foundry
-
 	potential = {
 		OR = {
 			is_planet_class = pc_pd_barren_cold_hab
@@ -368,18 +418,32 @@ col_dome_foundry = {
 		base = 500
 		modifier = {
 			factor = 2
-			owner = { has_monthly_income = { resource = alloys value < 10 } }
+			owner = {
+				has_monthly_income = {
+					resource = alloys
+					value < 10
+				}
+			}
 		}
 		modifier = {
 			factor = 2
 			has_designation = col_dome_foundry
-		} 
+		}
 		modifier = {
 			factor = 3
 			OR = {
-				num_buildings = { type = building_foundry_1 value >= 4 }
-				num_buildings = { type = building_foundry_2 value >= 4 }
-				num_buildings = { type = building_foundry_3 value >= 4 }
+				num_buildings = {
+					type = building_foundry_1
+					value >= 4
+				}
+				num_buildings = {
+					type = building_foundry_2
+					value >= 4
+				}
+				num_buildings = {
+					type = building_foundry_3
+					value >= 4
+				}
 			}
 		}
 	}
@@ -388,7 +452,6 @@ col_dome_foundry = {
 # Habitat Factory
 col_dome_factory = {
 	icon = GFX_colony_type_habitat_factory
-
 	potential = {
 		OR = {
 			is_planet_class = pc_pd_barren_cold_hab
@@ -402,8 +465,12 @@ col_dome_factory = {
 		}
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = yes }
-			owner = { has_civic = civic_machine_servitor }
+			owner = {
+				is_regular_empire = yes
+			}
+			owner = {
+				has_civic = civic_machine_servitor
+			}
 		}
 	}
 	planet_modifier = {
@@ -430,7 +497,12 @@ col_dome_factory = {
 		base = 500
 		modifier = {
 			factor = 2
-			owner = { has_monthly_income = { resource = consumer_goods value < 5 } }
+			owner = {
+				has_monthly_income = {
+					resource = consumer_goods
+					value < 5
+				}
+			}
 		}
 		modifier = {
 			factor = 2
@@ -439,9 +511,18 @@ col_dome_factory = {
 		modifier = {
 			factor = 3
 			OR = {
-				num_buildings = { type = building_factory_1 value >= 4 }
-				num_buildings = { type = building_factory_2 value >= 4 }
-				num_buildings = { type = building_factory_3 value >= 4 }
+				num_buildings = {
+					type = building_factory_1
+					value >= 4
+				}
+				num_buildings = {
+					type = building_factory_2
+					value >= 4
+				}
+				num_buildings = {
+					type = building_factory_3
+					value >= 4
+				}
 			}
 		}
 	}
@@ -450,7 +531,6 @@ col_dome_factory = {
 # Habitat Refinery
 col_dome_refinery = {
 	icon = GFX_colony_type_habitat_refinery
-
 	potential = {
 		OR = {
 			is_planet_class = pc_pd_barren_cold_hab
@@ -488,36 +568,58 @@ col_dome_refinery = {
 			planet_chemists_produces_mult = 0.05
 		}
 	}
-
 	weight_modifier = {
 		base = 500
-			modifier = {
-				factor = 2
-				OR = {
-					owner = { has_monthly_income = { resource = volatile_motes value < 0 } }
-					owner = { has_monthly_income = { resource = exotic_gases value < 0 } }
-					owner = { has_monthly_income = { resource = rare_crystals value < 0 } }
+		modifier = {
+			factor = 2
+			OR = {
+				owner = {
+					has_monthly_income = {
+						resource = volatile_motes
+						value < 0
+					}
+				}
+				owner = {
+					has_monthly_income = {
+						resource = exotic_gases
+						value < 0
+					}
+				}
+				owner = {
+					has_monthly_income = {
+						resource = rare_crystals
+						value < 0
+					}
 				}
 			}
-			modifier = {
-				factor = 2
-				has_designation = col_dome_refinery
-			}
-			modifier = {
-				factor = 3
-				OR = {
-					num_buildings = { type = building_refinery value >= 4 }
-					num_buildings = { type = building_chemical_plant value >= 4 }
-					num_buildings = { type = building_crystal_plant value >= 4 }
+		}
+		modifier = {
+			factor = 2
+			has_designation = col_dome_refinery
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				num_buildings = {
+					type = building_refinery
+					value >= 4
+				}
+				num_buildings = {
+					type = building_chemical_plant
+					value >= 4
+				}
+				num_buildings = {
+					type = building_crystal_plant
+					value >= 4
 				}
 			}
+		}
 	}
 }
 
 # Habitat Food
 col_dome_food = {
 	icon = GFX_colony_type_habitat_food
-
 	potential = {
 		OR = {
 			is_planet_class = pc_pd_barren_cold_hab
@@ -538,11 +640,19 @@ col_dome_food = {
 		base = 200
 		modifier = {
 			factor = 2
-			owner = { has_monthly_income = { resource = food value < 0 } }
+			owner = {
+				has_monthly_income = {
+					resource = food
+					value < 0
+				}
+			}
 		}
 		modifier = {
 			factor = 3
-			num_districts = { type = district_pdhab_food value >= 4 }
+			num_districts = {
+				type = district_pdhab_food
+				value >= 4
+			}
 		}
 	}
 }

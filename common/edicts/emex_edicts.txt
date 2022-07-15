@@ -1,16 +1,13 @@
 @Edict1Cost = 10
 @Edict2Cost = 20
 @Edict3Cost = 30
-
 @EdictDuration = 3600
 @EdictDuration2 = 5000
 @EdictPerpetual = -1
 @campaignCost = 15
-
 propaganda_spread = {
 	length = @EdictPerpetual
 	icon = "GFX_edict_type_policy"
-	
 	resources = {
 		category = edicts
 		upkeep = {
@@ -18,23 +15,23 @@ propaganda_spread = {
 			multiplier = value:edict_size_effect
 		}
 	}
-
 	modifier = {
 		pop_government_ethic_attraction = 0.75
 		country_war_exhaustion_mult = -0.25
 		country_unity_produces_mult = 0.05
 		planet_pops_consumer_goods_upkeep_mult = 0.15
 	}
-
 	potential = {
 		has_valid_civic = civic_personality_cult
 	}
-
 	ai_weight = {
 		weight = 0
 		modifier = {
 			weight = @EdictHighPrio
-			has_resource = { type = influence amount > 100 }
+			has_resource = {
+				type = influence
+				amount > 100
+			}
 		}
 	}
 }
@@ -42,7 +39,6 @@ propaganda_spread = {
 emergency_conscription = {
 	length = @EdictPerpetual
 	icon = "GFX_edict_type_policy"
-
 	resources = {
 		category = edicts
 		upkeep = {
@@ -50,19 +46,16 @@ emergency_conscription = {
 			multiplier = value:edict_size_effect
 		}
 	}
-
 	modifier = {
 		planet_army_build_speed_mult = 0.15
 		starbase_shipyard_build_speed_mult = 0.15
-		armies_cost_mult = -0.10
-		starbase_shipyard_build_cost_mult = -0.10
-		planet_jobs_produces_mult = -0.10
+		armies_cost_mult = -0.1
+		starbase_shipyard_build_cost_mult = -0.1
+		planet_jobs_produces_mult = -0.1
 	}
-	
 	potential = {
 		has_technology = tech_interstellar_campaigns
 	}
-
 	ai_weight = {
 		weight = @EdictMedPrio
 	}
@@ -71,7 +64,6 @@ emergency_conscription = {
 no_personal_weapons = {
 	length = @EdictPerpetual
 	icon = "GFX_edict_type_policy"
-	
 	resources = {
 		category = edicts
 		upkeep = {
@@ -79,23 +71,23 @@ no_personal_weapons = {
 			multiplier = value:edict_size_effect
 		}
 	}
-
 	modifier = {
 		planet_stability_add = 15
 		planet_crime_mult = -0.75
-		pop_citizen_happiness = -0.20
-		pop_government_ethic_attraction = -0.20
+		pop_citizen_happiness = -0.2
+		pop_government_ethic_attraction = -0.2
 	}
-
 	potential = {
 		has_valid_civic = civic_personal_weapons
 	}
-
 	ai_weight = {
 		weight = 0
 		modifier = {
 			weight = @EdictLowPrio
-			has_resource = { type = influence amount > 150 }
+			has_resource = {
+				type = influence
+				amount > 150
+			}
 		}
 	}
 }
@@ -103,7 +95,6 @@ no_personal_weapons = {
 cs_into_alloys = {
 	length = @EdictDuration
 	icon = "GFX_edict_type_time"
-	
 	resources = {
 		category = edicts
 		upkeep = {
@@ -111,30 +102,30 @@ cs_into_alloys = {
 			multiplier = value:edict_size_effect
 		}
 	}
-
 	modifier = {
 		planet_pops_consumer_goods_upkeep_mult = -0.05
-		pop_happiness = -0.10
+		pop_happiness = -0.1
 	}
-	
 	effect = {
-		country_event = { id = civic.1 }
+		country_event = {
+			id = civic.1
+		}
 		custom_tooltip = cs_become_alloys
 	}
-
 	potential = {
 		has_valid_civic = civic_war_economy
 	}
-	
 	allow = {
 		is_at_war = yes
 	}
-
 	ai_weight = {
 		weight = 0
 		modifier = {
 			weight = @EdictHighPrio
-			has_resource = { type = influence amount > 100 }
+			has_resource = {
+				type = influence
+				amount > 100
+			}
 		}
 	}
 }
@@ -142,7 +133,6 @@ cs_into_alloys = {
 tma_building_p2_edict1 = {
 	length = 720
 	icon = "GFX_edict_type_time"
-	
 	resources = {
 		category = campaigns
 		upkeep = {
@@ -150,12 +140,10 @@ tma_building_p2_edict1 = {
 			multiplier = value:edict_size_effect
 		}
 	}
-
 	modifier = {
-		country_minerals_produces_mult = -0.20
-		country_alloys_produces_mult = -0.10
+		country_minerals_produces_mult = -0.2
+		country_alloys_produces_mult = -0.1
 	}
-	
 	effect = {
 		hidden_effect = {
 			event_target:tma_structure = {
@@ -167,11 +155,9 @@ tma_building_p2_edict1 = {
 		}
 		custom_tooltip = tma_structure_faster
 	}
-
 	potential = {
 		has_country_flag = tma_structure_p2_active
 	}
-
 	ai_weight = {
 		weight = 50
 	}
@@ -180,7 +166,6 @@ tma_building_p2_edict1 = {
 tma_building_p2_edict2 = {
 	length = 720
 	icon = "GFX_edict_type_time"
-	
 	resources = {
 		category = campaigns
 		upkeep = {
@@ -188,12 +173,10 @@ tma_building_p2_edict2 = {
 			multiplier = value:edict_size_effect
 		}
 	}
-
 	modifier = {
-		country_engineering_tech_research_speed = -0.50
-		leaders_energy_upkeep_mult = 0.10
+		country_engineering_tech_research_speed = -0.5
+		leaders_energy_upkeep_mult = 0.1
 	}
-	
 	effect = {
 		hidden_effect = {
 			event_target:tma_structure = {
@@ -205,11 +188,9 @@ tma_building_p2_edict2 = {
 		}
 		custom_tooltip = tma_structure_faster
 	}
-
 	potential = {
 		has_country_flag = tma_structure_p2_active
 	}
-
 	ai_weight = {
 		weight = 50
 	}
@@ -218,7 +199,6 @@ tma_building_p2_edict2 = {
 tma_intelligence_edict1 = {
 	length = 1080
 	icon = "GFX_edict_type_time"
-	
 	resources = {
 		category = campaigns
 		upkeep = {
@@ -226,12 +206,10 @@ tma_intelligence_edict1 = {
 			multiplier = value:edict_size_effect
 		}
 	}
-
 	modifier = {
 		country_energy_produces_mult = -0.15
-		country_minerals_produces_mult = -0.10
+		country_minerals_produces_mult = -0.1
 	}
-	
 	effect = {
 		hidden_effect = {
 			random_list = {
@@ -261,20 +239,19 @@ tma_intelligence_edict1 = {
 		}
 		custom_tooltip = tma_intelligence_boost
 	}
-
 	potential = {
 		has_country_flag = maai_creator
 		has_global_flag = master_ai_project_complete
-		NOT = { has_global_flag = tma_hostile }
+		NOT = {
+			has_global_flag = tma_hostile
+		}
 	}
-	
 	allow = {
 		NOR = {
 			has_edict = tma_intelligence_edict2
 			has_edict = tma_intelligence_edict3
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 	}
@@ -283,7 +260,6 @@ tma_intelligence_edict1 = {
 tma_intelligence_edict2 = {
 	length = 1080
 	icon = "GFX_edict_type_time"
-	
 	resources = {
 		category = campaigns
 		upkeep = {
@@ -291,13 +267,11 @@ tma_intelligence_edict2 = {
 			multiplier = value:edict_size_effect
 		}
 	}
-
 	modifier = {
-		leaders_energy_upkeep_mult = 0.10
-		country_consumer_goods_produces_mult = -0.10
+		leaders_energy_upkeep_mult = 0.1
+		country_consumer_goods_produces_mult = -0.1
 		species_leader_exp_gain = 0.05
 	}
-	
 	effect = {
 		hidden_effect = {
 			random_list = {
@@ -327,28 +301,27 @@ tma_intelligence_edict2 = {
 		}
 		custom_tooltip = tma_intelligence_boost
 	}
-
 	potential = {
 		has_country_flag = maai_creator
 		has_global_flag = master_ai_project_complete
-		NOT = { has_global_flag = tma_hostile }
+		NOT = {
+			has_global_flag = tma_hostile
+		}
 	}
-	
 	allow = {
 		NOR = {
 			has_edict = tma_intelligence_edict1
 			has_edict = tma_intelligence_edict3
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 	}
 }
+
 tma_intelligence_edict3 = {
 	length = 1080
 	icon = "GFX_edict_type_time"
-	
 	resources = {
 		category = campaigns
 		upkeep = {
@@ -356,13 +329,11 @@ tma_intelligence_edict3 = {
 			multiplier = value:edict_size_effect
 		}
 	}
-
 	modifier = {
-		country_physics_tech_research_speed = -0.10
+		country_physics_tech_research_speed = -0.1
 		country_society_tech_research_speed = -0.05
 		country_engineering_tech_research_speed = -0.05
 	}
-	
 	effect = {
 		hidden_effect = {
 			random_list = {
@@ -392,27 +363,26 @@ tma_intelligence_edict3 = {
 		}
 		custom_tooltip = tma_intelligence_boost
 	}
-
 	potential = {
 		has_country_flag = maai_creator
 		has_global_flag = master_ai_project_complete
-		NOT = { has_global_flag = tma_hostile }
+		NOT = {
+			has_global_flag = tma_hostile
+		}
 	}
-	
 	allow = {
 		NOR = {
 			has_edict = tma_intelligence_edict1
 			has_edict = tma_intelligence_edict2
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 	}
 }
 
-
-tma_remnant_edict1 = { #discovery
+tma_remnant_edict1 = {
+	#discovery
 	length = @EdictDuration
 	icon = "GFX_edict_type_time"
 	resources = {
@@ -422,35 +392,31 @@ tma_remnant_edict1 = { #discovery
 			multiplier = value:edict_size_effect
 		}
 	}
-
 	modifier = {
-		ship_anomaly_research_speed_mult = 0.30
-		ship_anomaly_generation_chance_mult = 0.20
-		ship_archaeological_site_excavation_speed_mult = 0.20
-		science_ship_survey_speed = 0.50
+		ship_anomaly_research_speed_mult = 0.3
+		ship_anomaly_generation_chance_mult = 0.2
+		ship_archaeological_site_excavation_speed_mult = 0.2
+		science_ship_survey_speed = 0.5
 		planet_jobs_consumer_goods_produces_mult = -0.05
 	}
-	
 	effect = {
 	}
-
 	potential = {
 		has_country_flag = tma_remnants_scanned
 	}
-	
 	allow = {
 		NOR = {
 			has_edict = tma_remnant_edict2
 			has_edict = tma_remnant_edict3
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 	}
 }
 
-tma_remnant_edict2 = { #building
+tma_remnant_edict2 = {
+	#building
 	length = @EdictDuration
 	icon = "GFX_edict_type_time"
 	resources = {
@@ -460,35 +426,31 @@ tma_remnant_edict2 = { #building
 			multiplier = value:edict_size_effect
 		}
 	}
-
 	modifier = {
 		country_megastructure_build_cap_add = 1
-		building_time_mult = -0.30
-		starbase_building_build_time_mult = -0.30
+		building_time_mult = -0.3
+		starbase_building_build_time_mult = -0.3
 		megastructure_build_speed_mult = 0.25
-		planet_buildings_cost_mult = 0.10
+		planet_buildings_cost_mult = 0.1
 	}
-	
 	effect = {
 	}
-
 	potential = {
 		has_country_flag = tma_remnants_scanned
 	}
-	
 	allow = {
 		NOR = {
 			has_edict = tma_remnant_edict1
 			has_edict = tma_remnant_edict3
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 	}
 }
 
-tma_remnant_edict3 = { #military
+tma_remnant_edict3 = {
+	#military
 	length = @EdictDuration
 	icon = "GFX_edict_type_time"
 	resources = {
@@ -498,29 +460,24 @@ tma_remnant_edict3 = { #military
 			multiplier = value:edict_size_effect
 		}
 	}
-
 	modifier = {
-		ship_fire_rate_mult = 0.10
+		ship_fire_rate_mult = 0.1
 		ship_base_speed_mult = 0.15
-		ship_armor_mult = 0.20
-		ship_shield_mult = 0.20
-		ships_upkeep_mult = 0.10
+		ship_armor_mult = 0.2
+		ship_shield_mult = 0.2
+		ships_upkeep_mult = 0.1
 	}
-	
 	effect = {
 	}
-
 	potential = {
 		has_country_flag = tma_remnants_scanned
 	}
-	
 	allow = {
 		NOR = {
 			has_edict = tma_remnant_edict2
 			has_edict = tma_remnant_edict1
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 	}
