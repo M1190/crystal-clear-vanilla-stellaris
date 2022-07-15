@@ -778,71 +778,57 @@ country_event = {
 		allow = {
 			custom_tooltip = {
 				fail_text = federations.10400.comply_fail_ethics
-				NOT = {
-					AND = {
-						in_breach_of = resolution_galacticstudies_ethical_guideline_refactoring
-						OR = {
-							AND = {
-								has_technology = tech_selected_lineages
-								has_ethic = ethic_fanatic_egalitarian
-							}
-							AND = {
-								has_technology = tech_capacity_boosters
-								is_egalitarian = yes
-							}
-						}
+				NAND = {
+					in_breach_of = resolution_galacticstudies_ethical_guideline_refactoring
+					OR = {
+						has_technology = tech_selected_lineages
+						has_ethic = ethic_fanatic_egalitarian
+						has_technology = tech_capacity_boosters
+						is_egalitarian = yes
 					}
 				}
 			}
 			custom_tooltip = {
 				fail_text = federations.10400.comply_fail_civics
-				NOT = {
-					AND = {
-						has_valid_civic = civic_machine_assimilator
-						OR = {
-							is_active_resolution = "resolution_divinity_a_defined_purpose"
-							is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
-						}
+				NAND = {
+					has_valid_civic = civic_machine_assimilator
+					OR = {
+						is_active_resolution = "resolution_divinity_a_defined_purpose"
+						is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
 					}
 				}
-				NOT = {
-					AND = {
-						OR = {
-							is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
-							is_active_resolution = "resolution_greatergood_balance_in_the_middle"
-						}
-						OR = {
-							in_breach_of = resolution_greatergood_universal_prosperity_mandate
-							in_breach_of = resolution_greatergood_balance_in_the_middle
-						}
-						OR = {
-							has_valid_civic = civic_indentured_assets
-							has_valid_civic = civic_slaver_guilds
-						}
+				NAND = {
+					OR = {
+						is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
+						is_active_resolution = "resolution_greatergood_balance_in_the_middle"
+					}
+					OR = {
+						in_breach_of = resolution_greatergood_universal_prosperity_mandate
+						in_breach_of = resolution_greatergood_balance_in_the_middle
+					}
+					OR = {
+						has_valid_civic = civic_indentured_assets
+						has_valid_civic = civic_slaver_guilds
 					}
 				}
 			}
 			custom_tooltip = {
 				fail_text = federations.10400.comply_fail_tech
-				NOT = {
-					AND = {
-						is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
-						is_egalitarian = no
-						is_gestalt = no
-						in_breach_of = resolution_greatergood_universal_prosperity_mandate
-						NOT = {
-							has_technology = tech_subdermal_stimulation
-						}
+				NAND = {
+					is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
+					is_egalitarian = no
+					is_gestalt = no
+					in_breach_of = resolution_greatergood_universal_prosperity_mandate
+					NOT = {
+						has_technology = tech_subdermal_stimulation
 					}
 				}
 			}
 			custom_tooltip = {
 				fail_text = federations.10400.comply_fail_ascension
-				NOT = {
-					AND = {
-						is_synthetic_empire = yes
-						is_active_resolution = "resolution_divinity_a_defined_purpose"
-					}
+				NOR = {
+					is_synthetic_empire = yes
+					is_active_resolution = "resolution_divinity_a_defined_purpose"
 				}
 			}
 		}

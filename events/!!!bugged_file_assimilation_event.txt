@@ -1,6 +1,5 @@
 # File name chosen to overwrite Forgotten Queens
 namespace = action
-
 # Assimilate Pops on Yearly Pulse
 event = {
 	id = action.64
@@ -17,25 +16,26 @@ event = {
 			}
 		}
 	}
-
 	immediate = {
 		log = "action.64"
 		set_update_modifiers_batch = begin
-        every_playable_country = {
-            limit = {
-                num_unique_species > 1
-                any_owned_species = {
-                    has_citizenship_type = {
+		every_playable_country = {
+			limit = {
+				num_unique_species > 1
+				any_owned_species = {
+					has_citizenship_type = {
 						type = citizenship_assimilation
 						country = prev
-                    }
-                }
-            }
+					}
+				}
+			}
 			log = "action.64.epc"
-
-			if = { # ascended synths
+			if = {
+				# ascended synths
 				limit = {
-					NOT = { has_country_flag = synthetic_empire }
+					NOT = {
+						has_country_flag = synthetic_empire
+					}
 				}
 				every_owned_species = {
 					limit = {
@@ -44,7 +44,8 @@ event = {
 							country = prev
 						}
 					}
-					if = { # assimilator empire or cyborg empire
+					if = {
+						# assimilator empire or cyborg empire
 						limit = {
 							prev = {
 								OR = {
@@ -57,7 +58,11 @@ event = {
 							}
 						}
 						if = {
-							limit = { NOT = { has_trait = trait_cybernetic } }
+							limit = {
+								NOT = {
+									has_trait = trait_cybernetic
+								}
+							}
 							if = {
 								limit = {
 									has_trait = trait_hive_mind
@@ -70,7 +75,6 @@ event = {
 									remove_trait = trait_hive_mind
 									remove_trait = trait_self_modified
 									change_scoped_species = no
-
 									effect = {
 										set_timed_species_flag = {
 											flag = assimilation_species_of_species@prev
@@ -95,7 +99,6 @@ event = {
 									remove_trait = trait_bugged_happy_hive
 									remove_trait = trait_self_modified
 									change_scoped_species = no
-
 									effect = {
 										set_timed_species_flag = {
 											flag = assimilation_species_of_species@prev
@@ -118,7 +121,6 @@ event = {
 									add_traits_at_start_of_list = yes
 									remove_trait = trait_hive_mind
 									change_scoped_species = no
-
 									effect = {
 										set_timed_species_flag = {
 											flag = assimilation_species_of_species@prev
@@ -141,7 +143,6 @@ event = {
 									add_traits_at_start_of_list = yes
 									remove_trait = trait_bugged_happy_hive
 									change_scoped_species = no
-
 									effect = {
 										set_timed_species_flag = {
 											flag = assimilation_species_of_species@prev
@@ -164,7 +165,6 @@ event = {
 									add_traits_at_start_of_list = yes
 									remove_trait = trait_self_modified
 									change_scoped_species = no
-
 									effect = {
 										set_timed_species_flag = {
 											flag = assimilation_species_of_species@prev
@@ -183,7 +183,6 @@ event = {
 									add_trait = trait_cybernetic
 									add_traits_at_start_of_list = yes
 									change_scoped_species = no
-
 									effect = {
 										set_timed_species_flag = {
 											flag = assimilation_species_of_species@prev
@@ -198,12 +197,18 @@ event = {
 							}
 						}
 					}
-					else_if = { # non-happy hive mind
+					else_if = {
+						# non-happy hive mind
 						limit = {
 							prev = {
 								has_authority = auth_hive_mind
-								NOT = { has_civic = civic_hive_devouring_swarm }
-								NAND = { has_ethic = ethic_form_autonomous has_ethic = ethic_form_affective }
+								NOT = {
+									has_civic = civic_hive_devouring_swarm
+								}
+								NAND = {
+									has_ethic = ethic_form_autonomous
+									has_ethic = ethic_form_affective
+								}
 							}
 						}
 						if = {
@@ -215,7 +220,6 @@ event = {
 								add_trait = trait_hive_mind
 								remove_trait = trait_self_modified
 								change_scoped_species = no
-
 								effect = {
 									set_timed_species_flag = {
 										flag = assimilation_species_of_species@prev
@@ -233,7 +237,6 @@ event = {
 								species = this
 								add_trait = trait_hive_mind
 								change_scoped_species = no
-
 								effect = {
 									set_timed_species_flag = {
 										flag = assimilation_species_of_species@prev
@@ -247,12 +250,16 @@ event = {
 							}
 						}
 					}
-					else_if = { # happy hive mind
+					else_if = {
+						# happy hive mind
 						limit = {
 							prev = {
 								has_authority = auth_hive_mind
-								NOT = { has_civic = civic_hive_devouring_swarm }
-								AND = { has_ethic = ethic_form_autonomous has_ethic = ethic_form_affective }
+								NOT = {
+									has_civic = civic_hive_devouring_swarm
+								}
+								has_ethic = ethic_form_autonomous
+								has_ethic = ethic_form_affective
 							}
 						}
 						if = {
@@ -264,7 +271,6 @@ event = {
 								add_trait = trait_bugged_happy_hive
 								remove_trait = trait_self_modified
 								change_scoped_species = no
-
 								effect = {
 									set_timed_species_flag = {
 										flag = assimilation_species_of_species@prev
@@ -282,7 +288,6 @@ event = {
 								species = this
 								add_trait = trait_bugged_happy_hive
 								change_scoped_species = no
-
 								effect = {
 									set_timed_species_flag = {
 										flag = assimilation_species_of_species@prev
@@ -311,7 +316,6 @@ event = {
 							species = this
 							remove_trait = trait_hive_mind
 							change_scoped_species = no
-
 							effect = {
 								set_timed_species_flag = {
 									flag = assimilation_species_of_species@prev
@@ -339,7 +343,6 @@ event = {
 							species = this
 							remove_trait = trait_bugged_happy_hive
 							change_scoped_species = no
-
 							effect = {
 								set_timed_species_flag = {
 									flag = assimilation_species_of_species@prev
@@ -352,7 +355,8 @@ event = {
 							}
 						}
 					}
-					else_if = { #### Psionic Assimilation ADD OTHER RANDOM OPTIONS TOO
+					else_if = {
+						#### Psionic Assimilation ADD OTHER RANDOM OPTIONS TOO
 						limit = {
 							prev = {
 								has_ascension_perk = ap_transcendence
@@ -370,7 +374,6 @@ event = {
 								add_trait = trait_psionic
 								add_traits_at_start_of_list = yes
 								change_scoped_species = no
-
 								effect = {
 									set_timed_species_flag = {
 										flag = assimilation_species_of_species@prev
@@ -385,7 +388,9 @@ event = {
 						}
 						else_if = {
 							limit = {
-								NOT = { has_trait = trait_psionic}
+								NOT = {
+									has_trait = trait_psionic
+								}
 								has_trait = trait_latent_psionic
 							}
 							modify_species = {
@@ -394,7 +399,6 @@ event = {
 								add_trait = trait_psionic
 								add_traits_at_start_of_list = yes
 								change_scoped_species = no
-
 								effect = {
 									set_timed_species_flag = {
 										flag = assimilation_species_of_species@prev
@@ -410,11 +414,12 @@ event = {
 					}
 				}
 			}
-
-            every_owned_planet = {
-                planet_event = { id = action.65 }
-            }
-        }
+			every_owned_planet = {
+				planet_event = {
+					id = action.65
+				}
+			}
+		}
 		set_update_modifiers_batch = end
-    }
+	}
 }

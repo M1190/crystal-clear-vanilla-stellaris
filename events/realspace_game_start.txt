@@ -1281,16 +1281,14 @@ event = {
 		# Gas Giant
 		every_galaxy_planet = {
 			limit = {
-				AND = {
-					is_planet_class = "pc_gas_giant"
-					has_ring = yes
-					solar_system = {
-						NOT = {
-							has_star_flag = sol
-						}
+				is_planet_class = "pc_gas_giant"
+				has_ring = yes
+				solar_system = {
+					NOT = {
+						has_star_flag = sol
 					}
-					planet_size >= 25
 				}
+				planet_size >= 25
 			}
 			if = {
 				limit = {
@@ -1304,16 +1302,14 @@ event = {
 		}
 		every_galaxy_planet = {
 			limit = {
-				AND = {
-					is_planet_class = "pc_gas_giant"
-					has_ring = yes
-					solar_system = {
-						NOT = {
-							has_star_flag = sol
-						}
+				is_planet_class = "pc_gas_giant"
+				has_ring = yes
+				solar_system = {
+					NOT = {
+						has_star_flag = sol
 					}
-					planet_size < 25
 				}
+				planet_size < 25
 			}
 			if = {
 				limit = {
@@ -1328,13 +1324,11 @@ event = {
 		# Small Planet
 		every_galaxy_planet = {
 			limit = {
-				AND = {
-					NOT = {
-						is_planet_class = "pc_gas_giant"
-					}
-					has_ring = yes
-					planet_size >= 20
+				NOT = {
+					is_planet_class = "pc_gas_giant"
 				}
+				has_ring = yes
+				planet_size >= 20
 			}
 			if = {
 				limit = {
@@ -1348,13 +1342,11 @@ event = {
 		}
 		every_galaxy_planet = {
 			limit = {
-				AND = {
-					NOT = {
-						is_planet_class = "pc_gas_giant"
-					}
-					has_ring = yes
-					planet_size < 20
+				NOT = {
+					is_planet_class = "pc_gas_giant"
 				}
+				has_ring = yes
+				planet_size < 20
 			}
 			if = {
 				limit = {
@@ -1380,11 +1372,9 @@ event = {
 	immediate = {
 		every_galaxy_planet = {
 			limit = {
-				AND = {
-					is_colonizable = yes
-					solar_system = {
-						has_star_flag = sol_sector
-					}
+				is_colonizable = yes
+				solar_system = {
+					has_star_flag = sol_sector
 				}
 			}
 			create_random_civilization = yes
@@ -1692,7 +1682,8 @@ event = {
 		random_country = {
 			limit = {
 				is_country_type = global_event
-			}			# global_event country is always around
+			}
+			# global_event country is always around
 			if = {
 				limit = {
 					NOT = {
@@ -1765,10 +1756,8 @@ country_event = {
 	immediate = {
 		if = {
 			limit = {
-				AND = {
-					has_global_flag = planetary_diversity_active
-					has_global_flag = has_new_frontiers_mod
-				}
+				has_global_flag = planetary_diversity_active
+				has_global_flag = has_new_frontiers_mod
 			}
 			set_global_flag = has_compatibility_issue
 		}
