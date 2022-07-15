@@ -4,9 +4,7 @@
 # by Pierre du Plessis
 #
 #################################
-
 namespace = envoy_events
-
 #insulting envoy software event
 country_event = {
 	id = envoy_events.1
@@ -14,29 +12,42 @@ country_event = {
 	desc = envoy_events.1.desc
 	picture = GFX_evt_assembly_fight
 	show_sound = event_assembly_fight
-
 	is_triggered_only = yes
-
 	trigger = {
-		OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+		OR = {
+			is_country_type = default
+			is_country_type = ascended_empire
+			is_country_type = lost_empire
+		}
 		exists = root.ruler
 		any_relation = {
 			is_improving_relations_with = root
-			NOT = { has_country_flag = recent_envoy_event }
-			NOT = { is_same_species = root }
-			NOT = { is_same_species = root.ruler }
+			NOT = {
+				has_country_flag = recent_envoy_event
+			}
+			NOT = {
+				is_same_species = root
+			}
+			NOT = {
+				is_same_species = root.ruler
+			}
 			any_envoy = {
 				has_envoy_task = {
 					task = improve_relations
 					target = root
 				}
-				NOT = { is_same_species = root }
-				NOT = { is_same_species = root.ruler }
+				NOT = {
+					is_same_species = root
+				}
+				NOT = {
+					is_same_species = root.ruler
+				}
 			}
 		}
-		NOT = { has_country_flag = recent_envoy_event }
+		NOT = {
+			has_country_flag = recent_envoy_event
+		}
 	}
-
 	immediate = {
 		set_timed_country_flag = {
 			flag = recent_envoy_event
@@ -45,16 +56,26 @@ country_event = {
 		random_relation = {
 			limit = {
 				is_improving_relations_with = root
-				NOT = { has_country_flag = recent_envoy_event }
-				NOT = { is_same_species = root }
-				NOT = { is_same_species = root.ruler }
+				NOT = {
+					has_country_flag = recent_envoy_event
+				}
+				NOT = {
+					is_same_species = root
+				}
+				NOT = {
+					is_same_species = root.ruler
+				}
 				any_envoy = {
 					has_envoy_task = {
 						task = improve_relations
 						target = root
 					}
-					NOT = { is_same_species = root }
-					NOT = { is_same_species = root.ruler }
+					NOT = {
+						is_same_species = root
+					}
+					NOT = {
+						is_same_species = root.ruler
+					}
 				}
 			}
 			set_timed_country_flag = {
@@ -68,8 +89,12 @@ country_event = {
 						task = improve_relations
 						target = root
 					}
-					NOT = { is_same_species = root }
-					NOT = { is_same_species = root.ruler }
+					NOT = {
+						is_same_species = root
+					}
+					NOT = {
+						is_same_species = root.ruler
+					}
 				}
 				save_event_target_as = event_envoy
 			}
@@ -78,13 +103,15 @@ country_event = {
 			save_event_target_as = ruler_species
 		}
 	}
-
 	option = {
 		name = envoy_events.1.A
 		tooltip = {
 			if = {
 				limit = {
-					opinion_level = { who = event_target:envoy_source level >= good }
+					opinion_level = {
+						who = event_target:envoy_source
+						level >= good
+					}
 				}
 				add_opinion_modifier = {
 					who = event_target:envoy_source
@@ -96,8 +123,9 @@ country_event = {
 				modifier = opinion_envoy_insult_taken
 			}
 		}
-		hidden_effect = { set_country_flag = envoy_insult_taken }
-
+		hidden_effect = {
+			set_country_flag = envoy_insult_taken
+		}
 		ai_chance = {
 			factor = 1
 			modifier = {
@@ -129,36 +157,35 @@ country_event = {
 	}
 	option = {
 		name = envoy_events.1.B
-		
 		trigger = {
 			resource_stockpile_compare = {
 				resource = influence
 				value > 30
 			}
 		}
-		
 		add_resource = {
 			influence = -30
 		}
-
 		add_modifier = {
 			modifier = xeno_comedy_envoy
 			days = 3600
 		}
-
 		tooltip = {
 			add_opinion_modifier = {
 				who = event_target:envoy_source
 				modifier = opinion_envoy_insult_laughed_at
 			}
 		}
-		hidden_effect = { set_country_flag = envoy_insult_laughed_at }
+		hidden_effect = {
+			set_country_flag = envoy_insult_laughed_at
+		}
 	}
-
 	after = {
 		hidden_effect = {
 			event_target:envoy_source = {
-				country_event = { id = envoy_events.2 }
+				country_event = {
+					id = envoy_events.2
+				}
 			}
 		}
 	}
@@ -171,29 +198,36 @@ country_event = {
 	desc = {
 		text = envoy_events.2.desc.neg
 		trigger = {
-			from = { has_country_flag = envoy_insult_taken }
+			from = {
+				has_country_flag = envoy_insult_taken
+			}
 		}
 	}
 	desc = {
 		text = envoy_events.2.desc.pos
 		trigger = {
-			from = { has_country_flag = envoy_insult_laughed_at }
+			from = {
+				has_country_flag = envoy_insult_laughed_at
+			}
 		}
 	}
 	picture = GFX_evt_assembly_fight
 	show_sound = event_assembly_fight
-
 	is_triggered_only = yes
-
 	option = {
 		name = UNFORTUNATE
 		trigger = {
-			from = { has_country_flag = envoy_insult_taken }
+			from = {
+				has_country_flag = envoy_insult_taken
+			}
 		}
 		from = {
 			if = {
 				limit = {
-					opinion_level = { who = root level >= good }
+					opinion_level = {
+						who = root
+						level >= good
+					}
 				}
 				add_opinion_modifier = {
 					who = root
@@ -205,7 +239,9 @@ country_event = {
 				modifier = opinion_envoy_insult_taken
 			}
 		}
-		add_resource = { influence = -50 }
+		add_resource = {
+			influence = -50
+		}
 		add_intel = {
 			who = from
 			amount = -10
@@ -214,7 +250,9 @@ country_event = {
 	option = {
 		name = envoy_events.2.B
 		trigger = {
-			from = { has_country_flag = envoy_insult_laughed_at }
+			from = {
+				has_country_flag = envoy_insult_laughed_at
+			}
 		}
 		from = {
 			add_opinion_modifier = {
@@ -227,7 +265,6 @@ country_event = {
 			amount = 10
 		}
 	}
-
 	after = {
 		hidden_effect = {
 			from = {
@@ -245,7 +282,9 @@ country_event = {
 	desc = {
 		text = envoy_events.3.desc
 		trigger = {
-			NOT = { has_ethic = ethic_gestalt_consciousness }
+			NOT = {
+				has_ethic = ethic_gestalt_consciousness
+			}
 		}
 	}
 	desc = {
@@ -262,17 +301,30 @@ country_event = {
 	}
 	picture = GFX_evt_galactic_community
 	show_sound = event_galactic_community
-
 	trigger = {
-		OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
-		NOT = { has_country_flag = recent_envoy_event }
+		OR = {
+			is_country_type = default
+			is_country_type = ascended_empire
+			is_country_type = lost_empire
+		}
+		NOT = {
+			has_country_flag = recent_envoy_event
+		}
 		is_galactic_community_member = yes
 		any_country = {
 			is_part_of_galactic_council = yes
-			NOT = { is_same_species = root }
-			NOT = { is_in_federation_with = root }
-			NOT = { has_defensive_pact = root }
-			NOT = { is_overlord_to = root }
+			NOT = {
+				is_same_species = root
+			}
+			NOT = {
+				is_in_federation_with = root
+			}
+			NOT = {
+				has_defensive_pact = root
+			}
+			NOT = {
+				is_overlord_to = root
+			}
 			NOT = {
 				root = {
 					intel = {
@@ -289,10 +341,18 @@ country_event = {
 				who = root
 				value < equivalent
 			}
-			NOT = { is_same_species = root }
-			NOT = { is_in_federation_with = root }
-			NOT = { has_defensive_pact = root }
-			NOT = { has_overlord = root }
+			NOT = {
+				is_same_species = root
+			}
+			NOT = {
+				is_in_federation_with = root
+			}
+			NOT = {
+				has_defensive_pact = root
+			}
+			NOT = {
+				has_overlord = root
+			}
 			NOT = {
 				root = {
 					intel = {
@@ -304,16 +364,16 @@ country_event = {
 		}
 		any_envoy = {
 			leader_age < 50
-			has_envoy_cooldown = yes #fairly limiting trigger
+			has_envoy_cooldown = yes			#fairly limiting trigger
 			has_envoy_task = {
 				task = galactic_community
 			}
-			NOT = { has_leader_flag = respected_envoy }
+			NOT = {
+				has_leader_flag = respected_envoy
+			}
 		}
 	}
-
 	is_triggered_only = yes
-
 	immediate = {
 		set_timed_country_flag = {
 			flag = recent_envoy_event
@@ -322,10 +382,18 @@ country_event = {
 		random_country = {
 			limit = {
 				is_part_of_galactic_council = yes
-				NOT = { is_same_species = root }
-				NOT = { is_in_federation_with = root }
-				NOT = { has_defensive_pact = root }
-				NOT = { is_overlord_to = root }
+				NOT = {
+					is_same_species = root
+				}
+				NOT = {
+					is_in_federation_with = root
+				}
+				NOT = {
+					has_defensive_pact = root
+				}
+				NOT = {
+					is_overlord_to = root
+				}
 				NOT = {
 					root = {
 						intel = {
@@ -345,10 +413,18 @@ country_event = {
 					who = root
 					value < equivalent
 				}
-				NOT = { is_same_species = root }
-				NOT = { is_in_federation_with = root }
-				NOT = { has_defensive_pact = root }
-				NOT = { has_overlord = root }
+				NOT = {
+					is_same_species = root
+				}
+				NOT = {
+					is_in_federation_with = root
+				}
+				NOT = {
+					has_defensive_pact = root
+				}
+				NOT = {
+					has_overlord = root
+				}
 				NOT = {
 					root = {
 						intel = {
@@ -366,7 +442,9 @@ country_event = {
 				has_envoy_task = {
 					task = galactic_community
 				}
-				NOT = { has_leader_flag = respected_envoy }
+				NOT = {
+					has_leader_flag = respected_envoy
+				}
 			}
 			save_event_target_as = event_envoy
 			set_leader_flag = silly_envoy
@@ -375,7 +453,6 @@ country_event = {
 			FLAG = galactic_comedy
 		}
 	}
-
 	option = {
 		name = {
 			text = envoy_events.3.A
@@ -403,7 +480,6 @@ country_event = {
 				}
 			}
 		}
-
 		add_modifier = {
 			modifier = galactic_community_diplo_corps_is_a_joke
 			days = 3600
@@ -428,7 +504,9 @@ country_event = {
 				is_machine_empire = yes
 			}
 		}
-		add_resource = { influence = -50 }
+		add_resource = {
+			influence = -50
+		}
 		event_target:event_envoy = {
 			unassign_leader = this
 			set_cooldown = @envoy_punishment_cooldown
@@ -443,7 +521,9 @@ country_event = {
 	desc = {
 		text = envoy_events.4.desc
 		trigger = {
-			NOT = { has_ethic = ethic_gestalt_consciousness }
+			NOT = {
+				has_ethic = ethic_gestalt_consciousness
+			}
 		}
 	}
 	desc = {
@@ -460,13 +540,24 @@ country_event = {
 	}
 	picture = GFX_evt_galactic_community
 	show_sound = event_galactic_community
-
 	trigger = {
-		OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
-		NOT = { has_modifier = galactic_community_diplo_corps_respected }
-		NOT = { has_modifier = insulting_envoys }
-		NOT = { has_modifier = dishonorable_envoys }
-		NOT = { has_country_flag = recent_envoy_event }
+		OR = {
+			is_country_type = default
+			is_country_type = ascended_empire
+			is_country_type = lost_empire
+		}
+		NOT = {
+			has_modifier = galactic_community_diplo_corps_respected
+		}
+		NOT = {
+			has_modifier = insulting_envoys
+		}
+		NOT = {
+			has_modifier = dishonorable_envoys
+		}
+		NOT = {
+			has_country_flag = recent_envoy_event
+		}
 		is_galactic_community_member = yes
 		is_part_of_galactic_council = no
 		galactic_community_rank >= 5
@@ -475,13 +566,15 @@ country_event = {
 			has_envoy_task = {
 				task = galactic_community
 			}
-			NOT = { has_leader_flag = silly_envoy }
-			NOT = { has_leader_flag = respected_envoy }
+			NOT = {
+				has_leader_flag = silly_envoy
+			}
+			NOT = {
+				has_leader_flag = respected_envoy
+			}
 		}
 	}
-
 	is_triggered_only = yes
-
 	immediate = {
 		set_timed_country_flag = {
 			flag = recent_envoy_event
@@ -493,17 +586,19 @@ country_event = {
 				has_envoy_task = {
 					task = galactic_community
 				}
-				NOT = { has_leader_flag = silly_envoy }
-				NOT = { has_leader_flag = respected_envoy }
+				NOT = {
+					has_leader_flag = silly_envoy
+				}
+				NOT = {
+					has_leader_flag = respected_envoy
+				}
 			}
 			save_event_target_as = event_envoy
 			set_leader_flag = respected_envoy
 		}
 	}
-
 	option = {
 		name = EXCELLENT
-
 		add_modifier = {
 			modifier = galactic_community_diplo_corps_respected
 			days = 9000
@@ -518,14 +613,20 @@ country_event = {
 	desc = envoy_events.5.desc
 	picture = GFX_evt_assembly_fight
 	show_sound = event_assembly_fight
-
 	is_triggered_only = yes
-
 	trigger = {
-		OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+		OR = {
+			is_country_type = default
+			is_country_type = ascended_empire
+			is_country_type = lost_empire
+		}
 		is_gestalt = no
-		NOT = { has_ethic = ethic_fanatic_egalitarian } #just a bit weird
-		NOT = { has_country_flag = recent_envoy_event }
+		NOT = {
+			has_ethic = ethic_fanatic_egalitarian
+		}		#just a bit weird
+		NOT = {
+			has_country_flag = recent_envoy_event
+		}
 		any_relation = {
 			is_harming_relations_with = root
 			any_envoy = {
@@ -535,16 +636,23 @@ country_event = {
 				}
 			}
 			is_gestalt = no
-			NOT = { has_country_flag = recent_envoy_event }
+			NOT = {
+				has_country_flag = recent_envoy_event
+			}
 		}
 		any_pop_faction = {
-			NOT = { is_pop_faction_type = progressive }
-			NOT = { is_pop_faction_type = prosperity }
-			NOT = { is_pop_faction_type = xenoist }
+			NOT = {
+				is_pop_faction_type = progressive
+			}
+			NOT = {
+				is_pop_faction_type = prosperity
+			}
+			NOT = {
+				is_pop_faction_type = xenoist
+			}
 			is_owner_ethic_pop_faction = yes
 		}
 	}
-
 	immediate = {
 		set_timed_country_flag = {
 			flag = recent_envoy_event
@@ -560,7 +668,9 @@ country_event = {
 					}
 				}
 				is_gestalt = no
-				NOT = { has_country_flag = recent_envoy_event }
+				NOT = {
+					has_country_flag = recent_envoy_event
+				}
 			}
 			save_event_target_as = envoy_source
 			random_envoy = {
@@ -574,13 +684,11 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = envoy_events.5.A
 		add_resource = {
 			influence = -30
 		}
-
 		ai_chance = {
 			factor = 2
 			modifier = {
@@ -602,19 +710,23 @@ country_event = {
 	}
 	option = {
 		name = envoy_events.5.B
-
 		tooltip = {
 			add_modifier = {
 				modifier = kills_envoys
 				days = 3600
 			}
 		}
-
 		random_pop_faction = {
 			limit = {
-				NOT = { is_pop_faction_type = progressive }
-				NOT = { is_pop_faction_type = prosperity }
-				NOT = { is_pop_faction_type = xenoist }
+				NOT = {
+					is_pop_faction_type = progressive
+				}
+				NOT = {
+					is_pop_faction_type = prosperity
+				}
+				NOT = {
+					is_pop_faction_type = xenoist
+				}
 				is_owner_ethic_pop_faction = yes
 			}
 			add_modifier = {
@@ -622,7 +734,6 @@ country_event = {
 				days = 3600
 			}
 		}
-		
 		every_pop_faction = {
 			limit = {
 				OR = {
@@ -631,14 +742,19 @@ country_event = {
 					is_pop_faction_type = xenoist
 				}
 			}
-			add_modifier = { modifier = faction_modifier_envoy_murdered days = 3600 }
+			add_modifier = {
+				modifier = faction_modifier_envoy_murdered
+				days = 3600
+			}
 		}
-		
 		event_target:envoy_source = {
 			tooltip = {
 				if = {
 					limit = {
-						opinion_level = { who = root level >= good }
+						opinion_level = {
+							who = root
+							level >= good
+						}
 					}
 					add_opinion_modifier = {
 						who = root
@@ -651,14 +767,16 @@ country_event = {
 				}
 			}
 			hidden_effect = {
-				country_event = { id = envoy_events.6 days = 5 }
+				country_event = {
+					id = envoy_events.6
+					days = 5
+				}
 				set_timed_country_flag = {
 					flag = recent_envoy_event
 					days = 5400
 				}
 			}
 		}
-
 		tooltip = {
 			if = {
 				limit = {
@@ -674,7 +792,6 @@ country_event = {
 				}
 			}
 		}
-
 		ai_chance = {
 			factor = 1
 			modifier = {
@@ -708,15 +825,15 @@ country_event = {
 	desc = envoy_events.6.desc
 	picture = GFX_evt_assembly_fight
 	show_sound = event_assembly_fight
-
 	is_triggered_only = yes
-
 	option = {
 		name = envoy_events.6.A
-
 		if = {
 			limit = {
-				opinion_level = { who = from level >= good }
+				opinion_level = {
+					who = from
+					level >= good
+				}
 			}
 			add_opinion_modifier = {
 				who = from
@@ -754,15 +871,21 @@ country_event = {
 	id = envoy_events.7
 	title = envoy_events.7.name
 	desc = envoy_events.7.desc
-	
 	picture = GFX_evt_diplomatic_visit
 	show_sound = event_default
-	
 	trigger = {
-		OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+		OR = {
+			is_country_type = default
+			is_country_type = ascended_empire
+			is_country_type = lost_empire
+		}
 		is_xenophobe = yes
-		NOT = { has_valid_civic = civic_fanatic_purifiers }
-		NOT = { has_country_flag = recent_envoy_event }
+		NOT = {
+			has_valid_civic = civic_fanatic_purifiers
+		}
+		NOT = {
+			has_country_flag = recent_envoy_event
+		}
 		any_envoy = {
 			NOT = {
 				has_envoy_task = {
@@ -780,16 +903,30 @@ country_event = {
 						}
 					}
 					envoy_location_country = {
-						OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+						OR = {
+							is_country_type = default
+							is_country_type = ascended_empire
+							is_country_type = lost_empire
+						}
 						is_gestalt = no
-						NOT = { is_same_species = prev }
-						NOT = { is_same_species = root }
+						NOT = {
+							is_same_species = prev
+						}
+						NOT = {
+							is_same_species = root
+						}
 						any_relation = {
-							OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+							OR = {
+								is_country_type = default
+								is_country_type = ascended_empire
+								is_country_type = lost_empire
+							}
 							is_xenophile = yes
 							has_communications = root
 							is_at_war = no
-							NOT = { has_country_flag = recent_envoy_event }
+							NOT = {
+								has_country_flag = recent_envoy_event
+							}
 							has_policy_flag = refugees_allowed
 						}
 					}
@@ -800,16 +937,30 @@ country_event = {
 					}
 					root.federation = {
 						any_member = {
-							OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+							OR = {
+								is_country_type = default
+								is_country_type = ascended_empire
+								is_country_type = lost_empire
+							}
 							is_gestalt = no
-							NOT = { is_same_species = root }
-							NOT = { is_same_species = prevprev }
+							NOT = {
+								is_same_species = root
+							}
+							NOT = {
+								is_same_species = prevprev
+							}
 							any_relation = {
-								OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+								OR = {
+									is_country_type = default
+									is_country_type = ascended_empire
+									is_country_type = lost_empire
+								}
 								is_xenophile = yes
 								has_communications = root
 								is_at_war = no
-								NOT = { has_country_flag = recent_envoy_event }
+								NOT = {
+									has_country_flag = recent_envoy_event
+								}
 								has_policy_flag = refugees_allowed
 							}
 						}
@@ -820,17 +971,31 @@ country_event = {
 						task = galactic_community
 					}
 					any_country = {
-						OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+						OR = {
+							is_country_type = default
+							is_country_type = ascended_empire
+							is_country_type = lost_empire
+						}
 						is_gestalt = no
 						is_galactic_community_member = yes
-						NOT = { is_same_species = root }
-						NOT = { is_same_species = prev }
+						NOT = {
+							is_same_species = root
+						}
+						NOT = {
+							is_same_species = prev
+						}
 						any_relation = {
-							OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+							OR = {
+								is_country_type = default
+								is_country_type = ascended_empire
+								is_country_type = lost_empire
+							}
 							is_xenophile = yes
 							has_communications = root
 							is_at_war = no
-							NOT = { has_country_flag = recent_envoy_event }
+							NOT = {
+								has_country_flag = recent_envoy_event
+							}
 							has_policy_flag = refugees_allowed
 						}
 					}
@@ -838,15 +1003,12 @@ country_event = {
 			}
 		}
 	}
-
 	is_triggered_only = yes
-
 	immediate = {
 		set_timed_country_flag = {
 			flag = recent_envoy_event
 			days = 5400
 		}
-		
 		random_envoy = {
 			limit = {
 				NOT = {
@@ -865,16 +1027,30 @@ country_event = {
 							}
 						}
 						envoy_location_country = {
-							OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+							OR = {
+								is_country_type = default
+								is_country_type = ascended_empire
+								is_country_type = lost_empire
+							}
 							is_gestalt = no
-							NOT = { is_same_species = prev }
-							NOT = { is_same_species = root }
+							NOT = {
+								is_same_species = prev
+							}
+							NOT = {
+								is_same_species = root
+							}
 							any_relation = {
-								OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+								OR = {
+									is_country_type = default
+									is_country_type = ascended_empire
+									is_country_type = lost_empire
+								}
 								is_xenophile = yes
 								has_communications = root
 								is_at_war = no
-								NOT = { has_country_flag = recent_envoy_event }
+								NOT = {
+									has_country_flag = recent_envoy_event
+								}
 								has_policy_flag = refugees_allowed
 							}
 						}
@@ -885,16 +1061,30 @@ country_event = {
 						}
 						root.federation = {
 							any_member = {
-								OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+								OR = {
+									is_country_type = default
+									is_country_type = ascended_empire
+									is_country_type = lost_empire
+								}
 								is_gestalt = no
-								NOT = { is_same_species = root }
-								NOT = { is_same_species = prevprev }
+								NOT = {
+									is_same_species = root
+								}
+								NOT = {
+									is_same_species = prevprev
+								}
 								any_relation = {
-									OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+									OR = {
+										is_country_type = default
+										is_country_type = ascended_empire
+										is_country_type = lost_empire
+									}
 									is_xenophile = yes
 									has_communications = root
 									is_at_war = no
-									NOT = { has_country_flag = recent_envoy_event }
+									NOT = {
+										has_country_flag = recent_envoy_event
+									}
 									has_policy_flag = refugees_allowed
 								}
 							}
@@ -905,17 +1095,31 @@ country_event = {
 							task = galactic_community
 						}
 						any_country = {
-							OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+							OR = {
+								is_country_type = default
+								is_country_type = ascended_empire
+								is_country_type = lost_empire
+							}
 							is_gestalt = no
 							is_galactic_community_member = yes
-							NOT = { is_same_species = root }
-							NOT = { is_same_species = prev }
+							NOT = {
+								is_same_species = root
+							}
+							NOT = {
+								is_same_species = prev
+							}
 							any_relation = {
-								OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+								OR = {
+									is_country_type = default
+									is_country_type = ascended_empire
+									is_country_type = lost_empire
+								}
 								is_xenophile = yes
 								has_communications = root
 								is_at_war = no
-								NOT = { has_country_flag = recent_envoy_event }
+								NOT = {
+									has_country_flag = recent_envoy_event
+								}
 								has_policy_flag = refugees_allowed
 							}
 						}
@@ -934,16 +1138,30 @@ country_event = {
 						}
 					}
 					envoy_location_country = {
-						OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+						OR = {
+							is_country_type = default
+							is_country_type = ascended_empire
+							is_country_type = lost_empire
+						}
 						is_gestalt = no
-						NOT = { is_same_species = prev }
-						NOT = { is_same_species = root }
+						NOT = {
+							is_same_species = prev
+						}
+						NOT = {
+							is_same_species = root
+						}
 						any_relation = {
-							OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+							OR = {
+								is_country_type = default
+								is_country_type = ascended_empire
+								is_country_type = lost_empire
+							}
 							is_xenophile = yes
 							has_communications = root
 							is_at_war = no
-							NOT = { has_country_flag = recent_envoy_event }
+							NOT = {
+								has_country_flag = recent_envoy_event
+							}
 							has_policy_flag = refugees_allowed
 						}
 					}
@@ -959,16 +1177,30 @@ country_event = {
 					}
 					root.federation = {
 						any_member = {
-							OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+							OR = {
+								is_country_type = default
+								is_country_type = ascended_empire
+								is_country_type = lost_empire
+							}
 							is_gestalt = no
-							NOT = { is_same_species = root }
-							NOT = { is_same_species = prevprev }
+							NOT = {
+								is_same_species = root
+							}
+							NOT = {
+								is_same_species = prevprev
+							}
 							any_relation = {
-								OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+								OR = {
+									is_country_type = default
+									is_country_type = ascended_empire
+									is_country_type = lost_empire
+								}
 								is_xenophile = yes
 								has_communications = root
 								is_at_war = no
-								NOT = { has_country_flag = recent_envoy_event }
+								NOT = {
+									has_country_flag = recent_envoy_event
+								}
 								has_policy_flag = refugees_allowed
 							}
 						}
@@ -977,16 +1209,30 @@ country_event = {
 				root.federation = {
 					random_member = {
 						limit = {
-							OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+							OR = {
+								is_country_type = default
+								is_country_type = ascended_empire
+								is_country_type = lost_empire
+							}
 							is_gestalt = no
-							NOT = { is_same_species = root }
-							NOT = { is_same_species = prevprev }
+							NOT = {
+								is_same_species = root
+							}
+							NOT = {
+								is_same_species = prevprev
+							}
 							any_relation = {
-								OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+								OR = {
+									is_country_type = default
+									is_country_type = ascended_empire
+									is_country_type = lost_empire
+								}
 								is_xenophile = yes
 								has_communications = root
 								is_at_war = no
-								NOT = { has_country_flag = recent_envoy_event }
+								NOT = {
+									has_country_flag = recent_envoy_event
+								}
 								has_policy_flag = refugees_allowed
 							}
 						}
@@ -997,17 +1243,31 @@ country_event = {
 			else = {
 				random_country = {
 					limit = {
-						OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+						OR = {
+							is_country_type = default
+							is_country_type = ascended_empire
+							is_country_type = lost_empire
+						}
 						is_gestalt = no
 						is_galactic_community_member = yes
-						NOT = { is_same_species = root }
-						NOT = { is_same_species = prev }
+						NOT = {
+							is_same_species = root
+						}
+						NOT = {
+							is_same_species = prev
+						}
 						any_relation = {
-							OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+							OR = {
+								is_country_type = default
+								is_country_type = ascended_empire
+								is_country_type = lost_empire
+							}
 							is_xenophile = yes
 							has_communications = root
 							is_at_war = no
-							NOT = { has_country_flag = recent_envoy_event }
+							NOT = {
+								has_country_flag = recent_envoy_event
+							}
 							has_policy_flag = refugees_allowed
 						}
 					}
@@ -1019,11 +1279,17 @@ country_event = {
 		event_target:other_species_nation = {
 			random_relation = {
 				limit = {
-					OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+					OR = {
+						is_country_type = default
+						is_country_type = ascended_empire
+						is_country_type = lost_empire
+					}
 					is_xenophile = yes
 					has_communications = root
 					is_at_war = no
-					NOT = { has_country_flag = recent_envoy_event }
+					NOT = {
+						has_country_flag = recent_envoy_event
+					}
 					has_policy_flag = refugees_allowed
 				}
 				save_event_target_as = third_party
@@ -1081,7 +1347,10 @@ country_event = {
 		custom_tooltip = envoy_events.7.B.tooltip
 		hidden_effect = {
 			event_target:third_party = {
-				country_event = { id = envoy_events.8 days = 15 }
+				country_event = {
+					id = envoy_events.8
+					days = 15
+				}
 			}
 		}
 		ai_chance = {
@@ -1123,27 +1392,45 @@ country_event = {
 	id = envoy_events.15
 	title = envoy_events.15.name
 	desc = envoy_events.15.desc
-	
 	picture = GFX_evt_galactic_community
 	show_sound = event_galactic_community
-
 	trigger = {
-		OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
-		NOT = { has_country_flag = recent_envoy_event }
+		OR = {
+			is_country_type = default
+			is_country_type = ascended_empire
+			is_country_type = lost_empire
+		}
+		NOT = {
+			has_country_flag = recent_envoy_event
+		}
 		is_galactic_community_member = yes
 		is_gestalt = no
 		NOR = {
-			OR = { species_portrait = human species_portrait = human_legacy }
+			OR = {
+				species_portrait = human
+				species_portrait = human_legacy
+			}
 			has_country_flag = human_1
 			has_country_flag = human_2
 		}
 		any_country = {
 			is_galactic_community_member = yes
-			NOT = { is_in_federation_with = root }
-			NOT = { is_overlord_to = root }
-			NOT = { root = { is_overlord_to = prev } }
+			NOT = {
+				is_in_federation_with = root
+			}
+			NOT = {
+				is_overlord_to = root
+			}
+			NOT = {
+				root = {
+					is_overlord_to = prev
+				}
+			}
 			OR = {
-				OR = { species_portrait = human species_portrait = human_legacy }
+				OR = {
+					species_portrait = human
+					species_portrait = human_legacy
+				}
 				has_country_flag = human_1
 				has_country_flag = human_2
 			}
@@ -1155,9 +1442,7 @@ country_event = {
 			}
 		}
 	}
-
 	is_triggered_only = yes
-
 	immediate = {
 		set_timed_country_flag = {
 			flag = recent_envoy_event
@@ -1173,15 +1458,20 @@ country_event = {
 			save_event_target_as = event_envoy
 		}
 	}
-
 	option = {
 		name = envoy_events.15.A
-		
 		every_country = {
 			limit = {
-				OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
 				OR = {
-					OR = { species_portrait = human species_portrait = human_legacy }
+					is_country_type = default
+					is_country_type = ascended_empire
+					is_country_type = lost_empire
+				}
+				OR = {
+					OR = {
+						species_portrait = human
+						species_portrait = human_legacy
+					}
 					has_country_flag = human_1
 					has_country_flag = human_2
 					is_xenophile = yes
@@ -1205,11 +1495,11 @@ country_event = {
 	desc = {
 		text = envoy_events.100.desc.regular
 		trigger = {
-            NOR = {
-                is_unfriendly = yes
-                is_xenophobe = yes
-                has_ascension_perk = ap_become_the_crisis
-            }
+			NOR = {
+				is_unfriendly = yes
+				is_xenophobe = yes
+				has_ascension_perk = ap_become_the_crisis
+			}
 			event_target:scandalous_insult_country = {
 				is_gestalt = no
 			}
@@ -1218,11 +1508,11 @@ country_event = {
 	desc = {
 		text = envoy_events.100.desc.gestalt
 		trigger = {
-            NOR = {
-                is_unfriendly = yes
-                is_xenophobe = yes
-                has_ascension_perk = ap_become_the_crisis
-            }
+			NOR = {
+				is_unfriendly = yes
+				is_xenophobe = yes
+				has_ascension_perk = ap_become_the_crisis
+			}
 			event_target:scandalous_insult_country = {
 				is_gestalt = yes
 			}
@@ -1231,34 +1521,41 @@ country_event = {
 	desc = {
 		text = envoy_events.100.desc.hostile
 		trigger = {
-            OR = {
-                is_unfriendly = yes
-                is_xenophobe = yes
-                has_ascension_perk = ap_become_the_crisis
-            }
+			OR = {
+				is_unfriendly = yes
+				is_xenophobe = yes
+				has_ascension_perk = ap_become_the_crisis
+			}
 		}
 	}
 	picture = GFX_evt_assembly_fight
 	show_sound = event_assembly_fight
 	is_triggered_only = yes
-
 	trigger = {
 		is_country_type = default
 		OR = {
 			exists = event_target:scandalous_insult_country
 			AND = {
-				NOT = { exists = event_target:scandalous_insult_country }
-				NOT = { has_country_flag = recent_envoy_event }
+				NOT = {
+					exists = event_target:scandalous_insult_country
+				}
+				NOT = {
+					has_country_flag = recent_envoy_event
+				}
 			}
 		}
 		OR = {
 			exists = event_target:scandalous_insult_country
 			any_playable_country = {
-				NOT = { is_same_value = root } #galcom check would return true for root
+				NOT = {
+					is_same_value = root
+				}				#galcom check would return true for root
 				OR = {
 					AND = {
 						is_galactic_community_member = yes
-						ROOT = { is_galactic_community_member = yes }
+						ROOT = {
+							is_galactic_community_member = yes
+						}
 						any_envoy = {
 							has_envoy_task = {
 								task = galactic_community
@@ -1267,7 +1564,9 @@ country_event = {
 					}
 					AND = {
 						has_federation = yes
-						federation = { is_same_value = root.federation }
+						federation = {
+							is_same_value = root.federation
+						}
 						any_envoy = {
 							has_envoy_task = {
 								task = federation
@@ -1279,19 +1578,25 @@ country_event = {
 			}
 		}
 	}
-
 	immediate = {
-		if = { #not fired by Smear Campaign
+		if = {
+			#not fired by Smear Campaign
 			limit = {
-				NOT = { exists = event_target:scandalous_insult_country }
+				NOT = {
+					exists = event_target:scandalous_insult_country
+				}
 			}
 			random_playable_country = {
 				limit = {
-					NOT = { is_same_value = root } #galcom check would return true for root
+					NOT = {
+						is_same_value = root
+					}					#galcom check would return true for root
 					OR = {
 						AND = {
 							is_galactic_community_member = yes
-							ROOT = { is_galactic_community_member = yes }
+							ROOT = {
+								is_galactic_community_member = yes
+							}
 							any_envoy = {
 								has_envoy_task = {
 									task = galactic_community
@@ -1300,7 +1605,9 @@ country_event = {
 						}
 						AND = {
 							has_federation = yes
-							federation = { is_same_value = root.federation }
+							federation = {
+								is_same_value = root.federation
+							}
 							any_envoy = {
 								has_envoy_task = {
 									task = federation
@@ -1313,23 +1620,27 @@ country_event = {
 				save_event_target_as = scandalous_insult_country
 			}
 		}
-		event_target:scandalous_insult_country = { #For diplo incident operation
-			save_event_target_as = offended_party #actually not, but the player really doesn't need to know this
+		event_target:scandalous_insult_country = {
+			#For diplo incident operation
+			save_event_target_as = offended_party			#actually not, but the player really doesn't need to know this
 		}
 		set_timed_country_flag = {
 			flag = recent_envoy_event
-			days = 2160 #6 years; shorter than usual
+			days = 2160			#6 years; shorter than usual
 		}
 		set_espionage_diplo_incident_success_flag = {
 			FLAG = insulting_envoy
 		}
 	}
-
-	option = { #Take offence (mirrors operation.3011)
+	option = {
+		#Take offence (mirrors operation.3011)
 		name = envoy_events.100.a
 		if = {
 			limit = {
-				opinion_level = { who = event_target:scandalous_insult_country level >= good }
+				opinion_level = {
+					who = event_target:scandalous_insult_country
+					level >= good
+				}
 			}
 			add_opinion_modifier = {
 				who = event_target:scandalous_insult_country
@@ -1340,22 +1651,30 @@ country_event = {
 			who = event_target:scandalous_insult_country
 			modifier = opinion_smear_campaign_insulted
 		}
-        if = {
-            limit = {
-                event_target:scandalous_insult_country = {
-                    has_federation = yes
-                    federation = { is_same_value = root.federation }
-                }
-            }
-            federation = { add_cohesion = -10 }
-        }
+		if = {
+			limit = {
+				event_target:scandalous_insult_country = {
+					has_federation = yes
+					federation = {
+						is_same_value = root.federation
+					}
+				}
+			}
+			federation = {
+				add_cohesion = -10
+			}
+		}
 		hidden_effect = {
 			event_target:scandalous_insult_country = {
-				country_event = { id = envoy_events.101 days = 1 }
+				country_event = {
+					id = envoy_events.101
+					days = 1
+				}
 			}
 		}
 	}
-	option = { #Ignore
+	option = {
+		#Ignore
 		name = {
 			text = envoy_events.100.b
 			trigger = {
@@ -1382,7 +1701,9 @@ country_event = {
 				is_gestalt = yes
 			}
 		}
-		add_resource = { influence = -30 }
+		add_resource = {
+			influence = -30
+		}
 	}
 }
 
@@ -1395,26 +1716,33 @@ country_event = {
 	picture = GFX_evt_alien_segregation
 	show_sound = event_assembly_fight
 	is_triggered_only = yes
-
 	trigger = {
 		exists = from
 	}
-
 	option = {
 		name = {
 			text = envoy_events.101.a
-			trigger = { is_unfriendly = no }
+			trigger = {
+				is_unfriendly = no
+			}
 		}
 		name = {
 			text = INTRIGUING
-			trigger = { is_unfriendly = yes }
+			trigger = {
+				is_unfriendly = yes
+			}
 		}
-		add_resource = { influence = -50 }
+		add_resource = {
+			influence = -50
+		}
 		tooltip = {
 			from = {
 				if = {
 					limit = {
-						opinion_level = { who = root level >= good }
+						opinion_level = {
+							who = root
+							level >= good
+						}
 					}
 					add_opinion_modifier = {
 						who = root
@@ -1430,9 +1758,7 @@ country_event = {
 	}
 }
 
-
 ### Moar scandals (by Pierre du Plessis)
-
 #Galcom: Lobbyists
 country_event = {
 	id = envoy_events.200
@@ -1440,9 +1766,7 @@ country_event = {
 	desc = envoy_events.200.desc
 	picture = GFX_evt_smear_campaign
 	show_sound = event_administrative_work
-
 	is_triggered_only = yes
-
 	trigger = {
 		is_country_type = default
 		is_gestalt = no
@@ -1451,9 +1775,10 @@ country_event = {
 				task = galactic_community
 			}
 		}
-		NOT = { has_country_flag = recent_envoy_event }
+		NOT = {
+			has_country_flag = recent_envoy_event
+		}
 	}
-
 	immediate = {
 		set_timed_country_flag = {
 			flag = recent_envoy_event
@@ -1471,10 +1796,8 @@ country_event = {
 			FLAG = galcom_lobbying
 		}
 	}
-
 	option = {
 		name = envoy_events.200.A
-
 		add_monthly_resource_mult = {
 			resource = energy
 			value = @tier1materialreward
@@ -1486,10 +1809,11 @@ country_event = {
 			years = 10
 		}
 	}
-
 	option = {
 		name = envoy_events.3.C1
-		add_resource = { influence = -50 }
+		add_resource = {
+			influence = -50
+		}
 		event_target:event_envoy = {
 			unassign_leader = this
 			set_cooldown = @envoy_punishment_cooldown
@@ -1504,24 +1828,25 @@ country_event = {
 	desc = envoy_events.205.desc
 	picture = GFX_evt_smear_campaign
 	show_sound = event_administrative_work
-
 	is_triggered_only = yes
-
 	trigger = {
 		is_country_type = default
 		is_gestalt = no
 		any_envoy = {
 			NOT = {
-				has_envoy_task = { #just in case
+				has_envoy_task = {
+					#just in case
 					task = first_contact
 				}
 			}
-			NOT = { has_leader_flag = respected_envoy }
+			NOT = {
+				has_leader_flag = respected_envoy
+			}
 			OR = {
 				AND = {
 					exists = envoy_location_country
 					envoy_location_country = {
-						is_scope_type = country #future-proofing, just in case we do anything funky
+						is_scope_type = country						#future-proofing, just in case we do anything funky
 						NOR = {
 							is_same_value = root
 							is_same_species = root
@@ -1546,9 +1871,10 @@ country_event = {
 				}
 			}
 		}
-		NOT = { has_country_flag = recent_envoy_event }
+		NOT = {
+			has_country_flag = recent_envoy_event
+		}
 	}
-
 	immediate = {
 		set_timed_country_flag = {
 			flag = recent_envoy_event
@@ -1557,16 +1883,19 @@ country_event = {
 		random_envoy = {
 			limit = {
 				NOT = {
-					has_envoy_task = { #just in case
+					has_envoy_task = {
+						#just in case
 						task = first_contact
 					}
 				}
-				NOT = { has_leader_flag = respected_envoy }
+				NOT = {
+					has_leader_flag = respected_envoy
+				}
 				OR = {
 					AND = {
 						exists = envoy_location_country
 						envoy_location_country = {
-							is_scope_type = country #future-proofing, just in case we do anything funky
+							is_scope_type = country							#future-proofing, just in case we do anything funky
 							NOR = {
 								is_same_value = root
 								is_same_species = root
@@ -1615,7 +1944,6 @@ country_event = {
 			FLAG = insulting_envoy
 		}
 	}
-
 	option = {
 		name = {
 			trigger = {
@@ -1633,11 +1961,13 @@ country_event = {
 			}
 			text = envoy_events.205.A.xenophobe
 		}
-
 		event_target:envoy_country = {
 			if = {
 				limit = {
-					opinion_level = { who = root level >= good }
+					opinion_level = {
+						who = root
+						level >= good
+					}
 				}
 				add_opinion_modifier = {
 					who = root
@@ -1649,12 +1979,10 @@ country_event = {
 				modifier = opinion_envoy_insult_taken
 			}
 		}
-		
 		add_modifier = {
 			modifier = insulting_envoys
 			days = 3600
 		}
-
 		if = {
 			limit = {
 				OR = {
@@ -1679,10 +2007,11 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = envoy_events.3.C1
-		add_resource = { influence = -50 }
+		add_resource = {
+			influence = -50
+		}
 		event_target:event_envoy = {
 			unassign_leader = this
 			set_cooldown = @envoy_punishment_cooldown
@@ -1698,48 +2027,65 @@ country_event = {
 		trigger = {
 			switch = {
 				trigger = has_country_flag
-				envoy_event_authoritarian = { text = envoy_events.210.desc.authoritarian }
-				envoy_event_egalitarian = { text = envoy_events.210.desc.egalitarian }
-				envoy_event_xenophile = { text = envoy_events.210.desc.xenophile }
-				envoy_event_xenophobe = { text = envoy_events.210.desc.xenophobe }
-				envoy_event_materialist = { text = envoy_events.210.desc.materialist }
-				envoy_event_spiritualist = { text = envoy_events.210.desc.spiritualist }
-				envoy_event_pacifist = { text = envoy_events.210.desc.pacifist }
-				envoy_event_militarist = { text = envoy_events.210.desc.militarist }
+				envoy_event_authoritarian = {
+					text = envoy_events.210.desc.authoritarian
+				}
+				envoy_event_egalitarian = {
+					text = envoy_events.210.desc.egalitarian
+				}
+				envoy_event_xenophile = {
+					text = envoy_events.210.desc.xenophile
+				}
+				envoy_event_xenophobe = {
+					text = envoy_events.210.desc.xenophobe
+				}
+				envoy_event_materialist = {
+					text = envoy_events.210.desc.materialist
+				}
+				envoy_event_spiritualist = {
+					text = envoy_events.210.desc.spiritualist
+				}
+				envoy_event_pacifist = {
+					text = envoy_events.210.desc.pacifist
+				}
+				envoy_event_militarist = {
+					text = envoy_events.210.desc.militarist
+				}
 			}
 		}
 	}
 	picture = GFX_evt_acquire_asset
 	show_sound = event_default
-
 	is_triggered_only = yes
-
 	trigger = {
 		is_country_type = default
 		is_gestalt = no
 		count_pop_faction = {
-			count >= 3 #i.e. has ruling factions
+			count >= 3			#i.e. has ruling factions
 		}
 		any_envoy = {
 			NOT = {
-				has_envoy_task = { #just in case
+				has_envoy_task = {
+					#just in case
 					task = first_contact
 				}
 			}
-			NOT = { has_leader_flag = respected_envoy }
-
+			NOT = {
+				has_leader_flag = respected_envoy
+			}
 			exists = envoy_location_country
 			envoy_location_country = {
-				is_scope_type = country #future-proofing, just in case we do anything funky
+				is_scope_type = country				#future-proofing, just in case we do anything funky
 				has_opposing_ethics = {
 					COUNTRY1 = this
 					COUNTRY2 = root
 				}
 			}
 		}
-		NOT = { has_country_flag = recent_envoy_event }
+		NOT = {
+			has_country_flag = recent_envoy_event
+		}
 	}
-
 	immediate = {
 		set_timed_country_flag = {
 			flag = recent_envoy_event
@@ -1748,15 +2094,17 @@ country_event = {
 		random_envoy = {
 			limit = {
 				NOT = {
-					has_envoy_task = { #just in case
+					has_envoy_task = {
+						#just in case
 						task = first_contact
 					}
 				}
-				NOT = { has_leader_flag = respected_envoy }
-	
+				NOT = {
+					has_leader_flag = respected_envoy
+				}
 				exists = envoy_location_country
 				envoy_location_country = {
-					is_scope_type = country #future-proofing, just in case we do anything funky
+					is_scope_type = country					#future-proofing, just in case we do anything funky
 					has_opposing_ethics = {
 						COUNTRY1 = this
 						COUNTRY2 = root
@@ -1782,7 +2130,9 @@ country_event = {
 				}
 				modifier = {
 					factor = 0.01
-					NOT = { has_faction = technologist }
+					NOT = {
+						has_faction = technologist
+					}
 				}
 				modifier = {
 					factor = 3
@@ -1807,7 +2157,9 @@ country_event = {
 				}
 				modifier = {
 					factor = 0.01
-					NOT = { has_faction = traditionalist }
+					NOT = {
+						has_faction = traditionalist
+					}
 				}
 				modifier = {
 					factor = 3
@@ -1832,7 +2184,9 @@ country_event = {
 				}
 				modifier = {
 					factor = 0.01
-					NOT = { has_faction = totalitarian }
+					NOT = {
+						has_faction = totalitarian
+					}
 				}
 				modifier = {
 					factor = 3
@@ -1857,7 +2211,9 @@ country_event = {
 				}
 				modifier = {
 					factor = 0.01
-					NOT = { has_faction = progressive }
+					NOT = {
+						has_faction = progressive
+					}
 				}
 				modifier = {
 					factor = 3
@@ -1882,7 +2238,9 @@ country_event = {
 				}
 				modifier = {
 					factor = 0.01
-					NOT = { has_faction = xenoist }
+					NOT = {
+						has_faction = xenoist
+					}
 				}
 				modifier = {
 					factor = 3
@@ -1939,7 +2297,9 @@ country_event = {
 				}
 				modifier = {
 					factor = 0.01
-					NOT = { has_faction = imperialist }
+					NOT = {
+						has_faction = imperialist
+					}
 				}
 				modifier = {
 					factor = 3
@@ -1964,7 +2324,9 @@ country_event = {
 				}
 				modifier = {
 					factor = 0.01
-					NOT = { has_faction = prosperity }
+					NOT = {
+						has_faction = prosperity
+					}
 				}
 				modifier = {
 					factor = 3
@@ -1977,21 +2339,19 @@ country_event = {
 				}
 			}
 		}
-
 		set_espionage_diplo_incident_success_flag = {
 			FLAG = wayward_envoy
 		}
 	}
-
 	option = {
 		name = envoy_events.210.A
-
-		
 		switch = {
 			trigger = has_country_flag
 			envoy_event_authoritarian = {
 				random_pop_faction = {
-					limit = { is_pop_faction_type = totalitarian }
+					limit = {
+						is_pop_faction_type = totalitarian
+					}
 					add_modifier = {
 						modifier = faction_upset
 						years = 10
@@ -2000,7 +2360,9 @@ country_event = {
 			}
 			envoy_event_egalitarian = {
 				random_pop_faction = {
-					limit = { is_pop_faction_type = progressive }
+					limit = {
+						is_pop_faction_type = progressive
+					}
 					add_modifier = {
 						modifier = faction_upset
 						years = 10
@@ -2009,7 +2371,9 @@ country_event = {
 			}
 			envoy_event_xenophile = {
 				random_pop_faction = {
-					limit = { is_pop_faction_type = xenoist }
+					limit = {
+						is_pop_faction_type = xenoist
+					}
 					add_modifier = {
 						modifier = faction_upset
 						years = 10
@@ -2018,7 +2382,7 @@ country_event = {
 			}
 			envoy_event_xenophobe = {
 				random_pop_faction = {
-					limit = { 
+					limit = {
 						OR = {
 							is_pop_faction_type = supremacist
 							is_pop_faction_type = isolationist
@@ -2032,7 +2396,9 @@ country_event = {
 			}
 			envoy_event_materialist = {
 				random_pop_faction = {
-					limit = { is_pop_faction_type = technologist }
+					limit = {
+						is_pop_faction_type = technologist
+					}
 					add_modifier = {
 						modifier = faction_upset
 						years = 10
@@ -2041,7 +2407,9 @@ country_event = {
 			}
 			envoy_event_spiritualist = {
 				random_pop_faction = {
-					limit = { is_pop_faction_type = traditionalist }
+					limit = {
+						is_pop_faction_type = traditionalist
+					}
 					add_modifier = {
 						modifier = faction_upset
 						years = 10
@@ -2050,7 +2418,9 @@ country_event = {
 			}
 			envoy_event_pacifist = {
 				random_pop_faction = {
-					limit = { is_pop_faction_type = progressive }
+					limit = {
+						is_pop_faction_type = progressive
+					}
 					add_modifier = {
 						modifier = faction_upset
 						years = 10
@@ -2059,7 +2429,9 @@ country_event = {
 			}
 			envoy_event_militarist = {
 				random_pop_faction = {
-					limit = { is_pop_faction_type = imperialist }
+					limit = {
+						is_pop_faction_type = imperialist
+					}
 					add_modifier = {
 						modifier = faction_upset
 						years = 10
@@ -2067,26 +2439,24 @@ country_event = {
 				}
 			}
 		}
-		
 		add_modifier = {
 			modifier = outspoken_envoy
 			days = 3600
 		}
-
 		ai_chance = {
 			factor = 0
 		}
 	}
-
 	option = {
 		name = envoy_events.3.C1
-		add_resource = { influence = -50 }
+		add_resource = {
+			influence = -50
+		}
 		event_target:event_envoy = {
 			unassign_leader = this
 			set_cooldown = @envoy_punishment_cooldown
 		}
 	}
-
 	after = {
 		remove_country_flag = envoy_event_authoritarian
 		remove_country_flag = envoy_event_egalitarian
@@ -2106,14 +2476,14 @@ country_event = {
 	desc = envoy_events.215.desc
 	picture = GFX_evt_cover_blown
 	show_sound = event_default
-
 	is_triggered_only = yes
-
 	trigger = {
 		is_country_type = default
 		is_gestalt = no
 		any_envoy = {
-			species = { is_robotic = no }
+			species = {
+				is_robotic = no
+			}
 			OR = {
 				AND = {
 					has_envoy_task = {
@@ -2145,11 +2515,14 @@ country_event = {
 					}
 				}
 			}
-			NOT = { has_leader_flag = respected_envoy }
+			NOT = {
+				has_leader_flag = respected_envoy
+			}
 		}
-		NOT = { has_country_flag = recent_envoy_event }
+		NOT = {
+			has_country_flag = recent_envoy_event
+		}
 	}
-
 	immediate = {
 		set_timed_country_flag = {
 			flag = recent_envoy_event
@@ -2157,7 +2530,9 @@ country_event = {
 		}
 		random_envoy = {
 			limit = {
-				species = { is_robotic = no }
+				species = {
+					is_robotic = no
+				}
 				OR = {
 					AND = {
 						has_envoy_task = {
@@ -2189,10 +2564,11 @@ country_event = {
 						}
 					}
 				}
-				NOT = { has_leader_flag = respected_envoy }
+				NOT = {
+					has_leader_flag = respected_envoy
+				}
 			}
 			save_event_target_as = event_envoy
-
 			if = {
 				limit = {
 					has_envoy_task = {
@@ -2232,13 +2608,14 @@ country_event = {
 			FLAG = substance_abuse
 		}
 	}
-
 	option = {
 		name = envoy_events.215.A
 		custom_tooltip = envoy_events.215.A.tooltip
 		hidden_effect = {
 			event_target:event_envoy = {
-				kill_leader = { show_notification = no }
+				kill_leader = {
+					show_notification = no
+				}
 			}
 		}
 		add_modifier = {
@@ -2246,10 +2623,11 @@ country_event = {
 			days = 3600
 		}
 	}
-
 	option = {
 		name = envoy_events.3.C1
-		add_resource = { influence = -50 }
+		add_resource = {
+			influence = -50
+		}
 		event_target:event_envoy = {
 			unassign_leader = this
 			set_cooldown = @envoy_punishment_cooldown
@@ -2266,37 +2644,64 @@ country_event = {
 			hidden:event_target:offended_party = {
 				switch = {
 					trigger = is_species_class
-					HUM = { text = envoy_events.220.desc.hum }
-					MAM = { text = envoy_events.220.desc.mam }
-					FUN = { text = envoy_events.220.desc.fun }
-					AVI = { text = envoy_events.220.desc.avi }
-					PLANT = { text = envoy_events.220.desc.plant }
-					ART = { text = envoy_events.220.desc.art }
-					REP = { text = envoy_events.220.desc.rep }
-					MOL = { text = envoy_events.220.desc.mol }
-					LITHOID = { text = envoy_events.220.desc.lit }
-					NECROID = { text = envoy_events.220.desc.nec }
-					MACHINE = { text = envoy_events.220.desc.robot }
-					ROBOT = { text = envoy_events.220.desc.robot }
-					default = { text = envoy_events.220.desc.hum }
+					HUM = {
+						text = envoy_events.220.desc.hum
+					}
+					MAM = {
+						text = envoy_events.220.desc.mam
+					}
+					FUN = {
+						text = envoy_events.220.desc.fun
+					}
+					AVI = {
+						text = envoy_events.220.desc.avi
+					}
+					PLANT = {
+						text = envoy_events.220.desc.plant
+					}
+					ART = {
+						text = envoy_events.220.desc.art
+					}
+					REP = {
+						text = envoy_events.220.desc.rep
+					}
+					MOL = {
+						text = envoy_events.220.desc.mol
+					}
+					LITHOID = {
+						text = envoy_events.220.desc.lit
+					}
+					NECROID = {
+						text = envoy_events.220.desc.nec
+					}
+					MACHINE = {
+						text = envoy_events.220.desc.robot
+					}
+					ROBOT = {
+						text = envoy_events.220.desc.robot
+					}
+					default = {
+						text = envoy_events.220.desc.hum
+					}
 				}
 			}
 		}
 	}
 	picture = GFX_evt_alien_segregation
 	show_sound = event_administrative_work
-
 	is_triggered_only = yes
-
 	trigger = {
 		is_country_type = default
 		any_envoy = {
 			NOT = {
-				has_envoy_task = { #just in case
+				has_envoy_task = {
+					#just in case
 					task = first_contact
 				}
 			}
-			NOT = { has_leader_flag = respected_envoy }
+			NOT = {
+				has_leader_flag = respected_envoy
+			}
 			exists = envoy_location_country
 			envoy_location_country = {
 				is_scope_type = country
@@ -2308,9 +2713,10 @@ country_event = {
 				}
 			}
 		}
-		NOT = { has_country_flag = recent_envoy_event }
+		NOT = {
+			has_country_flag = recent_envoy_event
+		}
 	}
-
 	immediate = {
 		set_timed_country_flag = {
 			flag = recent_envoy_event
@@ -2319,11 +2725,14 @@ country_event = {
 		random_envoy = {
 			limit = {
 				NOT = {
-					has_envoy_task = { #just in case
+					has_envoy_task = {
+						#just in case
 						task = first_contact
 					}
 				}
-				NOT = { has_leader_flag = respected_envoy }
+				NOT = {
+					has_leader_flag = respected_envoy
+				}
 				exists = envoy_location_country
 				envoy_location_country = {
 					is_scope_type = country
@@ -2344,7 +2753,6 @@ country_event = {
 			FLAG = insulting_envoy
 		}
 	}
-
 	option = {
 		name = {
 			trigger = {
@@ -2362,11 +2770,13 @@ country_event = {
 			}
 			text = envoy_events.205.A.xenophobe
 		}
-
 		event_target:offended_party = {
 			if = {
 				limit = {
-					opinion_level = { who = root level >= good }
+					opinion_level = {
+						who = root
+						level >= good
+					}
 				}
 				add_opinion_modifier = {
 					who = root
@@ -2378,12 +2788,10 @@ country_event = {
 				modifier = opinion_envoy_insult_taken
 			}
 		}
-		
 		add_modifier = {
 			modifier = insulting_envoys
 			days = 3600
 		}
-
 		if = {
 			limit = {
 				OR = {
@@ -2408,10 +2816,11 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = envoy_events.3.C1
-		add_resource = { influence = -50 }
+		add_resource = {
+			influence = -50
+		}
 		event_target:event_envoy = {
 			unassign_leader = this
 			set_cooldown = @envoy_punishment_cooldown
@@ -2420,26 +2829,26 @@ country_event = {
 }
 
 #Salacious Affair
-
 country_event = {
 	id = envoy_events.225
 	title = envoy_events.225.name
 	desc = envoy_events.225.desc
 	picture = GFX_evt_cover_blown
 	show_sound = event_bad_omen
-
 	is_triggered_only = yes
-
 	trigger = {
 		is_country_type = default
 		is_gestalt = no
 		any_envoy = {
 			NOT = {
-				has_envoy_task = { #just in case
+				has_envoy_task = {
+					#just in case
 					task = first_contact
 				}
 			}
-			NOT = { has_leader_flag = respected_envoy }
+			NOT = {
+				has_leader_flag = respected_envoy
+			}
 			exists = envoy_location_country
 			envoy_location_country = {
 				NOR = {
@@ -2448,9 +2857,10 @@ country_event = {
 				}
 			}
 		}
-		NOT = { has_country_flag = recent_envoy_event }
+		NOT = {
+			has_country_flag = recent_envoy_event
+		}
 	}
-
 	immediate = {
 		set_timed_country_flag = {
 			flag = recent_envoy_event
@@ -2459,11 +2869,14 @@ country_event = {
 		random_envoy = {
 			limit = {
 				NOT = {
-					has_envoy_task = { #just in case
+					has_envoy_task = {
+						#just in case
 						task = first_contact
 					}
 				}
-				NOT = { has_leader_flag = respected_envoy }
+				NOT = {
+					has_leader_flag = respected_envoy
+				}
 				exists = envoy_location_country
 				envoy_location_country = {
 					NOR = {
@@ -2475,14 +2888,13 @@ country_event = {
 			save_event_target_as = event_envoy
 			envoy_location_country = {
 				save_event_target_as = scandal_empire
-				save_event_target_as = offended_party #for espionage purposes
+				save_event_target_as = offended_party				#for espionage purposes
 			}
 		}
 		set_espionage_diplo_incident_success_flag = {
 			FLAG = salacious_affair
 		}
 	}
-
 	option = {
 		name = envoy_events.225.A
 		custom_tooltip = envoy_events.225.A.tooltip
@@ -2515,7 +2927,6 @@ country_event = {
 			factor = 3
 		}
 	}
-
 	option = {
 		name = envoy_events.225.B
 		event_target:event_envoy = {
@@ -2525,13 +2936,17 @@ country_event = {
 				set_leader_flag = fugitive_envoy@event_target:scandal_empire
 			}
 		}
-		
-		add_modifier = { modifier = dishonorable_envoys days = 7200 }
-		
+		add_modifier = {
+			modifier = dishonorable_envoys
+			days = 7200
+		}
 		event_target:scandal_empire = {
 			if = {
 				limit = {
-					opinion_level = { who = root level >= good }
+					opinion_level = {
+						who = root
+						level >= good
+					}
 				}
 				add_opinion_modifier = {
 					who = root

@@ -12,46 +12,61 @@
 #		example_trigger = yes
 #	}
 #
-
 # Country scope | from = Operation
 counter_espionage_operation_disguise_disadvantage = {
-    OR = {
-        AND = {
-            is_gestalt = no
-            root.from.target = { is_gestalt = yes }
-        }
-        AND = {
-            is_gestalt = yes
-            root.from.target = { is_gestalt = no }
-        }
-        AND = {
-            owner_species = {
-                has_trait = trait_cybernetic
-            }
-            root.from.target = {
-                owner_species = { NOT = { has_trait = trait_cybernetic } }
-            }
-        }
-        AND = {
-            owner_species = {
-                has_trait = trait_psionic
-            }
-            root.from.target = {
-                owner_species = { NOT = { has_trait = trait_psionic } }
-            }
-        }
-    }
+	OR = {
+		AND = {
+			is_gestalt = no
+			root.from.target = {
+				is_gestalt = yes
+			}
+		}
+		AND = {
+			is_gestalt = yes
+			root.from.target = {
+				is_gestalt = no
+			}
+		}
+		AND = {
+			owner_species = {
+				has_trait = trait_cybernetic
+			}
+			root.from.target = {
+				owner_species = {
+					NOT = {
+						has_trait = trait_cybernetic
+					}
+				}
+			}
+		}
+		AND = {
+			owner_species = {
+				has_trait = trait_psionic
+			}
+			root.from.target = {
+				owner_species = {
+					NOT = {
+						has_trait = trait_psionic
+					}
+				}
+			}
+		}
+	}
 	NOT = {
 		any_spynetwork = {
-			owner = { is_same_value = root.from.target }
-			target = { is_same_value = root }
+			owner = {
+				is_same_value = root.from.target
+			}
+			target = {
+				is_same_value = root
+			}
 			NOR = {
-                has_espionage_asset = asset_bureaucrat
-                has_espionage_asset = asset_clerk
-                has_espionage_asset = asset_ephapse_relay
-                has_espionage_asset = asset_behavioral_regulator
-                has_espionage_asset = asset_engagement_protocol
-            }
+				has_espionage_asset = asset_bureaucrat
+				has_espionage_asset = asset_clerk
+				has_espionage_asset = asset_ephapse_relay
+				has_espionage_asset = asset_behavioral_regulator
+				has_espionage_asset = asset_engagement_protocol
+			}
 		}
 	}
 }
@@ -73,17 +88,17 @@ has_starbase_military_infrastructure = {
 		has_starbase_module = orbital_ring_extra_large_battery
 		has_starbase_module = orbital_ring_titanic_battery
 		has_starbase_building = command_center
-        has_starbase_building = communications_jammer
+		has_starbase_building = communications_jammer
 		has_starbase_building = deep_space_black_site
-        has_starbase_building = disruption_field
-        has_starbase_building = listening_post
-        has_starbase_building = fleet_academy
-        has_starbase_building = naval_logistics_office
-        has_starbase_building = target_uplink_computer
+		has_starbase_building = disruption_field
+		has_starbase_building = listening_post
+		has_starbase_building = fleet_academy
+		has_starbase_building = naval_logistics_office
+		has_starbase_building = target_uplink_computer
 		has_starbase_building = starbase_fortifications
-        has_starbase_building = starbase_minefield
-        has_starbase_building = offspring_outlook
-        has_starbase_building = mercenary_garrison
+		has_starbase_building = starbase_minefield
+		has_starbase_building = offspring_outlook
+		has_starbase_building = mercenary_garrison
 	}
 }
 
@@ -91,13 +106,13 @@ has_starbase_trade_infrastructure = {
 	OR = {
 		has_starbase_module = trading_hub
 		has_starbase_building = offworld_trading_company
-        has_starbase_building = resource_silo
-        has_starbase_building = trader_proxy_office
-        has_starbase_building = warp_fluctuator
-        has_starbase_building = trade_patrol
+		has_starbase_building = resource_silo
+		has_starbase_building = trader_proxy_office
+		has_starbase_building = warp_fluctuator
+		has_starbase_building = trade_patrol
 		has_starbase_building = customs_office
-        has_starbase_building = customs_office_criminal
-        has_starbase_building = customs_office_gestalt
+		has_starbase_building = customs_office_criminal
+		has_starbase_building = customs_office_gestalt
 		has_starbase_building = ring_trade_hub
 		has_starbase_building = ring_security_center
 	}
@@ -109,37 +124,41 @@ has_starbase_civic_infrastructure = {
 		has_starbase_module = orbital_ring_habitation
 		has_starbase_module = orbital_lab
 		has_starbase_building = art_college
-        has_starbase_building = black_hole_observatory
+		has_starbase_building = black_hole_observatory
 		has_starbase_building = crew_quarters
-        has_starbase_building = curator_think_tank
-        has_starbase_building = hydroponics_bay
-        has_starbase_building = nebula_refinery
+		has_starbase_building = curator_think_tank
+		has_starbase_building = hydroponics_bay
+		has_starbase_building = nebula_refinery
 		has_starbase_building = climate_control
 		has_starbase_building = space_production
 		has_starbase_building = pulsar_hole_observatory
-        has_starbase_building = protostar_observatory
-        has_starbase_building = dathnak_embassy
-        has_starbase_building = ice_mining_station
-        has_starbase_building = transit_hub
-        has_starbase_building = salvager_workshop
-        has_starbase_building = ring_alloys_hub
-        has_starbase_building = ring_bureaucracy_hub
-        has_starbase_building = ring_consumer_goods_hub
-        has_starbase_building = ring_super_computer
-        has_starbase_building = orbital_institute
-        has_starbase_building = ring_nanite_refinery
-        has_starbase_building = ring_energy_hub
-        has_starbase_building = ring_food_hub
-        has_starbase_building = ring_maintenance_hub
-        has_starbase_building = ring_minerals_hub
-        has_starbase_building = ring_synapse_hub
+		has_starbase_building = protostar_observatory
+		has_starbase_building = dathnak_embassy
+		has_starbase_building = ice_mining_station
+		has_starbase_building = transit_hub
+		has_starbase_building = salvager_workshop
+		has_starbase_building = ring_alloys_hub
+		has_starbase_building = ring_bureaucracy_hub
+		has_starbase_building = ring_consumer_goods_hub
+		has_starbase_building = ring_super_computer
+		has_starbase_building = orbital_institute
+		has_starbase_building = ring_nanite_refinery
+		has_starbase_building = ring_energy_hub
+		has_starbase_building = ring_food_hub
+		has_starbase_building = ring_maintenance_hub
+		has_starbase_building = ring_minerals_hub
+		has_starbase_building = ring_synapse_hub
 	}
 }
 
 # Country scope
 empire_can_abduct_pops = {
 	is_homicidal = no
-	OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+	OR = {
+		is_country_type = default
+		is_country_type = ascended_empire
+		is_country_type = lost_empire
+	}
 	OR = {
 		AND = {
 			has_policy_flag = slavery_allowed
@@ -154,9 +173,17 @@ empire_can_abduct_pops = {
 
 empire_can_rescue_pops = {
 	is_homicidal = no
-	OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
-	NOT = { has_policy_flag = slavery_allowed }
-	NOT = { has_policy_flag = purge_allowed }
+	OR = {
+		is_country_type = default
+		is_country_type = ascended_empire
+		is_country_type = lost_empire
+	}
+	NOT = {
+		has_policy_flag = slavery_allowed
+	}
+	NOT = {
+		has_policy_flag = purge_allowed
+	}
 	OR = {
 		is_egalitarian = yes
 		is_xenophile = yes
@@ -168,7 +195,9 @@ empire_can_rescue_pops = {
 pop_can_be_rescued = {
 	is_sapient = yes
 	is_robot_pop = no
-	NOT = { has_trait = trait_hive_mind }
+	NOT = {
+		has_trait = trait_hive_mind
+	}
 	OR = {
 		is_enslaved = yes
 		is_being_purged = yes
@@ -201,7 +230,9 @@ target_has_antagonistic_ethics = {
 						is_materialist = yes
 						is_machine_empire = yes
 					}
-					prev.target = { is_spiritualist = yes }
+					prev.target = {
+						is_spiritualist = yes
+					}
 				}
 				AND = {
 					prev.target = {
@@ -210,7 +241,9 @@ target_has_antagonistic_ethics = {
 					is_spiritualist = yes
 				}
 				AND = {
-					prev.target = { is_militarist = yes }
+					prev.target = {
+						is_militarist = yes
+					}
 					OR = {
 						is_pacifist = yes
 						has_ai_personality = open_hive_mind
@@ -247,7 +280,9 @@ target_has_antagonistic_ethics = {
 						is_authoritarian = yes
 						AND = {
 							is_hive_empire = yes
-							NOT = { has_ai_personality = open_hive_mind }
+							NOT = {
+								has_ai_personality = open_hive_mind
+							}
 						}
 					}
 					prev.target = {
@@ -267,6 +302,7 @@ target_has_antagonistic_ethics = {
 		}
 	}
 }
+
 target_has_similar_ethics = {
 	custom_tooltip = has_similar_ethics
 	hidden_trigger = {
@@ -277,7 +313,9 @@ target_has_similar_ethics = {
 						is_materialist = yes
 						is_machine_empire = yes
 					}
-					prev.target = { is_materialist = yes }
+					prev.target = {
+						is_materialist = yes
+					}
 				}
 				AND = {
 					prev.target = {
@@ -286,7 +324,9 @@ target_has_similar_ethics = {
 					is_spiritualist = yes
 				}
 				AND = {
-					prev.target = { is_pacifist = yes }
+					prev.target = {
+						is_pacifist = yes
+					}
 					OR = {
 						is_pacifist = yes
 						has_ai_personality = open_hive_mind
@@ -323,7 +363,9 @@ target_has_similar_ethics = {
 						is_authoritarian = yes
 						AND = {
 							is_hive_empire = yes
-							NOT = { has_ai_personality = open_hive_mind }
+							NOT = {
+								has_ai_personality = open_hive_mind
+							}
 						}
 					}
 					prev.target = {
@@ -340,6 +382,7 @@ target_has_similar_ethics = {
 		}
 	}
 }
+
 # spynetwork scope
 can_encourage_pacifist = {
 	owner = {
@@ -355,12 +398,20 @@ can_encourage_pacifist = {
 			AND = {
 				has_origin = origin_scion
 				exists = overlord
-				overlord = { is_xenophile = yes }
+				overlord = {
+					is_xenophile = yes
+				}
 			}
 		}
 	}
-	target = { is_pacifist = no NOT = { has_modifier = influence_campaign_pacifist } }
+	target = {
+		is_pacifist = no
+		NOT = {
+			has_modifier = influence_campaign_pacifist
+		}
+	}
 }
+
 can_encourage_militarist = {
 	owner = {
 		OR = {
@@ -368,8 +419,14 @@ can_encourage_militarist = {
 			is_civic_militarist = yes
 		}
 	}
-	target = { is_militarist = no NOT = { has_modifier = influence_campaign_militarist } }
+	target = {
+		is_militarist = no
+		NOT = {
+			has_modifier = influence_campaign_militarist
+		}
+	}
 }
+
 can_encourage_materialist = {
 	owner = {
 		OR = {
@@ -388,8 +445,14 @@ can_encourage_materialist = {
 			}
 		}
 	}
-	target = { is_materialist = no NOT = { has_modifier = influence_campaign_materialist } }
+	target = {
+		is_materialist = no
+		NOT = {
+			has_modifier = influence_campaign_materialist
+		}
+	}
 }
+
 can_encourage_spiritualist = {
 	owner = {
 		OR = {
@@ -398,22 +461,36 @@ can_encourage_spiritualist = {
 			AND = {
 				has_origin = origin_scion
 				exists = overlord
-				overlord = { is_spiritualist = yes }
+				overlord = {
+					is_spiritualist = yes
+				}
 			}
 		}
 	}
-	target = { is_spiritualist = no NOT = { has_modifier = influence_campaign_spiritualist } }
+	target = {
+		is_spiritualist = no
+		NOT = {
+			has_modifier = influence_campaign_spiritualist
+		}
+	}
 }
+
 can_encourage_egalitarian = {
 	owner = {
 		OR = {
 			is_egalitarian = yes
 			is_civic_has_meritocracy = yes
-			has_valid_civic = civic_machine_servitor # to encourage banning slavery
+			has_valid_civic = civic_machine_servitor			# to encourage banning slavery
 		}
 	}
-	target = { is_egalitarian = no NOT = { has_modifier = influence_campaign_egalitarian } }
+	target = {
+		is_egalitarian = no
+		NOT = {
+			has_modifier = influence_campaign_egalitarian
+		}
+	}
 }
+
 can_encourage_authoritarian = {
 	owner = {
 		OR = {
@@ -423,8 +500,14 @@ can_encourage_authoritarian = {
 			is_civic_authoritarian = yes
 		}
 	}
-	target = { is_authoritarian = no NOT = { has_modifier = influence_campaign_authoritarian } }
+	target = {
+		is_authoritarian = no
+		NOT = {
+			has_modifier = influence_campaign_authoritarian
+		}
+	}
 }
+
 can_encourage_xenophile = {
 	owner = {
 		OR = {
@@ -440,12 +523,20 @@ can_encourage_xenophile = {
 			AND = {
 				has_origin = origin_scion
 				exists = overlord
-				overlord = { is_xenophile = yes }
+				overlord = {
+					is_xenophile = yes
+				}
 			}
 		}
 	}
-	target = { is_xenophile = no NOT = { has_modifier = influence_campaign_xenophile } }
+	target = {
+		is_xenophile = no
+		NOT = {
+			has_modifier = influence_campaign_xenophile
+		}
+	}
 }
+
 can_encourage_xenophobe = {
 	owner = {
 		OR = {
@@ -454,7 +545,12 @@ can_encourage_xenophobe = {
 			has_ascension_perk = ap_become_the_crisis
 		}
 	}
-	target = { is_xenophobe = no NOT = { has_modifier = influence_campaign_xenophobe } }
+	target = {
+		is_xenophobe = no
+		NOT = {
+			has_modifier = influence_campaign_xenophobe
+		}
+	}
 }
 
 can_encourage_ethics = {
@@ -472,13 +568,37 @@ can_encourage_ethics = {
 
 can_encourage_ethics_continue = {
 	OR = {
-		AND = { can_encourage_pacifist = yes has_espionage_operation_flag = encourage_pacifist }
-		AND = { can_encourage_militarist = yes has_espionage_operation_flag = encourage_militarist }
-		AND = { can_encourage_materialist = yes has_espionage_operation_flag = encourage_materialist }
-		AND = { can_encourage_spiritualist = yes has_espionage_operation_flag = encourage_spiritualist }
-		AND = { can_encourage_egalitarian = yes has_espionage_operation_flag = encourage_egalitarian}
-		AND = { can_encourage_authoritarian = yes has_espionage_operation_flag = encourage_authoritarian }
-		AND = { can_encourage_xenophile = yes has_espionage_operation_flag = encourage_xenophile }
-		AND = { can_encourage_xenophobe = yes has_espionage_operation_flag = encourage_xenophobe }
+		AND = {
+			can_encourage_pacifist = yes
+			has_espionage_operation_flag = encourage_pacifist
+		}
+		AND = {
+			can_encourage_militarist = yes
+			has_espionage_operation_flag = encourage_militarist
+		}
+		AND = {
+			can_encourage_materialist = yes
+			has_espionage_operation_flag = encourage_materialist
+		}
+		AND = {
+			can_encourage_spiritualist = yes
+			has_espionage_operation_flag = encourage_spiritualist
+		}
+		AND = {
+			can_encourage_egalitarian = yes
+			has_espionage_operation_flag = encourage_egalitarian
+		}
+		AND = {
+			can_encourage_authoritarian = yes
+			has_espionage_operation_flag = encourage_authoritarian
+		}
+		AND = {
+			can_encourage_xenophile = yes
+			has_espionage_operation_flag = encourage_xenophile
+		}
+		AND = {
+			can_encourage_xenophobe = yes
+			has_espionage_operation_flag = encourage_xenophobe
+		}
 	}
 }

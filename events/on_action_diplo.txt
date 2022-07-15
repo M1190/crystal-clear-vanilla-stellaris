@@ -3,20 +3,19 @@
 # Expanded Game Start Events
 #
 ############################
-
 namespace = onactiondiplo
-
 # Set original owner of systems
 country_event = {
 	id = onactiondiplo.1
 	hide_window = yes
 	fire_only_once = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = fromfrom
 		from = {
-			NOT = { has_star_flag = has_original_owner }
+			NOT = {
+				has_star_flag = has_original_owner
+			}
 		}
 		fromfrom = {
 			# won't punish primitives for going into the space age
@@ -26,7 +25,6 @@ country_event = {
 			}
 		}
 	}
-	
 	immediate = {
 		from = {
 			set_star_flag = has_original_owner
@@ -40,14 +38,15 @@ country_event = {
 	id = onactiondiplo.2
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		OR = {
 			is_active_resolution = "resolution_lawandorder_administrative_subsidies"
 			is_active_resolution = "resolution_lawandorder_free_migration"
 			is_active_resolution = "resolution_lawandorder_informed_governance"
 			AND = {
-				FROM = { leader_class = scientist }
+				FROM = {
+					leader_class = scientist
+				}
 				OR = {
 					is_active_resolution = "resolution_republic_science_academy"
 					is_active_resolution = "resolution_empire_science_academy"
@@ -55,9 +54,10 @@ country_event = {
 			}
 		}
 	}
-	
 	immediate = {
-		FROM = { add_skill = 1 }
+		FROM = {
+			add_skill = 1
+		}
 	}
 }
 
@@ -81,7 +81,6 @@ country_event = {
 			}
 		}
 	}
-
 	immediate = {
 		if = {
 			limit = {
@@ -98,14 +97,22 @@ country_event = {
 				}
 			}
 			remove_country_flag = attacked_neutrals
-			set_timed_country_flag = { flag = attacked_neutrals days = 7200 }
+			set_timed_country_flag = {
+				flag = attacked_neutrals
+				days = 7200
+			}
 		}
 		if = {
 			limit = {
-				from = { is_country_type = vluur }
+				from = {
+					is_country_type = vluur
+				}
 			}
 			remove_country_flag = attacked_void_clouds
-			set_timed_country_flag = { flag = attacked_void_clouds days = 7200 }
+			set_timed_country_flag = {
+				flag = attacked_void_clouds
+				days = 7200
+			}
 		}
 	}
 }
@@ -115,7 +122,6 @@ country_event = {
 	id = onactiondiplo.4
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		is_galactic_community_member = yes
 		OR = {
@@ -128,7 +134,9 @@ country_event = {
 		OR = {
 			AND = {
 				is_in_breach_of_any = no
-				NOT = { has_modifier = resolution_denounced }
+				NOT = {
+					has_modifier = resolution_denounced
+				}
 			}
 			NOR = {
 				is_active_resolution = resolution_sanctions_economic_1
@@ -137,68 +145,129 @@ country_event = {
 			}
 		}
 	}
-
 	immediate = {
 		# food
 		if = {
 			limit = {
-				resource_stockpile_compare = { resource = food value < 500 }
-				has_monthly_income = { resource = food value < 1 }
+				resource_stockpile_compare = {
+					resource = food
+					value < 500
+				}
+				has_monthly_income = {
+					resource = food
+					value < 1
+				}
 			}
 			every_country = {
 				limit = {
 					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = food value > 500 }
-					has_monthly_income = { resource = food value > 1 }
+					resource_stockpile_compare = {
+						resource = food
+						value > 500
+					}
+					has_monthly_income = {
+						resource = food
+						value > 1
+					}
 				}
 				add_resource = {
 					food = -50
 					influence = 1
 				}
-				ROOT = { add_resource = { food = 50 } }
-				ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+				ROOT = {
+					add_resource = {
+						food = 50
+					}
+				}
+				ROOT = {
+					add_opinion_modifier = {
+						who = prev
+						modifier = opinion_mutual_assistance_gave_aid
+					}
+				}
 				if = {
-					limit = { is_active_resolution = resolution_greatergood_universal_prosperity_mandate }
+					limit = {
+						is_active_resolution = resolution_greatergood_universal_prosperity_mandate
+					}
 					add_resource = {
 						food = -50
 						influence = 1
 					}
-					ROOT = { add_resource = { food = 50 } }
-					ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+					ROOT = {
+						add_resource = {
+							food = 50
+						}
+					}
+					ROOT = {
+						add_opinion_modifier = {
+							who = prev
+							modifier = opinion_mutual_assistance_gave_aid
+						}
+					}
 				}
 			}
 		}
-		
 		# minerals
 		if = {
 			limit = {
-				resource_stockpile_compare = { resource = minerals value < 500 }
-				has_monthly_income = { resource = minerals value < 1 }
+				resource_stockpile_compare = {
+					resource = minerals
+					value < 500
+				}
+				has_monthly_income = {
+					resource = minerals
+					value < 1
+				}
 			}
 			every_country = {
 				limit = {
 					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = minerals value > 500 }
-					has_monthly_income = { resource = minerals value > 1 }
+					resource_stockpile_compare = {
+						resource = minerals
+						value > 500
+					}
+					has_monthly_income = {
+						resource = minerals
+						value > 1
+					}
 				}
 				add_resource = {
 					minerals = -50
 					influence = 1
 				}
-				ROOT = { add_resource = { minerals = 50 } }
-				ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+				ROOT = {
+					add_resource = {
+						minerals = 50
+					}
+				}
+				ROOT = {
+					add_opinion_modifier = {
+						who = prev
+						modifier = opinion_mutual_assistance_gave_aid
+					}
+				}
 				if = {
-					limit = { is_active_resolution = resolution_greatergood_universal_prosperity_mandate }
+					limit = {
+						is_active_resolution = resolution_greatergood_universal_prosperity_mandate
+					}
 					add_resource = {
 						minerals = -50
 						influence = 1
 					}
-					ROOT = { add_resource = { minerals = 50 } }
-					ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+					ROOT = {
+						add_resource = {
+							minerals = 50
+						}
+					}
+					ROOT = {
+						add_opinion_modifier = {
+							who = prev
+							modifier = opinion_mutual_assistance_gave_aid
+						}
+					}
 				}
 			}
 		}
-		
 		# energy
 		if = {
 			limit = {
@@ -208,33 +277,64 @@ country_event = {
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
 					is_active_resolution = "resolution_galacticcooperation_sanctity_of_life"
 				}
-				resource_stockpile_compare = { resource = energy value < 500 }
-				has_monthly_income = { resource = energy value < 1 }
+				resource_stockpile_compare = {
+					resource = energy
+					value < 500
+				}
+				has_monthly_income = {
+					resource = energy
+					value < 1
+				}
 			}
 			every_country = {
 				limit = {
 					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = energy value > 500 }
-					has_monthly_income = { resource = energy value > 1 }
+					resource_stockpile_compare = {
+						resource = energy
+						value > 500
+					}
+					has_monthly_income = {
+						resource = energy
+						value > 1
+					}
 				}
 				add_resource = {
 					energy = -50
 					influence = 1
 				}
-				ROOT = { add_resource = { energy = 50 } }
-				ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+				ROOT = {
+					add_resource = {
+						energy = 50
+					}
+				}
+				ROOT = {
+					add_opinion_modifier = {
+						who = prev
+						modifier = opinion_mutual_assistance_gave_aid
+					}
+				}
 				if = {
-					limit = { is_active_resolution = resolution_greatergood_universal_prosperity_mandate }
+					limit = {
+						is_active_resolution = resolution_greatergood_universal_prosperity_mandate
+					}
 					add_resource = {
 						energy = -50
 						influence = 1
 					}
-					ROOT = { add_resource = { energy = 50 } }
-					ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+					ROOT = {
+						add_resource = {
+							energy = 50
+						}
+					}
+					ROOT = {
+						add_opinion_modifier = {
+							who = prev
+							modifier = opinion_mutual_assistance_gave_aid
+						}
+					}
 				}
 			}
 		}
-		
 		# consumer goods
 		if = {
 			limit = {
@@ -244,33 +344,64 @@ country_event = {
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
 					is_active_resolution = "resolution_galacticcooperation_sanctity_of_life"
 				}
-				resource_stockpile_compare = { resource = consumer_goods value < 250 }
-				has_monthly_income = { resource = consumer_goods value < 1 }
+				resource_stockpile_compare = {
+					resource = consumer_goods
+					value < 250
+				}
+				has_monthly_income = {
+					resource = consumer_goods
+					value < 1
+				}
 			}
 			every_country = {
 				limit = {
 					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = consumer_goods value > 250 }
-					has_monthly_income = { resource = consumer_goods value > 1 }
+					resource_stockpile_compare = {
+						resource = consumer_goods
+						value > 250
+					}
+					has_monthly_income = {
+						resource = consumer_goods
+						value > 1
+					}
 				}
 				add_resource = {
 					consumer_goods = -25
 					influence = 1
 				}
-				ROOT = { add_resource = { consumer_goods = 25 } }
-				ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+				ROOT = {
+					add_resource = {
+						consumer_goods = 25
+					}
+				}
+				ROOT = {
+					add_opinion_modifier = {
+						who = prev
+						modifier = opinion_mutual_assistance_gave_aid
+					}
+				}
 				if = {
-					limit = { is_active_resolution = resolution_greatergood_universal_prosperity_mandate }
+					limit = {
+						is_active_resolution = resolution_greatergood_universal_prosperity_mandate
+					}
 					add_resource = {
 						consumer_goods = -25
 						influence = 1
 					}
-					ROOT = { add_resource = { consumer_goods = 25 } }
-					ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+					ROOT = {
+						add_resource = {
+							consumer_goods = 25
+						}
+					}
+					ROOT = {
+						add_opinion_modifier = {
+							who = prev
+							modifier = opinion_mutual_assistance_gave_aid
+						}
+					}
 				}
 			}
 		}
-		
 		# motes
 		if = {
 			limit = {
@@ -279,33 +410,64 @@ country_event = {
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
 					is_active_resolution = "resolution_galacticcooperation_sanctity_of_life"
 				}
-				resource_stockpile_compare = { resource = volatile_motes value < 100 }
-				has_monthly_income = { resource = volatile_motes value < 1 }
+				resource_stockpile_compare = {
+					resource = volatile_motes
+					value < 100
+				}
+				has_monthly_income = {
+					resource = volatile_motes
+					value < 1
+				}
 			}
 			every_country = {
 				limit = {
 					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = volatile_motes value > 100 }
-					has_monthly_income = { resource = volatile_motes value > 1 }
+					resource_stockpile_compare = {
+						resource = volatile_motes
+						value > 100
+					}
+					has_monthly_income = {
+						resource = volatile_motes
+						value > 1
+					}
 				}
 				add_resource = {
 					volatile_motes = -4
 					influence = 1
 				}
-				ROOT = { add_resource = { volatile_motes = 4 } }
-				ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+				ROOT = {
+					add_resource = {
+						volatile_motes = 4
+					}
+				}
+				ROOT = {
+					add_opinion_modifier = {
+						who = prev
+						modifier = opinion_mutual_assistance_gave_aid
+					}
+				}
 				if = {
-					limit = { is_active_resolution = resolution_greatergood_universal_prosperity_mandate }
+					limit = {
+						is_active_resolution = resolution_greatergood_universal_prosperity_mandate
+					}
 					add_resource = {
 						volatile_motes = -4
 						influence = 1
 					}
-					ROOT = { add_resource = { volatile_motes = 4 } }
-					ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+					ROOT = {
+						add_resource = {
+							volatile_motes = 4
+						}
+					}
+					ROOT = {
+						add_opinion_modifier = {
+							who = prev
+							modifier = opinion_mutual_assistance_gave_aid
+						}
+					}
 				}
 			}
 		}
-		
 		# gas
 		if = {
 			limit = {
@@ -314,33 +476,64 @@ country_event = {
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
 					is_active_resolution = "resolution_galacticcooperation_sanctity_of_life"
 				}
-				resource_stockpile_compare = { resource = exotic_gases value < 100 }
-				has_monthly_income = { resource = exotic_gases value < 1 }
+				resource_stockpile_compare = {
+					resource = exotic_gases
+					value < 100
+				}
+				has_monthly_income = {
+					resource = exotic_gases
+					value < 1
+				}
 			}
 			every_country = {
 				limit = {
 					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = exotic_gases value > 100 }
-					has_monthly_income = { resource = exotic_gases value > 1 }
+					resource_stockpile_compare = {
+						resource = exotic_gases
+						value > 100
+					}
+					has_monthly_income = {
+						resource = exotic_gases
+						value > 1
+					}
 				}
 				add_resource = {
 					exotic_gases = -4
 					influence = 1
 				}
-				ROOT = { add_resource = { exotic_gases = 4 } }
-				ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+				ROOT = {
+					add_resource = {
+						exotic_gases = 4
+					}
+				}
+				ROOT = {
+					add_opinion_modifier = {
+						who = prev
+						modifier = opinion_mutual_assistance_gave_aid
+					}
+				}
 				if = {
-					limit = { is_active_resolution = resolution_greatergood_universal_prosperity_mandate }
+					limit = {
+						is_active_resolution = resolution_greatergood_universal_prosperity_mandate
+					}
 					add_resource = {
 						exotic_gases = -4
 						influence = 1
 					}
-					ROOT = { add_resource = { exotic_gases = 4 } }
-					ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+					ROOT = {
+						add_resource = {
+							exotic_gases = 4
+						}
+					}
+					ROOT = {
+						add_opinion_modifier = {
+							who = prev
+							modifier = opinion_mutual_assistance_gave_aid
+						}
+					}
 				}
 			}
 		}
-		
 		# crystals
 		if = {
 			limit = {
@@ -349,33 +542,64 @@ country_event = {
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
 					is_active_resolution = "resolution_galacticcooperation_sanctity_of_life"
 				}
-				resource_stockpile_compare = { resource = rare_crystals value < 100 }
-				has_monthly_income = { resource = rare_crystals value < 1 }
+				resource_stockpile_compare = {
+					resource = rare_crystals
+					value < 100
+				}
+				has_monthly_income = {
+					resource = rare_crystals
+					value < 1
+				}
 			}
 			every_country = {
 				limit = {
 					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = rare_crystals value > 100 }
-					has_monthly_income = { resource = rare_crystals value > 1 }
+					resource_stockpile_compare = {
+						resource = rare_crystals
+						value > 100
+					}
+					has_monthly_income = {
+						resource = rare_crystals
+						value > 1
+					}
 				}
 				add_resource = {
 					rare_crystals = -4
 					influence = 1
 				}
-				ROOT = { add_resource = { rare_crystals = 4 } }
-				ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+				ROOT = {
+					add_resource = {
+						rare_crystals = 4
+					}
+				}
+				ROOT = {
+					add_opinion_modifier = {
+						who = prev
+						modifier = opinion_mutual_assistance_gave_aid
+					}
+				}
 				if = {
-					limit = { is_active_resolution = resolution_greatergood_universal_prosperity_mandate }
+					limit = {
+						is_active_resolution = resolution_greatergood_universal_prosperity_mandate
+					}
 					add_resource = {
 						rare_crystals = -4
 						influence = 1
 					}
-					ROOT = { add_resource = { rare_crystals = 4 } }
-					ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+					ROOT = {
+						add_resource = {
+							rare_crystals = 4
+						}
+					}
+					ROOT = {
+						add_opinion_modifier = {
+							who = prev
+							modifier = opinion_mutual_assistance_gave_aid
+						}
+					}
 				}
 			}
 		}
-		
 		# dark matter
 		if = {
 			limit = {
@@ -383,34 +607,65 @@ country_event = {
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
 					is_active_resolution = "resolution_galacticcooperation_sanctity_of_life"
 				}
-				resource_stockpile_compare = { resource = sr_dark_matter value < 100 }
-				has_monthly_income = { resource = sr_dark_matter value < 1 }
+				resource_stockpile_compare = {
+					resource = sr_dark_matter
+					value < 100
+				}
+				has_monthly_income = {
+					resource = sr_dark_matter
+					value < 1
+				}
 				has_technology = tech_mine_dark_matter
 			}
 			every_country = {
 				limit = {
 					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = sr_dark_matter value > 100 }
-					has_monthly_income = { resource = sr_dark_matter value > 1 }
+					resource_stockpile_compare = {
+						resource = sr_dark_matter
+						value > 100
+					}
+					has_monthly_income = {
+						resource = sr_dark_matter
+						value > 1
+					}
 				}
 				add_resource = {
 					sr_dark_matter = -1
 					influence = 1
 				}
-				ROOT = { add_resource = { sr_dark_matter = 1 } }
-				ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+				ROOT = {
+					add_resource = {
+						sr_dark_matter = 1
+					}
+				}
+				ROOT = {
+					add_opinion_modifier = {
+						who = prev
+						modifier = opinion_mutual_assistance_gave_aid
+					}
+				}
 				if = {
-					limit = { is_active_resolution = resolution_greatergood_universal_prosperity_mandate }
+					limit = {
+						is_active_resolution = resolution_greatergood_universal_prosperity_mandate
+					}
 					add_resource = {
 						sr_dark_matter = -1
 						influence = 1
 					}
-					ROOT = { add_resource = { sr_dark_matter = 1 } }
-					ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+					ROOT = {
+						add_resource = {
+							sr_dark_matter = 1
+						}
+					}
+					ROOT = {
+						add_opinion_modifier = {
+							who = prev
+							modifier = opinion_mutual_assistance_gave_aid
+						}
+					}
 				}
 			}
 		}
-		
 		# zro
 		if = {
 			limit = {
@@ -418,35 +673,66 @@ country_event = {
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
 					is_active_resolution = "resolution_galacticcooperation_sanctity_of_life"
 				}
-				resource_stockpile_compare = { resource = sr_zro value < 100 }
-				has_monthly_income = { resource = sr_zro value < 1 }
+				resource_stockpile_compare = {
+					resource = sr_zro
+					value < 100
+				}
+				has_monthly_income = {
+					resource = sr_zro
+					value < 1
+				}
 				has_technology = tech_mine_zro
 				is_robot_empire = no
 			}
 			every_country = {
 				limit = {
 					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = sr_zro value > 100 }
-					has_monthly_income = { resource = sr_zro value > 1 }
+					resource_stockpile_compare = {
+						resource = sr_zro
+						value > 100
+					}
+					has_monthly_income = {
+						resource = sr_zro
+						value > 1
+					}
 				}
 				add_resource = {
 					sr_zro = -1
 					influence = 1
 				}
-				ROOT = { add_resource = { sr_zro = 1 } }
-				ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+				ROOT = {
+					add_resource = {
+						sr_zro = 1
+					}
+				}
+				ROOT = {
+					add_opinion_modifier = {
+						who = prev
+						modifier = opinion_mutual_assistance_gave_aid
+					}
+				}
 				if = {
-					limit = { is_active_resolution = resolution_greatergood_universal_prosperity_mandate }
+					limit = {
+						is_active_resolution = resolution_greatergood_universal_prosperity_mandate
+					}
 					add_resource = {
 						sr_zro = -1
 						influence = 1
 					}
-					ROOT = { add_resource = { sr_zro = 1 } }
-					ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+					ROOT = {
+						add_resource = {
+							sr_zro = 1
+						}
+					}
+					ROOT = {
+						add_opinion_modifier = {
+							who = prev
+							modifier = opinion_mutual_assistance_gave_aid
+						}
+					}
 				}
 			}
 		}
-		
 		# living metal
 		if = {
 			limit = {
@@ -454,30 +740,62 @@ country_event = {
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
 					is_active_resolution = "resolution_galacticcooperation_sanctity_of_life"
 				}
-				resource_stockpile_compare = { resource = sr_living_metal value < 100 }
-				has_monthly_income = { resource = sr_living_metal value < 1 }
+				resource_stockpile_compare = {
+					resource = sr_living_metal
+					value < 100
+				}
+				has_monthly_income = {
+					resource = sr_living_metal
+					value < 1
+				}
 				has_technology = tech_mine_living_metal
 			}
 			every_country = {
 				limit = {
 					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = sr_living_metal value > 100 }
-					has_monthly_income = { resource = sr_living_metal value > 1 }
+					resource_stockpile_compare = {
+						resource = sr_living_metal
+						value > 100
+					}
+					has_monthly_income = {
+						resource = sr_living_metal
+						value > 1
+					}
 				}
 				add_resource = {
 					sr_living_metal = -1
 					influence = 1
 				}
-				ROOT = { add_resource = { sr_living_metal = 1 } }
-				ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+				ROOT = {
+					add_resource = {
+						sr_living_metal = 1
+					}
+				}
+				ROOT = {
+					add_opinion_modifier = {
+						who = prev
+						modifier = opinion_mutual_assistance_gave_aid
+					}
+				}
 				if = {
-					limit = { is_active_resolution = resolution_greatergood_universal_prosperity_mandate }
+					limit = {
+						is_active_resolution = resolution_greatergood_universal_prosperity_mandate
+					}
 					add_resource = {
 						sr_living_metal = -1
 						influence = 1
 					}
-					ROOT = { add_resource = { sr_living_metal = 1 } }
-					ROOT = { add_opinion_modifier = { who = prev modifier = opinion_mutual_assistance_gave_aid } }
+					ROOT = {
+						add_resource = {
+							sr_living_metal = 1
+						}
+					}
+					ROOT = {
+						add_opinion_modifier = {
+							who = prev
+							modifier = opinion_mutual_assistance_gave_aid
+						}
+					}
 				}
 			}
 		}
@@ -489,7 +807,6 @@ country_event = {
 	id = onactiondiplo.5
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		OR = {
 			is_active_resolution = "resolution_galacticcooperation_pan_galactic_migration"
@@ -498,11 +815,12 @@ country_event = {
 			is_active_resolution = "resolution_galacticcooperation_sanctity_of_life"
 		}
 	}
-
 	immediate = {
 		if = {
 			limit = {
-				NOT = { has_global_flag = expanded_pops_active }
+				NOT = {
+					has_global_flag = expanded_pops_active
+				}
 				is_galactic_community_member = yes
 			}
 			galactic_cooperation_migration_update = yes
@@ -512,11 +830,11 @@ country_event = {
 		}
 	}
 }
+
 country_event = {
 	id = onactiondiplo.6
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		is_galactic_community_member = yes
 		OR = {
@@ -525,9 +843,10 @@ country_event = {
 			is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
 			is_active_resolution = "resolution_galacticcooperation_sanctity_of_life"
 		}
-		any_relation = { has_diplo_migration_treaty = root }
+		any_relation = {
+			has_diplo_migration_treaty = root
+		}
 	}
-
 	immediate = {
 		random_list = {
 			1 = {
@@ -538,7 +857,9 @@ country_event = {
 					limit = {
 						is_sapient = yes
 						is_robot_pop = no
-						has_migration_control = { value = no }
+						has_migration_control = {
+							value = no
+						}
 						is_enslaved = no
 						is_being_purged = no
 						OR = {
@@ -551,11 +872,19 @@ country_event = {
 				random_relation = {
 					limit = {
 						has_diplo_migration_treaty = root
-						any_owned_planet = { habitability = { who = event_target:greater_than_ourselves_target_pop value >= 0.5 } }
+						any_owned_planet = {
+							habitability = {
+								who = event_target:greater_than_ourselves_target_pop
+								value >= 0.5
+							}
+						}
 					}
 					random_owned_planet = {
 						limit = {
-							habitability = { who = event_target:greater_than_ourselves_target_pop value >= 0.5 }
+							habitability = {
+								who = event_target:greater_than_ourselves_target_pop
+								value >= 0.5
+							}
 							free_housing >= 1
 							free_jobs >= 1
 							is_under_colonization = no
@@ -570,9 +899,15 @@ country_event = {
 						exists = event_target:greater_than_ourselves_target_pop
 						exists = event_target:greater_than_ourselves_target_planet
 						event_target:greater_than_ourselves_target_pop = {
-							NOR ={
-								has_citizenship_type = { country = event_target:greater_than_ourselves_target_planet.owner type = citizenship_slavery }
-								has_citizenship_type = { country = event_target:greater_than_ourselves_target_planet.owner type = citizenship_purge }
+							NOR = {
+								has_citizenship_type = {
+									country = event_target:greater_than_ourselves_target_planet.owner
+									type = citizenship_slavery
+								}
+								has_citizenship_type = {
+									country = event_target:greater_than_ourselves_target_planet.owner
+									type = citizenship_purge
+								}
 							}
 						}
 					}
@@ -580,7 +915,9 @@ country_event = {
 						pop = event_target:greater_than_ourselves_target_pop
 						planet = event_target:greater_than_ourselves_target_planet
 					}
-					event_target:greater_than_ourselves_target_pop = { clear_pop_category = yes }
+					event_target:greater_than_ourselves_target_pop = {
+						clear_pop_category = yes
+					}
 				}
 			}
 		}
@@ -592,16 +929,16 @@ planet_event = {
 	id = onactiondiplo.7
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
-		owner = { is_galactic_community_member = yes }
+		owner = {
+			is_galactic_community_member = yes
+		}
 		OR = {
 			is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 			is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
 			is_active_resolution = "resolution_galacticcooperation_sanctity_of_life"
 		}
 	}
-
 	immediate = {
 		owner = {
 			add_monthly_resource_mult = {
@@ -619,11 +956,11 @@ planet_event = {
 		}
 	}
 }
+
 country_event = {
 	id = onactiondiplo.8
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
 		is_galactic_community_member = yes
 		OR = {
@@ -639,19 +976,23 @@ country_event = {
 			}
 		}
 	}
-
 	immediate = {
 		remove_country_flag = recently_invaded_primitives
-		set_timed_country_flag = { flag = recently_invaded_primitives days = 7200 }
+		set_timed_country_flag = {
+			flag = recently_invaded_primitives
+			days = 7200
+		}
 	}
 }
+
 planet_event = {
 	id = onactiondiplo.9
 	is_triggered_only = yes
 	hide_window = yes
-	
 	trigger = {
-		from.owner = { is_galactic_community_member = yes }
+		from.owner = {
+			is_galactic_community_member = yes
+		}
 		OR = {
 			is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 			is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -666,11 +1007,13 @@ planet_event = {
 			}
 		}
 	}
-
 	immediate = {
 		from.owner = {
 			remove_country_flag = recently_invaded_primitives
-			set_timed_country_flag = { flag = recently_invaded_primitives days = 7200 }
+			set_timed_country_flag = {
+				flag = recently_invaded_primitives
+				days = 7200
+			}
 		}
 	}
 }
@@ -680,14 +1023,13 @@ country_event = {
 	id = onactiondiplo.10
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
 		is_galactic_community_member = yes
 		is_active_resolution = "resolution_galacticcooperation_sanctity_of_life"
 		has_policy_flag = purge_not_allowed
 		From = {
 			NAND = {
-				has_country_flag = fe_task_stop_atrocity_target # expanded events already takes care of this
+				has_country_flag = fe_task_stop_atrocity_target				# expanded events already takes care of this
 				is_homicidal = yes
 			}
 		}
@@ -698,7 +1040,6 @@ country_event = {
 			}
 		}
 	}
-
 	immediate = {
 		FromFrom = {
 			while = {
@@ -708,7 +1049,11 @@ country_event = {
 						is_valid_refugee_pop = yes
 					}
 				}
-				ROOT = { add_resource = { influence = 1 } }
+				ROOT = {
+					add_resource = {
+						influence = 1
+					}
+				}
 				random_owned_pop = {
 					limit = {
 						is_being_purged = yes
@@ -721,7 +1066,10 @@ country_event = {
 								ROOT = {
 									NOT = {
 										any_owned_planet = {
-											habitability = { who = prevprev value > 0.2 }
+											habitability = {
+												who = prevprev
+												value > 0.2
+											}
 											is_under_colonization = no
 											is_controlled_by = owner
 											has_orbital_bombardment = no
@@ -734,7 +1082,10 @@ country_event = {
 							ROOT = {
 								random_owned_planet = {
 									limit = {
-										habitability = { who = prevprev value > 0.2 }
+										habitability = {
+											who = prevprev
+											value > 0.2
+										}
 										is_under_colonization = no
 										is_controlled_by = owner
 										has_orbital_bombardment = no
@@ -746,10 +1097,13 @@ country_event = {
 								}
 							}
 							clear_pop_category = yes
-							add_modifier = { modifier = recent_refugee days = 3600 } 
+							add_modifier = {
+								modifier = recent_refugee
+								days = 3600
+							}
 						}
 						1 = {
-							save_event_target_as = refugee_pop #Must be saved for refugee_pop_effect to work
+							save_event_target_as = refugee_pop							#Must be saved for refugee_pop_effect to work
 							refugee_pop_effect = yes
 						}
 					}
@@ -768,7 +1122,9 @@ country_event = {
 		trigger = {
 			is_xenophobe = no
 			is_xenophobic_isolationists = no
-			NOT = { has_ascension_perk = ap_become_the_crisis }
+			NOT = {
+				has_ascension_perk = ap_become_the_crisis
+			}
 		}
 	}
 	desc = {
@@ -783,16 +1139,16 @@ country_event = {
 	}
 	picture = GFX_evt_galactic_senate
 	show_sound = event_factions
-
 	is_triggered_only = yes
-
-	fire_only_once = yes # failsafe
-
+	fire_only_once = yes	# failsafe
 	immediate = {
 		set_global_flag = ongoing_headquarter_nomination
 		set_country_flag = headquarter_nomination_eligible
 		event_target:global_event_country = {
-			country_event = { id = onactiondiplo.13 days = 1800 }
+			country_event = {
+				id = onactiondiplo.13
+				days = 1800
+			}
 		}
 		begin_event_chain = {
 			event_chain = headquarter_founding_chain
@@ -800,17 +1156,20 @@ country_event = {
 		}
 		every_playable_country = {
 			limit = {
-				NOT = { is_same_value = root }
+				NOT = {
+					is_same_value = root
+				}
 				is_galactic_community_member = yes
 			}
 			begin_event_chain = {
 				event_chain = headquarter_founding_chain
 				target = this
 			}
-			country_event = { id = onactiondiplo.12 }
+			country_event = {
+				id = onactiondiplo.12
+			}
 		}
 	}
-
 	after = {
 		custom_tooltip = enable_decision_headquarter_nomination
 		# Notification
@@ -821,11 +1180,11 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = action.96.b
 	}
 }
+
 country_event = {
 	id = onactiondiplo.12
 	title = onactiondiplo.11.name
@@ -834,7 +1193,9 @@ country_event = {
 		trigger = {
 			is_xenophobe = no
 			is_xenophobic_isolationists = no
-			NOT = { has_ascension_perk = ap_become_the_crisis }
+			NOT = {
+				has_ascension_perk = ap_become_the_crisis
+			}
 		}
 	}
 	desc = {
@@ -849,13 +1210,10 @@ country_event = {
 	}
 	picture = GFX_evt_galactic_senate
 	show_sound = event_factions
-
 	is_triggered_only = yes
-
 	immediate = {
 		set_country_flag = headquarter_nomination_eligible
 	}
-
 	after = {
 		tooltip = {
 			begin_event_chain = {
@@ -864,20 +1222,21 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = action.96.b
 		custom_tooltip = enable_decision_headquarter_nomination
 	}
 }
+
 country_event = {
 	id = onactiondiplo.13
 	hide_window = yes
 	is_triggered_only = yes
-
 	immediate = {
 		every_playable_country = {
-			limit = { has_event_chain = headquarter_founding_chain }
+			limit = {
+				has_event_chain = headquarter_founding_chain
+			}
 			end_event_chain = headquarter_founding_chain
 		}
 		remove_global_flag = ongoing_headquarter_nomination
@@ -886,7 +1245,9 @@ country_event = {
 			limit = {
 				is_country_type = default
 				has_country_flag = headquarter_nomination_eligible
-				NOT = { has_ascension_perk = ap_become_the_crisis }
+				NOT = {
+					has_ascension_perk = ap_become_the_crisis
+				}
 			}
 			weights = {
 				# can use add or factor
@@ -898,7 +1259,9 @@ country_event = {
 							which = headquarter_rating
 							value = 5
 						}
-						any_owned_planet = { has_modifier = headquarter_nominee_level_5 }
+						any_owned_planet = {
+							has_modifier = headquarter_nominee_level_5
+						}
 					}
 				}
 				modifier = {
@@ -908,7 +1271,9 @@ country_event = {
 							which = headquarter_rating
 							value = 4
 						}
-						any_owned_planet = { has_modifier = headquarter_nominee_level_4 }
+						any_owned_planet = {
+							has_modifier = headquarter_nominee_level_4
+						}
 					}
 				}
 				modifier = {
@@ -918,7 +1283,9 @@ country_event = {
 							which = headquarter_rating
 							value = 3
 						}
-						any_owned_planet = { has_modifier = headquarter_nominee_level_3 }
+						any_owned_planet = {
+							has_modifier = headquarter_nominee_level_3
+						}
 					}
 				}
 				modifier = {
@@ -928,7 +1295,9 @@ country_event = {
 							which = headquarter_rating
 							value = 2
 						}
-						any_owned_planet = { has_modifier = headquarter_nominee_level_2 }
+						any_owned_planet = {
+							has_modifier = headquarter_nominee_level_2
+						}
 					}
 				}
 				modifier = {
@@ -938,7 +1307,9 @@ country_event = {
 							which = headquarter_rating
 							value = 1
 						}
-						any_owned_planet = { has_modifier = headquarter_nominee_level_1 }
+						any_owned_planet = {
+							has_modifier = headquarter_nominee_level_1
+						}
 					}
 				}
 				modifier = {
@@ -971,10 +1342,14 @@ country_event = {
 			capital_scope = {
 				save_global_event_target_as = headquarter_founder_planet
 			}
-			country_event = { id = onactiondiplo.14 }
+			country_event = {
+				id = onactiondiplo.14
+			}
 		}
 		every_playable_country = {
-			limit = { has_country_flag = headquarter_nomination_eligible }
+			limit = {
+				has_country_flag = headquarter_nomination_eligible
+			}
 			every_owned_planet = {
 				limit = {
 					OR = {
@@ -987,32 +1362,46 @@ country_event = {
 				}
 				# remove boosted flags
 				if = {
-					limit = { has_planet_flag = boosted_once_h }
+					limit = {
+						has_planet_flag = boosted_once_h
+					}
 					remove_planet_flag = boosted_once_h
 				}
 				if = {
-					limit = { has_planet_flag = boosted_twice_h }
+					limit = {
+						has_planet_flag = boosted_twice_h
+					}
 					remove_planet_flag = boosted_twice_h
 				}
 				# remove modifiers
 				if = {
-					limit = { has_modifier = headquarter_nominee_level_1 }
+					limit = {
+						has_modifier = headquarter_nominee_level_1
+					}
 					remove_modifier = headquarter_nominee_level_1
 				}
 				else_if = {
-					limit = { has_modifier = headquarter_nominee_level_2 }
+					limit = {
+						has_modifier = headquarter_nominee_level_2
+					}
 					remove_modifier = headquarter_nominee_level_2
 				}
 				else_if = {
-					limit = { has_modifier = headquarter_nominee_level_3 }
+					limit = {
+						has_modifier = headquarter_nominee_level_3
+					}
 					remove_modifier = headquarter_nominee_level_3
 				}
 				else_if = {
-					limit = { has_modifier = headquarter_nominee_level_4 }
+					limit = {
+						has_modifier = headquarter_nominee_level_4
+					}
 					remove_modifier = headquarter_nominee_level_4
 				}
 				else_if = {
-					limit = { has_modifier = headquarter_nominee_level_5 }
+					limit = {
+						has_modifier = headquarter_nominee_level_5
+					}
 					remove_modifier = headquarter_nominee_level_5
 				}
 			}
@@ -1024,15 +1413,20 @@ country_event = {
 		}
 	}
 }
+
 country_event = {
 	id = onactiondiplo.14
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
 		set_global_flag = galactic_headquarter_founded
-		country_event = { id = onactiondiplo.15 days = 5 }
+		country_event = {
+			id = onactiondiplo.15
+			days = 5
+		}
 	}
 }
+
 country_event = {
 	id = onactiondiplo.15
 	title = onactiondiplo.15.name
@@ -1041,7 +1435,9 @@ country_event = {
 		trigger = {
 			is_xenophobe = no
 			is_xenophobic_isolationists = no
-			NOT = { has_ascension_perk = ap_become_the_crisis }
+			NOT = {
+				has_ascension_perk = ap_become_the_crisis
+			}
 		}
 	}
 	desc = {
@@ -1057,9 +1453,7 @@ country_event = {
 	picture = GFX_evt_galactic_senate
 	show_sound = event_factions
 	location = event_target:headquarter_founder_planet
-
 	is_triggered_only = yes
-
 	immediate = {
 		add_modifier = {
 			modifier = galactic_headquarter_founder
@@ -1068,24 +1462,30 @@ country_event = {
 		event_target:headquarter_founder_planet = {
 			add_deposit = d_galactic_senate
 		}
-
-		set_timed_global_flag = { flag = resolution_galactic_headquarter_relocated_recently days = 18000 }
-		
+		set_timed_global_flag = {
+			flag = resolution_galactic_headquarter_relocated_recently
+			days = 18000
+		}
 		every_playable_country = {
 			limit = {
 				is_galactic_community_member = yes
-				NOT = { is_same_value = root }
+				NOT = {
+					is_same_value = root
+				}
 			}
-			country_event = { id = onactiondiplo.16 }
+			country_event = {
+				id = onactiondiplo.16
+			}
 		}
 	}
-
 	option = {
 		name = OK
 		trigger = {
 			is_xenophobe = no
 			is_xenophobic_isolationists = no
-			NOT = { has_ascension_perk = ap_become_the_crisis }
+			NOT = {
+				has_ascension_perk = ap_become_the_crisis
+			}
 		}
 		custom_tooltip = established_galactic_senate
 		tooltip = {
@@ -1115,6 +1515,7 @@ country_event = {
 		}
 	}
 }
+
 country_event = {
 	id = onactiondiplo.16
 	title = onactiondiplo.16.name
@@ -1123,7 +1524,9 @@ country_event = {
 		trigger = {
 			is_xenophobe = no
 			is_xenophobic_isolationists = no
-			NOT = { has_ascension_perk = ap_become_the_crisis }
+			NOT = {
+				has_ascension_perk = ap_become_the_crisis
+			}
 		}
 	}
 	desc = {
@@ -1138,22 +1541,21 @@ country_event = {
 	}
 	picture = GFX_evt_galactic_senate
 	location = event_target:headquarter_founder_planet
-
 	immediate = {
 	}
-
 	is_triggered_only = yes
-
 	option = {
 		name = OK
-		tooltip = { end_event_chain = headquarter_founding_chain }
+		tooltip = {
+			end_event_chain = headquarter_founding_chain
+		}
 	}
 }
+
 country_event = {
 	id = onactiondiplo.17
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
 		exists = event_target:headquarter_founder_planet
 		from = {
@@ -1162,12 +1564,14 @@ country_event = {
 			}
 		}
 	}
-
 	immediate = {
-		if = { # no new owner or homicidal empire
+		if = {
+			# no new owner or homicidal empire
 			limit = {
 				OR = {
-					NOT = { exists = fromfrom }
+					NOT = {
+						exists = fromfrom
+					}
 					AND = {
 						exists = fromfrom
 						fromfrom = {
@@ -1188,7 +1592,10 @@ country_event = {
 			remove_global_flag = galactic_headquarter_founded
 			set_global_flag = ongoing_headquarter_nomination
 			event_target:global_event_country = {
-				country_event = { id = onactiondiplo.13 days = 1800 }
+				country_event = {
+					id = onactiondiplo.13
+					days = 1800
+				}
 			}
 		}
 		else = {
@@ -1202,22 +1609,27 @@ country_event = {
 		}
 	}
 }
+
 country_event = {
 	id = onactiondiplo.18
 	title = onactiondiplo.18.name
 	desc = {
 		text = onactiondiplo.18.desc
-		trigger = { exists = FromFromFrom }
+		trigger = {
+			exists = FromFromFrom
+		}
 	}
 	desc = {
 		text = onactiondiplo.18.desc_no_new_owner
-		trigger = { NOT = { exists = FromFromFrom } }
+		trigger = {
+			NOT = {
+				exists = FromFromFrom
+			}
+		}
 	}
 	picture = GFX_evt_galactic_senate
 	show_sound = event_factions
-
 	is_triggered_only = yes
-	
 	immediate = {
 		set_country_flag = headquarter_nomination_eligible
 		begin_event_chain = {
@@ -1225,7 +1637,6 @@ country_event = {
 			target = this
 		}
 	}
-
 	after = {
 		tooltip = {
 			begin_event_chain = {
@@ -1234,19 +1645,22 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = galcom.63.A
-		trigger = { is_civic_diplomatic_corps = yes }
+		trigger = {
+			is_civic_diplomatic_corps = yes
+		}
 		custom_tooltip = enable_decision_headquarter_nomination
 	}
-
 	option = {
 		name = OK
-		trigger = { is_civic_diplomatic_corps = no }
+		trigger = {
+			is_civic_diplomatic_corps = no
+		}
 		custom_tooltip = enable_decision_headquarter_nomination
 	}
 }
+
 country_event = {
 	id = onactiondiplo.19
 	title = onactiondiplo.19.name
@@ -1254,21 +1668,19 @@ country_event = {
 	picture = GFX_evt_galactic_senate
 	show_sound = event_factions
 	location = event_target:headquarter_founder_planet
-
 	is_triggered_only = yes
-
 	trigger = {
 		any_owned_planet = {
 			is_same_value = event_target:headquarter_founder_planet
 		}
 	}
-
 	immediate = {
 	}
-
 	option = {
 		name = onactiondiplo.19.a
-		tooltip = { remove_modifier = galactic_headquarter_founder }
+		tooltip = {
+			remove_modifier = galactic_headquarter_founder
+		}
 	}
 	after = {
 		hidden_effect = {
@@ -1281,27 +1693,33 @@ country_event = {
 			remove_global_flag = galactic_headquarter_founded
 			set_global_flag = ongoing_headquarter_nomination
 			event_target:global_event_country = {
-				country_event = { id = onactiondiplo.13 days = 1800 }
+				country_event = {
+					id = onactiondiplo.13
+					days = 1800
+				}
 			}
 			every_playable_country = {
 				limit = {
 					is_galactic_community_member = yes
-					NOT = { is_same_value = root }
+					NOT = {
+						is_same_value = root
+					}
 				}
-				country_event = { id = onactiondiplo.20 }
+				country_event = {
+					id = onactiondiplo.20
+				}
 			}
 		}
 	}
 }
+
 country_event = {
 	id = onactiondiplo.20
 	title = onactiondiplo.18.name
 	desc = onactiondiplo.20.desc
 	picture = GFX_evt_galactic_senate
 	show_sound = event_factions
-
 	is_triggered_only = yes
-	
 	immediate = {
 		set_country_flag = headquarter_nomination_eligible
 		begin_event_chain = {
@@ -1309,7 +1727,6 @@ country_event = {
 			target = this
 		}
 	}
-
 	after = {
 		tooltip = {
 			begin_event_chain = {
@@ -1318,16 +1735,18 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = galcom.63.A
-		trigger = { is_civic_diplomatic_corps = yes }
+		trigger = {
+			is_civic_diplomatic_corps = yes
+		}
 		custom_tooltip = enable_decision_headquarter_nomination
 	}
-
 	option = {
 		name = galcom.63.B
-		trigger = { is_civic_diplomatic_corps = no }
+		trigger = {
+			is_civic_diplomatic_corps = no
+		}
 		custom_tooltip = enable_decision_headquarter_nomination
 	}
 }
@@ -1339,45 +1758,48 @@ country_event = {
 	picture = GFX_evt_galactic_senate
 	show_sound = event_factions
 	location = event_target:headquarter_founder_planet
-
 	is_triggered_only = yes
-
 	trigger = {
 		any_owned_planet = {
 			is_same_value = event_target:headquarter_founder_planet
 		}
 	}
-
 	immediate = {
 		set_global_flag = ongoing_headquarter_nomination
 		set_country_flag = market_nomination_eligible
 		event_target:global_event_country = {
-			country_event = { id = onactiondiplo.23 days = 1800 }
+			country_event = {
+				id = onactiondiplo.23
+				days = 1800
+			}
 		}
 		every_playable_country = {
 			limit = {
 				is_galactic_community_member = yes
-				NOT = { is_same_value = root }
+				NOT = {
+					is_same_value = root
+				}
 			}
-			country_event = { id = onactiondiplo.22 }
+			country_event = {
+				id = onactiondiplo.22
+			}
 		}
-		
 		set_country_flag = headquarter_nomination_eligible
 		begin_event_chain = {
 			event_chain = headquarter_founding_chain
 			target = this
 		}
 	}
-
 	option = {
 		name = galcom.63.A
 		trigger = {
 			is_civic_diplomatic_corps = yes
-			NOT = { has_modifier = galactic_headquarter_founder }
+			NOT = {
+				has_modifier = galactic_headquarter_founder
+			}
 		}
 		custom_tooltip = enable_decision_headquarter_nomination
 	}
-
 	option = {
 		name = action.96.b
 		trigger = {
@@ -1388,7 +1810,6 @@ country_event = {
 		}
 		custom_tooltip = enable_decision_headquarter_nomination
 	}
-	
 	after = {
 		tooltip = {
 			begin_event_chain = {
@@ -1398,15 +1819,14 @@ country_event = {
 		}
 	}
 }
+
 country_event = {
 	id = onactiondiplo.22
 	title = onactiondiplo.18.name
 	desc = onactiondiplo.21.desc
 	picture = GFX_evt_galactic_senate
 	show_sound = event_factions
-
 	is_triggered_only = yes
-	
 	immediate = {
 		set_country_flag = headquarter_nomination_eligible
 		begin_event_chain = {
@@ -1414,7 +1834,6 @@ country_event = {
 			target = this
 		}
 	}
-
 	after = {
 		tooltip = {
 			begin_event_chain = {
@@ -1423,16 +1842,16 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = galcom.63.A
 		trigger = {
 			is_civic_diplomatic_corps = yes
-			NOT = { has_modifier = galactic_headquarter_founder }
+			NOT = {
+				has_modifier = galactic_headquarter_founder
+			}
 		}
 		custom_tooltip = enable_decision_headquarter_nomination
 	}
-
 	option = {
 		name = action.96.b
 		trigger = {
@@ -1458,7 +1877,9 @@ country_event = {
 		}
 		clear_global_event_target = headquarter_founder
 		clear_global_event_target = headquarter_founder_planet
-		country_event = { id = onactiondiplo.24 }
+		country_event = {
+			id = onactiondiplo.24
+		}
 	}
 }
 
@@ -1466,10 +1887,11 @@ country_event = {
 	id = onactiondiplo.24
 	hide_window = yes
 	is_triggered_only = yes
-
 	immediate = {
 		every_playable_country = {
-			limit = { has_event_chain = headquarter_founding_chain }
+			limit = {
+				has_event_chain = headquarter_founding_chain
+			}
 			end_event_chain = headquarter_founding_chain
 		}
 		remove_global_flag = ongoing_headquarter_nomination
@@ -1478,7 +1900,9 @@ country_event = {
 			limit = {
 				is_country_type = default
 				has_country_flag = headquarter_nomination_eligible
-				NOT = { has_ascension_perk = ap_become_the_crisis }
+				NOT = {
+					has_ascension_perk = ap_become_the_crisis
+				}
 			}
 			weights = {
 				# can use add or factor
@@ -1490,7 +1914,9 @@ country_event = {
 							which = headquarter_rating
 							value = 5
 						}
-						any_owned_planet = { has_modifier = headquarter_nominee_level_5 }
+						any_owned_planet = {
+							has_modifier = headquarter_nominee_level_5
+						}
 					}
 				}
 				modifier = {
@@ -1500,7 +1926,9 @@ country_event = {
 							which = headquarter_rating
 							value = 4
 						}
-						any_owned_planet = { has_modifier = headquarter_nominee_level_4 }
+						any_owned_planet = {
+							has_modifier = headquarter_nominee_level_4
+						}
 					}
 				}
 				modifier = {
@@ -1510,7 +1938,9 @@ country_event = {
 							which = headquarter_rating
 							value = 3
 						}
-						any_owned_planet = { has_modifier = headquarter_nominee_level_3 }
+						any_owned_planet = {
+							has_modifier = headquarter_nominee_level_3
+						}
 					}
 				}
 				modifier = {
@@ -1520,7 +1950,9 @@ country_event = {
 							which = headquarter_rating
 							value = 2
 						}
-						any_owned_planet = { has_modifier = headquarter_nominee_level_2 }
+						any_owned_planet = {
+							has_modifier = headquarter_nominee_level_2
+						}
 					}
 				}
 				modifier = {
@@ -1530,7 +1962,9 @@ country_event = {
 							which = headquarter_rating
 							value = 1
 						}
-						any_owned_planet = { has_modifier = headquarter_nominee_level_1 }
+						any_owned_planet = {
+							has_modifier = headquarter_nominee_level_1
+						}
 					}
 				}
 				modifier = {
@@ -1563,10 +1997,14 @@ country_event = {
 			capital_scope = {
 				save_global_event_target_as = headquarter_founder_planet
 			}
-			country_event = { id = onactiondiplo.14 }
+			country_event = {
+				id = onactiondiplo.14
+			}
 		}
 		every_playable_country = {
-			limit = { has_country_flag = headquarter_nomination_eligible }
+			limit = {
+				has_country_flag = headquarter_nomination_eligible
+			}
 			every_owned_planet = {
 				limit = {
 					OR = {
@@ -1579,32 +2017,46 @@ country_event = {
 				}
 				# remove boosted flags
 				if = {
-					limit = { has_planet_flag = boosted_once_h }
+					limit = {
+						has_planet_flag = boosted_once_h
+					}
 					remove_planet_flag = boosted_once_h
 				}
 				if = {
-					limit = { has_planet_flag = boosted_twice_h }
+					limit = {
+						has_planet_flag = boosted_twice_h
+					}
 					remove_planet_flag = boosted_twice_h
 				}
 				# remove modifiers
 				if = {
-					limit = { has_modifier = headquarter_nominee_level_1 }
+					limit = {
+						has_modifier = headquarter_nominee_level_1
+					}
 					remove_modifier = headquarter_nominee_level_1
 				}
 				else_if = {
-					limit = { has_modifier = headquarter_nominee_level_2 }
+					limit = {
+						has_modifier = headquarter_nominee_level_2
+					}
 					remove_modifier = headquarter_nominee_level_2
 				}
 				else_if = {
-					limit = { has_modifier = headquarter_nominee_level_3 }
+					limit = {
+						has_modifier = headquarter_nominee_level_3
+					}
 					remove_modifier = headquarter_nominee_level_3
 				}
 				else_if = {
-					limit = { has_modifier = headquarter_nominee_level_4 }
+					limit = {
+						has_modifier = headquarter_nominee_level_4
+					}
 					remove_modifier = headquarter_nominee_level_4
 				}
 				else_if = {
-					limit = { has_modifier = headquarter_nominee_level_5 }
+					limit = {
+						has_modifier = headquarter_nominee_level_5
+					}
 					remove_modifier = headquarter_nominee_level_5
 				}
 			}
@@ -1621,7 +2073,6 @@ country_event = {
 	id = onactiondiplo.25
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		is_galactic_community_member = yes
 		OR = {
@@ -1635,7 +2086,6 @@ country_event = {
 			has_ground_combat = no
 		}
 	}
-
 	immediate = {
 		every_owned_planet = {
 			limit = {
@@ -1653,11 +2103,11 @@ country_event = {
 	id = onactiondiplo.26
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
-		from = { army_type = republic_legion }
+		from = {
+			army_type = republic_legion
+		}
 	}
-
 	immediate = {
 		change_variable = {
 			which = republic_legion_soldier_count
@@ -1671,7 +2121,6 @@ espionage_operation_event = {
 	id = onactiondiplo.27
 	hide_window = yes
 	is_triggered_only = yes
-	
 	immediate = {
 		if = {
 			limit = {
@@ -1685,25 +2134,37 @@ espionage_operation_event = {
 						is_galactic_custodian = yes
 					}
 				}
-				target = { is_galactic_community_member = yes }
+				target = {
+					is_galactic_community_member = yes
+				}
 			}
-			add_modifier = { modifier = spynetwork_custodian_isd days = -1 }
+			add_modifier = {
+				modifier = spynetwork_custodian_isd
+				days = -1
+			}
 		}
 		else_if = {
 			limit = {
 				is_active_resolution = "resolution_custodian_galpol"
-				owner = { is_galactic_custodian = yes }
-				target = { is_galactic_community_member = yes }
+				owner = {
+					is_galactic_custodian = yes
+				}
+				target = {
+					is_galactic_community_member = yes
+				}
 			}
-			add_modifier = { modifier = spynetwork_custodian_galpol days = -1 }
+			add_modifier = {
+				modifier = spynetwork_custodian_galpol
+				days = -1
+			}
 		}
 	}
 }
+
 espionage_operation_event = {
 	id = onactiondiplo.28
 	hide_window = yes
 	is_triggered_only = yes
-	
 	immediate = {
 		if = {
 			limit = {
@@ -1714,17 +2175,22 @@ espionage_operation_event = {
 					is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
 					is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
 				}
-				target = { is_galactic_community_member = yes }
+				target = {
+					is_galactic_community_member = yes
+				}
 			}
-			add_modifier = { modifier = spynetwork_cooperative_research_channels days = -1 }
+			add_modifier = {
+				modifier = spynetwork_cooperative_research_channels
+				days = -1
+			}
 		}
 	}
 }
+
 espionage_operation_event = {
 	id = onactiondiplo.29
 	hide_window = yes
 	is_triggered_only = yes
-	
 	immediate = {
 		if = {
 			limit = {
@@ -1732,65 +2198,106 @@ espionage_operation_event = {
 					is_active_resolution = "resolution_custodian_anti_piracy"
 					is_active_resolution = "resolution_emperor_repeal_anti_piracy"
 				}
-				target = { is_galactic_community_member = yes }
+				target = {
+					is_galactic_community_member = yes
+				}
 			}
-			add_modifier = { modifier = spynetwork_custodian_anti_piracy days = -1 }
+			add_modifier = {
+				modifier = spynetwork_custodian_anti_piracy
+				days = -1
+			}
 		}
 	}
 }
+
 espionage_operation_event = {
 	id = onactiondiplo.30
 	hide_window = yes
 	is_triggered_only = yes
-	
 	immediate = {
 		if = {
 			limit = {
 				owner = {
-					relative_encryption_decryption = { target = root.target value > 1.4 }
+					relative_encryption_decryption = {
+						target = root.target
+						value > 1.4
+					}
 				}
 			}
-			add_modifier = { modifier = spynetwork_counter_spy_1 days = -1 }
+			add_modifier = {
+				modifier = spynetwork_counter_spy_1
+				days = -1
+			}
 		}
 		else_if = {
 			limit = {
 				owner = {
-					relative_encryption_decryption = { target = root.target value > 1.2 }
+					relative_encryption_decryption = {
+						target = root.target
+						value > 1.2
+					}
 				}
 			}
-			add_modifier = { modifier = spynetwork_counter_spy_2 days = -1 }
+			add_modifier = {
+				modifier = spynetwork_counter_spy_2
+				days = -1
+			}
 		}
 		else_if = {
 			limit = {
 				owner = {
-					relative_encryption_decryption = { target = root.target value < 0.8 }
+					relative_encryption_decryption = {
+						target = root.target
+						value < 0.8
+					}
 				}
 			}
-			add_modifier = { modifier = spynetwork_counter_spy_3 days = -1 }
+			add_modifier = {
+				modifier = spynetwork_counter_spy_3
+				days = -1
+			}
 		}
 		else_if = {
 			limit = {
 				owner = {
-					relative_encryption_decryption = { target = root.target value < 0.6 }
+					relative_encryption_decryption = {
+						target = root.target
+						value < 0.6
+					}
 				}
 			}
-			add_modifier = { modifier = spynetwork_counter_spy_4 days = -1 }
+			add_modifier = {
+				modifier = spynetwork_counter_spy_4
+				days = -1
+			}
 		}
 		else_if = {
 			limit = {
 				owner = {
-					relative_encryption_decryption = { target = root.target value < 0.4 }
+					relative_encryption_decryption = {
+						target = root.target
+						value < 0.4
+					}
 				}
 			}
-			add_modifier = { modifier = spynetwork_counter_spy_5 days = -1 }
+			add_modifier = {
+				modifier = spynetwork_counter_spy_5
+				days = -1
+			}
 		}
 		else_if = {
 			limit = {
 				owner = {
-					relative_encryption_decryption = { target = root.target value < 0.2 }
+					relative_encryption_decryption = {
+						target = root.target
+						value < 0.2
+					}
 				}
 			}
-			add_modifier = { modifier = spynetwork_counter_spy_6 days = -1 }
+			add_modifier = {
+				modifier = spynetwork_counter_spy_6
+				days = -1
+			}
 		}
 		if = {
 			limit = {
@@ -1804,33 +2311,55 @@ espionage_operation_event = {
 						is_galactic_custodian = yes
 					}
 				}
-				target = { is_galactic_community_member = yes }
+				target = {
+					is_galactic_community_member = yes
+				}
 			}
-			add_modifier = { modifier = spynetwork_custodian_isd days = -1 }
+			add_modifier = {
+				modifier = spynetwork_custodian_isd
+				days = -1
+			}
 		}
 		else_if = {
 			limit = {
 				is_active_resolution = "resolution_custodian_galpol"
-				owner = { is_galactic_custodian = yes }
-				target = { is_galactic_community_member = yes }
+				owner = {
+					is_galactic_custodian = yes
+				}
+				target = {
+					is_galactic_community_member = yes
+				}
 			}
-			add_modifier = { modifier = spynetwork_custodian_galpol days = -1 }
+			add_modifier = {
+				modifier = spynetwork_custodian_galpol
+				days = -1
+			}
 		}
 	}
 }
+
 espionage_operation_event = {
 	id = onactiondiplo.31
 	hide_window = yes
 	is_triggered_only = yes
-	
 	immediate = {
 		if = {
-			limit = { target_has_antagonistic_ethics = yes }
-			add_modifier = { modifier = spynetwork_bad_ethics days = -1 }
+			limit = {
+				target_has_antagonistic_ethics = yes
+			}
+			add_modifier = {
+				modifier = spynetwork_bad_ethics
+				days = -1
+			}
 		}
 		else_if = {
-			limit = { target_has_similar_ethics = yes }
-			add_modifier = { modifier = spynetwork_good_ethics days = -1 }
+			limit = {
+				target_has_similar_ethics = yes
+			}
+			add_modifier = {
+				modifier = spynetwork_good_ethics
+				days = -1
+			}
 		}
 	}
 }
@@ -1840,9 +2369,10 @@ planet_event = {
 	id = onactiondiplo.32
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
-		NOT = { has_modifier = diplo_recently_conquered_planet }
+		NOT = {
+			has_modifier = diplo_recently_conquered_planet
+		}
 		owner = {
 			OR = {
 				is_country_type = default
@@ -1860,23 +2390,34 @@ planet_event = {
 			}
 		}
 	}
-
 	immediate = {
 		if = {
 			limit = {
-				solar_system = { has_star_flag = original_owner_is@root.owner }
+				solar_system = {
+					has_star_flag = original_owner_is@root.owner
+				}
 			}
 			# planet liberated
 			remove_modifier = diplo_recently_conquered_planet
 		}
 		else_if = {
-			limit = { owner = { is_country_type = rebel } }
+			limit = {
+				owner = {
+					is_country_type = rebel
+				}
+			}
 			# planet conquered (lesser)
-			add_modifier = { modifier = diplo_recently_conquered_planet days = 3600 }
+			add_modifier = {
+				modifier = diplo_recently_conquered_planet
+				days = 3600
+			}
 		}
 		else = {
 			# planet conquered
-			add_modifier = { modifier = diplo_recently_conquered_planet days = 18000 }
+			add_modifier = {
+				modifier = diplo_recently_conquered_planet
+				days = 18000
+			}
 		}
 	}
 }
@@ -1886,7 +2427,6 @@ espionage_operation_event = {
 	id = onactiondiplo.33
 	hide_window = yes
 	is_triggered_only = yes
-	
 	immediate = {
 		if = {
 			limit = {
@@ -1900,7 +2440,10 @@ espionage_operation_event = {
 					}
 				}
 			}
-			add_modifier = { modifier = spynetwork_antiwar_bad days = -1 }
+			add_modifier = {
+				modifier = spynetwork_antiwar_bad
+				days = -1
+			}
 		}
 		else_if = {
 			limit = {
@@ -1912,35 +2455,48 @@ espionage_operation_event = {
 					}
 				}
 			}
-			add_modifier = { modifier = spynetwork_antiwar_good days = -1 }
+			add_modifier = {
+				modifier = spynetwork_antiwar_good
+				days = -1
+			}
 		}
 	}
 }
+
 espionage_operation_event = {
 	id = onactiondiplo.34
 	hide_window = yes
 	is_triggered_only = yes
-	
 	immediate = {
 		if = {
 			limit = {
-				target = { is_criminal_syndicate = yes }
+				target = {
+					is_criminal_syndicate = yes
+				}
 			}
-			add_modifier = { modifier = spynetwork_expel_criminals days = -1 }
+			add_modifier = {
+				modifier = spynetwork_expel_criminals
+				days = -1
+			}
 		}
 	}
 }
+
 espionage_operation_event = {
 	id = onactiondiplo.35
 	hide_window = yes
 	is_triggered_only = yes
-	
 	immediate = {
 		if = {
 			limit = {
-				owner = { has_active_tradition = tr_subterfuge_double_agents }
+				owner = {
+					has_active_tradition = tr_subterfuge_double_agents
+				}
 			}
-			add_modifier = { modifier = spynetwork_expel_double_agents days = -1 }
+			add_modifier = {
+				modifier = spynetwork_expel_double_agents
+				days = -1
+			}
 		}
 	}
 }
