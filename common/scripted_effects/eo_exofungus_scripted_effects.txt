@@ -13,20 +13,19 @@ create_exofungus_primitive_empire = {
 				category = "special"
 				file = "primitive.dds"
 			}
-			background= {
+			background = {
 				category = "backgrounds"
 				file = "new_dawn.dds"
 			}
-			colors={
+			colors = {
 				"turquoise"
 				"green"
 				"null"
 				"null"
 			}
 		}
-		origin = "origin_enlightened" # Should only be visible if they become spacefaring
+		origin = "origin_enlightened"		# Should only be visible if they become spacefaring
 		type = primitive
-
 		effect = {
 			set_graphical_culture = preindustrial_01
 			random_list = {
@@ -56,11 +55,11 @@ create_exofungus_primitive_empire = {
 							category = "special"
 							file = "primitive.dds"
 						}
-						background= {
+						background = {
 							category = "backgrounds"
 							file = "new_dawn.dds"
 						}
-						colors={
+						colors = {
 							"green"
 							"dark_green"
 							"null"
@@ -76,11 +75,11 @@ create_exofungus_primitive_empire = {
 							category = "special"
 							file = "primitive.dds"
 						}
-						background= {
+						background = {
 							category = "backgrounds"
 							file = "new_dawn.dds"
 						}
-						colors={
+						colors = {
 							"purple"
 							"dark_purple"
 							"null"
@@ -96,11 +95,11 @@ create_exofungus_primitive_empire = {
 							category = "special"
 							file = "primitive.dds"
 						}
-						background= {
+						background = {
 							category = "backgrounds"
 							file = "new_dawn.dds"
 						}
-						colors={
+						colors = {
 							"light_blue"
 							"blue"
 							"null"
@@ -116,7 +115,6 @@ create_exofungus_primitive_empire = {
 setup_exofungus_primitive_planet = {
 	set_owner = last_created_country
 	set_capital = yes
-
 	last_created_country = {
 		switch = {
 			trigger = has_country_flag
@@ -177,7 +175,8 @@ setup_exofungus_primitive_planet = {
 }
 
 exofungus_notification_effect = {
-	if = { # We have pops of this species
+	if = {
+		# We have pops of this species
 		limit = {
 			space_owner = {
 				any_owned_species = {
@@ -218,7 +217,8 @@ exofungus_notification_effect = {
 			}
 		}
 	}
-	else_if = { # We know an empire that has pops of this species, and have other Exofungi
+	else_if = {
+		# We know an empire that has pops of this species, and have other Exofungi
 		limit = {
 			space_owner = {
 				any_owned_species = {
@@ -238,10 +238,13 @@ exofungus_notification_effect = {
 			}
 		}
 		space_owner = {
-			country_event = { id = eo_exofungus.5 }
+			country_event = {
+				id = eo_exofungus.5
+			}
 		}
 	}
-	else_if = { # We know an empire that has pops of this species, but these are the first Exofungi in our empire
+	else_if = {
+		# We know an empire that has pops of this species, but these are the first Exofungi in our empire
 		limit = {
 			any_country = {
 				any_owned_species = {
@@ -251,10 +254,13 @@ exofungus_notification_effect = {
 			}
 		}
 		space_owner = {
-			country_event = { id = eo_exofungus.6 }
+			country_event = {
+				id = eo_exofungus.6
+			}
 		}
 	}
-	else_if = { # We have other Exofungi, but this is the first time seeing this species
+	else_if = {
+		# We have other Exofungi, but this is the first time seeing this species
 		limit = {
 			space_owner = {
 				any_owned_species = {
@@ -274,24 +280,32 @@ exofungus_notification_effect = {
 			}
 		}
 		space_owner = {
-			country_event = { id = eo_exofungus.7 }
+			country_event = {
+				id = eo_exofungus.7
+			}
 		}
 	}
-	else = { # I have never seen this man before in my life
+	else = {
+		# I have never seen this man before in my life
 		space_owner = {
-			country_event = { id = eo_exofungus.8 }
+			country_event = {
+				id = eo_exofungus.8
+			}
 		}
 	}
 }
 
 primitive_exofungus_notification = {
-	if = { # We have this species, or know of them and have our own exofungi
+	if = {
+		# We have this species, or know of them and have our own exofungi
 		limit = {
 			any_owned_species = {
 				has_trait = trait_exofungus
 			}
 			any_country = {
-				NOT = { is_same_value = event_target:exofungus_primtive }
+				NOT = {
+					is_same_value = event_target:exofungus_primtive
+				}
 				any_owned_species = {
 					is_same_species = event_target:spore_species
 				}
@@ -299,13 +313,18 @@ primitive_exofungus_notification = {
 			}
 		}
 		space_owner = {
-			country_event = { id = eo_exofungus.13 }
+			country_event = {
+				id = eo_exofungus.13
+			}
 		}
 	}
-	else_if = { # We know an empire that has pops of this species, but these are the first Exofungi in our empire
+	else_if = {
+		# We know an empire that has pops of this species, but these are the first Exofungi in our empire
 		limit = {
 			any_country = {
-				NOT = { is_same_value = event_target:exofungus_primtive }
+				NOT = {
+					is_same_value = event_target:exofungus_primtive
+				}
 				any_owned_species = {
 					is_same_species = event_target:spore_species
 				}
@@ -313,10 +332,13 @@ primitive_exofungus_notification = {
 			}
 		}
 		space_owner = {
-			country_event = { id = eo_exofungus.14 }
+			country_event = {
+				id = eo_exofungus.14
+			}
 		}
 	}
-	else_if = { # We have other Exofungi, but this is the first time seeing this species
+	else_if = {
+		# We have other Exofungi, but this is the first time seeing this species
 		limit = {
 			any_owned_species = {
 				has_trait = trait_exofungus
@@ -326,7 +348,9 @@ primitive_exofungus_notification = {
 					is_same_species = event_target:spore_species
 				}
 				any_country = {
-					NOT = { is_same_value = event_target:exofungus_primtive }
+					NOT = {
+						is_same_value = event_target:exofungus_primtive
+					}
 					any_owned_species = {
 						is_same_species = event_target:spore_species
 					}
@@ -335,12 +359,17 @@ primitive_exofungus_notification = {
 			}
 		}
 		space_owner = {
-			country_event = { id = eo_exofungus.15 }
+			country_event = {
+				id = eo_exofungus.15
+			}
 		}
 	}
-	else = { # I have never seen this man before in my life
+	else = {
+		# I have never seen this man before in my life
 		space_owner = {
-			country_event = { id = eo_exofungus.16 }
+			country_event = {
+				id = eo_exofungus.16
+			}
 		}
 	}
 }
@@ -364,7 +393,8 @@ wild_space_sprouts_notification = {
 			}
 		}
 	}
-	else_if = { # We know an empire that has pops of this species, and have other Exofungi
+	else_if = {
+		# We know an empire that has pops of this species, and have other Exofungi
 		limit = {
 			event_target:spore_host = {
 				any_owned_species = {
@@ -377,36 +407,50 @@ wild_space_sprouts_notification = {
 				}
 			}
 			any_country = {
-				NOT = { is_same_value = event_target:exofungus_primtive }
+				NOT = {
+					is_same_value = event_target:exofungus_primtive
+				}
 				any_owned_species = {
 					is_same_species = event_target:spore_species
 				}
 				has_communications = event_target:spore_host
 			}
 		}
-		country_event = { id = eo_exofungus.9 }
+		country_event = {
+			id = eo_exofungus.9
+		}
 	}
-	else_if = { # We know an empire that has pops of this species, but these are the first Exofungi in our empire
+	else_if = {
+		# We know an empire that has pops of this species, but these are the first Exofungi in our empire
 		limit = {
 			any_country = {
-				NOT = { is_same_value = event_target:exofungus_primtive }
+				NOT = {
+					is_same_value = event_target:exofungus_primtive
+				}
 				any_owned_species = {
 					is_same_species = event_target:spore_species
 				}
 				has_communications = event_target:spore_host
 			}
 		}
-		country_event = { id = eo_exofungus.10 }
+		country_event = {
+			id = eo_exofungus.10
+		}
 	}
-	else_if = { # We have other Exofungi, but this is the first time seeing this species
+	else_if = {
+		# We have other Exofungi, but this is the first time seeing this species
 		limit = {
 			any_owned_species = {
 				has_trait = trait_exofungus
-				NOT = { is_same_species = event_target:spore_species }
+				NOT = {
+					is_same_species = event_target:spore_species
+				}
 			}
 			NOT = {
 				any_country = {
-					NOT = { is_same_value = event_target:exofungus_primtive }
+					NOT = {
+						is_same_value = event_target:exofungus_primtive
+					}
 					any_owned_species = {
 						is_same_species = event_target:spore_species
 					}
@@ -414,9 +458,14 @@ wild_space_sprouts_notification = {
 				}
 			}
 		}
-		country_event = { id = eo_exofungus.11 }
+		country_event = {
+			id = eo_exofungus.11
+		}
 	}
-	else = { # I have never seen this man before in my life
-		country_event = { id = eo_exofungus.12 }
+	else = {
+		# I have never seen this man before in my life
+		country_event = {
+			id = eo_exofungus.12
+		}
 	}
 }

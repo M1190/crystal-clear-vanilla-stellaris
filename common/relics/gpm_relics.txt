@@ -3,7 +3,6 @@
 @triumph_duration = 3600
 @triumph_duration_short = 1800
 @triumph_duration_veryshort = 900
-
 # Sounds #
 # relic_activation_ether_drake_trophy
 # relic_activation_khans_throne
@@ -18,8 +17,6 @@
 # relic_activation_prethoryn_blood_queen
 # relic_activation_extradimensional_warlock
 # relic_activation_isolated_contingency_core
-
-
 # Relics that have active bonus modifier
 # r_dragon_trophy
 # r_khans_throne
@@ -31,19 +28,14 @@
 # r_pox_sample
 # r_cryo_core
 # r_war_forge
-
-
 # gpm_r_time_displacer
 # gpm_r_alien_eggs
 # gpm_r_machine_world_core
-
-
 # time displacer
 gpm_r_time_displacer = {
 	activation_duration = @triumph_duration
 	portrait = "GFX_relic_gpm_time_displacer"
 	sound = "relic_activation_miniature_galaxy"
-
 	resources = {
 		category = relics
 		# Activation cost
@@ -51,11 +43,9 @@ gpm_r_time_displacer = {
 			energy = 2000
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
-	
 	triggered_country_modifier = {
 		potential = {
 			years_passed < 10
@@ -272,37 +262,36 @@ gpm_r_time_displacer = {
 		country_base_society_research_produces_add = 100
 		country_base_engineering_research_produces_add = 100
 	}
-
 	score = 1000
-
 	active_effect = {
 		add_modifier = {
-			modifier = "gpm_time_displacer_relic_bonus" 
+			modifier = "gpm_time_displacer_relic_bonus"
 			days = @triumph_duration
 		}
 		custom_tooltip = relic_triumph_cooldown
 		hidden_effect = {
 			add_modifier = {
-				modifier = "relic_activation_cooldown" 
+				modifier = "relic_activation_cooldown"
 				days = @triumph_duration
-			}		
+			}
 		}
 	}
-
 	# Possible check for activation
 	possible = {
 		custom_tooltip = {
 			fail_text = "requires_relic_no_cooldown"
-			NOT = { has_modifier = relic_activation_cooldown }
+			NOT = {
+				has_modifier = relic_activation_cooldown
+			}
 		}
 	}
 }
+
 # Alien Queen
 gpm_r_alien_eggs = {
 	activation_duration = @triumph_duration
 	portrait = "GFX_gpm_r_alien_queen"
 	sound = "relic_activation_yuht_cryo_core"
-
 	resources = {
 		category = relics
 		# Activation cost
@@ -319,26 +308,22 @@ gpm_r_alien_eggs = {
 			unity = @activation_cost
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
-	
 	triggered_country_modifier = {
 		potential = {
 			always = yes
 		}
-		army_morale_damage_mult = 1.00
+		army_morale_damage_mult = 1
 	}
-
 	score = 1000
-
 	active_effect = {
 		custom_tooltip = gpm_r_alien_eggs_active_effect
 		custom_tooltip = relic_triumph_cooldown
 		hidden_effect = {
 			add_modifier = {
-				modifier = "relic_activation_cooldown" 
+				modifier = "relic_activation_cooldown"
 				days = @triumph_duration
 			}
 			capital_scope = {
@@ -357,7 +342,7 @@ gpm_r_alien_eggs = {
 						set_location = {
 							target = prev
 							distance = 5
-							angle = random 
+							angle = random
 						}
 					}
 					settings = {
@@ -369,21 +354,22 @@ gpm_r_alien_eggs = {
 			}
 		}
 	}
-
 	# Possible check for activation
 	possible = {
 		custom_tooltip = {
 			fail_text = "requires_relic_no_cooldown"
-			NOT = { has_modifier = relic_activation_cooldown }
+			NOT = {
+				has_modifier = relic_activation_cooldown
+			}
 		}
 	}
 }
+
 # makes machine world
 gpm_r_machine_world_core = {
 	activation_duration = 1
 	portrait = "GFX_gpm_r_machine_world_core"
 	sound = "relic_activation_isolated_contingency_core"
-
 	resources = {
 		category = relics
 		# Activation cost
@@ -391,20 +377,16 @@ gpm_r_machine_world_core = {
 			energy = 20000
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
-	
 	triggered_country_modifier = {
 		potential = {
 			always = yes
 		}
 		planet_jobs_robotic_produces_mult = 0.05
 	}
-
 	score = 1000
-
 	active_effect = {
 		custom_tooltip = gpm_r_machine_world_core_active_tooltip
 		remove_relic = gpm_r_machine_world_core
@@ -413,27 +395,25 @@ gpm_r_machine_world_core = {
 		hidden_effect = {
 			set_country_flag = relic_machine_world_core_activated
 			# add_modifier = {
-				# modifier = "relic_activation_cooldown" 
-				# days = @triumph_duration
+			# modifier = "relic_activation_cooldown" 
+			# days = @triumph_duration
 			# }			
 		}
-		
 	}
-
 	# Possible check for activation
 	possible = {
 		# custom_tooltip = {
-			# fail_text = "requires_relic_no_cooldown"
-			# NOT = { has_modifier = relic_activation_cooldown }
+		# fail_text = "requires_relic_no_cooldown"
+		# NOT = { has_modifier = relic_activation_cooldown }
 		# }
 	}
 }
+
 # mars rover
 gpm_r_mars_rover = {
 	activation_duration = @triumph_duration
 	portrait = "GFX_gpm_r_mars_rover"
 	sound = "relic_activation_the_surveyor"
-
 	resources = {
 		category = relics
 		# Activation cost
@@ -441,35 +421,30 @@ gpm_r_mars_rover = {
 			energy = 10
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
-	
 	triggered_country_modifier = {
 		potential = {
 			always = yes
 		}
 		country_base_unity_produces_add = 25
 	}
-
 	score = 1000
-
 	active_effect = {
 		custom_tooltip = gpm_r_mars_rover_active_tooltip
 		# hidden_effect = {
-			# add_modifier = {
-				# modifier = "relic_activation_cooldown" 
-				# days = @triumph_duration
-			# }		
+		# add_modifier = {
+		# modifier = "relic_activation_cooldown" 
+		# days = @triumph_duration
+		# }		
 		# }
 	}
-
 	# Possible check for activation
 	possible = {
 		# custom_tooltip = {
-			# fail_text = "requires_relic_no_cooldown"
-			# NOT = { has_modifier = relic_activation_cooldown }
+		# fail_text = "requires_relic_no_cooldown"
+		# NOT = { has_modifier = relic_activation_cooldown }
 		# }
 	}
 }

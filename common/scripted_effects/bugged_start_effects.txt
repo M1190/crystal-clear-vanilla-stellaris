@@ -12,35 +12,39 @@ generate_start_pops = {
 				}
 			}
 		}
-
-		if = { limit = { last_created_species = { is_species_class = MACHINE } }
+		if = {
+			limit = {
+				last_created_species = {
+					is_species_class = MACHINE
+				}
+			}
 			modify_species = {
 				species = last_created_species
 				add_trait = trait_machine_unit
 				add_traits_at_start_of_list = yes
 			}
-			last_created_species = { save_event_target_as = last_created_species }
+			last_created_species = {
+				save_event_target_as = last_created_species
+			}
 		}
-
 		if = {
 			limit = {
 				owner = {
 					OR = {
 						has_origin = origin_syncretic_evolution
 						has_origin = origin_necrophage
-                        is_bugged_evolutionary_architects = yes
+						is_bugged_evolutionary_architects = yes
 						is_bugged_slave_race = yes
 					}
 				}
 			}
-
 			last_created_species = {
 				set_species_flag = syncretic_species@root.owner
 				if = {
 					limit = {
 						prev.owner = {
 							has_origin = origin_syncretic_evolution
-                            is_bugged_evolutionary_architects = yes
+							is_bugged_evolutionary_architects = yes
 							is_bugged_slave_race = yes
 						}
 					}
@@ -76,9 +80,15 @@ generate_start_pops = {
 			}
 		}
 		if = {
-			limit = { owner = { is_hive_empire = yes } }
+			limit = {
+				owner = {
+					is_hive_empire = yes
+				}
+			}
 			while = {
-				limit = { num_pops < 33 }
+				limit = {
+					num_pops < 33
+				}
 				create_pop = {
 					species = owner_main_species
 					ethos = random
@@ -86,7 +96,11 @@ generate_start_pops = {
 			}
 		}
 		if = {
-			limit = { owner = { has_valid_civic = civic_machine_servitor } }
+			limit = {
+				owner = {
+					has_valid_civic = civic_machine_servitor
+				}
+			}
 			last_created_species = {
 				set_citizenship_type = {
 					country = root.owner
@@ -108,9 +122,12 @@ generate_start_pops = {
 				}
 			}
 		}
-
 		if = {
-			limit = { owner = { has_valid_civic = civic_machine_assimilator } }
+			limit = {
+				owner = {
+					has_valid_civic = civic_machine_assimilator
+				}
+			}
 			last_created_species = {
 				set_citizenship_type = {
 					country = root.owner
@@ -141,7 +158,11 @@ generate_start_pops = {
 		}
 		add_building = building_clone_army_clone_vat
 		add_building = building_clone_army_clone_vat
-		planet_event = { id = clones.10 days = 1095 random = 730 }
+		planet_event = {
+			id = clones.10
+			days = 1095
+			random = 730
+		}
 	}
 	if = {
 		limit = {
@@ -189,7 +210,9 @@ generate_start_pops = {
 				is_bugged_machine_cult = yes
 			}
 		}
-		owner = { create_built_robot_species = yes }
+		owner = {
+			create_built_robot_species = yes
+		}
 		while = {
 			count = 4
 			create_pop = {
@@ -200,60 +223,70 @@ generate_start_pops = {
 		add_building = building_bugged_mecha_monastery
 		remove_building = building_temple
 		while = {
-			limit = { num_pops < 30 }
+			limit = {
+				num_pops < 30
+			}
 			create_pop = {
 				species = owner_main_species
 				ethos = random
 			}
 		}
 	}
-
 	if = {
-		limit = { owner = { has_origin = origin_mechanists } }
-		owner = { create_built_robot_species = yes }
+		limit = {
+			owner = {
+				has_origin = origin_mechanists
+			}
+		}
+		owner = {
+			create_built_robot_species = yes
+		}
 		while = {
 			count = 8
 			create_pop = {
 				species = last_created_species
 			}
 		}
-
 		add_building = building_robot_assembly_plant
 		add_district_and_planet_size_if_needed_effect = {
 			district = district_generator
 		}
 		while = {
-			limit = { num_pops < 27 }
+			limit = {
+				num_pops < 27
+			}
 			create_pop = {
 				species = owner_main_species
 				ethos = random
 			}
 		}
 	}
-	
 	if = {
-        limit = {
+		limit = {
 			owner = {
 				OR = {
 					has_origin = origin_mechanists
 					is_bugged_industrial_mechanization = yes
-				} 
+				}
 			}
 		}
-		owner = { create_built_robot_species = yes }
+		owner = {
+			create_built_robot_species = yes
+		}
 		while = {
 			count = 8
 			create_pop = {
 				species = last_created_species
 			}
 		}
-
 		add_building = building_robot_assembly_plant
 		add_district_and_planet_size_if_needed_effect = {
 			district = district_generator
 		}
 		while = {
-			limit = { num_pops < 27 }
+			limit = {
+				num_pops < 27
+			}
 			create_pop = {
 				species = owner_main_species
 				ethos = random
@@ -264,15 +297,23 @@ generate_start_pops = {
 		limit = {
 			owner = {
 				has_origin = origin_necrophage
-				NOT = { has_civic = civic_fanatic_purifiers } #purges them instead
+				NOT = {
+					has_civic = civic_fanatic_purifiers
+				}				#purges them instead
 			}
 		}
 		add_building = building_necrophage_elevation_chamber
 	}
 	if = {
-		limit = { owner = { is_hive_empire = yes } }
+		limit = {
+			owner = {
+				is_hive_empire = yes
+			}
+		}
 		while = {
-			limit = { num_pops < 34 }
+			limit = {
+				num_pops < 34
+			}
 			create_pop = {
 				species = owner_main_species
 				ethos = random
@@ -280,9 +321,15 @@ generate_start_pops = {
 		}
 	}
 	if = {
-		limit = { owner = { has_valid_civic = civic_machine_servitor } }
+		limit = {
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
 		while = {
-			limit = { num_pops < 33 }
+			limit = {
+				num_pops < 33
+			}
 			create_pop = {
 				species = owner_main_species
 				ethos = random
@@ -290,9 +337,15 @@ generate_start_pops = {
 		}
 	}
 	if = {
-		limit = { owner = { is_machine_empire = yes } }
+		limit = {
+			owner = {
+				is_machine_empire = yes
+			}
+		}
 		while = {
-			limit = { num_pops < 29 }
+			limit = {
+				num_pops < 29
+			}
 			create_pop = {
 				species = owner_main_species
 				ethos = random
@@ -300,9 +353,15 @@ generate_start_pops = {
 		}
 	}
 	if = {
-		limit = { owner = { is_megacorp = yes} }
+		limit = {
+			owner = {
+				is_megacorp = yes
+			}
+		}
 		while = {
-			limit = { num_pops < 28 }
+			limit = {
+				num_pops < 28
+			}
 			create_pop = {
 				species = owner_main_species
 				ethos = random
@@ -310,9 +369,15 @@ generate_start_pops = {
 		}
 	}
 	if = {
-		limit = { owner = { is_regular_empire = yes } }
+		limit = {
+			owner = {
+				is_regular_empire = yes
+			}
+		}
 		while = {
-			limit = { num_pops < 28 }
+			limit = {
+				num_pops < 28
+			}
 			create_pop = {
 				species = owner_main_species
 				ethos = random
@@ -320,8 +385,13 @@ generate_start_pops = {
 		}
 	}
 	if = {
-		limit = { owner = { has_origin = origin_necrophage } }
-		while = { #to make them start without resource deficits
+		limit = {
+			owner = {
+				has_origin = origin_necrophage
+			}
+		}
+		while = {
+			#to make them start without resource deficits
 			count = 2
 			create_pop = {
 				species = owner_main_species
@@ -331,7 +401,9 @@ generate_start_pops = {
 	}
 	if = {
 		limit = {
-			owner = { has_origin = origin_default }
+			owner = {
+				has_origin = origin_default
+			}
 		}
 		while = {
 			count = 4
@@ -352,7 +424,6 @@ void_dweller_home_planet_setup = {
 			message = no
 		}
 		add_research_option = tech_habitat_2
-
 		if = {
 			limit = {
 				OR = {
@@ -389,7 +460,6 @@ void_dweller_home_planet_setup = {
 				}
 			}
 		}
-
 		last_created_species = {
 			set_species_flag = syncretic_species@root.owner
 			if = {
@@ -450,90 +520,91 @@ void_dweller_home_planet_setup = {
 	add_district_and_planet_size_if_needed_effect = {
 		district = district_hab_industrial
 	}
-
 	add_building = building_hab_major_capital
-
-
 	# 2 jobs
-			if = {
-				limit = { owner = { is_spiritualist = no } }
-				add_building = building_bureaucratic_1
+	if = {
+		limit = {
+			owner = {
+				is_spiritualist = no
 			}
-			# 2 jobs
-			if = {
-				limit = { 
-					owner = { 
-						is_spiritualist = yes
-						OR = {
-							has_valid_civic = civic_death_cult
-							has_valid_civic = civic_death_cult_corporate
-						}
-					} 
+		}
+		add_building = building_bureaucratic_1
+	}
+	# 2 jobs
+	if = {
+		limit = {
+			owner = {
+				is_spiritualist = yes
+				OR = {
+					has_valid_civic = civic_death_cult
+					has_valid_civic = civic_death_cult_corporate
 				}
-				add_building = building_sacrificial_temple_1
 			}
-			if = {
-				limit = {
-					owner = {
-						is_spiritualist = yes
-						is_bugged_war_cult = yes
-					}
+		}
+		add_building = building_sacrificial_temple_1
+	}
+	if = {
+		limit = {
+			owner = {
+				is_spiritualist = yes
+				is_bugged_war_cult = yes
+			}
+		}
+		add_building = building_bugged_war_temple_1
+	}
+	if = {
+		limit = {
+			owner = {
+				is_spiritualist = yes
+				is_bugged_luminosity_cult = yes
+			}
+		}
+		add_building = building_bugged_light_temple_1
+	}
+	# 2 jobs
+	if = {
+		limit = {
+			owner = {
+				is_spiritualist = yes
+				NOR = {
+					has_valid_civic = civic_death_cult
+					has_valid_civic = civic_death_cult_corporate
+					is_bugged_war_cult = yes
+					is_bugged_luminosity_cult = yes
 				}
-				add_building = building_bugged_war_temple_1
 			}
-			if = {
-				limit = {
-					owner = {
-						is_spiritualist = yes
-						is_bugged_luminosity_cult = yes
-					}
-				}
-				add_building = building_bugged_light_temple_1
+		}
+		add_building = building_temple
+	}
+	if = {
+		limit = {
+			owner = {
+				is_bugged_machine_cult = yes
 			}
-			# 2 jobs
-			if = {
-				limit = { 
-					owner = { 
-						is_spiritualist = yes
-						NOR = {
-							has_valid_civic = civic_death_cult
-							has_valid_civic = civic_death_cult_corporate
-							is_bugged_war_cult = yes
-							is_bugged_luminosity_cult = yes
-						}
-					} 
-				}
-				add_building = building_temple
+		}
+		add_building = building_bugged_mecha_monastery
+	}
+	if = {
+		limit = {
+			owner = {
+				is_bugged_life_cult = yes
 			}
-			if = {
-				limit = {
-					owner = {
-						is_bugged_machine_cult = yes
-					}
-				}
-				add_building = building_bugged_mecha_monastery
+		}
+		add_building = building_bugged_life_monastery
+	}
+	if = {
+		limit = {
+			owner = {
+				is_bugged_gravity_cult = yes
 			}
-			if = {
-				limit = {
-					owner = {
-						is_bugged_life_cult = yes
-					}
-				}
-				add_building = building_bugged_life_monastery
-			}
-			if = {
-				limit = {
-					owner = {
-						is_bugged_gravity_cult = yes
-					}
-				}
-				add_building = building_bugged_gravity_monastery
-			}
+		}
+		add_building = building_bugged_gravity_monastery
+	}
 	else = {
 		add_building = building_holo_theatres
 	}
 	if = {
-		limit = { 
+		limit = {
 			owner = {
 				has_valid_civic = civic_permanent_employment
 			}
@@ -548,14 +619,16 @@ void_dweller_home_planet_setup = {
 			}
 		}
 		add_building = building_dread_encampment
-
-		solar_system = { #Necromancers do not give engineering. So make sure there's some readily-accessible engineering
+		solar_system = {
+			#Necromancers do not give engineering. So make sure there's some readily-accessible engineering
 			while = {
 				count = 2
 				random_system_planet = {
 					limit = {
 						has_deposit_for = shipclass_research_station
-						NOT = { has_deposit = d_engineering_6 }
+						NOT = {
+							has_deposit = d_engineering_6
+						}
 					}
 					clear_deposits = yes
 					add_deposit = d_engineering_6
@@ -568,12 +641,12 @@ void_dweller_home_planet_setup = {
 			district = district_hab_science
 		}
 	}
-
 	add_deposit = d_arcane_replicator
-
 	solar_system = {
 		random_system_planet = {
-			limit = { has_planet_flag = void_dweller_habitat_2 }
+			limit = {
+				has_planet_flag = void_dweller_habitat_2
+			}
 			set_owner = event_target:void_dweller_owner
 			if = {
 				limit = {
@@ -584,7 +657,9 @@ void_dweller_home_planet_setup = {
 						}
 					}
 				}
-				owner = { create_built_robot_species = yes }
+				owner = {
+					create_built_robot_species = yes
+				}
 				while = {
 					count = 4
 					create_pop = {
@@ -661,7 +736,6 @@ void_dweller_home_planet_setup = {
 			add_district_and_planet_size_if_needed_effect = {
 				district = district_hab_mining
 			}
-
 			if = {
 				limit = {
 					owner = {
@@ -684,7 +758,9 @@ void_dweller_home_planet_setup = {
 			}
 		}
 		random_system_planet = {
-			limit = { has_planet_flag = void_dweller_habitat_3 }
+			limit = {
+				has_planet_flag = void_dweller_habitat_3
+			}
 			set_owner = event_target:void_dweller_owner
 			if = {
 				limit = {
@@ -692,7 +768,9 @@ void_dweller_home_planet_setup = {
 						is_bugged_industrial_mechanization = yes
 					}
 				}
-				owner = { create_built_robot_species = yes }
+				owner = {
+					create_built_robot_species = yes
+				}
 				while = {
 					count = 4
 					create_pop = {
@@ -771,7 +849,6 @@ void_dweller_home_planet_setup = {
 			add_district_and_planet_size_if_needed_effect = {
 				district = district_hab_commercial
 			}
-
 			if = {
 				limit = {
 					owner = {
@@ -794,7 +871,9 @@ void_dweller_home_planet_setup = {
 					owner = {
 						is_lithoid_empire = yes
 						is_spiritualist = yes
-						NOT = { has_valid_civic = civic_death_cult }
+						NOT = {
+							has_valid_civic = civic_death_cult
+						}
 					}
 				}
 				add_building = building_temple
@@ -813,7 +892,7 @@ void_dweller_home_planet_setup = {
 				add_building = building_sacrificial_temple_1
 			}
 			if = {
-				limit = { 
+				limit = {
 					owner = {
 						has_valid_civic = civic_permanent_employment
 					}
@@ -842,15 +921,19 @@ void_dweller_home_planet_setup = {
 							modify_species = {
 								species = this
 								remove_trait = trait_syncretic_proles
-							}	
+							}
 						}
 					}
 				}
 			}
 		}
 		every_system_planet = {
-			limit = { has_planet_flag = mining_planet }
-			create_mining_station = { owner = event_target:void_dweller_owner }
+			limit = {
+				has_planet_flag = mining_planet
+			}
+			create_mining_station = {
+				owner = event_target:void_dweller_owner
+			}
 		}
 	}
 }
@@ -869,12 +952,10 @@ central_crystal_country_spawn_effect = {
 			trait = trait_docile
 		}
 		homeworld = this
-
 		effect = {
 			save_global_event_target_as = crystalline_empire_species
 		}
 	}
-
 	create_country = {
 		name = "NAME_Central_Crystal_Country"
 		type = enclave
@@ -899,16 +980,14 @@ central_crystal_country_spawn_effect = {
 				category = "backgrounds"
 				file = "00_solid.dds"
 			}
-			colors ={
+			colors = {
 				"blue"
 				"blue"
 				"null"
 				"null"
 			}
 		}
-
 		ignore_initial_colony_error = yes
-
 		effect = {
 			create_leader = {
 				class = ruler
@@ -923,15 +1002,14 @@ central_crystal_country_spawn_effect = {
 	last_created_country = {
 		save_global_event_target_as = central_crystal_empire
 		set_country_flag = central_crystal_country
-
 		set_graphical_culture = mammalian_01
-
 		set_male_ruler_title = "Commander"
 		set_female_ruler_title = "Commander"
-
 		create_fleet = {
 			name = "NAME_Central_Crystal_Enclave"
-			settings = { spawn_debris = no }
+			settings = {
+				spawn_debris = no
+			}
 			effect = {
 				set_owner = prev
 				create_ship = {

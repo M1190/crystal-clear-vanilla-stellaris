@@ -1,17 +1,15 @@
 #################################
 ### Deposits and blockers
 #################################
-
 eo_deposits_and_blockers = {
- ###Irradiated Evolution
+	###Irradiated Evolution
 	if = {
 		limit = {
 			owner = {
-				has_origin = origin_irradiated_evolution		
+				has_origin = origin_irradiated_evolution
 			}
 		}
 		clear_deposits = yes
-
 		if = {
 			limit = {
 				owner = {
@@ -23,27 +21,23 @@ eo_deposits_and_blockers = {
 		else = {
 			add_deposit = d_repurposed_ancient_settlement
 		}
-
 		add_deposit = d_tomb_world_wasteland
 		add_deposit = d_radioactive_ruins
 		add_deposit = d_bomb_crater
-
 		# 3 + 3 energy
 		add_deposit = d_hot_springs
 		add_deposit = d_searing_desert
 		add_deposit = d_underwater_vent
-
 		# 3 + 4 mining
 		add_deposit = d_veiny_cliffs
 		add_deposit = d_ore_rich_caverns
 		add_deposit = d_submerged_ore_veins
-
 		# 3 + 2 farming
 		add_deposit = d_lichen_fields
 		add_deposit = d_fungal_caves
 		add_deposit = d_fungal_forest
 	}
- ###Starship Graveyard deposits
+	###Starship Graveyard deposits
 	if = {
 		limit = {
 			owner = {
@@ -56,12 +50,16 @@ eo_deposits_and_blockers = {
 			add_deposit = d_starship_graveyard
 		}
 	}
-  #####Long Sleep and Reactivated pop blocker clearing
+	#####Long Sleep and Reactivated pop blocker clearing
 	if = {
 		limit = {
 			OR = {
-				owner = { has_origin = origin_long_sleep }
-				owner = { has_origin = origin_reactivated }
+				owner = {
+					has_origin = origin_long_sleep
+				}
+				owner = {
+					has_origin = origin_reactivated
+				}
 			}
 		}
 		remove_deposit = d_decrepit_dwellings
@@ -69,14 +67,18 @@ eo_deposits_and_blockers = {
 		remove_deposit = d_unsupervised_settlement
 		remove_deposit = d_collapsed_burrows
 	}
- #####The Long Sleep blockers
+	#####The Long Sleep blockers
 	if = {
 		limit = {
-			owner = { has_origin = origin_long_sleep }
+			owner = {
+				has_origin = origin_long_sleep
+			}
 		}
 		if = {
 			limit = {
-				owner = { is_hive_empire = yes }
+				owner = {
+					is_hive_empire = yes
+				}
 			}
 			while = {
 				count = 9
@@ -85,7 +87,9 @@ eo_deposits_and_blockers = {
 		}
 		else_if = {
 			limit = {
-				owner = { is_megacorp = yes }
+				owner = {
+					is_megacorp = yes
+				}
 			}
 			while = {
 				count = 8
@@ -94,7 +98,9 @@ eo_deposits_and_blockers = {
 		}
 		else_if = {
 			limit = {
-				owner = { is_regular_empire = yes }
+				owner = {
+					is_regular_empire = yes
+				}
 			}
 			while = {
 				count = 7
@@ -102,14 +108,18 @@ eo_deposits_and_blockers = {
 			}
 		}
 	}
- ##### Reactivated blockers
+	##### Reactivated blockers
 	if = {
 		limit = {
-			owner = { has_origin = origin_reactivated }
+			owner = {
+				has_origin = origin_reactivated
+			}
 		}
 		if = {
 			limit = {
-				owner = { has_valid_civic = civic_machine_assimilator }
+				owner = {
+					has_valid_civic = civic_machine_assimilator
+				}
 			}
 			while = {
 				count = 3
@@ -122,7 +132,9 @@ eo_deposits_and_blockers = {
 		}
 		else_if = {
 			limit = {
-				owner = { has_valid_civic = civic_machine_servitor }
+				owner = {
+					has_valid_civic = civic_machine_servitor
+				}
 			}
 			while = {
 				count = 4
@@ -140,7 +152,7 @@ eo_deposits_and_blockers = {
 			}
 		}
 	}
- ###Monster Tamers deposits
+	###Monster Tamers deposits
 	if = {
 		limit = {
 			owner = {
@@ -169,11 +181,11 @@ eo_deposits_and_blockers = {
 			set_planet_flag = lithoid_kaiju
 		}
 	}
- ###Genius Loci no deposits
+	###Genius Loci no deposits
 	if = {
 		limit = {
 			owner = {
-				has_origin = origin_genius_loci		
+				has_origin = origin_genius_loci
 			}
 		}
 		clear_deposits = yes
@@ -183,36 +195,37 @@ eo_deposits_and_blockers = {
 			add_deposit = d_unassimilated_growth
 		}
 	}
- ###Survival of the Fittest deposits & blockers
+	###Survival of the Fittest deposits & blockers
 	if = {
 		limit = {
 			owner = {
 				has_origin = origin_survival_of_the_fittest
 			}
 		}
-		
 		clear_deposits = yes
-
-		add_deposit = d_fungal_forest # 3 food
+		add_deposit = d_fungal_forest		# 3 food
 		if = {
-			limit = { owner = { is_lithoid_empire = yes } }
-			add_deposit = d_veiny_cliffs # 1 minerals
-			add_deposit = d_submerged_ore_veins # 3 minerals
+			limit = {
+				owner = {
+					is_lithoid_empire = yes
+				}
+			}
+			add_deposit = d_veiny_cliffs			# 1 minerals
+			add_deposit = d_submerged_ore_veins			# 3 minerals
 		}
 		else = {
-			add_deposit = d_lush_jungle # 2 food
-			add_deposit = d_tropical_island # 3 food
+			add_deposit = d_lush_jungle			# 2 food
+			add_deposit = d_tropical_island			# 3 food
 		}
-		add_deposit = d_hot_springs # 1 energy
-		add_deposit = d_rushing_waterfalls # 2 energy
-		add_deposit = d_tempestous_mountain # 3 energy
-		add_deposit = d_mineral_fields # 1 minerals
-		add deposit = d_great_river # 2 food
-		add_deposit = d_ore_rich_caverns # 2 minerals
-		add_deposit = d_submerged_ore_veins # 3 minerals
-		
+		add_deposit = d_hot_springs		# 1 energy
+		add_deposit = d_rushing_waterfalls		# 2 energy
+		add_deposit = d_tempestous_mountain		# 3 energy
+		add_deposit = d_mineral_fields		# 1 minerals
+		add
+		deposit = d_great_river		# 2 food
+		add_deposit = d_ore_rich_caverns		# 2 minerals
+		add_deposit = d_submerged_ore_veins		# 3 minerals
 		add_deposit = d_alien_pets_deposit
-
 		add_deposit = d_dangerous_wildlife_blocker
 		add_deposit = d_dense_jungle
 		add_deposit = d_noxious_swamp
@@ -223,17 +236,21 @@ eo_deposits_and_blockers = {
 #################################
 ### Buildings and districts
 #################################
-
 eo_buildings_and_districts = {
- ########Districts for Biomedical Renaissance
+	########Districts for Biomedical Renaissance
 	if = {
-		limit = { owner = { has_origin = origin_biomedical_renaissance } }
-		
+		limit = {
+			owner = {
+				has_origin = origin_biomedical_renaissance
+			}
+		}
 		#Cities
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_valid_civic = civic_agrarian_idyll }
+					NOT = {
+						has_valid_civic = civic_agrarian_idyll
+					}
 				}
 			}
 			remove_district = district_city
@@ -244,38 +261,43 @@ eo_buildings_and_districts = {
 				remove_district = district_city
 			}
 		}
-
 		#Generator
 		remove_district = district_generator
-
 		#Mining
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_valid_civic = civic_agrarian_idyll }
+					NOT = {
+						has_valid_civic = civic_agrarian_idyll
+					}
 				}
 			}
 			remove_district = district_mining
 		}
-
 		#Farming
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_valid_civic = civic_agrarian_idyll }
+					NOT = {
+						has_valid_civic = civic_agrarian_idyll
+					}
 				}
 			}
 			remove_district = district_farming
 		}
 	}
- #####Monster Tamers
+	#####Monster Tamers
 	if = {
 		limit = {
-			owner = { has_origin = origin_monster_tamers }
+			owner = {
+				has_origin = origin_monster_tamers
+			}
 		}
 		if = {
 			limit = {
-				owner = { is_lithoid_empire = no }
+				owner = {
+					is_lithoid_empire = no
+				}
 			}
 			remove_district = district_farming
 		}
@@ -283,7 +305,7 @@ eo_buildings_and_districts = {
 			remove_district = district_mining
 		}
 	}
- #####Long Sleep/Reactivated
+	#####Long Sleep/Reactivated
 	if = {
 		limit = {
 			owner = {
@@ -295,14 +317,26 @@ eo_buildings_and_districts = {
 		}
 		remove_all_buildings = yes
 		if = {
-			limit = { owner = { is_regular_empire = yes } }
+			limit = {
+				owner = {
+					is_regular_empire = yes
+				}
+			}
 			add_building = building_capital
 		}
 		else_if = {
-			limit = { owner = { is_machine_empire = yes } }
+			limit = {
+				owner = {
+					is_machine_empire = yes
+				}
+			}
 			add_building = building_machine_capital
 			if = {
-				limit = { owner = { has_valid_civic = civic_machine_servitor } }
+				limit = {
+					owner = {
+						has_valid_civic = civic_machine_servitor
+					}
+				}
 				add_building = building_organic_sanctuary
 			}
 			else = {
@@ -314,8 +348,7 @@ eo_buildings_and_districts = {
 			add_building = building_hive_warren
 		}
 		add_building = building_research_lab_1
-	#####Districts
-
+		#####Districts
 		#Cities
 		while = {
 			count = 2
@@ -338,17 +371,17 @@ eo_buildings_and_districts = {
 			remove_district = district_city
 			remove_district = district_nexus
 		}
-
 		#Industrial
 		if = {
 			limit = {
-				owner = { has_valid_civic = civic_agrarian_idyll }
+				owner = {
+					has_valid_civic = civic_agrarian_idyll
+				}
 			}
 			remove_district = district_industrial
 		}
-
 		#Generator
-		while= {
+		while = {
 			count = 1
 			remove_district = district_generator
 		}
@@ -375,7 +408,6 @@ eo_buildings_and_districts = {
 				remove_district = district_generator
 			}
 		}
-
 		#Mining
 		if = {
 			limit = {
@@ -391,21 +423,24 @@ eo_buildings_and_districts = {
 			remove_district = district_mining
 			if = {
 				limit = {
-					OWNER = { is_lithoid_empire = yes }
+					OWNER = {
+						is_lithoid_empire = yes
+					}
 				}
 				remove_district = district_mining
 			}
 		}
-
 		#Farming
 		if = {
 			limit = {
-				OWNER = { is_machine_empire = no }
+				OWNER = {
+					is_machine_empire = no
+				}
 			}
 			remove_district = district_farming
 		}
 	}
- #####Genius Loci
+	#####Genius Loci
 	if = {
 		limit = {
 			owner = {
@@ -452,10 +487,12 @@ eo_buildings_and_districts = {
 			remove_district = district_hive
 		}
 	}
- #####AI Uprising
+	#####AI Uprising
 	if = {
-		limit = { 
-			owner = { has_origin = origin_ai_uprising }
+		limit = {
+			owner = {
+				has_origin = origin_ai_uprising
+			}
 		}
 		while = {
 			limit = {
@@ -471,9 +508,13 @@ eo_buildings_and_districts = {
 			add_district = district_farming
 		}
 		add_district = district_nexus
-		owner = { add_resource = { food = 100 } }
+		owner = {
+			add_resource = {
+				food = 100
+			}
+		}
 	}
- ####Stellar Cornucopia
+	####Stellar Cornucopia
 	if = {
 		limit = {
 			owner = {
@@ -487,7 +528,7 @@ eo_buildings_and_districts = {
 			}
 		}
 	}
- #####Living planet
+	#####Living planet
 	if = {
 		limit = {
 			owner = {
@@ -530,12 +571,13 @@ eo_buildings_and_districts = {
 #################################
 ### Pops
 #################################
-
 eo_pops = {
- ####Pops for Biomedical Renaissance
+	####Pops for Biomedical Renaissance
 	if = {
 		limit = {
-			owner = { has_origin = origin_biomedical_renaissance }
+			owner = {
+				has_origin = origin_biomedical_renaissance
+			}
 		}
 		while = {
 			count = 5
@@ -544,18 +586,26 @@ eo_pops = {
 			}
 		}
 	}
- #####Pops for The Long Sleep
+	#####Pops for The Long Sleep
 	if = {
 		limit = {
-			owner = { has_origin = origin_long_sleep }
+			owner = {
+				has_origin = origin_long_sleep
+			}
 		}
-		owner_species = { save_hibernating_organic_species = yes }
+		owner_species = {
+			save_hibernating_organic_species = yes
+		}
 		if = {
 			limit = {
-				owner = { is_hive_empire = yes }
+				owner = {
+					is_hive_empire = yes
+				}
 			}
 			while = {
-				limit = { num_pops > 17 }
+				limit = {
+					num_pops > 17
+				}
 				random_owned_pop = {
 					kill_pop = yes
 				}
@@ -563,10 +613,14 @@ eo_pops = {
 		}
 		else_if = {
 			limit = {
-				owner = { is_megacorp = yes }
+				owner = {
+					is_megacorp = yes
+				}
 			}
 			while = {
-				limit = { num_pops > 15 }
+				limit = {
+					num_pops > 15
+				}
 				random_owned_pop = {
 					kill_pop = yes
 				}
@@ -574,29 +628,43 @@ eo_pops = {
 		}
 		else_if = {
 			limit = {
-				owner = { is_regular_empire = yes }
+				owner = {
+					is_regular_empire = yes
+				}
 			}
 			while = {
-				limit = { num_pops > 15 }
+				limit = {
+					num_pops > 15
+				}
 				random_owned_pop = {
 					kill_pop = yes
 				}
 			}
 		}
 	}
- #####Pops for Reactivated
+	#####Pops for Reactivated
 	if = {
 		limit = {
-			owner = { has_origin = origin_reactivated }
+			owner = {
+				has_origin = origin_reactivated
+			}
 		}
-		owner_species = { save_deactivated_machine_species = yes }
+		owner_species = {
+			save_deactivated_machine_species = yes
+		}
 		if = {
 			limit = {
-				owner = { has_valid_civic = civic_machine_servitor }
+				owner = {
+					has_valid_civic = civic_machine_servitor
+				}
 			}
-			last_created_species = { save_hibernating_organic_species = yes }
+			last_created_species = {
+				save_hibernating_organic_species = yes
+			}
 			while = {
-				limit = { num_pops > 30 }
+				limit = {
+					num_pops > 30
+				}
 				random_owned_pop = {
 					limit = {
 						NOT = {
@@ -607,7 +675,9 @@ eo_pops = {
 				}
 			}
 			while = {
-				limit = { num_pops > 16 }
+				limit = {
+					num_pops > 16
+				}
 				random_owned_pop = {
 					limit = {
 						is_species_class = MACHINE
@@ -618,11 +688,17 @@ eo_pops = {
 		}
 		else_if = {
 			limit = {
-				owner = { has_valid_civic = civic_machine_assimilator }
+				owner = {
+					has_valid_civic = civic_machine_assimilator
+				}
 			}
-			last_created_species = { save_hibernating_organic_species = yes }
+			last_created_species = {
+				save_hibernating_organic_species = yes
+			}
 			while = {
-				limit = { num_pops > 24 }
+				limit = {
+					num_pops > 24
+				}
 				random_owned_pop = {
 					limit = {
 						NOT = {
@@ -633,7 +709,9 @@ eo_pops = {
 				}
 			}
 			while = {
-				limit = { num_pops > 15 }
+				limit = {
+					num_pops > 15
+				}
 				random_owned_pop = {
 					limit = {
 						is_species_class = MACHINE
@@ -644,17 +722,21 @@ eo_pops = {
 		}
 		else = {
 			while = {
-				limit = { num_pops > 15 }
+				limit = {
+					num_pops > 15
+				}
 				random_owned_pop = {
 					kill_pop = yes
 				}
 			}
 		}
 	}
- #####Pops for AI Uprising
+	#####Pops for AI Uprising
 	if = {
 		limit = {
-			owner = { has_origin = origin_ai_uprising }
+			owner = {
+				has_origin = origin_ai_uprising
+			}
 		}
 		while = {
 			count = 8
@@ -672,7 +754,7 @@ eo_pops = {
 			}
 		}
 	}
- ####Pops for Infiltrators
+	####Pops for Infiltrators
 	if = {
 		limit = {
 			owner = {
@@ -708,7 +790,7 @@ eo_pops = {
 			}
 		}
 	}
- ####Pops for Symbiosis
+	####Pops for Symbiosis
 	if = {
 		limit = {
 			owner = {
@@ -750,9 +832,13 @@ eo_pops = {
 		}
 		clear_variable = num_symbiotes
 	}
- #####CREATE PRE-SAPIENTS FOR NEXT GENERATION
+	#####CREATE PRE-SAPIENTS FOR NEXT GENERATION
 	if = {
-		limit = { owner = { has_origin = origin_next_generation } }
+		limit = {
+			owner = {
+				has_origin = origin_next_generation
+			}
+		}
 		if = {
 			limit = {
 				last_created_species = {
@@ -877,8 +963,7 @@ eo_pops = {
 				}
 			}
 		}
-
- ####Create pops
+		####Create pops
 		while = {
 			count = 4
 			create_pop = {
@@ -886,7 +971,7 @@ eo_pops = {
 			}
 		}
 	}
- ####Pops for Sibling Rivalry
+	####Pops for Sibling Rivalry
 	if = {
 		limit = {
 			owner = {
@@ -905,9 +990,8 @@ eo_pops = {
 #################################
 ### Planetary Modifiers and Planets
 #################################
-
 eo_modifiers_and_planets = {
- #####Irradiated Evolution - No Tomb World colonies for advanced empires
+	#####Irradiated Evolution - No Tomb World colonies for advanced empires
 	if = {
 		limit = {
 			owner = {
@@ -916,12 +1000,14 @@ eo_modifiers_and_planets = {
 		}
 		owner = {
 			every_owned_planet = {
-				limit = { is_capital = no }
+				limit = {
+					is_capital = no
+				}
 				change_pc = rl_habitable_normal
 			}
 		}
 	}
- ######Monster Tamers modifier
+	######Monster Tamers modifier
 	if = {
 		limit = {
 			owner = {
@@ -930,11 +1016,13 @@ eo_modifiers_and_planets = {
 		}
 		owner = {
 			capital_scope = {
-				add_modifier = { modifier = titanic_life }
+				add_modifier = {
+					modifier = titanic_life
+				}
 			}
 		}
 	}
- ######Surival of the Fittest modifier
+	######Surival of the Fittest modifier
 	if = {
 		limit = {
 			owner = {
@@ -943,11 +1031,13 @@ eo_modifiers_and_planets = {
 		}
 		owner = {
 			capital_scope = {
-				add_modifier = { modifier = death_world_mod }
+				add_modifier = {
+					modifier = death_world_mod
+				}
 			}
 		}
 	}
- ####Stellar Cornucopia resources
+	####Stellar Cornucopia resources
 	if = {
 		limit = {
 			owner = {
@@ -984,8 +1074,12 @@ eo_modifiers_and_planets = {
 						}
 						clear_deposits = yes
 						random_list = {
-							50 = { set_deposit = d_energy_5 }
-							50 = { set_deposit = d_energy_6 }
+							50 = {
+								set_deposit = d_energy_5
+							}
+							50 = {
+								set_deposit = d_energy_6
+							}
 						}
 					}
 					every_system_planet = {
@@ -997,8 +1091,12 @@ eo_modifiers_and_planets = {
 						}
 						clear_deposits = yes
 						random_list = {
-							50 = { set_deposit = d_minerals_5 }
-							50 = { set_deposit = d_minerals_6 }
+							50 = {
+								set_deposit = d_minerals_5
+							}
+							50 = {
+								set_deposit = d_minerals_6
+							}
 						}
 					}
 					every_system_planet = {
@@ -1010,8 +1108,12 @@ eo_modifiers_and_planets = {
 						}
 						clear_deposits = yes
 						random_list = {
-							50 = { set_deposit = d_society_5 }
-							50 = { set_deposit = d_society_6 }
+							50 = {
+								set_deposit = d_society_5
+							}
+							50 = {
+								set_deposit = d_society_6
+							}
 						}
 					}
 					every_system_planet = {
@@ -1023,8 +1125,12 @@ eo_modifiers_and_planets = {
 						}
 						clear_deposits = yes
 						random_list = {
-							50 = { set_deposit = d_physics_5 }
-							50 = { set_deposit = d_physics_6 }
+							50 = {
+								set_deposit = d_physics_5
+							}
+							50 = {
+								set_deposit = d_physics_6
+							}
 						}
 					}
 					every_system_planet = {
@@ -1036,14 +1142,20 @@ eo_modifiers_and_planets = {
 						}
 						clear_deposits = yes
 						random_list = {
-							50 = { set_deposit = d_engineering_5 }
-							50 = { set_deposit = d_engineering_6 }
+							50 = {
+								set_deposit = d_engineering_5
+							}
+							50 = {
+								set_deposit = d_engineering_6
+							}
 						}
 					}
 					random_system_planet = {
 						limit = {
 							has_planet_flag = starting_deposit
-							NOT = { has_planet_flag = ignore_startup_effect }
+							NOT = {
+								has_planet_flag = ignore_startup_effect
+							}
 							OR = {
 								has_deposit = d_minerals_5
 								has_deposit = d_minerals_6
@@ -1052,39 +1164,63 @@ eo_modifiers_and_planets = {
 						}
 						add_deposit = d_alloys_2
 					}
-				#####Exotic Gases
+					#####Exotic Gases
 					random_system_planet = {
 						limit = {
-							NOT = { has_planet_flag = starting_deposit }
-							NOT = { has_planet_flag = ignore_startup_effect }
+							NOT = {
+								has_planet_flag = starting_deposit
+							}
+							NOT = {
+								has_planet_flag = ignore_startup_effect
+							}
 							is_homeworld = no
 						}
 						random_list = {
-							70 = { add_deposit = d_exotic_gases_1 }
-							30 = { add_deposit = d_exotic_gases_2 }
+							70 = {
+								add_deposit = d_exotic_gases_1
+							}
+							30 = {
+								add_deposit = d_exotic_gases_2
+							}
 						}
 						set_planet_flag = stellar_cornucopia_rare_resource_deposit
 					}
-				#####Rare Crystals
+					#####Rare Crystals
 					if = {
 						limit = {
 							any_system_planet = {
-								NOT = { has_planet_flag = starting_deposit }
-								NOT = { has_planet_flag = ignore_startup_effect }
+								NOT = {
+									has_planet_flag = starting_deposit
+								}
+								NOT = {
+									has_planet_flag = ignore_startup_effect
+								}
 								is_homeworld = no
-								NOT = { has_planet_flag = stellar_cornucopia_rare_resource_deposit }
+								NOT = {
+									has_planet_flag = stellar_cornucopia_rare_resource_deposit
+								}
 							}
 						}
 						random_system_planet = {
 							limit = {
-								NOT = { has_planet_flag = starting_deposit }
-								NOT = { has_planet_flag = ignore_startup_effect }
+								NOT = {
+									has_planet_flag = starting_deposit
+								}
+								NOT = {
+									has_planet_flag = ignore_startup_effect
+								}
 								is_homeworld = no
-								NOT = { has_planet_flag = stellar_cornucopia_rare_resource_deposit }
+								NOT = {
+									has_planet_flag = stellar_cornucopia_rare_resource_deposit
+								}
 							}
 							random_list = {
-								70 = { add_deposit = d_rare_crystals_1 }
-								30 = { add_deposit = d_rare_crystals_2 }
+								70 = {
+									add_deposit = d_rare_crystals_1
+								}
+								30 = {
+									add_deposit = d_rare_crystals_2
+								}
 							}
 							set_planet_flag = stellar_cornucopia_rare_resource_deposit
 						}
@@ -1092,54 +1228,86 @@ eo_modifiers_and_planets = {
 					else = {
 						random_system_planet = {
 							limit = {
-								NOT = { has_planet_flag = starting_deposit }
-								NOT = { has_planet_flag = ignore_startup_effect }
+								NOT = {
+									has_planet_flag = starting_deposit
+								}
+								NOT = {
+									has_planet_flag = ignore_startup_effect
+								}
 								is_homeworld = no
 							}
 							random_list = {
-								70 = { add_deposit = d_rare_crystals_1 }
-								30 = { add_deposit = d_rare_crystals_2 }
+								70 = {
+									add_deposit = d_rare_crystals_1
+								}
+								30 = {
+									add_deposit = d_rare_crystals_2
+								}
 							}
 							set_planet_flag = stellar_cornucopia_rare_resource_deposit
 						}
 					}
-				#####Volatile Motes
+					#####Volatile Motes
 					if = {
 						limit = {
 							any_system_planet = {
-								NOT = { has_planet_flag = starting_deposit }
-								NOT = { has_planet_flag = ignore_startup_effect }
+								NOT = {
+									has_planet_flag = starting_deposit
+								}
+								NOT = {
+									has_planet_flag = ignore_startup_effect
+								}
 								is_homeworld = no
-								NOT = { has_planet_flag = stellar_cornucopia_rare_resource_deposit }
+								NOT = {
+									has_planet_flag = stellar_cornucopia_rare_resource_deposit
+								}
 							}
 						}
 						random_system_planet = {
 							limit = {
-								NOT = { has_planet_flag = starting_deposit }
-								NOT = { has_planet_flag = ignore_startup_effect }
+								NOT = {
+									has_planet_flag = starting_deposit
+								}
+								NOT = {
+									has_planet_flag = ignore_startup_effect
+								}
 								is_homeworld = no
-								NOT = { has_planet_flag = stellar_cornucopia_rare_resource_deposit }
+								NOT = {
+									has_planet_flag = stellar_cornucopia_rare_resource_deposit
+								}
 							}
 							random_list = {
-								70 = { add_deposit = d_volatile_motes_1 }
-								30 = { add_deposit = d_volatile_motes_2 }
+								70 = {
+									add_deposit = d_volatile_motes_1
+								}
+								30 = {
+									add_deposit = d_volatile_motes_2
+								}
 							}
 						}
 					}
 					else = {
 						random_system_planet = {
 							limit = {
-								NOT = { has_planet_flag = starting_deposit }
-								NOT = { has_planet_flag = ignore_startup_effect }
+								NOT = {
+									has_planet_flag = starting_deposit
+								}
+								NOT = {
+									has_planet_flag = ignore_startup_effect
+								}
 								is_homeworld = no
 							}
 							random_list = {
-								70 = { add_deposit = d_volatile_motes_1 }
-								30 = { add_deposit = d_volatile_motes_2 }
+								70 = {
+									add_deposit = d_volatile_motes_1
+								}
+								30 = {
+									add_deposit = d_volatile_motes_2
+								}
 							}
 						}
 					}
-				#####Terraforming Candidate
+					#####Terraforming Candidate
 					if = {
 						limit = {
 							NOT = {
@@ -1187,8 +1355,12 @@ eo_modifiers_and_planets = {
 									}
 								}
 								random_list = {
-									50 = { change_pc = pc_barren }
-									50 = { change_pc = pc_barren_cold }
+									50 = {
+										change_pc = pc_barren
+									}
+									50 = {
+										change_pc = pc_barren_cold
+									}
 								}
 								set_stellar_cornucopia_terraforming_candidate_size = yes
 								add_modifier = {
@@ -1202,8 +1374,12 @@ eo_modifiers_and_planets = {
 									is_planet_class = pc_gas_giant
 								}
 								random_list = {
-									50 = { change_pc = pc_barren }
-									50 = { change_pc = pc_barren_cold }
+									50 = {
+										change_pc = pc_barren
+									}
+									50 = {
+										change_pc = pc_barren_cold
+									}
 								}
 								set_stellar_cornucopia_terraforming_candidate_size = yes
 								add_modifier = {
@@ -1216,7 +1392,7 @@ eo_modifiers_and_planets = {
 			}
 		}
 	}
- ####Genius Loci empire modifier
+	####Genius Loci empire modifier
 	if = {
 		limit = {
 			owner = {
@@ -1230,7 +1406,7 @@ eo_modifiers_and_planets = {
 			}
 		}
 	}
- ####Dragon's Lair spawn Ravinax
+	####Dragon's Lair spawn Ravinax
 	if = {
 		limit = {
 			owner = {
@@ -1258,7 +1434,6 @@ eo_modifiers_and_planets = {
 				save_global_event_target_as = ravinax_lair
 				clear_deposits = yes
 				add_deposit = d_ravinax_hoard
-
 				create_country = {
 					name = "NAME_Ravinax"
 					type = guardian_dragon
@@ -1267,11 +1442,11 @@ eo_modifiers_and_planets = {
 							category = "zoological"
 							file = "flag_zoological_6.dds"
 						}
-						background= {
+						background = {
 							category = "backgrounds"
 							file = "00_solid.dds"
 						}
-						colors={
+						colors = {
 							"dark_green"
 							"dark_green"
 							"null"
@@ -1314,7 +1489,6 @@ eo_modifiers_and_planets = {
 						every_playable_country = {
 							establish_communications_no_message = event_target:ravinax_country
 						}
-
 						create_fleet = {
 							name = "NAME_Ravinax"
 							settings = {
@@ -1339,7 +1513,9 @@ eo_modifiers_and_planets = {
 								set_aggro_range_measure_from = self
 								set_aggro_range = 400
 								event_target:ravinax_lair = {
-									planet_event = { id = eo_dragons_lair.1 }
+									planet_event = {
+										id = eo_dragons_lair.1
+									}
 								}
 								queue_actions = {
 									repeat = {
@@ -1479,7 +1655,7 @@ eo_modifiers_and_planets = {
 			}
 		}
 	}
- ####Starship Graveyard space debris
+	####Starship Graveyard space debris
 	if = {
 		limit = {
 			owner = {
@@ -1492,7 +1668,7 @@ eo_modifiers_and_planets = {
 			location = this
 		}
 	}
- ####Living Planet modifier
+	####Living Planet modifier
 	if = {
 		limit = {
 			owner = {
@@ -1501,7 +1677,9 @@ eo_modifiers_and_planets = {
 		}
 		owner = {
 			capital_scope = {
-				add_modifier = { modifier = living_planet }
+				add_modifier = {
+					modifier = living_planet
+				}
 				create_country = {
 					name = "[root.GetName]"
 					type = living_planet
@@ -1523,7 +1701,7 @@ eo_modifiers_and_planets = {
 			}
 		}
 	}
- ####Hole in the Void wormhole
+	####Hole in the Void wormhole
 	if = {
 		limit = {
 			owner = {
@@ -1537,9 +1715,12 @@ eo_modifiers_and_planets = {
 					distance = {
 						min_jumps = 5
 					}
-					NOT = { has_star_flag = empire_home_system }
+					NOT = {
+						has_star_flag = empire_home_system
+					}
 				}
-				prev = { # done this way to ensure we don't spawn "orphan wormholes (wormholes that aren't linked to anything)
+				prev = {
+					# done this way to ensure we don't spawn "orphan wormholes (wormholes that aren't linked to anything)
 					spawn_natural_wormhole = {
 						bypass_type = wormhole
 						random_pos = no
@@ -1558,10 +1739,14 @@ eo_modifiers_and_planets = {
 		owner = {
 			set_country_flag = encountered_first_wormhole
 			add_seen_bypass_type = wormhole
-			country_event = { id = eo_wormhole.1 days = 1440 random = 360 }
+			country_event = {
+				id = eo_wormhole.1
+				days = 1440
+				random = 360
+			}
 		}
 	}
- ####Sibling Rivalry
+	####Sibling Rivalry
 	if = {
 		limit = {
 			owner = {
@@ -1625,19 +1810,20 @@ eo_modifiers_and_planets = {
 							save_event_target_as = sister_planet
 						}
 					}
-				#	10 = {
-				#		random_system_planet = {
-				#			limit = {
-				#				is_planet_class = pc_frozen
-				#				planet_size = 9
-				#			}
-				#			change_pc = pc_arctic
-				#			save_event_target_as = sister_planet
-				#		}
-				#	}
+					#	10 = {
+					#		random_system_planet = {
+					#			limit = {
+					#				is_planet_class = pc_frozen
+					#				planet_size = 9
+					#			}
+					#			change_pc = pc_arctic
+					#			save_event_target_as = sister_planet
+					#		}
+					#	}
 				}
 			}
-			else_if = { # Wet
+			else_if = {
+				# Wet
 				limit = {
 					root = {
 						is_wet = yes
@@ -1693,16 +1879,28 @@ eo_modifiers_and_planets = {
 							}
 						}
 						random_list = {
-							10 = { change_pc = pc_arid }
-							10 = { change_pc = pc_desert }
-							10 = { change_pc = pc_savanna }
+							10 = {
+								change_pc = pc_arid
+							}
+							10 = {
+								change_pc = pc_desert
+							}
+							10 = {
+								change_pc = pc_savanna
+							}
 						}
 					}
 					else = {
 						random_list = {
-							10 = { change_pc = pc_alpine }
-							10 = { change_pc = pc_arctic }
-							10 = { change_pc = pc_tundra }
+							10 = {
+								change_pc = pc_alpine
+							}
+							10 = {
+								change_pc = pc_arctic
+							}
+							10 = {
+								change_pc = pc_tundra
+							}
 						}
 					}
 					if = {
@@ -1713,7 +1911,8 @@ eo_modifiers_and_planets = {
 					}
 				}
 			}
-			else_if = { # Dry
+			else_if = {
+				# Dry
 				limit = {
 					root = {
 						is_dry = yes
@@ -1767,9 +1966,15 @@ eo_modifiers_and_planets = {
 							}
 						}
 						random_list = {
-							10 = { change_pc = pc_continental }
-							10 = { change_pc = pc_ocean }
-							10 = { change_pc = pc_tropical }
+							10 = {
+								change_pc = pc_continental
+							}
+							10 = {
+								change_pc = pc_ocean
+							}
+							10 = {
+								change_pc = pc_tropical
+							}
 						}
 					}
 					else_if = {
@@ -1777,15 +1982,25 @@ eo_modifiers_and_planets = {
 							is_planet_class = pc_frozen
 						}
 						random_list = {
-							10 = { change_pc = pc_arctic }
-							10 = { change_pc = pc_ocean }
+							10 = {
+								change_pc = pc_arctic
+							}
+							10 = {
+								change_pc = pc_ocean
+							}
 						}
 					}
 					else = {
 						random_list = {
-							10 = { change_pc = pc_alpine }
-							10 = { change_pc = pc_arctic }
-							10 = { change_pc = pc_tundra }
+							10 = {
+								change_pc = pc_alpine
+							}
+							10 = {
+								change_pc = pc_arctic
+							}
+							10 = {
+								change_pc = pc_tundra
+							}
 						}
 					}
 					if = {
@@ -1796,7 +2011,8 @@ eo_modifiers_and_planets = {
 					}
 				}
 			}
-			else = { # Cold
+			else = {
+				# Cold
 				if = {
 					limit = {
 						any_system_planet = {
@@ -1848,8 +2064,12 @@ eo_modifiers_and_planets = {
 							}
 						}
 						random_list = {
-							10 = { change_pc = pc_continental }
-							10 = { change_pc = pc_ocean }
+							10 = {
+								change_pc = pc_continental
+							}
+							10 = {
+								change_pc = pc_ocean
+							}
 						}
 					}
 					else_if = {
@@ -1860,19 +2080,37 @@ eo_modifiers_and_planets = {
 							}
 						}
 						random_list = {
-							10 = { change_pc = pc_arid }
-							10 = { change_pc = pc_desert }
-							10 = { change_pc = pc_savanna }
-							10 = { change_pc = pc_continental }
-							10 = { change_pc = pc_ocean }
-							10 = { change_pc = pc_tropical }
+							10 = {
+								change_pc = pc_arid
+							}
+							10 = {
+								change_pc = pc_desert
+							}
+							10 = {
+								change_pc = pc_savanna
+							}
+							10 = {
+								change_pc = pc_continental
+							}
+							10 = {
+								change_pc = pc_ocean
+							}
+							10 = {
+								change_pc = pc_tropical
+							}
 						}
 					}
 					else = {
 						random_list = {
-							10 = { change_pc = pc_continental }
-							10 = { change_pc = pc_ocean }
-							10 = { change_pc = pc_tropical }
+							10 = {
+								change_pc = pc_continental
+							}
+							10 = {
+								change_pc = pc_ocean
+							}
+							10 = {
+								change_pc = pc_tropical
+							}
 						}
 					}
 					if = {
@@ -1885,7 +2123,7 @@ eo_modifiers_and_planets = {
 			}
 			last_created_species = {
 				set_species_homeworld = event_target:sister_planet
-			### Remove trait
+				### Remove trait
 				if = {
 					limit = {
 						has_trait = trait_pc_arid_preference
@@ -1958,7 +2196,7 @@ eo_modifiers_and_planets = {
 						remove_trait = trait_pc_tundra_preference
 					}
 				}
-			### Add trait
+				### Add trait
 				if = {
 					limit = {
 						event_target:sister_planet = {
@@ -2059,7 +2297,10 @@ eo_modifiers_and_planets = {
 					}
 				}
 				every_owned_pop = {
-					add_modifier = { modifier = pop_recently_conquered days = 3600 }
+					add_modifier = {
+						modifier = pop_recently_conquered
+						days = 3600
+					}
 					set_pop_flag = needs_ethos_set
 				}
 				set_owner = root.owner
@@ -2405,7 +2646,9 @@ eo_modifiers_and_planets = {
 					is_asteroid = no
 					is_colony = no
 					is_star = no
-					NOT = { is_planet_class = pc_gas_giant }
+					NOT = {
+						is_planet_class = pc_gas_giant
+					}
 				}
 				change_pc = pc_gray_goo
 				set_name = containment_site_alpha
