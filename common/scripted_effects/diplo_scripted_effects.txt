@@ -11,7 +11,6 @@
 #		example_effect = yes
 #	}
 #
-
 breach_fix_resolution_ecology_natural_sanctuaries = {
 	if = {
 		limit = {
@@ -184,7 +183,9 @@ breach_fix_resolution_lawandorder_informed_governance = {
 			has_global_flag = expanded_pops_active
 			has_policy_flag = free_press
 			is_active_resolution = "resolution_lawandorder_informed_governance"
-			NOT = { has_ethic = ethic_fanatic_egalitarian }
+			NOT = {
+				has_ethic = ethic_fanatic_egalitarian
+			}
 		}
 		set_policy = {
 			policy = media_rights
@@ -197,7 +198,9 @@ breach_fix_resolution_lawandorder_informed_governance = {
 		limit = {
 			has_authority = auth_democratic
 			is_active_resolution = "resolution_lawandorder_informed_governance"
-			NOT = { has_ethic = ethic_fanatic_egalitarian }
+			NOT = {
+				has_ethic = ethic_fanatic_egalitarian
+			}
 		}
 		change_government = {
 			authority = auth_oligarchic
@@ -209,7 +212,9 @@ breach_fix_resolution_lawandorder_informed_governance = {
 			has_global_flag = expanded_pops_active
 			has_authority = auth_bugged_corporate_democratic
 			is_active_resolution = "resolution_lawandorder_informed_governance"
-			NOT = { has_ethic = ethic_fanatic_egalitarian }
+			NOT = {
+				has_ethic = ethic_fanatic_egalitarian
+			}
 		}
 		change_government = {
 			authority = auth_corporate
@@ -234,9 +239,15 @@ breach_fix_resolution_divinity_a_defined_purpose_synthetic = {
 						has_trait = trait_machine_unit
 						has_trait = trait_mechanical
 					}
-					has_citizenship_type = { type = citizenship_slavery country = prev }
+					has_citizenship_type = {
+						type = citizenship_slavery
+						country = prev
+					}
 				}
-				set_citizenship_type = { type = citizenship_limited country = prev }
+				set_citizenship_type = {
+					type = citizenship_limited
+					country = prev
+				}
 			}
 		}
 		custom_tooltip = "federations.10210.freeslaves"
@@ -249,7 +260,10 @@ breach_fix_resolution_divinity_a_defined_purpose_synthetic = {
 						has_trait = trait_mechanical
 					}
 				}
-				set_living_standard = { type = living_standard_utopian country = prev }
+				set_living_standard = {
+					type = living_standard_utopian
+					country = prev
+				}
 			}
 		}
 		custom_tooltip = "federations.10230.complyutopian"
@@ -272,9 +286,15 @@ breach_fix_resolution_divinity_a_defined_purpose_synthetic_chemical = {
 						has_trait = trait_machine_unit
 						has_trait = trait_mechanical
 					}
-					has_citizenship_type = { type = citizenship_slavery country = prev }
+					has_citizenship_type = {
+						type = citizenship_slavery
+						country = prev
+					}
 				}
-				set_citizenship_type = { type = citizenship_limited country = prev }
+				set_citizenship_type = {
+					type = citizenship_limited
+					country = prev
+				}
 			}
 		}
 		custom_tooltip = "federations.10210.freeslaves"
@@ -287,7 +307,10 @@ breach_fix_resolution_divinity_a_defined_purpose_synthetic_chemical = {
 						has_trait = trait_mechanical
 					}
 				}
-				set_living_standard = { type = living_standard_chemical_bliss country = prev }
+				set_living_standard = {
+					type = living_standard_chemical_bliss
+					country = prev
+				}
 			}
 		}
 		custom_tooltip = "federations.10230.complychemical"
@@ -363,11 +386,15 @@ breach_fix_resolution_healthcare_war_relief = {
 				is_active_resolution = "resolution_healthcare_clonal_medicine"
 				is_active_resolution = "resolution_healthcare_universal_healthcare"
 			}
-			any_owned_army = { army_type = xenomorph_army }
+			any_owned_army = {
+				army_type = xenomorph_army
+			}
 		}
 		hidden_effect = {
 			every_owned_army = {
-				limit = { army_type = xenomorph_army }
+				limit = {
+					army_type = xenomorph_army
+				}
 				remove_army = yes
 			}
 		}
@@ -449,7 +476,12 @@ breach_fix_resolution_healthcare_universal_healthcare = {
 		limit = {
 			is_active_resolution = "resolution_healthcare_universal_healthcare"
 			any_owned_species = {
-				NOT = { has_citizenship_type = { type = citizenship_purge country = prev } }
+				NOT = {
+					has_citizenship_type = {
+						type = citizenship_purge
+						country = prev
+					}
+				}
 				OR = {
 					has_trait = trait_slow_breeders
 					has_trait = trait_fleeting
@@ -464,7 +496,12 @@ breach_fix_resolution_healthcare_universal_healthcare = {
 		hidden_effect = {
 			every_owned_species = {
 				limit = {
-					NOT = { has_citizenship_type = { type = citizenship_purge country = prev } }
+					NOT = {
+						has_citizenship_type = {
+							type = citizenship_purge
+							country = prev
+						}
+					}
 					OR = {
 						has_trait = trait_slow_breeders
 						has_trait = trait_fleeting
@@ -495,57 +532,92 @@ galactic_cooperation_migration_update = {
 	if = {
 		limit = {
 			count_country = {
-				limit = { has_diplo_migration_treaty = PREV }
+				limit = {
+					has_diplo_migration_treaty = PREV
+				}
 				count >= 5
 			}
-			NOT = { has_modifier = galactic_cooperation_migration_5 }
+			NOT = {
+				has_modifier = galactic_cooperation_migration_5
+			}
 		}
 		remove_galactic_cooperation_migration_modifiers = yes
-		add_modifier = { modifier = galactic_cooperation_migration_5 days = -1 }
+		add_modifier = {
+			modifier = galactic_cooperation_migration_5
+			days = -1
+		}
 	}
 	else_if = {
 		limit = {
 			count_country = {
-				limit = { has_diplo_migration_treaty = PREV }
+				limit = {
+					has_diplo_migration_treaty = PREV
+				}
 				count >= 4
 			}
-			NOT = { has_modifier = galactic_cooperation_migration_4 }
+			NOT = {
+				has_modifier = galactic_cooperation_migration_4
+			}
 		}
 		remove_galactic_cooperation_migration_modifiers = yes
-		add_modifier = { modifier = galactic_cooperation_migration_4 days = -1 }
+		add_modifier = {
+			modifier = galactic_cooperation_migration_4
+			days = -1
+		}
 	}
 	else_if = {
 		limit = {
 			count_country = {
-				limit = { has_diplo_migration_treaty = PREV }
+				limit = {
+					has_diplo_migration_treaty = PREV
+				}
 				count >= 3
 			}
-			NOT = { has_modifier = galactic_cooperation_migration_3 }
+			NOT = {
+				has_modifier = galactic_cooperation_migration_3
+			}
 		}
 		remove_galactic_cooperation_migration_modifiers = yes
-		add_modifier = { modifier = galactic_cooperation_migration_3 days = -1 }
+		add_modifier = {
+			modifier = galactic_cooperation_migration_3
+			days = -1
+		}
 	}
 	else_if = {
 		limit = {
 			count_country = {
-				limit = { has_diplo_migration_treaty = PREV }
+				limit = {
+					has_diplo_migration_treaty = PREV
+				}
 				count >= 2
 			}
-			NOT = { has_modifier = galactic_cooperation_migration_2 }
+			NOT = {
+				has_modifier = galactic_cooperation_migration_2
+			}
 		}
 		remove_galactic_cooperation_migration_modifiers = yes
-		add_modifier = { modifier = galactic_cooperation_migration_2 days = -1 }
+		add_modifier = {
+			modifier = galactic_cooperation_migration_2
+			days = -1
+		}
 	}
 	else_if = {
 		limit = {
 			count_country = {
-				limit = { has_diplo_migration_treaty = PREV }
+				limit = {
+					has_diplo_migration_treaty = PREV
+				}
 				count >= 1
 			}
-			NOT = { has_modifier = galactic_cooperation_migration_1 }
+			NOT = {
+				has_modifier = galactic_cooperation_migration_1
+			}
 		}
 		remove_galactic_cooperation_migration_modifiers = yes
-		add_modifier = { modifier = galactic_cooperation_migration_1 days = -1 }
+		add_modifier = {
+			modifier = galactic_cooperation_migration_1
+			days = -1
+		}
 	}
 	else = {
 		remove_galactic_cooperation_migration_modifiers = yes
@@ -554,23 +626,33 @@ galactic_cooperation_migration_update = {
 
 remove_galactic_cooperation_migration_modifiers = {
 	if = {
-		limit = { has_modifier = galactic_cooperation_migration_1 }
+		limit = {
+			has_modifier = galactic_cooperation_migration_1
+		}
 		remove_modifier = galactic_cooperation_migration_1
 	}
 	if = {
-		limit = { has_modifier = galactic_cooperation_migration_2 }
+		limit = {
+			has_modifier = galactic_cooperation_migration_2
+		}
 		remove_modifier = galactic_cooperation_migration_2
 	}
 	if = {
-		limit = { has_modifier = galactic_cooperation_migration_3 }
+		limit = {
+			has_modifier = galactic_cooperation_migration_3
+		}
 		remove_modifier = galactic_cooperation_migration_3
 	}
 	if = {
-		limit = { has_modifier = galactic_cooperation_migration_4 }
+		limit = {
+			has_modifier = galactic_cooperation_migration_4
+		}
 		remove_modifier = galactic_cooperation_migration_4
 	}
 	if = {
-		limit = { has_modifier = galactic_cooperation_migration_5 }
+		limit = {
+			has_modifier = galactic_cooperation_migration_5
+		}
 		remove_modifier = galactic_cooperation_migration_5
 	}
 }

@@ -1,13 +1,10 @@
 ##########################################################################
 # Decisions
 ##########################################################################
-
-
 # Eco-Arcology Project
 decision_ecoarcology_project = {
 	owned_planets_only = yes
 	icon = decision_ecoarcology_project
-
 	enactment_time = 3600
 	resources = {
 		category = decisions
@@ -16,7 +13,6 @@ decision_ecoarcology_project = {
 			minerals = 20000
 		}
 	}
-	
 	potential = {
 		NOR = {
 			is_planet_class = pc_pdshroud
@@ -44,28 +40,49 @@ decision_ecoarcology_project = {
 		}
 		is_artificial = no
 		exists = owner
-		owner = { has_ascension_perk = ap_arcology_project }
+		owner = {
+			has_ascension_perk = ap_arcology_project
+		}
 	}
-	
 	allow = {
 		custom_tooltip = {
 			fail_text = decision_eco_arcology_project_requirements
 			free_district_slots < 1
-			num_districts = { type = district_industrial value < 1 }
-			num_districts = { type = district_farming value < 1 }
-			num_districts = { type = district_mining value < 1 }
-			num_districts = { type = district_generator value < 1 }
-			num_districts = { type = district_farming_uncapped value < 1 }
-			num_districts = { type = district_mining_uncapped value < 1 }
-			num_districts = { type = district_generator_uncapped value < 1 }
+			num_districts = {
+				type = district_industrial
+				value < 1
+			}
+			num_districts = {
+				type = district_farming
+				value < 1
+			}
+			num_districts = {
+				type = district_mining
+				value < 1
+			}
+			num_districts = {
+				type = district_generator
+				value < 1
+			}
+			num_districts = {
+				type = district_farming_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_mining_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_generator_uncapped
+				value < 1
+			}
 		}
 		num_uncleared_blockers < 1
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_arcology_project_effects
-		hidden_effect = {		
+		hidden_effect = {
 			clear_deposits = yes
 			change_pc = pc_ecocity
 			IF = {
@@ -73,39 +90,53 @@ decision_ecoarcology_project = {
 					has_planet_flag = planet_earth
 				}
 				set_planet_entity = {
-                    entity = "ecocity_planet_02_earth_entity"
-                }
+					entity = "ecocity_planet_02_earth_entity"
+				}
 			}
 			IF = {
 				limit = {
 					has_planet_flag = pdmars
 				}
 				set_planet_entity = {
-                    entity = "ecocity_planet_03_mars_entity"
-                }
+					entity = "ecocity_planet_03_mars_entity"
+				}
 			}
 			IF = {
 				limit = {
 					has_planet_flag = pdvenus
 				}
 				set_planet_entity = {
-                    entity = "ecocity_planet_04_venus_entity"
-                }
+					entity = "ecocity_planet_04_venus_entity"
+				}
 			}
 			IF = {
-				limit = { 
-					owner = { NOT = { has_trait = trait_pc_aquatic_preference } }
-					NOT = { has_planet_flag = planet_earth }
-					NOT = { has_planet_flag = pdmars }
-					NOT = { has_planet_flag = pdvenus }
-				 }
+				limit = {
+					owner = {
+						NOT = {
+							has_trait = trait_pc_aquatic_preference
+						}
+					}
+					NOT = {
+						has_planet_flag = planet_earth
+					}
+					NOT = {
+						has_planet_flag = pdmars
+					}
+					NOT = {
+						has_planet_flag = pdvenus
+					}
+				}
 				set_planet_entity = {
 					entity = "ecocity_planet_entity"
 					graphical_culture = owner
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_aquatic_preference } }
+				limit = {
+					owner = {
+						has_trait = trait_pc_aquatic_preference
+					}
+				}
 				set_planet_entity = {
 					entity = aquaticecocity_planet_01_entity
 					picture = pc_aquaticcity
@@ -113,45 +144,110 @@ decision_ecoarcology_project = {
 				set_planet_flag = pdaquapicture
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_ammonia_preference } }
-				IF = { limit = { NOT = { has_modifier = pdammoniaatmosphere } }	add_modifier = { modifier = pdammoniaatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_ammonia_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdammoniaatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdammoniaatmosphere
+					}
+				}
 				remove_modifier = ammonia
-				set_planet_entity = { picture = pc_ammoniacity entity = ecocity_ammonia_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_ammoniacity
+					entity = ecocity_ammonia_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_sulfur_preference } }
-				IF = { limit = { NOT = { has_modifier = pdsulfuratmosphere } }	add_modifier = { modifier = pdsulfuratmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_sulfur_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdsulfuratmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdsulfuratmosphere
+					}
+				}
 				remove_modifier = pdsulfur
-				set_planet_entity = { 
-					picture = pc_sulfurcity 
+				set_planet_entity = {
+					picture = pc_sulfurcity
 					entity = ecocity_sulfur_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_methane_preference } }
-				IF = { limit = { NOT = { has_modifier = pdmethaneatmosphere } }	add_modifier = { modifier = pdmethaneatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_methane_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdmethaneatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdmethaneatmosphere
+					}
+				}
 				remove_modifier = methane
-				set_planet_entity = { 
-					picture = pc_methanecity 
-					entity = ecocity_methane_planet_01_entity 
+				set_planet_entity = {
+					picture = pc_methanecity
+					entity = ecocity_methane_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_ash_preference } }
-				IF = { limit = { NOT = { has_modifier = pdashatmosphere } }	add_modifier = { modifier = pdashatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdashatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdashatmosphere
+					}
+				}
 				remove_modifier = ash
-				set_planet_entity = { 
-					picture = pc_ashcity 
-					entity = ecocity_ash_planet_01_entity 
+				set_planet_entity = {
+					picture = pc_ashcity
+					entity = ecocity_ash_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_origin = origin_pd_shroud has_ascension_perk = ap_transcendence } }
-				set_planet_entity = { picture = pc_shroudcity entity = ecoshroud_planet_01_entity }
+				limit = {
+					owner = {
+						has_origin = origin_pd_shroud
+						has_ascension_perk = ap_transcendence
+					}
+				}
+				set_planet_entity = {
+					picture = pc_shroudcity
+					entity = ecoshroud_planet_01_entity
+				}
 				add_deposit = d_pd_shroud_arc
 			}
 			owner = {
-				country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
+				country_event = {
+					id = distar.201
+				}				# port for living planet distar.197, triggers in event
 			}
 			if = {
 				limit = {
@@ -161,26 +257,36 @@ decision_ecoarcology_project = {
 					}
 				}
 				owner = {
-					set_timed_country_flag = { flag = resolution_breached_terraformed days = 3600 }
+					set_timed_country_flag = {
+						flag = resolution_breached_terraformed
+						days = 3600
+					}
 				}
 			}
-			planet_event = { id = pdengine.09 }
+			planet_event = {
+				id = pdengine.09
+			}
 			remove_modifier = engineered_environment
 			remove_modifier = engineered_environment_gaia
 			add_deposit = d_ecogarden
-			planet_event = { id = pdengine.14 }
+			planet_event = {
+				id = pdengine.14
+			}
 			relic_world_conversion_effect = {
 				DISTRICT = district_arcology_housing
 				VARIABLE = num_housing_districts
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 10
-		modifier = { 
-			factor = 0	
-			owner = { any_owned_planet = { is_planet_class = pc_ecocity } }
+		modifier = {
+			factor = 0
+			owner = {
+				any_owned_planet = {
+					is_planet_class = pc_ecocity
+				}
+			}
 		}
 	}
 }
@@ -189,7 +295,6 @@ decision_ecoarcology_project = {
 decision_ecoarcology_project_relic = {
 	owned_planets_only = yes
 	icon = decision_arcology_project
-
 	enactment_time = 3600
 	resources = {
 		category = decisions
@@ -198,23 +303,36 @@ decision_ecoarcology_project_relic = {
 			minerals = 20000
 		}
 	}
-
 	potential = {
 		is_planet_class = pc_relic
 		is_artificial = no
 		exists = owner
-		owner = { is_regular_empire = yes }
+		owner = {
+			is_regular_empire = yes
+		}
 	}
-
 	allow = {
-		num_districts = { type = district_industrial value < 1 }
-		num_districts = { type = district_farming value < 1 }
-		num_districts = { type = district_mining value < 1 }
-		num_districts = { type = district_generator value < 1 }
+		num_districts = {
+			type = district_industrial
+			value < 1
+		}
+		num_districts = {
+			type = district_farming
+			value < 1
+		}
+		num_districts = {
+			type = district_mining
+			value < 1
+		}
+		num_districts = {
+			type = district_generator
+			value < 1
+		}
 		num_uncleared_blockers < 1
-		owner = { has_technology = tech_housing_2 }
+		owner = {
+			has_technology = tech_housing_2
+		}
 	}
-
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_eco_arcology_project_effects
@@ -230,39 +348,53 @@ decision_ecoarcology_project_relic = {
 					has_planet_flag = planet_earth
 				}
 				set_planet_entity = {
-                    entity = "ecocity_planet_02_earth_entity"
-                }
+					entity = "ecocity_planet_02_earth_entity"
+				}
 			}
 			IF = {
 				limit = {
 					has_planet_flag = pdmars
 				}
 				set_planet_entity = {
-                    entity = "ecocity_planet_03_mars_entity"
-                }
+					entity = "ecocity_planet_03_mars_entity"
+				}
 			}
 			IF = {
 				limit = {
 					has_planet_flag = pdvenus
 				}
 				set_planet_entity = {
-                    entity = "ecocity_planet_04_venus_entity"
-                }
+					entity = "ecocity_planet_04_venus_entity"
+				}
 			}
 			IF = {
-				limit = { 
-					owner = { NOT = { has_trait = trait_pc_aquatic_preference } }
-					NOT = { has_planet_flag = planet_earth }
-					NOT = { has_planet_flag = pdmars }
-					NOT = { has_planet_flag = pdvenus }
-				 }
+				limit = {
+					owner = {
+						NOT = {
+							has_trait = trait_pc_aquatic_preference
+						}
+					}
+					NOT = {
+						has_planet_flag = planet_earth
+					}
+					NOT = {
+						has_planet_flag = pdmars
+					}
+					NOT = {
+						has_planet_flag = pdvenus
+					}
+				}
 				set_planet_entity = {
 					entity = "ecocity_planet_entity"
 					graphical_culture = owner
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_aquatic_preference } }
+				limit = {
+					owner = {
+						has_trait = trait_pc_aquatic_preference
+					}
+				}
 				set_planet_entity = {
 					entity = "aquaticecocity_planet_01_entity"
 					picture = "pc_aquaticcity"
@@ -270,54 +402,90 @@ decision_ecoarcology_project_relic = {
 				set_planet_flag = pdaquapicture
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_ammonia_preference } }
-				add_modifier = { modifier = pdammoniaatmosphere	}
+				limit = {
+					owner = {
+						has_trait = trait_pc_ammonia_preference
+					}
+				}
+				add_modifier = {
+					modifier = pdammoniaatmosphere
+				}
 				remove_modifier = ammonia
-				set_planet_entity = { 
-					picture = pc_ammoniacity 
+				set_planet_entity = {
+					picture = pc_ammoniacity
 					entity = ecocity_ammonia_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_sulfur_preference } }
-				add_modifier = { modifier = pdsulfuratmosphere	}
+				limit = {
+					owner = {
+						has_trait = trait_pc_sulfur_preference
+					}
+				}
+				add_modifier = {
+					modifier = pdsulfuratmosphere
+				}
 				remove_modifier = pdsulfur
-				set_planet_entity = { 
-					picture = pc_sulfurcity 
+				set_planet_entity = {
+					picture = pc_sulfurcity
 					entity = ecocity_sulfur_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_methane_preference } }
-				add_modifier = { modifier = pdmethaneatmosphere	}
+				limit = {
+					owner = {
+						has_trait = trait_pc_methane_preference
+					}
+				}
+				add_modifier = {
+					modifier = pdmethaneatmosphere
+				}
 				remove_modifier = methane
-				set_planet_entity = { 
-					picture = pc_methanecity 
-					entity = ecocity_methane_planet_01_entity 
+				set_planet_entity = {
+					picture = pc_methanecity
+					entity = ecocity_methane_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_ash_preference } }
-				add_modifier = { modifier = pdashatmosphere	}
+				limit = {
+					owner = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				add_modifier = {
+					modifier = pdashatmosphere
+				}
 				remove_modifier = ash
-				set_planet_entity = { 
-					picture = pc_ashcity 
-					entity = ecocity_ash_planet_01_entity 
+				set_planet_entity = {
+					picture = pc_ashcity
+					entity = ecocity_ash_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_origin = origin_pd_shroud has_ascension_perk = ap_transcendence } }
-				set_planet_entity = { picture = pc_shroudcity entity = ecoshroud_planet_01_entity }
+				limit = {
+					owner = {
+						has_origin = origin_pd_shroud
+						has_ascension_perk = ap_transcendence
+					}
+				}
+				set_planet_entity = {
+					picture = pc_shroudcity
+					entity = ecoshroud_planet_01_entity
+				}
 				add_deposit = d_pd_shroud_arc
 			}
 			add_deposit = d_former_relic_world
 			add_deposit = d_ecogarden
-			planet_event = { id =  mega.201 }
+			planet_event = {
+				id = mega.201
+			}
 			while = {
 				count = 4
 				solar_system = {
 					random_system_ambient_object = {
-						limit = { has_ambient_object_flag = relic_world_debris }
+						limit = {
+							has_ambient_object_flag = relic_world_debris
+						}
 						destroy_ambient_object = this
 					}
 				}
@@ -330,12 +498,14 @@ decision_ecoarcology_project_relic = {
 					}
 				}
 				owner = {
-					set_timed_country_flag = { flag = resolution_breached_terraformed days = 3600 }
+					set_timed_country_flag = {
+						flag = resolution_breached_terraformed
+						days = 3600
+					}
 				}
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 0
 	}
@@ -345,7 +515,6 @@ decision_ecoarcology_project_relic = {
 decision_milarcology_project = {
 	owned_planets_only = yes
 	icon = decision_milarcology_project
-
 	enactment_time = 3600
 	resources = {
 		category = decisions
@@ -354,7 +523,6 @@ decision_milarcology_project = {
 			minerals = 20000
 		}
 	}
-	
 	potential = {
 		NOR = {
 			is_planet_class = pc_pdshroud
@@ -382,27 +550,45 @@ decision_milarcology_project = {
 		}
 		is_artificial = no
 		exists = owner
-		owner = { has_ascension_perk = ap_arcology_project }
+		owner = {
+			has_ascension_perk = ap_arcology_project
+		}
 	}
-	
 	allow = {
 		custom_tooltip = {
 			fail_text = decision_arcology_project_requirements
 			free_district_slots < 1
-			num_districts = { type = district_farming value < 1 }
-			num_districts = { type = district_mining value < 1 }
-			num_districts = { type = district_generator value < 1 }
-			num_districts = { type = district_farming_uncapped value < 1 }
-			num_districts = { type = district_mining_uncapped value < 1 }
-			num_districts = { type = district_generator_uncapped value < 1 }
+			num_districts = {
+				type = district_farming
+				value < 1
+			}
+			num_districts = {
+				type = district_mining
+				value < 1
+			}
+			num_districts = {
+				type = district_generator
+				value < 1
+			}
+			num_districts = {
+				type = district_farming_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_mining_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_generator_uncapped
+				value < 1
+			}
 		}
 		num_uncleared_blockers < 1
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_arcology_project_effects
-		hidden_effect = {		
+		hidden_effect = {
 			clear_deposits = yes
 			change_pc = pc_milarc
 			IF = {
@@ -410,39 +596,53 @@ decision_milarcology_project = {
 					has_planet_flag = planet_earth
 				}
 				set_planet_entity = {
-                    entity = "milarc_planet_02_earth_entity"
-                }
+					entity = "milarc_planet_02_earth_entity"
+				}
 			}
 			IF = {
 				limit = {
 					has_planet_flag = pdmars
 				}
 				set_planet_entity = {
-                    entity = "milarc_planet_02_mars_entity"
-                }
+					entity = "milarc_planet_02_mars_entity"
+				}
 			}
 			IF = {
 				limit = {
 					has_planet_flag = pdvenus
 				}
 				set_planet_entity = {
-                    entity = "milarc_planet_02_venus_entity"
-                }
+					entity = "milarc_planet_02_venus_entity"
+				}
 			}
 			IF = {
-				limit = { 
-					owner = { NOT = { has_trait = trait_pc_aquatic_preference } }
-					NOT = { has_planet_flag = planet_earth }
-					NOT = { has_planet_flag = pdmars }
-					NOT = { has_planet_flag = pdvenus }
-				 }
+				limit = {
+					owner = {
+						NOT = {
+							has_trait = trait_pc_aquatic_preference
+						}
+					}
+					NOT = {
+						has_planet_flag = planet_earth
+					}
+					NOT = {
+						has_planet_flag = pdmars
+					}
+					NOT = {
+						has_planet_flag = pdvenus
+					}
+				}
 				set_planet_entity = {
 					entity = "milarc_planet_entity"
 					graphical_culture = owner
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_aquatic_preference } }
+				limit = {
+					owner = {
+						has_trait = trait_pc_aquatic_preference
+					}
+				}
 				set_planet_entity = {
 					entity = "aquaticmilarc_planet_01_entity"
 					picture = "pc_aquaticcity"
@@ -450,46 +650,114 @@ decision_milarcology_project = {
 				set_planet_flag = pdaquapicture
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_ammonia_preference } }
-				IF = { limit = { NOT = { has_modifier = pdammoniaatmosphere } }	add_modifier = { modifier = pdammoniaatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_ammonia_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdammoniaatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdammoniaatmosphere
+					}
+				}
 				remove_modifier = ammonia
-				set_planet_entity = { picture = pc_ammoniamilarc entity = milarc_ammonia_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_ammoniamilarc
+					entity = milarc_ammonia_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_sulfur_preference } }
-				IF = { limit = { NOT = { has_modifier = pdsulfuratmosphere } }	add_modifier = { modifier = pdsulfuratmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_sulfur_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdsulfuratmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdsulfuratmosphere
+					}
+				}
 				remove_modifier = pdsulfur
-				set_planet_entity = { 
-					picture = pc_sulfurmilarc 
+				set_planet_entity = {
+					picture = pc_sulfurmilarc
 					entity = milarc_sulfur_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_methane_preference } }
-				IF = { limit = { NOT = { has_modifier = pdmethaneatmosphere } }	add_modifier = { modifier = pdmethaneatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_methane_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdmethaneatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdmethaneatmosphere
+					}
+				}
 				remove_modifier = methane
-				set_planet_entity = { 
-					picture = pc_methanermilarc 
-					entity = milarc_methane_planet_01_entity 
+				set_planet_entity = {
+					picture = pc_methanermilarc
+					entity = milarc_methane_planet_01_entity
 				}
-				set_planet_entity = { picture = pc_methanecity entity = milarc_methane_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_methanecity
+					entity = milarc_methane_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_ash_preference } }
-				IF = { limit = { NOT = { has_modifier = pdashatmosphere } }	add_modifier = { modifier = pdashatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdashatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdashatmosphere
+					}
+				}
 				remove_modifier = ash
-				set_planet_entity = { 
+				set_planet_entity = {
 					picture = pc_ashmilarc
-					entity = milarc_ash_planet_01_entity 
+					entity = milarc_ash_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_origin = origin_pd_shroud has_ascension_perk = ap_transcendence } }
-				set_planet_entity = { picture = pc_shroudmilarc entity = milarcshroud_planet_01_entity }
+				limit = {
+					owner = {
+						has_origin = origin_pd_shroud
+						has_ascension_perk = ap_transcendence
+					}
+				}
+				set_planet_entity = {
+					picture = pc_shroudmilarc
+					entity = milarcshroud_planet_01_entity
+				}
 				add_deposit = d_pd_shroud_arc
 			}
 			owner = {
-				country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
+				country_event = {
+					id = distar.201
+				}				# port for living planet distar.197, triggers in event
 			}
 			if = {
 				limit = {
@@ -499,14 +767,21 @@ decision_milarcology_project = {
 					}
 				}
 				owner = {
-					set_timed_country_flag = { flag = resolution_breached_terraformed days = 3600 }
+					set_timed_country_flag = {
+						flag = resolution_breached_terraformed
+						days = 3600
+					}
 				}
 			}
-			planet_event = { id = pdengine.54 }
+			planet_event = {
+				id = pdengine.54
+			}
 			remove_modifier = engineered_environment
 			remove_modifier = engineered_environment_gaia
 			add_deposit = d_milarc
-			planet_event = { id = pdengine.14 }
+			planet_event = {
+				id = pdengine.14
+			}
 			relic_world_conversion_effect = {
 				DISTRICT = district_arcology_housing
 				VARIABLE = num_housing_districts
@@ -517,7 +792,6 @@ decision_milarcology_project = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
@@ -527,7 +801,6 @@ decision_milarcology_project = {
 decision_milarc_project_relic = {
 	owned_planets_only = yes
 	icon = decision_milarcology_project
-
 	enactment_time = 3600
 	resources = {
 		category = decisions
@@ -536,22 +809,32 @@ decision_milarc_project_relic = {
 			minerals = 20000
 		}
 	}
-
 	potential = {
 		is_planet_class = pc_milarc_relic
 		is_artificial = no
 		exists = owner
-		owner = { is_regular_empire = yes }
+		owner = {
+			is_regular_empire = yes
+		}
 	}
-
 	allow = {
-		num_districts = { type = district_farming value < 1 }
-		num_districts = { type = district_mining value < 1 }
-		num_districts = { type = district_generator value < 1 }
+		num_districts = {
+			type = district_farming
+			value < 1
+		}
+		num_districts = {
+			type = district_mining
+			value < 1
+		}
+		num_districts = {
+			type = district_generator
+			value < 1
+		}
 		num_uncleared_blockers < 1
-		owner = { has_technology = tech_housing_2 }
+		owner = {
+			has_technology = tech_housing_2
+		}
 	}
-
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_milarcology_project_effects
@@ -559,17 +842,27 @@ decision_milarc_project_relic = {
 			clear_deposits = yes
 			change_pc = pc_milarc
 			IF = {
-				limit = { 
-					owner = { NOT = { has_trait = trait_pc_aquatic_preference } }
-					NOT = { has_planet_flag = planet_earth }
-				 }
+				limit = {
+					owner = {
+						NOT = {
+							has_trait = trait_pc_aquatic_preference
+						}
+					}
+					NOT = {
+						has_planet_flag = planet_earth
+					}
+				}
 				set_planet_entity = {
 					entity = "milarc_planet_entity"
 					graphical_culture = owner
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_aquatic_preference } }
+				limit = {
+					owner = {
+						has_trait = trait_pc_aquatic_preference
+					}
+				}
 				set_planet_entity = {
 					entity = "aquaticmilarc_planet_01_entity"
 					picture = "pc_aquaticcity"
@@ -577,51 +870,118 @@ decision_milarc_project_relic = {
 				set_planet_flag = pdaquapicture
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_ammonia_preference } }
-				IF = { limit = { NOT = { has_modifier = pdammoniaatmosphere } }	add_modifier = { modifier = pdammoniaatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_ammonia_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdammoniaatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdammoniaatmosphere
+					}
+				}
 				remove_modifier = ammonia
-				set_planet_entity = { picture = pc_ammoniamilarc entity = milarc_ammonia_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_ammoniamilarc
+					entity = milarc_ammonia_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_sulfur_preference } }
-				IF = { limit = { NOT = { has_modifier = pdsulfuratmosphere } }	add_modifier = { modifier = pdsulfuratmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_sulfur_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdsulfuratmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdsulfuratmosphere
+					}
+				}
 				remove_modifier = pdsulfur
-				set_planet_entity = { 
-					picture = pc_sulfurmilarc 
+				set_planet_entity = {
+					picture = pc_sulfurmilarc
 					entity = milarc_sulfur_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_methane_preference } }
-				IF = { limit = { NOT = { has_modifier = pdmethaneatmosphere } }	add_modifier = { modifier = pdmethaneatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_methane_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdmethaneatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdmethaneatmosphere
+					}
+				}
 				remove_modifier = methane
-				set_planet_entity = { 
-					picture = pc_methanermilarc 
-					entity = milarc_methane_planet_01_entity 
+				set_planet_entity = {
+					picture = pc_methanermilarc
+					entity = milarc_methane_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_ash_preference } }
-				IF = { limit = { NOT = { has_modifier = pdashatmosphere } }	add_modifier = { modifier = pdashatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdashatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdashatmosphere
+					}
+				}
 				remove_modifier = ash
-				set_planet_entity = { 
+				set_planet_entity = {
 					picture = pc_ashmilarc
-					entity = milarc_ash_planet_01_entity 
+					entity = milarc_ash_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_origin = origin_pd_shroud has_ascension_perk = ap_transcendence } }
-				set_planet_entity = { picture = pc_shroudmilarc entity = milarcshroud_planet_01_entity }
+				limit = {
+					owner = {
+						has_origin = origin_pd_shroud
+						has_ascension_perk = ap_transcendence
+					}
+				}
+				set_planet_entity = {
+					picture = pc_shroudmilarc
+					entity = milarcshroud_planet_01_entity
+				}
 				add_deposit = d_pd_shroud_arc
 			}
 			add_deposit = d_former_relic_world
 			add_deposit = d_milarc
-			planet_event = { id =  mega.201 }
+			planet_event = {
+				id = mega.201
+			}
 			while = {
 				count = 4
 				solar_system = {
 					random_system_ambient_object = {
-						limit = { has_ambient_object_flag = relic_world_debris }
+						limit = {
+							has_ambient_object_flag = relic_world_debris
+						}
 						destroy_ambient_object = this
 					}
 				}
@@ -634,7 +994,10 @@ decision_milarc_project_relic = {
 					}
 				}
 				owner = {
-					set_timed_country_flag = { flag = resolution_breached_terraformed days = 3600 }
+					set_timed_country_flag = {
+						flag = resolution_breached_terraformed
+						days = 3600
+					}
 				}
 			}
 			relic_world_conversion_effect = {
@@ -647,7 +1010,6 @@ decision_milarc_project_relic = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 0
 	}
@@ -657,7 +1019,6 @@ decision_milarc_project_relic = {
 decision_milarc_project_regrelic = {
 	owned_planets_only = yes
 	icon = decision_milarcology_project
-
 	enactment_time = 3600
 	resources = {
 		category = decisions
@@ -666,22 +1027,32 @@ decision_milarc_project_regrelic = {
 			minerals = 20000
 		}
 	}
-
 	potential = {
 		is_planet_class = pc_relic
 		is_artificial = no
 		exists = owner
-		owner = { is_regular_empire = yes }
+		owner = {
+			is_regular_empire = yes
+		}
 	}
-
 	allow = {
-		num_districts = { type = district_farming value < 1 }
-		num_districts = { type = district_mining value < 1 }
-		num_districts = { type = district_generator value < 1 }
+		num_districts = {
+			type = district_farming
+			value < 1
+		}
+		num_districts = {
+			type = district_mining
+			value < 1
+		}
+		num_districts = {
+			type = district_generator
+			value < 1
+		}
 		num_uncleared_blockers < 1
-		owner = { has_technology = tech_housing_2 }
+		owner = {
+			has_technology = tech_housing_2
+		}
 	}
-
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_milarcology_project_effects
@@ -689,17 +1060,27 @@ decision_milarc_project_regrelic = {
 			clear_deposits = yes
 			change_pc = pc_milarc
 			IF = {
-				limit = { 
-					owner = { NOT = { has_trait = trait_pc_aquatic_preference } }
-					NOT = { has_planet_flag = planet_earth }
-				 }
+				limit = {
+					owner = {
+						NOT = {
+							has_trait = trait_pc_aquatic_preference
+						}
+					}
+					NOT = {
+						has_planet_flag = planet_earth
+					}
+				}
 				set_planet_entity = {
 					entity = "milarc_planet_entity"
 					graphical_culture = owner
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_aquatic_preference } }
+				limit = {
+					owner = {
+						has_trait = trait_pc_aquatic_preference
+					}
+				}
 				set_planet_entity = {
 					entity = "aquaticmilarc_planet_01_entity"
 					picture = "pc_aquaticcity"
@@ -707,51 +1088,118 @@ decision_milarc_project_regrelic = {
 				set_planet_flag = pdaquapicture
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_ammonia_preference } }
-				IF = { limit = { NOT = { has_modifier = pdammoniaatmosphere } }	add_modifier = { modifier = pdammoniaatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_ammonia_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdammoniaatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdammoniaatmosphere
+					}
+				}
 				remove_modifier = ammonia
-				set_planet_entity = { picture = pc_ammoniamilarc entity = milarc_ammonia_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_ammoniamilarc
+					entity = milarc_ammonia_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_sulfur_preference } }
-				IF = { limit = { NOT = { has_modifier = pdsulfuratmosphere } }	add_modifier = { modifier = pdsulfuratmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_sulfur_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdsulfuratmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdsulfuratmosphere
+					}
+				}
 				remove_modifier = pdsulfur
-				set_planet_entity = { 
-					picture = pc_sulfurmilarc 
+				set_planet_entity = {
+					picture = pc_sulfurmilarc
 					entity = milarc_sulfur_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_methane_preference } }
-				IF = { limit = { NOT = { has_modifier = pdmethaneatmosphere } }	add_modifier = { modifier = pdmethaneatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_methane_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdmethaneatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdmethaneatmosphere
+					}
+				}
 				remove_modifier = methane
-				set_planet_entity = { 
-					picture = pc_methanermilarc 
-					entity = milarc_methane_planet_01_entity 
+				set_planet_entity = {
+					picture = pc_methanermilarc
+					entity = milarc_methane_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_ash_preference } }
-				IF = { limit = { NOT = { has_modifier = pdashatmosphere } }	add_modifier = { modifier = pdashatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdashatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdashatmosphere
+					}
+				}
 				remove_modifier = ash
-				set_planet_entity = { 
+				set_planet_entity = {
 					picture = pc_ashmilarc
-					entity = milarc_ash_planet_01_entity 
+					entity = milarc_ash_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_origin = origin_pd_shroud has_ascension_perk = ap_transcendence } }
-				set_planet_entity = { picture = pc_shroudmilarc entity = milarcshroud_planet_01_entity }
+				limit = {
+					owner = {
+						has_origin = origin_pd_shroud
+						has_ascension_perk = ap_transcendence
+					}
+				}
+				set_planet_entity = {
+					picture = pc_shroudmilarc
+					entity = milarcshroud_planet_01_entity
+				}
 				add_deposit = d_pd_shroud_arc
 			}
 			add_deposit = d_former_relic_world
 			add_deposit = d_milarc
-			planet_event = { id =  mega.201 }
+			planet_event = {
+				id = mega.201
+			}
 			while = {
 				count = 4
 				solar_system = {
 					random_system_ambient_object = {
-						limit = { has_ambient_object_flag = relic_world_debris }
+						limit = {
+							has_ambient_object_flag = relic_world_debris
+						}
 						destroy_ambient_object = this
 					}
 				}
@@ -764,7 +1212,10 @@ decision_milarc_project_regrelic = {
 					}
 				}
 				owner = {
-					set_timed_country_flag = { flag = resolution_breached_terraformed days = 3600 }
+					set_timed_country_flag = {
+						flag = resolution_breached_terraformed
+						days = 3600
+					}
 				}
 			}
 			relic_world_conversion_effect = {
@@ -777,7 +1228,6 @@ decision_milarc_project_regrelic = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 0
 	}
@@ -787,7 +1237,6 @@ decision_milarc_project_regrelic = {
 decision_corpoarcology_project = {
 	owned_planets_only = yes
 	icon = decision_corpoarcology_project
-
 	enactment_time = 3600
 	resources = {
 		category = decisions
@@ -796,7 +1245,6 @@ decision_corpoarcology_project = {
 			minerals = 20000
 		}
 	}
-	
 	potential = {
 		NOR = {
 			is_planet_class = pc_pdshroud
@@ -824,32 +1272,56 @@ decision_corpoarcology_project = {
 		}
 		is_artificial = no
 		exists = owner
-		owner = { has_ascension_perk = ap_arcology_project }
-		owner = { is_megacorp = yes }
+		owner = {
+			has_ascension_perk = ap_arcology_project
+		}
+		owner = {
+			is_megacorp = yes
+		}
 	}
-	
 	allow = {
 		custom_tooltip = {
 			fail_text = decision_arcology_project_requirements
 			free_district_slots < 1
-			num_districts = { type = district_farming value < 1 }
-			num_districts = { type = district_mining value < 1 }
-			num_districts = { type = district_generator value < 1 }
-			num_districts = { type = district_farming_uncapped value < 1 }
-			num_districts = { type = district_mining_uncapped value < 1 }
-			num_districts = { type = district_generator_uncapped value < 1 }
+			num_districts = {
+				type = district_farming
+				value < 1
+			}
+			num_districts = {
+				type = district_mining
+				value < 1
+			}
+			num_districts = {
+				type = district_generator
+				value < 1
+			}
+			num_districts = {
+				type = district_farming_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_mining_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_generator_uncapped
+				value < 1
+			}
 		}
 		num_uncleared_blockers < 1
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_arcology_project_effects
-		hidden_effect = {		
+		hidden_effect = {
 			clear_deposits = yes
 			change_pc = pc_corpoarc
 			IF = {
-				limit = { owner = { has_trait = trait_pc_aquatic_preference } }
+				limit = {
+					owner = {
+						has_trait = trait_pc_aquatic_preference
+					}
+				}
 				set_planet_entity = {
 					entity = "aquaticcity_planet_01_entity"
 					picture = "pc_aquaticcorpoarc"
@@ -857,50 +1329,114 @@ decision_corpoarcology_project = {
 				set_planet_flag = pdaquapicture
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_ammonia_preference } }
-				IF = { limit = { NOT = { has_modifier = pdammoniaatmosphere } }	add_modifier = { modifier = pdammoniaatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_ammonia_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdammoniaatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdammoniaatmosphere
+					}
+				}
 				remove_modifier = ammonia
-				set_planet_entity = { 
-					picture = pc_ammoniacorpoarc 
+				set_planet_entity = {
+					picture = pc_ammoniacorpoarc
 					entity = ammonia_arc_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_sulfur_preference } }
-				IF = { limit = { NOT = { has_modifier = pdsulfuratmosphere } }	add_modifier = { modifier = pdsulfuratmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_sulfur_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdsulfuratmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdsulfuratmosphere
+					}
+				}
 				remove_modifier = pdsulfur
-				set_planet_entity = { 
-					picture = pc_sulfurcorpoarc 
+				set_planet_entity = {
+					picture = pc_sulfurcorpoarc
 					entity = sulfur_arc_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_methane_preference } }
-				IF = { limit = { NOT = { has_modifier = pdmethaneatmosphere } }	add_modifier = { modifier = pdmethaneatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_methane_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdmethaneatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdmethaneatmosphere
+					}
+				}
 				remove_modifier = methane
-				set_planet_entity = { 
-					picture = pc_methanecorpoarc 
-					entity = methane_arc_planet_01_entity 
+				set_planet_entity = {
+					picture = pc_methanecorpoarc
+					entity = methane_arc_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_ash_preference } }
-				IF = { limit = { NOT = { has_modifier = pdashatmosphere } }	add_modifier = { modifier = pdashatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdashatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdashatmosphere
+					}
+				}
 				remove_modifier = ash
-				set_planet_entity = { 
-					picture = pc_ashcorpoarc 
-					entity = ash_arc_planet_01_entity 
+				set_planet_entity = {
+					picture = pc_ashcorpoarc
+					entity = ash_arc_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_origin = origin_pd_shroud has_ascension_perk = ap_transcendence } }
-				set_planet_entity = { picture = pc_shroudcorpoarc entity = pdshroudcity_planet_01_entity }
+				limit = {
+					owner = {
+						has_origin = origin_pd_shroud
+						has_ascension_perk = ap_transcendence
+					}
+				}
+				set_planet_entity = {
+					picture = pc_shroudcorpoarc
+					entity = pdshroudcity_planet_01_entity
+				}
 				add_deposit = d_pd_shroud_arc
 			}
-			planet_event = { id = pdengine.64 }
+			planet_event = {
+				id = pdengine.64
+			}
 			remove_modifier = engineered_environment
 			remove_modifier = engineered_environment_gaia
-			planet_event = { id = pdengine.14 }
+			planet_event = {
+				id = pdengine.14
+			}
 			add_deposit = d_corpoarc
 			relic_world_conversion_effect = {
 				DISTRICT = district_arcology_housing
@@ -912,7 +1448,6 @@ decision_corpoarcology_project = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
@@ -922,7 +1457,6 @@ decision_corpoarcology_project = {
 decision_corpoarcology_project_relic = {
 	owned_planets_only = yes
 	icon = decision_corpoarcology_project
-
 	enactment_time = 3600
 	resources = {
 		category = decisions
@@ -931,26 +1465,36 @@ decision_corpoarcology_project_relic = {
 			minerals = 20000
 		}
 	}
-
 	potential = {
 		is_planet_class = pc_relic
 		is_artificial = no
 		exists = owner
-		owner = { is_megacorp = yes }
-	}	
-	
-	allow = {
-		num_districts = { type = district_farming value < 1 }
-		num_districts = { type = district_mining value < 1 }
-		num_districts = { type = district_generator value < 1 }
-		num_uncleared_blockers < 1
-		owner = { has_technology = tech_housing_2 }
+		owner = {
+			is_megacorp = yes
+		}
 	}
-
+	allow = {
+		num_districts = {
+			type = district_farming
+			value < 1
+		}
+		num_districts = {
+			type = district_mining
+			value < 1
+		}
+		num_districts = {
+			type = district_generator
+			value < 1
+		}
+		num_uncleared_blockers < 1
+		owner = {
+			has_technology = tech_housing_2
+		}
+	}
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_arcology_project_requirements
-		hidden_effect = {		
+		hidden_effect = {
 			clear_deposits = yes
 			change_pc = pc_corpoarc
 			remove_deposit = d_pdshroud_desire
@@ -963,7 +1507,11 @@ decision_corpoarcology_project_relic = {
 			remove_modifier = pdeater
 			add_deposit = d_corpoarc
 			IF = {
-				limit = { owner = { has_trait = trait_pc_aquatic_preference } }
+				limit = {
+					owner = {
+						has_trait = trait_pc_aquatic_preference
+					}
+				}
 				set_planet_entity = {
 					entity = "aquaticcity_planet_01_entity"
 					picture = "pc_aquaticcorpoarc"
@@ -971,50 +1519,114 @@ decision_corpoarcology_project_relic = {
 				set_planet_flag = pdaquapicture
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_ammonia_preference } }
-				IF = { limit = { NOT = { has_modifier = pdammoniaatmosphere } }	add_modifier = { modifier = pdammoniaatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_ammonia_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdammoniaatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdammoniaatmosphere
+					}
+				}
 				remove_modifier = ammonia
-				set_planet_entity = { 
-					picture = pc_ammoniacorpoarc 
+				set_planet_entity = {
+					picture = pc_ammoniacorpoarc
 					entity = ammonia_arc_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_sulfur_preference } }
-				IF = { limit = { NOT = { has_modifier = pdsulfuratmosphere } }	add_modifier = { modifier = pdsulfuratmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_sulfur_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdsulfuratmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdsulfuratmosphere
+					}
+				}
 				remove_modifier = pdsulfur
-				set_planet_entity = { 
-					picture = pc_sulfurcorpoarc 
+				set_planet_entity = {
+					picture = pc_sulfurcorpoarc
 					entity = sulfur_arc_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_methane_preference } }
-				IF = { limit = { NOT = { has_modifier = pdmethaneatmosphere } }	add_modifier = { modifier = pdmethaneatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_methane_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdmethaneatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdmethaneatmosphere
+					}
+				}
 				remove_modifier = methane
-				set_planet_entity = { 
-					picture = pc_methanecorpoarc 
-					entity = methane_arc_planet_01_entity 
+				set_planet_entity = {
+					picture = pc_methanecorpoarc
+					entity = methane_arc_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_trait = trait_pc_ash_preference } }
-				IF = { limit = { NOT = { has_modifier = pdashatmosphere } }	add_modifier = { modifier = pdashatmosphere	} }
+				limit = {
+					owner = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				IF = {
+					limit = {
+						NOT = {
+							has_modifier = pdashatmosphere
+						}
+					}
+					add_modifier = {
+						modifier = pdashatmosphere
+					}
+				}
 				remove_modifier = ash
-				set_planet_entity = { 
-					picture = pc_ashcorpoarc 
-					entity = ash_arc_planet_01_entity 
+				set_planet_entity = {
+					picture = pc_ashcorpoarc
+					entity = ash_arc_planet_01_entity
 				}
 			}
 			IF = {
-				limit = { owner = { has_origin = origin_pd_shroud has_ascension_perk = ap_transcendence } }
-				set_planet_entity = { picture = pc_shroudcorpoarc entity = pdshroudcity_planet_01_entity }
+				limit = {
+					owner = {
+						has_origin = origin_pd_shroud
+						has_ascension_perk = ap_transcendence
+					}
+				}
+				set_planet_entity = {
+					picture = pc_shroudcorpoarc
+					entity = pdshroudcity_planet_01_entity
+				}
 				add_deposit = d_pd_shroud_arc
 			}
-			planet_event = { id = pdengine.64 }
+			planet_event = {
+				id = pdengine.64
+			}
 			remove_modifier = engineered_environment
 			remove_modifier = engineered_environment_gaia
-			planet_event = { id = pdengine.14 }
+			planet_event = {
+				id = pdengine.14
+			}
 			relic_world_conversion_effect = {
 				DISTRICT = district_arcology_housing
 				VARIABLE = num_housing_districts
@@ -1025,7 +1637,6 @@ decision_corpoarcology_project_relic = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 0
 	}
@@ -1035,7 +1646,6 @@ decision_corpoarcology_project_relic = {
 decision_necro_arc_spot = {
 	owned_planets_only = yes
 	icon = decision_necro_arc
-
 	enactment_time = 0
 	resources = {
 		category = decisions
@@ -1043,7 +1653,6 @@ decision_necro_arc_spot = {
 			influence = 50
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_city
@@ -1052,7 +1661,7 @@ decision_necro_arc_spot = {
 			is_planet_class = pc_corpoarc
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			OR = {
 				has_civic = civic_memorialist
 				has_civic = civic_death_cult
@@ -1061,24 +1670,27 @@ decision_necro_arc_spot = {
 				has_origin = origin_necrophage
 			}
 		}
-		NOT = { has_deposit = d_pd_necro_arc }
-		NOT = { has_deposit = d_pd_shroud_arc }
-		NOT = { has_deposit = d_pd_necro_arc_spot }
+		NOT = {
+			has_deposit = d_pd_necro_arc
+		}
+		NOT = {
+			has_deposit = d_pd_shroud_arc
+		}
+		NOT = {
+			has_deposit = d_pd_necro_arc_spot
+		}
 	}
-	
 	allow = {
 		free_district_slots >= 2
 		has_building_construction = no
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_necro_arc_spot_effects
-		hidden_effect = {	
+		hidden_effect = {
 			add_deposit = d_pd_necro_arc_spot
 		}
 	}
-	
 	ai_weight = {
 		weight = 100
 	}
@@ -1088,7 +1700,6 @@ decision_necro_arc_spot = {
 decision_necro_arc = {
 	owned_planets_only = yes
 	icon = decision_necro_arc
-
 	enactment_time = 1800
 	resources = {
 		category = decisions
@@ -1097,7 +1708,6 @@ decision_necro_arc = {
 			minerals = 5000
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_city
@@ -1106,7 +1716,7 @@ decision_necro_arc = {
 			is_planet_class = pc_corpoarc
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			OR = {
 				has_civic = civic_memorialist
 				has_civic = civic_death_cult
@@ -1115,80 +1725,164 @@ decision_necro_arc = {
 				has_origin = origin_necrophage
 			}
 		}
-		NOT = { has_deposit = d_pd_necro_arc }
-		NOT = { has_deposit = d_pd_shroud_arc }
+		NOT = {
+			has_deposit = d_pd_necro_arc
+		}
+		NOT = {
+			has_deposit = d_pd_shroud_arc
+		}
 		has_deposit = d_pd_necro_arc_spot
 	}
-	
 	allow = {
 		#free_district_slots >= 2
 		#has_building_construction = no
 		has_deposit = d_pd_necro_arc_spot
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_necro_arc_effects
-		hidden_effect = {	
+		hidden_effect = {
 			remove_deposit = d_pd_necro_arc_spot
 			add_deposit = d_pd_necro_arc
 			#Regular City World
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_city
 				}
-				IF = { limit = { NOT = { has_deposit = d_pd_capital_arc } NOT = { has_deposit = d_pd_palace_arc } }
-				set_planet_entity = { picture = pc_necropolis entity = necropolis_planet_01_entity }
+				IF = {
+					limit = {
+						NOT = {
+							has_deposit = d_pd_capital_arc
+						}
+						NOT = {
+							has_deposit = d_pd_palace_arc
+						}
+					}
+					set_planet_entity = {
+						picture = pc_necropolis
+						entity = necropolis_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_capital_arc }
-				set_planet_entity = { picture = pc_necrocapitalarc entity = necro_palacearc_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_capital_arc
+					}
+					set_planet_entity = {
+						picture = pc_necrocapitalarc
+						entity = necro_palacearc_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_palace_arc }
-				set_planet_entity = { picture = pc_necropalacearc entity = necro_palacearc_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_palace_arc
+					}
+					set_planet_entity = {
+						picture = pc_necropalacearc
+						entity = necro_palacearc_planet_01_entity
+					}
 				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_ecocity
 				}
-				IF = { limit = { NOT = { has_deposit = d_pd_capital_arc } NOT = { has_deposit = d_pd_palace_arc } }
-				set_planet_entity = { picture = pc_necroecocity entity = necro_ecocity_planet_01_entity }
+				IF = {
+					limit = {
+						NOT = {
+							has_deposit = d_pd_capital_arc
+						}
+						NOT = {
+							has_deposit = d_pd_palace_arc
+						}
+					}
+					set_planet_entity = {
+						picture = pc_necroecocity
+						entity = necro_ecocity_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_capital_arc }
-				set_planet_entity = { picture = pc_necroecocitycapital entity = necro_ecocity_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_capital_arc
+					}
+					set_planet_entity = {
+						picture = pc_necroecocitycapital
+						entity = necro_ecocity_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_palace_arc }
-				set_planet_entity = { picture = pc_necroecocitypalace entity = necro_ecocity_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_palace_arc
+					}
+					set_planet_entity = {
+						picture = pc_necroecocitypalace
+						entity = necro_ecocity_planet_01_entity
+					}
 				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_milarc
 				}
-				IF = { limit = { NOT = { has_deposit = d_pd_capital_arc } NOT = { has_deposit = d_pd_palace_arc } }
-				set_planet_entity = { picture = pc_necromilarc entity = necro_milarc_planet_01_entity }
+				IF = {
+					limit = {
+						NOT = {
+							has_deposit = d_pd_capital_arc
+						}
+						NOT = {
+							has_deposit = d_pd_palace_arc
+						}
+					}
+					set_planet_entity = {
+						picture = pc_necromilarc
+						entity = necro_milarc_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_capital_arc }
-				set_planet_entity = { picture = pc_necromilarccapital entity = necro_milarc_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_capital_arc
+					}
+					set_planet_entity = {
+						picture = pc_necromilarccapital
+						entity = necro_milarc_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_palace_arc }
-				set_planet_entity = { picture = pc_necromilarcpalace entity = necro_milarc_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_palace_arc
+					}
+					set_planet_entity = {
+						picture = pc_necromilarcpalace
+						entity = necro_milarc_planet_01_entity
+					}
 				}
-			}	
+			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_corpoarc
 				}
-				IF = { limit = { NOT = { has_deposit = d_pd_capital_arc } }
-				set_planet_entity = { picture = pc_necrocorparc entity = necropolis_planet_01_entity }
+				IF = {
+					limit = {
+						NOT = {
+							has_deposit = d_pd_capital_arc
+						}
+					}
+					set_planet_entity = {
+						picture = pc_necrocorparc
+						entity = necropolis_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_boardroom_arc }
-				set_planet_entity = { picture = pc_necrocorparccapital entity = necropolis_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_boardroom_arc
+					}
+					set_planet_entity = {
+						picture = pc_necrocorparccapital
+						entity = necropolis_planet_01_entity
+					}
 				}
-			}	
+			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 100
 	}
@@ -1198,7 +1892,6 @@ decision_necro_arc = {
 decision_necrohive_arc_spot = {
 	owned_planets_only = yes
 	icon = decision_necro_arc
-
 	enactment_time = 0
 	resources = {
 		category = decisions
@@ -1206,7 +1899,6 @@ decision_necrohive_arc_spot = {
 			influence = 50
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_hive
@@ -1217,31 +1909,38 @@ decision_necrohive_arc_spot = {
 			is_planet_class = pc_machine_fort
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			OR = {
-				has_civic = civic_hive_memorialist 
-				has_civic = civic_machine_memorialist 
+				has_civic = civic_hive_memorialist
+				has_civic = civic_machine_memorialist
 			}
 		}
-		owner = { NOT = { has_origin = origin_pd_tree_of_life } }
-		NOT = { has_deposit = d_pd_necro_arc }
-		NOT = { has_deposit = d_pd_necro_arc_spot }
+		owner = {
+			NOT = {
+				has_origin = origin_pd_tree_of_life
+			}
+		}
+		NOT = {
+			has_deposit = d_pd_necro_arc
+		}
+		NOT = {
+			has_deposit = d_pd_necro_arc_spot
+		}
 	}
-	
 	allow = {
-		NOT = { has_deposit = d_pd_necro_arc_spot }
+		NOT = {
+			has_deposit = d_pd_necro_arc_spot
+		}
 		free_district_slots >= 2
 		has_building_construction = no
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_necro_arc_spot_effects
-		hidden_effect = {	
+		hidden_effect = {
 			add_deposit = d_pd_necro_arc_spot
 		}
 	}
-	
 	ai_weight = {
 		weight = 100
 	}
@@ -1251,7 +1950,6 @@ decision_necrohive_arc_spot = {
 decision_necrohive_arc = {
 	owned_planets_only = yes
 	icon = decision_necro_arc
-
 	enactment_time = 1800
 	resources = {
 		category = decisions
@@ -1260,7 +1958,6 @@ decision_necrohive_arc = {
 			minerals = 5000
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_hive
@@ -1271,90 +1968,163 @@ decision_necrohive_arc = {
 			is_planet_class = pc_machine_fort
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			OR = {
-				has_civic = civic_hive_memorialist 
-				has_civic = civic_machine_memorialist 
+				has_civic = civic_hive_memorialist
+				has_civic = civic_machine_memorialist
 			}
 		}
-		owner = { NOT = { has_origin = origin_pd_tree_of_life } }
-		NOT = { has_deposit = d_pd_necro_arc }
+		owner = {
+			NOT = {
+				has_origin = origin_pd_tree_of_life
+			}
+		}
+		NOT = {
+			has_deposit = d_pd_necro_arc
+		}
 		has_deposit = d_pd_necro_arc_spot
 	}
-	
 	allow = {
 		has_deposit = d_pd_necro_arc_spot
 		#free_district_slots >= 2
 		#has_building_construction = no
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_necro_arc_effects
-		hidden_effect = {	
+		hidden_effect = {
 			remove_deposit = d_pd_necro_arc_spot
 			add_deposit = d_pd_necro_arc
 			IF = {
-				limit = { 
+				limit = {
 					OR = {
 						is_planet_class = pc_hive
 						is_planet_class = pc_bioforge
 					}
 				}
-				IF = { limit = { NOT = { has_deposit = d_pd_biohivecap_arc } }
-				set_planet_entity = { picture = pc_necrohive entity = necrohive_planet_01_entity }
+				IF = {
+					limit = {
+						NOT = {
+							has_deposit = d_pd_biohivecap_arc
+						}
+					}
+					set_planet_entity = {
+						picture = pc_necrohive
+						entity = necrohive_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_biohivecap_arc }
-				set_planet_entity = { picture = pc_necrohivecapital entity = necrohive_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_biohivecap_arc
+					}
+					set_planet_entity = {
+						picture = pc_necrohivecapital
+						entity = necrohive_planet_01_entity
+					}
 				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_biofort
 				}
-				IF = { limit = { NOT = { has_deposit = d_pd_biohivecap_arc } }
-				set_planet_entity = { picture = pc_necrohivebiofort entity = necrobiofort_planet_01_entity }
+				IF = {
+					limit = {
+						NOT = {
+							has_deposit = d_pd_biohivecap_arc
+						}
+					}
+					set_planet_entity = {
+						picture = pc_necrohivebiofort
+						entity = necrobiofort_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_biohivecap_arc }
-				set_planet_entity = { picture = pc_necrohivebiofortcapital entity = necrobiofort_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_biohivecap_arc
+					}
+					set_planet_entity = {
+						picture = pc_necrohivebiofortcapital
+						entity = necrobiofort_planet_01_entity
+					}
 				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_machine
 				}
-				IF = { limit = { NOT = { has_deposit = d_pd_machinecap_arc } }
-				set_planet_entity = { picture = pc_machine_necropolis entity = machinenecropolis_planet_01_entity }
+				IF = {
+					limit = {
+						NOT = {
+							has_deposit = d_pd_machinecap_arc
+						}
+					}
+					set_planet_entity = {
+						picture = pc_machine_necropolis
+						entity = machinenecropolis_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_machinecap_arc }
-				set_planet_entity = { picture = pc_machine_necropolis_capital entity = machinenecropolis_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_machinecap_arc
+					}
+					set_planet_entity = {
+						picture = pc_machine_necropolis_capital
+						entity = machinenecropolis_planet_01_entity
+					}
 				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_machine_factory
 				}
-				IF = { limit = { NOT = { has_deposit = d_pd_machinecap_arc } }
-				set_planet_entity = { picture = pc_machine_necropolis entity = machinenecrofactory_planet_01_entity }
+				IF = {
+					limit = {
+						NOT = {
+							has_deposit = d_pd_machinecap_arc
+						}
+					}
+					set_planet_entity = {
+						picture = pc_machine_necropolis
+						entity = machinenecrofactory_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_machinecap_arc }
-				set_planet_entity = { picture = pc_machine_necropolis_capital entity = machinenecrofactory_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_machinecap_arc
+					}
+					set_planet_entity = {
+						picture = pc_machine_necropolis_capital
+						entity = machinenecrofactory_planet_01_entity
+					}
 				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_machine_fort
 				}
-				IF = { limit = { NOT = { has_deposit = d_pd_machinecap_arc } }
-				set_planet_entity = { picture = pc_machine_necrofort entity = machinenecrofort_planet_01_entity }
+				IF = {
+					limit = {
+						NOT = {
+							has_deposit = d_pd_machinecap_arc
+						}
+					}
+					set_planet_entity = {
+						picture = pc_machine_necrofort
+						entity = machinenecrofort_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_machinecap_arc }
-				set_planet_entity = { picture = pc_machine_necrofort_capital entity = machinenecrofort_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_machinecap_arc
+					}
+					set_planet_entity = {
+						picture = pc_machine_necrofort_capital
+						entity = machinenecrofort_planet_01_entity
+					}
 				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 100
 	}
@@ -1364,7 +2134,6 @@ decision_necrohive_arc = {
 decision_remove_necro_arc = {
 	owned_planets_only = yes
 	icon = decision_necro_arc
-
 	enactment_time = 360
 	resources = {
 		category = decisions
@@ -1373,7 +2142,6 @@ decision_remove_necro_arc = {
 			energy = 1000
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_city
@@ -1382,30 +2150,41 @@ decision_remove_necro_arc = {
 			is_planet_class = pc_corpoarc
 		}
 		exists = owner
-		owner = { 
-			NOT = { has_civic = civic_memorialist }
-			NOT = { has_civic = civic_death_cult }
-			NOT = { has_civic = civic_death_cult_corporate }
-			NOT = { has_civic = civic_hive_memorialist }
-			NOT = { has_civic = civic_machine_memorialist }
-			NOT = { has_civic = civic_death_cult_corporate }
-			NOT = { has_origin = origin_necrophage }
-		} 
+		owner = {
+			NOT = {
+				has_civic = civic_memorialist
+			}
+			NOT = {
+				has_civic = civic_death_cult
+			}
+			NOT = {
+				has_civic = civic_death_cult_corporate
+			}
+			NOT = {
+				has_civic = civic_hive_memorialist
+			}
+			NOT = {
+				has_civic = civic_machine_memorialist
+			}
+			NOT = {
+				has_civic = civic_death_cult_corporate
+			}
+			NOT = {
+				has_origin = origin_necrophage
+			}
+		}
 		has_deposit = d_pd_necro_arc
 	}
-	
 	allow = {
 		has_deposit = d_pd_necro_arc
 	}
-	
 	effect = {
 		custom_tooltip = decision_remove_necro_arc_effects
 		remove_deposit = d_pd_necro_arc
-		hidden_effect = {	
+		hidden_effect = {
 			pd_remove_special_arc_deposits = yes
 		}
 	}
-	
 	ai_weight = {
 		weight = 10000
 	}
@@ -1415,7 +2194,6 @@ decision_remove_necro_arc = {
 decision_pd_shroud_arc_spot = {
 	owned_planets_only = yes
 	icon = decision_shroud1_arc
-
 	enactment_time = 0
 	resources = {
 		category = decisions
@@ -1423,7 +2201,6 @@ decision_pd_shroud_arc_spot = {
 			influence = 50
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_city
@@ -1437,24 +2214,27 @@ decision_pd_shroud_arc_spot = {
 				has_ascension_perk = ap_transcendence
 			}
 		}
-		NOT = { has_deposit = d_pd_necro_arc }
-		NOT = { has_deposit = d_pd_shroud_arc }
-		NOT = { has_deposit = d_pd_shroud_arc_spot }
+		NOT = {
+			has_deposit = d_pd_necro_arc
+		}
+		NOT = {
+			has_deposit = d_pd_shroud_arc
+		}
+		NOT = {
+			has_deposit = d_pd_shroud_arc_spot
+		}
 	}
-	
 	allow = {
 		free_district_slots >= 2
 		has_building_construction = no
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_shroud_arc_spot_effects
-		hidden_effect = {	
+		hidden_effect = {
 			add_deposit = d_pd_shroud_arc_spot
 		}
 	}
-	
 	ai_weight = {
 		weight = 100
 	}
@@ -1464,7 +2244,6 @@ decision_pd_shroud_arc_spot = {
 decision_pd_shroud_arc = {
 	owned_planets_only = yes
 	icon = decision_shroud1_arc
-
 	enactment_time = 1800
 	resources = {
 		category = decisions
@@ -1473,7 +2252,6 @@ decision_pd_shroud_arc = {
 			sr_zro = 500
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_city
@@ -1487,80 +2265,164 @@ decision_pd_shroud_arc = {
 				has_ascension_perk = ap_transcendence
 			}
 		}
-		NOT = { has_deposit = d_pd_necro_arc }
-		NOT = { has_deposit = d_pd_shroud_arc }
+		NOT = {
+			has_deposit = d_pd_necro_arc
+		}
+		NOT = {
+			has_deposit = d_pd_shroud_arc
+		}
 		has_deposit = d_pd_shroud_arc_spot
 	}
-	
 	allow = {
 		has_deposit = d_pd_shroud_arc_spot
 		#free_district_slots >= 2
 		#has_building_construction = no
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_shroud_arc_effects
-		hidden_effect = {	
+		hidden_effect = {
 			remove_deposit = d_pd_shroud_arc_spot
 			add_deposit = d_pd_shroud_arc
 			#Regular City World
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_city
 				}
-				IF = { limit = { NOT = { has_deposit = d_pd_capital_arc } NOT = { has_deposit = d_pd_palace_arc } }
-				set_planet_entity = { picture = pc_shroudcity entity = pdshroudcity_planet_01_entity }
+				IF = {
+					limit = {
+						NOT = {
+							has_deposit = d_pd_capital_arc
+						}
+						NOT = {
+							has_deposit = d_pd_palace_arc
+						}
+					}
+					set_planet_entity = {
+						picture = pc_shroudcity
+						entity = pdshroudcity_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_capital_arc }
-				set_planet_entity = { picture = pc_shroudcapitalarc entity = pdshroudcity_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_capital_arc
+					}
+					set_planet_entity = {
+						picture = pc_shroudcapitalarc
+						entity = pdshroudcity_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_palace_arc }
-				set_planet_entity = { picture = pc_shroudpalacearc entity = pdshroudcity_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_palace_arc
+					}
+					set_planet_entity = {
+						picture = pc_shroudpalacearc
+						entity = pdshroudcity_planet_01_entity
+					}
 				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_ecocity
 				}
-				IF = { limit = { NOT = { has_deposit = d_pd_capital_arc } NOT = { has_deposit = d_pd_palace_arc } }
-				set_planet_entity = { picture = pc_shroudecocity entity = ecoshroud_planet_01_entity }
+				IF = {
+					limit = {
+						NOT = {
+							has_deposit = d_pd_capital_arc
+						}
+						NOT = {
+							has_deposit = d_pd_palace_arc
+						}
+					}
+					set_planet_entity = {
+						picture = pc_shroudecocity
+						entity = ecoshroud_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_capital_arc }
-				set_planet_entity = { picture = pc_shroudecocapital entity = ecoshroud_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_capital_arc
+					}
+					set_planet_entity = {
+						picture = pc_shroudecocapital
+						entity = ecoshroud_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_palace_arc }
-				set_planet_entity = { picture = pc_shroudecopalace entity = ecoshroud_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_palace_arc
+					}
+					set_planet_entity = {
+						picture = pc_shroudecopalace
+						entity = ecoshroud_planet_01_entity
+					}
 				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_milarc
 				}
-				IF = { limit = { NOT = { has_deposit = d_pd_capital_arc } NOT = { has_deposit = d_pd_palace_arc } }
-				set_planet_entity = { picture = pc_shroudmilarc entity = milarcshroud_planet_01_entity }
+				IF = {
+					limit = {
+						NOT = {
+							has_deposit = d_pd_capital_arc
+						}
+						NOT = {
+							has_deposit = d_pd_palace_arc
+						}
+					}
+					set_planet_entity = {
+						picture = pc_shroudmilarc
+						entity = milarcshroud_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_capital_arc }
-				set_planet_entity = { picture = pc_shroudmilcapital entity = milarcshroud_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_capital_arc
+					}
+					set_planet_entity = {
+						picture = pc_shroudmilcapital
+						entity = milarcshroud_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_palace_arc }
-				set_planet_entity = { picture = pc_shroudmilpalace entity = milarcshroud_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_palace_arc
+					}
+					set_planet_entity = {
+						picture = pc_shroudmilpalace
+						entity = milarcshroud_planet_01_entity
+					}
 				}
-			}	
+			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_corpoarc
 				}
-				IF = { limit = { NOT = { has_deposit = d_pd_capital_arc } }
-				set_planet_entity = { picture = pc_shroudcorpoarc entity = pdshroudcity_planet_01_entity }
+				IF = {
+					limit = {
+						NOT = {
+							has_deposit = d_pd_capital_arc
+						}
+					}
+					set_planet_entity = {
+						picture = pc_shroudcorpoarc
+						entity = pdshroudcity_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_boardroom_arc }
-				set_planet_entity = { picture = pc_shroudcorpocapital entity = pdshroudcity_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_boardroom_arc
+					}
+					set_planet_entity = {
+						picture = pc_shroudcorpocapital
+						entity = pdshroudcity_planet_01_entity
+					}
 				}
-			}	
+			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 100
 	}
@@ -1570,7 +2432,6 @@ decision_pd_shroud_arc = {
 decision_remove_shroud_arc = {
 	owned_planets_only = yes
 	icon = decision_shroud_arc
-
 	enactment_time = 360
 	resources = {
 		category = decisions
@@ -1579,7 +2440,6 @@ decision_remove_shroud_arc = {
 			energy = 1000
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_city
@@ -1588,22 +2448,23 @@ decision_remove_shroud_arc = {
 			is_planet_class = pc_corpoarc
 		}
 		exists = owner
-		NOT = { owner = { has_ascension_perk = ap_transcendence } }
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_transcendence
+			}
+		}
 		has_deposit = d_pd_shroud_arc
 	}
-	
 	allow = {
 		has_deposit = d_pd_shroud_arc
 	}
-	
 	effect = {
 		custom_tooltip = decision_remove_shroud_arc_effects
 		remove_deposit = d_pd_shroud_arc
-		hidden_effect = {	
+		hidden_effect = {
 			pd_remove_special_arc_deposits = yes
 		}
 	}
-	
 	ai_weight = {
 		weight = 10000
 	}
@@ -1613,7 +2474,6 @@ decision_remove_shroud_arc = {
 decision_capital_spot = {
 	owned_planets_only = yes
 	icon = decision_capital_spot
-
 	enactment_time = 0
 	resources = {
 		category = decisions
@@ -1621,7 +2481,6 @@ decision_capital_spot = {
 			influence = 50
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_city
@@ -1640,8 +2499,10 @@ decision_capital_spot = {
 			is_planet_class = pc_machine_fort
 		}
 		exists = owner
-		owner = { has_technology = tech_housing_2 }
-		NOT = { 
+		owner = {
+			has_technology = tech_housing_2
+		}
+		NOT = {
 			OR = {
 				has_deposit = d_pd_capital_arc
 				has_deposit = d_pd_boardroom_arc
@@ -1652,22 +2513,21 @@ decision_capital_spot = {
 			}
 		}
 		is_capital = yes
-		NOT = { has_deposit = d_pd_capital_spot }
+		NOT = {
+			has_deposit = d_pd_capital_spot
+		}
 	}
-	
 	allow = {
 		free_district_slots >= 3
 		has_building_construction = no
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_capital_spot_effects
-		hidden_effect = {	
+		hidden_effect = {
 			add_deposit = d_pd_capital_spot
 		}
 	}
-	
 	ai_weight = {
 		weight = 1000
 	}
@@ -1677,7 +2537,6 @@ decision_capital_spot = {
 decision_capital_arc = {
 	owned_planets_only = yes
 	icon = decision_capital_arc
-
 	enactment_time = 1800
 	resources = {
 		category = decisions
@@ -1686,7 +2545,6 @@ decision_capital_arc = {
 			minerals = 5000
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_city
@@ -1695,43 +2553,67 @@ decision_capital_arc = {
 			is_planet_class = pc_ringworld_habitable
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			is_regular_empire = yes
 			OR = {
-				has_authority = auth_democratic 
+				has_authority = auth_democratic
 				has_authority = auth_oligarchic
 			}
 			has_technology = tech_housing_2
 		}
-		NOT = { has_deposit = d_pd_capital_arc }
+		NOT = {
+			has_deposit = d_pd_capital_arc
+		}
 		is_capital = yes
 		has_deposit = d_pd_capital_spot
 	}
-	
 	allow = {
 		has_deposit = d_pd_capital_spot
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_capital_arc_effects
-		hidden_effect = {	
+		hidden_effect = {
 			remove_deposit = d_pd_capital_spot
 			add_deposit = d_pd_capital_arc
 			#Regular City World
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_city
 					owner = {
-						NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_aquatic_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ammonia_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_sulfur_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ash_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_methane_preference
+							}
+						}
 					}
 					planet = {
-						NOT = { has_deposit = d_pd_necro_arc }
-						NOT = { has_deposit = d_pd_shroud_arc }
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
+						NOT = {
+							has_deposit = d_pd_shroud_arc
+						}
 					}
 				}
 				set_planet_entity = {
@@ -1740,258 +2622,501 @@ decision_capital_arc = {
 				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_city
-					has_planet_flag = planet_earth 
+					has_planet_flag = planet_earth
 				}
-				set_planet_entity = { entity = earthcapitalarc_planet_02_entity }
-			}	
-			IF = {
-				limit = { 
-					is_planet_class = pc_city	
-					owner_main_species = { has_trait = trait_pc_aquatic_preference }
+				set_planet_entity = {
+					entity = earthcapitalarc_planet_02_entity
 				}
-				set_planet_entity = { picture = pc_aquaticcapitalarc entity = aquaticpalace_planet_01_entity }
-			}	
-			IF = {
-				limit = { 
-					is_planet_class = pc_city	
-					owner_main_species = { has_trait = trait_pc_ammonia_preference }
-				}
-				set_planet_entity = { picture = pc_ammoniacapitalarc entity = palacearcammonia_planet_01_entity }
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_city	
-					owner_main_species = { has_trait = trait_pc_methane_preference }
+				limit = {
+					is_planet_class = pc_city
+					owner_main_species = {
+						has_trait = trait_pc_aquatic_preference
+					}
 				}
-				set_planet_entity = { picture = pc_methanecapitalarc entity = palacearcmethane_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_aquaticcapitalarc
+					entity = aquaticpalace_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_city	
-					owner_main_species = { has_trait = trait_pc_sulfur_preference }
+				limit = {
+					is_planet_class = pc_city
+					owner_main_species = {
+						has_trait = trait_pc_ammonia_preference
+					}
 				}
-				set_planet_entity = { picture = pc_sulfurcapitalarc entity = palacearcsulfur_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_ammoniacapitalarc
+					entity = palacearcammonia_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_city	
-					owner_main_species = { has_trait = trait_pc_ash_preference }
+				limit = {
+					is_planet_class = pc_city
+					owner_main_species = {
+						has_trait = trait_pc_methane_preference
+					}
 				}
-				set_planet_entity = { picture = pc_ashcapitalarc entity = palacearcash_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_methanecapitalarc
+					entity = palacearcmethane_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_city	
+				limit = {
+					is_planet_class = pc_city
+					owner_main_species = {
+						has_trait = trait_pc_sulfur_preference
+					}
+				}
+				set_planet_entity = {
+					picture = pc_sulfurcapitalarc
+					entity = palacearcsulfur_planet_01_entity
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_city
+					owner_main_species = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				set_planet_entity = {
+					picture = pc_ashcapitalarc
+					entity = palacearcash_planet_01_entity
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_city
 					has_deposit = d_pd_necro_arc
 				}
-				set_planet_entity = { picture = pc_necrocapital entity = necro_palacearc_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_necrocapital
+					entity = necro_palacearc_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_city	
+				limit = {
+					is_planet_class = pc_city
 					has_deposit = d_pd_shroud_arc
 				}
-				set_planet_entity = { picture = pc_shroudcapitalarc entity = shroudpalacearc_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_shroudcapitalarc
+					entity = shroudpalacearc_planet_01_entity
+				}
 			}
 			#Fortress Arc
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_milarc
 					owner = {
-						NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_aquatic_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ammonia_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_sulfur_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ash_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_methane_preference
+							}
+						}
 					}
 					planet = {
-						NOT = { has_deposit = d_pd_necro_arc }
-						NOT = { has_deposit = d_pd_shroud_arc }
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
+						NOT = {
+							has_deposit = d_pd_shroud_arc
+						}
 					}
 				}
-				set_planet_entity = { picture = pc_milarccapital entity = milarc_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_milarccapital
+					entity = milarc_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_milarc
-					has_planet_flag = planet_earth 
+					has_planet_flag = planet_earth
 				}
-				set_planet_entity = { picture = pc_milarccapital entity = milarc_planet_02_earth_entity }
-			}	
-			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
-					owner_main_species = { has_trait = trait_pc_aquatic_preference }
+				set_planet_entity = {
+					picture = pc_milarccapital
+					entity = milarc_planet_02_earth_entity
 				}
-				set_planet_entity = { picture = pc_aquaticcapitalarc entity = aquaticmilarc_planet_01_entity  }
-			}	
-			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
-					owner_main_species = { has_trait = trait_pc_ammonia_preference }
-				}
-				set_planet_entity = { picture = pc_ammoniamilcapital entity = milarc_ammonia_planet_01_entity  }
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
-					owner_main_species = { has_trait = trait_pc_methane_preference }
+				limit = {
+					is_planet_class = pc_milarc
+					owner_main_species = {
+						has_trait = trait_pc_aquatic_preference
+					}
 				}
-				set_planet_entity = { picture = pc_methanemilcapital entity = milarc_methane_planet_01_entity   }
+				set_planet_entity = {
+					picture = pc_aquaticcapitalarc
+					entity = aquaticmilarc_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
-					owner_main_species = { has_trait = trait_pc_sulfur_preference }
+				limit = {
+					is_planet_class = pc_milarc
+					owner_main_species = {
+						has_trait = trait_pc_ammonia_preference
+					}
 				}
-				set_planet_entity = { picture = pc_sulfurmilcapital entity = milarc_sulfur_planet_01_entity  }
+				set_planet_entity = {
+					picture = pc_ammoniamilcapital
+					entity = milarc_ammonia_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
-					owner_main_species = { has_trait = trait_pc_ash_preference }
+				limit = {
+					is_planet_class = pc_milarc
+					owner_main_species = {
+						has_trait = trait_pc_methane_preference
+					}
 				}
-				set_planet_entity = { picture = pc_ashmilcapital entity = milarc_ash_planet_01_entity  }
+				set_planet_entity = {
+					picture = pc_methanemilcapital
+					entity = milarc_methane_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
+				limit = {
+					is_planet_class = pc_milarc
+					owner_main_species = {
+						has_trait = trait_pc_sulfur_preference
+					}
+				}
+				set_planet_entity = {
+					picture = pc_sulfurmilcapital
+					entity = milarc_sulfur_planet_01_entity
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_milarc
+					owner_main_species = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				set_planet_entity = {
+					picture = pc_ashmilcapital
+					entity = milarc_ash_planet_01_entity
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_milarc
 					has_deposit = d_pd_necro_arc
 				}
-				set_planet_entity = { picture = pc_necromilarccapital entity = necro_milarc_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_necromilarccapital
+					entity = necro_milarc_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
+				limit = {
+					is_planet_class = pc_milarc
 					has_deposit = d_pd_shroud_arc
 				}
-				set_planet_entity = { picture = pc_shroudmilcapital entity = milarcshroud_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_shroudmilcapital
+					entity = milarcshroud_planet_01_entity
+				}
 			}
 			#Eco-Arc
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_ecocity
 					owner = {
-						NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_aquatic_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ammonia_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_sulfur_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ash_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_methane_preference
+							}
+						}
 					}
 					planet = {
-						NOT = { has_deposit = d_pd_necro_arc }
-						NOT = { has_deposit = d_pd_shroud_arc }
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
+						NOT = {
+							has_deposit = d_pd_shroud_arc
+						}
 					}
 				}
-				set_planet_entity = { picture = pc_ecocapital entity = ecocity_planet_entity }
+				set_planet_entity = {
+					picture = pc_ecocapital
+					entity = ecocity_planet_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
-					owner_main_species = { has_trait = trait_pc_aquatic_preference }
+				limit = {
+					is_planet_class = pc_ecocity
+					owner_main_species = {
+						has_trait = trait_pc_aquatic_preference
+					}
 				}
-				set_planet_entity = { picture = pc_aquaticecocapital entity = aquaticecocity_planet_01_entity  }
-			}	
-			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
-					owner_main_species = { has_trait = trait_pc_ammonia_preference }
+				set_planet_entity = {
+					picture = pc_aquaticecocapital
+					entity = aquaticecocity_planet_01_entity
 				}
-				set_planet_entity = { picture = pc_ammoniaecocapital entity = ecocity_ammonia_planet_01_entity }
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
-					owner_main_species = { has_trait = trait_pc_methane_preference }
+				limit = {
+					is_planet_class = pc_ecocity
+					owner_main_species = {
+						has_trait = trait_pc_ammonia_preference
+					}
 				}
-				set_planet_entity = { picture = pc_methaneecocapital entity = ecocity_methane_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_ammoniaecocapital
+					entity = ecocity_ammonia_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
-					owner_main_species = { has_trait = trait_pc_sulfur_preference }
+				limit = {
+					is_planet_class = pc_ecocity
+					owner_main_species = {
+						has_trait = trait_pc_methane_preference
+					}
 				}
-				set_planet_entity = { picture = pc_sulfurecocapital entity = ecocity_sulfur_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_methaneecocapital
+					entity = ecocity_methane_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
-					owner_main_species = { has_trait = trait_pc_ash_preference }
+				limit = {
+					is_planet_class = pc_ecocity
+					owner_main_species = {
+						has_trait = trait_pc_sulfur_preference
+					}
 				}
-				set_planet_entity = { picture = pc_ashecocapital entity = ecocity_ash_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_sulfurecocapital
+					entity = ecocity_sulfur_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
+				limit = {
+					is_planet_class = pc_ecocity
+					owner_main_species = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				set_planet_entity = {
+					picture = pc_ashecocapital
+					entity = ecocity_ash_planet_01_entity
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_ecocity
 					has_deposit = d_pd_necro_arc
 				}
-				set_planet_entity = { picture = pc_necroecocitycapital entity = necro_ecocity_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_necroecocitycapital
+					entity = necro_ecocity_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
+				limit = {
+					is_planet_class = pc_ecocity
 					has_deposit = d_pd_shroud_arc
 				}
-				set_planet_entity = { picture = pc_shroudecocapital entity = ecoshroud_planet_01_entity }
-			}
-			IF = { 
-				limit = { 
-					is_planet_class = pc_ecocity	
-					has_planet_flag = planet_earth 
-					NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
-			}
-			set_planet_entity = { entity = "ecocity_planet_02_earth_entity" }
-			}
-			IF = { 
-				limit = { 
-					is_planet_class = pc_ecocity	
-					has_planet_flag = pdmars 
-					NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
-			}
-			set_planet_entity = { entity = "ecocity_planet_03_mars_entity" }
-			}
-			IF = { 
-				limit = { 
-					is_planet_class = pc_ecocity	
-					has_planet_flag = pdvenus 
-					NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
+				set_planet_entity = {
+					picture = pc_shroudecocapital
+					entity = ecoshroud_planet_01_entity
 				}
-			set_planet_entity = { entity = "ecocity_planet_04_venus_entity" }
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ringworld_habitable
-					owner = {
-						NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
+				limit = {
+					is_planet_class = pc_ecocity
+					has_planet_flag = planet_earth
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_aquatic_preference
+						}
 					}
-					planet = {
-						NOT = { has_deposit = d_pd_necro_arc }
-						NOT = { has_deposit = d_pd_shroud_arc }
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ammonia_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_sulfur_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ash_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_methane_preference
+						}
 					}
 				}
-				set_planet_entity = { picture = pc_ringworldcapital }
+				set_planet_entity = {
+					entity = "ecocity_planet_02_earth_entity"
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_ecocity
+					has_planet_flag = pdmars
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_aquatic_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ammonia_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_sulfur_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ash_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_methane_preference
+						}
+					}
+				}
+				set_planet_entity = {
+					entity = "ecocity_planet_03_mars_entity"
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_ecocity
+					has_planet_flag = pdvenus
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_aquatic_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ammonia_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_sulfur_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ash_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_methane_preference
+						}
+					}
+				}
+				set_planet_entity = {
+					entity = "ecocity_planet_04_venus_entity"
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_ringworld_habitable
+					owner = {
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_aquatic_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ammonia_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_sulfur_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ash_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_methane_preference
+							}
+						}
+					}
+					planet = {
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
+						NOT = {
+							has_deposit = d_pd_shroud_arc
+						}
+					}
+				}
+				set_planet_entity = {
+					picture = pc_ringworldcapital
+				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 1000
 	}
@@ -2001,7 +3126,6 @@ decision_capital_arc = {
 decision_remove_capital_arc = {
 	owned_planets_only = yes
 	icon = decision_remove_capital_arc
-
 	enactment_time = 360
 	resources = {
 		category = decisions
@@ -2010,7 +3134,6 @@ decision_remove_capital_arc = {
 			energy = 1000
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_city
@@ -2018,14 +3141,17 @@ decision_remove_capital_arc = {
 			is_planet_class = pc_milarc
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			is_regular_empire = yes
-			NOT = { has_authority = auth_democratic }
-			NOT = { has_authority = auth_oligarchic }
+			NOT = {
+				has_authority = auth_democratic
+			}
+			NOT = {
+				has_authority = auth_oligarchic
+			}
 		}
 		has_deposit = d_pd_capital_arc
 	}
-	
 	allow = {
 		OR = {
 			is_planet_class = pc_city
@@ -2033,23 +3159,25 @@ decision_remove_capital_arc = {
 			is_planet_class = pc_milarc
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			is_regular_empire = yes
-			NOT = { has_authority = auth_democratic }
-			NOT = { has_authority = auth_oligarchic }
+			NOT = {
+				has_authority = auth_democratic
+			}
+			NOT = {
+				has_authority = auth_oligarchic
+			}
 		}
 		has_deposit = d_pd_capital_arc
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_remove_capital_arc_effects
 		remove_deposit = d_pd_capital_arc
-		hidden_effect = {	
+		hidden_effect = {
 			pd_remove_special_arc_deposits = yes
 		}
 	}
-	
 	ai_weight = {
 		weight = 1000
 	}
@@ -2059,7 +3187,6 @@ decision_remove_capital_arc = {
 decision_palace_arc = {
 	owned_planets_only = yes
 	icon = decision_palace_arc
-
 	enactment_time = 1800
 	resources = {
 		category = decisions
@@ -2068,7 +3195,6 @@ decision_palace_arc = {
 			minerals = 5000
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_city
@@ -2078,7 +3204,7 @@ decision_palace_arc = {
 			is_planet_class = pc_habitat
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			is_regular_empire = yes
 			OR = {
 				has_authority = auth_dictatorial
@@ -2086,35 +3212,59 @@ decision_palace_arc = {
 			}
 			has_technology = tech_housing_2
 		}
-		NOT = { has_deposit = d_pd_palace_arc }
+		NOT = {
+			has_deposit = d_pd_palace_arc
+		}
 		is_capital = yes
 		has_deposit = d_pd_capital_spot
 	}
-	
 	allow = {
 		has_deposit = d_pd_capital_spot
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_palace_arc_effects
-		hidden_effect = {	
+		hidden_effect = {
 			remove_deposit = d_pd_capital_spot
 			add_deposit = d_pd_palace_arc
 			#Regular City World
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_city
 					owner = {
-						NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_aquatic_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ammonia_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_sulfur_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ash_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_methane_preference
+							}
+						}
 					}
 					planet = {
-						NOT = { has_deposit = d_pd_necro_arc }
-						NOT = { has_deposit = d_pd_shroud_arc }
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
+						NOT = {
+							has_deposit = d_pd_shroud_arc
+						}
 					}
 				}
 				set_planet_entity = {
@@ -2123,258 +3273,501 @@ decision_palace_arc = {
 				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_city
-					has_planet_flag = planet_earth 
+					has_planet_flag = planet_earth
 				}
-				set_planet_entity = { entity = earthpalacearc_planet_02_entity }
-			}	
-			IF = {
-				limit = { 
-					is_planet_class = pc_city	
-					owner_main_species = { has_trait = trait_pc_aquatic_preference }
+				set_planet_entity = {
+					entity = earthpalacearc_planet_02_entity
 				}
-				set_planet_entity = { picture = pc_aquaticpalacearc entity = aquaticpalace_planet_01_entity }
-			}	
-			IF = {
-				limit = { 
-					is_planet_class = pc_city	
-					owner_main_species = { has_trait = trait_pc_ammonia_preference }
-				}
-				set_planet_entity = { picture = pc_ammoniapalacearc entity = palacearcammonia_planet_01_entity }
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_city	
-					owner_main_species = { has_trait = trait_pc_methane_preference }
+				limit = {
+					is_planet_class = pc_city
+					owner_main_species = {
+						has_trait = trait_pc_aquatic_preference
+					}
 				}
-				set_planet_entity = { picture = pc_methanepalacearc entity = palacearcmethane_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_aquaticpalacearc
+					entity = aquaticpalace_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_city	
-					owner_main_species = { has_trait = trait_pc_sulfur_preference }
+				limit = {
+					is_planet_class = pc_city
+					owner_main_species = {
+						has_trait = trait_pc_ammonia_preference
+					}
 				}
-				set_planet_entity = { picture = pc_sulfurpalacearc entity = palacearcsulfur_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_ammoniapalacearc
+					entity = palacearcammonia_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_city	
-					owner_main_species = { has_trait = trait_pc_ash_preference }
+				limit = {
+					is_planet_class = pc_city
+					owner_main_species = {
+						has_trait = trait_pc_methane_preference
+					}
 				}
-				set_planet_entity = { picture = pc_ashpalacearc entity = palacearcash_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_methanepalacearc
+					entity = palacearcmethane_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_city	
+				limit = {
+					is_planet_class = pc_city
+					owner_main_species = {
+						has_trait = trait_pc_sulfur_preference
+					}
+				}
+				set_planet_entity = {
+					picture = pc_sulfurpalacearc
+					entity = palacearcsulfur_planet_01_entity
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_city
+					owner_main_species = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				set_planet_entity = {
+					picture = pc_ashpalacearc
+					entity = palacearcash_planet_01_entity
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_city
 					has_deposit = d_pd_necro_arc
 				}
-				set_planet_entity = { picture = pc_necropalacearc entity = necro_palacearc_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_necropalacearc
+					entity = necro_palacearc_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_city	
+				limit = {
+					is_planet_class = pc_city
 					has_deposit = d_pd_shroud_arc
 				}
-				set_planet_entity = { picture = pc_shroudpalacearc entity = pc_shroudcapitalarc }
+				set_planet_entity = {
+					picture = pc_shroudpalacearc
+					entity = pc_shroudcapitalarc
+				}
 			}
 			#Fortress Arc
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_milarc
 					owner = {
-						NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_aquatic_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ammonia_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_sulfur_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ash_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_methane_preference
+							}
+						}
 					}
 					planet = {
-						NOT = { has_deposit = d_pd_necro_arc }
-						NOT = { has_deposit = d_pd_shroud_arc }
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
+						NOT = {
+							has_deposit = d_pd_shroud_arc
+						}
 					}
 				}
-				set_planet_entity = { picture = pc_milarcpalace entity = milarc_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_milarcpalace
+					entity = milarc_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_milarc
-					has_planet_flag = planet_earth 
+					has_planet_flag = planet_earth
 				}
-				set_planet_entity = { picture = pc_milarcpalace entity = milarc_planet_02_earth_entity }
-			}	
-			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
-					owner_main_species = { has_trait = trait_pc_aquatic_preference }
+				set_planet_entity = {
+					picture = pc_milarcpalace
+					entity = milarc_planet_02_earth_entity
 				}
-				set_planet_entity = { picture = pc_aquaticpalacearc entity = aquaticmilarc_planet_01_entity  }
-			}	
-			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
-					owner_main_species = { has_trait = trait_pc_ammonia_preference }
-				}
-				set_planet_entity = { picture = pc_ammoniamilpalace entity = milarc_ammonia_planet_01_entity  }
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
-					owner_main_species = { has_trait = trait_pc_methane_preference }
+				limit = {
+					is_planet_class = pc_milarc
+					owner_main_species = {
+						has_trait = trait_pc_aquatic_preference
+					}
 				}
-				set_planet_entity = { picture = pc_methanemilpalace entity = milarc_methane_planet_01_entity   }
+				set_planet_entity = {
+					picture = pc_aquaticpalacearc
+					entity = aquaticmilarc_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
-					owner_main_species = { has_trait = trait_pc_sulfur_preference }
+				limit = {
+					is_planet_class = pc_milarc
+					owner_main_species = {
+						has_trait = trait_pc_ammonia_preference
+					}
 				}
-				set_planet_entity = { picture = pc_sulfurmilpalace entity = milarc_sulfur_planet_01_entity  }
+				set_planet_entity = {
+					picture = pc_ammoniamilpalace
+					entity = milarc_ammonia_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
-					owner_main_species = { has_trait = trait_pc_ash_preference }
+				limit = {
+					is_planet_class = pc_milarc
+					owner_main_species = {
+						has_trait = trait_pc_methane_preference
+					}
 				}
-				set_planet_entity = { picture = pc_ashmilpalace entity = milarc_ash_planet_01_entity  }
+				set_planet_entity = {
+					picture = pc_methanemilpalace
+					entity = milarc_methane_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
+				limit = {
+					is_planet_class = pc_milarc
+					owner_main_species = {
+						has_trait = trait_pc_sulfur_preference
+					}
+				}
+				set_planet_entity = {
+					picture = pc_sulfurmilpalace
+					entity = milarc_sulfur_planet_01_entity
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_milarc
+					owner_main_species = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				set_planet_entity = {
+					picture = pc_ashmilpalace
+					entity = milarc_ash_planet_01_entity
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_milarc
 					has_deposit = d_pd_necro_arc
 				}
-				set_planet_entity = { picture = pc_necromilarcpalace entity = necro_milarc_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_necromilarcpalace
+					entity = necro_milarc_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
+				limit = {
+					is_planet_class = pc_milarc
 					has_deposit = d_pd_shroud_arc
 				}
-				set_planet_entity = { picture = pc_shroudmilpalace entity = milarcshroud_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_shroudmilpalace
+					entity = milarcshroud_planet_01_entity
+				}
 			}
 			#Eco-Arc
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_ecocity
 					owner = {
-						NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_aquatic_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ammonia_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_sulfur_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ash_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_methane_preference
+							}
+						}
 					}
 					planet = {
-						NOT = { has_deposit = d_pd_necro_arc }
-						NOT = { has_deposit = d_pd_shroud_arc }
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
+						NOT = {
+							has_deposit = d_pd_shroud_arc
+						}
 					}
 				}
-				set_planet_entity = { picture = pc_ecopalace entity = ecocity_planet_entity }
+				set_planet_entity = {
+					picture = pc_ecopalace
+					entity = ecocity_planet_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
-					owner_main_species = { has_trait = trait_pc_aquatic_preference }
+				limit = {
+					is_planet_class = pc_ecocity
+					owner_main_species = {
+						has_trait = trait_pc_aquatic_preference
+					}
 				}
-				set_planet_entity = { picture = pc_aquaticpalacearc entity = aquaticecocity_planet_01_entity  }
-			}	
-			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
-					owner_main_species = { has_trait = trait_pc_ammonia_preference }
+				set_planet_entity = {
+					picture = pc_aquaticpalacearc
+					entity = aquaticecocity_planet_01_entity
 				}
-				set_planet_entity = { picture = pc_ammoniaecopalace entity = ecocity_ammonia_planet_01_entity }
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
-					owner_main_species = { has_trait = trait_pc_methane_preference }
+				limit = {
+					is_planet_class = pc_ecocity
+					owner_main_species = {
+						has_trait = trait_pc_ammonia_preference
+					}
 				}
-				set_planet_entity = { picture = pc_methaneecopalace entity = ecocity_methane_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_ammoniaecopalace
+					entity = ecocity_ammonia_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
-					owner_main_species = { has_trait = trait_pc_sulfur_preference }
+				limit = {
+					is_planet_class = pc_ecocity
+					owner_main_species = {
+						has_trait = trait_pc_methane_preference
+					}
 				}
-				set_planet_entity = { picture = pc_sulfurecopalace entity = ecocity_sulfur_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_methaneecopalace
+					entity = ecocity_methane_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
-					owner_main_species = { has_trait = trait_pc_ash_preference }
+				limit = {
+					is_planet_class = pc_ecocity
+					owner_main_species = {
+						has_trait = trait_pc_sulfur_preference
+					}
 				}
-				set_planet_entity = { picture = pc_ashecopalace entity = ecocity_ash_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_sulfurecopalace
+					entity = ecocity_sulfur_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
+				limit = {
+					is_planet_class = pc_ecocity
+					owner_main_species = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				set_planet_entity = {
+					picture = pc_ashecopalace
+					entity = ecocity_ash_planet_01_entity
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_ecocity
 					has_deposit = d_pd_necro_arc
 				}
-				set_planet_entity = { picture = pc_necroecopalace entity = necro_ecocity_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_necroecopalace
+					entity = necro_ecocity_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
+				limit = {
+					is_planet_class = pc_ecocity
 					has_deposit = d_pd_shroud_arc
 				}
-				set_planet_entity = { picture = pc_shroudecopalace entity = ecoshroud_planet_01_entity }
-			}
-			IF = { 
-				limit = { 
-					is_planet_class = pc_ecocity	
-					has_planet_flag = planet_earth 
-					NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
-			}
-			set_planet_entity = { entity = "ecocity_planet_02_earth_entity" }
-			}
-			IF = { 
-				limit = { 
-					is_planet_class = pc_ecocity	
-					has_planet_flag = pdmars 
-					NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
-			}
-			set_planet_entity = { entity = "ecocity_planet_03_mars_entity" }
-			}
-			IF = { 
-				limit = { 
-					is_planet_class = pc_ecocity	
-					has_planet_flag = pdvenus 
-					NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
+				set_planet_entity = {
+					picture = pc_shroudecopalace
+					entity = ecoshroud_planet_01_entity
 				}
-			set_planet_entity = { entity = "ecocity_planet_04_venus_entity" }
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ringworld_habitable
-					owner = {
-						NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
+				limit = {
+					is_planet_class = pc_ecocity
+					has_planet_flag = planet_earth
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_aquatic_preference
+						}
 					}
-					planet = {
-						NOT = { has_deposit = d_pd_necro_arc }
-						NOT = { has_deposit = d_pd_shroud_arc }
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ammonia_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_sulfur_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ash_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_methane_preference
+						}
 					}
 				}
-				set_planet_entity = { picture = pc_ringworldpalace }
+				set_planet_entity = {
+					entity = "ecocity_planet_02_earth_entity"
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_ecocity
+					has_planet_flag = pdmars
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_aquatic_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ammonia_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_sulfur_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ash_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_methane_preference
+						}
+					}
+				}
+				set_planet_entity = {
+					entity = "ecocity_planet_03_mars_entity"
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_ecocity
+					has_planet_flag = pdvenus
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_aquatic_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ammonia_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_sulfur_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ash_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_methane_preference
+						}
+					}
+				}
+				set_planet_entity = {
+					entity = "ecocity_planet_04_venus_entity"
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_ringworld_habitable
+					owner = {
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_aquatic_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ammonia_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_sulfur_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ash_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_methane_preference
+							}
+						}
+					}
+					planet = {
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
+						NOT = {
+							has_deposit = d_pd_shroud_arc
+						}
+					}
+				}
+				set_planet_entity = {
+					picture = pc_ringworldpalace
+				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 1000
 	}
@@ -2384,7 +3777,6 @@ decision_palace_arc = {
 decision_remove_palace_arc = {
 	owned_planets_only = yes
 	icon = decision_remove_palace_arc
-
 	enactment_time = 360
 	resources = {
 		category = decisions
@@ -2393,7 +3785,6 @@ decision_remove_palace_arc = {
 			energy = 1000
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_city
@@ -2401,14 +3792,17 @@ decision_remove_palace_arc = {
 			is_planet_class = pc_milarc
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			is_regular_empire = yes
-			NOT = { has_authority = auth_dictatorial }
-			NOT = { has_authority = auth_imperial }
+			NOT = {
+				has_authority = auth_dictatorial
+			}
+			NOT = {
+				has_authority = auth_imperial
+			}
 		}
 		has_deposit = d_pd_palace_arc
 	}
-	
 	allow = {
 		OR = {
 			is_planet_class = pc_city
@@ -2416,23 +3810,25 @@ decision_remove_palace_arc = {
 			is_planet_class = pc_milarc
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			is_regular_empire = yes
-			NOT = { has_authority = auth_dictatorial }
-			NOT = { has_authority = auth_imperial }
+			NOT = {
+				has_authority = auth_dictatorial
+			}
+			NOT = {
+				has_authority = auth_imperial
+			}
 		}
 		has_deposit = d_pd_palace_arc
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_remove_palace_arc_effects
 		remove_deposit = d_pd_palace_arc
-		hidden_effect = {	
+		hidden_effect = {
 			pd_remove_special_arc_deposits = yes
 		}
 	}
-	
 	ai_weight = {
 		weight = 1000
 	}
@@ -2442,7 +3838,6 @@ decision_remove_palace_arc = {
 decision_boardroom_arc = {
 	owned_planets_only = yes
 	icon = decision_boardroom_arc
-
 	enactment_time = 1800
 	resources = {
 		category = decisions
@@ -2451,7 +3846,6 @@ decision_boardroom_arc = {
 			minerals = 5000
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_city
@@ -2461,40 +3855,64 @@ decision_boardroom_arc = {
 			is_planet_class = pc_ringworld_habitable
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			is_regular_empire = yes
 			is_megacorp = yes
 			has_technology = tech_housing_2
 		}
-		NOT = { has_deposit = d_pd_boardroom_arc }
+		NOT = {
+			has_deposit = d_pd_boardroom_arc
+		}
 		is_capital = yes
 		has_deposit = d_pd_capital_spot
 	}
-	
 	allow = {
 		has_deposit = d_pd_capital_spot
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_boardroom_arc_effects
-		hidden_effect = {	
+		hidden_effect = {
 			remove_deposit = d_pd_capital_spot
 			add_deposit = d_pd_boardroom_arc
 			#Regular City World
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_city
 					owner = {
-						NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_aquatic_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ammonia_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_sulfur_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ash_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_methane_preference
+							}
+						}
 					}
 					planet = {
-						NOT = { has_deposit = d_pd_necro_arc }
-						NOT = { has_deposit = d_pd_shroud_arc }
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
+						NOT = {
+							has_deposit = d_pd_shroud_arc
+						}
 					}
 				}
 				set_planet_entity = {
@@ -2503,318 +3921,620 @@ decision_boardroom_arc = {
 				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_city	
-					owner_main_species = { has_trait = trait_pc_aquatic_preference }
+				limit = {
+					is_planet_class = pc_city
+					owner_main_species = {
+						has_trait = trait_pc_aquatic_preference
+					}
 				}
-				set_planet_entity = { picture = pc_citycorpocapaqua entity = aquaticpalace_planet_01_entity }
-			}	
-			IF = {
-				limit = { 
-					is_planet_class = pc_city	
-					owner_main_species = { has_trait = trait_pc_ammonia_preference }
+				set_planet_entity = {
+					picture = pc_citycorpocapaqua
+					entity = aquaticpalace_planet_01_entity
 				}
-				set_planet_entity = { picture = pc_citycorpocapammonia entity = palacearcammonia_planet_01_entity }
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_city	
-					owner_main_species = { has_trait = trait_pc_methane_preference }
+				limit = {
+					is_planet_class = pc_city
+					owner_main_species = {
+						has_trait = trait_pc_ammonia_preference
+					}
 				}
-				set_planet_entity = { picture = pc_citycorpocapmethane entity = palacearcmethane_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_citycorpocapammonia
+					entity = palacearcammonia_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_city	
-					owner_main_species = { has_trait = trait_pc_sulfur_preference }
+				limit = {
+					is_planet_class = pc_city
+					owner_main_species = {
+						has_trait = trait_pc_methane_preference
+					}
 				}
-				set_planet_entity = { picture = pc_citycorpocapsulfur entity = palacearcsulfur_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_citycorpocapmethane
+					entity = palacearcmethane_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_city	
-					owner_main_species = { has_trait = trait_pc_ash_preference }
+				limit = {
+					is_planet_class = pc_city
+					owner_main_species = {
+						has_trait = trait_pc_sulfur_preference
+					}
 				}
-				set_planet_entity = { picture = pc_citycorpocapash entity = palacearcash_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_citycorpocapsulfur
+					entity = palacearcsulfur_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_city	
+				limit = {
+					is_planet_class = pc_city
+					owner_main_species = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				set_planet_entity = {
+					picture = pc_citycorpocapash
+					entity = palacearcash_planet_01_entity
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_city
 					has_deposit = d_pd_necro_arc
 				}
-				set_planet_entity = { picture = pc_citycorpocapnecro entity = necro_palacearc_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_citycorpocapnecro
+					entity = necro_palacearc_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_city	
+				limit = {
+					is_planet_class = pc_city
 					has_deposit = d_pd_shroud_arc
 				}
-				set_planet_entity = { picture = pc_citycorpocapshroud entity = pc_shroudcapitalarc }
+				set_planet_entity = {
+					picture = pc_citycorpocapshroud
+					entity = pc_shroudcapitalarc
+				}
 			}
 			#Fortress Arc
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_milarc
 					owner = {
-						NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_aquatic_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ammonia_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_sulfur_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ash_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_methane_preference
+							}
+						}
 					}
 					planet = {
-						NOT = { has_deposit = d_pd_necro_arc }
-						NOT = { has_deposit = d_pd_shroud_arc }
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
+						NOT = {
+							has_deposit = d_pd_shroud_arc
+						}
 					}
 				}
-				set_planet_entity = { picture = pc_milarccorpcap entity = milarc_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_milarccorpcap
+					entity = milarc_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_milarc
-					has_planet_flag = planet_earth 
+					has_planet_flag = planet_earth
 				}
-				set_planet_entity = { picture = pc_milarccorpcap entity = milarc_planet_02_earth_entity }
-			}	
-			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
-					owner_main_species = { has_trait = trait_pc_aquatic_preference }
+				set_planet_entity = {
+					picture = pc_milarccorpcap
+					entity = milarc_planet_02_earth_entity
 				}
-				set_planet_entity = { picture = pc_citycorpocapaqua entity = aquaticmilarc_planet_01_entity  }
-			}	
-			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
-					owner_main_species = { has_trait = trait_pc_ammonia_preference }
-				}
-				set_planet_entity = { picture = pc_ammoniamilarccorpcap entity = milarc_ammonia_planet_01_entity  }
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
-					owner_main_species = { has_trait = trait_pc_methane_preference }
+				limit = {
+					is_planet_class = pc_milarc
+					owner_main_species = {
+						has_trait = trait_pc_aquatic_preference
+					}
 				}
-				set_planet_entity = { picture = pc_methanemilarccorpocap entity = milarc_methane_planet_01_entity   }
+				set_planet_entity = {
+					picture = pc_citycorpocapaqua
+					entity = aquaticmilarc_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
-					owner_main_species = { has_trait = trait_pc_sulfur_preference }
+				limit = {
+					is_planet_class = pc_milarc
+					owner_main_species = {
+						has_trait = trait_pc_ammonia_preference
+					}
 				}
-				set_planet_entity = { picture = pc_sulfurmilarccorpocap entity = milarc_sulfur_planet_01_entity  }
+				set_planet_entity = {
+					picture = pc_ammoniamilarccorpcap
+					entity = milarc_ammonia_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
-					owner_main_species = { has_trait = trait_pc_ash_preference }
+				limit = {
+					is_planet_class = pc_milarc
+					owner_main_species = {
+						has_trait = trait_pc_methane_preference
+					}
 				}
-				set_planet_entity = { picture = pc_ashmilarccorpocap entity = milarc_ash_planet_01_entity  }
+				set_planet_entity = {
+					picture = pc_methanemilarccorpocap
+					entity = milarc_methane_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
+				limit = {
+					is_planet_class = pc_milarc
+					owner_main_species = {
+						has_trait = trait_pc_sulfur_preference
+					}
+				}
+				set_planet_entity = {
+					picture = pc_sulfurmilarccorpocap
+					entity = milarc_sulfur_planet_01_entity
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_milarc
+					owner_main_species = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				set_planet_entity = {
+					picture = pc_ashmilarccorpocap
+					entity = milarc_ash_planet_01_entity
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_milarc
 					has_deposit = d_pd_necro_arc
 				}
-				set_planet_entity = { picture = pc_necromilarccorpocap entity = necro_milarc_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_necromilarccorpocap
+					entity = necro_milarc_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_milarc	
+				limit = {
+					is_planet_class = pc_milarc
 					has_deposit = d_pd_shroud_arc
 				}
-				set_planet_entity = { picture = pc_shroudmilarccorpocap entity = milarcshroud_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_shroudmilarccorpocap
+					entity = milarcshroud_planet_01_entity
+				}
 			}
 			#Eco-Arc
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_ecocity
 					owner = {
-						NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_aquatic_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ammonia_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_sulfur_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ash_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_methane_preference
+							}
+						}
 					}
 					planet = {
-						NOT = { has_deposit = d_pd_necro_arc }
-						NOT = { has_deposit = d_pd_shroud_arc }
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
+						NOT = {
+							has_deposit = d_pd_shroud_arc
+						}
 					}
 				}
-				set_planet_entity = { picture = pc_ecocorp entity = ecocity_planet_entity }
+				set_planet_entity = {
+					picture = pc_ecocorp
+					entity = ecocity_planet_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
-					owner_main_species = { has_trait = trait_pc_aquatic_preference }
+				limit = {
+					is_planet_class = pc_ecocity
+					owner_main_species = {
+						has_trait = trait_pc_aquatic_preference
+					}
 				}
-				set_planet_entity = { picture = pc_aquaticecocorpcap entity = aquaticecocity_planet_01_entity  }
-			}	
-			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
-					owner_main_species = { has_trait = trait_pc_ammonia_preference }
+				set_planet_entity = {
+					picture = pc_aquaticecocorpcap
+					entity = aquaticecocity_planet_01_entity
 				}
-				set_planet_entity = { picture = pc_ammoniaecocorpcap entity = ecocity_ammonia_planet_01_entity }
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
-					owner_main_species = { has_trait = trait_pc_methane_preference }
+				limit = {
+					is_planet_class = pc_ecocity
+					owner_main_species = {
+						has_trait = trait_pc_ammonia_preference
+					}
 				}
-				set_planet_entity = { picture = pc_methaneecocorpcap entity = ecocity_methane_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_ammoniaecocorpcap
+					entity = ecocity_ammonia_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
-					owner_main_species = { has_trait = trait_pc_sulfur_preference }
+				limit = {
+					is_planet_class = pc_ecocity
+					owner_main_species = {
+						has_trait = trait_pc_methane_preference
+					}
 				}
-				set_planet_entity = { picture = pc_sulfurecocorpcap entity = ecocity_sulfur_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_methaneecocorpcap
+					entity = ecocity_methane_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
-					owner_main_species = { has_trait = trait_pc_ash_preference }
+				limit = {
+					is_planet_class = pc_ecocity
+					owner_main_species = {
+						has_trait = trait_pc_sulfur_preference
+					}
 				}
-				set_planet_entity = { picture = pc_ashecocorpcap entity = ecocity_ash_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_sulfurecocorpcap
+					entity = ecocity_sulfur_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
+				limit = {
+					is_planet_class = pc_ecocity
+					owner_main_species = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				set_planet_entity = {
+					picture = pc_ashecocorpcap
+					entity = ecocity_ash_planet_01_entity
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_ecocity
 					has_deposit = d_pd_necro_arc
 				}
-				set_planet_entity = { picture = pc_necroecocorpcap entity = necro_ecocity_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_necroecocorpcap
+					entity = necro_ecocity_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_ecocity	
+				limit = {
+					is_planet_class = pc_ecocity
 					has_deposit = d_pd_shroud_arc
 				}
-				set_planet_entity = { picture = pc_shroudecocorpcap entity = ecoshroud_planet_01_entity }
-			}
-			IF = { 
-				limit = { 
-					is_planet_class = pc_ecocity	
-					has_planet_flag = planet_earth 
-					NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
-			}
-			set_planet_entity = { picture = pc_ecocorp entity = "ecocity_planet_02_earth_entity" }
-			}
-			IF = { 
-				limit = { 
-					is_planet_class = pc_ecocity	
-					has_planet_flag = pdmars 
-					NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
-			}
-			set_planet_entity = { picture = pc_ecocorp  entity = "ecocity_planet_03_mars_entity" }
-			}
-			IF = { 
-				limit = { 
-					is_planet_class = pc_ecocity	
-					has_planet_flag = pdvenus 
-					NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-					NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
+				set_planet_entity = {
+					picture = pc_shroudecocorpcap
+					entity = ecoshroud_planet_01_entity
 				}
-			set_planet_entity = { picture = pc_ecocorp  entity = "ecocity_planet_04_venus_entity" }
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_ecocity
+					has_planet_flag = planet_earth
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_aquatic_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ammonia_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_sulfur_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ash_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_methane_preference
+						}
+					}
+				}
+				set_planet_entity = {
+					picture = pc_ecocorp
+					entity = "ecocity_planet_02_earth_entity"
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_ecocity
+					has_planet_flag = pdmars
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_aquatic_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ammonia_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_sulfur_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ash_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_methane_preference
+						}
+					}
+				}
+				set_planet_entity = {
+					picture = pc_ecocorp
+					entity = "ecocity_planet_03_mars_entity"
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_ecocity
+					has_planet_flag = pdvenus
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_aquatic_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ammonia_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_sulfur_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_ash_preference
+						}
+					}
+					NOT = {
+						owner_main_species = {
+							has_trait = trait_pc_methane_preference
+						}
+					}
+				}
+				set_planet_entity = {
+					picture = pc_ecocorp
+					entity = "ecocity_planet_04_venus_entity"
+				}
 			}
 			#Corpo-Arc
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_corpoarc
 					owner = {
-						NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_aquatic_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ammonia_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_sulfur_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ash_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_methane_preference
+							}
+						}
 					}
 					planet = {
-						NOT = { has_deposit = d_pd_necro_arc }
-						NOT = { has_deposit = d_pd_shroud_arc }
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
+						NOT = {
+							has_deposit = d_pd_shroud_arc
+						}
 					}
 				}
-				set_planet_entity = { picture = pc_corpocapital entity = corpoarc_boardroom_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_corpocapital
+					entity = corpoarc_boardroom_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_corpoarc	
-					owner_main_species = { has_trait = trait_pc_aquatic_preference }
+				limit = {
+					is_planet_class = pc_corpoarc
+					owner_main_species = {
+						has_trait = trait_pc_aquatic_preference
+					}
 				}
-				set_planet_entity = { picture = pc_aquaticcorpocapital entity = aquaticcity_planet_01_entity }
-			}	
-			IF = {
-				limit = { 
-					is_planet_class = pc_corpoarc	
-					owner_main_species = { has_trait = trait_pc_ammonia_preference }
+				set_planet_entity = {
+					picture = pc_aquaticcorpocapital
+					entity = aquaticcity_planet_01_entity
 				}
-				set_planet_entity = { picture = pc_ammoniacorpocapital entity = ammonia_arc_planet_01_entity }
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_corpoarc	
-					owner_main_species = { has_trait = trait_pc_methane_preference }
+				limit = {
+					is_planet_class = pc_corpoarc
+					owner_main_species = {
+						has_trait = trait_pc_ammonia_preference
+					}
 				}
-				set_planet_entity = { picture = pc_methanecorpocapital entity = methane_arc_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_ammoniacorpocapital
+					entity = ammonia_arc_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_corpoarc	
-					owner_main_species = { has_trait = trait_pc_sulfur_preference }
+				limit = {
+					is_planet_class = pc_corpoarc
+					owner_main_species = {
+						has_trait = trait_pc_methane_preference
+					}
 				}
-				set_planet_entity = { picture = pc_sulfurcorpocapital entity = sulfur_arc_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_methanecorpocapital
+					entity = methane_arc_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_corpoarc	
-					owner_main_species = { has_trait = trait_pc_ash_preference }
+				limit = {
+					is_planet_class = pc_corpoarc
+					owner_main_species = {
+						has_trait = trait_pc_sulfur_preference
+					}
 				}
-				set_planet_entity = { picture = pc_ashcorpocapital entity = ash_arc_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_sulfurcorpocapital
+					entity = sulfur_arc_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_corpoarc	
+				limit = {
+					is_planet_class = pc_corpoarc
+					owner_main_species = {
+						has_trait = trait_pc_ash_preference
+					}
+				}
+				set_planet_entity = {
+					picture = pc_ashcorpocapital
+					entity = ash_arc_planet_01_entity
+				}
+			}
+			IF = {
+				limit = {
+					is_planet_class = pc_corpoarc
 					has_deposit = d_pd_necro_arc
 				}
-				set_planet_entity = { picture = pc_necrocorpocapital entity = necropolis_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_necrocorpocapital
+					entity = necropolis_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
-					is_planet_class = pc_corpoarc	
+				limit = {
+					is_planet_class = pc_corpoarc
 					has_deposit = d_pd_shroud_arc
 				}
-				set_planet_entity = { picture = pc_shroudcorpocapital entity = pdshroudcity_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_shroudcorpocapital
+					entity = pdshroudcity_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_ringworld_habitable
 					owner = {
-						NOT = { owner_main_species = { has_trait = trait_pc_aquatic_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ammonia_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_sulfur_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_ash_preference } }
-						NOT = { owner_main_species = { has_trait = trait_pc_methane_preference } }
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_aquatic_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ammonia_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_sulfur_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_ash_preference
+							}
+						}
+						NOT = {
+							owner_main_species = {
+								has_trait = trait_pc_methane_preference
+							}
+						}
 					}
 					planet = {
-						NOT = { has_deposit = d_pd_necro_arc }
-						NOT = { has_deposit = d_pd_shroud_arc }
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
+						NOT = {
+							has_deposit = d_pd_shroud_arc
+						}
 					}
 				}
-				set_planet_entity = { picture = pc_ringworldcorpcap }
+				set_planet_entity = {
+					picture = pc_ringworldcorpcap
+				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 1000
 	}
@@ -2824,7 +4544,6 @@ decision_boardroom_arc = {
 decision_remove_boardroom_arc = {
 	owned_planets_only = yes
 	icon = decision_remove_boardroom_arc
-
 	enactment_time = 360
 	resources = {
 		category = decisions
@@ -2833,7 +4552,6 @@ decision_remove_boardroom_arc = {
 			energy = 1000
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_city
@@ -2842,13 +4560,14 @@ decision_remove_boardroom_arc = {
 			is_planet_class = pc_corpoarc
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			is_regular_empire = yes
-			NOT = { is_megacorp = yes }
+			NOT = {
+				is_megacorp = yes
+			}
 		}
 		has_deposit = d_pd_boardroom_arc
 	}
-	
 	allow = {
 		OR = {
 			is_planet_class = pc_city
@@ -2857,22 +4576,22 @@ decision_remove_boardroom_arc = {
 			is_planet_class = pc_corpoarc
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			is_regular_empire = yes
-			NOT = { is_megacorp = yes }
+			NOT = {
+				is_megacorp = yes
+			}
 		}
 		has_deposit = d_pd_boardroom_arc
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_remove_boardroom_arc_effects
 		remove_deposit = d_pd_boardroom_arc
-		hidden_effect = {	
+		hidden_effect = {
 			pd_remove_special_arc_deposits = yes
 		}
 	}
-	
 	ai_weight = {
 		weight = 1000
 	}
@@ -2882,7 +4601,6 @@ decision_remove_boardroom_arc = {
 decision_biohivecap_arc = {
 	owned_planets_only = yes
 	icon = decision_biohivecap_arc
-
 	enactment_time = 1800
 	resources = {
 		category = decisions
@@ -2891,7 +4609,6 @@ decision_biohivecap_arc = {
 			minerals = 5000
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_hive
@@ -2900,35 +4617,39 @@ decision_biohivecap_arc = {
 			is_planet_class = pc_ringworld_habitable
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			is_hive_empire = yes
-			NOT = { has_origin = origin_pd_tree_of_life }
+			NOT = {
+				has_origin = origin_pd_tree_of_life
+			}
 			has_technology = tech_housing_2
 		}
-		NOT = { has_deposit = d_pd_biohivecap_arc }
+		NOT = {
+			has_deposit = d_pd_biohivecap_arc
+		}
 		is_capital = yes
 		has_deposit = d_pd_capital_spot
 	}
-	
 	allow = {
 		has_deposit = d_pd_capital_spot
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_biohivecap_arc_effects
-		hidden_effect = {	
+		hidden_effect = {
 			remove_deposit = d_pd_capital_spot
 			add_deposit = d_pd_biohivecap_arc
 			#Hive + Forge World
 			IF = {
-				limit = { 
+				limit = {
 					planet = {
 						OR = {
 							is_planet_class = pc_hive
 							is_planet_class = pc_bioforge
 						}
-						NOT = { has_deposit = d_pd_necro_arc }
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
 					}
 				}
 				set_planet_entity = {
@@ -2936,7 +4657,7 @@ decision_biohivecap_arc = {
 				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					OR = {
 						is_planet_class = pc_hive
 						is_planet_class = pc_bioforge
@@ -2950,10 +4671,12 @@ decision_biohivecap_arc = {
 			}
 			#Bio Forts World
 			IF = {
-				limit = { 
+				limit = {
 					planet = {
 						is_planet_class = pc_biofort
-						NOT = { has_deposit = d_pd_necro_arc }
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
 					}
 				}
 				set_planet_entity = {
@@ -2961,7 +4684,7 @@ decision_biohivecap_arc = {
 				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_biofort
 					has_deposit = d_pd_necro_arc
 				}
@@ -2972,7 +4695,6 @@ decision_biohivecap_arc = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 1000
 	}
@@ -2982,7 +4704,6 @@ decision_biohivecap_arc = {
 decision_florahivecap_arc = {
 	owned_planets_only = yes
 	icon = decision_floracapital_project
-
 	enactment_time = 1800
 	resources = {
 		category = decisions
@@ -2991,7 +4712,6 @@ decision_florahivecap_arc = {
 			minerals = 5000
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_megafloratol
@@ -3000,29 +4720,29 @@ decision_florahivecap_arc = {
 			is_planet_class = pc_ringworld_habitable
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			is_hive_empire = yes
 			has_origin = origin_pd_tree_of_life
 			has_technology = tech_housing_2
 		}
-		NOT = { has_deposit = d_pd_florahivecap_arc }
+		NOT = {
+			has_deposit = d_pd_florahivecap_arc
+		}
 		is_capital = yes
 		has_deposit = d_pd_capital_spot
 	}
-	
 	allow = {
 		has_deposit = d_pd_capital_spot
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_florahivecap_arc_effects
-		hidden_effect = {	
+		hidden_effect = {
 			remove_deposit = d_pd_capital_spot
 			add_deposit = d_pd_florahivecap_arc
 			#Hive + Fort World
 			IF = {
-				limit = { 
+				limit = {
 					planet = {
 						OR = {
 							is_planet_class = pc_megafloratol
@@ -3036,8 +4756,10 @@ decision_florahivecap_arc = {
 			}
 			#Bio Forge World
 			IF = {
-				limit = { 
-					planet = { is_planet_class = pc_megafloraforge }
+				limit = {
+					planet = {
+						is_planet_class = pc_megafloraforge
+					}
 				}
 				set_planet_entity = {
 					picture = pc_megafloraforgecapital
@@ -3045,7 +4767,6 @@ decision_florahivecap_arc = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 1000
 	}
@@ -3055,7 +4776,6 @@ decision_florahivecap_arc = {
 decision_machinecap_arc = {
 	owned_planets_only = yes
 	icon = decision_machine_capital_project
-
 	enactment_time = 1800
 	resources = {
 		category = decisions
@@ -3064,7 +4784,6 @@ decision_machinecap_arc = {
 			minerals = 5000
 		}
 	}
-	
 	potential = {
 		OR = {
 			is_planet_class = pc_machine
@@ -3073,79 +4792,100 @@ decision_machinecap_arc = {
 			is_planet_class = pc_ringworld_habitable
 		}
 		exists = owner
-		owner = { 
+		owner = {
 			is_machine_empire = yes
 			has_technology = tech_housing_2
 		}
-		NOT = { has_deposit = d_pd_machinecap_arc }
+		NOT = {
+			has_deposit = d_pd_machinecap_arc
+		}
 		is_capital = yes
 		has_deposit = d_pd_capital_spot
 	}
-	
 	allow = {
 		has_deposit = d_pd_capital_spot
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_machinecap_arc_effects
-		hidden_effect = {	
+		hidden_effect = {
 			remove_deposit = d_pd_capital_spot
 			add_deposit = d_pd_machinecap_arc
 			#Machine Worlds
 			IF = {
-				limit = { 
+				limit = {
 					planet = {
 						is_planet_class = pc_machine
-						NOT = { has_deposit = d_pd_necro_arc }
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
 					}
 				}
-				set_planet_entity = { picture = pc_machine_capital }
+				set_planet_entity = {
+					picture = pc_machine_capital
+				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_machine
 					has_deposit = d_pd_necro_arc
 				}
-				set_planet_entity = { picture = pc_machine_necropolis_capital entity = machinenecropolis_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_machine_necropolis_capital
+					entity = machinenecropolis_planet_01_entity
+				}
 			}
 			#Machine Factory
 			IF = {
-				limit = { 
+				limit = {
 					planet = {
 						is_planet_class = pc_machine_factory
-						NOT = { has_deposit = d_pd_necro_arc }
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
 					}
 				}
-				set_planet_entity = { picture = pc_machine_capital }
+				set_planet_entity = {
+					picture = pc_machine_capital
+				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_machine_factory
 					has_deposit = d_pd_necro_arc
 				}
-				set_planet_entity = { picture = pc_machine_necropolis_capital entity = machinenecrofactory_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_machine_necropolis_capital
+					entity = machinenecrofactory_planet_01_entity
+				}
 			}
 			#Machine Fort
 			IF = {
-				limit = { 
+				limit = {
 					planet = {
 						is_planet_class = pc_machine_fort
-						NOT = { has_deposit = d_pd_necro_arc }
+						NOT = {
+							has_deposit = d_pd_necro_arc
+						}
 					}
 				}
-				set_planet_entity = { picture = pc_machinefort_capital entity = machine_fort_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_machinefort_capital
+					entity = machine_fort_planet_01_entity
+				}
 			}
 			IF = {
-				limit = { 
+				limit = {
 					is_planet_class = pc_machine_factory
 					has_deposit = d_pd_necro_arc
 				}
-				set_planet_entity = { picture = pc_machine_necrofort_capital entity = machinenecrofort_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_machine_necrofort_capital
+					entity = machinenecrofort_planet_01_entity
+				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 1000
 	}
@@ -3155,7 +4895,6 @@ decision_machinecap_arc = {
 decision_bioforge_project = {
 	owned_planets_only = yes
 	icon = decision_bioforge_project
-
 	enactment_time = 360
 	resources = {
 		category = decisions
@@ -3164,7 +4903,6 @@ decision_bioforge_project = {
 			minerals = 10000
 		}
 	}
-	
 	potential = {
 		NOR = {
 			is_planet_class = pc_bioforge
@@ -3172,52 +4910,89 @@ decision_bioforge_project = {
 		is_planet_class = pc_hive
 		is_artificial = no
 		exists = owner
-		owner = { has_ascension_perk = ap_hive_worlds }
+		owner = {
+			has_ascension_perk = ap_hive_worlds
+		}
 	}
-	
 	allow = {
 		custom_tooltip = {
 			fail_text = decision_arcology_project_requirements
 			free_district_slots < 1
-			num_districts = { type = district_farming value < 1 }
-			num_districts = { type = district_mining value < 1 }
-			num_districts = { type = district_generator value < 1 }
-			num_districts = { type = district_farming_uncapped value < 1 }
-			num_districts = { type = district_mining_uncapped value < 1 }
-			num_districts = { type = district_generator_uncapped value < 1 }
+			num_districts = {
+				type = district_farming
+				value < 1
+			}
+			num_districts = {
+				type = district_mining
+				value < 1
+			}
+			num_districts = {
+				type = district_generator
+				value < 1
+			}
+			num_districts = {
+				type = district_farming_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_mining_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_generator_uncapped
+				value < 1
+			}
 		}
 		num_uncleared_blockers < 1
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_bioforge_effects
-		hidden_effect = {		
+		hidden_effect = {
 			change_pc = pc_bioforge
 			add_deposit = d_pd_industrial_sector
 			owner = {
-				country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
+				country_event = {
+					id = distar.201
+				}				# port for living planet distar.197, triggers in event
 			}
-			planet_event = { id = pdengine.11 }
-			planet_event = { id = pdengine.14 }
+			planet_event = {
+				id = pdengine.11
+			}
+			planet_event = {
+				id = pdengine.14
+			}
 			relic_world_conversion_effect = {
 				DISTRICT = district_bioforge_stomach
 				VARIABLE = num_industrial_districts
 			}
 			IF = {
-				limit = { 
+				limit = {
 					has_deposit = d_pd_necro_arc
 				}
-				IF = { limit = { NOT = { has_deposit = d_pd_biohivecap_arc } }
-				set_planet_entity = { picture = pc_necrohivebiofort entity = necrobiofort_planet_01_entity }
+				IF = {
+					limit = {
+						NOT = {
+							has_deposit = d_pd_biohivecap_arc
+						}
+					}
+					set_planet_entity = {
+						picture = pc_necrohivebiofort
+						entity = necrobiofort_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_biohivecap_arc }
-				set_planet_entity = { picture = pc_necrohivebiofortcapital entity = necrobiofort_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_biohivecap_arc
+					}
+					set_planet_entity = {
+						picture = pc_necrohivebiofortcapital
+						entity = necrobiofort_planet_01_entity
+					}
 				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
@@ -3227,7 +5002,6 @@ decision_bioforge_project = {
 decision_biofort_project = {
 	owned_planets_only = yes
 	icon = decision_biofort_project
-
 	enactment_time = 360
 	resources = {
 		category = decisions
@@ -3236,7 +5010,6 @@ decision_biofort_project = {
 			minerals = 10000
 		}
 	}
-	
 	potential = {
 		NOR = {
 			is_planet_class = pc_biofort
@@ -3244,47 +5017,79 @@ decision_biofort_project = {
 		is_planet_class = pc_hive
 		is_artificial = no
 		exists = owner
-		owner = { has_ascension_perk = ap_hive_worlds }
+		owner = {
+			has_ascension_perk = ap_hive_worlds
+		}
 	}
-	
 	allow = {
 		custom_tooltip = {
 			fail_text = decision_arcology_project_requirements
 			free_district_slots < 1
-			num_districts = { type = district_farming value < 1 }
-			num_districts = { type = district_mining value < 1 }
-			num_districts = { type = district_generator value < 1 }
-			num_districts = { type = district_farming_uncapped value < 1 }
-			num_districts = { type = district_mining_uncapped value < 1 }
-			num_districts = { type = district_generator_uncapped value < 1 }
+			num_districts = {
+				type = district_farming
+				value < 1
+			}
+			num_districts = {
+				type = district_mining
+				value < 1
+			}
+			num_districts = {
+				type = district_generator
+				value < 1
+			}
+			num_districts = {
+				type = district_farming_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_mining_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_generator_uncapped
+				value < 1
+			}
 		}
 		num_uncleared_blockers < 1
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_biofort_effects
-		hidden_effect = {		
+		hidden_effect = {
 			change_pc = pc_biofort
 			add_deposit = d_milarc
 			owner = {
-				country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
+				country_event = {
+					id = distar.201
+				}				# port for living planet distar.197, triggers in event
 			}
-			planet_event = { id = pdengine.11 }
-			planet_event = { id = pdengine.14 }
-			IF = { 
-				limit = { 
-					has_deposit = d_pd_biohivecap_arc 
+			planet_event = {
+				id = pdengine.11
+			}
+			planet_event = {
+				id = pdengine.14
+			}
+			IF = {
+				limit = {
+					has_deposit = d_pd_biohivecap_arc
 					has_deposit = d_pd_necro_arc
 				}
-				set_planet_entity = { picture = pc_necrohivebiofortcapital entity = necrobiofort_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_necrohivebiofortcapital
+					entity = necrobiofort_planet_01_entity
+				}
 			}
-			IF = { 
-				limit = { 
-					NOT = { has_deposit = d_pd_biohivecap_arc }
+			IF = {
+				limit = {
+					NOT = {
+						has_deposit = d_pd_biohivecap_arc
+					}
 					has_deposit = d_pd_necro_arc
 				}
-				set_planet_entity = { picture = pc_necrohivebiofort entity = necrobiofort_planet_01_entity }
+				set_planet_entity = {
+					picture = pc_necrohivebiofort
+					entity = necrobiofort_planet_01_entity
+				}
 			}
 			relic_world_conversion_effect = {
 				DISTRICT = district_bioforge_stomach
@@ -3292,7 +5097,6 @@ decision_biofort_project = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
@@ -3302,7 +5106,6 @@ decision_biofort_project = {
 decision_floraforge_project = {
 	owned_planets_only = yes
 	icon = decision_floraforge_project
-
 	enactment_time = 360
 	resources = {
 		category = decisions
@@ -3312,7 +5115,6 @@ decision_floraforge_project = {
 			food = 5000
 		}
 	}
-	
 	potential = {
 		NOR = {
 			is_planet_class = pc_megafloraforge
@@ -3320,47 +5122,72 @@ decision_floraforge_project = {
 		is_planet_class = pc_megafloratol
 		is_artificial = no
 		exists = owner
-		owner = { has_ascension_perk = ap_florahive_worlds }
+		owner = {
+			has_ascension_perk = ap_florahive_worlds
+		}
 	}
-	
 	allow = {
 		custom_tooltip = {
 			fail_text = decision_arcology_project_requirements
 			free_district_slots < 1
-			num_districts = { type = district_farming value < 1 }
-			num_districts = { type = district_mining value < 1 }
-			num_districts = { type = district_generator value < 1 }
-			num_districts = { type = district_farming_uncapped value < 1 }
-			num_districts = { type = district_mining_uncapped value < 1 }
-			num_districts = { type = district_generator_uncapped value < 1 }
+			num_districts = {
+				type = district_farming
+				value < 1
+			}
+			num_districts = {
+				type = district_mining
+				value < 1
+			}
+			num_districts = {
+				type = district_generator
+				value < 1
+			}
+			num_districts = {
+				type = district_farming_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_mining_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_generator_uncapped
+				value < 1
+			}
 		}
 		num_uncleared_blockers < 1
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_floraforge_effects
-		hidden_effect = {		
+		hidden_effect = {
 			change_pc = pc_megafloraforge
 			add_deposit = d_pd_industrial_sector
 			owner = {
-				country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
+				country_event = {
+					id = distar.201
+				}				# port for living planet distar.197, triggers in event
 			}
-			planet_event = { id = pdengine.11 }
-			planet_event = { id = pdengine.14 }
+			planet_event = {
+				id = pdengine.11
+			}
+			planet_event = {
+				id = pdengine.14
+			}
 			relic_world_conversion_effect = {
 				DISTRICT = district_bioforge_stomach
 				VARIABLE = num_industrial_districts
 			}
 			if = {
-				limit = { has_deposit = d_pd_florahivecap_arc }
+				limit = {
+					has_deposit = d_pd_florahivecap_arc
+				}
 				set_planet_entity = {
 					picture = pc_megafloraforgecapital
 				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
@@ -3370,7 +5197,6 @@ decision_floraforge_project = {
 decision_florafort_project = {
 	owned_planets_only = yes
 	icon = decision_florafort_project
-
 	enactment_time = 360
 	resources = {
 		category = decisions
@@ -3380,7 +5206,6 @@ decision_florafort_project = {
 			food = 5000
 		}
 	}
-	
 	potential = {
 		NOR = {
 			is_planet_class = pc_megaflorafort
@@ -3388,41 +5213,64 @@ decision_florafort_project = {
 		is_planet_class = pc_megafloratol
 		is_artificial = no
 		exists = owner
-		owner = { has_ascension_perk = ap_florahive_worlds }
+		owner = {
+			has_ascension_perk = ap_florahive_worlds
+		}
 	}
-	
 	allow = {
 		custom_tooltip = {
 			fail_text = decision_arcology_project_requirements
 			free_district_slots < 1
-			num_districts = { type = district_farming value < 1 }
-			num_districts = { type = district_mining value < 1 }
-			num_districts = { type = district_generator value < 1 }
-			num_districts = { type = district_farming_uncapped value < 1 }
-			num_districts = { type = district_mining_uncapped value < 1 }
-			num_districts = { type = district_generator_uncapped value < 1 }
+			num_districts = {
+				type = district_farming
+				value < 1
+			}
+			num_districts = {
+				type = district_mining
+				value < 1
+			}
+			num_districts = {
+				type = district_generator
+				value < 1
+			}
+			num_districts = {
+				type = district_farming_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_mining_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_generator_uncapped
+				value < 1
+			}
 		}
 		num_uncleared_blockers < 1
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_florafort_effects
-		hidden_effect = {		
+		hidden_effect = {
 			change_pc = pc_megaflorafort
 			add_deposit = d_milarc
 			owner = {
-				country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
+				country_event = {
+					id = distar.201
+				}				# port for living planet distar.197, triggers in event
 			}
-			planet_event = { id = pdengine.11 }
-			planet_event = { id = pdengine.14 }
+			planet_event = {
+				id = pdengine.11
+			}
+			planet_event = {
+				id = pdengine.14
+			}
 			relic_world_conversion_effect = {
 				DISTRICT = district_bioforge_stomach
 				VARIABLE = num_industrial_districts
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
@@ -3432,7 +5280,6 @@ decision_florafort_project = {
 decision_machinefactory_project = {
 	owned_planets_only = yes
 	icon = decision_machine_factory_project
-
 	enactment_time = 360
 	resources = {
 		category = decisions
@@ -3441,7 +5288,6 @@ decision_machinefactory_project = {
 			minerals = 10000
 		}
 	}
-	
 	potential = {
 		NOR = {
 			is_planet_class = pc_machine_factory
@@ -3449,53 +5295,94 @@ decision_machinefactory_project = {
 		is_planet_class = pc_machine
 		is_artificial = no
 		exists = owner
-		owner = { has_ascension_perk = ap_machine_worlds }
-		owner = { not = { has_civic = civic_machine_servitor } }
+		owner = {
+			has_ascension_perk = ap_machine_worlds
+		}
+		owner = {
+			not = {
+				has_civic = civic_machine_servitor
+			}
+		}
 	}
-	
 	allow = {
 		custom_tooltip = {
 			fail_text = decision_arcology_project_requirements
 			free_district_slots < 1
-			num_districts = { type = district_farming value < 1 }
-			num_districts = { type = district_mining value < 1 }
-			num_districts = { type = district_generator value < 1 }
-			num_districts = { type = district_farming_uncapped value < 1 }
-			num_districts = { type = district_mining_uncapped value < 1 }
-			num_districts = { type = district_generator_uncapped value < 1 }
+			num_districts = {
+				type = district_farming
+				value < 1
+			}
+			num_districts = {
+				type = district_mining
+				value < 1
+			}
+			num_districts = {
+				type = district_generator
+				value < 1
+			}
+			num_districts = {
+				type = district_farming_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_mining_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_generator_uncapped
+				value < 1
+			}
 		}
 		num_uncleared_blockers < 1
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_machine_factory_effects
-		hidden_effect = {		
+		hidden_effect = {
 			change_pc = pc_machine_factory
 			owner = {
-				country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
+				country_event = {
+					id = distar.201
+				}				# port for living planet distar.197, triggers in event
 			}
-			planet_event = { id = pdengine.10 }
-			planet_event = { id = pdengine.14 }
+			planet_event = {
+				id = pdengine.10
+			}
+			planet_event = {
+				id = pdengine.14
+			}
 			add_deposit = d_pd_industrial_sector
 			relic_world_conversion_effect = {
 				DISTRICT = district_mf_alloy
 				VARIABLE = num_industrial_districts
 			}
 			IF = {
-				limit = { 
+				limit = {
 					has_deposit = d_pd_necro_arc
 				}
-				IF = { limit = { NOT = { has_deposit = d_pd_machinecap_arc } }
-				set_planet_entity = { picture = pc_machine_necropolis entity = machinenecrofactory_planet_01_entity }
+				IF = {
+					limit = {
+						NOT = {
+							has_deposit = d_pd_machinecap_arc
+						}
+					}
+					set_planet_entity = {
+						picture = pc_machine_necropolis
+						entity = machinenecrofactory_planet_01_entity
+					}
 				}
-				IF = { limit = { has_deposit = d_pd_machinecap_arc }
-				set_planet_entity = { picture = pc_machine_necropolis_capital entity = machinenecrofactory_planet_01_entity }
+				IF = {
+					limit = {
+						has_deposit = d_pd_machinecap_arc
+					}
+					set_planet_entity = {
+						picture = pc_machine_necropolis_capital
+						entity = machinenecrofactory_planet_01_entity
+					}
 				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
@@ -3505,7 +5392,6 @@ decision_machinefactory_project = {
 decision_machine_fort_project = {
 	owned_planets_only = yes
 	icon = decision_machine_fort_project
-
 	enactment_time = 360
 	resources = {
 		category = decisions
@@ -3514,7 +5400,6 @@ decision_machine_fort_project = {
 			minerals = 10000
 		}
 	}
-	
 	potential = {
 		NOR = {
 			is_planet_class = pc_machine_fort
@@ -3522,34 +5407,62 @@ decision_machine_fort_project = {
 		is_planet_class = pc_machine
 		is_artificial = no
 		exists = owner
-		owner = { has_ascension_perk = ap_machine_worlds }
-		owner = { not = { has_civic = civic_machine_servitor } }
+		owner = {
+			has_ascension_perk = ap_machine_worlds
+		}
+		owner = {
+			not = {
+				has_civic = civic_machine_servitor
+			}
+		}
 	}
-	
 	allow = {
 		custom_tooltip = {
 			fail_text = decision_arcology_project_requirements
 			free_district_slots < 1
-			num_districts = { type = district_farming value < 1 }
-			num_districts = { type = district_mining value < 1 }
-			num_districts = { type = district_generator value < 1 }
-			num_districts = { type = district_farming_uncapped value < 1 }
-			num_districts = { type = district_mining_uncapped value < 1 }
-			num_districts = { type = district_generator_uncapped value < 1 }
+			num_districts = {
+				type = district_farming
+				value < 1
+			}
+			num_districts = {
+				type = district_mining
+				value < 1
+			}
+			num_districts = {
+				type = district_generator
+				value < 1
+			}
+			num_districts = {
+				type = district_farming_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_mining_uncapped
+				value < 1
+			}
+			num_districts = {
+				type = district_generator_uncapped
+				value < 1
+			}
 		}
 		num_uncleared_blockers < 1
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_machine_fort_effects
-		hidden_effect = {		
+		hidden_effect = {
 			change_pc = pc_machine_fort
 			owner = {
-				country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
+				country_event = {
+					id = distar.201
+				}				# port for living planet distar.197, triggers in event
 			}
-			planet_event = { id = pdengine.10 }
-			planet_event = { id = pdengine.14 }
+			planet_event = {
+				id = pdengine.10
+			}
+			planet_event = {
+				id = pdengine.14
+			}
 			relic_world_conversion_effect = {
 				DISTRICT = district_mf_alloy
 				VARIABLE = num_industrial_districts
@@ -3557,22 +5470,32 @@ decision_machine_fort_project = {
 			add_deposit = d_milarc
 		}
 		IF = {
-			limit = { 
+			limit = {
 				has_deposit = d_pd_necro_arc
 			}
-			IF = { limit = { NOT = { has_deposit = d_pd_machinecap_arc } }
-			set_planet_entity = { picture = pc_machine_necrofort entity = machinenecrofort_planet_01_entity }
+			IF = {
+				limit = {
+					NOT = {
+						has_deposit = d_pd_machinecap_arc
+					}
+				}
+				set_planet_entity = {
+					picture = pc_machine_necrofort
+					entity = machinenecrofort_planet_01_entity
+				}
 			}
-			IF = { limit = { has_deposit = d_pd_machinecap_arc }
-			set_planet_entity = { picture = pc_machine_necrofort_capital entity = machinenecrofort_planet_01_entity }
+			IF = {
+				limit = {
+					has_deposit = d_pd_machinecap_arc
+				}
+				set_planet_entity = {
+					picture = pc_machine_necrofort_capital
+					entity = machinenecrofort_planet_01_entity
+				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
 }
-
-
-
