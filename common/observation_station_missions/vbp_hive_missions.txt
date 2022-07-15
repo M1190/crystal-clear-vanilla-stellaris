@@ -1,17 +1,16 @@
 #Missions upon primitive machines
-
 # Observation
 vbp_hive_observation = {
 	icon = "GFX_fleet_task_passive_observation"
 	small_icon = 1
-	
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { is_country_type = vbp_hive }
+			owner = {
+				is_country_type = vbp_hive
+			}
 		}
 	}
-
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -37,7 +36,6 @@ vbp_hive_observation = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_commerce_underdeveloped_system_utilization"
 					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
@@ -52,7 +50,6 @@ vbp_hive_observation = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -62,7 +59,6 @@ vbp_hive_observation = {
 			unity = 10
 		}
 	}
-	
 	ai_weight = {
 		weight = 2
 	}
@@ -70,12 +66,10 @@ vbp_hive_observation = {
 
 @enlighten_soc_cost = 5
 @enlighten_nrg_cost = 10
-
 # Technological Enlightenment
 vbp_hive_enlightenment_0 = {
 	icon = "GFX_fleet_task_technological_enlightenment_action"
 	small_icon = 3
-
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -84,7 +78,6 @@ vbp_hive_enlightenment_0 = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -98,23 +91,22 @@ vbp_hive_enlightenment_0 = {
 			energy = @enlighten_nrg_cost
 		}
 	}
-
 	monthly_progress = 0.004
 	completion_event = vbp_hive.400
-
 	potential = {
 		FROM = {
 			exists = owner
-				owner = { has_country_flag = vbp_hive_id_stage is_country_type = vbp_hive }
-			
+			owner = {
+				has_country_flag = vbp_hive_id_stage
+				is_country_type = vbp_hive
+			}
 		}
-		NOR = { 
+		NOR = {
 			has_valid_civic = civic_machine_terminator
 			has_valid_civic = civic_fanatic_purifiers
 			has_valid_civic = civic_hive_devouring_swarm
 		}
 	}
-
 	valid = {
 		has_policy_flag = enlightenment_allowed
 		custom_tooltip = {
@@ -127,16 +119,14 @@ vbp_hive_enlightenment_0 = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
-	}	
+	}
 }
 
 vbp_hive_enlightenment_1 = {
 	icon = "GFX_fleet_task_technological_enlightenment_action"
 	small_icon = 3
-
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -145,7 +135,6 @@ vbp_hive_enlightenment_1 = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -159,23 +148,22 @@ vbp_hive_enlightenment_1 = {
 			energy = @enlighten_nrg_cost
 		}
 	}
-
 	monthly_progress = 0.01
 	completion_event = vbp_hive.400
-
 	potential = {
 		FROM = {
 			exists = owner
-				owner = { has_country_flag = vbp_hive_ego_stage is_country_type = vbp_hive }
-			
+			owner = {
+				has_country_flag = vbp_hive_ego_stage
+				is_country_type = vbp_hive
+			}
 		}
-		NOR = { 
+		NOR = {
 			has_valid_civic = civic_machine_terminator
 			has_valid_civic = civic_fanatic_purifiers
 			has_valid_civic = civic_hive_devouring_swarm
 		}
 	}
-
 	valid = {
 		has_policy_flag = enlightenment_allowed
 		NOR = {
@@ -184,24 +172,27 @@ vbp_hive_enlightenment_1 = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_ai_personality_behaviour = uplifter }
+			NOT = {
+				has_ai_personality_behaviour = uplifter
+			}
 		}
 		modifier = {
 			factor = 0
-			resource_stockpile_compare = { resource = energy value < 1000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value < 1000
+			}
 		}
-	}	
+	}
 }
 
 vbp_hive_enlightenment_2 = {
 	icon = "GFX_fleet_task_technological_enlightenment_action"
 	small_icon = 3
-
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -210,7 +201,6 @@ vbp_hive_enlightenment_2 = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -224,23 +214,22 @@ vbp_hive_enlightenment_2 = {
 			energy = @enlighten_nrg_cost
 		}
 	}
-
 	monthly_progress = 0.025
 	completion_event = vbp_hive.400
-
 	potential = {
 		FROM = {
 			exists = owner
-				owner = { has_country_flag = vbp_hive_superego_stage is_country_type = vbp_hive }
-			
+			owner = {
+				has_country_flag = vbp_hive_superego_stage
+				is_country_type = vbp_hive
+			}
 		}
-		NOR = { 
+		NOR = {
 			has_valid_civic = civic_machine_terminator
 			has_valid_civic = civic_fanatic_purifiers
 			has_valid_civic = civic_hive_devouring_swarm
 		}
 	}
-
 	valid = {
 		has_policy_flag = enlightenment_allowed
 		NOR = {
@@ -249,25 +238,28 @@ vbp_hive_enlightenment_2 = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_ai_personality_behaviour = uplifter }
+			NOT = {
+				has_ai_personality_behaviour = uplifter
+			}
 		}
 		modifier = {
 			factor = 0
-			resource_stockpile_compare = { resource = energy value < 1000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value < 1000
+			}
 		}
-	}	
+	}
 }
 
 #Subdue
 vbp_hive_subdue = {
 	icon = "GFX_fleet_task_indoctrination"
 	small_icon = 5
-
 	resources = {
 		category = station_observer_missions
 		upkeep = {
@@ -280,7 +272,6 @@ vbp_hive_subdue = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_commerce_underdeveloped_system_utilization"
 					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
@@ -290,19 +281,17 @@ vbp_hive_subdue = {
 			minerals = 8
 		}
 	}
-
 	monthly_progress = 0.02
 	completion_event = vbp_hive.410
-
 	potential = {
 		FROM = {
 			exists = owner
-				owner = { is_country_type = vbp_hive }
-			
+			owner = {
+				is_country_type = vbp_hive
+			}
 		}
 		has_authority = auth_hive_mind
 	}
-	
 	in_breach_of = {
 		{
 			key = resolution_galacticcooperation_indigenous_protection_protocols
@@ -314,16 +303,19 @@ vbp_hive_subdue = {
 			key = resolution_galacticcooperation_sanctity_of_life
 		}
 	}
-
 	valid = {
-		NOT = { has_valid_civic = civic_hive_devouring_swarm }
+		NOT = {
+			has_valid_civic = civic_hive_devouring_swarm
+		}
 	}
-	
 	ai_weight = {
 		weight = 0
 		modifier = {
 			factor = 0
-			resource_stockpile_compare = { resource = energy value < 1000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value < 1000
+			}
 		}
 		modifier = {
 			factor = 0
@@ -340,7 +332,6 @@ vbp_hive_subdue = {
 vbp_hive_break_apart_0 = {
 	icon = "GFX_fleet_task_covert_infiltration_action"
 	small_icon = 4
-	
 	resources = {
 		category = station_observer_missions
 		upkeep = {
@@ -353,7 +344,6 @@ vbp_hive_break_apart_0 = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_commerce_underdeveloped_system_utilization"
 					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
@@ -363,20 +353,25 @@ vbp_hive_break_apart_0 = {
 			minerals = 8
 		}
 	}
-
 	monthly_progress = 0.02
 	completion_event = vbp_hive.420
-
 	potential = {
-		NOT = { has_valid_civic = civic_inwards_perfection }
-		NOT = { has_authority = auth_hive_mind }
-		NOT = { has_ascension_perk = ap_evolutionary_mastery }
+		NOT = {
+			has_valid_civic = civic_inwards_perfection
+		}
+		NOT = {
+			has_authority = auth_hive_mind
+		}
+		NOT = {
+			has_ascension_perk = ap_evolutionary_mastery
+		}
 		FROM = {
 			exists = owner
-				owner = { is_country_type = vbp_hive }
+			owner = {
+				is_country_type = vbp_hive
+			}
 		}
 	}
-	
 	in_breach_of = {
 		{
 			key = resolution_galacticcooperation_indigenous_protection_protocols
@@ -388,7 +383,6 @@ vbp_hive_break_apart_0 = {
 			key = resolution_galacticcooperation_sanctity_of_life
 		}
 	}
-
 	valid = {
 		has_technology = tech_gene_tailoring
 		OR = {
@@ -401,16 +395,20 @@ vbp_hive_break_apart_0 = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_ai_personality_behaviour = infiltrator }
+			NOT = {
+				has_ai_personality_behaviour = infiltrator
+			}
 		}
 		modifier = {
 			factor = 0
-			resource_stockpile_compare = { resource = energy value < 1000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value < 1000
+			}
 		}
 		modifier = {
 			factor = 0
@@ -427,7 +425,6 @@ vbp_hive_break_apart_0 = {
 vbp_hive_break_apart_1 = {
 	icon = "GFX_fleet_task_covert_infiltration_action"
 	small_icon = 4
-	
 	resources = {
 		category = station_observer_missions
 		upkeep = {
@@ -440,7 +437,6 @@ vbp_hive_break_apart_1 = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_commerce_underdeveloped_system_utilization"
 					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
@@ -450,20 +446,23 @@ vbp_hive_break_apart_1 = {
 			minerals = 8
 		}
 	}
-
 	monthly_progress = 0.02
 	completion_event = vbp_hive.430
-
 	potential = {
-		NOT = { has_valid_civic = civic_inwards_perfection }
-		NOT = { has_authority = auth_hive_mind }
+		NOT = {
+			has_valid_civic = civic_inwards_perfection
+		}
+		NOT = {
+			has_authority = auth_hive_mind
+		}
 		has_ascension_perk = ap_evolutionary_mastery
 		FROM = {
 			exists = owner
-			owner = { is_country_type = vbp_hive }
+			owner = {
+				is_country_type = vbp_hive
+			}
 		}
 	}
-	
 	in_breach_of = {
 		{
 			key = resolution_galacticcooperation_indigenous_protection_protocols
@@ -475,7 +474,6 @@ vbp_hive_break_apart_1 = {
 			key = resolution_galacticcooperation_sanctity_of_life
 		}
 	}
-
 	valid = {
 		has_technology = tech_gene_tailoring
 		OR = {
@@ -488,16 +486,20 @@ vbp_hive_break_apart_1 = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_ai_personality_behaviour = infiltrator }
+			NOT = {
+				has_ai_personality_behaviour = infiltrator
+			}
 		}
 		modifier = {
 			factor = 0
-			resource_stockpile_compare = { resource = energy value < 1000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value < 1000
+			}
 		}
 		modifier = {
 			factor = 0

@@ -1,5 +1,4 @@
 # Example
-
 #example = {
 #	icon = "GFX_fleet_mission_button_passive_observation"
 #	country_modifier = "propaganda"
@@ -34,12 +33,10 @@
 #		}
 #	}
 #}
-
 # Passive Observation
 passive_observation = {
 	icon = "GFX_fleet_task_passive_observation"
 	small_icon = 1
-
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -52,9 +49,9 @@ passive_observation = {
 					is_galactic_community_member = yes
 				}
 				OR = {
-					is_active_resolution = resolution_galacticstudies_advanced_xenostudies
-					is_active_resolution = resolution_galacticstudies_ethical_guideline_refactoring
-					is_active_resolution = resolution_galacticstudies_extradimensional_experimentation
+					is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+					is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+					is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
 				}
 			}
 			society_research = 4
@@ -65,11 +62,10 @@ passive_observation = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
-					is_active_resolution = resolution_commerce_underdeveloped_system_utilization
-					is_active_resolution = resolution_commerce_holistic_asset_coordination
-					is_active_resolution = resolution_commerce_profit_maximization_engines
+					is_active_resolution = "resolution_commerce_underdeveloped_system_utilization"
+					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
+					is_active_resolution = "resolution_commerce_profit_maximization_engines"
 				}
 			}
 			consumer_goods = 2
@@ -80,24 +76,23 @@ passive_observation = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
-					is_active_resolution = resolution_galacticcooperation_indigenous_protection_protocols
-					is_active_resolution = resolution_galacticcooperation_interstellar_mediation
-					is_active_resolution = resolution_galacticcooperation_sanctity_of_life
+					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
+					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
+					is_active_resolution = "resolution_galacticcooperation_sanctity_of_life"
 				}
 			}
 			unity = 10
 		}
 	}
-
-    potential = {
-        FROM = {
-            exists = owner
-            owner = { is_country_type = primitive }
-        }
-    }
-
+	potential = {
+		FROM = {
+			exists = owner
+			owner = {
+				is_country_type = primitive
+			}
+		}
+	}
 	ai_weight = {
 		weight = 1
 	}
@@ -107,7 +102,6 @@ passive_observation = {
 specimen_collection = {
 	icon = "GFX_fleet_task_specimen_collection"
 	small_icon = 2
-
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -120,9 +114,9 @@ specimen_collection = {
 					is_galactic_community_member = yes
 				}
 				OR = {
-					is_active_resolution = resolution_galacticstudies_advanced_xenostudies
-					is_active_resolution = resolution_galacticstudies_ethical_guideline_refactoring
-					is_active_resolution = resolution_galacticstudies_extradimensional_experimentation
+					is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+					is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+					is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
 				}
 			}
 			society_research = 6
@@ -133,11 +127,10 @@ specimen_collection = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
-					is_active_resolution = resolution_commerce_underdeveloped_system_utilization
-					is_active_resolution = resolution_commerce_holistic_asset_coordination
-					is_active_resolution = resolution_commerce_profit_maximization_engines
+					is_active_resolution = "resolution_commerce_underdeveloped_system_utilization"
+					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
+					is_active_resolution = "resolution_commerce_profit_maximization_engines"
 				}
 			}
 			consumer_goods = 8
@@ -148,7 +141,6 @@ specimen_collection = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -158,14 +150,14 @@ specimen_collection = {
 			unity = 4
 		}
 	}
-
 	potential = {
-        FROM = {
-            exists = owner
-			owner = { is_country_type = primitive }
-        }
-    }
-
+		FROM = {
+			exists = owner
+			owner = {
+				is_country_type = primitive
+			}
+		}
+	}
 	valid = {
 		OR = {
 			has_policy_flag = interference_active
@@ -174,13 +166,14 @@ specimen_collection = {
 		custom_tooltip = {
 			fail_text = VBP_CANT_ABDUCT_FROM_HABITAT
 			NOT = {
-				from.owner = { has_country_flag = vbp_voidbound_civilisation }
+				from.owner = {
+					has_country_flag = vbp_voidbound_civilisation
+				}
 			}
 		}
 	}
-	
 	ai_weight = {
-		weight = 5	# Use if policy allows it
+		weight = 5		# Use if policy allows it
 	}
 }
 
@@ -188,27 +181,25 @@ specimen_collection = {
 native_indoctrination = {
 	icon = "GFX_fleet_task_indoctrination"
 	small_icon = 5
-	
 	potential = {
 		host_has_dlc = "Utopia"
-        FROM = {
-            exists = owner
-			owner = { is_country_type = primitive }
-        }
+		FROM = {
+			exists = owner
+			owner = {
+				is_country_type = primitive
+			}
+		}
 	}
-	
 	in_breach_of = {
 		{
 			key = resolution_galacticcooperation_sanctity_of_life
 		}
 	}
-
 	resources = {
 		category = station_observer_missions
 		upkeep = {
 			energy = 3
 		}
-	
 		produces = {
 			society_research = 10
 		}
@@ -227,17 +218,16 @@ native_indoctrination = {
 			society_research = 4
 		}
 	}
-	
 	#planet_modifier = native_indoctrination
-
 	valid = {
 		OR = {
 			has_policy_flag = interference_active
 			has_policy_flag = interference_full
 		}
-		NOT = { has_ethic = ethic_gestalt_consciousness }
+		NOT = {
+			has_ethic = ethic_gestalt_consciousness
+		}
 	}
-	
 	ai_weight = {
 		weight = 20
 		modifier = {
@@ -246,12 +236,12 @@ native_indoctrination = {
 				has_ai_personality = democratic_crusaders
 				from = {
 					exists = owner
-					owner = { 
+					owner = {
 						NOR = {
 							has_ethic = ethic_egalitarian
 							has_ethic = ethic_fanatic_egalitarian
 						}
-					}				
+					}
 				}
 			}
 		}
@@ -264,12 +254,10 @@ native_indoctrination = {
 
 @enlighten_soc_cost = 5
 @enlighten_nrg_cost = 10
-
 # Technological Enlightenment - Stone Age
 technological_enlightenment_0 = {
 	icon = "GFX_fleet_task_technological_enlightenment_action"
 	small_icon = 3
-
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -278,7 +266,6 @@ technological_enlightenment_0 = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -292,30 +279,33 @@ technological_enlightenment_0 = {
 			energy = @enlighten_nrg_cost
 		}
 	}
-
 	monthly_progress = 0.001
 	completion_event = observation.2000
-
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { has_country_flag = stone_age }
+			owner = {
+				has_country_flag = stone_age
+			}
 		}
-		NOR = { 
+		NOR = {
 			has_valid_civic = civic_machine_terminator
 			has_valid_civic = civic_fanatic_purifiers
 			has_valid_civic = civic_hive_devouring_swarm
 		}
 	}
-
 	valid = {
 		has_policy_flag = enlightenment_allowed
 		custom_tooltip = {
 			fail_text = CANNOT_ENLIGHTEN_FANATIC_XENOPHOBE
 			FROM = {
 				exists = owner
-				owner = { NOT = { has_ethic = ethic_fanatic_xenophobe } }
-			}		
+				owner = {
+					NOT = {
+						has_ethic = ethic_fanatic_xenophobe
+					}
+				}
+			}
 		}
 		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
@@ -323,17 +313,15 @@ technological_enlightenment_0 = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
-	}	
+	}
 }
 
 # Technological Enlightenment - Bronze Age
 technological_enlightenment_1 = {
 	icon = "GFX_fleet_task_technological_enlightenment_action"
 	small_icon = 3
-
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -342,7 +330,6 @@ technological_enlightenment_1 = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -356,25 +343,28 @@ technological_enlightenment_1 = {
 			energy = @enlighten_nrg_cost
 		}
 	}
-
 	monthly_progress = 0.002
 	completion_event = observation.2000
-
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { has_country_flag = bronze_age }
+			owner = {
+				has_country_flag = bronze_age
+			}
 		}
 	}
-
 	valid = {
 		has_policy_flag = enlightenment_allowed
 		custom_tooltip = {
 			fail_text = CANNOT_ENLIGHTEN_FANATIC_XENOPHOBE
 			FROM = {
 				exists = owner
-				owner = { NOT = { has_ethic = ethic_fanatic_xenophobe } }
-			}		
+				owner = {
+					NOT = {
+						has_ethic = ethic_fanatic_xenophobe
+					}
+				}
+			}
 		}
 		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
@@ -382,17 +372,15 @@ technological_enlightenment_1 = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
-	}	
+	}
 }
 
 # Technological Enlightenment - Iron Age
 technological_enlightenment_2 = {
 	icon = "GFX_fleet_task_technological_enlightenment_action"
 	small_icon = 3
-
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -401,7 +389,6 @@ technological_enlightenment_2 = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -415,25 +402,28 @@ technological_enlightenment_2 = {
 			energy = @enlighten_nrg_cost
 		}
 	}
-
 	monthly_progress = 0.003
 	completion_event = observation.2000
-
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { has_country_flag = iron_age }
+			owner = {
+				has_country_flag = iron_age
+			}
 		}
 	}
-
 	valid = {
 		has_policy_flag = enlightenment_allowed
 		custom_tooltip = {
 			fail_text = CANNOT_ENLIGHTEN_FANATIC_XENOPHOBE
 			FROM = {
 				exists = owner
-				owner = { NOT = { has_ethic = ethic_fanatic_xenophobe } }
-			}		
+				owner = {
+					NOT = {
+						has_ethic = ethic_fanatic_xenophobe
+					}
+				}
+			}
 		}
 		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
@@ -441,7 +431,6 @@ technological_enlightenment_2 = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
@@ -451,7 +440,6 @@ technological_enlightenment_2 = {
 technological_enlightenment_3 = {
 	icon = "GFX_fleet_task_technological_enlightenment_action"
 	small_icon = 3
-	
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -460,7 +448,6 @@ technological_enlightenment_3 = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -474,25 +461,28 @@ technological_enlightenment_3 = {
 			energy = @enlighten_nrg_cost
 		}
 	}
-
 	monthly_progress = 0.004
 	completion_event = observation.2000
-
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { has_country_flag = late_medieval_age }
+			owner = {
+				has_country_flag = late_medieval_age
+			}
 		}
 	}
-
 	valid = {
 		has_policy_flag = enlightenment_allowed
 		custom_tooltip = {
 			fail_text = CANNOT_ENLIGHTEN_FANATIC_XENOPHOBE
 			FROM = {
 				exists = owner
-				owner = { NOT = { has_ethic = ethic_fanatic_xenophobe } }
-			}		
+				owner = {
+					NOT = {
+						has_ethic = ethic_fanatic_xenophobe
+					}
+				}
+			}
 		}
 		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
@@ -500,7 +490,6 @@ technological_enlightenment_3 = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
@@ -510,7 +499,6 @@ technological_enlightenment_3 = {
 technological_enlightenment_4 = {
 	icon = "GFX_fleet_task_technological_enlightenment_action"
 	small_icon = 3
-	
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -519,7 +507,6 @@ technological_enlightenment_4 = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -533,25 +520,28 @@ technological_enlightenment_4 = {
 			energy = @enlighten_nrg_cost
 		}
 	}
-
 	monthly_progress = 0.005
 	completion_event = observation.2000
-
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { has_country_flag = renaissance_age }
+			owner = {
+				has_country_flag = renaissance_age
+			}
 		}
 	}
-
 	valid = {
 		has_policy_flag = enlightenment_allowed
 		custom_tooltip = {
 			fail_text = CANNOT_ENLIGHTEN_FANATIC_XENOPHOBE
 			FROM = {
 				exists = owner
-				owner = { NOT = { has_ethic = ethic_fanatic_xenophobe } }
-			}		
+				owner = {
+					NOT = {
+						has_ethic = ethic_fanatic_xenophobe
+					}
+				}
+			}
 		}
 		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
@@ -559,7 +549,6 @@ technological_enlightenment_4 = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
@@ -569,7 +558,6 @@ technological_enlightenment_4 = {
 technological_enlightenment_5 = {
 	icon = "GFX_fleet_task_technological_enlightenment_action"
 	small_icon = 3
-	
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -578,7 +566,6 @@ technological_enlightenment_5 = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -592,25 +579,28 @@ technological_enlightenment_5 = {
 			energy = @enlighten_nrg_cost
 		}
 	}
-
 	monthly_progress = 0.01
 	completion_event = observation.2000
-
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { has_country_flag = steam_age }
+			owner = {
+				has_country_flag = steam_age
+			}
 		}
 	}
-
 	valid = {
 		has_policy_flag = enlightenment_allowed
 		custom_tooltip = {
 			fail_text = CANNOT_ENLIGHTEN_FANATIC_XENOPHOBE
 			FROM = {
 				exists = owner
-				owner = { NOT = { has_ethic = ethic_fanatic_xenophobe } }
-			}		
+				owner = {
+					NOT = {
+						has_ethic = ethic_fanatic_xenophobe
+					}
+				}
+			}
 		}
 		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
@@ -618,16 +608,20 @@ technological_enlightenment_5 = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_ai_personality_behaviour = uplifter }
+			NOT = {
+				has_ai_personality_behaviour = uplifter
+			}
 		}
 		modifier = {
 			factor = 0
-			resource_stockpile_compare = { resource = energy value < 2000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value < 2000
+			}
 		}
 	}
 }
@@ -636,7 +630,6 @@ technological_enlightenment_5 = {
 technological_enlightenment_6 = {
 	icon = "GFX_fleet_task_technological_enlightenment_action"
 	small_icon = 3
-	
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -645,7 +638,6 @@ technological_enlightenment_6 = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -659,25 +651,28 @@ technological_enlightenment_6 = {
 			energy = @enlighten_nrg_cost
 		}
 	}
-
 	monthly_progress = 0.015
 	completion_event = observation.2000
-
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { has_country_flag = industrial_age  }
+			owner = {
+				has_country_flag = industrial_age
+			}
 		}
 	}
-
 	valid = {
 		has_policy_flag = enlightenment_allowed
 		custom_tooltip = {
 			fail_text = CANNOT_ENLIGHTEN_FANATIC_XENOPHOBE
 			FROM = {
 				exists = owner
-				owner = { NOT = { has_ethic = ethic_fanatic_xenophobe } }
-			}		
+				owner = {
+					NOT = {
+						has_ethic = ethic_fanatic_xenophobe
+					}
+				}
+			}
 		}
 		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
@@ -685,16 +680,20 @@ technological_enlightenment_6 = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_ai_personality_behaviour = uplifter }
+			NOT = {
+				has_ai_personality_behaviour = uplifter
+			}
 		}
 		modifier = {
 			factor = 0
-			resource_stockpile_compare = { resource = energy value < 1500 }
+			resource_stockpile_compare = {
+				resource = energy
+				value < 1500
+			}
 		}
 	}
 }
@@ -703,7 +702,6 @@ technological_enlightenment_6 = {
 vbp_tomb_technological_enlightenment = {
 	icon = "GFX_fleet_task_technological_enlightenment_action"
 	small_icon = 3
-	
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -712,7 +710,6 @@ vbp_tomb_technological_enlightenment = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -726,25 +723,28 @@ vbp_tomb_technological_enlightenment = {
 			energy = @enlighten_nrg_cost
 		}
 	}
-
 	monthly_progress = 0.015
 	completion_event = vbp_tomb.5
-
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { has_country_flag = vbp_tomb_primitives }
+			owner = {
+				has_country_flag = vbp_tomb_primitives
+			}
 		}
 	}
-
 	valid = {
 		has_policy_flag = enlightenment_allowed
 		custom_tooltip = {
 			fail_text = CANNOT_ENLIGHTEN_FANATIC_XENOPHOBE
 			FROM = {
 				exists = owner
-				owner = { NOT = { has_ethic = ethic_fanatic_xenophobe } }
-			}		
+				owner = {
+					NOT = {
+						has_ethic = ethic_fanatic_xenophobe
+					}
+				}
+			}
 		}
 		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
@@ -752,16 +752,20 @@ vbp_tomb_technological_enlightenment = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_ai_personality_behaviour = uplifter }
+			NOT = {
+				has_ai_personality_behaviour = uplifter
+			}
 		}
 		modifier = {
 			factor = 0
-			resource_stockpile_compare = { resource = energy value < 1500 }
+			resource_stockpile_compare = {
+				resource = energy
+				value < 1500
+			}
 		}
 	}
 }
@@ -770,7 +774,6 @@ vbp_tomb_technological_enlightenment = {
 technological_enlightenment_7 = {
 	icon = "GFX_fleet_task_technological_enlightenment_action"
 	small_icon = 3
-	
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -779,7 +782,6 @@ technological_enlightenment_7 = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -793,25 +795,28 @@ technological_enlightenment_7 = {
 			energy = @enlighten_nrg_cost
 		}
 	}
-
 	monthly_progress = 0.02
 	completion_event = observation.2000
-
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { has_country_flag = machine_age }
+			owner = {
+				has_country_flag = machine_age
+			}
 		}
 	}
-
 	valid = {
 		has_policy_flag = enlightenment_allowed
 		custom_tooltip = {
 			fail_text = CANNOT_ENLIGHTEN_FANATIC_XENOPHOBE
 			FROM = {
 				exists = owner
-				owner = { NOT = { has_ethic = ethic_fanatic_xenophobe } }
-			}		
+				owner = {
+					NOT = {
+						has_ethic = ethic_fanatic_xenophobe
+					}
+				}
+			}
 		}
 		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
@@ -819,16 +824,20 @@ technological_enlightenment_7 = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_ai_personality_behaviour = uplifter }
+			NOT = {
+				has_ai_personality_behaviour = uplifter
+			}
 		}
 		modifier = {
 			factor = 0
-			resource_stockpile_compare = { resource = energy value < 1000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value < 1000
+			}
 		}
 	}
 }
@@ -837,7 +846,6 @@ technological_enlightenment_7 = {
 technological_enlightenment_8 = {
 	icon = "GFX_fleet_task_technological_enlightenment_action"
 	small_icon = 3
-	
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -846,7 +854,6 @@ technological_enlightenment_8 = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -860,25 +867,28 @@ technological_enlightenment_8 = {
 			energy = @enlighten_nrg_cost
 		}
 	}
-
 	monthly_progress = 0.025
 	completion_event = observation.2000
-
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { has_country_flag = atomic_age }
+			owner = {
+				has_country_flag = atomic_age
+			}
 		}
 	}
-
 	valid = {
 		has_policy_flag = enlightenment_allowed
 		custom_tooltip = {
 			fail_text = CANNOT_ENLIGHTEN_FANATIC_XENOPHOBE
 			FROM = {
 				exists = owner
-				owner = { NOT = { has_ethic = ethic_fanatic_xenophobe } }
-			}		
+				owner = {
+					NOT = {
+						has_ethic = ethic_fanatic_xenophobe
+					}
+				}
+			}
 		}
 		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
@@ -886,16 +896,20 @@ technological_enlightenment_8 = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_ai_personality_behaviour = uplifter }
+			NOT = {
+				has_ai_personality_behaviour = uplifter
+			}
 		}
 		modifier = {
 			factor = 0
-			resource_stockpile_compare = { resource = energy value < 1000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value < 1000
+			}
 		}
 	}
 }
@@ -904,7 +918,6 @@ technological_enlightenment_8 = {
 technological_enlightenment_9 = {
 	icon = "GFX_fleet_task_technological_enlightenment_action"
 	small_icon = 3
-	
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -913,7 +926,6 @@ technological_enlightenment_9 = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -927,25 +939,28 @@ technological_enlightenment_9 = {
 			energy = @enlighten_nrg_cost
 		}
 	}
-
 	monthly_progress = 0.025
 	completion_event = observation.2000
-
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { has_country_flag = early_space_age }
+			owner = {
+				has_country_flag = early_space_age
+			}
 		}
 	}
-
 	valid = {
 		has_policy_flag = enlightenment_allowed
 		custom_tooltip = {
 			fail_text = CANNOT_ENLIGHTEN_FANATIC_XENOPHOBE
 			FROM = {
 				exists = owner
-				owner = { NOT = { has_ethic = ethic_fanatic_xenophobe } }
-			}		
+				owner = {
+					NOT = {
+						has_ethic = ethic_fanatic_xenophobe
+					}
+				}
+			}
 		}
 		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
@@ -953,16 +968,20 @@ technological_enlightenment_9 = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_ai_personality_behaviour = uplifter }
+			NOT = {
+				has_ai_personality_behaviour = uplifter
+			}
 		}
 		modifier = {
 			factor = 0
-			resource_stockpile_compare = { resource = energy value < 1000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value < 1000
+			}
 		}
 	}
 }
@@ -971,7 +990,6 @@ technological_enlightenment_9 = {
 covert_infiltration = {
 	icon = "GFX_fleet_task_covert_infiltration_action"
 	small_icon = 4
-	
 	resources = {
 		category = station_observer_missions
 		upkeep = {
@@ -984,7 +1002,6 @@ covert_infiltration = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_commerce_underdeveloped_system_utilization"
 					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
@@ -994,18 +1011,19 @@ covert_infiltration = {
 			consumer_goods = 4
 		}
 	}
-
 	monthly_progress = 0.02
 	completion_event = observation.3009
-
 	potential = {
-		NOT = { has_valid_civic = civic_inwards_perfection }
-        FROM = {
-            exists = owner
-			owner = { is_country_type = primitive }
-        }
+		NOT = {
+			has_valid_civic = civic_inwards_perfection
+		}
+		FROM = {
+			exists = owner
+			owner = {
+				is_country_type = primitive
+			}
+		}
 	}
-	
 	in_breach_of = {
 		{
 			key = resolution_galacticcooperation_indigenous_protection_protocols
@@ -1017,7 +1035,6 @@ covert_infiltration = {
 			key = resolution_galacticcooperation_sanctity_of_life
 		}
 	}
-
 	valid = {
 		has_technology = tech_gene_tailoring
 		OR = {
@@ -1041,16 +1058,20 @@ covert_infiltration = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-	
 	ai_weight = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_ai_personality_behaviour = infiltrator }
+			NOT = {
+				has_ai_personality_behaviour = infiltrator
+			}
 		}
 		modifier = {
 			factor = 0
-			resource_stockpile_compare = { resource = energy value < 1000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value < 1000
+			}
 		}
 		modifier = {
 			factor = 0
