@@ -4,7 +4,6 @@ bugged_commander = {
 	condition_string = RULER_JOB_TRIGGER
 	building_icon = building_stronghold
 	clothes_texture_index = 1
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -12,18 +11,17 @@ bugged_commander = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_ruler_job
-
 	country_modifier = {
 		country_naval_cap_add = 6
 	}
-
 	resources = {
 		category = planet_administrators
 		produces = {
 			trigger = {
-				owner = { has_valid_civic = civic_citizen_service }
+				owner = {
+					has_valid_civic = civic_citizen_service
+				}
 			}
 			unity = 1
 		}
@@ -34,7 +32,6 @@ bugged_commander = {
 			consumer_goods = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -42,16 +39,15 @@ bugged_commander = {
 		planet_amenities_add = 3
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
-
 	triggered_planet_modifier = {
 		potential = {
-            owner = {  has_valid_civic = civic_citizen_service  }
+			owner = {
+				has_valid_civic = civic_citizen_service
+			}
 		}
 		planet_amenities_add = 2
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	weight = {
 		weight = @ruler_job_weight
 		mult = value:job_weights_modifier|JOB|executive|RESOURCE|unity|
@@ -69,7 +65,6 @@ bugged_thinker = {
 	condition_string = RULER_JOB_TRIGGER
 	building_icon = building_capital
 	clothes_texture_index = 1
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -77,9 +72,7 @@ bugged_thinker = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_ruler_job
-
 	resources = {
 		category = planet_administrators
 		produces = {
@@ -89,11 +82,9 @@ bugged_thinker = {
 			consumer_goods = 2
 		}
 	}
-
 	planet_modifier = {
 		planet_jobs_society_research_produces_mult = 0.1
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -101,7 +92,6 @@ bugged_thinker = {
 		planet_amenities_add = 3
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	weight = {
 		weight = @ruler_job_weight
 		mult = value:job_weights_modifier|JOB|executive|RESOURCE|unity|
@@ -119,7 +109,6 @@ bugged_mogul = {
 	condition_string = RULER_JOB_TRIGGER
 	building_icon = building_galactic_stock_exchange
 	clothes_texture_index = 1
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -127,12 +116,14 @@ bugged_mogul = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_ruler_job
 	possible = {
-		owner = { NOT = { has_valid_civic = civic_bugged_distributism } }
+		owner = {
+			NOT = {
+				has_valid_civic = civic_bugged_distributism
+			}
+		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -140,7 +131,6 @@ bugged_mogul = {
 		planet_amenities_add = 3
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -148,11 +138,8 @@ bugged_mogul = {
 		trade_value_add = 6
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
 	}
-
 	#planet_jobs_energy_produces_mult
-
 	#civic_merchant_guilds
-	
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -160,19 +147,19 @@ bugged_mogul = {
 		trade_value_add = 1
 		mult = value:bugged_stock_exchange_tv
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			OR = {
-				owner = { has_valid_civic = civic_bugged_state_monopoly }
+				owner = {
+					has_valid_civic = civic_bugged_state_monopoly
+				}
 			}
 		}
 		modifier = {
-		    planet_technician_produces_mult = 0.05
+			planet_technician_produces_mult = 0.05
 			planet_miners_produces_mult = 0.05
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -184,7 +171,6 @@ bugged_mogul = {
 			planet_jobs_worker_produces_mult = 0.05
 		}
 	}
-
 	weight = {
 		weight = @ruler_job_weight
 		mult = value:job_weights_modifier|JOB|executive|RESOURCE|unity|
@@ -192,21 +178,19 @@ bugged_mogul = {
 		modifier = {
 			factor = 5
 			has_job = bugged_mogul
-		}		
+		}
 	}
 }
 
 #########
 # CULTS #
 #########
-
 #Priest Of The Dark Sun
 bugged_priest_of_the_dark_sun = {
 	category = ruler
 	condition_string = RULER_JOB_TRIGGER
 	building_icon = building_robot_assembly_plant
 	clothes_texture_index = 3
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -214,9 +198,7 @@ bugged_priest_of_the_dark_sun = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_ruler_job
-
 	resources = {
 		category = planet_priests
 		produces = {
@@ -233,7 +215,9 @@ bugged_priest_of_the_dark_sun = {
 		}
 		produces = {
 			trigger = {
-				planet.solar_system = { is_star_class = sc_black_hole }
+				planet.solar_system = {
+					is_star_class = sc_black_hole
+				}
 			}
 			physics_research = 1
 			unity = 2
@@ -242,7 +226,6 @@ bugged_priest_of_the_dark_sun = {
 			consumer_goods = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -250,22 +233,24 @@ bugged_priest_of_the_dark_sun = {
 		planet_amenities_add = 5
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			planet.solar_system = { is_star_class = sc_black_hole }
+			planet.solar_system = {
+				is_star_class = sc_black_hole
+			}
 		}
 		planet_amenities_add = 3
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	weight = {
 		weight = @ruler_job_weight
 		mult = value:job_weights_modifier|JOB|executive|RESOURCE|unity|
 		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
 		modifier = {
 			factor = 2
-			owner = { is_bugged_gravity_cult = yes }
+			owner = {
+				is_bugged_gravity_cult = yes
+			}
 		}
 	}
 }
@@ -276,7 +261,6 @@ bugged_herald_of_lifes_path = {
 	condition_string = RULER_JOB_TRIGGER
 	building_icon = building_robot_assembly_plant
 	clothes_texture_index = 3
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -284,9 +268,7 @@ bugged_herald_of_lifes_path = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_ruler_job
-
 	resources = {
 		category = planet_priests
 		produces = {
@@ -305,11 +287,9 @@ bugged_herald_of_lifes_path = {
 			consumer_goods = 2
 		}
 	}
-
 	planet_modifier = {
 		planet_pop_assembly_organic_add = 2
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -317,14 +297,15 @@ bugged_herald_of_lifes_path = {
 		planet_amenities_add = 5
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	weight = {
 		weight = @ruler_job_weight
 		mult = value:job_weights_modifier|JOB|executive|RESOURCE|unity|
 		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
 		modifier = {
 			factor = 2
-			owner = { is_bugged_life_cult = yes }
+			owner = {
+				is_bugged_life_cult = yes
+			}
 		}
 	}
 }
@@ -335,7 +316,6 @@ bugged_intricate_techno_priest = {
 	condition_string = RULER_JOB_TRIGGER
 	building_icon = building_robot_assembly_plant
 	clothes_texture_index = 3
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -343,9 +323,7 @@ bugged_intricate_techno_priest = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_ruler_job
-
 	resources = {
 		category = planet_pop_assemblers
 		produces = {
@@ -364,11 +342,9 @@ bugged_intricate_techno_priest = {
 			consumer_goods = 2
 		}
 	}
-
 	planet_modifier = {
-		planet_jobs_robotic_produces_mult = 0.10
+		planet_jobs_robotic_produces_mult = 0.1
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -376,14 +352,15 @@ bugged_intricate_techno_priest = {
 		planet_amenities_add = 5
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	weight = {
 		weight = @ruler_job_weight
 		mult = value:job_weights_modifier|JOB|executive|RESOURCE|unity|
 		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
 		modifier = {
 			factor = 2
-			owner = { is_bugged_machine_cult = yes }
+			owner = {
+				is_bugged_machine_cult = yes
+			}
 		}
 	}
 }

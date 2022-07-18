@@ -1,10 +1,7 @@
-
 ### MARAUDER SYSTEMS
-
 #####################
 ### Home System I ###
 #####################
-
 marauder_1_1 = {
 	class = "rl_standard_stars"
 	usage = misc_system_init
@@ -12,7 +9,6 @@ marauder_1_1 = {
 		type = rocky_asteroid_belt
 		radius = 230
 	}
-
 	max_instances = 1
 	usage_odds = {
 		base = 0
@@ -21,20 +17,25 @@ marauder_1_1 = {
 			host_has_dlc = "Apocalypse"
 			num_marauder_empires_to_spawn > 0
 			is_in_cluster = resource_cluster_1
-			NOT = { has_star_flag = empire_cluster }
+			NOT = {
+				has_star_flag = empire_cluster
+			}
 		}
 	}
 	spawn_chance = 100
-
-	flags = { marauder_system marauder_capital_1 }
-
+	flags = {
+		marauder_system
+		marauder_capital_1
+	}
 	planet = {
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = @standard_min max = @standard_max }
+		size = {
+			min = @standard_min
+			max = @standard_max
+		}
 		has_ring = no
-
 		init_effect = {
 			create_species = {
 				name = random
@@ -58,14 +59,16 @@ marauder_1_1 = {
 				name_list = random
 				species = last_created_species
 				type = dormant_marauders
-				civics = { civic = civic_anarcho_tribalism }
+				civics = {
+					civic = civic_anarcho_tribalism
+				}
 				origin = "origin_default"
 				flag = {
-					background= {
+					background = {
 						category = "backgrounds"
 						file = "00_solid.dds"
 					}
-					colors={
+					colors = {
 						"black"
 						"black"
 						"null"
@@ -83,7 +86,9 @@ marauder_1_1 = {
 				save_global_event_target_as = marauder_country_1
 				set_country_flag = marauder_1
 				set_name = random
-				create_ship_design = { design = "NAME_Marauder_Starbase" }
+				create_ship_design = {
+					design = "NAME_Marauder_Starbase"
+				}
 				add_ship_design = last_created_design
 				set_custom_capital_location = prev
 			}
@@ -207,7 +212,6 @@ marauder_1_1 = {
 					}
 				}
 			}
-
 			create_fleet = {
 				effect = {
 					set_owner = event_target:marauder_country_1
@@ -230,24 +234,22 @@ marauder_1_1 = {
 					garrison = yes
 				}
 			}
-
 			create_ambient_object = {
 				type = "abandoned_starbase_01_object"
 				location = this
 			}
 		}
 	}
-
 	change_orbit = 45
-	
 	planet = {
 		class = pc_molten
 		orbit_distance = 15
 		size = 20
 		orbit_angle = 20
-
-		flags = { raid_source hot_zone }
-
+		flags = {
+			raid_source
+			hot_zone
+		}
 		init_effect = {
 			create_fleet = {
 				effect = {
@@ -266,13 +268,11 @@ marauder_1_1 = {
 			}
 		}
 	}
-
 	planet = {
 		class = pc_toxic
 		orbit_distance = 25
 		size = 11
 		orbit_angle = 100
-
 		init_effect = {
 			create_fleet = {
 				effect = {
@@ -291,28 +291,23 @@ marauder_1_1 = {
 			}
 		}
 	}
-
 	planet = {
 		class = pc_gas_giant
 		orbit_distance = 40
 		orbit_angle = -60
 		size = 40
-
 		init_effect = {
 			create_ambient_object = {
 				type = "abandoned_starbase_01_object"
 				location = this
 			}
 		}
-		
 		change_orbit = @base_moon_distance
-		
 		moon = {
 			class = pc_barren
 			size = 8
 			orbit_angle = 90
 			orbit_distance = 6
-
 			init_effect = {
 				create_fleet = {
 					effect = {
@@ -336,7 +331,6 @@ marauder_1_1 = {
 			size = 10
 			orbit_angle = 95
 			orbit_distance = 6
-
 			init_effect = {
 				create_fleet = {
 					effect = {
@@ -386,7 +380,6 @@ marauder_1_1 = {
 			size = 9
 			orbit_angle = 125
 			orbit_distance = 6
-
 			init_effect = {
 				create_ambient_object = {
 					type = "abandoned_starbase_01_object"
@@ -403,7 +396,6 @@ marauder_1_1 = {
 			size = 11
 			orbit_angle = 160
 			orbit_distance = 6
-
 			init_effect = {
 				create_fleet = {
 					effect = {
@@ -423,13 +415,11 @@ marauder_1_1 = {
 			}
 		}
 	}
-
 	planet = {
 		class = pc_barren_cold
 		orbit_distance = 50
 		size = 25
 		orbit_angle = 55
-
 		init_effect = {
 			create_fleet = {
 				effect = {
@@ -455,28 +445,23 @@ marauder_1_1 = {
 			}
 		}
 	}
-
 	planet = {
 		class = pc_barren
 		orbit_distance = 55
 		size = 15
 		orbit_angle = 120
-
 		init_effect = {
 			create_ambient_object = {
 				type = "abandoned_starbase_01_object"
 				location = this
 			}
 		}
-
 		change_orbit = @base_moon_distance
-		
 		moon = {
 			class = pc_frozen
 			size = 8
 			orbit_angle = 90
 			orbit_distance = 6
-
 			init_effect = {
 				create_fleet = {
 					effect = {
@@ -522,19 +507,16 @@ marauder_1_1 = {
 			}
 		}
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 25
 		orbit_angle = -210
 		size = 5
 		has_ring = no
-
 		init_effect = {
 			set_deposit = d_minerals_8
 		}
 	}
-	
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
@@ -542,19 +524,16 @@ marauder_1_1 = {
 		size = 5
 		has_ring = no
 	}
-	
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
 		orbit_angle = 285
 		size = 5
 		has_ring = no
-
 		init_effect = {
 			set_deposit = d_minerals_8
 		}
 	}
-	
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
@@ -562,19 +541,16 @@ marauder_1_1 = {
 		size = 5
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
 		orbit_angle = -80
 		size = 5
 		has_ring = no
-
 		init_effect = {
 			set_deposit = d_minerals_8
 		}
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
@@ -582,7 +558,6 @@ marauder_1_1 = {
 		size = 5
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
@@ -590,7 +565,6 @@ marauder_1_1 = {
 		size = 5
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
@@ -598,13 +572,11 @@ marauder_1_1 = {
 		size = 5
 		has_ring = no
 	}
-
 	planet = {
 		class = pc_barren_cold
 		orbit_distance = 60
 		size = 10
 		orbit_angle = 125
-
 		init_effect = {
 			create_fleet = {
 				effect = {
@@ -618,18 +590,16 @@ marauder_1_1 = {
 						target = prev
 						distance = 10
 						angle = 0
-					}				
+					}
 				}
 			}
 		}
 	}
-
 	planet = {
 		class = pc_frozen
 		orbit_distance = 70
 		size = 8
 		orbit_angle = 125
-
 		init_effect = {
 			create_fleet = {
 				effect = {
@@ -648,13 +618,11 @@ marauder_1_1 = {
 			}
 		}
 	}
-
 	planet = {
 		class = pc_frozen
 		orbit_distance = 80
 		size = 12
 		orbit_angle = 125
-
 		init_effect = {
 			create_ambient_object = {
 				type = "abandoned_starbase_01_object"
@@ -665,15 +633,12 @@ marauder_1_1 = {
 				location = this
 			}
 		}
-
 		change_orbit = @base_moon_distance
-		
 		moon = {
 			class = pc_frozen
 			size = 8
 			orbit_angle = 90
 			orbit_distance = 6
-
 			init_effect = {
 				create_fleet = {
 					effect = {
@@ -700,18 +665,24 @@ marauder_1_1 = {
 			}
 		}
 	}
-
 	neighbor_system = {
-		distance = { min = 0 max = 50 }
+		distance = {
+			min = 0
+			max = 50
+		}
 		initializer = "marauder_1_2"
 	}
 	neighbor_system = {
-		distance = { min = 0 max = 50 }
+		distance = {
+			min = 0
+			max = 50
+		}
 		initializer = "marauder_1_3"
 	}
-
 	init_effect = {
-		event_target:marauder_country_1 = { save_event_target_as = marauder_starbase_owner }
+		event_target:marauder_country_1 = {
+			save_event_target_as = marauder_starbase_owner
+		}
 		create_marauder_starbase = yes
 	}
 }
@@ -719,16 +690,19 @@ marauder_1_1 = {
 # System II
 marauder_1_2 = {
 	class = "rl_standard_stars"
-	flags = { marauder_system }
-
+	flags = {
+		marauder_system
+	}
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = @standard_min max = @standard_max }
+		size = {
+			min = @standard_min
+			max = @standard_max
+		}
 		has_ring = no
-
 		init_effect = {
 			create_fleet = {
 				effect = {
@@ -742,7 +716,7 @@ marauder_1_2 = {
 						target = prev
 						distance = 65
 						angle = 0
-					}				
+					}
 				}
 			}
 			create_fleet = {
@@ -757,7 +731,7 @@ marauder_1_2 = {
 						target = prev
 						distance = 115
 						angle = 145
-					}				
+					}
 				}
 			}
 			create_fleet = {
@@ -825,108 +799,173 @@ marauder_1_2 = {
 			}
 		}
 	}
-	
 	change_orbit = 45
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 15 max = 20 }
-		orbit_angle = { min = 90 max = 270 }
-		flags = { hot_zone }
-		
+		orbit_distance = {
+			min = 15
+			max = 20
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		flags = {
+			hot_zone
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 20 max = 25 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 20
+			max = 25
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 25 max = 30 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 25
+			max = 30
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 39 max = 35 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 39
+			max = 35
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 35 max = 40 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 35
+			max = 40
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 40 max = 50 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 40
+			max = 50
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-
 	init_effect = {
-		event_target:marauder_country_1 = { save_event_target_as = marauder_starbase_owner }
+		event_target:marauder_country_1 = {
+			save_event_target_as = marauder_starbase_owner
+		}
 		create_marauder_starbase = yes
 	}
 }
@@ -938,16 +977,19 @@ marauder_1_3 = {
 		type = rocky_asteroid_belt
 		radius = 105
 	}
-	flags = { marauder_system }
-	
+	flags = {
+		marauder_system
+	}
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = @standard_min max = @standard_max }
+		size = {
+			min = @standard_min
+			max = @standard_max
+		}
 		has_ring = no
-
 		init_effect = {
 			create_fleet = {
 				effect = {
@@ -1104,81 +1146,125 @@ marauder_1_3 = {
 			}
 		}
 	}
-	
 	change_orbit = 30
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
 		orbit_distance = 20
-		orbit_angle = { min = 90 max = 270 }
-		flags = { hot_zone }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		flags = {
+			hot_zone
+		}
 	}
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
 		orbit_distance = 25
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-	
 	planet = {
-		count = { min = 1 max = 4 }
+		count = {
+			min = 1
+			max = 4
+		}
 		class = pc_asteroid
 		orbit_distance = 30
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 30 max = 35 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 30
+			max = 35
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 35 max = 40 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 35
+			max = 40
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 40 max = 50 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 40
+			max = 50
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-
 	init_effect = {
-		event_target:marauder_country_1 = { save_event_target_as = marauder_starbase_owner }
+		event_target:marauder_country_1 = {
+			save_event_target_as = marauder_starbase_owner
+		}
 		create_marauder_starbase = yes
 	}
 }
@@ -1186,7 +1272,6 @@ marauder_1_3 = {
 ######################
 ### Home System II ###
 ######################
-
 marauder_2_1 = {
 	class = "sc_black_hole"
 	usage = misc_system_init
@@ -1194,7 +1279,6 @@ marauder_2_1 = {
 		type = rocky_asteroid_belt
 		radius = 270
 	}
-
 	max_instances = 1
 	usage_odds = {
 		base = 0
@@ -1203,20 +1287,25 @@ marauder_2_1 = {
 			host_has_dlc = "Apocalypse"
 			num_marauder_empires_to_spawn > 1
 			is_in_cluster = resource_cluster_2
-			NOT = { has_star_flag = empire_cluster }
+			NOT = {
+				has_star_flag = empire_cluster
+			}
 		}
 	}
 	spawn_chance = 100
-
-	flags = { marauder_system marauder_capital_2 }
-
+	flags = {
+		marauder_system
+		marauder_capital_2
+	}
 	planet = {
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = @standard_min max = @standard_max }
+		size = {
+			min = @standard_min
+			max = @standard_max
+		}
 		has_ring = no
-
 		init_effect = {
 			create_species = {
 				name = random
@@ -1240,14 +1329,16 @@ marauder_2_1 = {
 				name_list = random
 				species = last_created_species
 				type = dormant_marauders
-				civics = { civic = civic_anarcho_tribalism }
+				civics = {
+					civic = civic_anarcho_tribalism
+				}
 				origin = "origin_default"
 				flag = {
-					background= {
+					background = {
 						category = "backgrounds"
 						file = "00_solid.dds"
 					}
-					colors={
+					colors = {
 						"black"
 						"black"
 						"null"
@@ -1265,7 +1356,9 @@ marauder_2_1 = {
 				save_global_event_target_as = marauder_country_2
 				set_country_flag = marauder_2
 				set_name = random
-				create_ship_design = { design = "NAME_Marauder_Starbase" }
+				create_ship_design = {
+					design = "NAME_Marauder_Starbase"
+				}
 				add_ship_design = last_created_design
 				set_custom_capital_location = prev
 			}
@@ -1389,7 +1482,6 @@ marauder_2_1 = {
 					}
 				}
 			}
-
 			create_fleet = {
 				effect = {
 					set_owner = event_target:marauder_country_2
@@ -1480,7 +1572,6 @@ marauder_2_1 = {
 					}
 				}
 			}
-
 			create_ambient_object = {
 				type = "abandoned_starbase_01_object"
 			}
@@ -1543,17 +1634,15 @@ marauder_2_1 = {
 			}
 		}
 	}
-
 	change_orbit = 250
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_angle = -80
 		size = 5
 		has_ring = no
-
-		flags = { raid_source }
-
+		flags = {
+			raid_source
+		}
 		init_effect = {
 			create_fleet = {
 				effect = {
@@ -1579,19 +1668,16 @@ marauder_2_1 = {
 			}
 		}
 	}
-	
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
 		orbit_angle = -80
 		size = 5
 		has_ring = no
-
 		init_effect = {
 			set_deposit = d_minerals_8
 		}
 	}
-	
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
@@ -1599,7 +1685,6 @@ marauder_2_1 = {
 		size = 5
 		has_ring = no
 	}
-	
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
@@ -1607,26 +1692,22 @@ marauder_2_1 = {
 		size = 5
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
 		orbit_angle = -80
 		size = 5
 		has_ring = no
-
 		init_effect = {
 			set_deposit = d_minerals_8
 		}
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
 		orbit_angle = -80
 		size = 5
 		has_ring = no
-
 		init_effect = {
 			create_fleet = {
 				effect = {
@@ -1671,7 +1752,6 @@ marauder_2_1 = {
 			}
 		}
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
@@ -1679,7 +1759,6 @@ marauder_2_1 = {
 		size = 5
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
@@ -1687,19 +1766,16 @@ marauder_2_1 = {
 		size = 5
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
 		orbit_angle = -80
 		size = 5
 		has_ring = no
-
 		init_effect = {
 			set_deposit = d_minerals_8
 		}
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
@@ -1707,14 +1783,12 @@ marauder_2_1 = {
 		size = 5
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
 		orbit_angle = -80
 		size = 5
 		has_ring = no
-
 		init_effect = {
 			create_fleet = {
 				effect = {
@@ -1759,13 +1833,11 @@ marauder_2_1 = {
 			}
 		}
 	}
-
 	planet = {
 		class = pc_barren_cold
 		orbit_distance = 50
 		size = 10
 		orbit_angle = 125
-
 		init_effect = {
 			create_fleet = {
 				effect = {
@@ -1791,13 +1863,11 @@ marauder_2_1 = {
 			}
 		}
 	}
-
 	planet = {
 		class = pc_frozen
 		orbit_distance = 60
 		size = 6
 		orbit_angle = 225
-
 		init_effect = {
 			create_fleet = {
 				effect = {
@@ -1823,18 +1893,24 @@ marauder_2_1 = {
 			}
 		}
 	}
-
 	neighbor_system = {
-		distance = { min = 0 max = 50 }
+		distance = {
+			min = 0
+			max = 50
+		}
 		initializer = "marauder_2_2"
 	}
 	neighbor_system = {
-		distance = { min = 0 max = 50 }
+		distance = {
+			min = 0
+			max = 50
+		}
 		initializer = "marauder_2_3"
 	}
-
 	init_effect = {
-		event_target:marauder_country_2 = { save_event_target_as = marauder_starbase_owner }
+		event_target:marauder_country_2 = {
+			save_event_target_as = marauder_starbase_owner
+		}
 		create_marauder_starbase = yes
 	}
 }
@@ -1842,16 +1918,19 @@ marauder_2_1 = {
 # System II
 marauder_2_2 = {
 	class = "rl_standard_stars"
-	flags = { marauder_system }
-
+	flags = {
+		marauder_system
+	}
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = @standard_min max = @standard_max }
+		size = {
+			min = @standard_min
+			max = @standard_max
+		}
 		has_ring = no
-
 		init_effect = {
 			create_fleet = {
 				effect = {
@@ -1948,108 +2027,173 @@ marauder_2_2 = {
 			}
 		}
 	}
-	
 	change_orbit = 45
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 15 max = 20 }
-		orbit_angle = { min = 90 max = 270 }
-		flags = { hot_zone }
-		
+		orbit_distance = {
+			min = 15
+			max = 20
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		flags = {
+			hot_zone
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 20 max = 25 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 20
+			max = 25
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 25 max = 30 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 25
+			max = 30
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 39 max = 35 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 39
+			max = 35
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 35 max = 40 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 35
+			max = 40
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 40 max = 50 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 40
+			max = 50
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-
 	init_effect = {
-		event_target:marauder_country_2 = { save_event_target_as = marauder_starbase_owner }
+		event_target:marauder_country_2 = {
+			save_event_target_as = marauder_starbase_owner
+		}
 		create_marauder_starbase = yes
 	}
 }
@@ -2061,17 +2205,19 @@ marauder_2_3 = {
 		type = rocky_asteroid_belt
 		radius = 105
 	}
-	flags = { marauder_system }
-	
+	flags = {
+		marauder_system
+	}
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = @standard_min max = @standard_max }
+		size = {
+			min = @standard_min
+			max = @standard_max
+		}
 		has_ring = no
-
-
 		init_effect = {
 			create_fleet = {
 				effect = {
@@ -2228,81 +2374,125 @@ marauder_2_3 = {
 			}
 		}
 	}
-	
 	change_orbit = 30
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
 		orbit_distance = 20
-		orbit_angle = { min = 90 max = 270 }
-		flags = { hot_zone }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		flags = {
+			hot_zone
+		}
 	}
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
 		orbit_distance = 25
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-	
 	planet = {
-		count = { min = 1 max = 4 }
+		count = {
+			min = 1
+			max = 4
+		}
 		class = pc_asteroid
 		orbit_distance = 30
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 30 max = 35 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 30
+			max = 35
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 35 max = 40 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 35
+			max = 40
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 40 max = 50 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 40
+			max = 50
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-
 	init_effect = {
-		event_target:marauder_country_2 = { save_event_target_as = marauder_starbase_owner }
+		event_target:marauder_country_2 = {
+			save_event_target_as = marauder_starbase_owner
+		}
 		create_marauder_starbase = yes
 	}
 }
@@ -2310,11 +2500,9 @@ marauder_2_3 = {
 #######################
 ### Home System III ###
 #######################
-
 marauder_3_1 = {
 	class = "sc_pulsar"
 	usage = misc_system_init
-
 	max_instances = 1
 	usage_odds = {
 		base = 0
@@ -2323,20 +2511,25 @@ marauder_3_1 = {
 			host_has_dlc = "Apocalypse"
 			num_marauder_empires_to_spawn > 2
 			is_in_cluster = resource_cluster_3
-			NOT = { has_star_flag = empire_cluster }
+			NOT = {
+				has_star_flag = empire_cluster
+			}
 		}
 	}
 	spawn_chance = 100
-
-	flags = { marauder_system marauder_capital_3 }
-
+	flags = {
+		marauder_system
+		marauder_capital_3
+	}
 	planet = {
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = @standard_min max = @standard_max }
+		size = {
+			min = @standard_min
+			max = @standard_max
+		}
 		has_ring = no
-
 		init_effect = {
 			create_species = {
 				name = random
@@ -2360,14 +2553,16 @@ marauder_3_1 = {
 				name_list = random
 				species = last_created_species
 				type = dormant_marauders
-				civics = { civic = civic_anarcho_tribalism }
+				civics = {
+					civic = civic_anarcho_tribalism
+				}
 				origin = "origin_default"
 				flag = {
-					background= {
+					background = {
 						category = "backgrounds"
 						file = "00_solid.dds"
 					}
-					colors={
+					colors = {
 						"black"
 						"black"
 						"null"
@@ -2385,11 +2580,12 @@ marauder_3_1 = {
 				save_global_event_target_as = marauder_country_3
 				set_country_flag = marauder_3
 				set_name = random
-				create_ship_design = { design = "NAME_Marauder_Starbase" }
+				create_ship_design = {
+					design = "NAME_Marauder_Starbase"
+				}
 				add_ship_design = last_created_design
 				set_custom_capital_location = prev
 			}
-
 			create_fleet = {
 				effect = {
 					set_owner = event_target:marauder_country_3
@@ -2431,7 +2627,6 @@ marauder_3_1 = {
 					garrison = yes
 				}
 			}
-
 			create_fleet = {
 				effect = {
 					set_owner = event_target:marauder_country_3
@@ -2475,35 +2670,36 @@ marauder_3_1 = {
 			}
 		}
 	}
-
 	change_orbit = 150
-	
 	planet = {
 		class = pc_gas_giant
 		size = 40
 		orbit_angle = 120
 		has_ring = no
-
-		flags = { raid_source }
-
+		flags = {
+			raid_source
+		}
 		init_effect = {
 			set_deposit = d_energy_6
 		}
-
 		change_orbit = @base_moon_distance
-		
 		moon = {
 			class = pc_molten
 			size = 10
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 6
 		}
 		moon = {
 			class = pc_barren
 			size = 8
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 8
-
 			init_effect = {
 				create_fleet = {
 					effect = {
@@ -2532,15 +2728,20 @@ marauder_3_1 = {
 		moon = {
 			class = pc_barren
 			size = 6
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 		moon = {
 			class = pc_barren_cold
 			size = 9
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 7
-
 			init_effect = {
 				create_fleet = {
 					effect = {
@@ -2562,15 +2763,20 @@ marauder_3_1 = {
 		moon = {
 			class = pc_barren_cold
 			size = 11
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 6
 		}
 		moon = {
 			class = pc_barren_cold
 			size = 7
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 10
-
 			init_effect = {
 				create_fleet = {
 					effect = {
@@ -2590,38 +2796,42 @@ marauder_3_1 = {
 			}
 		}
 	}
-
 	planet = {
 		class = pc_gas_giant
 		size = 50
 		orbit_angle = 220
 		orbit_distance = 55
 		has_ring = no
-
 		init_effect = {
 			set_deposit = d_energy_6
 		}
-
 		change_orbit = @base_moon_distance
-		
 		moon = {
 			class = pc_barren
 			size = 10
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 6
 		}
 		moon = {
 			class = pc_barren
 			size = 8
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 8
 		}
 		moon = {
 			class = pc_barren
 			size = 6
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
-
 			init_effect = {
 				create_fleet = {
 					effect = {
@@ -2643,9 +2853,11 @@ marauder_3_1 = {
 		moon = {
 			class = pc_barren_cold
 			size = 11
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 6
-
 			init_effect = {
 				create_fleet = {
 					effect = {
@@ -2667,9 +2879,11 @@ marauder_3_1 = {
 		moon = {
 			class = pc_barren_cold
 			size = 7
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 10
-
 			init_effect = {
 				create_fleet = {
 					effect = {
@@ -2696,44 +2910,51 @@ marauder_3_1 = {
 			}
 		}
 	}
-
 	planet = {
 		class = pc_gas_giant
 		size = 60
 		orbit_angle = 265
 		orbit_distance = 55
 		has_ring = no
-
 		init_effect = {
 			set_deposit = d_energy_6
 		}
-
 		change_orbit = @base_moon_distance
-		
 		moon = {
 			class = pc_barren_cold
 			size = 10
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 6
 		}
 		moon = {
 			class = pc_barren_cold
 			size = 8
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 8
 		}
 		moon = {
 			class = pc_frozen
 			size = 6
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 		moon = {
 			class = pc_frozen
 			size = 11
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 6
-
 			init_effect = {
 				create_fleet = {
 					effect = {
@@ -2755,15 +2976,20 @@ marauder_3_1 = {
 		moon = {
 			class = pc_frozen
 			size = 7
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 10
 		}
 		moon = {
 			class = pc_frozen
 			size = 7
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 10
-
 			init_effect = {
 				create_fleet = {
 					effect = {
@@ -2792,9 +3018,11 @@ marauder_3_1 = {
 		moon = {
 			class = pc_frozen
 			size = 7
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 10
-
 			init_effect = {
 				create_fleet = {
 					effect = {
@@ -2814,18 +3042,24 @@ marauder_3_1 = {
 			}
 		}
 	}
-
 	neighbor_system = {
-		distance = { min = 0 max = 50 }
+		distance = {
+			min = 0
+			max = 50
+		}
 		initializer = "marauder_3_2"
 	}
 	neighbor_system = {
-		distance = { min = 0 max = 50 }
+		distance = {
+			min = 0
+			max = 50
+		}
 		initializer = "marauder_3_3"
 	}
-
 	init_effect = {
-		event_target:marauder_country_3 = { save_event_target_as = marauder_starbase_owner }
+		event_target:marauder_country_3 = {
+			save_event_target_as = marauder_starbase_owner
+		}
 		create_marauder_starbase = yes
 	}
 }
@@ -2833,16 +3067,19 @@ marauder_3_1 = {
 # System II
 marauder_3_2 = {
 	class = "rl_standard_stars"
-	flags = { marauder_system }
-
+	flags = {
+		marauder_system
+	}
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = @standard_min max = @standard_max }
+		size = {
+			min = @standard_min
+			max = @standard_max
+		}
 		has_ring = no
-
 		init_effect = {
 			create_fleet = {
 				effect = {
@@ -2939,108 +3176,173 @@ marauder_3_2 = {
 			}
 		}
 	}
-	
 	change_orbit = 45
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 15 max = 20 }
-		orbit_angle = { min = 90 max = 270 }
-		flags = { hot_zone }
-		
+		orbit_distance = {
+			min = 15
+			max = 20
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		flags = {
+			hot_zone
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 20 max = 25 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 20
+			max = 25
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 25 max = 30 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 25
+			max = 30
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 39 max = 35 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 39
+			max = 35
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 35 max = 40 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 35
+			max = 40
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 40 max = 50 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 40
+			max = 50
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-
 	init_effect = {
-		event_target:marauder_country_3 = { save_event_target_as = marauder_starbase_owner }
+		event_target:marauder_country_3 = {
+			save_event_target_as = marauder_starbase_owner
+		}
 		create_marauder_starbase = yes
 	}
 }
@@ -3052,17 +3354,19 @@ marauder_3_3 = {
 		type = rocky_asteroid_belt
 		radius = 95
 	}
-	flags = { marauder_system }
-	
+	flags = {
+		marauder_system
+	}
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = @standard_min max = @standard_max }
+		size = {
+			min = @standard_min
+			max = @standard_max
+		}
 		has_ring = no
-
-
 		init_effect = {
 			create_fleet = {
 				effect = {
@@ -3219,81 +3523,125 @@ marauder_3_3 = {
 			}
 		}
 	}
-	
 	change_orbit = 30
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
 		orbit_distance = 20
-		orbit_angle = { min = 90 max = 270 }
-		flags = { hot_zone }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		flags = {
+			hot_zone
+		}
 	}
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
 		orbit_distance = 25
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-	
 	planet = {
-		count = { min = 1 max = 4 }
+		count = {
+			min = 1
+			max = 4
+		}
 		class = pc_asteroid
 		orbit_distance = 30
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-	
 	planet = {
 		count = 1
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 30 max = 35 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 30
+			max = 35
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 35 max = 40 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 35
+			max = 40
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		class = "rl_unhabitable_planets"
-		orbit_distance = { min = 40 max = 50 }
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_distance = {
+			min = 40
+			max = 50
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = "rl_unhabitable_planets"
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-
 	init_effect = {
-		event_target:marauder_country_3 = { save_event_target_as = marauder_starbase_owner }
+		event_target:marauder_country_3 = {
+			save_event_target_as = marauder_starbase_owner
+		}
 		create_marauder_starbase = yes
 	}
 }

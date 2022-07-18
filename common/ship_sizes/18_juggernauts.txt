@@ -13,7 +13,6 @@ juggernaut = {
 	ship_modifier = {
 		ship_starting_experience_add = 100
 	}
-
 	base_buildtime = @juggernaut_build_time
 	resources = {
 		category = ships
@@ -22,19 +21,21 @@ juggernaut = {
 			alloys = @juggernaut_upkeep_alloys
 		}
 	}
-
 	combat_size_multiplier = 5
 	size_multiplier = 32
 	fleet_slot_size = 32
 	section_slots = {
-		"core" = { locator = "part1" }
+		"core" = {
+			locator = "part1"
+		}
 	}
-
 	potential_construction = {
 		OR = {
 			AND = {
 				is_scope_type = starbase
-				NOT = { has_starbase_size = juggernaut }
+				NOT = {
+					has_starbase_size = juggernaut
+				}
 			}
 			AND = {
 				is_scope_type = megastructure
@@ -45,7 +46,6 @@ juggernaut = {
 			}
 		}
 	}
-
 	possible_construction = {
 		custom_tooltip = {
 			fail_text = starbase_citadel_trigger
@@ -80,34 +80,32 @@ juggernaut = {
 			}
 		}
 	}
-
 	num_target_locators = 0
 	can_have_federation_design = yes
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
-	enable_3dview_in_ship_browser = yes #if yes, ship design will have a 3d view in the ship browser
+	enable_3dview_in_ship_browser = yes	#if yes, ship design will have a 3d view in the ship browser
 	can_disable = no
-	icon_frame = 7 #probably unused, but mobile starbases are special
+	icon_frame = 7	#probably unused, but mobile starbases are special
 	icon = ship_size_military_64
 	ship_class_icon_frame = 35
-	selectable = { host_has_dlc = "Federations" }
-
+	selectable = {
+		host_has_dlc = "Federations"
+	}
 	default_behavior = carrier
-
-	prerequisites = { "tech_juggernaut" }
+	prerequisites = {
+		"tech_juggernaut"
+	}
 	class = shipclass_starbase
 	construction_type = starbase_shipyard
-
 	required_component_set = "power_core"
 	required_component_set = "sensor_components"
 	required_component_set = "combat_computers"
 	required_component_set = "ftl_components"
 	required_component_set = "thruster_components"
 	required_component_set = "ship_aura_components"
-
 	min_upgrade_cost = {
 		alloys = 50
 	}
-
 	ai_ship_data = {
 		min = 1
 		max = 1

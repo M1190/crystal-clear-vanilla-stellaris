@@ -1,32 +1,27 @@
 ##############################
 # Pluralist Labourite Faction
 ##############################
-
 labourites = {
 	election_header = "GFX_faction_header_yellow"
 	guiding_ethic = ethic_pluralist
-	
 	unique = yes
 	support_multiplier = 1
-	
 	resources = {
 		category = pop_factions
 		produces = {
 			unity = 0.5
 		}
-#		produces = {
-#			trigger = {
-#				owner = {
-#					has_policy_flag = bugged_federal_state
-#				}
-#			}
-#			energy = 0.5
-#			#FIX ME
-#		}	
+		#		produces = {
+		#			trigger = {
+		#				owner = {
+		#					has_policy_flag = bugged_federal_state
+		#				}
+		#			}
+		#			energy = 0.5
+		#			#FIX ME
+		#		}	
 	}
-
 	is_potential = {
-
 		is_faction_allowed = yes
 		if = {
 			limit = {
@@ -44,9 +39,8 @@ labourites = {
 					has_ethic = ethic_pluralist
 				}
 			}
-		}		
+		}
 	}
-	
 	parameters = {
 		empire = {
 			type = country
@@ -55,75 +49,71 @@ labourites = {
 			}
 		}
 	}
-
 	can_join_pre_triggers = {
 		is_enslaved = no
 		is_being_purged = no
-	}	
-	
+	}
 	can_join_faction = {
 		is_shackled_robot = no
 		has_culture_shock = no
-		NOT = { has_trait = trait_nerve_stapled }
+		NOT = {
+			has_trait = trait_nerve_stapled
+		}
 		OR = {
 			has_ethic = ethic_pluralist
 			has_ethic = ethic_fanatic_pluralist
 		}
 	}
-	
 	attraction = {
 		base = 150
-		
 		modifier = {
 			factor = 1.25
 			exists = from
 			from = {
 				exists = leader
-				leader = { leader_class = ruler }
+				leader = {
+					leader_class = ruler
+				}
 			}
 		}
-		
 		modifier = {
 			factor = 0.75
 			exists = from
 			from = {
-				NOT = { exists = leader }
+				NOT = {
+					exists = leader
+				}
 			}
 		}
-		
 		modifier = {
 			factor = 0.25
-			NOT = { is_same_species = owner_species }
-		}		
-		
+			NOT = {
+				is_same_species = owner_species
+			}
+		}
 	}
-	
 	leader = {
 		base = 100
 		modifier = {
-			factor = 0.0
+			factor = 0
 			is_event_leader = yes
-		}		
+		}
 	}
-	
 	demand = {
 		title = "PROGRESSIVE_NO_SLAVERY"
 		unfulfilled_title = "PROGRESSIVE_SLAVERY"
 		desc = "PROGRESSIVE_NO_SLAVERY_DESC"
-
 		fulfilled_effect = 5
-
 		potential = {
 			exists = owner
 			owner = {
-					has_policy_flag = slavery_allowed
+				has_policy_flag = slavery_allowed
 				NOR = {
 					has_ethic = ethic_xenophobe
 					has_ethic = ethic_fanatic_xenophobe
-				}					
+				}
 			}
 		}
-
 		trigger = {
 			owner = {
 				NOR = {
@@ -131,22 +121,15 @@ labourites = {
 				}
 			}
 		}
-	}	
-
-	
-	
-	
+	}
 	demand = {
 		title = "MERITOCRATIC_ELITE"
 		unfulfilled_title = "NO_MERITOCRATIC_ELITE"
 		desc = "MERITOCRATIC_ELITE_DESC"
-
 		fulfilled_effect = 5
-
 		potential = {
 			exists = owner
 		}
-
 		trigger = {
 			owner = {
 				OR = {
@@ -155,24 +138,18 @@ labourites = {
 				}
 			}
 		}
-	}		
-	
-	
-	
+	}
 	demand = {
 		title = "SHARED_BURDEN"
 		unfulfilled_title = "SHARED_BURDEN"
 		desc = "SHARED_BURDEN_DESC"
-
 		fulfilled_effect = 10
-
 		potential = {
 			exists = owner
 			owner = {
-					has_valid_civic = civic_shared_burden
-			}				
+				has_valid_civic = civic_shared_burden
+			}
 		}
-
 		trigger = {
 			owner = {
 				OR = {
@@ -180,27 +157,22 @@ labourites = {
 				}
 			}
 		}
-	}				
-	
-
+	}
 	demand = {
 		title = "DIRECT_DEMOCRACY"
 		unfulfilled_title = "NO_DIRECT_DEMOCRACY"
 		desc = "DIRECT_DEMOCRACY_DESC"
-
 		fulfilled_effect = 15
-
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_bugged_republican_ideals
-			    	NOR = {
+				NOR = {
 					has_authority = auth_bugged_direct_democratic
 					has_authority = auth_democratic
-				}				
+				}
 			}
 		}
-
 		trigger = {
 			owner = {
 				OR = {
@@ -210,22 +182,20 @@ labourites = {
 			}
 		}
 	}
-
-
-	
-	
 	demand = {
 		title = "LABOURITE_NO_OLIGARCHY"
 		unfulfilled_title = "LABOURITE_OLIGARCHY"
 		desc = "LABOURITE_NO_OLIGARCHY_DESC"
-
 		fulfilled_effect = 7
-
 		potential = {
 			exists = owner
-			owner = { OR = { has_authority = auth_oligarchic has_authority = auth_imperial } }
+			owner = {
+				OR = {
+					has_authority = auth_oligarchic
+					has_authority = auth_imperial
+				}
+			}
 		}
-
 		trigger = {
 			owner = {
 				NOR = {
@@ -235,42 +205,35 @@ labourites = {
 			}
 		}
 	}
-	
-	
-	
 	demand = {
 		title = "PROGRESSIVE_NO_STRATIFIED"
 		unfulfilled_title = "PROGRESSIVE_STRATIFIED"
 		desc = "PROGRESSIVE_NO_STRATIFIED_DESC"
-
 		unfulfilled_effect = -25
 		fulfilled_effect = 5
-
 		potential = {
 			exists = owner
 		}
-
 		trigger = {
 			owner = {
 				NOT = {
 					any_owned_pop = {
-					          or = {
-								has_living_standard = { type = living_standard_stratified }
-								}
+						or = {
+							has_living_standard = {
+								type = living_standard_stratified
+							}
+						}
 					}
 				}
 			}
 		}
 	}
-
 	demand = {
 		title = "PROGRESSIVE_NO_ELITISM"
 		unfulfilled_title = "PROGRESSIVE_ELITISM"
 		desc = "PROGRESSIVE_NO_ELITISM_DESC"
-
 		fulfilled_effect = 10
 		unfulfilled_effect = -5
-
 		potential = {
 			exists = owner
 			owner = {
@@ -280,7 +243,6 @@ labourites = {
 				}
 			}
 		}
-
 		trigger = {
 			owner = {
 				NOR = {
@@ -290,15 +252,11 @@ labourites = {
 			}
 		}
 	}
-	
-	
-
-
-	
 	on_create = {
-		pop_faction_event = { id = factions.1 }
+		pop_faction_event = {
+			id = factions.1
+		}
 	}
-
 	on_destroy = {
 		if = {
 			limit = {
@@ -313,48 +271,64 @@ labourites = {
 			remove_modifier = suppressed_pluralist
 		}
 	}
-	
 	actions = {
 		embrace_faction = {
 			title = "EMBRACE_FACTION"
 			description = "EMBRACE_FACTION_DESC"
-			
 			cost = {
 				influence = 500
 			}
-			
 			potential = {
 				exists = owner
 				owner = {
 					OR = {
 						is_subject = no
-						NOT = { any_agreement = { agreement_preset = preset_dominion } }
+						NOT = {
+							any_agreement = {
+								agreement_preset = preset_dominion
+							}
+						}
 					}
 				}
 			}
-			
 			valid = {
 				custom_tooltip = {
 					fail_text = EMBRACE_FACTION_COOLDOWN
 					parameter:empire = {
-						NOT = { has_modifier = embraced_faction_timer }
+						NOT = {
+							has_modifier = embraced_faction_timer
+						}
 					}
 				}
-				support > 0.20
+				support > 0.2
 				parameter:empire = {
-					NOT = { has_ethic = "ethic_fanatic_pluralist" }
+					NOT = {
+						has_ethic = "ethic_fanatic_pluralist"
+					}
 				}
 			}
-
 			effect = {
-				add_modifier = { modifier = embraced_faction days = 3600 }
+				add_modifier = {
+					modifier = embraced_faction
+					days = 3600
+				}
 				parameter:empire = {
 					shift_ethic = ethic_pluralist
 					hidden_effect = {
-						add_modifier = { modifier = embraced_faction_timer days = 3600 }
+						add_modifier = {
+							modifier = embraced_faction_timer
+							days = 3600
+						}
 						every_pop_faction = {
-							limit = { NOT = { is_same_value = root } }
-							add_modifier = { modifier = embraced_another_faction days = 3600 }
+							limit = {
+								NOT = {
+									is_same_value = root
+								}
+							}
+							add_modifier = {
+								modifier = embraced_another_faction
+								days = 3600
+							}
 						}
 					}
 				}
@@ -364,27 +338,28 @@ labourites = {
 						every_relation = {
 							limit = {
 								is_ai = no
-								is_country_type = default			
+								is_country_type = default
 								has_communications = prev
 							}
-							country_event = { id = factions.2000 }
+							country_event = {
+								id = factions.2000
+							}
 						}
-					}				
-				}				
+					}
+				}
 			}
-			
 			ai_weight = {
 				base = 1
 				modifier = {
 					factor = 0
-					support < 0.50
+					support < 0.5
 					owner = {
 						has_ethic = ethic_pluralist
 					}
 				}
 				modifier = {
 					factor = 0
-					NOT = { 
+					NOT = {
 						owner = {
 							exists = ruler
 							ruler = {
@@ -398,31 +373,31 @@ labourites = {
 					owner = {
 						count_pop_faction = {
 							count < 4
-						}					
+						}
 					}
-				}				
+				}
 			}
 		}
 		promote_faction = {
 			title = "PROMOTE_FACTION"
 			description = "PROMOTE_FACTION_DESC"
-			
 			potential = {
 				exists = owner
-				parameter:empire = { 
-					NOR = { 
+				parameter:empire = {
+					NOR = {
 						has_modifier = suppressed_pluralist
-						has_modifier = promoted_pluralist 
-					}				
+						has_modifier = promoted_pluralist
+					}
 				}
 			}
-
 			effect = {
 				parameter:empire = {
-					add_modifier = { modifier = promoted_pluralist days = -1 }
+					add_modifier = {
+						modifier = promoted_pluralist
+						days = -1
+					}
 				}
 			}
-			
 			ai_weight = {
 				base = 0
 			}
@@ -430,45 +405,45 @@ labourites = {
 		cancel_promote_faction = {
 			title = "CANCEL_PROMOTE_FACTION"
 			description = "CANCEL_PROMOTE_FACTION_DESC"
-			
 			potential = {
 				exists = owner
-				parameter:empire = { 
+				parameter:empire = {
 					has_modifier = promoted_pluralist
 				}
 			}
-
 			effect = {
 				parameter:empire = {
 					remove_modifier = promoted_pluralist
 				}
 			}
-			
 			ai_weight = {
 				base = 0
 			}
-		}		
+		}
 		suppress_faction = {
 			title = "SUPPRESS_FACTION"
 			description = "SUPPRESS_FACTION_DESC"
-			
 			potential = {
 				exists = owner
-				parameter:empire = { 
-					NOR = { 
+				parameter:empire = {
+					NOR = {
 						has_modifier = suppressed_pluralist
-						has_modifier = promoted_pluralist 
+						has_modifier = promoted_pluralist
 					}
 				}
 			}
-
 			effect = {
-				add_modifier = { modifier = suppressed_faction days = -1 }
+				add_modifier = {
+					modifier = suppressed_faction
+					days = -1
+				}
 				parameter:empire = {
-					add_modifier = { modifier = suppressed_pluralist days = -1 }
+					add_modifier = {
+						modifier = suppressed_pluralist
+						days = -1
+					}
 				}
 			}
-			
 			ai_weight = {
 				base = 0
 			}
@@ -476,24 +451,21 @@ labourites = {
 		cancel_suppress_faction = {
 			title = "CANCEL_SUPPRESS_FACTION"
 			description = "CANCEL_SUPPRESS_FACTION_DESC"
-			
 			potential = {
 				exists = owner
-				parameter:empire = { 
+				parameter:empire = {
 					has_modifier = suppressed_pluralist
 				}
 			}
-
 			effect = {
 				remove_modifier = suppressed_faction
 				parameter:empire = {
 					remove_modifier = suppressed_pluralist
 				}
 			}
-			
 			ai_weight = {
 				base = 0
 			}
-		}	
+		}
 	}
 }

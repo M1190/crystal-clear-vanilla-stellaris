@@ -2,17 +2,17 @@
 @phase_0_entity_y = 0
 @entity_x = 0
 @entity_y = 0
-
 # Broken Down Refinery
 # drone homebase damaged entity
 gpm_refinery_ruined = {
 	entity = "gpm_refinery_damaged_entity"
 	portrait = "GFX_gpm_ruined_refinery_background"
-
 	place_entity_on_planet_plane = no
 	show_galactic_map_icon = yes
-	entity_offset = { x = @entity_x y = @entity_y }
-
+	entity_offset = {
+		x = @entity_x
+		y = @entity_y
+	}
 	potential = {
 		always = no
 	}
@@ -26,14 +26,16 @@ gpm_refinery_restored = {
 	portrait = "GFX_gpm_repaired_refinery_background"
 	place_entity_on_planet_plane = no
 	show_galactic_map_icon = yes
-	entity_offset = { x = @entity_x y = @entity_y }
+	entity_offset = {
+		x = @entity_x
+		y = @entity_y
+	}
 	build_time = 1200
 	resources = {
 		category = megastructures
 		cost = {
 			alloys = 1000
 		}
-
 		upkeep = {
 			minerals = 10
 		}
@@ -76,27 +78,27 @@ gpm_refinery_restored = {
 			energy = 10
 		}
 	}
-
 	upgrade_from = {
 		gpm_refinery_ruined
 	}
-
 	possible = {
 		# from = {
-			# has_technology = tech_mega_engineering
+		# has_technology = tech_mega_engineering
 		# }
 	}
-
 	on_build_start = {
 		# fromfrom = {
-			# set_graphical_culture = root.from
+		# set_graphical_culture = root.from
 		# }
 	}
-
 	on_build_complete = {
-		fromfrom = { set_name = gpm_refinery_restored }
+		fromfrom = {
+			set_name = gpm_refinery_restored
+		}
 		every_system_ambient_object = {
-			limit = { has_ambient_object_flag = gpm_ambient_ruined_refinery_debris }
+			limit = {
+				has_ambient_object_flag = gpm_ambient_ruined_refinery_debris
+			}
 			destroy_ambient_object = this
 		}
 		# from = {
@@ -108,7 +110,7 @@ gpm_refinery_restored = {
 				type = GPM_MESSAGE_MINIMEGA_REFINERY_COMPLETE
 				localization = GPM_MESSAGE_MINIMEGA_REFINERY_COMPLETE_DESC
 				days = 30
-				target = fromfrom.solar_system # the Go To
+				target = fromfrom.solar_system				# the Go To
 				variable = {
 					type = name
 					localization = SYSTEM
@@ -117,23 +119,22 @@ gpm_refinery_restored = {
 			}
 		}
 	}
-
 	country_modifier = {
 		ship_speed_mult = 0.1
 	}
 }
-
 
 # Abandoned Mining Facility
 # pirate homebase damaged entity
 gpm_mining_facility_ruined = {
 	entity = "gpm_mining_facility_damaged_entity"
 	portrait = "GFX_gpm_ruined_mining_station_background"
-
 	place_entity_on_planet_plane = yes
 	show_galactic_map_icon = yes
-	entity_offset = { x = @entity_x y = @entity_y }
-
+	entity_offset = {
+		x = @entity_x
+		y = @entity_y
+	}
 	potential = {
 		always = no
 	}
@@ -147,7 +148,10 @@ gpm_mining_facility_restored = {
 	portrait = "GFX_gpm_repaired_mining_station_background"
 	place_entity_on_planet_plane = yes
 	show_galactic_map_icon = yes
-	entity_offset = { x = @entity_x y = @entity_y }
+	entity_offset = {
+		x = @entity_x
+		y = @entity_y
+	}
 	build_time = 900
 	resources = {
 		category = megastructures
@@ -250,27 +254,27 @@ gpm_mining_facility_restored = {
 			minerals = 10
 		}
 	}
-
 	upgrade_from = {
 		gpm_mining_facility_ruined
 	}
-
 	possible = {
 		# from = {
-			# has_technology = tech_mega_engineering
+		# has_technology = tech_mega_engineering
 		# }
 	}
-
 	on_build_start = {
 		# fromfrom = {
-			# set_graphical_culture = root.from
+		# set_graphical_culture = root.from
 		# }
 	}
-
 	on_build_complete = {
-		fromfrom = { set_name = gpm_mining_facility_restored }
+		fromfrom = {
+			set_name = gpm_mining_facility_restored
+		}
 		every_system_ambient_object = {
-			limit = { has_ambient_object_flag = gpm_ambient_ruined_mining_facility_debris }
+			limit = {
+				has_ambient_object_flag = gpm_ambient_ruined_mining_facility_debris
+			}
 			destroy_ambient_object = this
 		}
 		# from = {
@@ -281,7 +285,7 @@ gpm_mining_facility_restored = {
 				type = GPM_MESSAGE_MINIMEGA_MINING_FACILITY_COMPLETE
 				localization = GPM_MESSAGE_MINIMEGA_MINING_FACILITY_COMPLETE_DESC
 				days = 30
-				target = prev # the Go To
+				target = prev				# the Go To
 				variable = {
 					type = name
 					localization = SYSTEM
@@ -290,12 +294,10 @@ gpm_mining_facility_restored = {
 			}
 		}
 	}
-
 	country_modifier = {
-		station_gatherers_produces_mult = 0.10
+		station_gatherers_produces_mult = 0.1
 	}
 }
-
 
 # Deprecated Observation Station
 # sensor station damaged entity
@@ -303,10 +305,11 @@ gpm_observation_station_ruined = {
 	entity = "gpm_observation_station_damaged_entity"
 	portrait = "GFX_gpm_ruined_station_background"
 	show_galactic_map_icon = yes
-
 	place_entity_on_planet_plane = no
-	entity_offset = { x = @entity_x y = @entity_y }
-
+	entity_offset = {
+		x = @entity_x
+		y = @entity_y
+	}
 	potential = {
 		always = no
 	}
@@ -320,7 +323,10 @@ gpm_observation_station_restored = {
 	portrait = "GFX_gpm_repaired_station_background"
 	show_galactic_map_icon = yes
 	place_entity_on_planet_plane = no
-	entity_offset = { x = @entity_x y = @entity_y }
+	entity_offset = {
+		x = @entity_x
+		y = @entity_y
+	}
 	build_time = 750
 	resources = {
 		category = megastructures
@@ -352,18 +358,18 @@ gpm_observation_station_restored = {
 			minor_artifacts = 0.1
 		}
 		# produces = {
-			# trigger = {
-				# solar_system = {
-					# any_system_planet = {
-						# has_planet_flag = has_gpm_ruined_observation_station
-						# OR = {
-							# has_modifier = gpm_heavy_elements
-							# has_modifier = gpm_rare_metals
-						# }
-					# }
-				# }
-			# }
-			# alloys = 10
+		# trigger = {
+		# solar_system = {
+		# any_system_planet = {
+		# has_planet_flag = has_gpm_ruined_observation_station
+		# OR = {
+		# has_modifier = gpm_heavy_elements
+		# has_modifier = gpm_rare_metals
+		# }
+		# }
+		# }
+		# }
+		# alloys = 10
 		# }
 		produces = {
 			trigger = {
@@ -427,59 +433,59 @@ gpm_observation_station_restored = {
 			engineering_research = 10
 		}
 		# produces = {
-			# trigger = {
-				# solar_system = {
-					# any_system_planet = {
-						# has_planet_flag = has_gpm_ruined_observation_station
-						# OR = {
-							# has_modifier = gpm_ultra_rich_2
-							# has_modifier = gpm_mineral_rich_2
-							# has_modifier = ultra_rich
-							# has_modifier = mineral_rich
-							# has_modifier = gpm_extensive_cavern_system
-							# has_modifier = gpm_iron_planet
-						# }
-					# }
-				# }
-			# }
-			# minerals = 20
+		# trigger = {
+		# solar_system = {
+		# any_system_planet = {
+		# has_planet_flag = has_gpm_ruined_observation_station
+		# OR = {
+		# has_modifier = gpm_ultra_rich_2
+		# has_modifier = gpm_mineral_rich_2
+		# has_modifier = ultra_rich
+		# has_modifier = mineral_rich
+		# has_modifier = gpm_extensive_cavern_system
+		# has_modifier = gpm_iron_planet
+		# }
+		# }
+		# }
+		# }
+		# minerals = 20
 		# }
 		# produces = {
-			# trigger = {
-				# solar_system = {
-					# any_system_planet = {
-						# has_planet_flag = has_gpm_ruined_observation_station
-						# OR = {
-							# has_modifier = gpm_delicious_ingredients
-							# has_modifier = gpm_exotic_spices
-						# }
-					# }
-				# }
-			# }
-			# energy = 20
+		# trigger = {
+		# solar_system = {
+		# any_system_planet = {
+		# has_planet_flag = has_gpm_ruined_observation_station
+		# OR = {
+		# has_modifier = gpm_delicious_ingredients
+		# has_modifier = gpm_exotic_spices
+		# }
+		# }
+		# }
+		# }
+		# energy = 20
 		# }
 	}
-
 	upgrade_from = {
 		gpm_observation_station_ruined
 	}
-
 	possible = {
 		# from = {
-			# has_technology = tech_mega_engineering
+		# has_technology = tech_mega_engineering
 		# }
 	}
-
 	on_build_start = {
 		# fromfrom = {
-			# set_graphical_culture = root.from
+		# set_graphical_culture = root.from
 		# }
 	}
-
 	on_build_complete = {
-		fromfrom = { set_name = gpm_observation_station_restored }
+		fromfrom = {
+			set_name = gpm_observation_station_restored
+		}
 		every_system_ambient_object = {
-			limit = { has_ambient_object_flag = gpm_ambient_ruined_observation_station_debris }
+			limit = {
+				has_ambient_object_flag = gpm_ambient_ruined_observation_station_debris
+			}
 			destroy_ambient_object = this
 		}
 		# from = {
@@ -491,7 +497,7 @@ gpm_observation_station_restored = {
 				type = GPM_MESSAGE_MINIMEGA_STATION_COMPLETE
 				localization = GPM_MESSAGE_MINIMEGA_STATION_COMPLETE_DESC
 				days = 30
-				target = fromfrom.solar_system # the Go To
+				target = fromfrom.solar_system				# the Go To
 				variable = {
 					type = name
 					localization = SYSTEM
@@ -500,12 +506,10 @@ gpm_observation_station_restored = {
 			}
 		}
 	}
-
 	country_modifier = {
-		megastructure_build_speed_mult = 0.10
+		megastructure_build_speed_mult = 0.1
 	}
 }
-
 
 # Hidden Silo
 gpm_silo_ruined = {
@@ -514,7 +518,6 @@ gpm_silo_ruined = {
 	place_entity_on_planet_plane = no
 	show_galactic_map_icon = yes
 	build_outside_gravity_well = yes
-
 	potential = {
 		always = no
 	}
@@ -528,10 +531,8 @@ gpm_silo_restored = {
 	place_entity_on_planet_plane = no
 	# build_outside_gravity_well = yes
 	show_galactic_map_icon = yes
-
 	potential = {
 	}
-
 	possible = {
 	}
 	upgrade_from = {
@@ -543,7 +544,6 @@ gpm_silo_restored = {
 		cost = {
 			alloys = 1000
 		}
-
 		upkeep = {
 			energy = 10
 		}
@@ -551,17 +551,19 @@ gpm_silo_restored = {
 			unity = 10
 		}
 	}
-	
 	on_build_start = {
 		# fromfrom = {
-			# set_graphical_culture = root.from
+		# set_graphical_culture = root.from
 		# }
 	}
-
 	on_build_complete = {
-		fromfrom = { set_name = gpm_silo_restored }
+		fromfrom = {
+			set_name = gpm_silo_restored
+		}
 		every_system_ambient_object = {
-			limit = { has_ambient_object_flag = gpm_ambient_ruined_silo_debris }
+			limit = {
+				has_ambient_object_flag = gpm_ambient_ruined_silo_debris
+			}
 			destroy_ambient_object = this
 		}
 		# from = {
@@ -573,7 +575,7 @@ gpm_silo_restored = {
 				type = GPM_MESSAGE_MINIMEGA_SILO_COMPLETE
 				localization = GPM_MESSAGE_MINIMEGA_SILO_COMPLETE_DESC
 				days = 30
-				target = fromfrom.solar_system # the Go To
+				target = fromfrom.solar_system				# the Go To
 				variable = {
 					type = name
 					localization = SYSTEM
@@ -582,7 +584,6 @@ gpm_silo_restored = {
 			}
 		}
 	}
-
 	country_modifier = {
 		country_resource_max_add = 30000
 	}

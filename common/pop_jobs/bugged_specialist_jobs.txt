@@ -4,7 +4,6 @@ bugged_deep_core_miner = {
 	condition_string = SPECIALIST_JOB_TRIGGER
 	building_icon = building_crystal_mines
 	clothes_texture_index = 3
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -12,12 +11,10 @@ bugged_deep_core_miner = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_specialist_job
 	possible = {
 		complex_specialist_job_check_trigger = yes
 	}
-
 	resources = {
 		category = planet_miners
 		produces = {
@@ -36,7 +33,6 @@ bugged_deep_core_miner = {
 			minerals = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -45,33 +41,34 @@ bugged_deep_core_miner = {
 			}
 		}
 		trade_value_add = 1
-        mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_bugged_interplanetary_mining_corpo
 			}
-			planet = { has_active_building = building_bugged_planetary_stock_exchange }
+			planet = {
+				has_active_building = building_bugged_planetary_stock_exchange
+			}
 		}
 		trade_value_add = 1
-        mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_bugged_interplanetary_mining_corpo
 			}
-			planet = { has_active_building = building_galactic_stock_exchange }
+			planet = {
+				has_active_building = building_galactic_stock_exchange
+			}
 		}
 		trade_value_add = 2
-        mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
 	}
-
 	weight = {
 		weight = @specialist_job_weight
 		mult = value:job_weights_modifier|JOB|miner|RESOURCE|minerals|
@@ -82,7 +79,9 @@ bugged_deep_core_miner = {
 				is_shackled_robot = yes
 			}
 			can_take_servant_job = no
-			owner = { has_technology = tech_droid_workers }
+			owner = {
+				has_technology = tech_droid_workers
+			}
 		}
 		modifier = {
 			factor = 10
@@ -91,12 +90,16 @@ bugged_deep_core_miner = {
 				is_shackled_robot = yes
 			}
 			can_take_servant_job = no
-			owner = { NOT = { has_technology = tech_droid_workers } }
+			owner = {
+				NOT = {
+					has_technology = tech_droid_workers
+				}
+			}
 		}
 		modifier = {
 			factor = 0.25
 			can_take_servant_job = yes
-		}	
+		}
 	}
 }
 
@@ -106,7 +109,6 @@ bugged_templar = {
 	condition_string = SPECIALIST_JOB_TRIGGER
 	building_icon = building_temple
 	clothes_texture_index = 3
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -118,7 +120,6 @@ bugged_templar = {
 	possible = {
 		complex_specialist_job_check_trigger = yes
 	}
-
 	resources = {
 		category = planet_priests
 		produces = {
@@ -128,22 +129,18 @@ bugged_templar = {
 			consumer_goods = 2
 		}
 	}
-
 	country_modifier = {
 		country_naval_cap_add = 2
 	}
-
 	pop_modifier = {
 		pop_defense_armies_add = 2
 	}
-
 	planet_modifier = {
 		planet_stability_add = 1
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-            owner = {
+			owner = {
 				is_bugged_governmental_spiritualist = yes
 			}
 		}
@@ -151,7 +148,6 @@ bugged_templar = {
 			planet_stability_add = 1
 		}
 	}
-
 	weight = {
 		weight = @specialist_job_weight
 		modifier = {
@@ -163,7 +159,9 @@ bugged_templar = {
 		modifier = {
 			factor = 10
 			exists = planet
-			planet = { has_modifier = martial_law }
+			planet = {
+				has_modifier = martial_law
+			}
 		}
 		modifier = {
 			factor = 2
@@ -191,14 +189,12 @@ bugged_templar = {
 ##########
 # TRADER #
 ##########
-
 #Trader
 bugged_trader = {
 	category = specialist
 	condition_string = SPECIALIST_JOB_TRIGGER
 	building_icon = building_commercial_megaplex
 	clothes_texture_index = 3
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -206,9 +202,7 @@ bugged_trader = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_specialist_job
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -216,7 +210,6 @@ bugged_trader = {
 		planet_amenities_add = 2.5
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -224,7 +217,6 @@ bugged_trader = {
 		trade_value_add = 8
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -232,20 +224,20 @@ bugged_trader = {
 		trade_value_add = 1
 		mult = value:bugged_stock_exchange_tv
 	}
-
 	resources = {
 		category = planet_merchants
 		produces = {
 			trigger = {
-				owner = { is_bugged_peaceful_traders = yes }
+				owner = {
+					is_bugged_peaceful_traders = yes
+				}
 			}
 			unity = 1
-		}	
+		}
 		upkeep = {
 			consumer_goods = 1
 		}
 	}
-
 	weight = {
 		weight = @specialist_job_weight
 		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
@@ -279,7 +271,9 @@ bugged_trader = {
 		modifier = {
 			factor = 0.5
 			exists = owner
-			owner = { is_fallen_empire = yes }
+			owner = {
+				is_fallen_empire = yes
+			}
 		}
 		# crisis purge
 		modifier = {
@@ -292,11 +286,18 @@ bugged_trader = {
 					is_country_type = ai_empire
 				}
 			}
-			OR = { # contingency won't purge itself
-				NOT = { exists = event_target:custodian_bot }
+			OR = {
+				# contingency won't purge itself
+				NOT = {
+					exists = event_target:custodian_bot
+				}
 				AND = {
 					exists = event_target:custodian_bot
-					NOT = { species = { is_same_value = event_target:custodian_bot } }
+					NOT = {
+						species = {
+							is_same_value = event_target:custodian_bot
+						}
+					}
 				}
 			}
 		}
@@ -309,7 +310,6 @@ bugged_mercenary = {
 	condition_string = SPECIALIST_JOB_TRIGGER
 	building_icon = building_stronghold
 	clothes_texture_index = 4
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -317,27 +317,22 @@ bugged_mercenary = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_specialist_job
 	possible = {
 		soldier_job_check_trigger = yes
 	}
-
 	resources = {
 		category = planet_soldiers
 		upkeep = {
 			consumer_goods = 1
 		}
 	}
-
 	country_modifier = {
 		country_naval_cap_add = 5
 	}
-
 	pop_modifier = {
 		pop_defense_armies_add = 3
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -345,7 +340,6 @@ bugged_mercenary = {
 		trade_value_add = 5
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -353,20 +347,20 @@ bugged_mercenary = {
 		trade_value_add = 1
 		mult = value:bugged_stock_exchange_tv
 	}
-
 	resources = {
 		category = planet_soldiers
 		upkeep = {
 			consumer_goods = 1
 		}
 	}
-
 	weight = {
 		weight = @soldier_job_weight
 		modifier = {
 			factor = 10
 			exists = planet
-			planet = { has_modifier = martial_law }
+			planet = {
+				has_modifier = martial_law
+			}
 		}
 		modifier = {
 			factor = 2
@@ -387,12 +381,18 @@ bugged_mercenary = {
 		modifier = {
 			factor = 0.1
 			is_enslaved = yes
-			NOT = { has_slavery_type = { type = slavery_military } }
+			NOT = {
+				has_slavery_type = {
+					type = slavery_military
+				}
+			}
 		}
 		modifier = {
 			factor = 10
 			is_enslaved = yes
-			has_slavery_type = { type = slavery_military }
+			has_slavery_type = {
+				type = slavery_military
+			}
 		}
 	}
 }
@@ -400,14 +400,12 @@ bugged_mercenary = {
 ##############
 # ECOCENTRIC #
 ##############
-
 #Geoengineer
 bugged_geoengineer = {
 	category = specialist
 	condition_string = SPECIALIST_JOB_TRIGGER
 	building_icon = building_research_lab_1
 	clothes_texture_index = 3
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -415,12 +413,10 @@ bugged_geoengineer = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_specialist_job
 	possible = {
 		complex_specialist_job_check_trigger = yes
 	}
-
 	resources = {
 		category = planet_researchers
 		produces = {
@@ -431,18 +427,21 @@ bugged_geoengineer = {
 			consumer_goods = 1
 		}
 	}
-
 	weight = {
 		weight = @specialist_job_weight
 		mult = value:job_weights_research_modifier|JOB|researcher|
 		modifier = {
 			factor = 0.2
 			has_citizenship_rights = no
-			NOT = { has_trait = trait_mechanical }
+			NOT = {
+				has_trait = trait_mechanical
+			}
 		}
 		modifier = {
 			factor = 2
-			has_living_standard = { type = living_standard_academic_privilege }
+			has_living_standard = {
+				type = living_standard_academic_privilege
+			}
 		}
 		modifier = {
 			factor = 0.1
@@ -455,7 +454,9 @@ bugged_geoengineer = {
 		modifier = {
 			factor = 0.8
 			is_enslaved = yes
-			has_slavery_type = { type = slavery_indentured }
+			has_slavery_type = {
+				type = slavery_indentured
+			}
 		}
 	}
 }
@@ -466,7 +467,6 @@ bugged_xenobiologist = {
 	condition_string = SPECIALIST_JOB_TRIGGER
 	building_icon = building_research_lab_1
 	clothes_texture_index = 3
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -474,34 +474,34 @@ bugged_xenobiologist = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_specialist_job
 	possible = {
 		complex_specialist_job_check_trigger = yes
 	}
-
 	resources = {
 		category = planet_researchers
 		produces = {
 			society_research = 7
 		}
-
 		upkeep = {
 			consumer_goods = 1
 		}
 	}
-
 	weight = {
 		weight = @specialist_job_weight
 		mult = value:job_weights_research_modifier|JOB|researcher|
 		modifier = {
 			factor = 0.2
 			has_citizenship_rights = no
-			NOT = { has_trait = trait_mechanical }
+			NOT = {
+				has_trait = trait_mechanical
+			}
 		}
 		modifier = {
 			factor = 2
-			has_living_standard = { type = living_standard_academic_privilege }
+			has_living_standard = {
+				type = living_standard_academic_privilege
+			}
 		}
 		modifier = {
 			factor = 0.1
@@ -514,7 +514,9 @@ bugged_xenobiologist = {
 		modifier = {
 			factor = 0.8
 			is_enslaved = yes
-			has_slavery_type = { type = slavery_indentured }
+			has_slavery_type = {
+				type = slavery_indentured
+			}
 		}
 	}
 }
@@ -522,24 +524,22 @@ bugged_xenobiologist = {
 #########
 # CULTS #
 #########
-
 bugged_luminosity_priest = {
 	category = specialist
 	condition_string = SPECIALIST_JOB_TRIGGER
 	building_icon = building_sacrificial_temple_1
 	clothes_texture_index = 3
 	icon = bugged_luminosity_priest
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_sapient = yes
 		is_being_purged = no
 		is_being_assimilated = no
 	}
-
 	possible_precalc = can_fill_specialist_job
-	possible = { complex_specialist_job_check_trigger = yes }
-
+	possible = {
+		complex_specialist_job_check_trigger = yes
+	}
 	resources = {
 		category = planet_priests
 		produces = {
@@ -560,7 +560,6 @@ bugged_luminosity_priest = {
 			consumer_goods = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -568,7 +567,6 @@ bugged_luminosity_priest = {
 		planet_amenities_add = 2
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	weight = {
 		weight = @specialist_job_weight
 		mult = value:job_weights_modifier|JOB|priest|RESOURCE|unity|
@@ -576,12 +574,16 @@ bugged_luminosity_priest = {
 		modifier = {
 			factor = 0.2
 			has_citizenship_rights = no
-			NOT = { has_trait = trait_mechanical }
+			NOT = {
+				has_trait = trait_mechanical
+			}
 		}
 		modifier = {
 			factor = 2
 			exists = owner
-			owner = { has_civic = civic_exalted_priesthood }
+			owner = {
+				has_civic = civic_exalted_priesthood
+			}
 		}
 		modifier = {
 			factor = 1.2
@@ -594,7 +596,9 @@ bugged_luminosity_priest = {
 		modifier = {
 			factor = 0.1
 			has_ethic = ethic_materialist
-			NOT = { has_job = priest }
+			NOT = {
+				has_job = priest
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -603,7 +607,9 @@ bugged_luminosity_priest = {
 		modifier = {
 			factor = 0.1
 			is_enslaved = yes
-			has_slavery_type = { type = slavery_indentured }
+			has_slavery_type = {
+				type = slavery_indentured
+			}
 		}
 	}
 }
@@ -614,17 +620,16 @@ bugged_warrior_priest = {
 	condition_string = SPECIALIST_JOB_TRIGGER
 	building_icon = building_sacrificial_temple_1
 	clothes_texture_index = 3
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_sapient = yes
 		is_being_purged = no
 		is_being_assimilated = no
 	}
-
 	possible_precalc = can_fill_specialist_job
-	possible = { complex_specialist_job_check_trigger = yes }
-
+	possible = {
+		complex_specialist_job_check_trigger = yes
+	}
 	resources = {
 		category = planet_priests
 		produces = {
@@ -663,7 +668,6 @@ bugged_warrior_priest = {
 			food = 9
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -671,7 +675,6 @@ bugged_warrior_priest = {
 		planet_amenities_add = 2
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	weight = {
 		weight = @specialist_job_weight
 		mult = value:job_weights_modifier|JOB|priest|RESOURCE|unity|
@@ -679,12 +682,16 @@ bugged_warrior_priest = {
 		modifier = {
 			factor = 0.2
 			has_citizenship_rights = no
-			NOT = { has_trait = trait_mechanical }
+			NOT = {
+				has_trait = trait_mechanical
+			}
 		}
 		modifier = {
 			factor = 2
 			exists = owner
-			owner = { has_civic = civic_exalted_priesthood }
+			owner = {
+				has_civic = civic_exalted_priesthood
+			}
 		}
 		modifier = {
 			factor = 1.2
@@ -697,7 +704,9 @@ bugged_warrior_priest = {
 		modifier = {
 			factor = 0.1
 			has_ethic = ethic_materialist
-			NOT = { has_job = priest }
+			NOT = {
+				has_job = priest
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -706,7 +715,9 @@ bugged_warrior_priest = {
 		modifier = {
 			factor = 0.1
 			is_enslaved = yes
-			has_slavery_type = { type = slavery_indentured }
+			has_slavery_type = {
+				type = slavery_indentured
+			}
 		}
 	}
 }
@@ -717,7 +728,6 @@ bugged_gravity_priest = {
 	condition_string = SPECIALIST_JOB_TRIGGER
 	building_icon = building_robot_assembly_plant
 	clothes_texture_index = 3
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -725,12 +735,10 @@ bugged_gravity_priest = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_specialist_job
 	possible = {
 		complex_specialist_job_check_trigger = yes
 	}
-
 	resources = {
 		category = planet_priests
 		produces = {
@@ -747,7 +755,9 @@ bugged_gravity_priest = {
 		}
 		produces = {
 			trigger = {
-				planet.solar_system = { is_star_class = sc_black_hole }
+				planet.solar_system = {
+					is_star_class = sc_black_hole
+				}
 			}
 			unity = 1
 			physics_research = 0.5
@@ -756,7 +766,6 @@ bugged_gravity_priest = {
 			consumer_goods = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -764,15 +773,15 @@ bugged_gravity_priest = {
 		planet_amenities_add = 2
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			planet.solar_system = { is_star_class = sc_black_hole }
+			planet.solar_system = {
+				is_star_class = sc_black_hole
+			}
 		}
 		planet_amenities_add = 1.5
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	weight = {
 		weight = @specialist_job_weight
 		mult = value:job_weights_modifier|JOB|priest|RESOURCE|unity|
@@ -780,12 +789,16 @@ bugged_gravity_priest = {
 		modifier = {
 			factor = 0.2
 			has_citizenship_rights = no
-			NOT = { has_trait = trait_mechanical }
+			NOT = {
+				has_trait = trait_mechanical
+			}
 		}
 		modifier = {
 			factor = 2
 			exists = owner
-			owner = { has_civic = civic_exalted_priesthood }
+			owner = {
+				has_civic = civic_exalted_priesthood
+			}
 		}
 		modifier = {
 			factor = 1.2
@@ -798,7 +811,9 @@ bugged_gravity_priest = {
 		modifier = {
 			factor = 0.1
 			has_ethic = ethic_materialist
-			NOT = { has_job = priest }
+			NOT = {
+				has_job = priest
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -807,7 +822,9 @@ bugged_gravity_priest = {
 		modifier = {
 			factor = 0.1
 			is_enslaved = yes
-			has_slavery_type = { type = slavery_indentured }
+			has_slavery_type = {
+				type = slavery_indentured
+			}
 		}
 	}
 }
@@ -818,7 +835,6 @@ bugged_lifescribe = {
 	condition_string = SPECIALIST_JOB_TRIGGER
 	building_icon = building_robot_assembly_plant
 	clothes_texture_index = 3
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -826,12 +842,10 @@ bugged_lifescribe = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_specialist_job
 	possible = {
 		complex_specialist_job_check_trigger = yes
 	}
-
 	resources = {
 		category = planet_priests
 		produces = {
@@ -850,12 +864,10 @@ bugged_lifescribe = {
 			consumer_goods = 2
 		}
 	}
-
 	planet_modifier = {
 		pop_growth_speed = 0.05
 		planet_pop_assembly_organic_mult = 0.05
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -863,7 +875,6 @@ bugged_lifescribe = {
 		planet_amenities_add = 2
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	weight = {
 		weight = @specialist_job_weight
 		mult = value:job_weights_modifier|JOB|priest|RESOURCE|unity|
@@ -871,12 +882,16 @@ bugged_lifescribe = {
 		modifier = {
 			factor = 0.2
 			has_citizenship_rights = no
-			NOT = { has_trait = trait_mechanical }
+			NOT = {
+				has_trait = trait_mechanical
+			}
 		}
 		modifier = {
 			factor = 2
 			exists = owner
-			owner = { has_civic = civic_exalted_priesthood }
+			owner = {
+				has_civic = civic_exalted_priesthood
+			}
 		}
 		modifier = {
 			factor = 1.2
@@ -889,7 +904,9 @@ bugged_lifescribe = {
 		modifier = {
 			factor = 0.1
 			has_ethic = ethic_materialist
-			NOT = { has_job = priest }
+			NOT = {
+				has_job = priest
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -898,7 +915,9 @@ bugged_lifescribe = {
 		modifier = {
 			factor = 0.1
 			is_enslaved = yes
-			has_slavery_type = { type = slavery_indentured }
+			has_slavery_type = {
+				type = slavery_indentured
+			}
 		}
 	}
 }
@@ -909,7 +928,6 @@ bugged_techno_priest = {
 	condition_string = SPECIALIST_JOB_TRIGGER
 	building_icon = building_robot_assembly_plant
 	clothes_texture_index = 3
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -917,12 +935,10 @@ bugged_techno_priest = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_specialist_job
 	possible = {
 		complex_specialist_job_check_trigger = yes
 	}
-
 	resources = {
 		category = planet_pop_assemblers
 		produces = {
@@ -941,11 +957,9 @@ bugged_techno_priest = {
 			consumer_goods = 2
 		}
 	}
-
 	planet_modifier = {
 		pop_category_robot_upkeep_mult = -0.05
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -953,7 +967,6 @@ bugged_techno_priest = {
 		planet_amenities_add = 2
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	weight = {
 		weight = @specialist_job_weight
 		mult = value:job_weights_modifier|JOB|priest|RESOURCE|unity|
@@ -961,7 +974,9 @@ bugged_techno_priest = {
 		modifier = {
 			factor = 2
 			exists = owner
-			owner = { has_civic = civic_exalted_priesthood }
+			owner = {
+				has_civic = civic_exalted_priesthood
+			}
 		}
 		modifier = {
 			factor = 1.2
@@ -974,7 +989,9 @@ bugged_techno_priest = {
 		modifier = {
 			factor = 0.1
 			has_ethic = ethic_materialist
-			NOT = { has_job = priest }
+			NOT = {
+				has_job = priest
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -983,7 +1000,9 @@ bugged_techno_priest = {
 		modifier = {
 			factor = 0.1
 			is_enslaved = yes
-			has_slavery_type = { type = slavery_indentured }
+			has_slavery_type = {
+				type = slavery_indentured
+			}
 		}
 	}
 }
@@ -991,27 +1010,22 @@ bugged_techno_priest = {
 #############
 # TELEPATHS #
 #############
-
 #Psi Researcher
 bugged_psi_researcher = {
 	category = specialist
 	condition_string = SPECIALIST_JOB_TRIGGER
 	building_icon = building_psi_corps
 	clothes_texture_index = 5
-
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_being_purged = no
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_specialist_job
 	possible = {
 		complex_specialist_job_check_trigger = yes
 	}
-
 	resources = {
 		category = planet_telepaths
 		produces = {
@@ -1024,12 +1038,10 @@ bugged_psi_researcher = {
 			energy = 2
 		}
 	}
-
 	planet_modifier = {
 		planet_crime_add = -5
 		planet_jobs_unity_produces_mult = 0.05
 	}
-
 	weight = {
 		weight = @specialist_job_weight
 		mult = 2
@@ -1053,7 +1065,9 @@ bugged_psi_researcher = {
 		modifier = {
 			factor = 0.1
 			is_enslaved = yes
-			has_slavery_type = { type = slavery_indentured }
+			has_slavery_type = {
+				type = slavery_indentured
+			}
 		}
 	}
 }
@@ -1064,21 +1078,16 @@ bugged_transcended = {
 	condition_string = SPECIALIST_JOB_TRIGGER
 	building_icon = building_psi_corps
 	clothes_texture_index = 5
-
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_being_purged = no
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_specialist_job
 	possible = {
 		complex_specialist_job_check_trigger = yes
 	}
-
-
 	resources = {
 		category = planet_telepaths
 		produces = {
@@ -1086,7 +1095,6 @@ bugged_transcended = {
 			society_research = 3
 			physics_research = 2
 			engineering_research = 1
-
 		}
 		upkeep = {
 			energy = 2
@@ -1094,36 +1102,38 @@ bugged_transcended = {
 		upkeep = {
 			trigger = {
 				exists = planet
-				planet = { has_modifier = anticrime_campaign }
+				planet = {
+					has_modifier = anticrime_campaign
+				}
 			}
 			energy = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		planet_crime_add = -35
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_valid_civic = civic_bugged_exalted_state }
+			owner = {
+				has_valid_civic = civic_bugged_exalted_state
+			}
 		}
 		modifier = {
 			planet_stability_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_valid_civic = civic_bugged_exalted_state }
+			owner = {
+				has_valid_civic = civic_bugged_exalted_state
+			}
 		}
 		modifier = {
 			planet_crime_add = 10
 		}
 	}
-
 	weight = {
 		weight = @specialist_job_weight
 		mult = 2
@@ -1147,7 +1157,9 @@ bugged_transcended = {
 		modifier = {
 			factor = 0.1
 			is_enslaved = yes
-			has_slavery_type = { type = slavery_indentured }
+			has_slavery_type = {
+				type = slavery_indentured
+			}
 		}
 	}
 }

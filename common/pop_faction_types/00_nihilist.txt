@@ -1,29 +1,28 @@
 ##############################
 # Nihilist Faction (Nihilist Cult)
 ##############################
-
 nihilist = {
 	election_header = "GFX_faction_header_yellow"
 	guiding_ethic = ethic_spiritualist
-	
 	unique = yes
 	support_multiplier = 1.5
-	
 	resources = {
 		category = pop_factions
 		produces = {
 			unity = 0.5
 		}
 	}
-	
 	is_potential = {
 		has_valid_civic = civic_physics_cult
-		years_passed > 5 #appears earlier than others
-		NOT = { has_ethic = ethic_gestalt_consciousness }
+		years_passed > 5		#appears earlier than others
+		NOT = {
+			has_ethic = ethic_gestalt_consciousness
+		}
 		#NOT = { has_country_flag = suppress_vanilla_factions } #give priority
-		NOT = { has_country_flag = emex_one_spir_faction_allowed }
+		NOT = {
+			has_country_flag = emex_one_spir_faction_allowed
+		}
 	}
-	
 	parameters = {
 		empire = {
 			type = country
@@ -32,96 +31,87 @@ nihilist = {
 			}
 		}
 	}
-	
 	can_join_pre_triggers = {
 		is_enslaved = no
 		is_being_purged = no
 		#is_robot_pop = no #so pops can join after becoming synths
 	}
-	
 	can_join_faction = {
-		NOR = { 
+		NOR = {
 			has_trait = trait_nerve_stapled
 			has_trait = trait_zombie
 		}
 	}
-	
 	attraction = {
 		base = 150
-		
 		modifier = {
 			factor = 1.25
 			owner = {
 				has_technology = tech_mine_dark_matter
 			}
 		}
-		
 		modifier = {
-			factor = 1.10
+			factor = 1.1
 			exists = from
 			from = {
 				exists = leader
-				leader = { leader_class = scientist }
+				leader = {
+					leader_class = scientist
+				}
 			}
 		}
-		
 		modifier = {
 			factor = 1.25
 			exists = from
 			from = {
 				exists = leader
-				leader = { leader_class = ruler }
+				leader = {
+					leader_class = ruler
+				}
 			}
 		}
-
 		modifier = {
 			factor = 0.75
 			exists = from
 			from = {
-				NOT = { exists = leader }
+				NOT = {
+					exists = leader
+				}
 			}
 		}
 	}
-	
 	leader = {
 		base = 125
-
 		modifier = {
-			factor = 0.0
+			factor = 0
 			is_event_leader = yes
 		}
 	}
-	
 	demand = {
 		title = "FACTION_OUTRAGED_GC"
 		unfulfilled_title = "FACTION_OUTRAGED_GC"
 		desc = "FACTION_OUTRAGED_GC_DESC"
-
 		fulfilled_effect = -20
 		unfulfilled_effect = -0.001
-
 		potential = {
 			exists = owner
 			owner = {
 				has_country_flag = faction_nihilist_outraged_gc
 			}
 		}
-
 		trigger = {
 			owner = {
 				has_country_flag = faction_nihilist_outraged_gc
 			}
 		}
 	}
-	
-	demand = { #1
+	demand = {
+		#1
 		title = "NIHILIST_NO_GAIA_WORLDS"
 		unfulfilled_title = "NIHILIST_GAIA_WORLDS"
 		desc = "NIHILIST_NO_GAIA_WORLDS_DESC"
-
 		fulfilled_effect = 5
 		unfulfilled_effect = -10
-
 		potential = {
 			exists = owner
 			owner = {
@@ -132,7 +122,6 @@ nihilist = {
 				}
 			}
 		}
-
 		trigger = {
 			owner = {
 				any_planet_within_border = {
@@ -152,15 +141,13 @@ nihilist = {
 			}
 		}
 	}
-	
-	demand = {#2
+	demand = {
+		#2
 		title = "NIHILIST_HOLY_TOMB_WORLDS"
 		unfulfilled_title = "NIHILIST_NO_HOLY_TOMB_WORLDS"
 		desc = "NIHILIST_HOLY_TOMB_WORLDS_DESC"
-
 		fulfilled_effect = 5
 		unfulfilled_effect = -0.001
-
 		potential = {
 			exists = owner
 			owner = {
@@ -171,7 +158,6 @@ nihilist = {
 				}
 			}
 		}
-
 		trigger = {
 			owner = {
 				any_planet_within_border = {
@@ -187,56 +173,48 @@ nihilist = {
 			}
 		}
 	}
-	
-	demand = { #3
+	demand = {
+		#3
 		title = "NIHILIST_SPIRITUALIST_GOVERNMENT"
 		unfulfilled_title = "NIHILIST_SECULAR_GOVERNMENT"
 		desc = "NIHILIST_GOVERNMENT_DESC"
-
 		fulfilled_effect = 5
 		unfulfilled_effect = -10
-
 		potential = {
 			exists = owner
 		}
-
 		trigger = {
 			owner = {
 				has_valid_civic = civic_physics_cult
 			}
 		}
 	}
-	
-	demand = { #4
+	demand = {
+		#4
 		title = "TRADITIONALIST_RELIGIOUS_FINDING"
 		unfulfilled_title = "TRADITIONALIST_NO_RELIGIOUS_FINDING"
 		desc = "TRADITIONALIST_RELIGIOUS_FINDING_DESC"
-
 		fulfilled_effect = 5
 		unfulfilled_effect = -0.001
-
 		potential = {
 			exists = owner
 			owner = {
 				has_modifier = proclaim_religious_finding
 			}
 		}
-
 		trigger = {
 			owner = {
 				has_modifier = proclaim_religious_finding
 			}
 		}
 	}
-	
-	demand = { #5
+	demand = {
+		#5
 		title = "NIHILIST_ASCENSION_1"
 		unfulfilled_title = "NIHILIST_NO_ASCENSION_1"
 		desc = "NIHILIST_ASCENSION_1_DESC"
-
 		fulfilled_effect = 10
 		unfulfilled_effect = -5
-
 		potential = {
 			exists = owner
 			OR = {
@@ -250,7 +228,6 @@ nihilist = {
 				}
 			}
 		}
-
 		trigger = {
 			owner = {
 				OR = {
@@ -261,15 +238,13 @@ nihilist = {
 			}
 		}
 	}
-	
-	demand = { #6
+	demand = {
+		#6
 		title = "NIHILIST_ASCENSION_2"
 		unfulfilled_title = "NIHILIST_NO_ASCENSION_2"
 		desc = "NIHILIST_ASCENSION_2_DESC"
-
 		fulfilled_effect = 20
 		unfulfilled_effect = -0.001
-
 		potential = {
 			exists = owner
 			OR = {
@@ -283,7 +258,6 @@ nihilist = {
 				}
 			}
 		}
-
 		trigger = {
 			owner = {
 				OR = {
@@ -294,15 +268,13 @@ nihilist = {
 			}
 		}
 	}
-	
-	demand = { #7
+	demand = {
+		#7
 		title = "NIHILIST_HOLY_BLACK_HOLES"
 		unfulfilled_title = "NIHILIST_NO_HOLY_BLACK_HOLES"
 		desc = "NIHILIST_HOLY_BLACK_HOLES_DESC"
-
 		fulfilled_effect = 0.001
 		unfulfilled_effect = -10
-
 		potential = {
 			exists = owner
 			owner = {
@@ -310,7 +282,6 @@ nihilist = {
 				has_ascension_perk = ap_consecrated_worlds_nihilistic
 			}
 		}
-
 		trigger = {
 			owner = {
 				any_planet_within_border = {
@@ -320,22 +291,19 @@ nihilist = {
 			}
 		}
 	}
-	
-	demand = {#8
+	demand = {
+		#8
 		title = "NIHILIST_DEATH_WORLD"
 		unfulfilled_title = "NIHILIST_NO_DEATH_WORLD"
 		desc = "NIHILIST_DEATH_WORLD_DESC"
-
 		fulfilled_effect = 10
 		unfulfilled_effect = -5
-
 		potential = {
 			exists = owner
 			owner = {
 				has_surveyed_class = pc_nuked
 			}
 		}
-
 		trigger = {
 			owner = {
 				any_planet_within_border = {
@@ -345,63 +313,54 @@ nihilist = {
 			}
 		}
 	}
-	
-	demand = { #9
+	demand = {
+		#9
 		title = "TRADITIONALIST_SHROUD_BOON"
 		unfulfilled_title = "TRADITIONALIST_NO_SHROUD_BOON"
 		desc = "TRADITIONALIST_SHROUD_BOON_DESC"
-
 		fulfilled_effect = 5
 		unfulfilled_effect = -0.001
-
 		potential = {
 			exists = owner
 			owner = {
 				has_country_flag = positive_shroud_outcome
 			}
 		}
-
 		trigger = {
 			owner = {
 				has_country_flag = positive_shroud_outcome
 			}
 		}
 	}
-
-	demand = { #10
+	demand = {
+		#10
 		title = "TRADITIONALIST_SHROUD_CURSE"
 		unfulfilled_title = "TRADITIONALIST_NO_SHROUD_CURSE"
 		desc = "TRADITIONALIST_SHROUD_CURSE_DESC"
-
 		fulfilled_effect = -5
 		unfulfilled_effect = 0.001
-
 		potential = {
 			exists = owner
 			owner = {
 				has_country_flag = negative_shroud_outcome
 			}
 		}
-
 		trigger = {
 			owner = {
 				has_country_flag = negative_shroud_outcome
 			}
 		}
 	}
-	
-	demand = { #11
+	demand = {
+		#11
 		title = "NIHILIST_BLACK_HOLES"
 		unfulfilled_title = "NIHILIST_NO_BLACK_HOLES"
 		desc = "NIHILIST_BLACK_HOLES_DESC"
-
 		fulfilled_effect = 5
 		unfulfilled_effect = -5
-		
 		potential = {
 			exists = owner
 		}
-
 		trigger = {
 			owner = {
 				any_planet_within_border = {
@@ -410,12 +369,17 @@ nihilist = {
 			}
 		}
 	}
-	
 	on_create = {
-		pop_faction_event = { id = factions.1 }
-		owner = { country_event = { id = civic.7 days = 1 } } #note of special faction
+		pop_faction_event = {
+			id = factions.1
+		}
+		owner = {
+			country_event = {
+				id = civic.7
+				days = 1
+			}
+		}		#note of special faction
 	}
-	
 	on_destroy = {
 		if = {
 			limit = {
@@ -430,48 +394,64 @@ nihilist = {
 			remove_modifier = suppressed_spiritualist
 		}
 	}
-	
 	actions = {
 		embrace_faction = {
 			title = "EMBRACE_FACTION"
 			description = "EMBRACE_FACTION_DESC"
-
 			cost = {
 				influence = 500
 			}
-
 			potential = {
 				exists = owner
 				owner = {
 					OR = {
 						is_subject = no
-						NOT = { any_agreement = { agreement_preset = preset_dominion } }
+						NOT = {
+							any_agreement = {
+								agreement_preset = preset_dominion
+							}
+						}
 					}
 				}
 			}
-
 			valid = {
 				custom_tooltip = {
 					fail_text = EMBRACE_FACTION_COOLDOWN
 					parameter:empire = {
-						NOT = { has_modifier = embraced_faction_timer }
+						NOT = {
+							has_modifier = embraced_faction_timer
+						}
 					}
 				}
-				support > 0.20
+				support > 0.2
 				parameter:empire = {
-					NOT = { has_ethic = "ethic_fanatic_spiritualist" }
+					NOT = {
+						has_ethic = "ethic_fanatic_spiritualist"
+					}
 				}
 			}
-
 			effect = {
-				add_modifier = { modifier = embraced_faction days = 3600 }
+				add_modifier = {
+					modifier = embraced_faction
+					days = 3600
+				}
 				parameter:empire = {
 					shift_ethic = ethic_spiritualist
 					hidden_effect = {
-						add_modifier = { modifier = embraced_faction_timer days = 3600 }
+						add_modifier = {
+							modifier = embraced_faction_timer
+							days = 3600
+						}
 						every_pop_faction = {
-							limit = { NOT = { is_same_value = root } }
-							add_modifier = { modifier = embraced_another_faction days = 3600 }
+							limit = {
+								NOT = {
+									is_same_value = root
+								}
+							}
+							add_modifier = {
+								modifier = embraced_another_faction
+								days = 3600
+							}
 						}
 					}
 				}
@@ -489,24 +469,27 @@ nihilist = {
 									level >= 1
 								}
 							}
-							country_event = { id = factions.2000 }
+							country_event = {
+								id = factions.2000
+							}
 						}
 					}
 				}
 			}
-
 			ai_weight = {
 				base = 1
 				modifier = {
 					factor = 0
-					support < 0.50
+					support < 0.5
 					owner = {
 						has_ethic = ethic_spiritualist
 					}
 				}
 				modifier = {
 					factor = 0
-					owner = { has_valid_civic = civic_fanatic_purifiers }
+					owner = {
+						has_valid_civic = civic_fanatic_purifiers
+					}
 				}
 				modifier = {
 					factor = 0
@@ -532,7 +515,6 @@ nihilist = {
 		promote_faction = {
 			title = "PROMOTE_FACTION"
 			description = "PROMOTE_FACTION_DESC"
-
 			potential = {
 				exists = owner
 				parameter:empire = {
@@ -542,13 +524,14 @@ nihilist = {
 					}
 				}
 			}
-
 			effect = {
 				parameter:empire = {
-					add_modifier = { modifier = promoted_spiritualist days = -1 }
+					add_modifier = {
+						modifier = promoted_spiritualist
+						days = -1
+					}
 				}
 			}
-
 			ai_weight = {
 				base = 0
 			}
@@ -556,20 +539,17 @@ nihilist = {
 		cancel_promote_faction = {
 			title = "CANCEL_PROMOTE_FACTION"
 			description = "CANCEL_PROMOTE_FACTION_DESC"
-
 			potential = {
 				exists = owner
 				parameter:empire = {
 					has_modifier = promoted_spiritualist
 				}
 			}
-
 			effect = {
 				parameter:empire = {
 					remove_modifier = promoted_spiritualist
 				}
 			}
-
 			ai_weight = {
 				base = 0
 			}
@@ -577,7 +557,6 @@ nihilist = {
 		suppress_faction = {
 			title = "SUPPRESS_FACTION"
 			description = "SUPPRESS_FACTION_DESC"
-
 			potential = {
 				exists = owner
 				parameter:empire = {
@@ -587,14 +566,18 @@ nihilist = {
 					}
 				}
 			}
-
 			effect = {
-				add_modifier = { modifier = suppressed_faction days = -1 }
+				add_modifier = {
+					modifier = suppressed_faction
+					days = -1
+				}
 				parameter:empire = {
-					add_modifier = { modifier = suppressed_spiritualist days = -1 }
+					add_modifier = {
+						modifier = suppressed_spiritualist
+						days = -1
+					}
 				}
 			}
-
 			ai_weight = {
 				base = 0
 			}
@@ -602,21 +585,18 @@ nihilist = {
 		cancel_suppress_faction = {
 			title = "CANCEL_SUPPRESS_FACTION"
 			description = "CANCEL_SUPPRESS_FACTION_DESC"
-
 			potential = {
 				exists = owner
 				parameter:empire = {
 					has_modifier = suppressed_spiritualist
 				}
 			}
-
 			effect = {
 				remove_modifier = suppressed_faction
 				parameter:empire = {
 					remove_modifier = suppressed_spiritualist
 				}
 			}
-
 			ai_weight = {
 				base = 0
 			}

@@ -8,7 +8,6 @@ head_researcher = {
 	building_icon = building_institute
 	clothes_texture_index = 1
 	icon = researcher
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -16,9 +15,7 @@ head_researcher = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_ruler_job
-
 	resources = {
 		category = planet_researchers
 		produces = {
@@ -31,7 +28,6 @@ head_researcher = {
 			consumer_goods = 2
 		}
 	}
-
 	# This needs to be triggered planet modifier to get the correct scope.
 	triggered_planet_modifier = {
 		potential = {
@@ -40,7 +36,6 @@ head_researcher = {
 		planet_amenities_add = 3
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	weight = {
 		weight = @ruler_job_weight
 		mult = value:job_weights_research_modifier|JOB|head_researcher|
@@ -49,11 +44,15 @@ head_researcher = {
 		modifier = {
 			factor = 0.2
 			has_citizenship_rights = no
-			NOT = { has_trait = trait_mechanical }
+			NOT = {
+				has_trait = trait_mechanical
+			}
 		}
 		modifier = {
 			factor = 2
-			has_living_standard = { type = living_standard_academic_privilege }
+			has_living_standard = {
+				type = living_standard_academic_privilege
+			}
 		}
 		modifier = {
 			factor = 5
@@ -72,13 +71,13 @@ head_researcher = {
 		}
 	}
 }
+
 #High Priest
 high_priest = {
 	category = ruler
 	condition_string = RULER_JOB_TRIGGER
 	building_icon = building_citadel_of_faith
 	clothes_texture_index = 1
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -86,12 +85,12 @@ high_priest = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_ruler_job
 	possible = {
-		NOT = { has_ethic = ethic_materialist }
+		NOT = {
+			has_ethic = ethic_materialist
+		}
 	}
-
 	resources = {
 		category = planet_priests
 		produces = {
@@ -100,10 +99,12 @@ high_priest = {
 		upkeep = {
 			consumer_goods = 2
 		}
-	#Bug Branch
+		#Bug Branch
 		produces = {
 			trigger = {
-				owner = {  is_bugged_governmental_spiritualist = yes  }
+				owner = {
+					is_bugged_governmental_spiritualist = yes
+				}
 			}
 			unity = 1
 		}
@@ -115,8 +116,8 @@ high_priest = {
 	#Bug Branch
 	triggered_planet_modifier = {
 		potential = {
-		    exists = owner
-			owner = { 
+			exists = owner
+			owner = {
 				is_bugged_machine_cult = yes
 			}
 		}
@@ -124,7 +125,6 @@ high_priest = {
 			planet_jobs_engineering_research_produces_mult = 0.05
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -132,7 +132,6 @@ high_priest = {
 		planet_amenities_add = 5
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	weight = {
 		weight = @ruler_job_weight
 		mult = value:job_weights_modifier|JOB|high_priest|RESOURCE|unity|
@@ -140,7 +139,9 @@ high_priest = {
 		modifier = {
 			factor = 0.1
 			has_citizenship_rights = no
-			NOT = { has_trait = trait_mechanical }
+			NOT = {
+				has_trait = trait_mechanical
+			}
 		}
 		modifier = {
 			factor = 1.2
@@ -149,7 +150,9 @@ high_priest = {
 		modifier = {
 			factor = 0.1
 			has_ethic = ethic_materialist
-			NOT = { has_job = high_priest }
+			NOT = {
+				has_job = high_priest
+			}
 		}
 		modifier = {
 			factor = 5
@@ -176,7 +179,6 @@ politician = {
 	building_icon = building_capital
 	clothes_texture_index = 1
 	icon = administrator
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -184,9 +186,7 @@ politician = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_ruler_job
-
 	resources = {
 		category = planet_politicians
 		produces = {
@@ -196,7 +196,6 @@ politician = {
 			consumer_goods = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -204,19 +203,18 @@ politician = {
 		planet_amenities_add = 3
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-    	#Bug Branch
+	#Bug Branch
 	triggered_planet_modifier = {
 		potential = {
-		    exists = owner
+			exists = owner
 			owner = {
 				is_bugged_government_intervention = yes
 			}
 		}
 		planet_amenities_add = 2
-            	mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
 	#Bug Branch
-
 	weight = {
 		weight = @ruler_job_weight
 		mult = value:job_weights_modifier|JOB|politician|RESOURCE|unity|
@@ -224,7 +222,9 @@ politician = {
 		modifier = {
 			factor = 0.1
 			has_citizenship_rights = no
-			NOT = { has_trait = trait_mechanical }
+			NOT = {
+				has_trait = trait_mechanical
+			}
 		}
 		modifier = {
 			factor = 5
@@ -251,7 +251,6 @@ noble = {
 	condition_string = RULER_JOB_TRIGGER
 	building_icon = building_palace
 	clothes_texture_index = 1
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -259,9 +258,7 @@ noble = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_ruler_job
-
 	resources = {
 		category = planet_nobles
 		produces = {
@@ -271,11 +268,9 @@ noble = {
 			consumer_goods = 2
 		}
 	}
-
 	planet_modifier = {
 		planet_stability_add = 2
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -283,7 +278,6 @@ noble = {
 		planet_amenities_add = 3
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	weight = {
 		weight = @ruler_job_weight
 		mult = value:job_weights_modifier|JOB|noble|RESOURCE|unity|
@@ -291,12 +285,16 @@ noble = {
 		modifier = {
 			factor = 0.1
 			has_citizenship_rights = no
-			NOT = { has_trait = trait_mechanical }
+			NOT = {
+				has_trait = trait_mechanical
+			}
 		}
 		modifier = {
 			factor = 0.1
 			is_egalitarian = yes
-			NOT = { has_job = noble }
+			NOT = {
+				has_job = noble
+			}
 		}
 		modifier = {
 			factor = 5
@@ -313,11 +311,18 @@ noble = {
 					is_country_type = ai_empire
 				}
 			}
-			OR = { # contingency won't purge itself
-				NOT = { exists = event_target:custodian_bot }
+			OR = {
+				# contingency won't purge itself
+				NOT = {
+					exists = event_target:custodian_bot
+				}
 				AND = {
 					exists = event_target:custodian_bot
-					NOT = { species = { is_same_value = event_target:custodian_bot } }
+					NOT = {
+						species = {
+							is_same_value = event_target:custodian_bot
+						}
+					}
 				}
 			}
 		}
@@ -330,7 +335,6 @@ merchant = {
 	condition_string = RULER_JOB_TRIGGER
 	building_icon = building_galactic_stock_exchange
 	clothes_texture_index = 1
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -338,9 +342,7 @@ merchant = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_ruler_job
-
 	resources = {
 		category = planet_merchants
 		produces = {
@@ -356,7 +358,6 @@ merchant = {
 		}
 	}
 	#Bug Branch
-
 	#Bug Branch
 	triggered_planet_modifier = {
 		potential = {
@@ -365,7 +366,6 @@ merchant = {
 		trade_value_add = 12
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -373,7 +373,6 @@ merchant = {
 		planet_amenities_add = 3
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -381,7 +380,6 @@ merchant = {
 		trade_value_add = 1
 		mult = value:bugged_stock_exchange_tv
 	}
-
 	weight = {
 		weight = @ruler_job_weight
 		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
@@ -401,11 +399,18 @@ merchant = {
 					is_country_type = ai_empire
 				}
 			}
-			OR = { # contingency won't purge itself
-				NOT = { exists = event_target:custodian_bot }
+			OR = {
+				# contingency won't purge itself
+				NOT = {
+					exists = event_target:custodian_bot
+				}
 				AND = {
 					exists = event_target:custodian_bot
-					NOT = { species = { is_same_value = event_target:custodian_bot } }
+					NOT = {
+						species = {
+							is_same_value = event_target:custodian_bot
+						}
+					}
 				}
 			}
 		}
@@ -417,7 +422,6 @@ executive = {
 	condition_string = RULER_JOB_TRIGGER
 	building_icon = building_capital
 	clothes_texture_index = 1
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -425,9 +429,7 @@ executive = {
 		is_being_assimilated = no
 		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_ruler_job
-
 	resources = {
 		category = planet_executives
 		produces = {
@@ -437,17 +439,18 @@ executive = {
 		produces = {
 			trigger = {
 				exists = owner
-				owner = { has_valid_civic = civic_bugged_megacorp_researcher }
+				owner = {
+					has_valid_civic = civic_bugged_megacorp_researcher
+				}
 			}
 			physics_research = 3
 			society_research = 3
 			engineering_research = 3
 		}
-        upkeep = {
+		upkeep = {
 			consumer_goods = 2
 		}
 	}
-
 	#Bug Branch
 	triggered_planet_modifier = {
 		potential = {
@@ -460,7 +463,6 @@ executive = {
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
 	#Bug Branch
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -468,7 +470,6 @@ executive = {
 		trade_value_add = 4
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -476,7 +477,6 @@ executive = {
 		planet_amenities_add = 3
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -484,7 +484,6 @@ executive = {
 		trade_value_add = 1
 		mult = value:bugged_stock_exchange_tv
 	}
-
 	weight = {
 		weight = @ruler_job_weight
 		mult = value:job_weights_modifier|JOB|executive|RESOURCE|unity|
@@ -505,11 +504,18 @@ executive = {
 					is_country_type = ai_empire
 				}
 			}
-			OR = { # contingency won't purge itself
-				NOT = { exists = event_target:custodian_bot }
+			OR = {
+				# contingency won't purge itself
+				NOT = {
+					exists = event_target:custodian_bot
+				}
 				AND = {
 					exists = event_target:custodian_bot
-					NOT = { species = { is_same_value = event_target:custodian_bot } }
+					NOT = {
+						species = {
+							is_same_value = event_target:custodian_bot
+						}
+					}
 				}
 			}
 		}

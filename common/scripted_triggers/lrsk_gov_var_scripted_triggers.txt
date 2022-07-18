@@ -1,7 +1,6 @@
 # Government Variety Pack
 # Scripted Triggers
 # Author: littleraskol
-
 #lrsk_gov_var_has_sublight_colony_origin = {
 #	OR = {
 #		has_origin = lrsk_gov_var_origin_sublight_colony_loy
@@ -23,7 +22,6 @@
 #		has_origin = lrsk_gov_var_origin_sublight_commonwealth
 #	}
 #}
-
 lrsk_gov_var_is_chartered_colony_type_gov = {
 	OR = {
 		has_valid_civic = lrsk_gov_var_civic_mc_chart_corp_board
@@ -32,14 +30,14 @@ lrsk_gov_var_is_chartered_colony_type_gov = {
 }
 
 lrsk_gov_var_has_discovery_origin = {
-	or = { 
+	or = {
 		has_origin = lrsk_gov_var_origin_for_discovery
 		has_origin = lrsk_gov_var_origin_for_discovery_mi
 	}
 }
 
 lrsk_gov_var_has_tradeways_origin = {
-	or = { 
+	or = {
 		has_origin = lrsk_gov_var_origin_tradeways
 		has_origin = lrsk_gov_var_origin_tradeways_mc
 	}
@@ -54,7 +52,7 @@ lrsk_gov_var_has_newfed_origin = {
 }
 
 lrsk_gov_var_has_newfed_npc_origin = {
-	or = { 
+	or = {
 		has_origin = lrsk_gov_var_origin_for_discovery_npc
 		has_origin = lrsk_gov_var_origin_for_discovery_mi_npc
 		has_origin = lrsk_gov_var_origin_tradeways_npc
@@ -68,7 +66,7 @@ lrsk_gvp_has_boxed_in_origin = {
 	OR = {
 		lrsk_gov_var_has_newfed_origin = yes
 		lrsk_gov_var_has_newfed_npc_origin = yes
-		has_origin = lrsk_gov_var_origin_uplift 			# very unlikely but eh
+		has_origin = lrsk_gov_var_origin_uplift		# very unlikely but eh
 		#lrsk_gov_var_has_sublight_overlord_origin = yes
 		#lrsk_gov_var_has_sublight_colony_origin = yes
 	}
@@ -76,17 +74,37 @@ lrsk_gvp_has_boxed_in_origin = {
 
 lrsk_gvp_planet_can_get_wild_cult = {
 	OR = {
-		NOT = { has_modifier = lrsk_gov_var_statmod_divine_right_cult }
-		NOT = { has_modifier = lrsk_gov_var_statmod_children_of_heaven_cult }
-		NOT = { has_modifier = lrsk_gov_var_statmod_holy_war_cult }
-		NOT = { has_modifier = lrsk_gov_var_statmod_harmony_cult }
-		NOT = { has_modifier = lrsk_gov_var_statmod_chosen_few_cult }
-		NOT = { has_modifier = lrsk_gov_var_statmod_universal_family_cult }
-		NOT = { has_modifier = lrsk_gov_var_statmod_doomsday_cult }
-		NOT = { has_modifier = lrsk_gov_var_statmod_golden_age_cult }
-		NOT = { has_modifier = lrsk_gov_var_statmod_wild_revelry_cult }
-		NOT = { has_modifier = lrsk_gov_var_statmod_penance_and_redemption_cult }
-	}	
+		NOT = {
+			has_modifier = lrsk_gov_var_statmod_divine_right_cult
+		}
+		NOT = {
+			has_modifier = lrsk_gov_var_statmod_children_of_heaven_cult
+		}
+		NOT = {
+			has_modifier = lrsk_gov_var_statmod_holy_war_cult
+		}
+		NOT = {
+			has_modifier = lrsk_gov_var_statmod_harmony_cult
+		}
+		NOT = {
+			has_modifier = lrsk_gov_var_statmod_chosen_few_cult
+		}
+		NOT = {
+			has_modifier = lrsk_gov_var_statmod_universal_family_cult
+		}
+		NOT = {
+			has_modifier = lrsk_gov_var_statmod_doomsday_cult
+		}
+		NOT = {
+			has_modifier = lrsk_gov_var_statmod_golden_age_cult
+		}
+		NOT = {
+			has_modifier = lrsk_gov_var_statmod_wild_revelry_cult
+		}
+		NOT = {
+			has_modifier = lrsk_gov_var_statmod_penance_and_redemption_cult
+		}
+	}
 }
 
 lrsk_gvp_planet_has_no_wild_cult = {
@@ -121,7 +139,7 @@ lrsk_is_hyperlane_escape_route = {
 # A system has an escape route if it has at least one neighbor that is an escape route.
 lrsk_has_hyperlane_escape_route = {
 	any_neighbor_system = {
-		lrsk_is_hyperlane_escape_route = yes		
+		lrsk_is_hyperlane_escape_route = yes
 	}
 }
 
@@ -135,13 +153,14 @@ lrsk_can_be_my_hyperlane_escape_route = {
 lrsk_can_spawn_viceroyal_colony_vassal = {
 	# Need the right civic
 	has_valid_civic = lrsk_gov_var_civic_colonial_fiefs
-	
 	# This effect can only happen so often...
-	not = { has_country_flag = lrsk_colfief_venture_cooldown }
-
+	not = {
+		has_country_flag = lrsk_colfief_venture_cooldown
+	}
 	# Requires policies in effect.
-	not = { has_policy_flag = lrsk_gvp_colfief_prohibited }
-
+	not = {
+		has_policy_flag = lrsk_gvp_colfief_prohibited
+	}
 	# Don't want to poach pops from planets with few pops
 	any_owned_planet = {
 		num_pops > 9
@@ -149,10 +168,11 @@ lrsk_can_spawn_viceroyal_colony_vassal = {
 		any_owned_pop = {
 			is_enslaved = no
 			is_being_purged = no
-			not = { pop_has_trait = trait_syncretic_proles }
+			not = {
+				pop_has_trait = trait_syncretic_proles
+			}
 		}
 	}
-
 	# This can happen in any unowned, empty system that root has not surveyed at least 3 jumps from the home empire with a planet that some species in root can settle.
 	# Note: there is the edge case that only enslaved/being-purged pops have the needed habitability, in which case later effects will fail.
 	any_system = {
@@ -163,7 +183,9 @@ lrsk_can_spawn_viceroyal_colony_vassal = {
 		lrsk_system_vacant = yes
 		root = {
 			any_owned_pop_species = {
-				not = { has_trait = trait_syncretic_proles }
+				not = {
+					has_trait = trait_syncretic_proles
+				}
 				prevprev = {
 					any_system_planet = {
 						is_surveyed = {

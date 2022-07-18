@@ -1,17 +1,16 @@
 #Missions upon primitive machines
-
 # Passive Observation
 vbp_machine_passive_observation = {
 	icon = "GFX_fleet_task_passive_observation"
 	small_icon = 1
-	
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { is_country_type = vbp_machine }
+			owner = {
+				is_country_type = vbp_machine
+			}
 		}
 	}
-
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -37,7 +36,6 @@ vbp_machine_passive_observation = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_commerce_underdeveloped_system_utilization"
 					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
@@ -52,7 +50,6 @@ vbp_machine_passive_observation = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -62,7 +59,6 @@ vbp_machine_passive_observation = {
 			unity = 10
 		}
 	}
-	
 	ai_weight = {
 		weight = 2
 	}
@@ -72,7 +68,6 @@ vbp_machine_passive_observation = {
 vbp_machine_specimen_collection = {
 	icon = "GFX_fleet_task_specimen_collection"
 	small_icon = 2
-
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -98,7 +93,6 @@ vbp_machine_specimen_collection = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_commerce_underdeveloped_system_utilization"
 					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
@@ -113,7 +107,6 @@ vbp_machine_specimen_collection = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -123,30 +116,32 @@ vbp_machine_specimen_collection = {
 			unity = 4
 		}
 	}
-
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { is_country_type = vbp_machine }
+			owner = {
+				is_country_type = vbp_machine
+			}
 		}
 	}
-
 	valid = {
-		NOT = { has_policy_flag = ai_full_rights }
-		
+		NOT = {
+			has_policy_flag = ai_full_rights
+		}
 		custom_tooltip = {
 			fail_text = VBP_MACHINE_FINAL_STAGE
 			FROM = {
 				exists = owner
 				owner = {
-					NOT = { has_country_flag = vbp_machine_uplifted }
+					NOT = {
+						has_country_flag = vbp_machine_uplifted
+					}
 				}
 			}
 		}
 	}
-	
 	ai_weight = {
-		weight = 5	# Use if policy allows it
+		weight = 5		# Use if policy allows it
 	}
 }
 
@@ -155,7 +150,6 @@ vbp_machine_salvage_components = {
 	# icon = "GFX_fleet_task_indoctrination"
 	icon = "GFX_fleet_order_button_land_armies"
 	small_icon = 5
-	
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -167,7 +161,6 @@ vbp_machine_salvage_components = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_commerce_underdeveloped_system_utilization"
 					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
@@ -194,14 +187,14 @@ vbp_machine_salvage_components = {
 			energy = 2
 		}
 	}
-	
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { is_country_type = vbp_machine }
+			owner = {
+				is_country_type = vbp_machine
+			}
 		}
 	}
-	
 	in_breach_of = {
 		{
 			key = resolution_galacticcooperation_indigenous_protection_protocols
@@ -213,25 +206,30 @@ vbp_machine_salvage_components = {
 			key = resolution_galacticcooperation_sanctity_of_life
 		}
 	}
-	
 	#planet_modifier = native_indoctrination
-
 	valid = {
-		NOT = { has_policy_flag = ai_full_rights }
+		NOT = {
+			has_policy_flag = ai_full_rights
+		}
 	}
-	
 	ai_weight = {
 		weight = 10
 		modifier = {
 			factor = 0
 			NOR = {
 				has_policy_flag = robots_outlawed
-				has_monthly_income = { resource = minerals value < 20 }
+				has_monthly_income = {
+					resource = minerals
+					value < 20
+				}
 			}
 		}
 		modifier = {
 			factor = 0
-			has_monthly_income = { resource = energy value < 2 }
+			has_monthly_income = {
+				resource = energy
+				value < 2
+			}
 		}
 		modifier = {
 			factor = 0
@@ -246,12 +244,10 @@ vbp_machine_salvage_components = {
 
 @enlighten_soc_cost = 5
 @enlighten_nrg_cost = 10
-
 # Technological Enlightenment
 vbp_machine_framework_upgrade = {
 	icon = "GFX_fleet_task_technological_enlightenment_action"
 	small_icon = 3
-
 	resources = {
 		category = station_observer_missions
 		produces = {
@@ -260,7 +256,6 @@ vbp_machine_framework_upgrade = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_galacticcooperation_indigenous_protection_protocols"
 					is_active_resolution = "resolution_galacticcooperation_interstellar_mediation"
@@ -274,48 +269,43 @@ vbp_machine_framework_upgrade = {
 			energy = @enlighten_nrg_cost
 		}
 	}
-
 	monthly_progress = 0.02
 	completion_event = vbp_machine.500
-
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { 
-				is_country_type = vbp_machine 
+			owner = {
+				is_country_type = vbp_machine
 			}
 		}
-		NOR = { 
+		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
 			has_valid_civic = civic_hive_devouring_swarm
 		}
 	}
-
 	valid = {
-	
 		OR = {
 			has_technology = tech_droid_workers
 			has_technology = tech_synthetic_workers
 			has_authority = auth_machine_intelligence
 		}
-		
 		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
 			has_valid_civic = civic_hive_devouring_swarm
 			# has_valid_civic = civic_machine_terminator
 		}
-		
 		custom_tooltip = {
 			fail_text = VBP_MACHINE_FINAL_STAGE
 			FROM = {
 				exists = owner
 				owner = {
-					NOT = { has_country_flag = vbp_machine_uplifted }
+					NOT = {
+						has_country_flag = vbp_machine_uplifted
+					}
 				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 9
 		modifier = {
@@ -333,23 +323,21 @@ vbp_machine_framework_upgrade = {
 			factor = 0
 			resource_stockpile_compare = {
 				resource = energy
-				value < 1000				
+				value < 1000
 			}
 		}
 		modifier = {
 			factor = 0
 			is_country_type = fallen_empire
 		}
-	}	
+	}
 }
-
 
 # Covert Infiltration
 vbp_machine_repurpose = {
 	# icon = "GFX_fleet_task_covert_infiltration_action"
 	icon = "GFX_fleet_task_indoctrination"
 	small_icon = 4
-	
 	resources = {
 		category = station_observer_missions
 		upkeep = {
@@ -362,7 +350,6 @@ vbp_machine_repurpose = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_commerce_underdeveloped_system_utilization"
 					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
@@ -372,19 +359,16 @@ vbp_machine_repurpose = {
 			minerals = 8
 		}
 	}
-
 	monthly_progress = 0.02
 	completion_event = vbp_machine.510
-
 	potential = {
 		FROM = {
 			exists = owner
-			owner = { 
-				is_country_type = vbp_machine 
+			owner = {
+				is_country_type = vbp_machine
 			}
 		}
 	}
-	
 	in_breach_of = {
 		{
 			key = resolution_galacticcooperation_indigenous_protection_protocols
@@ -396,7 +380,6 @@ vbp_machine_repurpose = {
 			key = resolution_galacticcooperation_sanctity_of_life
 		}
 	}
-
 	valid = {
 		OR = {
 			has_technology = tech_droid_workers
@@ -407,25 +390,25 @@ vbp_machine_repurpose = {
 			has_valid_civic = civic_hive_devouring_swarm
 			has_policy_flag = robots_outlawed
 		}
-		
 		custom_tooltip = {
 			fail_text = VBP_MACHINE_FINAL_STAGE
 			FROM = {
 				exists = owner
 				owner = {
-					NOT = { has_country_flag = vbp_machine_uplifted }
+					NOT = {
+						has_country_flag = vbp_machine_uplifted
+					}
 				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 10
 		modifier = {
 			factor = 0
 			resource_stockpile_compare = {
 				resource = energy
-				value < 1000				
+				value < 1000
 			}
 		}
 		modifier = {

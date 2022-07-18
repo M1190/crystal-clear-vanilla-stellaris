@@ -1,73 +1,113 @@
-		# 100 = {
-			# add_modifier = { modifier = "0000000000000" }
-			# Not with these modifiers
-			# modifier = { factor = 0 has_modifier = "0000000000000" }
-			# (Not) on these planets
-			# Tweaks
-			# Weight Factor
-			# modifier = { factor = @default }
-		# }
-
+# 100 = {
+# add_modifier = { modifier = "0000000000000" }
+# Not with these modifiers
+# modifier = { factor = 0 has_modifier = "0000000000000" }
+# (Not) on these planets
+# Tweaks
+# Weight Factor
+# modifier = { factor = @default }
+# }
 # Total modifiers: x
 # Spawn chance = 100/Total modifiers
 # Distributed Spawn_chance = 10   			-- overwritten for standard planet modifiers: useing rarity factors below
-
 # Abundancy Settings and factors used for tweaking
 @rare = 0.25
 @uncommon = 0.5
 @default = 1
 @plenty = 1.5
 @everywhere = 2
-
 # Planetary Ring Adjuster
 @ringfactor = 1.35
-
 gpm_spawn_city_planet_modifier = {
 	optimize_memory
 	random_list = {
 		100 = {
-			add_modifier = { modifier = "gpm_relic_factories" multiplier = gpm_planet_size_multiplier }
+			add_modifier = {
+				modifier = "gpm_relic_factories"
+				multiplier = gpm_planet_size_multiplier
+			}
 			# Not with these modifiers
-			modifier = { factor = 0 has_modifier = "gpm_relic_factories" }
+			modifier = {
+				factor = 0
+				has_modifier = "gpm_relic_factories"
+			}
 			# (Not) on these planets
-			modifier = { factor = 0 has_planet_flag = gpm_is_new_ecumenopolis }
+			modifier = {
+				factor = 0
+				has_planet_flag = gpm_is_new_ecumenopolis
+			}
 			# Never in these systems
 			# Tweaks
 			# Weight Factor
-			modifier = { factor = @default }
+			modifier = {
+				factor = @default
+			}
 		}
 		100 = {
-			add_modifier = { modifier = "gpm_relic_generators" multiplier = gpm_planet_size_multiplier }
+			add_modifier = {
+				modifier = "gpm_relic_generators"
+				multiplier = gpm_planet_size_multiplier
+			}
 			# Not with these modifiers
-			modifier = { factor = 0 has_modifier = "gpm_relic_generators" }
+			modifier = {
+				factor = 0
+				has_modifier = "gpm_relic_generators"
+			}
 			# (Not) on these planets
-			modifier = { factor = 0 has_planet_flag = gpm_is_new_ecumenopolis }
+			modifier = {
+				factor = 0
+				has_planet_flag = gpm_is_new_ecumenopolis
+			}
 			# Never in these systems
 			# Tweaks
 			# Weight Factor
-			modifier = { factor = @default }
+			modifier = {
+				factor = @default
+			}
 		}
 		100 = {
-			add_modifier = { modifier = "gpm_relic_laboratories" multiplier = gpm_planet_size_multiplier }
+			add_modifier = {
+				modifier = "gpm_relic_laboratories"
+				multiplier = gpm_planet_size_multiplier
+			}
 			# Not with these modifiers
-			modifier = { factor = 0 has_modifier = "gpm_relic_laboratories" }
+			modifier = {
+				factor = 0
+				has_modifier = "gpm_relic_laboratories"
+			}
 			# (Not) on these planets
-			modifier = { factor = 0 has_planet_flag = gpm_is_new_ecumenopolis }
+			modifier = {
+				factor = 0
+				has_planet_flag = gpm_is_new_ecumenopolis
+			}
 			# Never in these systems
 			# Tweaks
 			# Weight Factor
-			modifier = { factor = @default }
+			modifier = {
+				factor = @default
+			}
 		}
 		100 = {
-			add_modifier = { modifier = "gpm_relic_lower_levels" multiplier = gpm_planet_size_multiplier }
+			add_modifier = {
+				modifier = "gpm_relic_lower_levels"
+				multiplier = gpm_planet_size_multiplier
+			}
 			# Not with these modifiers
-			modifier = { factor = 0 has_modifier = "gpm_relic_lower_levels" }
+			modifier = {
+				factor = 0
+				has_modifier = "gpm_relic_lower_levels"
+			}
 			# (Not) on these planets
-			modifier = { factor = 0 has_planet_flag = gpm_is_new_ecumenopolis }
+			modifier = {
+				factor = 0
+				has_planet_flag = gpm_is_new_ecumenopolis
+			}
 			# Never in these systems
 			# Tweaks
 			# Weight Factor
-			modifier = { factor = @default }
+			modifier = {
+				factor = @default
+			}
 		}
 	}
 }
@@ -78,10 +118,15 @@ gpm_roll_city_planet_modifiers = {
 		trigger = has_global_flag
 		gpm_modifier_amount_max_one = {
 			if = {
-				limit = { num_modifiers = 0 }
+				limit = {
+					num_modifiers = 0
+				}
 				random_list = {
-					50 = { }
-					50 = { gpm_spawn_city_planet_modifier = yes }
+					50 = {
+					}
+					50 = {
+						gpm_spawn_city_planet_modifier = yes
+					}
 				}
 			}
 		}
@@ -89,12 +134,18 @@ gpm_roll_city_planet_modifiers = {
 			while = {
 				count = 1
 				if = {
-					limit = { num_modifiers < 2 }
+					limit = {
+						num_modifiers < 2
+					}
 					random_list = {
-						50 = { }
-						50 = { 
+						50 = {
+						}
+						50 = {
 							gpm_spawn_city_planet_modifier = yes
-							modifier = { factor = 0.5 num_modifiers > 1 }
+							modifier = {
+								factor = 0.5
+								num_modifiers > 1
+							}
 						}
 					}
 				}
@@ -104,13 +155,22 @@ gpm_roll_city_planet_modifiers = {
 			while = {
 				count = 2
 				if = {
-					limit = { num_modifiers < 3 }
+					limit = {
+						num_modifiers < 3
+					}
 					random_list = {
-						50 = { }
-						50 = { 
+						50 = {
+						}
+						50 = {
 							gpm_spawn_city_planet_modifier = yes
-							modifier = { factor = 0.5 num_modifiers > 1 }
-							modifier = { factor = 0.25 num_modifiers > 2 }
+							modifier = {
+								factor = 0.5
+								num_modifiers > 1
+							}
+							modifier = {
+								factor = 0.25
+								num_modifiers > 2
+							}
 						}
 					}
 				}
@@ -118,24 +178,36 @@ gpm_roll_city_planet_modifiers = {
 		}
 		gpm_modifier_amount_high = {
 			if = {
-				limit = { num_modifiers = 0 }
+				limit = {
+					num_modifiers = 0
+				}
 				gpm_spawn_city_planet_modifier = yes
 			}
 			while = {
 				count = 2
 				if = {
-					limit = { num_modifiers < 3 }
+					limit = {
+						num_modifiers < 3
+					}
 					random_list = {
-						50 = { }
-						50 = { 
+						50 = {
+						}
+						50 = {
 							gpm_spawn_city_planet_modifier = yes
-							modifier = { factor = 0.5 num_modifiers > 1 }
-							modifier = { factor = 0.25 num_modifiers > 2 }
+							modifier = {
+								factor = 0.5
+								num_modifiers > 1
+							}
+							modifier = {
+								factor = 0.25
+								num_modifiers > 2
+							}
 						}
 					}
 				}
 			}
 		}
-		default = { }
+		default = {
+		}
 	}
 }

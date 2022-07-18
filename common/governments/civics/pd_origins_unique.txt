@@ -14,7 +14,6 @@
 #		traits = { trait = ... }					# default: empty; trait set to enforce on the secondary species. They cannot be removed, but more can be added if points/picks permit
 #	}
 #}
-
 origin_crystal_world = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origins_pdcrystal.dds"
@@ -24,8 +23,11 @@ origin_crystal_world = {
 	preferred_planet_class_neighbor = no
 	description = "origin_tooltip_crystal_world_effects"
 	#random_weight = { base = 0 }
-	initializers = { pd_origin_init_crystal }
+	initializers = {
+		pd_origin_init_crystal
+	}
 }
+
 origin_floating_world = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origins_pdfloating.dds"
@@ -35,8 +37,11 @@ origin_floating_world = {
 	preferred_planet_class_neighbor = no
 	description = "origin_tooltip_floating_world_effects"
 	#random_weight = { base = 0 }
-	initializers = { pd_origin_init_floating }
+	initializers = {
+		pd_origin_init_floating
+	}
 }
+
 origin_graveyard_world = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origins_pdgraveyard.dds"
@@ -46,9 +51,12 @@ origin_graveyard_world = {
 	preferred_planet_class_neighbor = no
 	description = "origin_tooltip_graveyard_world_effects"
 	#random_weight = { base = 0 }
-	initializers = { pd_origin_init_graveyard }
+	initializers = {
+		pd_origin_init_graveyard
+	}
 	#max_once_global = yes
 }
+
 origin_techno_world = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origins_pdtechno.dds"
@@ -58,22 +66,41 @@ origin_techno_world = {
 	preferred_planet_class_neighbor = no
 	description = "origin_tooltip_techno_world_effects"
 	#random_weight = { base = 0 }
-	initializers = { pd_origin_init_technoorganic }
-	traits = { trait = trait_organic_fourschildren }
-	possible = { 
-		authority = { NOT = { value = auth_machine_intelligence } } 
-		civics = { 
-			NOT = { value = civic_fanatic_purifiers } 
-			NOT = { value = civic_barbaric_despoilers }
-			NOT = { value = civic_hive_devouring_swarm }
+	initializers = {
+		pd_origin_init_technoorganic
+	}
+	traits = {
+		trait = trait_organic_fourschildren
+	}
+	possible = {
+		authority = {
+			NOT = {
+				value = auth_machine_intelligence
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_fanatic_purifiers
+			}
+			NOT = {
+				value = civic_barbaric_despoilers
+			}
+			NOT = {
+				value = civic_hive_devouring_swarm
+			}
 		}
 		species_archetype = {
-			NOT = { value = LITHOID }
+			NOT = {
+				value = LITHOID
+			}
 		}
 	}
-	flags = { custom_start_screen }
+	flags = {
+		custom_start_screen
+	}
 	#max_once_global = yes
 }
+
 origin_archive_world = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origins_pdarchive.dds"
@@ -83,20 +110,39 @@ origin_archive_world = {
 	#preferred_planet_class_neighbor = no
 	description = "origin_tooltip_archive_world_effects"
 	#random_weight = { base = 0 }
-	possible = { 
-		authority = { NOT = { value = auth_hive_mind } } 
-		civics = { 
-			NOT = { value = civic_fanatic_purifiers } 
-			NOT = { value = civic_barbaric_despoilers }
-			NOT = { value = civic_machine_terminator }
-			NOT = { value = civic_machine_servitor }
-			NOT = { value = civic_machine_assimilator }
+	possible = {
+		authority = {
+			NOT = {
+				value = auth_hive_mind
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_fanatic_purifiers
+			}
+			NOT = {
+				value = civic_barbaric_despoilers
+			}
+			NOT = {
+				value = civic_machine_terminator
+			}
+			NOT = {
+				value = civic_machine_servitor
+			}
+			NOT = {
+				value = civic_machine_assimilator
+			}
 		}
 	}
-	initializers = { pd_origin_init_archive }
-	flags = { custom_start_screen }
+	initializers = {
+		pd_origin_init_archive
+	}
+	flags = {
+		custom_start_screen
+	}
 	#max_once_global = yes
 }
+
 origin_crucible_world = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origins_pd_crucible.dds"
@@ -106,14 +152,21 @@ origin_crucible_world = {
 	preferred_planet_class_neighbor = no
 	description = "origin_tooltip_crucible_world_effects"
 	#random_weight = { base = 0 }
-	initializers = { pd_origin_init_crucible }
-	flags = { custom_start_screen }
-	possible = { 
-		authority = { 
-			NOT = { value = auth_machine_intelligence } 
-			NOT = { value = auth_hive_mind } 
-		} 
-		
+	initializers = {
+		pd_origin_init_crucible
+	}
+	flags = {
+		custom_start_screen
+	}
+	possible = {
+		authority = {
+			NOT = {
+				value = auth_machine_intelligence
+			}
+			NOT = {
+				value = auth_hive_mind
+			}
+		}
 	}
 	#max_once_global = yes
 }

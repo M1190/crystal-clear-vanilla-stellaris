@@ -1,6 +1,4 @@
-
 ### ORIGINS EXTENDED INITIALIZERS
-
 @distance = 50
 @jumps = 3
 @planet_min_size = 10
@@ -10,13 +8,13 @@
 @moon_max_size = 10
 @homeworld_min_size = 18
 @homeworld_max_size = 21
-
 # Starless Home System
 originsextended_starless_system = {
 	class = sc_black_hole
 	usage = origin
-	flags = { empire_home_system }
-
+	flags = {
+		empire_home_system
+	}
 	init_effect = {
 		every_neighbor_system = {
 			set_star_flag = empire_cluster
@@ -24,72 +22,79 @@ originsextended_starless_system = {
 				set_star_flag = empire_cluster
 			}
 		}
-		generate_home_system_resources = no							# not sure on what this does?
+		generate_home_system_resources = no		# not sure on what this does?
 	}
-	
-    planet = {
-        count = 1
-        class = star
-        orbit_distance = 0
-      	orbit_angle = 0
-        size = { min = 25 max = 35 }
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 0
+		size = {
+			min = 25
+			max = 35
+		}
 		has_ring = no
-		flags = { ignore_startup_effect }
-		
+		flags = {
+			ignore_startup_effect
+		}
 		init_effect = {
 			set_deposit = d_physics_3
 		}
-
 		#satellite_naming_policy = upper_case_roman_numerals
-        #change_orbit = 30
-
-        planet = {
-			orbit_angle = { min = 90 max = 270 }
+		#change_orbit = 30
+		planet = {
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			class = pc_shattered
 			orbit_distance = 75
-			flags = { ignore_startup_effect }
+			flags = {
+				ignore_startup_effect
+			}
 			#satellite_naming_policy = lower_case_latin_letters			# whatever the hell this does??
-
 			init_effect = {
 				save_global_event_target_as = starless_shattered
 				set_deposit = d_minerals_6
 			}
-
 			change_orbit = @base_moon_distance
-
 			moon = {
 				#count = { min = 0 max = 1 }							# always want it here
 				class = pc_broken
-				orbit_angle = { min = 90 max = 270 }
+				orbit_angle = {
+					min = 90
+					max = 270
+				}
 				orbit_distance = 5
-				flags = { ignore_startup_effect }
-
+				flags = {
+					ignore_startup_effect
+				}
 				init_effect = {
 					save_global_event_target_as = starless_broken
 					set_deposit = d_minerals_3
 				}
-
 			}
 		}
-
 		planet = {
 			count = 1
 			orbit_distance = 35
 			home_planet = yes
 			class = ideal_planet_class
-			orbit_angle = { min = 90 max = 270 }
-			size = { min = 16 max = 20 }
-			
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
+			size = {
+				min = 16
+				max = 20
+			}
 			#deposit_blockers = none									# added by start_of_game_effects later on
 			#modifiers = none											# may come back to add modifiers, idk
-			
 			init_effect = {
-				generate_empire_home_planet = yes			
+				generate_empire_home_planet = yes
 				prevent_anomaly = yes
 			}
-			
 			change_orbit = @base_moon_distance
-	
 			#moon = {													# empty system, no moon
 			#	count = { min = 0 max = 1 }
 			#	class = random_non_colonizable
@@ -97,21 +102,22 @@ originsextended_starless_system = {
 			#	orbit_distance = 5
 			#}
 		}
-
 		planet = {
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			class = pc_barren_cold
 			orbit_distance = 25
 			#satellite_naming_policy = lower_case_latin_letters
-			flags = { ignore_startup_effect }
-
+			flags = {
+				ignore_startup_effect
+			}
 			init_effect = {
 				set_deposit = d_engineering_4
 				save_global_event_target_as = starless_barrencold
 			}
-
 			change_orbit = @base_moon_distance
-
 			#moon = {
 			#	count = { min = 0 max = 1 }
 			#	class = random_non_colonizable
@@ -120,7 +126,6 @@ originsextended_starless_system = {
 			#}
 		}
 	}
-
 	#neighbor_system = {
 	#	trigger = { num_guaranteed_colonies >= 2 }
 	#	hyperlane_jumps = { min = 1 max = @jumps }
@@ -131,7 +136,6 @@ originsextended_starless_system = {
 	#	hyperlane_jumps = { min = 1 max = @jumps }
 	#	initializer = "neighbor_t1_first_colony"
 	#}
-
 }
 
 # Guardian Home System 1: Ruined Science Nexus (single star only)
@@ -141,9 +145,7 @@ originsextended_guardian_system_1 = {
 		type = rocky_asteroid_belt
 		radius = 50
 	}
-	
 	usage = origin
-	
 	usage_odds = {
 		base = 0
 		modifier = {
@@ -151,9 +153,9 @@ originsextended_guardian_system_1 = {
 			add = 100
 		}
 	}
-
-	flags = { empire_home_system }
-
+	flags = {
+		empire_home_system
+	}
 	init_effect = {
 		every_neighbor_system = {
 			set_star_flag = empire_cluster
@@ -162,114 +164,154 @@ originsextended_guardian_system_1 = {
 			}
 		}
 	}
-	
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = 20 max = 30 }
+		size = {
+			min = 20
+			max = 30
+		}
 		has_ring = no
 	}
-	
 	change_orbit = 50
-	
 	planet = {
-		count = { min = 1 max = 3 }
+		count = {
+			min = 1
+			max = 3
+		}
 		class = pc_asteroid
 		orbit_distance = 0
-		orbit_angle = { min = 40 max = 100 }
+		orbit_angle = {
+			min = 40
+			max = 100
+		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 2 }
+		count = {
+			min = 0
+			max = 2
+		}
 		orbit_distance = 20
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
 		count = 1
 		orbit_distance = 20
 		home_planet = yes
 		class = ideal_planet_class
-		orbit_angle = { min = 90 max = 270 }
-		size = { min = 16 max = 20 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = 16
+			max = 20
+		}
 		deposit_blockers = none
 		modifiers = none
-		
 		init_effect = {
-			generate_empire_home_planet = yes			
+			generate_empire_home_planet = yes
 			prevent_anomaly = yes
 		}
-		
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 2 max = 4 }
+		count = {
+			min = 2
+			max = 4
+		}
 		orbit_distance = 20
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
 		count = 1
 		orbit_distance = 20
 		class = pc_gas_giant
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		init_effect = {
 			save_global_event_target_as = originsextended_guardian_nexus_planet_global
 		}
 	}
-	
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 2 }
-		hyperlane_jumps = { min = 1 max = @jumps }
+		trigger = {
+			num_guaranteed_colonies >= 2
+		}
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "neighbor_t1"
 	}
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 1 }
-		hyperlane_jumps = { min = 1 max = @jumps }
+		trigger = {
+			num_guaranteed_colonies >= 1
+		}
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "neighbor_t1_first_colony"
 	}
-
 	init_effect = {
 		generate_home_system_resources = yes
 		if = {
 			limit = {
 				host_has_dlc = "Utopia"
 			}
-			spawn_megastructure = { 
-				type = "think_tank_ruined" 
+			spawn_megastructure = {
+				type = "think_tank_ruined"
 				planet = event_target:originsextended_guardian_nexus_planet_global
 				init_effect = {
 					#set_location = { target = event_target:originsextended_guardian_nexus_planet_global }
@@ -279,7 +321,7 @@ originsextended_guardian_system_1 = {
 						type = "large_debris_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 20
@@ -290,7 +332,7 @@ originsextended_guardian_system_1 = {
 						type = "large_debris_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 20
@@ -301,7 +343,7 @@ originsextended_guardian_system_1 = {
 						type = "medium_debris_01_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 35
@@ -312,7 +354,7 @@ originsextended_guardian_system_1 = {
 						type = "medium_debris_02_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 3
@@ -332,9 +374,7 @@ originsextended_guardian_system_2 = {
 		type = rocky_asteroid_belt
 		radius = 115
 	}
-	
 	usage = origin
-	
 	usage_odds = {
 		base = 0
 		modifier = {
@@ -342,9 +382,9 @@ originsextended_guardian_system_2 = {
 			add = 100
 		}
 	}
-
-	flags = { empire_home_system }
-
+	flags = {
+		empire_home_system
+	}
 	init_effect = {
 		every_neighbor_system = {
 			set_star_flag = empire_cluster
@@ -353,141 +393,192 @@ originsextended_guardian_system_2 = {
 			}
 		}
 	}
-		
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = 20 max = 30 }
+		size = {
+			min = 20
+			max = 30
+		}
 		has_ring = no
 	}
-	
 	change_orbit = 50
-	
 	planet = {
 		count = 1
 		home_planet = yes
 		class = ideal_planet_class
 		orbit_distance = 0
-		orbit_angle = { min = 90 max = 270 }
-		size = { min = 16 max = 20 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = 16
+			max = 20
+		}
 		deposit_blockers = none
 		modifiers = none
-		
 		init_effect = {
-			generate_empire_home_planet = yes		
+			generate_empire_home_planet = yes
 			prevent_anomaly = yes
 		}
-		
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
 		count = 2
 		orbit_distance = 20
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	change_orbit = 25
-	
 	planet = {
-		count = { min = 2 max = 3 }
+		count = {
+			min = 2
+			max = 3
+		}
 		class = pc_asteroid
 		orbit_distance = 0
-		orbit_angle = { min = 40 max = 110 }
+		orbit_angle = {
+			min = 40
+			max = 110
+		}
 	}
-	
 	planet = {
-		count = { min = 2 max = 4 }
+		count = {
+			min = 2
+			max = 4
+		}
 		orbit_distance = 25
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
 		class = "pc_gas_giant"
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		size = 30
-
 		moon = {
 			class = "pc_barren_cold"
 			size = 6
 			orbit_distance = 20
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			has_ring = no
 		}
 		moon = {
 			class = "pc_frozen"
 			size = 6
 			orbit_distance = 6
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			has_ring = no
 		}
 		moon = {
 			class = "pc_barren"
 			size = 6
 			orbit_distance = 6
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			has_ring = no
-
 			init_effect = {
 				save_global_event_target_as = originsextended_guardian_array_planet_global
 			}
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 2 }
+		count = {
+			min = 0
+			max = 2
+		}
 		orbit_distance = 20
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-	
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 2 }
-		hyperlane_jumps = { min = 1 max = @jumps }
+		trigger = {
+			num_guaranteed_colonies >= 2
+		}
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "neighbor_t1"
 	}
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 1 }
-		hyperlane_jumps = { min = 1 max = @jumps }
+		trigger = {
+			num_guaranteed_colonies >= 1
+		}
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "neighbor_t1_first_colony"
 	}
-
 	init_effect = {
 		generate_home_system_resources = yes
 		if = {
 			limit = {
 				host_has_dlc = "Utopia"
 			}
-			spawn_megastructure = { 
-				type = "spy_orb_ruined" 
+			spawn_megastructure = {
+				type = "spy_orb_ruined"
 				planet = event_target:originsextended_guardian_array_planet_global
 				init_effect = {
 					# set_location = { target = event_target:originsextended_guardian_sentry_planet }
@@ -497,7 +588,7 @@ originsextended_guardian_system_2 = {
 						type = "large_debris_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 20
@@ -508,7 +599,7 @@ originsextended_guardian_system_2 = {
 						type = "large_debris_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 20
@@ -519,7 +610,7 @@ originsextended_guardian_system_2 = {
 						type = "medium_debris_01_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 35
@@ -530,7 +621,7 @@ originsextended_guardian_system_2 = {
 						type = "medium_debris_02_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 3
@@ -546,9 +637,7 @@ originsextended_guardian_system_2 = {
 # Guardian Home System 3: Ruined Mega Art Installation (trinary only)
 originsextended_guardian_system_3 = {
 	class = "rl_trinary_stars"
-	
 	usage = origin
-	
 	usage_odds = {
 		base = 0
 		modifier = {
@@ -556,9 +645,9 @@ originsextended_guardian_system_3 = {
 			add = 100
 		}
 	}
-
-	flags = { empire_home_system }
-
+	flags = {
+		empire_home_system
+	}
 	init_effect = {
 		every_neighbor_system = {
 			set_star_flag = empire_cluster
@@ -567,133 +656,176 @@ originsextended_guardian_system_3 = {
 			}
 		}
 	}
-		
 	planet = {
-        count = 1
-        class = star
-        orbit_distance = 0
-        orbit_angle = 0
-        size = { min = 30 max = 35 }
-        has_ring = no
-    }
-
-    planet = {
-        count = 1
-        class = star
-        orbit_distance = 230
-      	orbit_angle = { min = 90 max = 270 }
-        size = { min = 20 max = 30 }
-        has_ring = no
-        satellite_naming_policy = upper_case_roman_numerals
-
-        change_orbit = 30
-
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 0
+		size = {
+			min = 30
+			max = 35
+		}
+		has_ring = no
+	}
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 230
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = 20
+			max = 30
+		}
+		has_ring = no
+		satellite_naming_policy = upper_case_roman_numerals
+		change_orbit = 30
 		planet = {
-			count = { min = 2 max = 3 }
-			orbit_angle = { min = 90 max = 270 }
+			count = {
+				min = 2
+				max = 3
+			}
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			class = random_non_colonizable
 			orbit_distance = 25
 			satellite_naming_policy = lower_case_latin_letters
-
 			change_orbit = @base_moon_distance
-
 			moon = {
-				count = { min = 0 max = 1 }
+				count = {
+					min = 0
+					max = 1
+				}
 				class = random_non_colonizable
-				orbit_angle = { min = 90 max = 270 }
+				orbit_angle = {
+					min = 90
+					max = 270
+				}
 				orbit_distance = 5
 			}
 		}
-    }
-
-    planet = {
-        count = 1
-        class = star
-        orbit_distance = 0
-        orbit_angle = { min = 90 max = 270 }
-        size = { min = 15 max = 30 }
-        has_ring = no
-        satellite_naming_policy = upper_case_roman_numerals
-
-        change_orbit = 30
-
+	}
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = 15
+			max = 30
+		}
+		has_ring = no
+		satellite_naming_policy = upper_case_roman_numerals
+		change_orbit = 30
 		planet = {
-			count = { min = 2 max = 4 }
-			orbit_angle = { min = 90 max = 270 }
+			count = {
+				min = 2
+				max = 4
+			}
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			class = random_non_colonizable
 			orbit_distance = 25
 			satellite_naming_policy = lower_case_latin_letters
-
 			change_orbit = @base_moon_distance
 		}
-    }
-
-    change_orbit = -210
-
-    planet = {
-		count = { min = 1 max = 2 }
+	}
+	change_orbit = -210
+	planet = {
+		count = {
+			min = 1
+			max = 2
+		}
 		orbit_distance = 15
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-	
 	planet = {
 		count = 1
 		orbit_distance = 15
 		home_planet = yes
 		class = ideal_planet_class
-		orbit_angle = { min = 90 max = 270 }
-		size = { min = 16 max = 20 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = 16
+			max = 20
+		}
 		deposit_blockers = none
 		modifiers = none
-		
 		init_effect = {
-			generate_empire_home_planet = yes			
+			generate_empire_home_planet = yes
 			prevent_anomaly = yes
 		}
-
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
 		count = 1
 		orbit_distance = 15
 		class = pc_gas_giant
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		init_effect = {
 			save_global_event_target_as = originsextended_guardian_installation_planet_global
 		}
 	}
-
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 2 }
-		hyperlane_jumps = { min = 1 max = @jumps }
+		trigger = {
+			num_guaranteed_colonies >= 2
+		}
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "neighbor_t1"
 	}
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 1 }
-		hyperlane_jumps = { min = 1 max = @jumps }
+		trigger = {
+			num_guaranteed_colonies >= 1
+		}
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "neighbor_t1_first_colony"
 	}
-
 	init_effect = {
 		generate_home_system_resources = yes
 		if = {
 			limit = {
 				host_has_dlc = "Megacorp"
 			}
-			spawn_megastructure = { 
-				type = "mega_art_installation_ruined" 
+			spawn_megastructure = {
+				type = "mega_art_installation_ruined"
 				planet = event_target:originsextended_guardian_installation_planet_global
 				init_effect = {
 					# set_location = { target = event_target:originsextended_guardian_installation_planet }
@@ -703,7 +835,7 @@ originsextended_guardian_system_3 = {
 						type = "large_debris_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 20
@@ -714,7 +846,7 @@ originsextended_guardian_system_3 = {
 						type = "large_debris_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 20
@@ -725,7 +857,7 @@ originsextended_guardian_system_3 = {
 						type = "medium_debris_01_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 35
@@ -736,7 +868,7 @@ originsextended_guardian_system_3 = {
 						type = "medium_debris_02_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 3
@@ -756,9 +888,7 @@ originsextended_guardian_system_4 = {
 		type = rocky_asteroid_belt
 		radius = 85
 	}
-	
 	usage = origin
-	
 	usage_odds = {
 		base = 0
 		modifier = {
@@ -766,9 +896,9 @@ originsextended_guardian_system_4 = {
 			add = 100
 		}
 	}
-
-	flags = { empire_home_system }
-
+	flags = {
+		empire_home_system
+	}
 	init_effect = {
 		every_neighbor_system = {
 			set_star_flag = empire_cluster
@@ -777,134 +907,182 @@ originsextended_guardian_system_4 = {
 			}
 		}
 	}
-		
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = 20 max = 30 }
+		size = {
+			min = 20
+			max = 30
+		}
 		has_ring = no
 	}
-	
 	change_orbit = 40
-	
 	planet = {
 		count = 1
 		orbit_distance = 20
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
 		init_effect = {
 			save_global_event_target_as = originsextended_guardian_assembly_planet_global
 		}
 	}
-	
 	change_orbit = 25
-	
 	planet = {
-		count = { min = 1 max = 2 }
+		count = {
+			min = 1
+			max = 2
+		}
 		class = pc_asteroid
 		orbit_distance = 0
-		orbit_angle = { min = 120 max = 300 }
+		orbit_angle = {
+			min = 120
+			max = 300
+		}
 	}
-	
 	planet = {
 		count = 1
 		orbit_distance = 25
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
 		count = 1
 		orbit_distance = 25
 		class = pc_gas_giant
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		size = 25
-	
 		change_orbit = @base_moon_distance
-		
 		moon = {
 			count = 1
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 4
 		}
-		
 		moon = {
 			count = 1
 			home_planet = yes
 			class = ideal_planet_class
 			orbit_distance = 10
-			orbit_angle = { min = 90 max = 270 }
-			size = { min = 16 max = 20 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
+			size = {
+				min = 16
+				max = 20
+			}
 			deposit_blockers = none
 			modifiers = none
-		
 			init_effect = {
-				generate_empire_home_planet = yes		
+				generate_empire_home_planet = yes
 				prevent_anomaly = yes
 			}
 		}
 	}
-	
 	planet = {
-		count = { min = 1 max = 3 }
+		count = {
+			min = 1
+			max = 3
+		}
 		orbit_distance = 25
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-	
 	planet = {
-		count = { min = 1 max = 2 }
+		count = {
+			min = 1
+			max = 2
+		}
 		orbit_distance = 20
 		class = pc_gas_giant
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 3 }
+			count = {
+				min = 0
+				max = 3
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		orbit_distance = 20
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-	
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 2 }
-		hyperlane_jumps = { min = 1 max = @jumps }
+		trigger = {
+			num_guaranteed_colonies >= 2
+		}
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "neighbor_t1"
 	}
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 1 }
-		hyperlane_jumps = { min = 1 max = @jumps }
+		trigger = {
+			num_guaranteed_colonies >= 1
+		}
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "neighbor_t1_first_colony"
 	}
-
-	init_effect = {		
+	init_effect = {
 		generate_home_system_resources = yes
 		if = {
 			limit = {
 				host_has_dlc = "Megacorp"
 			}
-			spawn_megastructure = { 
+			spawn_megastructure = {
 				type = "interstellar_assembly_ruined"
 				planet = event_target:originsextended_guardian_assembly_planet_global
 				init_effect = {
@@ -915,7 +1093,7 @@ originsextended_guardian_system_4 = {
 						type = "large_debris_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 20
@@ -926,7 +1104,7 @@ originsextended_guardian_system_4 = {
 						type = "large_debris_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 20
@@ -937,7 +1115,7 @@ originsextended_guardian_system_4 = {
 						type = "medium_debris_01_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 35
@@ -948,7 +1126,7 @@ originsextended_guardian_system_4 = {
 						type = "medium_debris_02_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 3
@@ -964,9 +1142,7 @@ originsextended_guardian_system_4 = {
 # Guardian Home System 5: Ruined Strategic Coordination Center (binary only)
 originsextended_guardian_system_5 = {
 	class = "rl_binary_starting_stars"
-	
 	usage = origin
-
 	usage_odds = {
 		base = 0
 		modifier = {
@@ -974,9 +1150,9 @@ originsextended_guardian_system_5 = {
 			add = 100
 		}
 	}
-
-	flags = { empire_home_system }
-
+	flags = {
+		empire_home_system
+	}
 	init_effect = {
 		every_neighbor_system = {
 			set_star_flag = empire_cluster
@@ -985,110 +1161,153 @@ originsextended_guardian_system_5 = {
 			}
 		}
 	}
-		
 	planet = {
-        count = 1
-        class = star
-        orbit_distance = 25
-        orbit_angle = 0
-        size = { min = 30 max = 35 }
-        has_ring = no
-    }
-
-    planet = {
-        count = 1
-        class = star
-        orbit_distance = 0
-        size = { min = 15 max = 25 }
-        has_ring = no
-    }
-	
+		count = 1
+		class = star
+		orbit_distance = 25
+		orbit_angle = 0
+		size = {
+			min = 30
+			max = 35
+		}
+		has_ring = no
+	}
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		size = {
+			min = 15
+			max = 25
+		}
+		has_ring = no
+	}
 	change_orbit = 35
-	
 	planet = {
-		count = { min = 1 max = 3 }
+		count = {
+			min = 1
+			max = 3
+		}
 		orbit_distance = 15
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-	
 	planet = {
 		count = 1
 		orbit_distance = 20
 		home_planet = yes
 		class = ideal_planet_class
-		orbit_angle = { min = 90 max = 270 }
-		size = { min = 16 max = 20 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = 16
+			max = 20
+		}
 		deposit_blockers = none
 		modifiers = none
-		
 		init_effect = {
-			generate_empire_home_planet = yes			
+			generate_empire_home_planet = yes
 			prevent_anomaly = yes
 		}
-
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 1 max = 3 }
+		count = {
+			min = 1
+			max = 3
+		}
 		orbit_distance = 25
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-	
 	planet = {
-		count = { min = 1 max = 2 }
+		count = {
+			min = 1
+			max = 2
+		}
 		orbit_distance = 20
 		class = pc_gas_giant
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 1 max = 3 }
+			count = {
+				min = 1
+				max = 3
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		orbit_distance = 20
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		init_effect = {
 			save_global_event_target_as = originsextended_guardian_coordination_planet_global
 		}
 	}
-	
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 2 }
-		hyperlane_jumps = { min = 1 max = @jumps }
+		trigger = {
+			num_guaranteed_colonies >= 2
+		}
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "neighbor_t1"
 	}
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 1 }
-		hyperlane_jumps = { min = 1 max = @jumps }
+		trigger = {
+			num_guaranteed_colonies >= 1
+		}
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "neighbor_t1_first_colony"
 	}
-
 	init_effect = {
 		generate_home_system_resources = yes
 		if = {
 			limit = {
 				host_has_dlc = "Megacorp"
 			}
-			spawn_megastructure = { 
-				type = "strategic_coordination_center_ruined" 
+			spawn_megastructure = {
+				type = "strategic_coordination_center_ruined"
 				planet = event_target:originsextended_guardian_coordination_planet_global
 				init_effect = {
 					# set_location = { target = event_target:originsextended_guardian_coordination_location }
@@ -1098,7 +1317,7 @@ originsextended_guardian_system_5 = {
 						type = "large_debris_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 20
@@ -1109,7 +1328,7 @@ originsextended_guardian_system_5 = {
 						type = "large_debris_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 20
@@ -1120,7 +1339,7 @@ originsextended_guardian_system_5 = {
 						type = "medium_debris_01_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 35
@@ -1131,7 +1350,7 @@ originsextended_guardian_system_5 = {
 						type = "medium_debris_02_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 3
@@ -1147,9 +1366,7 @@ originsextended_guardian_system_5 = {
 # Guardian Home System 6: Ruined Mega Shipyard (single only)
 originsextended_guardian_system_6 = {
 	class = "rl_starting_stars"
-	
 	usage = origin
-	
 	usage_odds = {
 		base = 0
 		modifier = {
@@ -1157,9 +1374,9 @@ originsextended_guardian_system_6 = {
 			add = 100
 		}
 	}
-
-	flags = { empire_home_system }
-
+	flags = {
+		empire_home_system
+	}
 	init_effect = {
 		every_neighbor_system = {
 			set_star_flag = empire_cluster
@@ -1168,102 +1385,140 @@ originsextended_guardian_system_6 = {
 			}
 		}
 	}
-		
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = 20 max = 30 }
+		size = {
+			min = 20
+			max = 30
+		}
 		has_ring = no
 	}
-	
 	change_orbit = 35
-	
 	planet = {
-		count = { min = 1 max = 3 }
+		count = {
+			min = 1
+			max = 3
+		}
 		orbit_distance = 15
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-
 	planet = {
 		count = 1
 		orbit_distance = 20
 		home_planet = yes
 		class = ideal_planet_class
-		orbit_angle = { min = 90 max = 270 }
-		size = { min = 16 max = 20 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = 16
+			max = 20
+		}
 		deposit_blockers = none
 		modifiers = none
-		
 		init_effect = {
-			generate_empire_home_planet = yes			
+			generate_empire_home_planet = yes
 			prevent_anomaly = yes
 		}
-
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 1 max = 3 }
+		count = {
+			min = 1
+			max = 3
+		}
 		orbit_distance = 25
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-	
 	planet = {
-		count = { min = 1 max = 2 }
+		count = {
+			min = 1
+			max = 2
+		}
 		orbit_distance = 20
 		class = pc_gas_giant
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 1 max = 3 }
+			count = {
+				min = 1
+				max = 3
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
 		count = 1
 		orbit_distance = 20
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		init_effect = {
 			save_global_event_target_as = originsextended_guardian_shipyard_planet_global
 		}
 	}
-	
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 2 }
-		hyperlane_jumps = { min = 1 max = @jumps }
+		trigger = {
+			num_guaranteed_colonies >= 2
+		}
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "neighbor_t1"
 	}
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 1 }
-		hyperlane_jumps = { min = 1 max = @jumps }
+		trigger = {
+			num_guaranteed_colonies >= 1
+		}
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "neighbor_t1_first_colony"
 	}
-
-	init_effect = {		
+	init_effect = {
 		generate_home_system_resources = yes
 		if = {
 			limit = {
 				host_has_dlc = "Federations"
 			}
-			spawn_megastructure = { 
-				type = "mega_shipyard_ruined" 
+			spawn_megastructure = {
+				type = "mega_shipyard_ruined"
 				planet = event_target:originsextended_guardian_shipyard_planet_global
 				init_effect = {
 					# set_location = { target = event_target:originsextended_guardian_shipyard_planet }
@@ -1273,7 +1528,7 @@ originsextended_guardian_system_6 = {
 						type = "large_debris_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 20
@@ -1284,7 +1539,7 @@ originsextended_guardian_system_6 = {
 						type = "large_debris_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 20
@@ -1295,7 +1550,7 @@ originsextended_guardian_system_6 = {
 						type = "medium_debris_01_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 35
@@ -1306,7 +1561,7 @@ originsextended_guardian_system_6 = {
 						type = "medium_debris_02_object"
 						location = this
 					}
-					last_created_ambient_object = { 
+					last_created_ambient_object = {
 						set_location = {
 							target = prev
 							distance = 3
@@ -1322,7 +1577,6 @@ originsextended_guardian_system_6 = {
 # Mars Start Home System
 originsextended_red_system = {
 	name = "NAME_Sol"
-	
 	class = "sc_g"
 	asteroid_belt = {
 		type = rocky_asteroid_belt
@@ -1332,11 +1586,12 @@ originsextended_red_system = {
 		type = icy_asteroid_belt
 		radius = 290
 	}
-	
-	flags = { empire_home_system sol_system sol }
-	
+	flags = {
+		empire_home_system
+		sol_system
+		sol
+	}
 	usage = origin
-
 	init_effect = {
 		every_neighbor_system = {
 			set_star_flag = empire_cluster
@@ -1346,7 +1601,6 @@ originsextended_red_system = {
 		}
 		generate_home_system_resources = yes
 	}
-	
 	planet = {
 		name = "NAME_Sol"
 		class = "pc_g_star"
@@ -1355,7 +1609,6 @@ originsextended_red_system = {
 		size = 30
 		has_ring = no
 	}
-	
 	planet = {
 		name = "NAME_Mercury"
 		class = "pc_molten"
@@ -1364,7 +1617,6 @@ originsextended_red_system = {
 		size = 10
 		has_ring = no
 	}
-	
 	planet = {
 		name = "NAME_Venus"
 		class = "pc_toxic"
@@ -1373,7 +1625,6 @@ originsextended_red_system = {
 		size = 20
 		has_ring = no
 	}
-	
 	planet = {
 		name = "NAME_Earth"
 		class = "pc_nuked"
@@ -1381,20 +1632,18 @@ originsextended_red_system = {
 		orbit_angle = 120
 		size = 18
 		has_ring = no
-
 		#deposit_blockers = none
 		#entity = "continental_planet_earth_entity"
-
-		flags = { originsextended_red_planet_earth }
-		
+		flags = {
+			originsextended_red_planet_earth
+		}
 		init_effect = {
 			# add_modifier = {
 			# 	modifier = "terraforming_candidate"
 			# 	days = -1
 			# }
 			save_global_event_target_as = originsextended_red_earth_planet_global
-		}	
-		
+		}
 		moon = {
 			name = "NAME_Luna"
 			class = "pc_barren_cold"
@@ -1405,7 +1654,6 @@ originsextended_red_system = {
 			entity = "cold_barren_planet_luna_entity"
 		}
 	}
-	
 	planet = {
 		name = "NAME_Mars"
 		class = "pc_arid"
@@ -1414,19 +1662,17 @@ originsextended_red_system = {
 		size = 18
 		has_ring = no
 		#entity = "barren_planet_mars_entity"
-		
 		starting_planet = yes
 		deposit_blockers = none
 		modifiers = none
-		
-		flags = { originsextended_red_start }
-		
+		flags = {
+			originsextended_red_start
+		}
 		init_effect = {
 			prevent_anomaly = yes
 			save_global_event_target_as = originsextended_red_start_planet_global
-		}	
+		}
 	}
-	
 	planet = {
 		name = "NAME_1_Ceres"
 		class = "pc_asteroid"
@@ -1435,7 +1681,6 @@ originsextended_red_system = {
 		size = 5
 		has_ring = no
 	}
-	
 	planet = {
 		name = "NAME_2_Pallas"
 		class = "pc_asteroid"
@@ -1444,7 +1689,6 @@ originsextended_red_system = {
 		size = 5
 		has_ring = no
 	}
-	
 	planet = {
 		name = "NAME_3_Juno"
 		class = "pc_asteroid"
@@ -1453,7 +1697,6 @@ originsextended_red_system = {
 		size = 5
 		has_ring = no
 	}
-	
 	planet = {
 		name = "NAME_4_Vesta"
 		class = "pc_asteroid"
@@ -1462,7 +1705,6 @@ originsextended_red_system = {
 		size = 5
 		has_ring = no
 	}
-	
 	planet = {
 		name = "NAME_Jupiter"
 		class = "pc_gas_giant"
@@ -1472,7 +1714,6 @@ originsextended_red_system = {
 		has_ring = no
 		entity = "gas_giant_jupiter_entity"
 		change_orbit = 6
-		
 		moon = {
 			name = "NAME_Io"
 			class = "pc_molten"
@@ -1506,7 +1747,6 @@ originsextended_red_system = {
 			has_ring = no
 		}
 	}
-	
 	planet = {
 		name = "NAME_Saturn"
 		class = "pc_gas_giant"
@@ -1516,7 +1756,6 @@ originsextended_red_system = {
 		has_ring = yes
 		entity = "gas_giant_05_entity"
 		change_orbit = 7
-		
 		moon = {
 			name = "NAME_Titan"
 			class = "pc_frozen"
@@ -1526,7 +1765,6 @@ originsextended_red_system = {
 			has_ring = no
 		}
 	}
-	
 	planet = {
 		name = "NAME_Uranus"
 		class = "pc_gas_giant"
@@ -1536,7 +1774,6 @@ originsextended_red_system = {
 		has_ring = no
 		entity = "gas_giant_03_entity"
 	}
-	
 	planet = {
 		name = "NAME_Neptune"
 		class = "pc_gas_giant"
@@ -1546,7 +1783,6 @@ originsextended_red_system = {
 		has_ring = no
 		entity = "gas_giant_02_entity"
 		change_orbit = 4
-		
 		moon = {
 			name = "NAME_Triton"
 			class = "pc_frozen"
@@ -1556,7 +1792,6 @@ originsextended_red_system = {
 			has_ring = no
 		}
 	}
-
 	planet = {
 		name = "NAME_134340_Pluto"
 		class = "pc_asteroid"
@@ -1565,7 +1800,6 @@ originsextended_red_system = {
 		size = 5
 		has_ring = no
 	}
-	
 	planet = {
 		name = "NAME_136472_Makemake"
 		class = "pc_ice_asteroid"
@@ -1574,7 +1808,6 @@ originsextended_red_system = {
 		size = 5
 		has_ring = no
 	}
-	
 	planet = {
 		name = "NAME_136108_Haumea"
 		class = "pc_ice_asteroid"
@@ -1583,7 +1816,6 @@ originsextended_red_system = {
 		size = 5
 		has_ring = no
 	}
-	
 	planet = {
 		name = "NAME_20000_Varuna"
 		class = "pc_ice_asteroid"
@@ -1592,19 +1824,31 @@ originsextended_red_system = {
 		size = 5
 		has_ring = no
 	}
-	
 	neighbor_system = {
-		hyperlane_jumps = { min = 1 max = @jumps }
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "sol_neighbor_t1"
 	}
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 1 }
-		hyperlane_jumps = { min = 1 max = @jumps }
+		trigger = {
+			num_guaranteed_colonies >= 1
+		}
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "sol_neighbor_t1_first_colony"
 	}
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies = 0 }
-		hyperlane_jumps = { min = 1 max = @jumps }
+		trigger = {
+			num_guaranteed_colonies = 0
+		}
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "sol_neighbor_t1_no_guaranteed_colony"
 	}
 }
@@ -1612,57 +1856,75 @@ originsextended_red_system = {
 red_sol_neighbor_t1 = {
 	name = "NAME_Barnard's_Star"
 	class = sc_m
-
 	init_effect = {
-		every_neighbor_system = { set_star_flag = empire_cluster }
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+		}
 	}
-
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = 20 max = 30 }
+		size = {
+			min = 20
+			max = 30
+		}
 		has_ring = no
 	}
-
 	change_orbit = 45
-
 	planet = {
-		count = { min = 0 max = 2 }
+		count = {
+			min = 0
+			max = 2
+		}
 		orbit_distance = 20
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			orbit_distance = 5
 		}
 	}
-
 	planet = {
-		count = { min = 2 max = 5 }
+		count = {
+			min = 2
+			max = 5
+		}
 		orbit_distance = 20
 	}
-
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 2 }
-		hyperlane_jumps = { min = 1 max = @jumps }
+		trigger = {
+			num_guaranteed_colonies >= 2
+		}
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "sol_neighbor_t2_second_colony"
 	}
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies < 2 }
-		hyperlane_jumps = { min = 1 max = @jumps }
+		trigger = {
+			num_guaranteed_colonies < 2
+		}
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "sol_neighbor_t2_no_guaranteed_colony"
 	}
 }
+
 red_sol_neighbor_t1_no_guaranteed_colony = {
 	name = "NAME_Alpha_Centauri"
 	class = sc_trinary_1
-
 	init_effect = {
-		every_neighbor_system = { set_star_flag = empire_cluster }
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+		}
 	}
-
 	planet = {
 		name = "NAME_Alpha_Centauri_A"
 		count = 1
@@ -1672,7 +1934,6 @@ red_sol_neighbor_t1_no_guaranteed_colony = {
 		size = 32
 		has_ring = no
 	}
-
 	planet = {
 		name = "NAME_Alpha_Centauri_B"
 		count = 1
@@ -1682,7 +1943,6 @@ red_sol_neighbor_t1_no_guaranteed_colony = {
 		size = 27
 		has_ring = no
 	}
-
 	planet = {
 		name = "NAME_Proxima_Centauri"
 		count = 1
@@ -1691,7 +1951,6 @@ red_sol_neighbor_t1_no_guaranteed_colony = {
 		orbit_angle = 130
 		size = 15
 		has_ring = no
-
 		planet = {
 			name = "NAME_Proxima_Centauri_b"
 			class = pc_frozen
@@ -1708,7 +1967,6 @@ red_sol_neighbor_t1_no_guaranteed_colony = {
 				}
 			}
 		}
-
 		planet = {
 			name = "NAME_Proxima_Centauri_c"
 			class = pc_gas_giant
@@ -1716,45 +1974,52 @@ red_sol_neighbor_t1_no_guaranteed_colony = {
 			orbit_distance = 25
 		}
 	}
-
 	change_orbit = -220
-
 	planet = {
 		count = 2
 		orbit_distance = 25
-
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			orbit_distance = 5
 		}
 	}
-
 	planet = {
 		count = 1
 		orbit_distance = 30
-		orbit_angle = { min = 90 max = 270 }
-		size = { min = 12 max = 18 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = 12
+			max = 18
+		}
 	}
-
 	planet = {
 		count = 3
 		orbit_distance = 25
-
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			orbit_distance = 5
 		}
 	}
-
 	neighbor_system = {
-		hyperlane_jumps = { min = 1 max = @jumps }
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "sol_neighbor_t2"
 	}
 }
+
 red_sol_neighbor_t2 = {
 	name = "NAME_Procyon"
 	class = sc_binary_8
@@ -1762,11 +2027,11 @@ red_sol_neighbor_t2 = {
 		type = rocky_asteroid_belt
 		radius = 120
 	}
-
 	init_effect = {
-		every_neighbor_system = { set_star_flag = empire_cluster }
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+		}
 	}
-
 	planet = {
 		name = "NAME_Procyon_A"
 		count = 1
@@ -1776,7 +2041,6 @@ red_sol_neighbor_t2 = {
 		size = 35
 		has_ring = no
 	}
-
 	planet = {
 		name = "NAME_Procyon_B"
 		count = 1
@@ -1786,41 +2050,48 @@ red_sol_neighbor_t2 = {
 		size = 20
 		has_ring = no
 	}
-
 	planet = {
 		count = 1
 		orbit_distance = 65
 	}
-
 	change_orbit = 25
-
 	planet = {
-		count = { min = 1 max = 3 }
+		count = {
+			min = 1
+			max = 3
+		}
 		class = pc_asteroid
 		orbit_distance = 0
-		orbit_angle = { min = 0 max = 360 }
+		orbit_angle = {
+			min = 0
+			max = 360
+		}
 	}
-
 	planet = {
-		count = { min = 2 max = 5 }
+		count = {
+			min = 2
+			max = 5
+		}
 		orbit_distance = 25
-
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			orbit_distance = 5
 		}
 	}
 }
+
 red_sol_neighbor_t2_no_guaranteed_colony = {
 	name = "NAME_Sirius"
 	class = sc_binary_9
-
 	init_effect = {
-		every_neighbor_system = { set_star_flag = empire_cluster }
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+		}
 	}
-
 	planet = {
 		name = "NAME_Sirius_A"
 		count = 1
@@ -1830,7 +2101,6 @@ red_sol_neighbor_t2_no_guaranteed_colony = {
 		size = 35
 		has_ring = no
 	}
-
 	planet = {
 		name = "NAME_Sirius_B"
 		count = 1
@@ -1840,49 +2110,70 @@ red_sol_neighbor_t2_no_guaranteed_colony = {
 		size = 15
 		has_ring = no
 	}
-
 	change_orbit = 45
-
 	planet = {
 		count = 2
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		orbit_distance = 20
 	}
-
 	planet = {
 		count = 1
 		orbit_distance = 25
-		orbit_angle = { min = 90 max = 270 }
-		size = { min = 14 max = 24 }
-
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = 14
+			max = 24
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-
 	planet = {
 		count = 2
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		orbit_distance = 20
-
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-
 	planet = {
-		count = { min = 0 max = 2 }
-		orbit_angle = { min = 90 max = 270 }
+		count = {
+			min = 0
+			max = 2
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		orbit_distance = 20
 	}
 }
@@ -1891,8 +2182,9 @@ red_sol_neighbor_t2_no_guaranteed_colony = {
 originsextended_magnetica_system = {
 	class = sc_pulsar
 	usage = origin
-	flags = { empire_home_system }
-
+	flags = {
+		empire_home_system
+	}
 	init_effect = {
 		every_neighbor_system = {
 			set_star_flag = empire_cluster
@@ -1902,68 +2194,75 @@ originsextended_magnetica_system = {
 		}
 		generate_home_system_resources = no
 	}
-	
-    planet = {
-        count = 1
-        class = star
-        orbit_distance = 0
-      	orbit_angle = 0
-        size = { min = 25 max = 35 }
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 0
+		size = {
+			min = 25
+			max = 35
+		}
 		has_ring = no
-		flags = { ignore_startup_effect }
-		
+		flags = {
+			ignore_startup_effect
+		}
 		init_effect = {
 			set_deposit = d_energy_10
 		}
-
 		#satellite_naming_policy = upper_case_roman_numerals
-        #change_orbit = 30
-
-        planet = {
-			orbit_angle = { min = 90 max = 270 }
+		#change_orbit = 30
+		planet = {
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			class = pc_shattered
 			orbit_distance = 75
-			flags = { ignore_startup_effect }
+			flags = {
+				ignore_startup_effect
+			}
 			#satellite_naming_policy = lower_case_latin_letters			# whatever the hell this does??
-
 			init_effect = {
 				set_deposit = d_minerals_6
 			}
-
 			change_orbit = @base_moon_distance
-
 			moon = {
 				#count = { min = 0 max = 1 }							# always want it here
 				class = pc_broken
-				orbit_angle = { min = 90 max = 270 }
+				orbit_angle = {
+					min = 90
+					max = 270
+				}
 				orbit_distance = 5
-				flags = { ignore_startup_effect }
-
+				flags = {
+					ignore_startup_effect
+				}
 				init_effect = {
 					set_deposit = d_minerals_3
 				}
-
 			}
 		}
-
 		planet = {
 			count = 1
 			orbit_distance = 35
 			home_planet = yes
 			class = ideal_planet_class
-			orbit_angle = { min = 90 max = 270 }
-			size = { min = 16 max = 20 }
-			
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
+			size = {
+				min = 16
+				max = 20
+			}
 			#deposit_blockers = none									# added by start_of_game_effects later on
 			#modifiers = none											# may come back to add modifiers, idk
-			
 			init_effect = {
-				generate_empire_home_planet = yes			
+				generate_empire_home_planet = yes
 				prevent_anomaly = yes
 			}
-			
 			change_orbit = @base_moon_distance
-	
 			#moon = {													# empty system, no moon
 			#	count = { min = 0 max = 1 }
 			#	class = random_non_colonizable
@@ -1971,20 +2270,21 @@ originsextended_magnetica_system = {
 			#	orbit_distance = 5
 			#}
 		}
-
 		planet = {
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			class = pc_barren_cold
 			orbit_distance = 25
 			#satellite_naming_policy = lower_case_latin_letters
-			flags = { ignore_startup_effect }
-
+			flags = {
+				ignore_startup_effect
+			}
 			init_effect = {
 				save_global_event_target_as = starless_barrencold
 			}
-
 			change_orbit = @base_moon_distance
-
 			#moon = {
 			#	count = { min = 0 max = 1 }
 			#	class = random_non_colonizable
@@ -1993,7 +2293,6 @@ originsextended_magnetica_system = {
 			#}
 		}
 	}
-
 	#neighbor_system = {
 	#	trigger = { num_guaranteed_colonies >= 2 }
 	#	hyperlane_jumps = { min = 1 max = @jumps }
@@ -2004,15 +2303,16 @@ originsextended_magnetica_system = {
 	#	hyperlane_jumps = { min = 1 max = @jumps }
 	#	initializer = "neighbor_t1_first_colony"
 	#}
-
 }
 
 # Three Body Problem System 1: Basic
 originsextended_three_system = {
 	class = "rl_binary_starting_stars"
 	usage = origin
-	flags = { empire_home_system originsextended_three_system_1_flag }
-
+	flags = {
+		empire_home_system
+		originsextended_three_system_1_flag
+	}
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 120
@@ -2021,7 +2321,6 @@ originsextended_three_system = {
 		type = rocky_asteroid_belt
 		radius = 200
 	}
-
 	init_effect = {
 		every_neighbor_system = {
 			set_star_flag = empire_cluster
@@ -2031,43 +2330,48 @@ originsextended_three_system = {
 		}
 		generate_home_system_resources = yes
 	}
-
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 50
 		orbit_angle = 0
-		size = { min = 30 max = 35 }
+		size = {
+			min = 30
+			max = 35
+		}
 		has_ring = no
 	}
-
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 25
-		size = { min = 15 max = 25 }
+		size = {
+			min = 15
+			max = 25
+		}
 		has_ring = no
 	}
-
 	change_orbit = 35
-
 	planet = {
 		count = 1
 		orbit_distance = 25
 		home_planet = yes
 		class = ideal_planet_class
-		orbit_angle = { min = 90 max = 270 }
-		size = { min = @homeworld_min_size max = @homeworld_max_size }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = @homeworld_min_size
+			max = @homeworld_max_size
+		}
 		deposit_blockers = none
 		modifiers = none
-
 		init_effect = {
 			generate_empire_home_planet = yes
 			prevent_anomaly = yes
 		}
-
 		change_orbit = @base_moon_distance
-
 		# moon = {
 		# 	count = { min = 0 max = 1 }
 		# 	class = random_non_colonizable
@@ -2075,7 +2379,6 @@ originsextended_three_system = {
 		# 	orbit_distance = 5
 		# }
 	}
-
 	# neighbor_system = {
 	# 	trigger = { num_guaranteed_colonies >= 2 }
 	# 	hyperlane_jumps = { min = 1 max = @jumps }
@@ -2093,8 +2396,10 @@ originsextended_three_system_centurai = {
 	name = "NAME_Alpha_Centauri"
 	class = sc_trinary_1
 	usage = custom_empire
-	flags = { empire_home_system originsextended_three_system_1_flag }
-
+	flags = {
+		empire_home_system
+		originsextended_three_system_1_flag
+	}
 	init_effect = {
 		every_neighbor_system = {
 			set_star_flag = empire_cluster
@@ -2104,7 +2409,6 @@ originsextended_three_system_centurai = {
 		}
 		generate_home_system_resources = yes
 	}
-
 	planet = {
 		name = "NAME_Alpha_Centauri_A"
 		count = 1
@@ -2114,7 +2418,6 @@ originsextended_three_system_centurai = {
 		size = 32
 		has_ring = no
 	}
-
 	planet = {
 		name = "NAME_Alpha_Centauri_B"
 		count = 1
@@ -2124,7 +2427,6 @@ originsextended_three_system_centurai = {
 		size = 27
 		has_ring = no
 	}
-
 	planet = {
 		name = "NAME_Proxima_Centauri"
 		count = 1
@@ -2133,7 +2435,6 @@ originsextended_three_system_centurai = {
 		orbit_angle = 130
 		size = 15
 		has_ring = no
-
 		planet = {
 			name = "NAME_Proxima_Centauri_b"
 			class = pc_frozen
@@ -2150,7 +2451,6 @@ originsextended_three_system_centurai = {
 				}
 			}
 		}
-
 		planet = {
 			name = "NAME_Proxima_Centauri_c"
 			class = pc_gas_giant
@@ -2158,67 +2458,81 @@ originsextended_three_system_centurai = {
 			orbit_distance = 25
 		}
 	}
-
 	change_orbit = -220
-
 	planet = {
 		count = 2
 		orbit_distance = 25
-
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			orbit_distance = 5
 		}
 	}
-
 	planet = {
 		count = 1
 		orbit_distance = 30
-		orbit_angle = { min = 90 max = 270 }
-		size = { min = 12 max = 18 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = 12
+			max = 18
+		}
 	}
-
 	planet = {
 		count = 1
 		orbit_distance = 20
 		home_planet = yes
 		class = ideal_planet_class
-		orbit_angle = { min = 90 max = 270 }
-		size = { min = 16 max = 20 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = 16
+			max = 20
+		}
 		deposit_blockers = none
 		modifiers = none
-		
 		init_effect = {
-			generate_empire_home_planet = yes			
+			generate_empire_home_planet = yes
 			prevent_anomaly = yes
 		}
-		
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-
 	planet = {
 		count = 2
 		orbit_distance = 25
-
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			orbit_distance = 5
 		}
 	}
-
 	neighbor_system = {
-		hyperlane_jumps = { min = 1 max = @jumps }
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "sol_neighbor_t1"
 	}
 	# neighbor_system = {
@@ -2232,11 +2546,17 @@ originsextended_three_system_centurai = {
 	# 	initializer = "sol_neighbor_t1_no_guaranteed_colony"
 	# }
 	neighbor_system = {
-		hyperlane_jumps = { min = 1 max = @jumps }
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "sol_neighbor_t2"
 	}
 	neighbor_system = {
-		hyperlane_jumps = { min = 2 max = 5 }
+		hyperlane_jumps = {
+			min = 2
+			max = 5
+		}
 		initializer = "originsextended_three_system_sol"
 	}
 }
@@ -2253,9 +2573,11 @@ originsextended_three_system_sol = {
 		type = icy_asteroid_belt
 		radius = 290
 	}
-
-	flags = { primitive_sol sol originsextended_three_system_sol_system_flag }
-
+	flags = {
+		primitive_sol
+		sol
+		originsextended_three_system_sol_system_flag
+	}
 	planet = {
 		name = "NAME_Sol"
 		class = "pc_g_star"
@@ -2264,7 +2586,6 @@ originsextended_three_system_sol = {
 		size = 30
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_molten"
 		orbit_distance = 40
@@ -2272,7 +2593,6 @@ originsextended_three_system_sol = {
 		size = 10
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_toxic"
 		orbit_distance = 25
@@ -2280,7 +2600,6 @@ originsextended_three_system_sol = {
 		size = 20
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_continental"
 		orbit_distance = 25
@@ -2290,8 +2609,10 @@ originsextended_three_system_sol = {
 		entity = "continental_planet_earth_entity"
 		deposit_blockers = none
 		modifiers = none
-		flags = { planet_earth originsextended_three_system_sol_earth_flag }
-
+		flags = {
+			planet_earth
+			originsextended_three_system_sol_earth_flag
+		}
 		init_effect = {
 			create_species = {
 				name = Human
@@ -2318,17 +2639,17 @@ originsextended_three_system_sol = {
 					ethic = "ethic_xenophile"
 					ethic = "ethic_fanatic_egalitarian"
 				}
-				origin = "origin_enlightened" # Should only be visible if they become spacefaring
+				origin = "origin_enlightened"				# Should only be visible if they become spacefaring
 				flag = {
 					icon = {
 						category = "human"
 						file = "flag_human_9.dds"
 					}
-					background= {
+					background = {
 						category = "backgrounds"
 						file = "circle.dds"
 					}
-					colors={
+					colors = {
 						"dark_blue"
 						"green"
 						"null"
@@ -2344,9 +2665,7 @@ originsextended_three_system_sol = {
 				set_primitive_age = early_space_age
 			}
 			set_owner = last_created_country
-
 			create_primitive_blockers = yes
-
 			create_army = {
 				name = "NAME_US_Armed_Forces_West"
 				owner = last_created_country
@@ -2400,12 +2719,12 @@ originsextended_three_system_sol = {
 			add_building = building_primitive_power_plant
 			add_building = building_primitive_capital
 			add_building = building_urban_dwellings
-
 			last_created_country = {
-				capital_scope = { set_name = "NAME_Sol_III" }
+				capital_scope = {
+					set_name = "NAME_Sol_III"
+				}
 			}
 		}
-
 		moon = {
 			class = "pc_barren_cold"
 			size = 5
@@ -2415,7 +2734,6 @@ originsextended_three_system_sol = {
 			entity = "cold_barren_planet_luna_entity"
 		}
 	}
-
 	planet = {
 		class = "pc_barren"
 		orbit_distance = 25
@@ -2430,7 +2748,6 @@ originsextended_three_system_sol = {
 			}
 		}
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 30
@@ -2438,7 +2755,6 @@ originsextended_three_system_sol = {
 		size = 5
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
@@ -2446,7 +2762,6 @@ originsextended_three_system_sol = {
 		size = 5
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
@@ -2454,7 +2769,6 @@ originsextended_three_system_sol = {
 		size = 5
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
@@ -2462,7 +2776,6 @@ originsextended_three_system_sol = {
 		size = 5
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_gas_giant"
 		orbit_distance = 40
@@ -2471,7 +2784,6 @@ originsextended_three_system_sol = {
 		has_ring = no
 		entity = "gas_giant_jupiter_entity"
 		change_orbit = 6
-
 		moon = {
 			class = "pc_molten"
 			size = 6
@@ -2501,7 +2813,6 @@ originsextended_three_system_sol = {
 			has_ring = no
 		}
 	}
-
 	planet = {
 		class = "pc_gas_giant"
 		orbit_distance = 25
@@ -2510,7 +2821,6 @@ originsextended_three_system_sol = {
 		has_ring = yes
 		entity = "gas_giant_05_entity"
 		change_orbit = 7
-
 		moon = {
 			class = "pc_frozen"
 			size = 8
@@ -2519,7 +2829,6 @@ originsextended_three_system_sol = {
 			has_ring = no
 		}
 	}
-
 	planet = {
 		class = "pc_gas_giant"
 		orbit_distance = 25
@@ -2528,7 +2837,6 @@ originsextended_three_system_sol = {
 		has_ring = no
 		entity = "gas_giant_03_entity"
 	}
-
 	planet = {
 		class = "pc_gas_giant"
 		orbit_distance = 25
@@ -2537,7 +2845,6 @@ originsextended_three_system_sol = {
 		has_ring = no
 		entity = "gas_giant_02_entity"
 		change_orbit = 4
-
 		moon = {
 			class = "pc_frozen"
 			size = 6
@@ -2546,7 +2853,6 @@ originsextended_three_system_sol = {
 			has_ring = no
 		}
 	}
-
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 30
@@ -2554,7 +2860,6 @@ originsextended_three_system_sol = {
 		size = 5
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_ice_asteroid"
 		orbit_distance = 0
@@ -2562,7 +2867,6 @@ originsextended_three_system_sol = {
 		size = 5
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_ice_asteroid"
 		orbit_distance = 0
@@ -2570,7 +2874,6 @@ originsextended_three_system_sol = {
 		size = 5
 		has_ring = no
 	}
-
 	planet = {
 		class = "pc_ice_asteroid"
 		orbit_distance = 0
@@ -2587,11 +2890,10 @@ originsextended_relatives_system_1 = {
 		type = rocky_asteroid_belt
 		radius = 85
 	}
-
 	usage = origin
-
-	flags = { empire_home_system }
-
+	flags = {
+		empire_home_system
+	}
 	init_effect = {
 		every_neighbor_system = {
 			set_star_flag = empire_cluster
@@ -2599,149 +2901,193 @@ originsextended_relatives_system_1 = {
 				set_star_flag = empire_cluster
 			}
 		}
-
 		generate_home_system_resources = yes
 	}
-
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = 20 max = 30 }
+		size = {
+			min = 20
+			max = 30
+		}
 		has_ring = no
 	}
-
 	change_orbit = 40
-
 	planet = {
 		count = 1
 		orbit_distance = 20
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-
 	change_orbit = 25
-
 	planet = {
-		count = { min = 1 max = 2 }
+		count = {
+			min = 1
+			max = 2
+		}
 		class = pc_asteroid
 		orbit_distance = 0
-		orbit_angle = { min = 120 max = 300 }
+		orbit_angle = {
+			min = 120
+			max = 300
+		}
 	}
-
 	planet = {
 		count = 1
 		orbit_distance = 25
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-
 	planet = {
 		count = 1
 		orbit_distance = 25
 		class = pc_gas_giant
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		size = 25
-
 		change_orbit = @base_moon_distance
-
 		moon = {
 			count = 1
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 4
 		}
-
 		moon = {
 			count = 1
 			home_planet = yes
 			class = ideal_planet_class
 			orbit_distance = 10
-			orbit_angle = { min = 90 max = 270 }
-			size = { min = @homeworld_min_size max = @homeworld_max_size }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
+			size = {
+				min = @homeworld_min_size
+				max = @homeworld_max_size
+			}
 			deposit_blockers = none
 			modifiers = none
-
 			init_effect = {
 				generate_empire_home_planet = yes
 				prevent_anomaly = yes
 			}
-
-			flags = { originsextended_relatives_main_0 }
-
+			flags = {
+				originsextended_relatives_main_0
+			}
 		}
 	}
-
 	planet = {
 		count = 1
 		orbit_distance = 25
 		class = pc_relic
-		orbit_angle = { min = 90 max = 270 }
-
-		flags = { originsextended_relatives_relic_world }
-
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		flags = {
+			originsextended_relatives_relic_world
+		}
 	}
-
 	planet = {
-		count = { min = 1 max = 2 }
+		count = {
+			min = 1
+			max = 2
+		}
 		orbit_distance = 25
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-
 	planet = {
-		count = { min = 1 max = 2 }
+		count = {
+			min = 1
+			max = 2
+		}
 		orbit_distance = 20
 		class = pc_gas_giant
-		orbit_angle = { min = 90 max = 270 }
-
-		change_orbit = @base_moon_distance
-
-		moon = {
-			count = 1
-			class = rl_habitable_normal
-			orbit_angle = { min = 90 max = 270 }
-			orbit_distance = 5
-			
-			flags = { originsextended_relatives_primitives_1 }
-		
+		orbit_angle = {
+			min = 90
+			max = 270
 		}
-
+		change_orbit = @base_moon_distance
 		moon = {
 			count = 1
 			class = rl_habitable_normal
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
-			
-			flags = { originsextended_relatives_primitives_2 }
-		
+			flags = {
+				originsextended_relatives_primitives_1
+			}
+		}
+		moon = {
+			count = 1
+			class = rl_habitable_normal
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
+			orbit_distance = 5
+			flags = {
+				originsextended_relatives_primitives_2
+			}
 		}
 	}
-
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		orbit_distance = 20
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-
 	# neighbor_system = {
 	# 	trigger = { num_guaranteed_colonies >= 2 }
 	# 	hyperlane_jumps = { min = 1 max = @jumps }
@@ -2753,17 +3099,17 @@ originsextended_relatives_system_1 = {
 	# 	initializer = "neighbor_t1_first_colony"
 	# }
 }
+
 originsextended_relatives_system_2 = {
 	class = "rl_binary_starting_stars"
 	# asteroid_belt = {
 	# 	type = rocky_asteroid_belt
 	# 	radius = 85
 	# }
-
 	usage = origin
-
-	flags = { empire_home_system }
-
+	flags = {
+		empire_home_system
+	}
 	init_effect = {
 		every_neighbor_system = {
 			set_star_flag = empire_cluster
@@ -2771,157 +3117,203 @@ originsextended_relatives_system_2 = {
 				set_star_flag = empire_cluster
 			}
 		}
-
 		generate_home_system_resources = yes
 	}
-
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 25
 		orbit_angle = 0
-		size = { min = 30 max = 35 }
+		size = {
+			min = 30
+			max = 35
+		}
 		has_ring = no
 	}
-
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
-		size = { min = 15 max = 25 }
+		size = {
+			min = 15
+			max = 25
+		}
 		has_ring = no
 	}
-
 	change_orbit = 40
-
 	planet = {
 		count = 1
 		orbit_distance = 20
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-
 	change_orbit = 25
-
 	planet = {
-		count = { min = 1 max = 2 }
+		count = {
+			min = 1
+			max = 2
+		}
 		class = pc_asteroid
 		orbit_distance = 0
-		orbit_angle = { min = 120 max = 300 }
+		orbit_angle = {
+			min = 120
+			max = 300
+		}
 	}
-
 	planet = {
 		count = 1
 		orbit_distance = 25
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-
 	planet = {
 		count = 1
 		orbit_distance = 25
 		class = pc_gas_giant
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		size = 25
-
 		change_orbit = @base_moon_distance
-
 		moon = {
 			count = 1
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 4
 		}
-
 		moon = {
 			count = 1
 			home_planet = yes
 			class = ideal_planet_class
 			orbit_distance = 10
-			orbit_angle = { min = 90 max = 270 }
-			size = { min = @homeworld_min_size max = @homeworld_max_size }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
+			size = {
+				min = @homeworld_min_size
+				max = @homeworld_max_size
+			}
 			deposit_blockers = none
 			modifiers = none
-
 			init_effect = {
 				generate_empire_home_planet = yes
 				prevent_anomaly = yes
 			}
-
-			flags = { originsextended_relatives_main_0 }
-
+			flags = {
+				originsextended_relatives_main_0
+			}
 		}
 	}
-
 	planet = {
 		count = 1
 		orbit_distance = 25
 		class = pc_relic
-		orbit_angle = { min = 90 max = 270 }
-
-		flags = { originsextended_relatives_relic_world }
-
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		flags = {
+			originsextended_relatives_relic_world
+		}
 	}
-
 	planet = {
-		count = { min = 1 max = 2 }
+		count = {
+			min = 1
+			max = 2
+		}
 		orbit_distance = 25
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-
 	planet = {
-		count = { min = 1 max = 2 }
+		count = {
+			min = 1
+			max = 2
+		}
 		orbit_distance = 20
 		class = pc_gas_giant
-		orbit_angle = { min = 90 max = 270 }
-
-		change_orbit = @base_moon_distance
-
-		moon = {
-			count = 1
-			class = rl_habitable_normal
-			orbit_angle = { min = 90 max = 270 }
-			orbit_distance = 5
-			
-			flags = { originsextended_relatives_primitives_1 }
-		
+		orbit_angle = {
+			min = 90
+			max = 270
 		}
-
+		change_orbit = @base_moon_distance
 		moon = {
 			count = 1
 			class = rl_habitable_normal
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
-			
-			flags = { originsextended_relatives_primitives_2 }
-		
+			flags = {
+				originsextended_relatives_primitives_1
+			}
+		}
+		moon = {
+			count = 1
+			class = rl_habitable_normal
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
+			orbit_distance = 5
+			flags = {
+				originsextended_relatives_primitives_2
+			}
 		}
 	}
-
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		orbit_distance = 20
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-
 	# neighbor_system = {
 	# 	trigger = { num_guaranteed_colonies >= 2 }
 	# 	hyperlane_jumps = { min = 1 max = @jumps }
@@ -2933,17 +3325,17 @@ originsextended_relatives_system_2 = {
 	# 	initializer = "neighbor_t1_first_colony"
 	# }
 }
+
 originsextended_relatives_system_3 = {
 	class = "rl_trinary_stars"
 	# asteroid_belt = {
 	# 	type = rocky_asteroid_belt
 	# 	radius = 85
 	# }
-
 	usage = origin
-
-	flags = { empire_home_system }
-
+	flags = {
+		empire_home_system
+	}
 	init_effect = {
 		every_neighbor_system = {
 			set_star_flag = empire_cluster
@@ -2951,178 +3343,235 @@ originsextended_relatives_system_3 = {
 				set_star_flag = empire_cluster
 			}
 		}
-
 		generate_home_system_resources = yes
 	}
-
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 0
-		size = { min = 30 max = 35 }
+		size = {
+			min = 30
+			max = 35
+		}
 		has_ring = no
 	}
-
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 230
-		orbit_angle = { min = 90 max = 270 }
-		size = { min = 20 max = 30 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = 20
+			max = 30
+		}
 		has_ring = no
 		satellite_naming_policy = upper_case_roman_numerals
-
 		change_orbit = 30
-
 		planet = {
-			count = { min = 2 max = 3 }
-			orbit_angle = { min = 90 max = 270 }
+			count = {
+				min = 2
+				max = 3
+			}
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			class = random_non_colonizable
 			orbit_distance = 25
 			satellite_naming_policy = lower_case_latin_letters
-
 			change_orbit = @base_moon_distance
-
 			moon = {
-				count = { min = 0 max = 1 }
+				count = {
+					min = 0
+					max = 1
+				}
 				class = random_non_colonizable
-				orbit_angle = { min = 90 max = 270 }
+				orbit_angle = {
+					min = 90
+					max = 270
+				}
 				orbit_distance = 5
 			}
 		}
 	}
-
 	change_orbit = 40
-
 	planet = {
 		count = 1
 		orbit_distance = 20
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-
 	change_orbit = 25
-
 	planet = {
-		count = { min = 1 max = 2 }
+		count = {
+			min = 1
+			max = 2
+		}
 		class = pc_asteroid
 		orbit_distance = 0
-		orbit_angle = { min = 120 max = 300 }
+		orbit_angle = {
+			min = 120
+			max = 300
+		}
 	}
-
 	planet = {
 		count = 1
 		orbit_distance = 25
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-
 	planet = {
 		count = 1
 		orbit_distance = 25
 		class = pc_gas_giant
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		size = 25
-
 		change_orbit = @base_moon_distance
-
 		moon = {
 			count = 1
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 4
 		}
-
 		moon = {
 			count = 1
 			home_planet = yes
 			class = ideal_planet_class
 			orbit_distance = 10
-			orbit_angle = { min = 90 max = 270 }
-			size = { min = @homeworld_min_size max = @homeworld_max_size }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
+			size = {
+				min = @homeworld_min_size
+				max = @homeworld_max_size
+			}
 			deposit_blockers = none
 			modifiers = none
-
 			init_effect = {
 				generate_empire_home_planet = yes
 				prevent_anomaly = yes
 			}
-
-			flags = { originsextended_relatives_main_0 }
-
+			flags = {
+				originsextended_relatives_main_0
+			}
 		}
 	}
-
 	planet = {
 		count = 1
 		orbit_distance = 25
 		class = pc_relic
-		orbit_angle = { min = 90 max = 270 }
-
-		flags = { originsextended_relatives_relic_world }
-
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		flags = {
+			originsextended_relatives_relic_world
+		}
 	}
-
 	planet = {
-		count = { min = 1 max = 2 }
+		count = {
+			min = 1
+			max = 2
+		}
 		orbit_distance = 25
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-
 	planet = {
-		count = { min = 1 max = 2 }
+		count = {
+			min = 1
+			max = 2
+		}
 		orbit_distance = 20
 		class = pc_gas_giant
-		orbit_angle = { min = 90 max = 270 }
-
-		change_orbit = @base_moon_distance
-
-		moon = {
-			count = 1
-			class = rl_habitable_normal
-			orbit_angle = { min = 90 max = 270 }
-			orbit_distance = 5
-			
-			flags = { originsextended_relatives_primitives_1 }
-		
+		orbit_angle = {
+			min = 90
+			max = 270
 		}
-
+		change_orbit = @base_moon_distance
 		moon = {
 			count = 1
 			class = rl_habitable_normal
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
-			
-			flags = { originsextended_relatives_primitives_2 }
-		
+			flags = {
+				originsextended_relatives_primitives_1
+			}
+		}
+		moon = {
+			count = 1
+			class = rl_habitable_normal
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
+			orbit_distance = 5
+			flags = {
+				originsextended_relatives_primitives_2
+			}
 		}
 	}
-
 	planet = {
-		count = { min = 0 max = 1 }
+		count = {
+			min = 0
+			max = 1
+		}
 		orbit_distance = 20
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-
 	# neighbor_system = {
 	# 	trigger = { num_guaranteed_colonies >= 2 }
 	# 	hyperlane_jumps = { min = 1 max = @jumps }
@@ -3138,9 +3587,10 @@ originsextended_relatives_system_3 = {
 # The Graveyard system
 originsextended_graveyard_system = {
 	class = "sc_t"
-	flags = { empire_home_system } # ruined_dyson_system
+	flags = {
+		empire_home_system
+	}	# ruined_dyson_system
 	usage = origin
-
 	init_effect = {
 		every_neighbor_system = {
 			set_star_flag = empire_cluster
@@ -3148,20 +3598,20 @@ originsextended_graveyard_system = {
 				set_star_flag = empire_cluster
 			}
 		}
-		generate_home_system_resources = no							# not sure on what this does?
+		generate_home_system_resources = no		# not sure on what this does?
 	}
-
 	#max_instances = 1
 	#scaled_spawn_chance = 2
-
 	planet = {
 		class = star
 		orbit_distance = 0
-
 		init_effect = {
 			create_ambient_object = {
 				type = "large_debris_object"
-				entity_offset_height = { min = -0 max = -20 }
+				entity_offset_height = {
+					min = 0
+					max = -20
+				}
 				location = this
 			}
 			last_created_ambient_object = {
@@ -3173,7 +3623,10 @@ originsextended_graveyard_system = {
 			}
 			create_ambient_object = {
 				type = "large_debris_object"
-				entity_offset_height = { min = -0 max = -20 }
+				entity_offset_height = {
+					min = 0
+					max = -20
+				}
 				location = this
 			}
 			last_created_ambient_object = {
@@ -3185,7 +3638,10 @@ originsextended_graveyard_system = {
 			}
 			create_ambient_object = {
 				type = "large_debris_object"
-				entity_offset_height = { min = -0 max = -20 }
+				entity_offset_height = {
+					min = 0
+					max = -20
+				}
 				location = this
 			}
 			last_created_ambient_object = {
@@ -3197,7 +3653,10 @@ originsextended_graveyard_system = {
 			}
 			create_ambient_object = {
 				type = "medium_debris_01_object"
-				entity_offset_height = { min = -0 max = -20 }
+				entity_offset_height = {
+					min = 0
+					max = -20
+				}
 				location = this
 			}
 			last_created_ambient_object = {
@@ -3209,7 +3668,10 @@ originsextended_graveyard_system = {
 			}
 			create_ambient_object = {
 				type = "medium_debris_02_object"
-				entity_offset_height = { min = -0 max = -20 }
+				entity_offset_height = {
+					min = 0
+					max = -20
+				}
 				location = this
 			}
 			last_created_ambient_object = {
@@ -3221,7 +3683,10 @@ originsextended_graveyard_system = {
 			}
 			create_ambient_object = {
 				type = "medium_debris_01_object"
-				entity_offset_height = { min = -0 max = -20 }
+				entity_offset_height = {
+					min = 0
+					max = -20
+				}
 				location = this
 			}
 			last_created_ambient_object = {
@@ -3233,7 +3698,10 @@ originsextended_graveyard_system = {
 			}
 			create_ambient_object = {
 				type = "medium_debris_02_object"
-				entity_offset_height = { min = -0 max = -20 }
+				entity_offset_height = {
+					min = 0
+					max = -20
+				}
 				location = this
 			}
 			last_created_ambient_object = {
@@ -3245,7 +3713,10 @@ originsextended_graveyard_system = {
 			}
 			create_ambient_object = {
 				type = "small_debris_object"
-				entity_offset_height = { min = -0 max = -20 }
+				entity_offset_height = {
+					min = 0
+					max = -20
+				}
 				location = this
 			}
 			last_created_ambient_object = {
@@ -3433,36 +3904,42 @@ originsextended_graveyard_system = {
 			}
 		}
 	}
-
 	change_orbit = 45
-
 	planet = {
 		class = rl_unhabitable_planets
-		count = { min = 1 max = 2 }
+		count = {
+			min = 1
+			max = 2
+		}
 		orbit_distance = 25
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-
 	planet = {
 		count = 1
 		orbit_distance = 35
 		home_planet = yes
 		class = ideal_planet_class
-		orbit_angle = { min = 90 max = 270 }
-		size = { min = 16 max = 20 }
-		
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = 16
+			max = 20
+		}
 		#deposit_blockers = none									# added by start_of_game_effects later on
 		#modifiers = none											# may come back to add modifiers, idk
-		
 		init_effect = {
-			generate_empire_home_planet = yes			
+			generate_empire_home_planet = yes
 			prevent_anomaly = yes
 		}
-		
-		flags = { originsextended_graveyard_main_0 }
-
+		flags = {
+			originsextended_graveyard_main_0
+		}
 		change_orbit = @base_moon_distance
-
 		#moon = {													# empty system, no moon
 		#	count = { min = 0 max = 1 }
 		#	class = random_non_colonizable
@@ -3470,17 +3947,22 @@ originsextended_graveyard_system = {
 		#	orbit_distance = 5
 		#}
 	}
-
 	planet = {
 		class = rl_unhabitable_planets
-		count = { min = 1 max = 2 }
+		count = {
+			min = 1
+			max = 2
+		}
 		orbit_distance = 25
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 	}
-
 	init_effect = {
-		spawn_megastructure = { type = "dyson_sphere_ruined" }
-
+		spawn_megastructure = {
+			type = "dyson_sphere_ruined"
+		}
 		create_ambient_object = {
 			type = "large_debris_object"
 			location = solar_system

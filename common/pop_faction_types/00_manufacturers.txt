@@ -1,29 +1,25 @@
 ##############################
 # Anthropocentricist Manufacturers Faction
 ##############################
-
 manufacturers = {
 	election_header = "GFX_faction_header_yellow"
 	guiding_ethic = ethic_anthropocentric
-	
 	unique = yes
 	support_multiplier = 1
-
 	resources = {
 		category = pop_factions
 		produces = {
 			unity = 0.5
 		}
-#		produces = {
-#				trigger = {
-#				owner = {
-#					has_policy_flag = bugged_federal_state
-#				}
-#			}
-#			minerals = 0.5
-#		}
+		#		produces = {
+		#				trigger = {
+		#				owner = {
+		#					has_policy_flag = bugged_federal_state
+		#				}
+		#			}
+		#			minerals = 0.5
+		#		}
 	}
-
 	is_potential = {
 		is_faction_allowed = yes
 		if = {
@@ -42,9 +38,8 @@ manufacturers = {
 					has_ethic = ethic_anthropocentric
 				}
 			}
-		}		
+		}
 	}
-
 	parameters = {
 		empire = {
 			type = country
@@ -53,92 +48,77 @@ manufacturers = {
 			}
 		}
 	}
-
 	can_join_pre_triggers = {
 		is_enslaved = no
 		is_being_purged = no
 	}
-
 	can_join_faction = {
 		is_shackled_robot = no
 		has_culture_shock = no
-		NOT = { has_trait = trait_nerve_stapled }
+		NOT = {
+			has_trait = trait_nerve_stapled
+		}
 		OR = {
 			has_ethic = ethic_anthropocentric
 			has_ethic = ethic_fanatic_anthropocentric
 		}
 	}
-	
 	attraction = {
 		base = 150
-		
 		modifier = {
 			factor = 1.25
 			exists = from
 			from = {
 				exists = leader
-				leader = { leader_class = ruler }
+				leader = {
+					leader_class = ruler
+				}
 			}
 		}
-		
 		modifier = {
 			factor = 0.75
 			exists = from
 			from = {
-				NOT = { exists = leader }
+				NOT = {
+					exists = leader
+				}
 			}
 		}
-		
-		
 	}
-	
 	leader = {
 		base = 100
 		modifier = {
-			factor = 0.0
+			factor = 0
 			is_event_leader = yes
-		}			
+		}
 	}
-
-	
-	
 	demand = {
 		title = "ECO_ASCENSION_1"
 		unfulfilled_title = "ECO_NO_ASCENSION_1"
 		desc = "ECO_ASCENSION_1_DESC"
-
 		fulfilled_effect = 10
-
 		potential = {
 			exists = owner
 			owner = {
 				years_passed > 20
 			}
 		}
-
 		trigger = {
 			owner = {
-			
-			     OR = {
+				OR = {
 					has_ascension_perk = ap_mastery_of_nature
-					}
-					
+				}
 			}
 		}
-	}	
-			
-
+	}
 	demand = {
 		title = "CONSUMER_MARKETS"
 		unfulfilled_title = "CONSUMER_MARKETS"
 		desc = "CONSUMER_MARKETS_DESC"
-
 		fulfilled_effect = 10
-
 		potential = {
-			exists = owner			
+			exists = owner
 		}
-
 		trigger = {
 			owner = {
 				OR = {
@@ -147,54 +127,43 @@ manufacturers = {
 			}
 		}
 	}
-	
-	
-
-	
-	
 	demand = {
 		title = "ANTHROPOCENTRIC_INFRASTRUCTURE"
 		unfulfilled_title = "NO_ANTHROPOCENTRIC_INFRASTRUCTURE"
 		desc = "ANTHROPOCENTRIC_INFRASTRUCTURE_DESC"
-		
 		unfulfilled_effect = -5
 		fulfilled_effect = 10
-		
 		potential = {
 			exists = owner
 			owner = {
 				OR = {
 					has_technology = tech_global_production_strategy
 				}
-			}			
+			}
 		}
-		
 		trigger = {
-			owner = { 
-			    any_owned_planet = {
-				            has_building = "building_system_capital"
-				            has_building = "building_ministry_production"
-					
+			owner = {
+				any_owned_planet = {
+					has_building = "building_system_capital"
+					has_building = "building_ministry_production"
 				}
+			}
 		}
-	}	
- }	
- 
- 	
-	
+	}
 	demand = {
 		title = "MINERALS_ACCUMULATION_1"
 		unfulfilled_title = "NO_MINERALS_ACCUMULATION_1"
 		desc = "MINERALS_ACCUMULATION_1_DESC"
-
 		fulfilled_effect = 10
 		unfulfilled_effect = -0.001
-
-		potential = { # TODO get a reasonable trigger for counting colonies?
+		potential = {
+			# TODO get a reasonable trigger for counting colonies?
 			exists = owner
 			owner = {
 				any_owned_planet = {
-					NOT = { is_same_value = root.capital_scope }
+					NOT = {
+						is_same_value = root.capital_scope
+					}
 					root = {
 						owner = {
 							any_owned_planet = {
@@ -208,81 +177,61 @@ manufacturers = {
 				}
 			}
 		}
-
 		trigger = {
-			owner = { resource_stockpile_compare = { resource = minerals value >= 10000 } }
+			owner = {
+				resource_stockpile_compare = {
+					resource = minerals
+					value >= 10000
+				}
+			}
 		}
-	}	
-	
-	
-
-	
+	}
 	demand = {
 		title = "OWN_RICH_WORLD"
 		unfulfilled_title = "NO_OWN_RICH_WORLD"
 		desc = "OWN_RICH_WORLD_DESC"
-
 		fulfilled_effect = 10
-
 		potential = {
 			exists = owner
 		}
-
 		trigger = {
 			owner = {
 				any_owned_planet = {
-				
-				 OR = {
-				       has_planet_modifier = "pm_mineral_rich"
-					   has_planet_modifier = "pm_ultra_rich"
-					   has_planet_modifier = "pm_chthonian_planet"
-				        }
-					
+					OR = {
+						has_planet_modifier = "pm_mineral_rich"
+						has_planet_modifier = "pm_ultra_rich"
+						has_planet_modifier = "pm_chthonian_planet"
+					}
 				}
 			}
 		}
-	}	
-	
+	}
 	demand = {
 		title = "OWN_ANCIENT_TECH"
 		unfulfilled_title = "NO_OWN_ANCIENT_TECH"
 		desc = "OWN_ANCIENT_TECH_DESC"
-
 		fulfilled_effect = 5
-
 		potential = {
 			exists = owner
 		}
-
 		trigger = {
 			owner = {
 				any_owned_planet = {
-				
-				 OR = {
-				       has_planet_modifier = "pm_ancient_automation"
-					   has_planet_modifier = "pm_ancient_factory"
-					   has_planet_modifier = "pm_ancient_forgeworld"
-					   has_planet_modifier = "pm_robot_workers"
-				        }
-					
+					OR = {
+						has_planet_modifier = "pm_ancient_automation"
+						has_planet_modifier = "pm_ancient_factory"
+						has_planet_modifier = "pm_ancient_forgeworld"
+						has_planet_modifier = "pm_robot_workers"
+					}
 				}
 			}
 		}
-	}	
-
-
-	
-	
-	
-	
-	
+	}
 	demand = {
 		title = "INDUSTRY_ASCENSION_1"
 		unfulfilled_title = "NO_INDUSTRY_ASCENSION_1"
 		desc = "INDUSTRY_ASCENSION_1_DESC"
-
 		fulfilled_effect = 10
-
 		potential = {
 			exists = owner
 			owner = {
@@ -290,25 +239,21 @@ manufacturers = {
 				has_technology = tech_mega_engineering
 			}
 		}
-
 		trigger = {
 			owner = {
-                OR = {
+				OR = {
 					has_ascension_perk = ap_galactic_wonders_utopia
 					has_ascension_perk = ap_galactic_wonders_megacorp
 					has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
-					}
+				}
 			}
 		}
-	}	
-	
+	}
 	demand = {
 		title = "INDUSTRY_ASCENSION_2"
 		unfulfilled_title = "NO_INDUSTRY_ASCENSION_2"
 		desc = "INDUSTRY_ASCENSION_2_DESC"
-
 		fulfilled_effect = 10
-
 		potential = {
 			exists = owner
 			owner = {
@@ -316,26 +261,17 @@ manufacturers = {
 				has_technology = tech_mega_engineering
 			}
 		}
-
 		trigger = {
 			owner = {
 				has_ascension_perk = ap_master_builders
 			}
 		}
-	}		
-	
-	
-
- 
-
-	
-
-
-	
-	on_create = {
-		pop_faction_event = { id = factions.1 }
 	}
-
+	on_create = {
+		pop_faction_event = {
+			id = factions.1
+		}
+	}
 	on_destroy = {
 		if = {
 			limit = {
@@ -350,48 +286,64 @@ manufacturers = {
 			remove_modifier = suppressed_anthropocentric
 		}
 	}
-	
 	actions = {
 		embrace_faction = {
 			title = "EMBRACE_FACTION"
 			description = "EMBRACE_FACTION_DESC"
-			
 			cost = {
 				influence = 500
 			}
-			
 			potential = {
 				exists = owner
 				owner = {
 					OR = {
 						is_subject = no
-						NOT = { any_agreement = { agreement_preset = preset_dominion } }
+						NOT = {
+							any_agreement = {
+								agreement_preset = preset_dominion
+							}
+						}
 					}
 				}
 			}
-			
 			valid = {
 				custom_tooltip = {
 					fail_text = EMBRACE_FACTION_COOLDOWN
 					parameter:empire = {
-						NOT = { has_modifier = embraced_faction_timer }
+						NOT = {
+							has_modifier = embraced_faction_timer
+						}
 					}
 				}
-				support > 0.20
+				support > 0.2
 				parameter:empire = {
-					NOT = { has_ethic = "ethic_fanatic_anthropocentric" }
+					NOT = {
+						has_ethic = "ethic_fanatic_anthropocentric"
+					}
 				}
 			}
-
 			effect = {
-				add_modifier = { modifier = embraced_faction days = 3600 }
+				add_modifier = {
+					modifier = embraced_faction
+					days = 3600
+				}
 				parameter:empire = {
 					shift_ethic = ethic_anthropocentric
 					hidden_effect = {
-						add_modifier = { modifier = embraced_faction_timer days = 3600 }
+						add_modifier = {
+							modifier = embraced_faction_timer
+							days = 3600
+						}
 						every_pop_faction = {
-							limit = { NOT = { is_same_value = root } }
-							add_modifier = { modifier = embraced_another_faction days = 3600 }
+							limit = {
+								NOT = {
+									is_same_value = root
+								}
+							}
+							add_modifier = {
+								modifier = embraced_another_faction
+								days = 3600
+							}
 						}
 					}
 				}
@@ -401,27 +353,28 @@ manufacturers = {
 						every_relation = {
 							limit = {
 								is_ai = no
-								is_country_type = default			
+								is_country_type = default
 								has_communications = prev
 							}
-							country_event = { id = factions.2000 }
+							country_event = {
+								id = factions.2000
+							}
 						}
-					}				
-				}				
+					}
+				}
 			}
-			
 			ai_weight = {
 				base = 1
 				modifier = {
 					factor = 0
-					support < 0.50
+					support < 0.5
 					owner = {
 						has_ethic = ethic_anthropocentric
 					}
 				}
 				modifier = {
 					factor = 0
-					NOT = { 
+					NOT = {
 						owner = {
 							exists = ruler
 							ruler = {
@@ -435,31 +388,31 @@ manufacturers = {
 					owner = {
 						count_pop_faction = {
 							count < 4
-						}					
+						}
 					}
-				}				
+				}
 			}
 		}
 		promote_faction = {
 			title = "PROMOTE_FACTION"
 			description = "PROMOTE_FACTION_DESC"
-			
 			potential = {
 				exists = owner
-				parameter:empire = { 
-					NOR = { 
+				parameter:empire = {
+					NOR = {
 						has_modifier = suppressed_anthropocentric
-						has_modifier = promoted_anthropocentric 
-					}				
+						has_modifier = promoted_anthropocentric
+					}
 				}
 			}
-
 			effect = {
 				parameter:empire = {
-					add_modifier = { modifier = promoted_anthropocentric days = -1 }
+					add_modifier = {
+						modifier = promoted_anthropocentric
+						days = -1
+					}
 				}
 			}
-			
 			ai_weight = {
 				base = 0
 			}
@@ -467,45 +420,45 @@ manufacturers = {
 		cancel_promote_faction = {
 			title = "CANCEL_PROMOTE_FACTION"
 			description = "CANCEL_PROMOTE_FACTION_DESC"
-			
 			potential = {
 				exists = owner
-				parameter:empire = { 
+				parameter:empire = {
 					has_modifier = promoted_anthropocentric
 				}
 			}
-
 			effect = {
 				parameter:empire = {
 					remove_modifier = promoted_anthropocentric
 				}
 			}
-			
 			ai_weight = {
 				base = 0
 			}
-		}		
+		}
 		suppress_faction = {
 			title = "SUPPRESS_FACTION"
 			description = "SUPPRESS_FACTION_DESC"
-			
 			potential = {
 				exists = owner
-				parameter:empire = { 
-					NOR = { 
+				parameter:empire = {
+					NOR = {
 						has_modifier = suppressed_anthropocentric
-						has_modifier = promoted_anthropocentric 
+						has_modifier = promoted_anthropocentric
 					}
 				}
 			}
-
 			effect = {
-				add_modifier = { modifier = suppressed_faction days = -1 }
+				add_modifier = {
+					modifier = suppressed_faction
+					days = -1
+				}
 				parameter:empire = {
-					add_modifier = { modifier = suppressed_anthropocentric days = -1 }
+					add_modifier = {
+						modifier = suppressed_anthropocentric
+						days = -1
+					}
 				}
 			}
-			
 			ai_weight = {
 				base = 0
 			}
@@ -513,24 +466,21 @@ manufacturers = {
 		cancel_suppress_faction = {
 			title = "CANCEL_SUPPRESS_FACTION"
 			description = "CANCEL_SUPPRESS_FACTION_DESC"
-			
 			potential = {
 				exists = owner
-				parameter:empire = { 
+				parameter:empire = {
 					has_modifier = suppressed_anthropocentric
 				}
 			}
-
 			effect = {
 				remove_modifier = suppressed_faction
 				parameter:empire = {
 					remove_modifier = suppressed_anthropocentric
 				}
 			}
-			
 			ai_weight = {
 				base = 0
 			}
-		}	
+		}
 	}
 }

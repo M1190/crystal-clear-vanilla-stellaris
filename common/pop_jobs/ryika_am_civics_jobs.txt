@@ -1,16 +1,13 @@
-
 am_civics_shady_merchant = {
 	category = criminal
 	condition_string = WORKER_JOB_TRIGGER
 	can_set_priority = no
 	clothes_texture_index = 2
 	building_icon = building_residence
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_sapient = yes
 	}
-
 	possible = {
 		# check that this is not a robot in servitude
 		NOT = {
@@ -23,11 +20,9 @@ am_civics_shady_merchant = {
 			is_gestalt = no
 		}
 	}
-
 	planet_modifier = {
 		trade_value_add = 8
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_trait = trait_thrifty
@@ -36,7 +31,6 @@ am_civics_shady_merchant = {
 			trade_value_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_trait = trait_nuumismatic_administration
@@ -45,15 +39,14 @@ am_civics_shady_merchant = {
 			trade_value_add = 2
 		}
 	}
-
 	weight = {
-		weight = 9999999 # Always.
+		weight = 9999999		# Always.
 		modifier = {
-			factor = 2.0
+			factor = 2
 			has_trait = trait_thrifty
 		}
 		modifier = {
-			factor = 2.0
+			factor = 2
 			has_trait = trait_nuumismatic_administration
 		}
 		modifier = {
@@ -75,13 +68,17 @@ am_civics_shady_merchant = {
 			factor = 1.5
 			has_trait = trait_void_dweller_1
 			exists = planet
-			planet = { is_planet_class = pc_habitat }
+			planet = {
+				is_planet_class = pc_habitat
+			}
 		}
 		modifier = {
 			factor = 0.85
 			has_trait = trait_void_dweller_1
 			exists = planet
-			planet = { is_artificial = no }
+			planet = {
+				is_artificial = no
+			}
 		}
 		# crisis purge
 		modifier = {
@@ -94,11 +91,18 @@ am_civics_shady_merchant = {
 					is_country_type = ai_empire
 				}
 			}
-			OR = { # contingency won't purge itself
-				NOT = { exists = event_target:custodian_bot }
+			OR = {
+				# contingency won't purge itself
+				NOT = {
+					exists = event_target:custodian_bot
+				}
 				AND = {
 					exists = event_target:custodian_bot
-					NOT = { species = { is_same_value = event_target:custodian_bot } }
+					NOT = {
+						species = {
+							is_same_value = event_target:custodian_bot
+						}
+					}
 				}
 			}
 		}

@@ -1,7 +1,6 @@
 # Government Variety Pack
 # System Initializers
 # Author: littleraskol
-
 @distance = 50
 @jumps = 3
 @planet_min_size = 10
@@ -9,9 +8,7 @@
 @base_moon_distance = 10
 @moon_min_size = 6
 @moon_max_size = 10
-
 ### For Uplift
-
 # Uplift Tutor System 1
 lrsk_uplift_1 = {
 	class = "rl_starting_stars"
@@ -19,91 +16,119 @@ lrsk_uplift_1 = {
 		type = rocky_asteroid_belt
 		radius = 50
 	}
-	
-	flags = { empire_home_system lrsk_uplift_tutor_home_system }
-
+	flags = {
+		empire_home_system
+		lrsk_uplift_tutor_home_system
+	}
 	usage = misc_system_init
 	usage_odds = {
 		base = 0
 		modifier = {
-			any_country = { 
+			any_country = {
 				has_origin = lrsk_gov_var_origin_uplift
-				NOT = { has_country_flag = lrsk_uplift_tutor_system_spawned }
+				NOT = {
+					has_country_flag = lrsk_uplift_tutor_system_spawned
+				}
 			}
-			NOT = { has_star_flag = empire_cluster }
+			NOT = {
+				has_star_flag = empire_cluster
+			}
 			add = 99999
 		}
 	}
-
 	init_effect = {
 		generate_home_system_resources = yes
 		set_star_flag = lrsk_uplift_tutor_init
 	}
-	
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = 20 max = 30 }
+		size = {
+			min = 20
+			max = 30
+		}
 		has_ring = no
 	}
-	
 	change_orbit = 50
-	
 	planet = {
-		count = { min = 1 max = 3 }
+		count = {
+			min = 1
+			max = 3
+		}
 		class = pc_asteroid
 		orbit_distance = 0
-		orbit_angle = { min = 40 max = 100 }
+		orbit_angle = {
+			min = 40
+			max = 100
+		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 2 }
+		count = {
+			min = 0
+			max = 2
+		}
 		orbit_distance = 20
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
 		count = 1
 		orbit_distance = 20
 		home_planet = yes
 		class = random_colonizable
-		orbit_angle = { min = 90 max = 270 }
-		size = { min = 16 max = 20 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = 16
+			max = 20
+		}
 		deposit_blockers = none
 		modifiers = none
-		flags = { lrsk_uplift_tutor_homeworld lrsk_uplift_tutor_planet }
-		
+		flags = {
+			lrsk_uplift_tutor_homeworld
+			lrsk_uplift_tutor_planet
+		}
 		init_effect = {
 			prevent_anomaly = yes
-
 			random_country = {
 				limit = {
 					has_origin = lrsk_gov_var_origin_uplift
-					NOT = { has_country_flag = lrsk_uplift_tutor_system_spawned }
+					NOT = {
+						has_country_flag = lrsk_uplift_tutor_system_spawned
+					}
 				}
 				set_country_flag = lrsk_uplift_tutor_system_spawned
 				save_event_target_as = lrsk_uplift_pupil
 				set_country_flag = first_contact_event
 				set_country_flag = Story2
 			}
-
 			random_list = {
 				10 = {
 					modifier = {
 						factor = 5
-						event_target:lrsk_uplift_pupil = { has_authority = auth_machine_intelligence }
+						event_target:lrsk_uplift_pupil = {
+							has_authority = auth_machine_intelligence
+						}
 					}
 					create_species = {
 						name = random
@@ -123,7 +148,9 @@ lrsk_uplift_1 = {
 						name_list = random
 						type = default
 						origin = "origin_default"
-						ethos = { ethic = ethic_gestalt_consciousness }
+						ethos = {
+							ethic = ethic_gestalt_consciousness
+						}
 						authority = auth_machine_intelligence
 						civics = {
 							civic = civic_machine_predictive_analysis
@@ -142,7 +169,9 @@ lrsk_uplift_1 = {
 				10 = {
 					modifier = {
 						factor = 5
-						event_target:lrsk_uplift_pupil = { has_authority = auth_hive_mind }
+						event_target:lrsk_uplift_pupil = {
+							has_authority = auth_hive_mind
+						}
 					}
 					create_species = {
 						name = random
@@ -156,13 +185,15 @@ lrsk_uplift_1 = {
 						effect = {
 							save_event_target_as = lrsk_uplift_tutor_species
 						}
-					}		
+					}
 					create_country = {
 						species = event_target:lrsk_uplift_tutor_species
 						name_list = random
 						type = default
 						origin = "origin_default"
-						ethos = { ethic = ethic_gestalt_consciousness }
+						ethos = {
+							ethic = ethic_gestalt_consciousness
+						}
 						authority = auth_hive_mind
 						civics = {
 							civic = civic_hive_empath
@@ -182,7 +213,9 @@ lrsk_uplift_1 = {
 				80 = {
 					modifier = {
 						factor = 0.5
-						event_target:lrsk_uplift_pupil = { is_gestalt = yes }
+						event_target:lrsk_uplift_pupil = {
+							is_gestalt = yes
+						}
 					}
 					create_species = {
 						name = random
@@ -193,14 +226,19 @@ lrsk_uplift_1 = {
 						effect = {
 							save_event_target_as = lrsk_uplift_tutor_species
 						}
-					}	
-					IF = { limit = { event_target:lrsk_uplift_pupil = { is_gestalt = no } }	
+					}
+					IF = {
+						limit = {
+							event_target:lrsk_uplift_pupil = {
+								is_gestalt = no
+							}
+						}
 						create_country = {
 							species = event_target:lrsk_uplift_tutor_species
 							name_list = random
 							type = default
 							origin = "origin_default"
-							ethos = event_target:lrsk_uplift_pupil	# We assume a high degree of influence by the tutor....
+							ethos = event_target:lrsk_uplift_pupil							# We assume a high degree of influence by the tutor....
 							authority = random
 							effect = {
 								add_resource = {
@@ -215,7 +253,12 @@ lrsk_uplift_1 = {
 						}
 					}
 					ELSE = {
-						IF = { limit = { event_target:lrsk_uplift_pupil = { has_authority = auth_hive_mind } }
+						IF = {
+							limit = {
+								event_target:lrsk_uplift_pupil = {
+									has_authority = auth_hive_mind
+								}
+							}
 							create_country = {
 								species = event_target:lrsk_uplift_tutor_species
 								name_list = random
@@ -265,14 +308,20 @@ lrsk_uplift_1 = {
 					}
 				}
 			}
-
 			# Establish relational flags
 			last_created_country = {
-				save_event_target_as = lrsk_uplift_tutor				
-				set_relation_flag = { who = event_target:lrsk_uplift_pupil flag = lrsk_uplift_tutor_of }
+				save_event_target_as = lrsk_uplift_tutor
+				set_relation_flag = {
+					who = event_target:lrsk_uplift_pupil
+					flag = lrsk_uplift_tutor_of
+				}
 			}
-			event_target:lrsk_uplift_pupil = { set_relation_flag = { who = last_created_country flag = lrsk_uplift_pupil_of } }
-
+			event_target:lrsk_uplift_pupil = {
+				set_relation_flag = {
+					who = last_created_country
+					flag = lrsk_uplift_pupil_of
+				}
+			}
 			#create_species = {
 			#	name = random
 			#	class = random_non_machine
@@ -302,7 +351,6 @@ lrsk_uplift_1 = {
 			#		}
 			#	}
 			#}
-
 			create_colony = {
 				owner = event_target:lrsk_uplift_tutor
 			}
@@ -311,11 +359,14 @@ lrsk_uplift_1 = {
 			generate_start_buildings_and_districts = yes
 			generate_start_pops = yes
 			clear_blockers = yes
-
-			generate_lost_colony_parent_bonus = yes # just adds stuff, we can use as-is
-
+			generate_lost_colony_parent_bonus = yes			# just adds stuff, we can use as-is
 			solar_system = {
-				if = { limit = { event_target:lrsk_uplift_tutor = { has_ethic = ethic_gestalt_consciousness } }
+				if = {
+					limit = {
+						event_target:lrsk_uplift_tutor = {
+							has_ethic = ethic_gestalt_consciousness
+						}
+					}
 					create_starbase = {
 						size = starbase_starport
 						module = shipyard
@@ -344,13 +395,11 @@ lrsk_uplift_1 = {
 					}
 				}
 			}
-
 			#Try to give a little more firepower			
 			create_fleet = {
 				#name = random
 				effect = {
 					set_owner = event_target:lrsk_uplift_tutor
-
 					while = {
 						count = 3
 						create_ship = {
@@ -358,7 +407,6 @@ lrsk_uplift_1 = {
 							random_existing_design = corvette
 						}
 					}
-
 					set_location = {
 						target = event_target:lrsk_uplift_tutor.capital_scope.star
 						distance = 5
@@ -366,36 +414,46 @@ lrsk_uplift_1 = {
 					}
 				}
 			}
-
 			event_target:lrsk_uplift_tutor = {
 				set_country_flag = lrsk_uplift_tutor
-				
 				create_starting_leaders = yes
-
-				give_technology = { tech = "tech_society_1" message = no }
-				give_technology = { tech = "tech_engineering_1" message = no }
-				give_technology = { tech = "tech_physics_1" message = no }
-				give_technology = { tech = "tech_planetary_unification" message = no }
-
-				country_event = { id = game_start.9 }
-				country_event = { id = game_start.33 days = 1 } # needs delay for system ownership to settle
-
+				give_technology = {
+					tech = "tech_society_1"
+					message = no
+				}
+				give_technology = {
+					tech = "tech_engineering_1"
+					message = no
+				}
+				give_technology = {
+					tech = "tech_physics_1"
+					message = no
+				}
+				give_technology = {
+					tech = "tech_planetary_unification"
+					message = no
+				}
+				country_event = {
+					id = game_start.9
+				}
+				country_event = {
+					id = game_start.33
+					days = 1
+				}				# needs delay for system ownership to settle
 				add_opinion_modifier = {
 					who = event_target:lrsk_uplift_pupil
 					modifier = opinion_lrsk_gov_var_uplift_pupil
 				}
 				#country_event = { id = lrsk_gov_var_uplift.20 days = 9000 random = 9000 } # tbd?
 				establish_communications_no_message = event_target:lrsk_uplift_pupil
-
-				owner_species = { set_species_homeworld = prevprev }
-
-				set_name = random # Fixes some naming issues
+				owner_species = {
+					set_species_homeworld = prevprev
+				}
+				set_name = random				# Fixes some naming issues
 			}
-			
 			#set_owner = event_target:lrsk_uplift_tutor
 			#set_controller = event_target:lrsk_uplift_tutor
 			#set_capital = yes
-
 			event_target:lrsk_uplift_pupil = {
 				set_subject_of = {
 					who = event_target:lrsk_uplift_tutor
@@ -408,55 +466,82 @@ lrsk_uplift_1 = {
 				#country_event = { id = lrsk_gov_var_uplift.10 days = 3 } # tbd?
 			}
 		}
-		
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 2 max = 4 }
+		count = {
+			min = 2
+			max = 4
+		}
 		orbit_distance = 20
 		class = random_non_colonizable
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 1 max = 2 }
+		count = {
+			min = 1
+			max = 2
+		}
 		orbit_distance = 20
 		class = pc_gas_giant
-		orbit_angle = { min = 90 max = 270 }
-		
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		change_orbit = @base_moon_distance
-
 		moon = {
-			count = { min = 0 max = 3 }
+			count = {
+				min = 0
+				max = 3
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-
 	neighbor_system = {
-		hyperlane_jumps = { min = 1 max = @jumps }
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "lrsk_uplift_neighbor_t1"
 	}
 	neighbor_system = {
-		hyperlane_jumps = { min = 1 max = @jumps }
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "lrsk_uplift_neighbor_t1_first_colony"
 	}
 }
@@ -464,130 +549,165 @@ lrsk_uplift_1 = {
 # Neighbor Tier 1
 lrsk_uplift_neighbor_t1 = {
 	class = "rl_standard_stars"
-	flags = { neighbor_t1 }
-
+	flags = {
+		neighbor_t1
+	}
 	init_effect = {
-		every_neighbor_system = { set_star_flag = empire_cluster }
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+		}
 		closest_system = {
 			limit = {
 				has_star_flag = lrsk_uplift_tutor_init
 				exists = owner
 			}
-			owner = { save_event_target_as = lrsk_uplift_tutor }
+			owner = {
+				save_event_target_as = lrsk_uplift_tutor
+			}
 		}
 		create_starbase = {
 			size = starbase_outpost
 			owner = event_target:lrsk_uplift_tutor
 		}
 	}
-	
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = 20 max = 30 }
+		size = {
+			min = 20
+			max = 30
+		}
 		has_ring = no
 	}
-	
 	change_orbit = 45
-	
 	planet = {
-		count = { min = 0 max = 2 }
+		count = {
+			min = 0
+			max = 2
+		}
 		orbit_distance = 20
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 2 max = 5 }
+		count = {
+			min = 2
+			max = 5
+		}
 		orbit_distance = 20
 	}
-	
 	neighbor_system = {
-		hyperlane_jumps = { min = 1 max = @jumps }
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "lrsk_uplift_neighbor_t2_second_colony"
 	}
 }
 
 # Neighbor Tier 1 First Colony
-lrsk_uplift_neighbor_t1_first_colony = {	
+lrsk_uplift_neighbor_t1_first_colony = {
 	class = "rl_standard_stars"
-	flags = { neighbor_t1_first_colony }
-
+	flags = {
+		neighbor_t1_first_colony
+	}
 	init_effect = {
-		every_neighbor_system = { set_star_flag = empire_cluster }
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+		}
 		closest_system = {
 			limit = {
 				has_star_flag = lrsk_uplift_tutor_init
 				exists = owner
 			}
-			owner = { save_event_target_as = lrsk_uplift_tutor }
+			owner = {
+				save_event_target_as = lrsk_uplift_tutor
+			}
 		}
 		create_starbase = {
 			size = starbase_outpost
 			owner = event_target:lrsk_uplift_tutor
 		}
 	}
-
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = 20 max = 30 }
+		size = {
+			min = 20
+			max = 30
+		}
 		has_ring = no
 	}
-	
 	change_orbit = 45
-	
 	planet = {
-		count = { min = 0 max = 2 }
+		count = {
+			min = 0
+			max = 2
+		}
 		orbit_distance = 20
-		
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
 		count = 1
 		orbit_distance = 25
 		class = random_colonizable
 		modifiers = none
 		anomaly = none
-		orbit_angle = { min = 90 max = 270 }
-		size = { min = 12 max = 18 }
-		flags = { lrsk_uplift_tutor_colony lrsk_uplift_tutor_planet }
-
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = 12
+			max = 18
+		}
+		flags = {
+			lrsk_uplift_tutor_colony
+			lrsk_uplift_tutor_planet
+		}
 		init_effect = {
 			create_colony = {
 				owner = event_target:lrsk_uplift_tutor
 			}
 		}
 	}
-	
 	planet = {
-		count = { min = 2 max = 5 }
+		count = {
+			min = 2
+			max = 5
+		}
 		orbit_distance = 25
-		
 		change_orbit = @base_moon_distance
-		
-		moon = {			
-			count = { min = 0 max = 1 }
+		moon = {
+			count = {
+				min = 0
+				max = 1
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	neighbor_system = {
-		hyperlane_jumps = { min = 1 max = @jumps }
+		hyperlane_jumps = {
+			min = 1
+			max = @jumps
+		}
 		initializer = "neighbor_t2"
 	}
 }
@@ -595,16 +715,21 @@ lrsk_uplift_neighbor_t1_first_colony = {
 # Neighbor Tier 2 Second Colony
 lrsk_uplift_neighbor_t2_second_colony = {
 	class = "rl_standard_stars"
-	flags = { neighbor_t2_second_colony }
-
+	flags = {
+		neighbor_t2_second_colony
+	}
 	init_effect = {
-		every_neighbor_system = { set_star_flag = empire_cluster }
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+		}
 		closest_system = {
 			limit = {
 				has_star_flag = lrsk_uplift_tutor_init
 				exists = owner
 			}
-			owner = { save_event_target_as = lrsk_uplift_tutor }
+			owner = {
+				save_event_target_as = lrsk_uplift_tutor
+			}
 		}
 		create_starbase = {
 			size = starbase_outpost
@@ -612,68 +737,93 @@ lrsk_uplift_neighbor_t2_second_colony = {
 		}
 		set_star_flag = lrsk_uplift_tutor_wormhole_system
 	}
-
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = 20 max = 30 }
+		size = {
+			min = 20
+			max = 30
+		}
 		has_ring = no
 	}
-	
 	change_orbit = 25
-	
 	planet = {
 		count = 2
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		orbit_distance = 20
 	}
-	
 	planet = {
 		count = 1
 		orbit_distance = 25
 		class = random_colonizable
 		modifiers = none
 		anomaly = none
-		orbit_angle = { min = 90 max = 270 }
-		size = { min = 14 max = 24 }
-		flags = { lrsk_uplift_tutor_colony lrsk_uplift_tutor_planet }
-
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
+		size = {
+			min = 14
+			max = 24
+		}
+		flags = {
+			lrsk_uplift_tutor_colony
+			lrsk_uplift_tutor_planet
+		}
 		init_effect = {
 			create_colony = {
 				owner = event_target:lrsk_uplift_tutor
 			}
 		}
-		
-		change_orbit = @base_moon_distance	
-
+		change_orbit = @base_moon_distance
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
 		count = 2
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		orbit_distance = 20
-		
 		change_orbit = @base_moon_distance
-		
 		moon = {
-			count = { min = 0 max = 1 }
+			count = {
+				min = 0
+				max = 1
+			}
 			class = random_non_colonizable
-			orbit_angle = { min = 90 max = 270 }
+			orbit_angle = {
+				min = 90
+				max = 270
+			}
 			orbit_distance = 5
 		}
 	}
-	
 	planet = {
-		count = { min = 0 max = 2 }
-		orbit_angle = { min = 90 max = 270 }
+		count = {
+			min = 0
+			max = 2
+		}
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		orbit_distance = 20
 	}
 }

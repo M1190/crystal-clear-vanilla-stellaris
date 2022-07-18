@@ -1,68 +1,67 @@
-
 @angle_1 = 45
 @angle_2 = 340
 @angle_3 = 210
 @angle_4 = 110
-
 # [orbit_distance_offset] Variables for distance to planet
 @large_close = 15
 @large_centre = 17
 @large_far = 19
-
 @medium_close = 12
 @medium_centre = 14
 @medium_far = 16
-
 @small_close = 8
 @small_centre = 9
 @small_far = 10
-
 # REAL SPACE COMPATIBILITY #
-@large_close_rs = 13		#
-@large_centre_rs = 15		#
-@large_far_rs = 17			#
-							#
-@medium_close_rs = 8		#
-@medium_centre_rs = 10		#
-@medium_far_rs = 12			#
-							#
-@small_close_rs = 5			#
-@small_centre_rs = 6		#
-@small_far_rs = 7			#
+@large_close_rs = 13#
+@large_centre_rs = 15#
+@large_far_rs = 17#
+#
+@medium_close_rs = 8#
+@medium_centre_rs = 10#
+@medium_far_rs = 12#
+#
+@small_close_rs = 5#
+@small_centre_rs = 6#
+@small_far_rs = 7#
 ###########################
-
 gpm_spawn_RES = {
 	optimize_memory
 	if = {
 		limit = {
 			OR = {
-				has_planet_flag =  gpm_rings_huge
-				has_planet_flag =  gpm_rings_large
+				has_planet_flag = gpm_rings_huge
+				has_planet_flag = gpm_rings_large
 			}
 		}
 		# Planet Scope
 		# Real space compatibility at the top to save on tedious coding. Also IF doesnt fucking work inside spawn_planet so cant make efficient and clean code. I cry
 		if = {
-			limit = { NOT = { has_global_flag = "has_real_space_mod" } }
-			if = {
-				limit = { 
-					OR = {
-						has_planet_flag =  gpm_rings_huge
-						has_planet_flag =  gpm_rings_large
-					}
-					NOT = { has_planet_flag = gpm_has_RES }
+			limit = {
+				NOT = {
+					has_global_flag = "has_real_space_mod"
 				}
-			
+			}
+			if = {
+				limit = {
+					OR = {
+						has_planet_flag = gpm_rings_huge
+						has_planet_flag = gpm_rings_large
+					}
+					NOT = {
+						has_planet_flag = gpm_has_RES
+					}
+				}
 				save_event_target_as = res_location_planet
 				set_planet_flag = gpm_has_RES
 				solar_system = {
 					random_list = {
-						35 = { }
+						35 = {
+						}
 						20 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 0
 								orbit_distance_offset = @large_close
@@ -71,15 +70,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -90,7 +100,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 10
 								orbit_distance_offset = @large_centre
@@ -99,15 +108,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -118,7 +138,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 20
 								orbit_distance_offset = @large_far
@@ -127,15 +146,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -144,12 +174,12 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						85 = { }
+						85 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 40
 								orbit_distance_offset = @large_close
@@ -158,15 +188,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -177,7 +218,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 50
 								orbit_distance_offset = @large_centre
@@ -186,15 +226,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -203,102 +254,130 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						50 = { }
+						50 = {
+						}
 						15 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 90
 								orbit_distance_offset = @large_close
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						15 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 100
 								orbit_distance_offset = @large_centre
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						15 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 110
 								orbit_distance_offset = @large_far
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 					}
 					random_list = {
-						85 = { }
+						85 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 130
 								orbit_distance_offset = @large_close
@@ -307,15 +386,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -326,7 +416,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 140
 								orbit_distance_offset = @large_centre
@@ -335,15 +424,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -352,102 +452,130 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						65 = { }
+						65 = {
+						}
 						10 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 180
 								orbit_distance_offset = @large_close
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						10 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 190
 								orbit_distance_offset = @large_centre
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						10 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 200
 								orbit_distance_offset = @large_far
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 					}
 					random_list = {
-						85 = { }
+						85 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 220
 								orbit_distance_offset = @large_close
@@ -456,15 +584,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -475,7 +614,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 230
 								orbit_distance_offset = @large_centre
@@ -484,15 +622,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -501,102 +650,130 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						80 = { }
+						80 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 270
 								orbit_distance_offset = @large_close
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 280
 								orbit_distance_offset = @large_centre
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 290
 								orbit_distance_offset = @large_far
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 					}
 					random_list = {
-						85 = { }
+						85 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 310
 								orbit_distance_offset = @large_close
@@ -605,15 +782,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -624,7 +812,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 320
 								orbit_distance_offset = @large_centre
@@ -633,15 +820,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -654,26 +852,29 @@ gpm_spawn_RES = {
 		}
 		# real space settings
 		if = {
-			limit = { has_global_flag = "has_real_space_mod" }
+			limit = {
+				has_global_flag = "has_real_space_mod"
+			}
 			if = {
 				limit = {
 					OR = {
-						has_planet_flag =  gpm_rings_huge
-						has_planet_flag =  gpm_rings_large
-					}				
-					NOT = { has_planet_flag = gpm_has_RES }
+						has_planet_flag = gpm_rings_huge
+						has_planet_flag = gpm_rings_large
+					}
+					NOT = {
+						has_planet_flag = gpm_has_RES
+					}
 				}
-			
 				save_event_target_as = res_location_planet
 				set_planet_flag = gpm_has_RES
 				solar_system = {
 					random_list = {
-						35 = { }
+						35 = {
+						}
 						20 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 0
 								orbit_distance_offset = @large_close_rs
@@ -682,15 +883,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -701,7 +913,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 10
 								orbit_distance_offset = @large_centre_rs
@@ -710,15 +921,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -729,7 +951,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 20
 								orbit_distance_offset = @large_far_rs
@@ -738,15 +959,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -755,12 +987,12 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						85 = { }
+						85 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 40
 								orbit_distance_offset = @large_close_rs
@@ -769,15 +1001,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -788,7 +1031,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 50
 								orbit_distance_offset = @large_centre_rs
@@ -797,15 +1039,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -814,102 +1067,130 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						50 = { }
+						50 = {
+						}
 						15 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 90
 								orbit_distance_offset = @large_close_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						15 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 100
 								orbit_distance_offset = @large_centre_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						15 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 110
 								orbit_distance_offset = @large_far_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 					}
 					random_list = {
-						85 = { }
+						85 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 130
 								orbit_distance_offset = @large_close_rs
@@ -918,15 +1199,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -937,7 +1229,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 140
 								orbit_distance_offset = @large_centre_rs
@@ -946,15 +1237,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -963,102 +1265,130 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						65 = { }
+						65 = {
+						}
 						10 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 180
 								orbit_distance_offset = @large_close_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						10 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 190
 								orbit_distance_offset = @large_centre_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						10 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 200
 								orbit_distance_offset = @large_far_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 					}
 					random_list = {
-						85 = { }
+						85 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 220
 								orbit_distance_offset = @large_close_rs
@@ -1067,15 +1397,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1086,7 +1427,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 230
 								orbit_distance_offset = @large_centre_rs
@@ -1095,15 +1435,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1112,102 +1463,130 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						80 = { }
+						80 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 270
 								orbit_distance_offset = @large_close_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 280
 								orbit_distance_offset = @large_centre_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 290
 								orbit_distance_offset = @large_far_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 					}
 					random_list = {
-						85 = { }
+						85 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 310
 								orbit_distance_offset = @large_close_rs
@@ -1216,15 +1595,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1235,7 +1625,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 320
 								orbit_distance_offset = @large_centre_rs
@@ -1244,15 +1633,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1265,27 +1665,34 @@ gpm_spawn_RES = {
 		}
 	}
 	if = {
-		limit = { has_planet_flag =  gpm_rings_medium }
+		limit = {
+			has_planet_flag = gpm_rings_medium
+		}
 		# Planet Scope
 		# Real space compatibility at the top to save on tedious coding. Also IF doesnt fucking work inside spawn_planet so cant make efficient and clean code. I cry
 		if = {
-			limit = { NOT = { has_global_flag = "has_real_space_mod" } }
+			limit = {
+				NOT = {
+					has_global_flag = "has_real_space_mod"
+				}
+			}
 			if = {
 				limit = {
-					has_planet_flag =  gpm_rings_medium
-					NOT = { has_planet_flag = gpm_has_RES }
+					has_planet_flag = gpm_rings_medium
+					NOT = {
+						has_planet_flag = gpm_has_RES
+					}
 				}
-			
 				save_event_target_as = res_location_planet
 				set_planet_flag = gpm_has_RES
 				solar_system = {
 					random_list = {
-						35 = { }
+						35 = {
+						}
 						20 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 0
 								orbit_distance_offset = @medium_close
@@ -1294,15 +1701,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1313,7 +1731,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 10
 								orbit_distance_offset = @medium_centre
@@ -1322,15 +1739,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1341,7 +1769,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 20
 								orbit_distance_offset = @medium_far
@@ -1350,15 +1777,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1367,12 +1805,12 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						85 = { }
+						85 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 40
 								orbit_distance_offset = @medium_close
@@ -1381,15 +1819,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1400,7 +1849,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 50
 								orbit_distance_offset = @medium_centre
@@ -1409,15 +1857,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1426,102 +1885,130 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						55 = { }
+						55 = {
+						}
 						13 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 90
 								orbit_distance_offset = @medium_close
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						13 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 100
 								orbit_distance_offset = @medium_centre
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						13 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 110
 								orbit_distance_offset = @medium_far
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 					}
 					random_list = {
-						85 = { }
+						85 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 130
 								orbit_distance_offset = @medium_close
@@ -1530,15 +2017,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1549,7 +2047,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 140
 								orbit_distance_offset = @medium_centre
@@ -1558,15 +2055,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1575,102 +2083,130 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						75 = { }
+						75 = {
+						}
 						7 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 180
 								orbit_distance_offset = @medium_close
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						7 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 190
 								orbit_distance_offset = @medium_centre
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						7 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 200
 								orbit_distance_offset = @medium_far
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 					}
 					random_list = {
-						85 = { }
+						85 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 220
 								orbit_distance_offset = @medium_close
@@ -1679,15 +2215,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1698,7 +2245,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 230
 								orbit_distance_offset = @medium_centre
@@ -1707,15 +2253,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1724,102 +2281,130 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						90 = { }
+						90 = {
+						}
 						2 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 270
 								orbit_distance_offset = @medium_close
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						2 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 280
 								orbit_distance_offset = @medium_centre
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						2 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 290
 								orbit_distance_offset = @medium_far
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 					}
 					random_list = {
-						85 = { }
+						85 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 310
 								orbit_distance_offset = @medium_close
@@ -1828,15 +2413,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1847,7 +2443,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 320
 								orbit_distance_offset = @medium_centre
@@ -1856,15 +2451,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1877,23 +2483,26 @@ gpm_spawn_RES = {
 		}
 		# real space settings
 		if = {
-			limit = { has_global_flag = "has_real_space_mod" }
+			limit = {
+				has_global_flag = "has_real_space_mod"
+			}
 			if = {
 				limit = {
-					has_planet_flag =  gpm_rings_medium
-					NOT = { has_planet_flag = gpm_has_RES }
+					has_planet_flag = gpm_rings_medium
+					NOT = {
+						has_planet_flag = gpm_has_RES
+					}
 				}
-			
 				save_event_target_as = res_location_planet
 				set_planet_flag = gpm_has_RES
 				solar_system = {
 					random_list = {
-						35 = { }
+						35 = {
+						}
 						20 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 0
 								orbit_distance_offset = @medium_close_rs
@@ -1902,15 +2511,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1921,7 +2541,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 10
 								orbit_distance_offset = @medium_centre_rs
@@ -1930,15 +2549,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1949,7 +2579,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 20
 								orbit_distance_offset = @medium_far_rs
@@ -1958,15 +2587,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -1975,12 +2615,12 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						85 = { }
+						85 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 40
 								orbit_distance_offset = @medium_close_rs
@@ -1989,15 +2629,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -2008,7 +2659,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 50
 								orbit_distance_offset = @medium_centre_rs
@@ -2017,15 +2667,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -2034,102 +2695,130 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						55 = { }
+						55 = {
+						}
 						13 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 90
 								orbit_distance_offset = @medium_close_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						13 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 100
 								orbit_distance_offset = @medium_centre_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						13 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 110
 								orbit_distance_offset = @medium_far_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 					}
 					random_list = {
-						85 = { }
+						85 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 130
 								orbit_distance_offset = @medium_close_rs
@@ -2138,15 +2827,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -2157,7 +2857,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 140
 								orbit_distance_offset = @medium_centre_rs
@@ -2166,15 +2865,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -2183,102 +2893,130 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						75 = { }
+						75 = {
+						}
 						7 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 180
 								orbit_distance_offset = @medium_close_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						7 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 190
 								orbit_distance_offset = @medium_centre_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						7 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 200
 								orbit_distance_offset = @medium_far_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 					}
 					random_list = {
-						85 = { }
+						85 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 220
 								orbit_distance_offset = @medium_close_rs
@@ -2287,15 +3025,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -2306,7 +3055,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 230
 								orbit_distance_offset = @medium_centre_rs
@@ -2315,15 +3063,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -2332,102 +3091,130 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						90 = { }
+						90 = {
+						}
 						2 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 270
 								orbit_distance_offset = @medium_close_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						2 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 280
 								orbit_distance_offset = @medium_centre_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 						2 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 290
 								orbit_distance_offset = @medium_far_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
-								}		
+								}
 							}
 						}
 					}
 					random_list = {
-						85 = { }
+						85 = {
+						}
 						5 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 310
 								orbit_distance_offset = @medium_close_rs
@@ -2436,15 +3223,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -2455,7 +3253,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 320
 								orbit_distance_offset = @medium_centre_rs
@@ -2464,15 +3261,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 									gpm_random_ring_feature = yes
@@ -2485,27 +3293,34 @@ gpm_spawn_RES = {
 		}
 	}
 	if = {
-		limit = { has_planet_flag =  gpm_rings_small }
+		limit = {
+			has_planet_flag = gpm_rings_small
+		}
 		# Planet Scope
 		# Real space compatibility at the top to save on tedious coding. Also IF doesnt fucking work inside spawn_planet so cant make efficient and clean code. I cry
 		if = {
-			limit = { NOT = { has_global_flag = "has_real_space_mod" } }
+			limit = {
+				NOT = {
+					has_global_flag = "has_real_space_mod"
+				}
+			}
 			if = {
 				limit = {
-					has_planet_flag =  gpm_rings_small
-					NOT = { has_planet_flag = gpm_has_RES }
+					has_planet_flag = gpm_rings_small
+					NOT = {
+						has_planet_flag = gpm_has_RES
+					}
 				}
-			
 				save_event_target_as = res_location_planet
 				set_planet_flag = gpm_has_RES
 				solar_system = {
 					random_list = {
-						35 = { }
+						35 = {
+						}
 						20 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 0
 								orbit_distance_offset = @small_close
@@ -2514,15 +3329,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 								}
@@ -2532,7 +3358,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 10
 								orbit_distance_offset = @small_centre
@@ -2541,15 +3366,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 								}
@@ -2559,7 +3395,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 20
 								orbit_distance_offset = @small_far
@@ -2568,15 +3403,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 								}
@@ -2584,263 +3430,347 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						55 = { }
+						55 = {
+						}
 						13 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 90
 								orbit_distance_offset = @small_close
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 						13 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 100
 								orbit_distance_offset = @small_centre
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 						13 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 110
 								orbit_distance_offset = @small_far
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 					}
 					random_list = {
-						75 = { }
+						75 = {
+						}
 						7 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 180
 								orbit_distance_offset = @small_close
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 						7 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 190
 								orbit_distance_offset = @small_centre
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 						7 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 200
 								orbit_distance_offset = @small_far
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 					}
 					random_list = {
-						90 = { }
+						90 = {
+						}
 						2 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 270
 								orbit_distance_offset = @small_close
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 						2 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 280
 								orbit_distance_offset = @small_centre
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 						2 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 290
 								orbit_distance_offset = @small_far
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 					}
@@ -2849,11 +3779,13 @@ gpm_spawn_RES = {
 		}
 		# real space settings
 		if = {
-			limit = { has_global_flag = "has_real_space_mod" }
+			limit = {
+				has_global_flag = "has_real_space_mod"
+			}
 			if = {
 				limit = {
 					OR = {
-						has_planet_flag =  gpm_rings_huge
+						has_planet_flag = gpm_rings_huge
 						has_planet_flag = has_rings_01_large
 						has_planet_flag = has_rings_02_large
 						has_planet_flag = has_rings_03_large
@@ -2874,19 +3806,20 @@ gpm_spawn_RES = {
 						# has_planet_flag = has_rings_01_rare
 						# has_planet_flag = has_rings_02_rare
 					}
-					NOT = { has_planet_flag = gpm_has_RES }
+					NOT = {
+						has_planet_flag = gpm_has_RES
+					}
 				}
-			
 				save_event_target_as = res_location_planet
 				set_planet_flag = gpm_has_RES
 				solar_system = {
 					random_list = {
-						35 = { }
+						35 = {
+						}
 						20 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 0
 								orbit_distance_offset = @small_close_rs
@@ -2895,15 +3828,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 								}
@@ -2913,7 +3857,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 10
 								orbit_distance_offset = @small_centre_rs
@@ -2922,15 +3865,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 								}
@@ -2940,7 +3894,6 @@ gpm_spawn_RES = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 20
 								orbit_distance_offset = @small_far_rs
@@ -2949,15 +3902,26 @@ gpm_spawn_RES = {
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 								}
@@ -2965,260 +3929,344 @@ gpm_spawn_RES = {
 						}
 					}
 					random_list = {
-						55 = { }
+						55 = {
+						}
 						13 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 90
 								orbit_distance_offset = @small_close_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 						13 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 100
 								orbit_distance_offset = @small_centre_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 						13 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 110
 								orbit_distance_offset = @small_far_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 					}
 					random_list = {
-						75 = { }
+						75 = {
+						}
 						7 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 180
 								orbit_distance_offset = @small_close_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 						7 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 190
 								orbit_distance_offset = @small_centre_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 						7 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-								
 								orbit_location = yes
 								orbit_angle_offset = 200
 								orbit_distance_offset = @small_far_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 					}
 					random_list = {
-						90 = { }
+						90 = {
+						}
 						2 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 270
 								orbit_distance_offset = @small_close_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 						2 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 280
 								orbit_distance_offset = @small_centre_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
-								}		
+								}
 							}
 						}
 						2 = {
 							spawn_planet = {
 								class = "pc_gpm_res"
 								location = event_target:res_location_planet
-
 								orbit_location = yes
 								orbit_angle_offset = 290
 								orbit_distance_offset = @small_far_rs
-								
 								init_effect = {
 									set_name = pc_gpm_res_anomaly_name
 									set_planet_entity = {
 										entity = "gpm_rings_metallic_large_RES"
 									}
-									set_surveyed = { surveyed = no surveyor = event_target:gpm_host_country_event_target }
+									set_surveyed = {
+										surveyed = no
+										surveyor = event_target:gpm_host_country_event_target
+									}
 									set_planet_flag = gpm_is_RES
 									prevent_anomaly = yes
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_metallic_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_metallic_ring
+											}
+										}
 										gpm_random_res_metallic_ring_deposit = yes
 									}
 									if = {
-										limit = { event_target:res_location_planet = { has_modifier = gpm_ice_ring } }
+										limit = {
+											event_target:res_location_planet = {
+												has_modifier = gpm_ice_ring
+											}
+										}
 										gpm_random_res_ice_ring_deposit = yes
 									}
 								}

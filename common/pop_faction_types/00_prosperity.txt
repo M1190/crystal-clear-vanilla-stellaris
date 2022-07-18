@@ -1,14 +1,11 @@
 ##############################
 # Peaceful Prosperity Faction
 ##############################
-
 prosperity = {
 	election_header = "GFX_faction_header_yellow"
 	guiding_ethic = ethic_pacifist
-	
 	unique = yes
 	support_multiplier = 1
-	
 	is_potential = {
 		is_faction_allowed = yes
 		if = {
@@ -27,9 +24,8 @@ prosperity = {
 					has_ethic = ethic_pacifist
 				}
 			}
-		}		
+		}
 	}
-	
 	parameters = {
 		empire = {
 			type = country
@@ -38,124 +34,115 @@ prosperity = {
 			}
 		}
 	}
-
 	resources = {
 		category = pop_factions
 		produces = {
 			unity = 0.5
 		}
-#		produces = {
-#			trigger = {
-#				owner = {
-#					has_policy_flag = bugged_federal_state
-#				}
-#			}
-#			energy = 0.5
-#			#FIX ME
-#		}	
+		#		produces = {
+		#			trigger = {
+		#				owner = {
+		#					has_policy_flag = bugged_federal_state
+		#				}
+		#			}
+		#			energy = 0.5
+		#			#FIX ME
+		#		}	
 	}
-
 	can_join_pre_triggers = {
 		is_enslaved = no
 		is_being_purged = no
 	}
-
 	can_join_faction = {
 		is_shackled_robot = no
 		has_culture_shock = no
-		NOT = { has_trait = trait_nerve_stapled }
+		NOT = {
+			has_trait = trait_nerve_stapled
+		}
 		has_ethic = ethic_pacifist
 	}
-	
 	attraction = {
 		base = 100
-		
 		modifier = {
 			factor = 1.25
 			exists = from
 			from = {
 				exists = leader
-				leader = { leader_class = ruler }
+				leader = {
+					leader_class = ruler
+				}
 			}
 		}
-		
 		modifier = {
 			factor = 0.75
 			exists = from
 			from = {
-				NOT = { exists = leader }
+				NOT = {
+					exists = leader
+				}
 			}
 		}
-		
 		modifier = {
 			factor = 1.5
-			
 			OR = {
 				has_ethic = ethic_pacifist
 				has_ethic = ethic_fanatic_pacifist
 			}
 		}
-		
 		# Should really check for citizenship instead
 		modifier = {
 			factor = 1.25
-			NOT = { is_same_species = owner_species }
+			NOT = {
+				is_same_species = owner_species
+			}
 		}
 	}
-	
 	leader = {
 		base = 100
-		
 		modifier = {
-			factor = 0.0
+			factor = 0
 			OR = {
 				leader_class = admiral
 				leader_class = general
-			}			
+			}
 		}
-		
 		modifier = {
-			factor = 0.0
+			factor = 0
 			is_event_leader = yes
-		}		
+		}
 	}
-	
 	demand = {
 		title = "FACTION_OUTRAGED_GC"
 		unfulfilled_title = "FACTION_OUTRAGED_GC"
 		desc = "FACTION_OUTRAGED_GC_DESC"
-
 		fulfilled_effect = -20
 		unfulfilled_effect = -0.001
-
 		potential = {
 			exists = owner
 			owner = {
 				has_country_flag = faction_pacifist_outraged_gc
 			}
 		}
-
 		trigger = {
 			owner = {
 				has_country_flag = faction_pacifist_outraged_gc
 			}
 		}
-	}	
-
-
+	}
 	demand = {
 		title = "PROSPERITY_LIQUIDITY"
 		unfulfilled_title = "PROSPERITY_NO_LIQUIDITY"
 		desc = "PROSPERITY_LIQUIDITY_DESC"
-
 		fulfilled_effect = 10
 		unfulfilled_effect = -0.001
-
-		potential = { # TODO get a reasonable trigger for counting colonies?
+		potential = {
+			# TODO get a reasonable trigger for counting colonies?
 			exists = owner
 			owner = {
 				any_owned_planet = {
-					NOT = { is_same_value = root.capital_scope }
+					NOT = {
+						is_same_value = root.capital_scope
+					}
 					root = {
 						owner = {
 							any_owned_planet = {
@@ -169,90 +156,86 @@ prosperity = {
 				}
 			}
 		}
-
 		trigger = {
-			owner = { resource_stockpile_compare = { resource = energy value >= 5000 } }
+			owner = {
+				resource_stockpile_compare = {
+					resource = energy
+					value >= 5000
+				}
+			}
 		}
 	}
-
-	demand = { 
+	demand = {
 		title = "PROSPERITY_PHILOSOPHY"
 		unfulfilled_title = "PROSPERITY_NO_PHILOSOPHY"
 		desc = "PROSPERITY_PHILOSOPHY_DESC"
-
 		fulfilled_effect = 10
 		unfulfilled_effect = -10
-
 		potential = {
 			exists = owner
 			owner = {
 				any_relation = {
 					has_communications = root.owner
 					is_country_type = default
-					NOT = { exists = overlord }
+					NOT = {
+						exists = overlord
+					}
 				}
 			}
 		}
-
 		trigger = {
 			owner = {
 				has_policy_flag = no_wars
 			}
 		}
 	}
-
 	demand = {
 		title = "PROSPERITY_PEACE"
 		unfulfilled_title = "PROSPERITY_NO_PEACE"
 		desc = "PROSPERITY_PEACE_DESC"
-
 		fulfilled_effect = 5
 		unfulfilled_effect = -10
-
 		potential = {
 			exists = owner
 		}
-
 		trigger = {
 			owner = {
 				is_at_war = no
 			}
 		}
 	}
-
 	demand = {
 		title = "PROSPERITY_NOT_AGGRESSOR"
 		unfulfilled_title = "PROSPERITY_AGGRESSOR"
 		desc = "PROSPERITY_NOT_AGGRESSOR_DESC"
-
 		unfulfilled_effect = -30
 		fulfilled_effect = 0.001
-
 		potential = {
 			exists = owner
 			owner = {
 				num_communications > 2
 			}
 		}
-
 		trigger = {
 			owner = {
 				NOR = {
 					has_country_flag = entered_war_as_attacker
-					any_war = { is_war_participant = { who = prev side = attackers } }
+					any_war = {
+						is_war_participant = {
+							who = prev
+							side = attackers
+						}
+					}
 				}
 			}
 		}
 	}
-	
 	demand = {
 		title = "PROSPERITY_PEACEFUL_APPLICATIONS"
 		unfulfilled_title = "PROSPERITY_NO_PEACEFUL_APPLICATIONS_APPLICATIONS"
 		desc = "PROSPERITY_PEACEFUL_APPLICATIONS_DESC"
-
 		fulfilled_effect = 5
 		unfulfilled_effect = -0.001
-
 		potential = {
 			exists = owner
 			owner = {
@@ -266,7 +249,6 @@ prosperity = {
 				}
 			}
 		}
-
 		trigger = {
 			owner = {
 				OR = {
@@ -278,15 +260,12 @@ prosperity = {
 			}
 		}
 	}
-
 	demand = {
 		title = "PROSPERITY_MILITARY_APPLICATIONS"
 		unfulfilled_title = "PROSPERITY_NO_MILITARY_APPLICATIONS"
 		desc = "PROSPERITY_MILITARY_APPLICATIONS_DESC"
-
 		unfulfilled_effect = -5
 		fulfilled_effect = 0.001
-
 		potential = {
 			exists = owner
 			owner = {
@@ -299,7 +278,6 @@ prosperity = {
 				}
 			}
 		}
-
 		trigger = {
 			owner = {
 				NOR = {
@@ -310,15 +288,12 @@ prosperity = {
 			}
 		}
 	}
-
 	demand = {
 		title = "AGGRESSIVE_DIPLO_STANCE"
 		unfulfilled_title = "AGGRESSIVE_DIPLO_STANCE"
 		desc = "AGGRESSIVE_DIPLO_STANCE_DESC"
-
 		fulfilled_effect = 0.001
 		unfulfilled_effect = -10
-
 		potential = {
 			exists = owner
 			owner = {
@@ -330,7 +305,6 @@ prosperity = {
 				}
 			}
 		}
-
 		trigger = {
 			owner = {
 				NOR = {
@@ -340,30 +314,25 @@ prosperity = {
 			}
 		}
 	}
-	
 	demand = {
 		title = "PEACEFUL_ECONOMY"
 		unfulfilled_title = "PEACEFUL_ECONOMY"
 		desc = "PEACEFUL_ECONOMY_DESC"
-
 		fulfilled_effect = 10
-
-		potential = { 
+		potential = {
 			exists = owner
 		}
-
 		trigger = {
-			owner = { 			  			
-				has_policy_flag = economic_policy_civilian		
+			owner = {
+				has_policy_flag = economic_policy_civilian
 			}
-				
 		}
-	}		
-
+	}
 	on_create = {
-		pop_faction_event = { id = factions.1 }
-	}	
-
+		pop_faction_event = {
+			id = factions.1
+		}
+	}
 	on_destroy = {
 		if = {
 			limit = {
@@ -378,48 +347,64 @@ prosperity = {
 			remove_modifier = suppressed_pacifist
 		}
 	}
-
 	actions = {
 		embrace_faction = {
 			title = "EMBRACE_FACTION"
 			description = "EMBRACE_FACTION_DESC"
-			
 			cost = {
 				influence = 500
 			}
-			
 			potential = {
 				exists = owner
 				owner = {
 					OR = {
 						is_subject = no
-						NOT = { any_agreement = { agreement_preset = preset_dominion } }
+						NOT = {
+							any_agreement = {
+								agreement_preset = preset_dominion
+							}
+						}
 					}
 				}
 			}
-			
 			valid = {
 				custom_tooltip = {
 					fail_text = EMBRACE_FACTION_COOLDOWN
 					parameter:empire = {
-						NOT = { has_modifier = embraced_faction_timer }
+						NOT = {
+							has_modifier = embraced_faction_timer
+						}
 					}
 				}
-				support > 0.20
+				support > 0.2
 				parameter:empire = {
-					NOT = { has_ethic = "ethic_fanatic_pacifist" }
+					NOT = {
+						has_ethic = "ethic_fanatic_pacifist"
+					}
 				}
 			}
-
 			effect = {
-				add_modifier = { modifier = embraced_faction days = 3600 }
+				add_modifier = {
+					modifier = embraced_faction
+					days = 3600
+				}
 				parameter:empire = {
 					shift_ethic = ethic_pacifist
 					hidden_effect = {
-						add_modifier = { modifier = embraced_faction_timer days = 3600 }
+						add_modifier = {
+							modifier = embraced_faction_timer
+							days = 3600
+						}
 						every_pop_faction = {
-							limit = { NOT = { is_same_value = root } }
-							add_modifier = { modifier = embraced_another_faction days = 3600 }
+							limit = {
+								NOT = {
+									is_same_value = root
+								}
+							}
+							add_modifier = {
+								modifier = embraced_another_faction
+								days = 3600
+							}
 						}
 					}
 				}
@@ -429,31 +414,34 @@ prosperity = {
 						every_relation = {
 							limit = {
 								is_ai = no
-								is_country_type = default			
+								is_country_type = default
 								has_communications = prev
 							}
-							country_event = { id = factions.2000 }
+							country_event = {
+								id = factions.2000
+							}
 						}
-					}				
-				}				
+					}
+				}
 			}
-			
 			ai_weight = {
 				base = 1
 				modifier = {
 					factor = 0
-					support < 0.50
+					support < 0.5
 					owner = {
 						has_ethic = ethic_pacifist
 					}
 				}
 				modifier = {
 					factor = 0
-					owner = { has_valid_civic = civic_fanatic_purifiers }
-				}				
+					owner = {
+						has_valid_civic = civic_fanatic_purifiers
+					}
+				}
 				modifier = {
 					factor = 0
-					NOT = { 
+					NOT = {
 						owner = {
 							exists = ruler
 							ruler = {
@@ -467,15 +455,14 @@ prosperity = {
 					owner = {
 						count_pop_faction = {
 							count < 4
-						}					
+						}
 					}
-				}				
+				}
 			}
 		}
 		promote_faction = {
 			title = "PROMOTE_FACTION"
 			description = "PROMOTE_FACTION_DESC"
-			
 			potential = {
 				exists = owner
 				parameter:empire = {
@@ -485,13 +472,14 @@ prosperity = {
 					}
 				}
 			}
-
 			effect = {
 				parameter:empire = {
-					add_modifier = { modifier = promoted_pacifist days = -1 }
+					add_modifier = {
+						modifier = promoted_pacifist
+						days = -1
+					}
 				}
 			}
-			
 			ai_weight = {
 				base = 0
 			}
@@ -499,20 +487,17 @@ prosperity = {
 		cancel_promote_faction = {
 			title = "CANCEL_PROMOTE_FACTION"
 			description = "CANCEL_PROMOTE_FACTION_DESC"
-			
 			potential = {
 				exists = owner
 				parameter:empire = {
 					has_modifier = promoted_pacifist
 				}
 			}
-
 			effect = {
 				parameter:empire = {
 					remove_modifier = promoted_pacifist
 				}
 			}
-			
 			ai_weight = {
 				base = 0
 			}
@@ -520,7 +505,6 @@ prosperity = {
 		suppress_faction = {
 			title = "SUPPRESS_FACTION"
 			description = "SUPPRESS_FACTION_DESC"
-			
 			potential = {
 				exists = owner
 				parameter:empire = {
@@ -530,14 +514,18 @@ prosperity = {
 					}
 				}
 			}
-
 			effect = {
-				add_modifier = { modifier = suppressed_faction days = -1 }
+				add_modifier = {
+					modifier = suppressed_faction
+					days = -1
+				}
 				parameter:empire = {
-					add_modifier = { modifier = suppressed_pacifist days = -1 }
+					add_modifier = {
+						modifier = suppressed_pacifist
+						days = -1
+					}
 				}
 			}
-			
 			ai_weight = {
 				base = 0
 			}
@@ -545,21 +533,18 @@ prosperity = {
 		cancel_suppress_faction = {
 			title = "CANCEL_SUPPRESS_FACTION"
 			description = "CANCEL_SUPPRESS_FACTION_DESC"
-			
 			potential = {
 				exists = owner
 				parameter:empire = {
 					has_modifier = suppressed_pacifist
 				}
 			}
-
 			effect = {
 				remove_modifier = suppressed_faction
 				parameter:empire = {
 					remove_modifier = suppressed_pacifist
 				}
 			}
-			
 			ai_weight = {
 				base = 0
 			}

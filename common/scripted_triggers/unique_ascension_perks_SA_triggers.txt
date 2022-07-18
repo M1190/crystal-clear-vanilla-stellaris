@@ -150,14 +150,29 @@ is_self_aware_not_focused_on_strategic = {
 	}
 }
 
-has_200_minerals = { exists = owner owner = { resource_stockpile_compare = { resource = minerals value >= 200 } } }
+has_200_minerals = {
+	exists = owner
+	owner = {
+		resource_stockpile_compare = {
+			resource = minerals
+			value >= 200
+		}
+	}
+}
 
 has_robot_without_job = {
 	any_owned_pop = {
 		is_species_class = ROBOT
 		has_job = unemployed
 		exists = owner
-		owner = { is_gestalt = no has_technology = tech_robotic_workers NOR = { has_technology = tech_droid_workers has_technology = tech_synthetic_workers } }
+		owner = {
+			is_gestalt = no
+			has_technology = tech_robotic_workers
+			NOR = {
+				has_technology = tech_droid_workers
+				has_technology = tech_synthetic_workers
+			}
+		}
 	}
 }
 
@@ -166,6 +181,13 @@ has_droid_without_job = {
 		is_species_class = ROBOT
 		has_job = unemployed
 		exists = owner
-		owner = { is_gestalt = no has_technology = tech_robotic_workers has_technology = tech_droid_workers NOT = { has_technology = tech_synthetic_workers } }
+		owner = {
+			is_gestalt = no
+			has_technology = tech_robotic_workers
+			has_technology = tech_droid_workers
+			NOT = {
+				has_technology = tech_synthetic_workers
+			}
+		}
 	}
 }

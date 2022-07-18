@@ -1,11 +1,9 @@
 @enlighten_soc_cost = 5
 @enlighten_nrg_cost = 10
-
 # Covert Infiltration
 covert_infiltration = {
 	icon = "GFX_fleet_task_covert_infiltration_action"
 	small_icon = 4
-
 	resources = {
 		category = station_observer_missions
 		upkeep = {
@@ -17,7 +15,6 @@ covert_infiltration = {
 				owner = {
 					is_galactic_community_member = yes
 				}
-
 				OR = {
 					is_active_resolution = "resolution_commerce_underdeveloped_system_utilization"
 					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
@@ -27,14 +24,13 @@ covert_infiltration = {
 			consumer_goods = 4
 		}
 	}
-
 	monthly_progress = 0.02
 	completion_event = observation.3009
-
 	potential = {
-		NOT = { has_valid_civic = civic_inwards_perfection }
+		NOT = {
+			has_valid_civic = civic_inwards_perfection
+		}
 	}
-
 	valid = {
 		OR = {
 			has_technology = tech_gene_tailoring
@@ -61,16 +57,20 @@ covert_infiltration = {
 			has_valid_civic = civic_machine_terminator
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_ai_personality_behaviour = infiltrator }
+			NOT = {
+				has_ai_personality_behaviour = infiltrator
+			}
 		}
 		modifier = {
 			factor = 0
-			resource_stockpile_compare = { resource = energy value < 1000 }
+			resource_stockpile_compare = {
+				resource = energy
+				value < 1000
+			}
 		}
 	}
 }

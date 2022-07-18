@@ -1,21 +1,23 @@
 # from = country
 # this = species
-
 citizenship_full = {
 	token = citizenship_full
-
 	potential = {
 		exists = from
-		NOT = { from = { has_authority = auth_machine_intelligence } }
+		NOT = {
+			from = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		NOR = {
 			has_trait = trait_machine_unit
 			is_shackled_robot_species_rights = yes
 		}
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
-
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = "lonely_hive_mind_pops_kill_themselves_citizenship"
 			is_lonely_hive_mind_pop = no
@@ -27,31 +29,39 @@ citizenship_full = {
 		custom_tooltip = {
 			fail_text = "HIVE_MIND_SPECIES_CITIZENS_ONLY"
 			OR = {
-				NOT = { from = { has_authority = auth_hive_mind } }
+				NOT = {
+					from = {
+						has_authority = auth_hive_mind
+					}
+				}
 				has_trait = trait_hive_mind
 			}
 		}
 		custom_tooltip = {
 			fail_text = "FANATIC_PURIFIERS_MUST_PURIFY"
 			OR = {
-				NOT = { from = { has_valid_civic = civic_fanatic_purifiers } }
+				NOT = {
+					from = {
+						has_valid_civic = civic_fanatic_purifiers
+					}
+				}
 				is_same_species = from
- ###############################################
+				###############################################
 				from.owner_species = {
 					is_symbiote_of_prev = yes
 				}
- ###############################################
+				###############################################
 			}
 		}
 		custom_tooltip = {
 			fail_text = too_alien
 			OR = {
 				is_same_species = from
- ###############################################
+				###############################################
 				from.owner_species = {
 					is_symbiote_of_prev = yes
 				}
- ###############################################
+				###############################################
 				from = {
 					NOR = {
 						has_ethic = ethic_xenophobe
@@ -64,9 +74,14 @@ citizenship_full = {
 			fail_text = no_service_no_citizenship
 			if = {
 				limit = {
-					from = { has_valid_civic = civic_citizen_service }
+					from = {
+						has_valid_civic = civic_citizen_service
+					}
 				}
-				has_military_service_type = { type = military_service_full country = from }
+				has_military_service_type = {
+					type = military_service_full
+					country = from
+				}
 			}
 		}
 	}
@@ -78,13 +93,11 @@ citizenship_full = {
 citizenship_limited = {
 	token = citizenship_limited
 	new_pop_weight = 0.75
-
 	pop_modifier = {
 		pop_happiness = -0.1
 		pop_amenities_usage_mult = -0.25
 		pop_political_power = -0.5
 	}
-
 	potential = {
 		exists = from
 		from = {
@@ -98,25 +111,32 @@ citizenship_limited = {
 			is_shackled_robot_species_rights = yes
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = "HIVE_MIND_SPECIES_CITIZENS_ONLY"
 			OR = {
-				NOT = { from = { has_authority = auth_hive_mind } }
+				NOT = {
+					from = {
+						has_authority = auth_hive_mind
+					}
+				}
 				has_trait = trait_hive_mind
 			}
 		}
 		custom_tooltip = {
 			fail_text = "HIVE_MIND_MAIN_SPECIES_ALWAYS_CITIZEN"
 			NAND = {
-				from = { has_authority = auth_hive_mind }
+				from = {
+					has_authority = auth_hive_mind
+				}
 				has_trait = trait_hive_mind
 			}
 		}
 		custom_tooltip = {
 			fail_text = same_species_disallowed
-			NOT = { is_same_species = from }
+			NOT = {
+				is_same_species = from
+			}
 		}
 		custom_tooltip = {
 			fail_text = "lonely_hive_mind_pops_kill_themselves_citizenship"
@@ -129,22 +149,33 @@ citizenship_limited = {
 		custom_tooltip = {
 			fail_text = "FANATIC_PURIFIERS_MUST_PURIFY"
 			OR = {
-				NOT = { from = { has_valid_civic = civic_fanatic_purifiers } }
+				NOT = {
+					from = {
+						has_valid_civic = civic_fanatic_purifiers
+					}
+				}
 				is_same_species = from
- ###############################################
+				###############################################
 				from.owner_species = {
 					is_symbiote_of_prev = yes
 				}
- ###############################################
+				###############################################
 			}
 		}
 		custom_tooltip = {
 			fail_text = yes_service_yes_citizenship
 			if = {
 				limit = {
-					from = { has_valid_civic = civic_citizen_service }
+					from = {
+						has_valid_civic = civic_citizen_service
+					}
 				}
-				NOT = { has_military_service_type = { type = military_service_full country = from } }
+				NOT = {
+					has_military_service_type = {
+						type = military_service_full
+						country = from
+					}
+				}
 			}
 		}
 	}
@@ -167,7 +198,7 @@ citizenship_limited = {
 				}
 			}
 		}
- ###############################################
+		###############################################
 		modifier = {
 			factor = 0
 			AND = {
@@ -190,18 +221,17 @@ citizenship_limited = {
 			factor = 1.1
 			from = {
 				OR = {
-					has_ethic =  ethic_fanatic_xenophobe
-					has_ethic =  ethic_fanatic_authoritarian
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_fanatic_authoritarian
 				}
 			}
 		}
- ###############################################
+		###############################################
 	}
 }
 
 citizenship_slavery = {
 	token = citizenship_slavery
-
 	in_breach_of = {
 		{
 			key = resolution_greatergood_balance_in_the_middle
@@ -210,7 +240,6 @@ citizenship_slavery = {
 			key = resolution_greatergood_universal_prosperity_mandate
 		}
 	}
-
 	potential = {
 		NAND = {
 			exists = this
@@ -220,19 +249,24 @@ citizenship_slavery = {
 			}
 		}
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = "HIVE_MIND_MAIN_SPECIES_ALWAYS_CITIZEN"
 			NAND = {
-				from = { has_authority = auth_hive_mind }
+				from = {
+					has_authority = auth_hive_mind
+				}
 				has_trait = trait_hive_mind
 			}
 		}
 		custom_tooltip = {
 			fail_text = same_species_disallowed
-			NOT = { is_same_species = from }
+			NOT = {
+				is_same_species = from
+			}
 		}
 		custom_tooltip = {
 			fail_text = "lonely_hive_mind_pops_kill_themselves_citizenship"
@@ -241,25 +275,33 @@ citizenship_slavery = {
 		custom_tooltip = {
 			fail_text = SERVITORS_CANNOT_ENSLAVE
 			from = {
-				NOT = { has_valid_civic = civic_machine_servitor }
+				NOT = {
+					has_valid_civic = civic_machine_servitor
+				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = ASSIMILATORS_CANNOT_ENSLAVE
 			from = {
-				NOT = { has_valid_civic = civic_machine_assimilator }
+				NOT = {
+					has_valid_civic = civic_machine_assimilator
+				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = TERMINATORS_CANNOT_ENSLAVE
 			from = {
-				NOT = { has_valid_civic = civic_machine_terminator }
+				NOT = {
+					has_valid_civic = civic_machine_terminator
+				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = DEVOURERS_CANNOT_ENSLAVE
 			from = {
-				NOT = { has_valid_civic = civic_hive_devouring_swarm }
+				NOT = {
+					has_valid_civic = civic_hive_devouring_swarm
+				}
 			}
 		}
 		custom_tooltip = {
@@ -274,13 +316,17 @@ citizenship_slavery = {
 		custom_tooltip = {
 			fail_text = "FANATIC_PURIFIERS_MUST_PURIFY"
 			OR = {
-				NOT = { from = { has_valid_civic = civic_fanatic_purifiers } }
+				NOT = {
+					from = {
+						has_valid_civic = civic_fanatic_purifiers
+					}
+				}
 				is_same_species = from
- ###############################################
+				###############################################
 				from.owner_species = {
 					is_symbiote_of_prev = yes
 				}
- ###############################################
+				###############################################
 			}
 		}
 		custom_tooltip = {
@@ -300,9 +346,16 @@ citizenship_slavery = {
 			fail_text = yes_service_yes_citizenship
 			if = {
 				limit = {
-					from = { has_valid_civic = civic_citizen_service }
+					from = {
+						has_valid_civic = civic_citizen_service
+					}
 				}
-				NOT = { has_military_service_type = { type = military_service_full country = from } }
+				NOT = {
+					has_military_service_type = {
+						type = military_service_full
+						country = from
+					}
+				}
 			}
 		}
 	}
@@ -343,7 +396,7 @@ citizenship_slavery = {
 			factor = 2
 			has_species_flag = syncretic_species@from
 		}
- ###############################################
+		###############################################
 		modifier = {
 			factor = 0
 			AND = {
@@ -366,49 +419,67 @@ citizenship_slavery = {
 			factor = 1.1
 			from = {
 				OR = {
-					has_ethic =  ethic_fanatic_xenophobe
-					has_ethic =  ethic_fanatic_authoritarian
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_fanatic_authoritarian
 				}
 			}
 		}
- ###############################################
+		###############################################
 	}
 }
 
 citizenship_purge = {
 	token = citizenship_purge
-	new_pop_weight = 0.0
-
+	new_pop_weight = 0
 	potential = {
 		exists = from
-		NOT = { from = { has_authority = auth_machine_intelligence } }
+		NOT = {
+			from = {
+				has_authority = auth_machine_intelligence
+			}
+		}
 		OR = {
-			NOT = { has_trait = trait_mechanical }
-			from = { has_policy_flag = robots_outlawed }
+			NOT = {
+				has_trait = trait_mechanical
+			}
+			from = {
+				has_policy_flag = robots_outlawed
+			}
 			AND = {
-				from = { has_authority = auth_hive_mind }
+				from = {
+					has_authority = auth_hive_mind
+				}
 				is_robotic_species = yes
 			}
 		}
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		if = {
-			limit = { is_lonely_hive_mind_pop = yes }
-			hidden_trigger = { always = yes }
+			limit = {
+				is_lonely_hive_mind_pop = yes
+			}
+			hidden_trigger = {
+				always = yes
+			}
 		}
 		else = {
 			custom_tooltip = {
 				fail_text = same_species_disallowed
-				NOT = { is_same_species = from }
+				NOT = {
+					is_same_species = from
+				}
 			}
- #################################################
+			#################################################
 			custom_tooltip = {
 				fail_text = symbiote_disallowed
-				NOT = { is_symbiote_of_from = yes }
+				NOT = {
+					is_symbiote_of_from = yes
+				}
 			}
- #################################################
+			#################################################
 			if = {
 				limit = {
 					NOR = {
@@ -418,16 +489,25 @@ citizenship_purge = {
 				}
 				custom_tooltip = {
 					fail_text = PURGING_NOT_ALLOWED
-					from = { allows_purge = yes }
+					from = {
+						allows_purge = yes
+					}
 				}
 			}
 			custom_tooltip = {
 				fail_text = yes_service_yes_citizenship
 				if = {
 					limit = {
-						from = { has_valid_civic = civic_citizen_service }
+						from = {
+							has_valid_civic = civic_citizen_service
+						}
 					}
-					NOT = { has_military_service_type = { type = military_service_full country = from } }
+					NOT = {
+						has_military_service_type = {
+							type = military_service_full
+							country = from
+						}
+					}
 				}
 			}
 		}
@@ -445,7 +525,9 @@ citizenship_purge = {
 			factor = 0
 			from = {
 				has_valid_ai_personality = no
-				NOT = { has_authority = auth_hive_mind }
+				NOT = {
+					has_authority = auth_hive_mind
+				}
 			}
 		}
 		modifier = {
@@ -477,12 +559,18 @@ citizenship_purge = {
 			factor = 0
 			from = {
 				has_authority = auth_hive_mind
-				NOT = { has_valid_civic = civic_hive_devouring_swarm }
-				NOT = { has_origin = origin_necrophage }
+				NOT = {
+					has_valid_civic = civic_hive_devouring_swarm
+				}
+				NOT = {
+					has_origin = origin_necrophage
+				}
 				OR = {
 					has_valid_civic = civic_hive_one_mind
 					has_valid_civic = civic_hive_subsumed_will
-					root = { has_trait = trait_hive_mind }
+					root = {
+						has_trait = trait_hive_mind
+					}
 				}
 			}
 		}

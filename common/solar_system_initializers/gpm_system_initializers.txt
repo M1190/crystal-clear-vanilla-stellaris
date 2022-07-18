@@ -1,17 +1,17 @@
 # Game will first pick an initializer using usage_odds, but only use it if it passes the spawn_chance check
 # Even if it fails the spawn_chance check it will still count towards the initializer's max_instances
-
 @base_moon_distance = 10
-
 # Leviathans DLC System Initializers
-
 ### GUARDIANS SYSTEM ###
 # Ego, the living planet
 gpm_guardians_init_ego = {
 	class = "rl_standard_stars"
 	usage = misc_system_init
-	flags = { gpm_guardians_ego_system guardian hostile_system  }
-
+	flags = {
+		gpm_guardians_ego_system
+		guardian
+		hostile_system
+	}
 	usage_odds = {
 		base = 9000
 		modifier = {
@@ -19,11 +19,9 @@ gpm_guardians_init_ego = {
 			add = 9000
 		}
 	}
-
 	max_instances = 1
 	spawn_chance = 100
 	#scaled_spawn_chance = 8	# scales by galaxy size (1000 stars = 10x base)
-
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 50
@@ -32,25 +30,24 @@ gpm_guardians_init_ego = {
 		type = rocky_asteroid_belt
 		radius = 55
 	}
-
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 175
 	}
-
 	asteroid_belt = {
 		type = icy_asteroid_belt
 		radius = 255
 	}
-
-
 	# Star
 	planet = {
 		count = 1
 		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = { min = 25 max = 30 }
+		size = {
+			min = 25
+			max = 30
+		}
 		has_ring = no
 		init_effect = {
 			set_name = "The Last Light"
@@ -59,7 +56,10 @@ gpm_guardians_init_ego = {
 				count = 25
 				create_ambient_object = {
 					type = "large_debris_object"
-					entity_offset_height = { min = -10 max = -20 }
+					entity_offset_height = {
+						min = -10
+						max = -20
+					}
 					location = this
 				}
 				last_created_ambient_object = {
@@ -74,7 +74,10 @@ gpm_guardians_init_ego = {
 				count = 35
 				create_ambient_object = {
 					type = "medium_debris_01_object"
-					entity_offset_height = { min = -10 max = -20 }
+					entity_offset_height = {
+						min = -10
+						max = -20
+					}
 					location = this
 				}
 				last_created_ambient_object = {
@@ -89,7 +92,10 @@ gpm_guardians_init_ego = {
 				count = 35
 				create_ambient_object = {
 					type = "medium_debris_02_object"
-					entity_offset_height = { min = -10 max = -20 }
+					entity_offset_height = {
+						min = -10
+						max = -20
+					}
 					location = this
 				}
 				last_created_ambient_object = {
@@ -104,7 +110,10 @@ gpm_guardians_init_ego = {
 				count = 40
 				create_ambient_object = {
 					type = "small_debris_object"
-					entity_offset_height = { min = -10 max = -20 }
+					entity_offset_height = {
+						min = -10
+						max = -20
+					}
 					location = this
 				}
 				last_created_ambient_object = {
@@ -117,21 +126,29 @@ gpm_guardians_init_ego = {
 			}
 		}
 	}
-	
 	# Asteroids
 	# middle belt
 	planet = {
 		count = 1
 		class = pc_crystal_asteroid
 		orbit_distance = 175
-		orbit_angle = { min = 0 max = 120 }
+		orbit_angle = {
+			min = 0
+			max = 120
+		}
 		init_effect = {
 			prevent_anomaly = yes
 			clear_deposits = yes
 			random_list = {
-				60 = { add_deposit = d_minerals_3 }
-				30 = { add_deposit = d_minerals_4 }
-				10 = { add_deposit = d_minerals_5 }
+				60 = {
+					add_deposit = d_minerals_3
+				}
+				30 = {
+					add_deposit = d_minerals_4
+				}
+				10 = {
+					add_deposit = d_minerals_5
+				}
 			}
 		}
 	}
@@ -139,14 +156,23 @@ gpm_guardians_init_ego = {
 		count = 1
 		class = pc_crystal_asteroid
 		orbit_distance = 8
-		orbit_angle = { min = 120 max = 240 }
+		orbit_angle = {
+			min = 120
+			max = 240
+		}
 		init_effect = {
 			prevent_anomaly = yes
 			clear_deposits = yes
 			random_list = {
-				60 = { add_deposit = d_minerals_3 }
-				30 = { add_deposit = d_minerals_4 }
-				10 = { add_deposit = d_minerals_5 }
+				60 = {
+					add_deposit = d_minerals_3
+				}
+				30 = {
+					add_deposit = d_minerals_4
+				}
+				10 = {
+					add_deposit = d_minerals_5
+				}
 			}
 		}
 	}
@@ -154,33 +180,50 @@ gpm_guardians_init_ego = {
 		count = 1
 		class = pc_crystal_asteroid
 		orbit_distance = 0
-		orbit_angle = { min = 240 max = 360 }
+		orbit_angle = {
+			min = 240
+			max = 360
+		}
 		init_effect = {
 			prevent_anomaly = yes
 			clear_deposits = yes
 			random_list = {
-				60 = { add_deposit = d_minerals_3 }
-				30 = { add_deposit = d_minerals_4 }
-				10 = { add_deposit = d_minerals_5 }
+				60 = {
+					add_deposit = d_minerals_3
+				}
+				30 = {
+					add_deposit = d_minerals_4
+				}
+				10 = {
+					add_deposit = d_minerals_5
+				}
 			}
 		}
 	}
-
-
 	# outer belt
 	planet = {
 		count = 1
 		class = pc_ice_asteroid
 		orbit_distance = 72
-		orbit_angle = { min = 0 max = 45 }
+		orbit_angle = {
+			min = 0
+			max = 45
+		}
 		init_effect = {
 			prevent_anomaly = yes
 			clear_deposits = yes
 			random_list = {
-				40 = { }
-				60 = { add_deposit = d_energy_3 }
-				30 = { add_deposit = d_energy_4 }
-				10 = { add_deposit = d_energy_5 }
+				40 = {
+				}
+				60 = {
+					add_deposit = d_energy_3
+				}
+				30 = {
+					add_deposit = d_energy_4
+				}
+				10 = {
+					add_deposit = d_energy_5
+				}
 			}
 		}
 	}
@@ -188,15 +231,25 @@ gpm_guardians_init_ego = {
 		count = 1
 		class = pc_ice_asteroid
 		orbit_distance = -5
-		orbit_angle = { min = 45 max = 90 }
+		orbit_angle = {
+			min = 45
+			max = 90
+		}
 		init_effect = {
 			prevent_anomaly = yes
 			clear_deposits = yes
 			random_list = {
-				40 = { }
-				60 = { add_deposit = d_energy_3 }
-				30 = { add_deposit = d_energy_4 }
-				10 = { add_deposit = d_energy_5 }
+				40 = {
+				}
+				60 = {
+					add_deposit = d_energy_3
+				}
+				30 = {
+					add_deposit = d_energy_4
+				}
+				10 = {
+					add_deposit = d_energy_5
+				}
 			}
 		}
 	}
@@ -204,15 +257,25 @@ gpm_guardians_init_ego = {
 		count = 1
 		class = pc_ice_asteroid
 		orbit_distance = 5
-		orbit_angle = { min = 90 max = 135 }
+		orbit_angle = {
+			min = 90
+			max = 135
+		}
 		init_effect = {
 			prevent_anomaly = yes
 			clear_deposits = yes
 			random_list = {
-				40 = { }
-				60 = { add_deposit = d_energy_3 }
-				30 = { add_deposit = d_energy_4 }
-				10 = { add_deposit = d_energy_5 }
+				40 = {
+				}
+				60 = {
+					add_deposit = d_energy_3
+				}
+				30 = {
+					add_deposit = d_energy_4
+				}
+				10 = {
+					add_deposit = d_energy_5
+				}
 			}
 		}
 	}
@@ -220,15 +283,25 @@ gpm_guardians_init_ego = {
 		count = 1
 		class = pc_ice_asteroid
 		orbit_distance = -7
-		orbit_angle = { min = 135 max = 180 }
+		orbit_angle = {
+			min = 135
+			max = 180
+		}
 		init_effect = {
 			prevent_anomaly = yes
 			clear_deposits = yes
 			random_list = {
-				40 = { }
-				60 = { add_deposit = d_energy_3 }
-				30 = { add_deposit = d_energy_4 }
-				10 = { add_deposit = d_energy_5 }
+				40 = {
+				}
+				60 = {
+					add_deposit = d_energy_3
+				}
+				30 = {
+					add_deposit = d_energy_4
+				}
+				10 = {
+					add_deposit = d_energy_5
+				}
 			}
 		}
 	}
@@ -236,15 +309,25 @@ gpm_guardians_init_ego = {
 		count = 1
 		class = pc_ice_asteroid
 		orbit_distance = 7
-		orbit_angle = { min = 180 max = 225 }
+		orbit_angle = {
+			min = 180
+			max = 225
+		}
 		init_effect = {
 			prevent_anomaly = yes
 			clear_deposits = yes
 			random_list = {
-				40 = { }
-				60 = { add_deposit = d_energy_3 }
-				30 = { add_deposit = d_energy_4 }
-				10 = { add_deposit = d_energy_5 }
+				40 = {
+				}
+				60 = {
+					add_deposit = d_energy_3
+				}
+				30 = {
+					add_deposit = d_energy_4
+				}
+				10 = {
+					add_deposit = d_energy_5
+				}
 			}
 		}
 	}
@@ -252,15 +335,25 @@ gpm_guardians_init_ego = {
 		count = 1
 		class = pc_ice_asteroid
 		orbit_distance = -10
-		orbit_angle = { min = 225 max = 270 }
+		orbit_angle = {
+			min = 225
+			max = 270
+		}
 		init_effect = {
 			prevent_anomaly = yes
 			clear_deposits = yes
 			random_list = {
-				40 = { }
-				60 = { add_deposit = d_energy_3 }
-				30 = { add_deposit = d_energy_4 }
-				10 = { add_deposit = d_energy_5 }
+				40 = {
+				}
+				60 = {
+					add_deposit = d_energy_3
+				}
+				30 = {
+					add_deposit = d_energy_4
+				}
+				10 = {
+					add_deposit = d_energy_5
+				}
 			}
 		}
 	}
@@ -268,15 +361,25 @@ gpm_guardians_init_ego = {
 		count = 1
 		class = pc_ice_asteroid
 		orbit_distance = 10
-		orbit_angle = { min = 315 max = 360 }
+		orbit_angle = {
+			min = 315
+			max = 360
+		}
 		init_effect = {
 			prevent_anomaly = yes
 			clear_deposits = yes
 			random_list = {
-				40 = { }
-				60 = { add_deposit = d_energy_3 }
-				30 = { add_deposit = d_energy_4 }
-				10 = { add_deposit = d_energy_5 }
+				40 = {
+				}
+				60 = {
+					add_deposit = d_energy_3
+				}
+				30 = {
+					add_deposit = d_energy_4
+				}
+				10 = {
+					add_deposit = d_energy_5
+				}
 			}
 		}
 	}
@@ -284,26 +387,37 @@ gpm_guardians_init_ego = {
 		count = 1
 		class = pc_ice_asteroid
 		orbit_distance = 3
-		orbit_angle = { min = 0 max = 360 }
+		orbit_angle = {
+			min = 0
+			max = 360
+		}
 		init_effect = {
 			prevent_anomaly = yes
 			clear_deposits = yes
 			random_list = {
-				40 = { }
-				60 = { add_deposit = d_energy_3 }
-				30 = { add_deposit = d_energy_4 }
-				10 = { add_deposit = d_energy_5 }
+				40 = {
+				}
+				60 = {
+					add_deposit = d_energy_3
+				}
+				30 = {
+					add_deposit = d_energy_4
+				}
+				10 = {
+					add_deposit = d_energy_5
+				}
 			}
 		}
 	}
-	
-
 	# Molten World	
 	planet = {
 		count = 1
 		orbit_distance = -155
 		class = pc_molten
-		orbit_angle = { min = 90 max = 270 }
+		orbit_angle = {
+			min = 90
+			max = 270
+		}
 		size = 30
 		init_effect = {
 			set_name = "Meredith"
@@ -311,9 +425,15 @@ gpm_guardians_init_ego = {
 			set_planet_flag = gpm_guardian_partner
 			clear_deposits = yes
 			random_list = {
-				60 = { add_deposit = d_energy_5 }
-				30 = { add_deposit = d_energy_7 }
-				10 = { add_deposit = d_energy_9 }
+				60 = {
+					add_deposit = d_energy_5
+				}
+				30 = {
+					add_deposit = d_energy_7
+				}
+				10 = {
+					add_deposit = d_energy_9
+				}
 			}
 			planet_event = {
 				id = gpm_guardian.1
@@ -323,14 +443,12 @@ gpm_guardians_init_ego = {
 	}
 }
 
-
 gpm_precursor_machine_system = {
 	class = "sc_m_giant"
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 45
 	}
-
 	usage = misc_system_init
 	usage_odds = {
 		base = 90000
@@ -345,9 +463,11 @@ gpm_precursor_machine_system = {
 	}
 	spawn_chance = 100
 	max_instances = 1
-
-	flags = { gpm_precursor_machine_system hostile_system gpm_is_precursor_system }
-
+	flags = {
+		gpm_precursor_machine_system
+		hostile_system
+		gpm_is_precursor_system
+	}
 	planet = {
 		class = star
 		orbit_distance = 0
@@ -687,14 +807,14 @@ gpm_precursor_machine_system = {
 			}
 		}
 	}
-	
 	change_orbit = 80
-
 	planet = {
 		count = 1
 		class = "pc_machine"
-		size = { min = 23 max = 23 }
-		
+		size = {
+			min = 23
+			max = 23
+		}
 		init_effect = {
 			prevent_anomaly = yes
 			# log = "Machine System Spawned"
@@ -713,156 +833,262 @@ gpm_precursor_machine_system = {
 				}
 			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes }
+				limit = {
+					gpm_are_precursors_enabled = yes
+				}
 				set_planet_flag = gpm_is_precursor_world
-				add_modifier = { days = -1 modifier = "gpm_precursor_planetary_shield" }
+				add_modifier = {
+					days = -1
+					modifier = "gpm_precursor_planetary_shield"
+				}
 				gpm_set_precursor_planetary_shields_machines = yes
 			}
 		}
-		
 		change_orbit = 15
-		
 		moon = {
-			count = { min = 1 max = 1 }
-			size = { min = 7 max = 7 }
-			orbit_angle = { min = 0 max = 0 }
+			count = {
+				min = 1
+				max = 1
+			}
+			size = {
+				min = 7
+				max = 7
+			}
+			orbit_angle = {
+				min = 0
+				max = 0
+			}
 			orbit_distance = 0
 			class = "pc_barren_cold"
 			init_effect = {
 				prevent_anomaly = yes
 				set_planet_flag = gpm_machine_system_moon
 				if = {
-					limit = { gpm_are_precursors_enabled = yes }
+					limit = {
+						gpm_are_precursors_enabled = yes
+					}
 					set_planet_flag = gpm_is_precursor_world
-					add_modifier = { days = -1 modifier = "gpm_precursor_planetary_gun" }
+					add_modifier = {
+						days = -1
+						modifier = "gpm_precursor_planetary_gun"
+					}
 				}
 			}
 		}
-		
 		moon = {
-			count = { min = 1 max = 1 }
-			size = { min = 7 max = 7 }
-			orbit_angle = { min = 45 max = 45 }
+			count = {
+				min = 1
+				max = 1
+			}
+			size = {
+				min = 7
+				max = 7
+			}
+			orbit_angle = {
+				min = 45
+				max = 45
+			}
 			orbit_distance = 0
 			class = "pc_barren_cold"
 			init_effect = {
 				prevent_anomaly = yes
 				set_planet_flag = gpm_machine_system_moon
 				if = {
-					limit = { gpm_are_precursors_enabled = yes }
+					limit = {
+						gpm_are_precursors_enabled = yes
+					}
 					set_planet_flag = gpm_is_precursor_world
-					add_modifier = { days = -1 modifier = "gpm_precursor_planetary_gun" }
+					add_modifier = {
+						days = -1
+						modifier = "gpm_precursor_planetary_gun"
+					}
 				}
 			}
 		}
-		
 		moon = {
-			count = { min = 1 max = 1 }
-			size = { min = 7 max = 7 }
-			orbit_angle = { min = 90 max = 90 }
+			count = {
+				min = 1
+				max = 1
+			}
+			size = {
+				min = 7
+				max = 7
+			}
+			orbit_angle = {
+				min = 90
+				max = 90
+			}
 			orbit_distance = 0
 			class = "pc_barren_cold"
 			init_effect = {
 				prevent_anomaly = yes
 				set_planet_flag = gpm_machine_system_moon
 				if = {
-					limit = { gpm_are_precursors_enabled = yes }
+					limit = {
+						gpm_are_precursors_enabled = yes
+					}
 					set_planet_flag = gpm_is_precursor_world
-					add_modifier = { days = -1 modifier = "gpm_precursor_planetary_gun" }
+					add_modifier = {
+						days = -1
+						modifier = "gpm_precursor_planetary_gun"
+					}
 				}
 			}
 		}
-		
 		moon = {
-			count = { min = 1 max = 1 }
-			size = { min = 7 max = 7 }
-			orbit_angle = { min = 135 max = 135 }
+			count = {
+				min = 1
+				max = 1
+			}
+			size = {
+				min = 7
+				max = 7
+			}
+			orbit_angle = {
+				min = 135
+				max = 135
+			}
 			orbit_distance = 0
 			class = "pc_barren_cold"
 			init_effect = {
 				prevent_anomaly = yes
 				set_planet_flag = gpm_machine_system_moon
 				if = {
-					limit = { gpm_are_precursors_enabled = yes }
+					limit = {
+						gpm_are_precursors_enabled = yes
+					}
 					set_planet_flag = gpm_is_precursor_world
-					add_modifier = { days = -1 modifier = "gpm_precursor_planetary_gun" }
+					add_modifier = {
+						days = -1
+						modifier = "gpm_precursor_planetary_gun"
+					}
 				}
 			}
 		}
-		
 		moon = {
-			count = { min = 1 max = 1 }
-			size = { min = 7 max = 7 }
-			orbit_angle = { min = 180 max = 180 }
+			count = {
+				min = 1
+				max = 1
+			}
+			size = {
+				min = 7
+				max = 7
+			}
+			orbit_angle = {
+				min = 180
+				max = 180
+			}
 			orbit_distance = 0
 			class = "pc_barren_cold"
 			init_effect = {
 				prevent_anomaly = yes
 				set_planet_flag = gpm_machine_system_moon
 				if = {
-					limit = { gpm_are_precursors_enabled = yes }
+					limit = {
+						gpm_are_precursors_enabled = yes
+					}
 					set_planet_flag = gpm_is_precursor_world
-					add_modifier = { days = -1 modifier = "gpm_precursor_planetary_gun" }
+					add_modifier = {
+						days = -1
+						modifier = "gpm_precursor_planetary_gun"
+					}
 				}
 			}
 		}
-		
 		moon = {
-			count = { min = 1 max = 1 }
-			size = { min = 7 max = 7 }
-			orbit_angle = { min = 225 max = 225 }
+			count = {
+				min = 1
+				max = 1
+			}
+			size = {
+				min = 7
+				max = 7
+			}
+			orbit_angle = {
+				min = 225
+				max = 225
+			}
 			orbit_distance = 0
 			class = "pc_barren_cold"
 			init_effect = {
 				prevent_anomaly = yes
 				set_planet_flag = gpm_machine_system_moon
 				if = {
-					limit = { gpm_are_precursors_enabled = yes }
+					limit = {
+						gpm_are_precursors_enabled = yes
+					}
 					set_planet_flag = gpm_is_precursor_world
-					add_modifier = { days = -1 modifier = "gpm_precursor_planetary_gun" }
+					add_modifier = {
+						days = -1
+						modifier = "gpm_precursor_planetary_gun"
+					}
 				}
 			}
 		}
-		
 		moon = {
-			count = { min = 1 max = 1 }
-			size = { min = 7 max = 7 }
-			orbit_angle = { min = 270 max = 270 }
+			count = {
+				min = 1
+				max = 1
+			}
+			size = {
+				min = 7
+				max = 7
+			}
+			orbit_angle = {
+				min = 270
+				max = 270
+			}
 			orbit_distance = 0
 			class = "pc_barren_cold"
 			init_effect = {
 				prevent_anomaly = yes
 				set_planet_flag = gpm_machine_system_moon
 				if = {
-					limit = { gpm_are_precursors_enabled = yes }
+					limit = {
+						gpm_are_precursors_enabled = yes
+					}
 					set_planet_flag = gpm_is_precursor_world
-					add_modifier = { days = -1 modifier = "gpm_precursor_planetary_gun" }
+					add_modifier = {
+						days = -1
+						modifier = "gpm_precursor_planetary_gun"
+					}
 				}
 			}
 		}
-		
 		moon = {
-			count = { min = 1 max = 1 }
-			size = { min = 7 max = 7 }
-			orbit_angle = { min = 315 max = 315 }
+			count = {
+				min = 1
+				max = 1
+			}
+			size = {
+				min = 7
+				max = 7
+			}
+			orbit_angle = {
+				min = 315
+				max = 315
+			}
 			orbit_distance = 0
 			class = "pc_barren_cold"
 			init_effect = {
 				prevent_anomaly = yes
 				set_planet_flag = gpm_machine_system_moon
 				if = {
-					limit = { gpm_are_precursors_enabled = yes }
+					limit = {
+						gpm_are_precursors_enabled = yes
+					}
 					set_planet_flag = gpm_is_precursor_world
-					add_modifier = { days = -1 modifier = "gpm_precursor_planetary_gun" }
+					add_modifier = {
+						days = -1
+						modifier = "gpm_precursor_planetary_gun"
+					}
 				}
 			}
 		}
 	}
-	
 	init_effect = {
 	}
 }
-
 
 gpm_precursor_gaia_system = {
 	class = "rl_standard_stars"
@@ -870,16 +1096,17 @@ gpm_precursor_gaia_system = {
 		type = icy_asteroid_belt
 		radius = 120
 	}
-
 	usage = misc_system_init
 	usage_odds = {
-		base = 0 #90000
+		base = 0		#90000
 	}
-	spawn_chance = 0 #100
+	spawn_chance = 0	#100
 	max_instances = 1
-
-	flags = { gpm_precursor_gaia_system hostile_system gpm_is_precursor_system }
-
+	flags = {
+		gpm_precursor_gaia_system
+		hostile_system
+		gpm_is_precursor_system
+	}
 	planet = {
 		class = star
 		orbit_distance = 0
@@ -887,20 +1114,19 @@ gpm_precursor_gaia_system = {
 			prevent_anomaly = yes
 		}
 	}
-	
 	change_orbit = 80
-
 	planet = {
 		count = 1
 		class = "pc_gaia"
-		size = { min = 30 max = 30 }
-		
+		size = {
+			min = 30
+			max = 30
+		}
 		init_effect = {
 			prevent_anomaly = yes
 			# log = "Gaia System Spawned"
 			set_planet_flag = gpm_gaia_system_gaia_world
 			clear_deposits = yes
-			
 			create_ambient_object = {
 				type = "gpm_lower_wormhole_station"
 				location = this
@@ -913,16 +1139,23 @@ gpm_precursor_gaia_system = {
 				}
 			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes }
+				limit = {
+					gpm_are_precursors_enabled = yes
+				}
 				set_planet_flag = gpm_is_precursor_world
-				add_modifier = { days = -1 modifier = "gpm_precursor_planetary_shield" }
+				add_modifier = {
+					days = -1
+					modifier = "gpm_precursor_planetary_shield"
+				}
 				gpm_set_precursor_planetary_shields_machines = yes
-				add_modifier = { days = -1 modifier = "gpm_precursor_shipyards" }
+				add_modifier = {
+					days = -1
+					modifier = "gpm_precursor_shipyards"
+				}
 				gpm_set_shipyards_objects = yes
 			}
 		}
 	}
-	
 	init_effect = {
 	}
 }

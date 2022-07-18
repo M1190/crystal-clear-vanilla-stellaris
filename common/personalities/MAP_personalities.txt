@@ -15,7 +15,6 @@
 # species_mod_priority = {}		define weights for how much the AI should try to modify a given species (root=country, this=species)
 # crisis_leader -> Will they fight the crisis and invite others to do so (Fallen Empires special behviour. Emperor/Custodian will behave the same way regardless of this flag.)
 # crisis_fighter -> Will they consider fighting the crisis? (If 'no' they will only care about themselves.)
-
 ##### Modifiers:
 # aggressiveness -> Affects chance of declaring wars, chance of sending insults, and how much % of fleet power is committed to offense (at 0, 50% is committed, at 1 it is more like 75%, at 2 it is 100%; higher values still count extra towards war dec and insult chance)
 # trade_willingness -> At 1.0 willingness they will accept a deal that is equally good for both sides
@@ -26,12 +25,10 @@
 # threat_others_modifier -> Afffects how much threat is generated for other empires when this empire is conquered
 # friction_modifier -> Affects border friction
 # claims_modifier -> Affects opinion penalty from claims
-
 # Ships
 # armor_ratio -> Amount of armor they should aim for on ships
 # shields_ratio -> Amount of shields they should aim for on ships
 # hull_ratio -> Amount of hull boosters they should aim for on ships (if available)
-
 ##### Diplomacy:
 # federation_acceptance -> Added directly to chance of accepting to form/join a federation
 # nap_acceptance -> Added directly to chance of accepting to form a non-aggression pact
@@ -39,43 +36,32 @@
 # research_agreement_acceptance -> Added directly to chance of accepting to form a research agreement
 # migration_pact_acceptance -> Added directly to chance of accepting to form a migration pact
 # defensive_pact_acceptance -> Added directly to chance of accepting to form a defensive pact
-
 ##### Diplomacy:
 # advanced_start_chance -> Likelyhood of this empire being an advanced start (higher = better chance of being one of empires selected for advanced start)
-
 # NOTE: Weight is additive!
-
-
 map_patronizing_colonizers = {
 	#type = hegemon
-
 	aggressiveness = 1.5
 	trade_willingness = 0.9
 	bravery = 0.8
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 1.1
 	colony_spending = 1.1
-	
 	federation_acceptance = 10
 	nap_acceptance = -10
 	commercial_pact_acceptance = -10
 	research_agreement_acceptance = -10
 	defensive_pact_acceptance = 10
 	migration_pact_acceptance = 10
-	
 	advanced_start_chance = 75
-	
 	weapon_preferences = weapon_type_kinetic
 	armor_ratio = 0.4
 	shields_ratio = 0.5
 	hull_ratio = 0.1
-	
 	threat_modifier = 1.1
-	threat_others_modifier = 1.0
-	friction_modifier = 1.0
+	threat_others_modifier = 1
+	friction_modifier = 1
 	claims_modifier = 1.5
-	
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -96,16 +82,15 @@ map_patronizing_colonizers = {
 		multispecies = no
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		OR = {
 			has_ethic = "ethic_xenophile"
-			has_ethic = "ethic_fanatic_xenophile"				
+			has_ethic = "ethic_fanatic_xenophile"
 		}
-		OR = {	
+		OR = {
 			has_ethic = "ethic_authoritarian"
-			has_ethic = "ethic_fanatic_authoritarian"	
+			has_ethic = "ethic_fanatic_authoritarian"
 			has_ethic = "ethic_fanatic_militarist"
 			has_ethic = "ethic_militarist"
 			has_civic = "civic_aristocratic_elite"
@@ -113,11 +98,12 @@ map_patronizing_colonizers = {
 			has_origin = origin_hegemon
 			has_origin = origin_remnants
 		}
-		NOT = { has_origin = origin_scion }
+		NOT = {
+			has_origin = origin_scion
+		}
 	}
-	
 	weight_modifier = {
-		weight = 10		
+		weight = 10
 		modifier = {
 			add = 1
 			OR = {
@@ -127,7 +113,7 @@ map_patronizing_colonizers = {
 				has_civic = "civic_parliamentary_system"
 				has_civic = "civic_nationalistic_zeal"
 			}
-		}	
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_traditional"
@@ -135,61 +121,54 @@ map_patronizing_colonizers = {
 		modifier = {
 			add = -1
 			has_origin = origin_post_apocalyptic
-		}	
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_barbaric_despoilers"
-		}			
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground
-		}				
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground_npc
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_hegemon
-		}						
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_remnants
-		}				
+		}
 	}
 }
 
 #Savage Raiders
-map_savage_raiders = { 
+map_savage_raiders = {
 	#type = honorbound
-	
-	aggressiveness = 2.0
+	aggressiveness = 2
 	trade_willingness = 1.1
-	bravery = 1.0
-	combat_bravery = 1.0
-	
+	bravery = 1
+	combat_bravery = 1
 	military_spending = 1.5
-	colony_spending = 0.8	
-	
+	colony_spending = 0.8
 	federation_acceptance = -50
 	nap_acceptance = -100
 	commercial_pact_acceptance = -20
 	research_agreement_acceptance = -20
 	defensive_pact_acceptance = -20
 	migration_pact_acceptance = 0
-	
 	advanced_start_chance = 20
-	
 	weapon_preferences = weapon_type_strike_craft
 	armor_ratio = 0.5
 	shields_ratio = 0.3
 	hull_ratio = 0.2
-	
 	threat_modifier = 0.3
 	threat_others_modifier = 0.2
 	friction_modifier = 1.5
-	claims_modifier = 2.0
-
+	claims_modifier = 2
 	behaviour = {
 		conqueror = no
 		subjugator = yes
@@ -211,42 +190,40 @@ map_savage_raiders = {
 		crisis_fighter = yes
 		wants_tribute = yes
 	}
-	
 	allow = {
 		is_country_type = default
-		OR = {		
+		OR = {
 			has_ethic = "ethic_fanatic_militarist"
 			has_ethic = "ethic_militarist"
-		}	
-		OR = {		
+		}
+		OR = {
 			has_trait = "trait_nomadic"
 			has_civic = "civic_warrior_culture"
 			has_civic = "civic_barbaric_despoilers"
-		}	
+		}
 	}
-	
 	weight_modifier = {
-		weight = 10		
+		weight = 10
 		modifier = {
 			add = 1
 			has_trait = "trait_nomadic"
-		}				
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_sedentary"
-		}					
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_strong"
-		}					
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_quarrelsome"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_barbaric_despoilers"
-		}		
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_lithoid_volatile_excretions"
@@ -254,53 +231,46 @@ map_savage_raiders = {
 		modifier = {
 			add = -1
 			has_trait = "trait_docile"
-		}			
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground
-		}				
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground_npc
-		}						
+		}
 		modifier = {
 			add = 1
 			has_origin = "origin_clone_army"
-		}				
+		}
 	}
 }
 
 #DEUS VULT
-map_defenders_of_the_faith = { 
+map_defenders_of_the_faith = {
 	#type = honorbound
-
 	aggressiveness = 0.8
 	trade_willingness = 0.7
-	bravery = 1.0
+	bravery = 1
 	combat_bravery = 1.1
-	
 	military_spending = 1.5
-	colony_spending = 0.9	
-	
+	colony_spending = 0.9
 	federation_acceptance = -20
 	nap_acceptance = -30
 	commercial_pact_acceptance = 0
 	research_agreement_acceptance = 0
 	defensive_pact_acceptance = -20
 	migration_pact_acceptance = -10
-	
 	advanced_start_chance = 50
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.4
 	shields_ratio = 0.5
 	hull_ratio = 0.1
-	
 	threat_modifier = 0.7
 	threat_others_modifier = 0.5
 	friction_modifier = 1.3
 	claims_modifier = 1.5
-	
 	behaviour = {
 		conqueror = yes
 		subjugator = no
@@ -321,95 +291,85 @@ map_defenders_of_the_faith = {
 		multispecies = no
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
-		OR = {	
+		OR = {
 			has_ethic = "ethic_authoritarian"
 			has_ethic = "ethic_fanatic_authoritarian"
 			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"	
+			has_ethic = "ethic_fanatic_xenophobe"
 			has_ethic = "ethic_fanatic_militarist"
 			has_ethic = "ethic_militarist"
-		}			
+		}
 		OR = {
 			has_ethic = "ethic_spiritualist"
 			has_ethic = "ethic_fanatic_spiritualist"
-		}		
-	}
-	
-	weight_modifier = {
-		weight = 9 #20?	
-		modifier= {
-			add = 1
-			has_authority = auth_imperial			
 		}
-		modifier= {
+	}
+	weight_modifier = {
+		weight = 9		#20?	
+		modifier = {
 			add = 1
-			OR = {		
+			has_authority = auth_imperial
+		}
+		modifier = {
+			add = 1
+			OR = {
 				has_ethic = "ethic_fanatic_militarist"
 				has_ethic = "ethic_militarist"
-			}			
+			}
 		}
-		modifier= {
+		modifier = {
 			add = 1
-			has_civic = civic_feudal_realm			
+			has_civic = civic_feudal_realm
 		}
-		modifier= {
+		modifier = {
 			add = 1
-			has_trait = "trait_traditional"			
-		}	
+			has_trait = "trait_traditional"
+		}
 		modifier = {
 			add = -2
 			has_civic = "civic_barbaric_despoilers"
-		}	
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_ingenious"
-		}						
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_diplomatic_corps"
-		}						
+		}
 		modifier = {
 			add = 1
 			has_origin = "origin_clone_army"
 		}
-	}	
+	}
 }
-
 
 #like... totally radical man...
 map_carefree_hippies = {
 	#type = federation_builder
-
-	aggressiveness = 0.5 # will only attack to liberate
-	trade_willingness = 1.1	
+	aggressiveness = 0.5	# will only attack to liberate
+	trade_willingness = 1.1
 	bravery = 0.8
 	combat_bravery = 0.8
-	
 	military_spending = 0.7
-	colony_spending = 1.1	
-	
+	colony_spending = 1.1
 	federation_acceptance = 30
 	nap_acceptance = 30
 	commercial_pact_acceptance = -50
 	research_agreement_acceptance = 50
 	defensive_pact_acceptance = 0
 	migration_pact_acceptance = 50
-	
 	advanced_start_chance = 10
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.1
 	shields_ratio = 0.9
-	hull_ratio = 0.0
-	
+	hull_ratio = 0
 	threat_modifier = 1.3
 	threat_others_modifier = 1.2
 	friction_modifier = 0.05
 	claims_modifier = 0.5
-	
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -430,9 +390,8 @@ map_carefree_hippies = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
-		is_country_type = default	
+		is_country_type = default
 		OR = {
 			has_ethic = "ethic_spiritualist"
 			has_ethic = "ethic_fanatic_spiritualist"
@@ -445,7 +404,7 @@ map_carefree_hippies = {
 			has_civic = "civic_beacon_of_liberty"
 			has_civic = "civic_shared_burden"
 			#has_trait = "trait_lithoid_gaseous_byproducts"
-		}		
+		}
 		NOR = {
 			has_ethic = "ethic_fanatic_militarist"
 			has_ethic = "ethic_militarist"
@@ -459,25 +418,24 @@ map_carefree_hippies = {
 			has_origin = origin_doomsday
 			has_origin = origin_remnants
 			has_origin = origin_necrophage
-			has_civic = "civic_pleasure_seekers"			
+			has_civic = "civic_pleasure_seekers"
 		}
 		OR = {
 			has_ethic = "ethic_pacifist"
-			has_ethic = "ethic_fanatic_pacifist"				
+			has_ethic = "ethic_fanatic_pacifist"
 			has_ethic = "ethic_egalitarian"
 			has_ethic = "ethic_fanatic_egalitarian"
 			has_ethic = "ethic_xenophile"
-			has_ethic = "ethic_fanatic_xenophile"			
+			has_ethic = "ethic_fanatic_xenophile"
 		}
 		has_authority = auth_democratic
 	}
-	
 	weight_modifier = {
-		weight = 10 #20?	
+		weight = 10		#20?	
 		modifier = {
 			add = 1
 			has_trait = "trait_nomadic"
-		}		
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_communal"
@@ -486,7 +444,7 @@ map_carefree_hippies = {
 			add = -1
 			OR = {
 				has_ethic = "ethic_authoritarian"
-				has_ethic = "ethic_fanatic_authoritarian"			
+				has_ethic = "ethic_fanatic_authoritarian"
 			}
 		}
 		modifier = {
@@ -500,11 +458,11 @@ map_carefree_hippies = {
 		modifier = {
 			add = 2
 			has_civic = "civic_shared_burden"
-		}	
+		}
 		modifier = {
 			add = 2
-			has_trait = "trait_lithoid_gaseous_byproducts" #420 weed lol cool dank meme
-		}		
+			has_trait = "trait_lithoid_gaseous_byproducts"			#420 weed lol cool dank meme
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_unruly"
@@ -512,40 +470,33 @@ map_carefree_hippies = {
 		modifier = {
 			add = -1
 			has_origin = origin_lost_colony
-		}	
-	}	
+		}
+	}
 }
 
-map_studious_builders = { 
+map_studious_builders = {
 	#type = capitalist
-
 	aggressiveness = 0.7
 	trade_willingness = 0.9
 	bravery = 0.5
-	combat_bravery = 1.0
-	
-	military_spending = 1.0
+	combat_bravery = 1
+	military_spending = 1
 	colony_spending = 1.2
-	
 	federation_acceptance = -30
 	nap_acceptance = -20
 	commercial_pact_acceptance = 0
 	research_agreement_acceptance = 0
 	defensive_pact_acceptance = 10
 	migration_pact_acceptance = -10
-	
 	advanced_start_chance = 50
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.4
 	shields_ratio = 0.4
 	hull_ratio = 0.2
-	
 	threat_modifier = 1.1
-	threat_others_modifier = 1.0
-	friction_modifier = 1.0
-	claims_modifier = 1.0
-	
+	threat_others_modifier = 1
+	friction_modifier = 1
+	claims_modifier = 1
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -566,7 +517,6 @@ map_studious_builders = {
 		multispecies = no
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		OR = {
@@ -576,18 +526,19 @@ map_studious_builders = {
 			has_trait = "trait_ingenious"
 			has_civic = "civic_memorialist"
 			has_civic = "civic_crafters"
-		}		
+		}
 		OR = {
 			has_ethic = "ethic_authoritarian"
-			has_ethic = "ethic_fanatic_authoritarian"	
+			has_ethic = "ethic_fanatic_authoritarian"
 			has_ethic = "ethic_spiritualist"
-			has_ethic = "ethic_fanatic_spiritualist"				
+			has_ethic = "ethic_fanatic_spiritualist"
 		}
-		NOT = { has_civic = "civic_functional_architecture" }
+		NOT = {
+			has_civic = "civic_functional_architecture"
+		}
 	}
-	
 	weight_modifier = {
-		weight = 10	
+		weight = 10
 		modifier = {
 			add = 1
 			has_trait = "trait_thrifty"
@@ -595,49 +546,42 @@ map_studious_builders = {
 		modifier = {
 			add = 1
 			has_trait = "trait_industrious"
-		}	
+		}
 		modifier = {
 			add = -1
 			has_authority = auth_democratic
-		}		
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_lithoid_volatile_excretions"
-		}			
+		}
 	}
 }
 
 #Bioshock
-map_hedonistic_visionaries = { 
+map_hedonistic_visionaries = {
 	#type = # ideologue
-
 	aggressiveness = 0.8
 	trade_willingness = 0.7
 	bravery = 0.8
-	combat_bravery = 1.0
-	
-	military_spending = 1.0
+	combat_bravery = 1
+	military_spending = 1
 	colony_spending = 1.3
-	
 	federation_acceptance = -30
 	nap_acceptance = -50
 	commercial_pact_acceptance = -100
 	research_agreement_acceptance = 0
 	defensive_pact_acceptance = -50
 	migration_pact_acceptance = -50
-	
 	advanced_start_chance = 50
-	
 	weapon_preferences = weapon_type_explosive
 	armor_ratio = 0.3
 	shields_ratio = 0.6
 	hull_ratio = 0.1
-	
 	threat_modifier = 1.2
 	threat_others_modifier = 1.1
 	friction_modifier = 1.4
-	claims_modifier = 2.0
-	
+	claims_modifier = 2
 	behaviour = {
 		conqueror = yes
 		subjugator = no
@@ -658,9 +602,8 @@ map_hedonistic_visionaries = {
 		multispecies = no
 		crisis_fighter = yes
 	}
-	
 	allow = {
-		is_country_type = default			
+		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_authoritarian"
 			has_ethic = "ethic_fanatic_authoritarian"
@@ -670,30 +613,29 @@ map_hedonistic_visionaries = {
 			has_civic = "civic_corvee_system"
 			has_civic = "civic_memorialist"
 			has_trait = "trait_traditional"
-		}	
-		OR = {		
+		}
+		OR = {
 			has_ethic = "ethic_egalitarian"
 			has_ethic = "ethic_fanatic_egalitarian"
 			has_civic = "civic_corporate_dominion"
 			has_civic = "civic_idealistic_foundation"
 			has_trait = "trait_unruly"
 			has_civic = "civic_pleasure_seekers"
-		}	
+		}
 		OR = {
 			has_ethic = "ethic_materialist"
 			has_ethic = "ethic_fanatic_materialist"
 		}
 	}
-	
 	weight_modifier = {
-		weight = 7 #20?	
+		weight = 7		#20?	
 		modifier = {
 			add = 2
 			OR = {
 				has_ethic = "ethic_egalitarian"
 				has_ethic = "ethic_fanatic_egalitarian"
 			}
-		}		
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_thrifty"
@@ -721,76 +663,69 @@ map_hedonistic_visionaries = {
 		modifier = {
 			add = 1
 			has_civic = "civic_merchant_guilds"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_ingenious"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_lithoid_scintillating"
-		}	
+		}
 		modifier = {
 			add = 1
-			has_trait = "trait_lithoid_gaseous_byproducts" 
+			has_trait = "trait_lithoid_gaseous_byproducts"
 		}
 		modifier = {
 			add = -1
 			has_trait = "trait_docile"
-		}		
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_unruly"
-		}			
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground
-		}			
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground_npc
-		}							
+		}
 		modifier = {
-			add = 2			
+			add = 2
 			has_civic = "civic_pleasure_seekers"
-		}					
+		}
 		modifier = {
-			add = 1			
+			add = 1
 			has_civic = "civic_crafters"
-		}			
+		}
 	}
 }
 
 map_generous_philanthropists = {
 	#type = federation_builder
-
-	aggressiveness = 0.85 # will only attack to liberate
-	trade_willingness = 0.9	
+	aggressiveness = 0.85	# will only attack to liberate
+	trade_willingness = 0.9
 	bravery = 0.9
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 1.1
-	colony_spending = 1.0	
-	
+	colony_spending = 1
 	federation_acceptance = 50
 	nap_acceptance = 10
 	commercial_pact_acceptance = 20
 	research_agreement_acceptance = 20
 	defensive_pact_acceptance = 10
 	migration_pact_acceptance = 20
-	
 	advanced_start_chance = 100
-	
 	weapon_preferences = weapon_type_explosive
 	armor_ratio = 0.5
 	shields_ratio = 0.4
 	hull_ratio = 0.1
-	
 	threat_modifier = 1.1
-	threat_others_modifier = 1.0
-	friction_modifier = 1.0
-	claims_modifier = 1.0
-	
+	threat_others_modifier = 1
+	friction_modifier = 1
+	claims_modifier = 1
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -811,30 +746,27 @@ map_generous_philanthropists = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"	
+			has_ethic = "ethic_fanatic_xenophobe"
 			has_ethic = "ethic_authoritarian"
 			has_ethic = "ethic_fanatic_authoritarian"
 			has_civic = civic_feudal_realm
 			has_civic = civic_corvee_system
-		}				
+		}
 		OR = {
 			has_ethic = "ethic_xenophile"
-			has_ethic = "ethic_fanatic_xenophile"				
-		}		
+			has_ethic = "ethic_fanatic_xenophile"
+		}
 		OR = {
 			has_ethic = "ethic_materialist"
 			has_ethic = "ethic_fanatic_materialist"
 		}
-
 	}
-	
 	weight_modifier = {
-		weight = 8 #20?	
+		weight = 8		#20?	
 		#modifier = {
 		#	add = -1
 		#	has_ethic = "ethic_militarist"
@@ -842,18 +774,18 @@ map_generous_philanthropists = {
 		modifier = {
 			add = -1
 			has_ethic = "ethic_fanatic_militarist"
-		}		
+		}
 		modifier = {
 			add = 1
 			has_ethic = "ethic_fanatic_egalitarian"
-		}				
+		}
 		modifier = {
 			add = 1
 			OR = {
 				has_ethic = "ethic_pacifist"
-				has_ethic = "ethic_fanatic_pacifist"						
-			}	
-		}		
+				has_ethic = "ethic_fanatic_pacifist"
+			}
+		}
 		modifier = {
 			add = 1
 			OR = {
@@ -888,61 +820,54 @@ map_generous_philanthropists = {
 				has_civic = "civic_police_state"
 				has_civic = "civic_shared_burden"
 			}
-		}			
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground
-		}			
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground_npc
-		}					
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_hegemon
-		}					
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_reanimated_armies"
-		}				
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_diplomatic_corps"
 		}
-	}	
+	}
 }
 
 #millennials sort of?
-map_adventure_seekers = { 
+map_adventure_seekers = {
 	#type = explorer
-
 	aggressiveness = 0.75
 	trade_willingness = 1.05
 	bravery = 1.1
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 0.9
-	colony_spending = 1.0	
-	
+	colony_spending = 1
 	federation_acceptance = 0
 	nap_acceptance = 30
 	commercial_pact_acceptance = 20
 	research_agreement_acceptance = 20
 	defensive_pact_acceptance = 20
 	migration_pact_acceptance = 30
-	
 	advanced_start_chance = 50
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.4
 	shields_ratio = 0.5
 	hull_ratio = 0.1
-	
 	threat_modifier = 0.8
 	threat_others_modifier = 0.7
 	friction_modifier = 1.2
-	claims_modifier = 1.0
-	
+	claims_modifier = 1
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -963,57 +888,55 @@ map_adventure_seekers = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_xenophobe"
 			has_ethic = "ethic_fanatic_xenophobe"
-			has_trait = "trait_traditional" 
+			has_trait = "trait_traditional"
 		}
 		OR = {
 			AND = {
 				OR = {
 					has_ethic = "ethic_egalitarian"
-					has_ethic = "ethic_fanatic_egalitarian"	
+					has_ethic = "ethic_fanatic_egalitarian"
 					has_ethic = "ethic_pacifist"
-					has_ethic = "ethic_fanatic_pacifist"			
+					has_ethic = "ethic_fanatic_pacifist"
 				}
 				OR = {
 					has_ethic = "ethic_xenophile"
-					has_ethic = "ethic_fanatic_xenophile"					
+					has_ethic = "ethic_fanatic_xenophile"
 				}
 			}
 			AND = {
 				OR = {
 					has_ethic = "ethic_egalitarian"
-					has_ethic = "ethic_fanatic_egalitarian"					
+					has_ethic = "ethic_fanatic_egalitarian"
 				}
-				OR = {	
+				OR = {
 					has_ethic = "ethic_pacifist"
-					has_ethic = "ethic_fanatic_pacifist"						
+					has_ethic = "ethic_fanatic_pacifist"
 				}
 			}
 		}
 	}
-	
 	weight_modifier = {
-		weight = 9 #20?	
+		weight = 9		#20?	
 		modifier = {
 			add = 1
 			OR = {
 				has_ethic = "ethic_materialist"
-				has_ethic = "ethic_fanatic_materialist"			
+				has_ethic = "ethic_fanatic_materialist"
 			}
-		}	
+		}
 		modifier = {
 			add = 1
 			has_authority = auth_democratic
-		}		
+		}
 		modifier = {
 			add = 2
 			has_civic = "civic_idealistic_foundation"
-		}			
+		}
 		modifier = {
 			add = -1
 			OR = {
@@ -1021,7 +944,7 @@ map_adventure_seekers = {
 				has_civic = "civic_nationalistic_zeal"
 				has_civic = "civic_cutthroat_politics"
 			}
-		}				
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_ingenious"
@@ -1037,11 +960,11 @@ map_adventure_seekers = {
 		modifier = {
 			add = -1
 			has_origin = origin_lost_colony
-		}						
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_remnants
-		}						
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_diplomatic_corps"
@@ -1052,34 +975,27 @@ map_adventure_seekers = {
 #pip pip cherio and Winston Churchill
 map_splendid_isolationists = {
 	#type = isolationist
-	
 	aggressiveness = 0.7
 	trade_willingness = 0.95
-	bravery = 1.0
-	combat_bravery = 1.0
-	
+	bravery = 1
+	combat_bravery = 1
 	military_spending = 1.1
-	colony_spending = 1.2	
-	
+	colony_spending = 1.2
 	federation_acceptance = -30
 	nap_acceptance = -20
 	commercial_pact_acceptance = -30
 	research_agreement_acceptance = -10
 	defensive_pact_acceptance = -20
 	migration_pact_acceptance = -40
-	
 	advanced_start_chance = 100
-	
 	weapon_preferences = weapon_type_kinetic
 	armor_ratio = 0.5
 	shields_ratio = 0.3
 	hull_ratio = 0.2
-	
 	threat_modifier = 0.9
 	threat_others_modifier = 0.6
 	friction_modifier = 1.2
-	claims_modifier = 2.0
-
+	claims_modifier = 2
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -1101,14 +1017,12 @@ map_splendid_isolationists = {
 		isolationist = yes
 		crisis_fighter = yes
 	}
-
-	
 	allow = {
 		is_country_type = default
 		OR = {
 			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"		
-		}		
+			has_ethic = "ethic_fanatic_xenophobe"
+		}
 		OR = {
 			has_civic = "civic_parliamentary_system"
 			has_civic = "civic_aristocratic_elite"
@@ -1116,9 +1030,8 @@ map_splendid_isolationists = {
 			has_origin = origin_remnants
 		}
 	}
-	
 	weight_modifier = {
-		weight = 10 #20?		
+		weight = 10		#20?		
 		modifier = {
 			add = 1
 			OR = {
@@ -1129,52 +1042,45 @@ map_splendid_isolationists = {
 		modifier = {
 			add = 1
 			has_trait = "trait_charismatic"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_traditional"
-		}		
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_shared_burden"
-		}						
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_remnants
-		}			
-	}	
+		}
+	}
 }
 
-map_psychotic_hordes = { 
+map_psychotic_hordes = {
 	#type = purifier
-	
-	aggressiveness = 3.0
-	trade_willingness = 0.0
+	aggressiveness = 3
+	trade_willingness = 0
 	bravery = 1.5
-	combat_bravery = 5.0
-	
-	military_spending = 2.0
-	colony_spending = 0.7	
-	
+	combat_bravery = 5
+	military_spending = 2
+	colony_spending = 0.7
 	federation_acceptance = -1000
 	nap_acceptance = -1000
 	commercial_pact_acceptance = -1000
 	research_agreement_acceptance = -1000
 	defensive_pact_acceptance = -1000
 	migration_pact_acceptance = -1000
-	
 	advanced_start_chance = 30
-	
 	weapon_preferences = weapon_type_strike_craft
 	armor_ratio = 0.4
 	shields_ratio = 0.3
 	hull_ratio = 0.3
-	
 	threat_modifier = 0
 	threat_others_modifier = 0
 	friction_modifier = 30
 	claims_modifier = 0
-
 	behaviour = {
 		conqueror = yes
 		subjugator = no
@@ -1196,26 +1102,27 @@ map_psychotic_hordes = {
 		crisis_fighter = yes
 		attack_neutrals = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		OR = {
 			AND = {
-				NOT = { host_has_dlc = "Utopia" }  
+				NOT = {
+					host_has_dlc = "Utopia"
+				}
 				NOR = {
 					has_ethic = "ethic_xenophile"
-					has_ethic = "ethic_fanatic_xenophile"					
+					has_ethic = "ethic_fanatic_xenophile"
 					has_ethic = "ethic_pacifist"
-					has_ethic = "ethic_fanatic_pacifist"				
-				}				
-				OR = {	
-					has_ethic = "ethic_authoritarian"
-					has_ethic = "ethic_fanatic_authoritarian"				
+					has_ethic = "ethic_fanatic_pacifist"
 				}
-				OR = {	
+				OR = {
+					has_ethic = "ethic_authoritarian"
+					has_ethic = "ethic_fanatic_authoritarian"
+				}
+				OR = {
 					has_ethic = "ethic_fanatic_militarist"
 					has_ethic = "ethic_militarist"
-				}				
+				}
 			}
 			AND = {
 				host_has_dlc = "Utopia"
@@ -1224,28 +1131,31 @@ map_psychotic_hordes = {
 		}
 		#host_has_dlc = "Utopia"
 	}
-	
 	weight_modifier = {
 		weight = 1000
 		modifier = {
 			add = 2
-			NOT = { host_has_dlc = "Utopia" } 
+			NOT = {
+				host_has_dlc = "Utopia"
+			}
 			OR = {
 				has_ethic = "ethic_xenophobe"
-				has_ethic = "ethic_fanatic_xenophobe"		
-			}		
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
 		}
 		modifier = {
 			add = 1
-			has_civic = "civic_warrior_culture"	
+			has_civic = "civic_warrior_culture"
 		}
 		modifier = {
 			add = 1
-			has_civic = "civic_death_cult"	
+			has_civic = "civic_death_cult"
 		}
 		modifier = {
-			add = -990 #-320 #-32
-			NOT = { host_has_dlc = "Utopia" } 
+			add = -990			#-320 #-32
+			NOT = {
+				host_has_dlc = "Utopia"
+			}
 		}
 	}
 }
@@ -1253,34 +1163,27 @@ map_psychotic_hordes = {
 #Big Brother is watching
 map_totalitarian_patriots = {
 	#type = purifier
-	
 	aggressiveness = 1.5
 	trade_willingness = 0.2
 	bravery = 1.1
-	combat_bravery = 1.5 # "In the Soviet army it takes more courage to retreat than advance. NOT A STEP BACK."
-	
+	combat_bravery = 1.5	# "In the Soviet army it takes more courage to retreat than advance. NOT A STEP BACK."
 	military_spending = 1.3
-	colony_spending = 0.8	
-	
+	colony_spending = 0.8
 	federation_acceptance = -1000
 	nap_acceptance = -100
 	commercial_pact_acceptance = -1000
 	research_agreement_acceptance = -1000
 	defensive_pact_acceptance = -100
 	migration_pact_acceptance = -100
-	
 	advanced_start_chance = 20
-	
 	weapon_preferences = weapon_type_kinetic
 	armor_ratio = 0.5
 	shields_ratio = 0.3
 	hull_ratio = 0.2
-	
 	threat_modifier = 1.1
 	threat_others_modifier = 0.9
-	friction_modifier = 3.0
-	claims_modifier = 3.0
-
+	friction_modifier = 3
+	claims_modifier = 3
 	behaviour = {
 		conqueror = yes
 		subjugator = no
@@ -1303,15 +1206,13 @@ map_totalitarian_patriots = {
 		crisis_fighter = yes
 		attack_neutrals = yes
 	}
-
-	
 	allow = {
-		is_country_type = default				
+		is_country_type = default
 		#OR = {	
 		#	has_ethic = "ethic_authoritarian"
 		#	has_ethic = "ethic_fanatic_authoritarian"				
 		#}
-		has_civic = "civic_police_state"		
+		has_civic = "civic_police_state"
 		OR = {
 			has_ethic = "ethic_xenophobe"
 			has_ethic = "ethic_fanatic_xenophobe"
@@ -1331,85 +1232,77 @@ map_totalitarian_patriots = {
 			has_ethic = "ethic_xenophile"
 			has_ethic = "ethic_fanatic_xenophile"
 			has_ethic = "ethic_fanatic_pacifist"
-			has_ethic = "ethic_pacifist"					
+			has_ethic = "ethic_pacifist"
 			has_authority = auth_democratic
 			has_origin = origin_common_ground
 			has_origin = origin_common_ground_npc
 			has_civic = civic_diplomatic_corps
 		}
 	}
-	
 	weight_modifier = {
-		weight = 10 #20?
+		weight = 10		#20?
 		modifier = {
 			add = 1
 			OR = {
 				has_ethic = "ethic_xenophobe"
-				has_ethic = "ethic_fanatic_xenophobe"			
+				has_ethic = "ethic_fanatic_xenophobe"
 			}
 		}
-		modifier= {
+		modifier = {
 			add = 1
-			has_authority = auth_dictatorial			
+			has_authority = auth_dictatorial
 		}
-		modifier= {
+		modifier = {
 			add = 1
-			has_civic = "civic_byzantine_bureaucracy"			
+			has_civic = "civic_byzantine_bureaucracy"
 		}
-		modifier= {
+		modifier = {
 			add = 1
-			has_civic = "civic_shared_burden"		
+			has_civic = "civic_shared_burden"
 		}
 		modifier = {
 			add = 1
 			has_trait = "trait_docile"
-		}		
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_unruly"
-		}					
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_memorialist"
-		}					
+		}
 		modifier = {
-			add = -1			
+			add = -1
 			has_civic = "civic_crafters"
-		}	
-	}	
+		}
+	}
 }
 
 #Imp Japan
-map_insecure_imitators = { 
+map_insecure_imitators = {
 	#type = hegemon
-
 	aggressiveness = 1.2
 	trade_willingness = 1.1
 	bravery = 1.1
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 1.2
 	colony_spending = 0.9
-	
 	federation_acceptance = -50
 	nap_acceptance = -10
 	commercial_pact_acceptance = 20
 	research_agreement_acceptance = 20
 	defensive_pact_acceptance = 10
 	migration_pact_acceptance = -10
-	
 	advanced_start_chance = 20
-	
 	weapon_preferences = weapon_type_strike_craft
 	armor_ratio = 0.5
 	shields_ratio = 0.4
 	hull_ratio = 0.1
-	
 	threat_modifier = 1.3
 	threat_others_modifier = 1.2
-	friction_modifier = 2.0
-	claims_modifier = 2.0
-	
+	friction_modifier = 2
+	claims_modifier = 2
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -1430,31 +1323,30 @@ map_insecure_imitators = {
 		multispecies = no
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		OR = {
 			AND = {
 				OR = {
 					has_ethic = "ethic_xenophobe"
-					has_ethic = "ethic_fanatic_xenophobe"				
-				}			
+					has_ethic = "ethic_fanatic_xenophobe"
+				}
 				OR = {
 					has_ethic = "ethic_fanatic_militarist"
 					has_ethic = "ethic_militarist"
 					has_ethic = "ethic_materialist"
-					has_ethic = "ethic_fanatic_materialist"					
-				}			
+					has_ethic = "ethic_fanatic_materialist"
+				}
 			}
 			AND = {
-				OR = {				
+				OR = {
 					has_ethic = "ethic_fanatic_militarist"
 					has_ethic = "ethic_militarist"
 				}
-				OR = {	
+				OR = {
 					has_ethic = "ethic_authoritarian"
-					has_ethic = "ethic_fanatic_authoritarian"				
-				}		
+					has_ethic = "ethic_fanatic_authoritarian"
+				}
 			}
 		}
 		OR = {
@@ -1468,33 +1360,32 @@ map_insecure_imitators = {
 		}
 		NOR = {
 			has_ethic = "ethic_fanatic_pacifist"
-			has_ethic = "ethic_pacifist"					
+			has_ethic = "ethic_pacifist"
 			has_origin = origin_remnants
 		}
 	}
-	
 	weight_modifier = {
-		weight = 8 #20?		
+		weight = 8		#20?		
 		modifier = {
 			add = 1
-			has_trait = "trait_traditional"			
-		}		
+			has_trait = "trait_traditional"
+		}
 		modifier = {
 			add = -1
-			has_trait = "trait_nonadaptive"			
-		}			
+			has_trait = "trait_nonadaptive"
+		}
 		modifier = {
 			add = 1
-			has_civic = "civic_warrior_culture"	
-		}				
+			has_civic = "civic_warrior_culture"
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_byzantine_bureaucracy"
-		}				
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_lithoid_scintillating"
-		}					
+		}
 		#modifier = {
 		#	add = -1
 		#	has_civic = "civic_warrior_culture"	
@@ -1502,52 +1393,45 @@ map_insecure_imitators = {
 		modifier = {
 			add = -1
 			has_origin = origin_remnants
-		}						
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_scion
-		}							
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_idyllic_bloom"
-		}					
+		}
 		modifier = {
-			add = -1			
+			add = -1
 			has_civic = "civic_crafters"
-		}			
+		}
 	}
 }
 
 map_efficient_bureaucrats = {
 	#type = capitalist
-
 	aggressiveness = 0.4
 	trade_willingness = 1.05
 	bravery = 0.4
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 0.9
 	colony_spending = 1.4
-	
 	federation_acceptance = 0
 	nap_acceptance = 20
 	commercial_pact_acceptance = 15
 	research_agreement_acceptance = 15
 	defensive_pact_acceptance = 20
 	migration_pact_acceptance = 0
-	
 	advanced_start_chance = 50
-	
 	weapon_preferences = weapon_type_explosive
 	armor_ratio = 0.4
 	shields_ratio = 0.5
 	hull_ratio = 0.1
-	
 	threat_modifier = 1.5
 	threat_others_modifier = 1.3
 	friction_modifier = 1.3
-	claims_modifier = 1.0
-	
+	claims_modifier = 1
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -1568,22 +1452,20 @@ map_efficient_bureaucrats = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
-		NOR = {	
+		NOR = {
 			has_ethic = "ethic_fanatic_militarist"
-			has_ethic = "ethic_militarist"		
+			has_ethic = "ethic_militarist"
 		}
 		OR = {
-			has_government = "gov_irenic_bureaucracy" 
+			has_government = "gov_irenic_bureaucracy"
 			has_civic = "civic_efficient_bureaucracy"
 			has_civic = "civic_byzantine_bureaucracy"
 		}
 	}
-	
 	weight_modifier = {
-		weight = 10 # was 6 pre-Banks/Utopia
+		weight = 10		# was 6 pre-Banks/Utopia
 		modifier = {
 			add = 1
 			OR = {
@@ -1593,72 +1475,65 @@ map_efficient_bureaucrats = {
 			}
 		}
 		modifier = {
-			add = 1		
+			add = 1
 			OR = {
 				has_ethic = "ethic_materialist"
 				has_ethic = "ethic_fanatic_materialist"
 				has_ethic = "ethic_authoritarian"
-				has_ethic = "ethic_fanatic_authoritarian"				
-			}	
+				has_ethic = "ethic_fanatic_authoritarian"
+			}
 		}
 		modifier = {
-			add = 1		
+			add = 1
 			has_civic = "civic_byzantine_bureaucracy"
 		}
 		modifier = {
-			add = 1		
+			add = 1
 			has_civic = "civic_merchant_guilds"
-		}		
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_unruly"
-		}			
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground_npc
-		}					
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_memorialist"
-		}			
-	}	
+		}
+	}
 }
 
 #viets
-map_guerilla_fighters = { 
+map_guerilla_fighters = {
 	#type = isolationist
-
 	aggressiveness = 0.5
 	trade_willingness = 0.9
-	bravery = 2.0
+	bravery = 2
 	combat_bravery = 0.9
-	
 	military_spending = 1.5
 	colony_spending = 0.7
-	
 	federation_acceptance = 10
 	nap_acceptance = -10
 	commercial_pact_acceptance = -50
 	research_agreement_acceptance = 10
 	defensive_pact_acceptance = 10
 	migration_pact_acceptance = -20
-	
 	advanced_start_chance = 20
-	
 	weapon_preferences = weapon_type_strike_craft
 	armor_ratio = 0.3
 	shields_ratio = 0.6
 	hull_ratio = 0.1
-	
 	threat_modifier = 1.2
 	threat_others_modifier = 1.1
 	friction_modifier = 1.5
-	claims_modifier = 3.0
-	
+	claims_modifier = 3
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -1679,7 +1554,6 @@ map_guerilla_fighters = {
 		multispecies = no
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		OR = {
@@ -1694,12 +1568,11 @@ map_guerilla_fighters = {
 			has_civic = "civic_byzantine_bureaucracy"
 		}
 	}
-	
 	weight_modifier = {
-		weight = 8 #20?	
+		weight = 8		#20?	
 		modifier = {
 			add = 2
-			OR = {	
+			OR = {
 				has_ethic = "ethic_fanatic_militarist"
 				has_ethic = "ethic_militarist"
 			}
@@ -1707,7 +1580,7 @@ map_guerilla_fighters = {
 		modifier = {
 			add = 1
 			has_civic = "civic_shared_burden"
-		}				
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_hegemon
@@ -1715,38 +1588,30 @@ map_guerilla_fighters = {
 	}
 }
 
-
 #khitan
 map_civilized_nomads = {
 	#type = explorer
-	
 	aggressiveness = 1.5
 	trade_willingness = 1.1
 	bravery = 0.9
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 1.1
-	colony_spending = 1.1	
-	
+	colony_spending = 1.1
 	federation_acceptance = 0
 	nap_acceptance = 10
 	commercial_pact_acceptance = 20
 	research_agreement_acceptance = 10
 	defensive_pact_acceptance = 10
 	migration_pact_acceptance = 10
-	
 	advanced_start_chance = 30
-	
 	weapon_preferences = weapon_type_strike_craft
 	armor_ratio = 0.4
 	shields_ratio = 0.5
 	hull_ratio = 0.1
-	
-	threat_modifier = 1.0
+	threat_modifier = 1
 	threat_others_modifier = 0.7
-	friction_modifier = 1.0
-	claims_modifier = 1.0
-
+	friction_modifier = 1
+	claims_modifier = 1
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -1768,11 +1633,9 @@ map_civilized_nomads = {
 		crisis_fighter = yes
 		wants_tribute = yes
 	}
-
-	
 	allow = {
 		is_country_type = default
-		OR = {	
+		OR = {
 			has_ethic = "ethic_fanatic_militarist"
 			has_ethic = "ethic_militarist"
 			has_ethic = "ethic_xenophile"
@@ -1781,68 +1644,57 @@ map_civilized_nomads = {
 		OR = {
 			has_trait = "trait_rapid_breeders"
 			has_trait = "trait_nomadic"
-		}		
+		}
 		NOR = {
 			has_ethic = "ethic_fanatic_pacifist"
-			has_ethic = "ethic_pacifist"				
+			has_ethic = "ethic_pacifist"
 			has_origin = origin_remnants
 		}
 	}
-	
-	
 	weight_modifier = {
-		weight = 10 #20?	
+		weight = 10		#20?	
 		modifier = {
 			add = 2
-			OR = {	
+			OR = {
 				has_ethic = "ethic_fanatic_militarist"
 				has_ethic = "ethic_militarist"
 			}
-		}	
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_barbaric_despoilers"
-		}					
+		}
 		modifier = {
-			add = -1			
+			add = -1
 			has_civic = "civic_crafters"
 		}
 	}
 }
 
-
-
 #slave traders
 map_slave_traders = {
 	#type = capitalist
-	
 	aggressiveness = 0.8
 	trade_willingness = 1.05
 	bravery = 0.6
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 0.9
-	colony_spending = 1.1	
-	
+	colony_spending = 1.1
 	federation_acceptance = 0
 	nap_acceptance = 0
 	commercial_pact_acceptance = 50
 	research_agreement_acceptance = -10
 	defensive_pact_acceptance = 0
 	migration_pact_acceptance = 0
-	
 	advanced_start_chance = 40
-	
 	weapon_preferences = weapon_type_strike_craft
 	armor_ratio = 0.3
 	shields_ratio = 0.5
 	hull_ratio = 0.2
-	
-	threat_modifier = 1.0
+	threat_modifier = 1
 	threat_others_modifier = 0.9
 	friction_modifier = 0.75
 	claims_modifier = 1.5
-
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -1865,15 +1717,13 @@ map_slave_traders = {
 		wants_tribute = yes
 		# decadent = yes	# special - resettles slaves to planets lacking them
 	}
-
-	
 	allow = {
 		is_country_type = default
 		OR = {
 			has_civic = "civic_slaver_guilds"
 			has_civic = "civic_indentured_assets"
 			has_trait = "trait_decadent"
-		}		
+		}
 		OR = {
 			has_authority = auth_corporate
 			has_valid_civic = civic_corporate_dominion
@@ -1881,63 +1731,56 @@ map_slave_traders = {
 		}
 		has_policy_flag = slavery_allowed
 		NOR = {
-			has_origin = origin_common_ground 
+			has_origin = origin_common_ground
 			has_origin = origin_common_ground_npc
 		}
 	}
-	
 	weight_modifier = {
-		weight = 100	
+		weight = 100
 		modifier = {
 			add = -1
-			OR = {	
+			OR = {
 				has_ethic = "ethic_pacifist"
 				has_ethic = "ethic_fanatic_pacifist"
 			}
-		}	
+		}
 		modifier = {
 			add = 1
-			OR = {			
-				has_trait = "trait_thrifty"  
-				has_trait = "trait_charismatic"  
+			OR = {
+				has_trait = "trait_thrifty"
+				has_trait = "trait_charismatic"
 			}
-		}	
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_merchant_guilds"
-		}		
-	}	
+		}
+	}
 }
 
 #aspiring precursors
-map_aspiring_precursors = { 
+map_aspiring_precursors = {
 	aggressiveness = 0.8
-	trade_willingness = 1.0
+	trade_willingness = 1
 	bravery = 0.8
-	combat_bravery = 1.0
-	
-	military_spending = 1.0
-	colony_spending = 1.1	
-	
+	combat_bravery = 1
+	military_spending = 1
+	colony_spending = 1.1
 	federation_acceptance = -50
 	nap_acceptance = 30
 	commercial_pact_acceptance = 10
 	research_agreement_acceptance = 30
 	defensive_pact_acceptance = 30
 	migration_pact_acceptance = 20
-	
 	advanced_start_chance = 100
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.2
 	shields_ratio = 0.6
 	hull_ratio = 0.2
-	
 	threat_modifier = 1.3
 	threat_others_modifier = 1.1
 	friction_modifier = 1.1
-	claims_modifier = 1.0
-
+	claims_modifier = 1
 	behaviour = {
 		conqueror = no
 		subjugator = yes
@@ -1958,7 +1801,6 @@ map_aspiring_precursors = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		OR = {
@@ -1976,24 +1818,23 @@ map_aspiring_precursors = {
 		}
 		NOR = {
 			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"				
+			has_ethic = "ethic_fanatic_xenophobe"
 			has_civic = "civic_slaver_guilds"
 			has_civic = "civic_barbaric_despoilers"
 		}
 	}
-	
 	weight_modifier = {
-		weight = 8	
+		weight = 8
 		modifier = {
 			add = 1
-			OR = {	
+			OR = {
 				has_ethic = "ethic_pacifist"
 				has_ethic = "ethic_fanatic_pacifist"
 			}
 		}
 		modifier = {
 			add = -1
-			OR = {	
+			OR = {
 				has_ethic = "ethic_militarist"
 				has_ethic = "ethic_fanatic_militarist"
 			}
@@ -2001,79 +1842,73 @@ map_aspiring_precursors = {
 		modifier = {
 			add = 2
 			has_origin = origin_life_seeded
-		}	
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_post_apocalyptic
-		}		
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_ingenious"
-		}			
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground
-		}			
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground_npc
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_hegemon
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_shoulders_of_giants
-		}					
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_scion
-		}					
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_necrophage
-		}					
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_memorialist"
-		}					
+		}
 		modifier = {
-			add = 1			
+			add = 1
 			has_civic = "civic_crafters"
-		}			
+		}
 	}
 }
 
 #depraved breeders aka double entendres
-map_depraved_breeders = { 
+map_depraved_breeders = {
 	aggressiveness = 0.8
-	trade_willingness = 1.1	
+	trade_willingness = 1.1
 	bravery = 0.8
-	combat_bravery = 1.0
-
+	combat_bravery = 1
 	military_spending = 0.9
 	colony_spending = 1.3
-	
 	federation_acceptance = 30
 	nap_acceptance = 30
 	commercial_pact_acceptance = 50
 	research_agreement_acceptance = 10
 	defensive_pact_acceptance = 30
 	migration_pact_acceptance = 50
-	
 	advanced_start_chance = 40
-	
 	weapon_preferences = weapon_type_strike_craft
 	armor_ratio = 0.3
 	shields_ratio = 0.6
 	hull_ratio = 0.1
-	
 	threat_modifier = 0.7
 	threat_others_modifier = 0.4
-	friction_modifier = 1.0
+	friction_modifier = 1
 	claims_modifier = 0.75
-	
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -2094,7 +1929,6 @@ map_depraved_breeders = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
@@ -2115,78 +1949,71 @@ map_depraved_breeders = {
 			has_civic = "civic_pleasure_seekers"
 		}
 	}
-	
 	weight_modifier = {
-		weight = 8	
+		weight = 8
 		modifier = {
 			add = 1
-			OR = {	
+			OR = {
 				has_ethic = "ethic_xenophile"
 				has_ethic = "ethic_fanatic_xenophile"
 			}
-		}	
+		}
 		modifier = {
 			add = 1
-			OR = {	
+			OR = {
 				has_ethic = "ethic_pacifist"
 				has_ethic = "ethic_fanatic_pacifist"
 			}
 		}
 		modifier = {
 			add = -1
-			OR = {	
+			OR = {
 				has_ethic = "ethic_militarist"
 				has_ethic = "ethic_fanatic_militarist"
 			}
 		}
 		modifier = {
 			add = 1
-			has_trait = "trait_lithoid_gaseous_byproducts" 
-		}		
+			has_trait = "trait_lithoid_gaseous_byproducts"
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_unruly"
-		}						
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_remnants
-		}							
+		}
 		modifier = {
-			add = 2			
+			add = 2
 			has_civic = "civic_pleasure_seekers"
-		}	
+		}
 	}
 }
 
 #Dwellers in the Ephemeral
-map_dwellers_in_the_ephemeral = { 
+map_dwellers_in_the_ephemeral = {
 	aggressiveness = 0.4
-	trade_willingness = 1.0
-	bravery = 1.0
-	combat_bravery = 1.0
-	
-	military_spending = 1.0
-	colony_spending = 1.0
-	
+	trade_willingness = 1
+	bravery = 1
+	combat_bravery = 1
+	military_spending = 1
+	colony_spending = 1
 	federation_acceptance = 0
 	nap_acceptance = 0
 	commercial_pact_acceptance = 0
 	research_agreement_acceptance = 0
 	defensive_pact_acceptance = 0
 	migration_pact_acceptance = 0
-	
 	advanced_start_chance = 50
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.2
 	shields_ratio = 0.8
-	hull_ratio = 0.0
-	
+	hull_ratio = 0
 	threat_modifier = 0.8
 	threat_others_modifier = 0.5
 	friction_modifier = 0.6
 	claims_modifier = 0.75
-	
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -2207,18 +2034,17 @@ map_dwellers_in_the_ephemeral = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"			
+			has_ethic = "ethic_fanatic_xenophobe"
 			has_ethic = "ethic_militarist"
-			has_ethic = "ethic_fanatic_militarist"	
+			has_ethic = "ethic_fanatic_militarist"
 			has_trait = "trait_enduring"
 			has_trait = "trait_venerable"
 		}
-		OR = {	
+		OR = {
 			has_trait = "trait_fleeting"
 			has_ethic = "ethic_pacifist"
 			has_ethic = "ethic_fanatic_pacifist"
@@ -2227,7 +2053,6 @@ map_dwellers_in_the_ephemeral = {
 			has_origin = origin_doomsday
 		}
 	}
-	
 	weight_modifier = {
 		weight = 8
 		modifier = {
@@ -2245,51 +2070,45 @@ map_dwellers_in_the_ephemeral = {
 		modifier = {
 			add = -1
 			has_origin = origin_life_seeded
-		}	
+		}
 		modifier = {
 			add = 2
 			has_origin = origin_doomsday
-		}	
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_death_cult"
-		}					
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_memorialist"
-		}						
+		}
 	}
 }
 
 #Hopeless Pessimists
 map_hopeless_pessimists = {
 	aggressiveness = 0.3
-	trade_willingness = 1.0
+	trade_willingness = 1
 	bravery = 0.5
 	combat_bravery = 1.1
-	
-	military_spending = 1.0
-	colony_spending = 1.0
-	
+	military_spending = 1
+	colony_spending = 1
 	federation_acceptance = -30
 	nap_acceptance = -30
 	commercial_pact_acceptance = -20
 	research_agreement_acceptance = -20
 	defensive_pact_acceptance = -30
 	migration_pact_acceptance = -20
-	
 	advanced_start_chance = 10
-	
 	weapon_preferences = weapon_type_kinetic
 	armor_ratio = 0.6
 	shields_ratio = 0.4
-	hull_ratio = 0.0
-	
+	hull_ratio = 0
 	threat_modifier = 0.6
 	threat_others_modifier = 0.2
 	friction_modifier = 0.6
 	claims_modifier = 0.75
-	
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -2310,14 +2129,13 @@ map_hopeless_pessimists = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_xenophobe"
 			has_ethic = "ethic_fanatic_xenophobe"
 			has_ethic = "ethic_xenophile"
-			has_ethic = "ethic_fanatic_xenophile"		
+			has_ethic = "ethic_fanatic_xenophile"
 			has_trait = "trait_charismatic"
 			has_trait = "trait_ingenious"
 			has_civic = "civic_idealistic_foundation"
@@ -2325,9 +2143,8 @@ map_hopeless_pessimists = {
 			has_civic = "civic_pleasure_seekers"
 		}
 	}
-	
 	weight_modifier = {
-		weight = 8		
+		weight = 8
 		modifier = {
 			add = 1
 			OR = {
@@ -2335,33 +2152,33 @@ map_hopeless_pessimists = {
 				has_trait = "trait_venerable"
 				has_trait = "trait_fleeting"
 			}
-		}	
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_solitary"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_weak"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_functional_architecture"
-		}	
+		}
 		modifier = {
 			add = -1
 			OR = {
 				has_ethic = "ethic_spiritualist"
 				has_ethic = "ethic_fanatic_spiritualist"
 			}
-		}	
+		}
 		modifier = {
 			add = 1
 			OR = {
 				has_ethic = "ethic_materialist"
 				has_ethic = "ethic_fanatic_materialist"
 			}
-		}	
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_quarrelsome"
@@ -2373,19 +2190,19 @@ map_hopeless_pessimists = {
 		modifier = {
 			add = -1
 			has_origin = origin_life_seeded
-		}	
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_barbaric_despoilers"
-		}		
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_shared_burden"
-		}			
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_lithoid_scintillating"
-		}			
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_lithoid_volatile_excretions"
@@ -2393,55 +2210,48 @@ map_hopeless_pessimists = {
 		modifier = {
 			add = 1
 			has_trait = "trait_docile"
-		}			
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground
-		}				
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground_npc
-		}	
+		}
 		modifier = {
 			add = 2
 			has_origin = origin_doomsday
-		}							
+		}
 		modifier = {
 			add = -2
 			has_civic = "civic_idyllic_bloom"
-		}	
-	}	
+		}
+	}
 }
 
-
-map_conoisseurs_of_food = { 
+map_conoisseurs_of_food = {
 	aggressiveness = 0.7
 	trade_willingness = 0.9
 	bravery = 0.6
-	combat_bravery = 1.0
-	
-	military_spending = 1.0
-	colony_spending = 1.2	
-	
+	combat_bravery = 1
+	military_spending = 1
+	colony_spending = 1.2
 	federation_acceptance = 0
 	nap_acceptance = 10
 	commercial_pact_acceptance = 30
 	research_agreement_acceptance = 15
 	defensive_pact_acceptance = 0
-	migration_pact_acceptance = 10		
-	
+	migration_pact_acceptance = 10
 	advanced_start_chance = 10
-	
 	weapon_preferences = weapon_type_explosive
 	armor_ratio = 0.4
 	shields_ratio = 0.5
 	hull_ratio = 0.1
-	
-	threat_modifier = 1.0
-	threat_others_modifier = 1.0
+	threat_modifier = 1
+	threat_others_modifier = 1
 	friction_modifier = 0.25
-	claims_modifier = 1.0
-	
+	claims_modifier = 1
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -2461,7 +2271,6 @@ map_conoisseurs_of_food = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
@@ -2487,7 +2296,6 @@ map_conoisseurs_of_food = {
 			has_civic = "civic_pleasure_seekers"
 		}
 	}
-	
 	weight_modifier = {
 		weight = 9
 		modifier = {
@@ -2501,43 +2309,36 @@ map_conoisseurs_of_food = {
 		modifier = {
 			add = 1
 			has_civic = "civic_agrarian_idyll"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_merchant_guilds"
-		}	
+		}
 	}
 }
 
-
-map_melodious_composers = { 
+map_melodious_composers = {
 	aggressiveness = 0.4
 	trade_willingness = 1.05
 	bravery = 0.75
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 0.9
 	colony_spending = 1.2
-	
 	federation_acceptance = 10
 	nap_acceptance = 20
 	commercial_pact_acceptance = 10
 	research_agreement_acceptance = 10
 	defensive_pact_acceptance = 10
-	migration_pact_acceptance = 0		
-	
+	migration_pact_acceptance = 0
 	advanced_start_chance = 20
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.2
-	shields_ratio = 0.7	
+	shields_ratio = 0.7
 	hull_ratio = 0.1
-	
 	threat_modifier = 1.1
-	threat_others_modifier = 1.0
+	threat_others_modifier = 1
 	friction_modifier = 0.6
-	claims_modifier = 1.0
-	
+	claims_modifier = 1
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -2557,16 +2358,15 @@ map_melodious_composers = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
-		is_country_type = default	
+		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"			
+			has_ethic = "ethic_fanatic_xenophobe"
 			has_ethic = "ethic_militarist"
-			has_ethic = "ethic_fanatic_militarist"			
+			has_ethic = "ethic_fanatic_militarist"
 			has_ethic = "ethic_materialist"
-			has_ethic = "ethic_fanatic_materialist"			
+			has_ethic = "ethic_fanatic_materialist"
 		}
 		OR = {
 			has_ethic = "ethic_spiritualist"
@@ -2575,7 +2375,7 @@ map_melodious_composers = {
 			has_ethic = "ethic_fanatic_pacifist"
 			has_ethic = "ethic_xenophile"
 			has_ethic = "ethic_fanatic_xenophile"
-		}	
+		}
 		OR = {
 			has_ethic = "ethic_fanatic_xenophile"
 			has_ethic = "ethic_fanatic_spiritualist"
@@ -2583,15 +2383,14 @@ map_melodious_composers = {
 			has_trait = "trait_intelligent"
 			has_trait = "trait_talented"
 			has_trait = "trait_charismatic"
-		}	
+		}
 	}
-	
 	weight_modifier = {
 		weight = 9
 		modifier = {
 			add = -1
 			has_trait = "trait_quarrelsome"
-		}					
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_memorialist"
@@ -2600,34 +2399,28 @@ map_melodious_composers = {
 }
 
 #aztecs
-map_flowers_of_war = { 
+map_flowers_of_war = {
 	aggressiveness = 1.4
-	trade_willingness = 1.0
-	bravery = 1.0
+	trade_willingness = 1
+	bravery = 1
 	combat_bravery = 1.1
-	
 	military_spending = 1.2
-	colony_spending = 1.0	
-	
+	colony_spending = 1
 	federation_acceptance = 40
 	nap_acceptance = 20
 	commercial_pact_acceptance = 10
 	research_agreement_acceptance = 10
 	defensive_pact_acceptance = 40
-	migration_pact_acceptance = 0	
-	
+	migration_pact_acceptance = 0
 	advanced_start_chance = 50
-	
 	weapon_preferences = weapon_type_strike_craft
 	armor_ratio = 0.4
-	shields_ratio = 0.4	
+	shields_ratio = 0.4
 	hull_ratio = 0.2
-	
-	threat_modifier = 1.0
-	threat_others_modifier = 1.0
-	friction_modifier = 1.0
-	claims_modifier = 2.0
-	
+	threat_modifier = 1
+	threat_others_modifier = 1
+	friction_modifier = 1
+	claims_modifier = 2
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -2648,25 +2441,23 @@ map_flowers_of_war = {
 		crisis_fighter = yes
 		wants_tribute = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_pacifist"
-			has_ethic = "ethic_fanatic_pacifist"			
+			has_ethic = "ethic_fanatic_pacifist"
 		}
-		OR = {	
+		OR = {
 			has_ethic = "ethic_authoritarian"
 			has_ethic = "ethic_fanatic_authoritarian"
 			has_ethic = "ethic_fanatic_militarist"
 			has_ethic = "ethic_militarist"
-		}			
+		}
 		OR = {
 			has_ethic = "ethic_spiritualist"
 			has_ethic = "ethic_fanatic_spiritualist"
-		}		
+		}
 	}
-	
 	weight_modifier = {
 		weight = 9
 		modifier = {
@@ -2676,27 +2467,27 @@ map_flowers_of_war = {
 		modifier = {
 			add = 1
 			has_ethic = "ethic_militarist"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_warrior_culture"
-		}		
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_corvee_system"
-		}		
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_barbaric_despoilers"
-		}		
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_lithoid_volatile_excretions"
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_hegemon
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_necrophage
@@ -2704,47 +2495,41 @@ map_flowers_of_war = {
 		modifier = {
 			add = 2
 			has_civic = "civic_death_cult"
-		}						
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_memorialist"
-		}							
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_idyllic_bloom"
-		}		
+		}
 	}
 }
 
 # courtesy of Galle
 map_nonaligned_preservationists = {
 	aggressiveness = 0.2
-	trade_willingness = 0.8	
+	trade_willingness = 0.8
 	bravery = 1.25
-	combat_bravery = 1.0
-	
-	military_spending = 1.0
-	colony_spending = 1.0	
-	
+	combat_bravery = 1
+	military_spending = 1
+	colony_spending = 1
 	federation_acceptance = -100
 	nap_acceptance = 100
 	commercial_pact_acceptance = -10
 	research_agreement_acceptance = -15
 	defensive_pact_acceptance = -50
-	migration_pact_acceptance = 25		
-	
+	migration_pact_acceptance = 25
 	advanced_start_chance = 50
-	
 	weapon_preferences = weapon_type_kinetic
 	armor_ratio = 0.4
 	shields_ratio = 0.4
 	hull_ratio = 0.2
-	
 	threat_modifier = 1.1
 	threat_others_modifier = 0.9
-	friction_modifier = 1.0
+	friction_modifier = 1
 	claims_modifier = 0.75
-	
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -2764,12 +2549,11 @@ map_nonaligned_preservationists = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_authoritarian"
-			has_ethic = "ethic_fanatic_authoritarian"	
+			has_ethic = "ethic_fanatic_authoritarian"
 			has_civic = "civic_nationalistic_zeal"
 			has_civic = "civic_slaver_guilds"
 			has_civic = "civic_reanimated_armies"
@@ -2778,20 +2562,19 @@ map_nonaligned_preservationists = {
 		}
 		OR = {
 			has_ethic = "ethic_xenophile"
-			has_ethic = "ethic_fanatic_xenophile"				
+			has_ethic = "ethic_fanatic_xenophile"
 		}
 		OR = {
 			has_ethic = "ethic_pacifist"
 			has_ethic = "ethic_fanatic_pacifist"
 			has_ethic = "ethic_egalitarian"
-			has_ethic = "ethic_fanatic_egalitarian"	
-			has_origin = origin_common_ground			
+			has_ethic = "ethic_fanatic_egalitarian"
+			has_origin = origin_common_ground
 			has_origin = origin_common_ground_npc
 			has_origin = origin_scion
 			has_civic = "civic_diplomatic_corps"
 		}
 	}
-	
 	weight_modifier = {
 		weight = 8
 		modifier = {
@@ -2801,11 +2584,11 @@ map_nonaligned_preservationists = {
 		modifier = {
 			add = -1
 			has_ethic = "ethic_fanatic_militarist"
-		}	
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_quarrelsome"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_authority = auth_democratic
@@ -2820,64 +2603,57 @@ map_nonaligned_preservationists = {
 				has_civic = "civic_idealistic_foundation"
 				has_civic = "civic_environmentalist"
 			}
-		}			
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground
-		}			
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground_npc
-		}				
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_hegemon
-		}						
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_remnants
-		}						
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_scion
-		}					
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_memorialist"
-		}				
-	}	
+		}
+	}
 }
 
-
 # inspirational quotes posted by *that* annoying person on facebook
-map_inspired_dreamers = { 
+map_inspired_dreamers = {
 	aggressiveness = 1.1
 	trade_willingness = 1.1
 	bravery = 1.4
-	combat_bravery = 1.8 #because they believe if you put 100% effort and fake it til you make it you can achieve anything
-	
+	combat_bravery = 1.8	#because they believe if you put 100% effort and fake it til you make it you can achieve anything
 	military_spending = 0.8
 	colony_spending = 1.1
-	
 	federation_acceptance = 10
 	nap_acceptance = 40
 	commercial_pact_acceptance = 50
 	research_agreement_acceptance = 50
 	defensive_pact_acceptance = 10
-	migration_pact_acceptance = 50		
-	
+	migration_pact_acceptance = 50
 	advanced_start_chance = 10
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.4
 	shields_ratio = 0.5
 	hull_ratio = 0.1
-	
 	threat_modifier = 1.1
 	threat_others_modifier = 1.1
 	friction_modifier = 1.1
 	claims_modifier = 1.1
-	
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -2897,12 +2673,11 @@ map_inspired_dreamers = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
-		is_country_type = default	
+		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"			
+			has_ethic = "ethic_fanatic_xenophobe"
 			has_ethic = "ethic_militarist"
 			has_ethic = "ethic_fanatic_militarist"
 			has_origin = origin_doomsday
@@ -2913,13 +2688,12 @@ map_inspired_dreamers = {
 		}
 		OR = {
 			has_ethic = "ethic_xenophile"
-			has_ethic = "ethic_fanatic_xenophile"	
+			has_ethic = "ethic_fanatic_xenophile"
 			has_ethic = "ethic_spiritualist"
 			has_ethic = "ethic_fanatic_spiritualist"
 		}
 		has_civic = "civic_idealistic_foundation"
 	}
-	
 	weight_modifier = {
 		weight = 9
 		modifier = {
@@ -2953,35 +2727,35 @@ map_inspired_dreamers = {
 		modifier = {
 			add = -1
 			has_trait = "trait_quarrelsome"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_authority = auth_democratic
-		}	
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_barbaric_despoilers"
-		}		
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_byzantine_bureaucracy"
-		}		
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_shared_burden"
-		}			
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_ingenious"
-		}			
+		}
 		modifier = {
 			add = -1
-			has_trait = "trait_lithoid_gaseous_byproducts" 
-		}			
+			has_trait = "trait_lithoid_gaseous_byproducts"
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground_npc
@@ -2989,56 +2763,49 @@ map_inspired_dreamers = {
 		modifier = {
 			add = -1
 			has_origin = origin_lost_colony
-		}					
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_memorialist"
-		}						
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_diplomatic_corps"
-		}						
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_idyllic_bloom"
-		}							
+		}
 		modifier = {
-			add = 1			
+			add = 1
 			has_civic = "civic_pleasure_seekers"
-		}						
+		}
 	}
 }
 
-
 # leaning so heavily on the fourth wall it's kinda scary
-map_storytelling_aficionados = { 
+map_storytelling_aficionados = {
 	aggressiveness = 0.8
-	trade_willingness = 1.0
+	trade_willingness = 1
 	bravery = 0.8
-	combat_bravery = 1.0
-	
-	military_spending = 1.0
-	colony_spending = 1.0
-	
+	combat_bravery = 1
+	military_spending = 1
+	colony_spending = 1
 	federation_acceptance = 10
 	nap_acceptance = 0
 	commercial_pact_acceptance = 10
 	research_agreement_acceptance = 20
 	defensive_pact_acceptance = 20
-	migration_pact_acceptance = 20		
-	
+	migration_pact_acceptance = 20
 	advanced_start_chance = 20
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.4
 	shields_ratio = 0.4
 	hull_ratio = 0.2
-	
-	threat_modifier = 1.0
-	threat_others_modifier = 1.0
+	threat_modifier = 1
+	threat_others_modifier = 1
 	friction_modifier = 0.8
-	claims_modifier = 1.0
-	
+	claims_modifier = 1
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -3058,14 +2825,13 @@ map_storytelling_aficionados = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"			
+			has_ethic = "ethic_fanatic_xenophobe"
 			has_ethic = "ethic_materialist"
-			has_ethic = "ethic_fanatic_materialist"			
+			has_ethic = "ethic_fanatic_materialist"
 		}
 		AND = {
 			OR = {
@@ -3077,14 +2843,13 @@ map_storytelling_aficionados = {
 			OR = {
 				has_ethic = "ethic_spiritualist"
 				has_ethic = "ethic_fanatic_spiritualist"
-				has_trait = "trait_intelligent"	
+				has_trait = "trait_intelligent"
 				has_civic = "civic_philosopher_king"
 				has_trait = "trait_ingenious"
 				has_civic = "civic_memorialist"
-			}		
+			}
 		}
 	}
-	
 	weight_modifier = {
 		weight = 10
 		modifier = {
@@ -3094,47 +2859,41 @@ map_storytelling_aficionados = {
 		modifier = {
 			add = -1
 			has_trait = "trait_repugnant"
-		}						
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_remnants
-		}					
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_memorialist"
-		}				
+		}
 	}
 }
 
 # leaning so heavily on the fourth wall... nah who am i kidding they break it
-map_trapped_in_a_machine = { 
+map_trapped_in_a_machine = {
 	aggressiveness = 1.2
 	trade_willingness = 0.5
 	bravery = 0.7
-	combat_bravery = 1.1 #it's all a lie anyways why bother righto
-	
+	combat_bravery = 1.1	#it's all a lie anyways why bother righto
 	military_spending = 1.2
-	colony_spending = 1.0	
-	
+	colony_spending = 1
 	federation_acceptance = -50
 	nap_acceptance = -50
 	commercial_pact_acceptance = -1000
 	research_agreement_acceptance = 1000
 	defensive_pact_acceptance = -50
 	migration_pact_acceptance = -50
-	
 	advanced_start_chance = 50
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.3
 	shields_ratio = 0.4
 	hull_ratio = 0.3
-	
-	threat_modifier = 1	
+	threat_modifier = 1
 	threat_others_modifier = 1
 	friction_modifier = 1
 	claims_modifier = 0
-
 	behaviour = {
 		conqueror = yes
 		subjugator = no
@@ -3156,13 +2915,14 @@ map_trapped_in_a_machine = {
 		crisis_fighter = yes
 		attack_neutrals = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		OR = {
 			AND = {
-				NOT = { host_has_dlc = "Utopia" }  				
-				NOR = {	
+				NOT = {
+					host_has_dlc = "Utopia"
+				}
+				NOR = {
 					has_ethic = "ethic_pacifist"
 					has_ethic = "ethic_fanatic_pacifist"
 				}
@@ -3172,10 +2932,11 @@ map_trapped_in_a_machine = {
 				has_civic = "civic_fanatic_purifiers"
 			}
 		}
-		NOT = { has_civic = "civic_pleasure_seekers" }
+		NOT = {
+			has_civic = "civic_pleasure_seekers"
+		}
 		#host_has_dlc = "Utopia"
 	}
-	
 	weight_modifier = {
 		weight = 1000
 		modifier = {
@@ -3195,7 +2956,9 @@ map_trapped_in_a_machine = {
 		}
 		modifier = {
 			add = -993
-			NOT = { host_has_dlc = "Utopia" } 
+			NOT = {
+				host_has_dlc = "Utopia"
+			}
 		}
 		modifier = {
 			add = 1
@@ -3204,11 +2967,11 @@ map_trapped_in_a_machine = {
 		modifier = {
 			add = -1
 			has_origin = origin_life_seeded
-		}					
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_memorialist"
-		}			
+		}
 	}
 }
 
@@ -3217,30 +2980,24 @@ map_plunderers_of_knowledge = {
 	aggressiveness = 1.3
 	trade_willingness = 0.9
 	bravery = 0.9
-	combat_bravery = 1.0
-
+	combat_bravery = 1
 	military_spending = 1.2
-	colony_spending = 1.0
-
+	colony_spending = 1
 	federation_acceptance = 0
 	nap_acceptance = 10
 	commercial_pact_acceptance = 10
 	research_agreement_acceptance = 25
 	defensive_pact_acceptance = 10
 	migration_pact_acceptance = -20
-
 	advanced_start_chance = 75
-
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.4
 	shields_ratio = 0.4
 	hull_ratio = 0.2
-
 	threat_modifier = 0.8
 	threat_others_modifier = 0.7
-	friction_modifier = 1.0
+	friction_modifier = 1
 	claims_modifier = 1.5
-
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -3259,9 +3016,8 @@ map_plunderers_of_knowledge = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-
 	allow = {
-		is_country_type = default	
+		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_pacifist"
 			has_ethic = "ethic_fanatic_pacifist"
@@ -3287,7 +3043,6 @@ map_plunderers_of_knowledge = {
 			has_civic = "civic_memorialist"
 		}
 	}
-
 	weight_modifier = {
 		weight = 10
 		modifier = {
@@ -3301,51 +3056,41 @@ map_plunderers_of_knowledge = {
 		modifier = {
 			add = 1
 			has_trait = "trait_natural_sociologists"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_barbaric_despoilers"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_doomsday
-		}	
+		}
 	}
 }
 
-
-
-
-
 # plastic surgery and all that jazz
-map_surgeons_of_beauty = { 
-	aggressiveness = 1.0
-	trade_willingness = 1.0
-	bravery = 1.0
+map_surgeons_of_beauty = {
+	aggressiveness = 1
+	trade_willingness = 1
+	bravery = 1
 	combat_bravery = 0.9
-	
 	military_spending = 0.9
-	colony_spending = 1.0
-	
+	colony_spending = 1
 	federation_acceptance = 10
 	nap_acceptance = 0
 	commercial_pact_acceptance = 20
 	research_agreement_acceptance = 20
 	defensive_pact_acceptance = -20
-	migration_pact_acceptance = -30		
-	
+	migration_pact_acceptance = -30
 	advanced_start_chance = 10
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.5
-	shields_ratio = 0.4	
+	shields_ratio = 0.4
 	hull_ratio = 0.1
-	
 	threat_modifier = 0.8
 	threat_others_modifier = 0.7
 	friction_modifier = 1.35
-	claims_modifier = 1.0
-	
+	claims_modifier = 1
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -3364,14 +3109,13 @@ map_surgeons_of_beauty = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
-		is_country_type = default	
+		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_spiritualist"
-			has_ethic = "ethic_fanatic_spiritualist"			
+			has_ethic = "ethic_fanatic_spiritualist"
 			has_ethic = "ethic_militarist"
-			has_ethic = "ethic_fanatic_militarist"	
+			has_ethic = "ethic_fanatic_militarist"
 			has_trait = trait_repugnant
 			has_civic = civic_barbaric_despoilers
 			has_civic = civic_shared_burden
@@ -3390,7 +3134,6 @@ map_surgeons_of_beauty = {
 			has_civic = "civic_pleasure_seekers"
 		}
 	}
-	
 	weight_modifier = {
 		weight = 8
 		modifier = {
@@ -3416,31 +3159,31 @@ map_surgeons_of_beauty = {
 		modifier = {
 			add = 1
 			has_civic = "civic_merchant_guilds"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_lithoid_scintillating"
-		}	
+		}
 		modifier = {
 			add = -1
-			has_trait = "trait_lithoid_gaseous_byproducts" 
-		}			
+			has_trait = "trait_lithoid_gaseous_byproducts"
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_lithoid_volatile_excretions"
-		}			
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_reanimated_armies"
-		}					
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_memorialist"
-		}					
+		}
 		modifier = {
-			add = 1			
+			add = 1
 			has_civic = "civic_crafters"
-		}			
+		}
 	}
 }
 
@@ -3450,29 +3193,23 @@ map_quiet_cultists = {
 	trade_willingness = 0.2
 	bravery = 0.5
 	combat_bravery = 1.3
-
 	military_spending = 1.5
 	colony_spending = 0.8
-
 	federation_acceptance = -100
 	nap_acceptance = -30
 	commercial_pact_acceptance = -50
 	research_agreement_acceptance = -50
 	defensive_pact_acceptance = -100
 	migration_pact_acceptance = -1000
-
 	advanced_start_chance = 10
-
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.3
 	shields_ratio = 0.6
 	hull_ratio = 0.1
-
 	threat_modifier = 1.5
 	threat_others_modifier = 1.5
-	friction_modifier = 2.0
-	claims_modifier = 5.0
-
+	friction_modifier = 2
+	claims_modifier = 5
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -3493,7 +3230,6 @@ map_quiet_cultists = {
 		crisis_fighter = no
 		#wants_tribute = yes
 	}
-
 	allow = {
 		is_country_type = default
 		OR = {
@@ -3511,7 +3247,7 @@ map_quiet_cultists = {
 		}
 		NOR = {
 			has_ethic = "ethic_xenophile"
-			has_ethic = "ethic_fanatic_xenophile"			
+			has_ethic = "ethic_fanatic_xenophile"
 			has_ethic = "ethic_pacifist"
 			has_ethic = "ethic_fanatic_pacifist"
 			has_civic = civic_imperial_cult
@@ -3526,7 +3262,6 @@ map_quiet_cultists = {
 			has_origin = origin_hegemon
 		}
 	}
-
 	weight_modifier = {
 		weight = 10
 		modifier = {
@@ -3577,16 +3312,16 @@ map_quiet_cultists = {
 		}
 		modifier = {
 			add = -1
-			has_trait = "trait_lithoid_gaseous_byproducts" 
+			has_trait = "trait_lithoid_gaseous_byproducts"
 		}
 		modifier = {
 			add = 1
 			has_trait = "trait_docile"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_doomsday
-		}					
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_scion
@@ -3594,49 +3329,42 @@ map_quiet_cultists = {
 		modifier = {
 			add = 1
 			has_origin = origin_necrophage
-		}							
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_reanimated_armies"
-		}					
+		}
 		modifier = {
-			add = -1			
+			add = -1
 			has_civic = "civic_crafters"
-		}		
+		}
 	}
 }
 
 #Snobs
 map_elitist_snobs = {
 	#type = hegemon
-
 	aggressiveness = 0.95
 	trade_willingness = 0.7
 	bravery = 0.5
 	combat_bravery = 0.9
-	
-	military_spending = 1.0
-	colony_spending = 1.0
-	
+	military_spending = 1
+	colony_spending = 1
 	federation_acceptance = -50
 	nap_acceptance = 0
 	commercial_pact_acceptance = 15
 	research_agreement_acceptance = -15
 	defensive_pact_acceptance = -20
 	migration_pact_acceptance = -50
-	
 	advanced_start_chance = 75
-	
 	weapon_preferences = weapon_type_kinetic
 	armor_ratio = 0.3
 	shields_ratio = 0.4
 	hull_ratio = 0.3
-	
 	threat_modifier = 1.1
-	threat_others_modifier = 1.0
-	friction_modifier = 1.0
-	claims_modifier = 2.0
-	
+	threat_others_modifier = 1
+	friction_modifier = 1
+	claims_modifier = 2
 	behaviour = {
 		conqueror = no
 		subjugator = yes
@@ -3657,7 +3385,6 @@ map_elitist_snobs = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		OR = {
@@ -3667,7 +3394,7 @@ map_elitist_snobs = {
 		}
 		NOR = {
 			has_ethic = "ethic_egalitarian"
-			has_ethic = "ethic_fanatic_egalitarian"			
+			has_ethic = "ethic_fanatic_egalitarian"
 			has_ethic = "ethic_xenophile"
 			has_ethic = "ethic_fanatic_xenophile"
 			has_civic = "civic_shared_burden"
@@ -3687,37 +3414,36 @@ map_elitist_snobs = {
 			has_ethic = "ethic_fanatic_authoritarian"
 		}
 	}
-	
 	weight_modifier = {
-		weight = 10 #9		
+		weight = 10		#9		
 		modifier = {
 			add = 1
 			has_civic = "civic_aristocratic_elite"
-		}		
+		}
 		modifier = {
 			add = 2
 			has_trait = "trait_traditional"
-		}			
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_lithoid_scintillating"
-		}		
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_lithoid_volatile_excretions"
-		}			
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground
-		}			
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground_npc
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_hegemon
-		}						
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_remnants
@@ -3725,48 +3451,41 @@ map_elitist_snobs = {
 		modifier = {
 			add = 1
 			has_civic = "civic_death_cult"
-		}					
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_memorialist"
-		}						
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_diplomatic_corps"
-		}							
+		}
 	}
 }
-
 
 #Party santa
 map_xenial_merrymakers = {
 	aggressiveness = 0.8
-	trade_willingness = 1.0
+	trade_willingness = 1
 	bravery = 0.5
-	combat_bravery = 1.0
-
+	combat_bravery = 1
 	military_spending = 0.8
-	colony_spending = 1.0
-
+	colony_spending = 1
 	federation_acceptance = 25
 	nap_acceptance = 25
 	commercial_pact_acceptance = 20
 	research_agreement_acceptance = 0
 	defensive_pact_acceptance = 25
 	migration_pact_acceptance = 25
-
 	advanced_start_chance = 10
-
 	weapon_preferences = weapon_type_explosive
 	armor_ratio = 0.4
 	shields_ratio = 0.5
 	hull_ratio = 0.1
-
 	threat_modifier = 0.8
-	threat_others_modifier = 1.0
+	threat_others_modifier = 1
 	friction_modifier = 0.5
-	claims_modifier = 1.0
-
+	claims_modifier = 1
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -3786,7 +3505,6 @@ map_xenial_merrymakers = {
 		crisis_fighter = yes
 		wants_tribute = no
 	}
-
 	allow = {
 		is_country_type = default
 		OR = {
@@ -3795,7 +3513,7 @@ map_xenial_merrymakers = {
 		}
 		OR = {
 			has_ethic = "ethic_authoritarian"
-			has_ethic = "ethic_fanatic_authoritarian"		
+			has_ethic = "ethic_fanatic_authoritarian"
 		}
 		NOR = {
 			has_trait = "trait_conformists"
@@ -3814,9 +3532,8 @@ map_xenial_merrymakers = {
 			has_civic = "civic_pleasure_seekers"
 		}
 	}
-
 	weight_modifier = {
-		weight = 9 #11	
+		weight = 9		#11	
 		modifier = {
 			add = 1
 			OR = {
@@ -3843,56 +3560,49 @@ map_xenial_merrymakers = {
 		modifier = {
 			add = -1
 			has_trait = "trait_docile"
-		}		
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_unruly"
-		}			
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground_npc
-		}				
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_hegemon
-		}	
+		}
 	}
 }
-
 
 #Valiant Hearts - WW1
 map_valiant_hearts = {
 	aggressiveness = 0.1
 	trade_willingness = 0.9
-	bravery = 1.0
-	combat_bravery = 2.0	# rarely ever retreat in battle
-
+	bravery = 1
+	combat_bravery = 2	# rarely ever retreat in battle
 	military_spending = 1.3
 	colony_spending = 0.9
-
 	federation_acceptance = 30
 	nap_acceptance = 70
 	commercial_pact_acceptance = 0
 	research_agreement_acceptance = 10
 	defensive_pact_acceptance = -20
 	migration_pact_acceptance = 0
-
 	advanced_start_chance = 50
-
 	weapon_preferences = weapon_type_kinetic
 	armor_ratio = 0.5
 	shields_ratio = 0.3
 	hull_ratio = 0.2
-
 	threat_modifier = 1.5
 	threat_others_modifier = 1
 	friction_modifier = 1.5
-	claims_modifier = 2.0
-
+	claims_modifier = 2
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -3911,7 +3621,6 @@ map_valiant_hearts = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-
 	allow = {
 		is_country_type = default
 		OR = {
@@ -3935,40 +3644,38 @@ map_valiant_hearts = {
 			has_origin = origin_post_apocalyptic
 			has_origin = "origin_clone_army"
 		}
-
 	}
-
 	weight_modifier = {
-		weight = 15 #12	
+		weight = 15		#12	
 		modifier = {
 			add = 2
 			OR = {
 				has_ethic = "ethic_fanatic_xenophile"
 				has_ethic = "ethic_xenophile"
 			}
-		}	
+		}
 		modifier = {
 			add = 2
 			OR = {
 				has_ethic = "ethic_fanatic_egalitarian"
 				has_ethic = "ethic_egalitarian"
 			}
-		}	
+		}
 		modifier = {
 			add = -2
 			OR = {
 				has_ethic = "ethic_fanatic_authoritarian"
 				has_ethic = "ethic_authoritarian"
 			}
-		}			
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground_npc
-		}	
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_doomsday
@@ -3976,49 +3683,41 @@ map_valiant_hearts = {
 		modifier = {
 			add = -1
 			has_civic = "civic_death_cult"
-		}					
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_memorialist"
-		}						
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_diplomatic_corps"
-		}		
+		}
 	}
 }
 
-
-
 # they like telling stories
-map_zestful_orators = { 
+map_zestful_orators = {
 	aggressiveness = 0.9
-	trade_willingness = 1.0
-	bravery = 1.0
-	combat_bravery = 1.0
-	
-	military_spending = 1.0
-	colony_spending = 1.0
-	
+	trade_willingness = 1
+	bravery = 1
+	combat_bravery = 1
+	military_spending = 1
+	colony_spending = 1
 	federation_acceptance = 5
 	nap_acceptance = 5
 	commercial_pact_acceptance = 10
 	research_agreement_acceptance = 0
 	defensive_pact_acceptance = 5
-	migration_pact_acceptance = 10		
-	
+	migration_pact_acceptance = 10
 	advanced_start_chance = 40
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.3
 	shields_ratio = 0.4
 	hull_ratio = 0.3
-	
 	threat_modifier = 0.9
-	threat_others_modifier = 1.0
+	threat_others_modifier = 1
 	friction_modifier = 0.9
-	claims_modifier = 1.0
-	
+	claims_modifier = 1
 	behaviour = {
 		conqueror = no
 		subjugator = yes
@@ -4038,13 +3737,12 @@ map_zestful_orators = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_xenophobe"
 			has_ethic = "ethic_fanatic_xenophobe"
-			has_civic = "civic_barbaric_despoilers"	
+			has_civic = "civic_barbaric_despoilers"
 		}
 		OR = {
 			has_ethic = "ethic_egalitarian"
@@ -4055,9 +3753,8 @@ map_zestful_orators = {
 			has_civic = "civic_cutthroat_politics"
 			has_civic = "civic_parliamentary_system"
 			has_civic = "civic_meritocracy"
-		}	
+		}
 	}
-	
 	weight_modifier = {
 		weight = 10
 		modifier = {
@@ -4100,43 +3797,33 @@ map_zestful_orators = {
 	}
 }
 
-
-
 #################################################
 # "SULEIMAN" OTTOMAN THEME
 #################################################
-
 #Ottoman Empire
 map_sublime_porte = {
 	#type = hegemon
-	
 	aggressiveness = 1.2
 	trade_willingness = 0.9
 	bravery = 0.9
-	combat_bravery = 1.0
-	
-	military_spending = 1.0
-	colony_spending = 1.1	
-	
+	combat_bravery = 1
+	military_spending = 1
+	colony_spending = 1.1
 	federation_acceptance = -10
 	nap_acceptance = -10
 	commercial_pact_acceptance = 20
 	research_agreement_acceptance = 0
 	defensive_pact_acceptance = -10
 	migration_pact_acceptance = 0
-	
 	advanced_start_chance = 100
-	
 	weapon_preferences = weapon_type_explosive
 	armor_ratio = 0.5
 	shields_ratio = 0.3
 	hull_ratio = 0.2
-	
 	threat_modifier = 0.8
 	threat_others_modifier = 0.7
 	friction_modifier = 1.3
 	claims_modifier = 1.5
-
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -4158,15 +3845,13 @@ map_sublime_porte = {
 		crisis_fighter = yes
 		#wants_tribute = yes
 	}
-
-	
 	allow = {
 		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_pacifist"
 			has_ethic = "ethic_fanatic_pacifist"
 			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"				
+			has_ethic = "ethic_fanatic_xenophobe"
 			has_authority = auth_democratic
 			has_civic = "civic_shared_burden"
 		}
@@ -4176,27 +3861,26 @@ map_sublime_porte = {
 			has_ethic = "ethic_authoritarian"
 			has_ethic = "ethic_fanatic_authoritarian"
 			has_ethic = "ethic_xenophile"
-			has_ethic = "ethic_fanatic_xenophile"				
+			has_ethic = "ethic_fanatic_xenophile"
 		}
 	}
-	
 	weight_modifier = {
 		weight = 8
 		modifier = {
 			add = 1
 			OR = {
 				has_ethic = "ethic_spiritualist"
-				has_ethic = "ethic_fanatic_spiritualist"			
+				has_ethic = "ethic_fanatic_spiritualist"
 			}
-		}	
+		}
 		modifier = {
 			add = 1
 			has_authority = auth_imperial
-		}	
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_feudal_realm"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_corvee_system"
@@ -4208,56 +3892,49 @@ map_sublime_porte = {
 		modifier = {
 			add = 1
 			has_civic = "civic_byzantine_bureaucracy"
-		}		
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_unruly"
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_hegemon
-		}						
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_remnants
-		}						
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_diplomatic_corps"
 		}
-	}	
+	}
 }
 
 map_enterprising_corsairs = {
 	#type = honorbound
-	
 	aggressiveness = 1.3
 	trade_willingness = 0.95
 	bravery = 1.2
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 1.3
-	colony_spending = 0.8	
-	
+	colony_spending = 0.8
 	federation_acceptance = -10
 	nap_acceptance = 10
 	commercial_pact_acceptance = 30
 	research_agreement_acceptance = 0
 	defensive_pact_acceptance = 10
 	migration_pact_acceptance = 10
-	
 	advanced_start_chance = 20
-	
 	weapon_preferences = weapon_type_strike_craft
 	armor_ratio = 0.3
 	shields_ratio = 0.5
 	hull_ratio = 0.2
-	
-	threat_modifier = 1.0
+	threat_modifier = 1
 	threat_others_modifier = 0.8
 	friction_modifier = 1.3
 	claims_modifier = 1.5
-
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -4280,13 +3957,11 @@ map_enterprising_corsairs = {
 		wants_tribute = yes
 		# decadent = yes	# special - resettles slaves to planets lacking them
 	}
-
-	
 	allow = {
 		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_pacifist"
-			has_ethic = "ethic_fanatic_pacifist"			
+			has_ethic = "ethic_fanatic_pacifist"
 		}
 		OR = {
 			has_civic = "civic_slaver_guilds"
@@ -4294,14 +3969,14 @@ map_enterprising_corsairs = {
 			OR = {
 				has_ethic = "ethic_authoritarian"
 				has_ethic = "ethic_fanatic_authoritarian"
-				AND = {	
-					NOR = {		
+				AND = {
+					NOR = {
 						has_ethic = "ethic_egalitarian"
 						has_ethic = "ethic_fanatic_egalitarian"
-					}	
+					}
 					OR = {
 						has_ethic = "ethic_xenophobe"
-						has_ethic = "ethic_fanatic_xenophobe"	
+						has_ethic = "ethic_fanatic_xenophobe"
 					}
 				}
 			}
@@ -4317,58 +3992,49 @@ map_enterprising_corsairs = {
 		}
 		has_policy_flag = slavery_allowed
 	}
-	
 	weight_modifier = {
 		weight = 10
 		modifier = {
 			add = 1
 			OR = {
 				has_ethic = "ethic_militarist"
-				has_ethic = "ethic_fanatic_militarist"		
+				has_ethic = "ethic_fanatic_militarist"
 			}
 		}
 		modifier = {
 			add = 1
 			has_trait = "trait_quarrelsome"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_merchant_guilds"
-		}			
-	}	
+		}
+	}
 }
 
-
-map_slave_soldiers = { 
+map_slave_soldiers = {
 	#type = hegemon
-
 	aggressiveness = 1.3
-	trade_willingness = 1.0
+	trade_willingness = 1
 	bravery = 1.1
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 1.2
-	colony_spending = 1.0
-	
+	colony_spending = 1
 	federation_acceptance = -30
 	nap_acceptance = -10
 	commercial_pact_acceptance = 0
 	research_agreement_acceptance = 0
 	defensive_pact_acceptance = -10
 	migration_pact_acceptance = 10
-	
 	advanced_start_chance = 50
-	
 	weapon_preferences = weapon_type_kinetic
 	armor_ratio = 0.6
 	shields_ratio = 0.2
 	hull_ratio = 0.1
-	
 	threat_modifier = 1.1
-	threat_others_modifier = 1.0
-	friction_modifier = 1.0
-	claims_modifier = 2.0
-	
+	threat_others_modifier = 1
+	friction_modifier = 1
+	claims_modifier = 2
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -4390,7 +4056,6 @@ map_slave_soldiers = {
 		crisis_fighter = yes
 		# decadent = yes	# special - resettles slaves to planets lacking them
 	}
-	
 	allow = {
 		is_country_type = default
 		OR = {
@@ -4410,7 +4075,7 @@ map_slave_soldiers = {
 			has_ethic = "ethic_militarist"
 			has_ethic = "ethic_fanatic_militarist"
 			has_ethic = "ethic_xenophile"
-			has_ethic = "ethic_fanatic_xenophile"				
+			has_ethic = "ethic_fanatic_xenophile"
 		}
 		OR = {
 			has_ethic = "ethic_fanatic_militarist"
@@ -4423,52 +4088,42 @@ map_slave_soldiers = {
 		}
 		has_policy_flag = slavery_allowed
 	}
-	
 	weight_modifier = {
-		weight = 100	
+		weight = 100
 		modifier = {
 			add = 1
 			has_civic = "civic_barbaric_despoilers"
-		}					
+		}
 		modifier = {
-			add = -1			
+			add = -1
 			has_civic = "civic_crafters"
-		}		
+		}
 	}
 }
 
-
-
-map_warrior_mystics = { 
+map_warrior_mystics = {
 	#type = honorbound
-
-	aggressiveness = 1.0
-	trade_willingness = 1.0
+	aggressiveness = 1
+	trade_willingness = 1
 	bravery = 1.3
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 1.2
 	colony_spending = 0.8
-	
 	federation_acceptance = 10
 	nap_acceptance = 10
 	commercial_pact_acceptance = -15
 	research_agreement_acceptance = 0
 	defensive_pact_acceptance = 10
 	migration_pact_acceptance = 10
-	
 	advanced_start_chance = 50
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.1
 	shields_ratio = 0.8
 	hull_ratio = 0.1
-	
 	threat_modifier = 0.9
 	threat_others_modifier = 0.7
 	friction_modifier = 0.9
-	claims_modifier = 1.0
-	
+	claims_modifier = 1
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -4490,9 +4145,8 @@ map_warrior_mystics = {
 		isolationist = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
-		is_country_type = default	
+		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_xenophobe"
 			has_ethic = "ethic_fanatic_xenophobe"
@@ -4519,7 +4173,6 @@ map_warrior_mystics = {
 			has_civic = "civic_feudal_realm"
 		}
 	}
-	
 	weight_modifier = {
 		weight = 10
 		modifier = {
@@ -4528,63 +4181,56 @@ map_warrior_mystics = {
 				has_ethic = "ethic_militarist"
 				has_ethic = "ethic_fanatic_militarist"
 				has_ethic = "ethic_xenophile"
-				has_ethic = "ethic_fanatic_xenophile"			
+				has_ethic = "ethic_fanatic_xenophile"
 			}
 		}
 		modifier = {
 			add = -1
 			OR = {
 				has_ethic = "ethic_pacifist"
-				has_ethic = "ethic_fanatic_pacifist"		
+				has_ethic = "ethic_fanatic_pacifist"
 			}
 		}
 		modifier = {
 			add = -1
 			has_civic = "civic_byzantine_bureaucracy"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_shared_burden"
-		}		
+		}
 		modifier = {
 			add = 1
-			has_trait = "trait_lithoid_gaseous_byproducts" 
-		}			
+			has_trait = "trait_lithoid_gaseous_byproducts"
+		}
 	}
 }
 
 #################################################
 # "MICHAEL SCOTT" WHITE COLLAR OFFICE THEME
 #################################################
-
-map_lazy_managers = { 
+map_lazy_managers = {
 	aggressiveness = 0.2
 	trade_willingness = 1.1
 	bravery = 0.4
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 0.8
 	colony_spending = 0.7
-	
 	federation_acceptance = 0
 	nap_acceptance = 0
 	commercial_pact_acceptance = 30
 	research_agreement_acceptance = 10
 	defensive_pact_acceptance = 0
 	migration_pact_acceptance = 0
-	
 	advanced_start_chance = 20
-	
 	weapon_preferences = weapon_type_kinetic
 	armor_ratio = 0.5
 	shields_ratio = 0.5
-	hull_ratio = 0.0
-	
+	hull_ratio = 0
 	threat_modifier = 0.7
 	threat_others_modifier = 0.6
 	friction_modifier = 0.7
 	claims_modifier = 0.75
-	
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -4605,7 +4251,6 @@ map_lazy_managers = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
@@ -4625,14 +4270,13 @@ map_lazy_managers = {
 			has_trait = "trait_ingenious"
 			has_origin = origin_doomsday
 			has_origin = origin_remnants
-		}	
+		}
 		OR = {
 			has_authority = auth_corporate
 			has_valid_civic = civic_corporate_dominion
 			has_megacorp = no
 		}
 	}
-	
 	weight_modifier = {
 		weight = 100
 		modifier = {
@@ -4653,7 +4297,7 @@ map_lazy_managers = {
 			add = 1
 			has_megacorp = no
 			has_authority = auth_oligarchic
-		}		
+		}
 		modifier = {
 			add = -93
 			has_megacorp = no
@@ -4661,42 +4305,36 @@ map_lazy_managers = {
 		modifier = {
 			add = 1
 			has_trait = "trait_docile"
-		}							
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_pleasure_seekers"
-		}	
+		}
 	}
 }
 
 map_insidious_opportunists = {
 	aggressiveness = 1.1
-	trade_willingness = 1.05	
+	trade_willingness = 1.05
 	bravery = 0.7
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 1.2
-	colony_spending = 1.2	
-	
+	colony_spending = 1.2
 	federation_acceptance = 30
 	nap_acceptance = 10
 	commercial_pact_acceptance = -15
 	research_agreement_acceptance = -15
 	defensive_pact_acceptance = 20
 	migration_pact_acceptance = 0
-	
 	advanced_start_chance = 30
-	
 	weapon_preferences = weapon_type_explosive
 	armor_ratio = 0.4
 	shields_ratio = 0.5
 	hull_ratio = 0.1
-	
 	threat_modifier = 1.3
 	threat_others_modifier = 1.1
 	friction_modifier = 1.3
 	claims_modifier = 2.5
-	
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -4717,14 +4355,13 @@ map_insidious_opportunists = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"	
+			has_ethic = "ethic_fanatic_xenophobe"
 			has_ethic = "ethic_egalitarian"
-			has_ethic = "ethic_fanatic_egalitarian"	
+			has_ethic = "ethic_fanatic_egalitarian"
 			has_civic = "civic_idealistic_foundation"
 			has_civic = "civic_inwards_perfection"
 		}
@@ -4736,7 +4373,6 @@ map_insidious_opportunists = {
 			has_civic = "civic_merchant_guilds"
 		}
 	}
-	
 	weight_modifier = {
 		weight = 9
 		modifier = {
@@ -4747,60 +4383,54 @@ map_insidious_opportunists = {
 			add = 1
 			OR = {
 				has_ethic = "ethic_xenophile"
-				has_ethic = "ethic_fanatic_xenophile"				
+				has_ethic = "ethic_fanatic_xenophile"
 			}
 		}
 		modifier = {
 			add = 1
 			has_civic = "civic_byzantine_bureaucracy"
-		}			
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground
-		}			
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground_npc
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_hegemon
-		}						
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_diplomatic_corps"
 		}
-	}	
+	}
 }
 
-map_naive_appeasers = { 
+map_naive_appeasers = {
 	aggressiveness = 0.1
 	trade_willingness = 1.5
 	bravery = 0.1
 	combat_bravery = 0.8
-	
 	military_spending = 0.8
 	colony_spending = 0.8
-	
 	federation_acceptance = 50
 	nap_acceptance = 50
 	commercial_pact_acceptance = 100
 	research_agreement_acceptance = 100
 	defensive_pact_acceptance = 50
 	migration_pact_acceptance = 50
-	
 	advanced_start_chance = 10
-	
 	weapon_preferences = weapon_type_kinetic
 	armor_ratio = 0.3
 	shields_ratio = 0.6
 	hull_ratio = 0.1
-	
 	threat_modifier = 0.25
 	threat_others_modifier = 0.1
 	friction_modifier = 0.1
 	claims_modifier = 0.5
-	
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -4821,7 +4451,6 @@ map_naive_appeasers = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
@@ -4843,7 +4472,6 @@ map_naive_appeasers = {
 			has_origin = origin_common_ground_npc
 		}
 	}
-	
 	weight_modifier = {
 		weight = 10
 		modifier = {
@@ -4858,7 +4486,7 @@ map_naive_appeasers = {
 			add = 1
 			OR = {
 				has_ethic = "ethic_xenophile"
-				has_ethic = "ethic_fanatic_xenophile"				
+				has_ethic = "ethic_fanatic_xenophile"
 			}
 		}
 		modifier = {
@@ -4868,19 +4496,19 @@ map_naive_appeasers = {
 		modifier = {
 			add = 1
 			has_trait = "trait_docile"
-		}			
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground_npc
-		}						
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_remnants
-		}						
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_scion
@@ -4888,42 +4516,36 @@ map_naive_appeasers = {
 		modifier = {
 			add = -1
 			has_civic = "civic_death_cult"
-		}							
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_diplomatic_corps"
-		}	
+		}
 	}
 }
 
-map_experts_in_xenocide = { 
-	aggressiveness = 2.0
-	trade_willingness = 0.0
+map_experts_in_xenocide = {
+	aggressiveness = 2
+	trade_willingness = 0
 	bravery = 0.8
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 1.2
-	colony_spending = 1.2	
-	
+	colony_spending = 1.2
 	federation_acceptance = -800
 	nap_acceptance = -800
 	commercial_pact_acceptance = 1000
 	research_agreement_acceptance = -1000
 	defensive_pact_acceptance = -800
 	migration_pact_acceptance = -800
-	
 	advanced_start_chance = 50
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.4
 	shields_ratio = 0.3
 	hull_ratio = 0.3
-	
-	threat_modifier = 0	
+	threat_modifier = 0
 	threat_others_modifier = 0
 	friction_modifier = 8
 	claims_modifier = 0
-
 	behaviour = {
 		conqueror = yes
 		subjugator = no
@@ -4945,15 +4567,16 @@ map_experts_in_xenocide = {
 		crisis_fighter = yes
 		attack_neutrals = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		OR = {
 			AND = {
-				NOT = { host_has_dlc = "Utopia" }  				
+				NOT = {
+					host_has_dlc = "Utopia"
+				}
 				NOR = {
 					has_ethic = "ethic_xenophile"
-					has_ethic = "ethic_fanatic_xenophile"	
+					has_ethic = "ethic_fanatic_xenophile"
 					has_ethic = "ethic_pacifist"
 					has_ethic = "ethic_fanatic_pacifist"
 				}
@@ -4973,18 +4596,21 @@ map_experts_in_xenocide = {
 			has_civic = "civic_byzantine_bureaucracy"
 			has_civic = "civic_merchant_guilds"
 		}
-		NOT = { has_civic = "civic_shared_burden" }
+		NOT = {
+			has_civic = "civic_shared_burden"
+		}
 		#host_has_dlc = "Utopia"
 	}
-	
 	weight_modifier = {
 		weight = 1000
 		modifier = {
 			add = 1
-			NOT = { host_has_dlc = "Utopia" }  
+			NOT = {
+				host_has_dlc = "Utopia"
+			}
 			OR = {
 				has_ethic = "ethic_militarist"
-				has_ethic = "ethic_fanatic_militarist"			
+				has_ethic = "ethic_fanatic_militarist"
 			}
 		}
 		modifier = {
@@ -5009,45 +4635,39 @@ map_experts_in_xenocide = {
 		}
 		modifier = {
 			add = -993
-			NOT = { host_has_dlc = "Utopia" } 
-		}		
+			NOT = {
+				host_has_dlc = "Utopia"
+			}
+		}
 	}
 }
-
 
 #################################################
 # "MARTIN SEPTIM" ELDER SCROLLS IV OBLIVION THEME
 #################################################
-
 #Imperials
 map_cosmopolitan_imperials = {
 	aggressiveness = 1.2
 	trade_willingness = 0.9
 	bravery = 1.2
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 1.2
 	colony_spending = 1.2
-	
 	federation_acceptance = 20
 	nap_acceptance = 25
 	commercial_pact_acceptance = 25
 	research_agreement_acceptance = -15
 	defensive_pact_acceptance = 25
-	migration_pact_acceptance = 10		
-	
+	migration_pact_acceptance = 10
 	advanced_start_chance = 100
-	
 	weapon_preferences = weapon_type_kinetic
 	armor_ratio = 0.5
 	shields_ratio = 0.4
 	hull_ratio = 0.1
-	
 	threat_modifier = 1
 	threat_others_modifier = 1
 	friction_modifier = 1
-	claims_modifier = 2.0
-	
+	claims_modifier = 2
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -5067,20 +4687,19 @@ map_cosmopolitan_imperials = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"	
-			has_trait = "trait_repugnant"	
+			has_ethic = "ethic_fanatic_xenophobe"
+			has_trait = "trait_repugnant"
 			has_civic = "civic_slaver_guilds"
 			has_civic = "civic_functional_architecture"
 			has_civic = "civic_shared_burden"
 		}
 		OR = {
 			has_ethic = "ethic_xenophile"
-			has_ethic = "ethic_fanatic_xenophile"	
+			has_ethic = "ethic_fanatic_xenophile"
 		}
 		OR = {
 			has_civic = "civic_imperial_cult"
@@ -5097,7 +4716,6 @@ map_cosmopolitan_imperials = {
 			has_civic = "civic_diplomatic_corps"
 		}
 	}
-	
 	weight_modifier = {
 		weight = 8
 		modifier = {
@@ -5116,7 +4734,7 @@ map_cosmopolitan_imperials = {
 			add = 1
 			OR = {
 				has_ethic = "ethic_militarist"
-				has_ethic = "ethic_fanatic_militarist"	
+				has_ethic = "ethic_fanatic_militarist"
 			}
 		}
 		modifier = {
@@ -5138,56 +4756,49 @@ map_cosmopolitan_imperials = {
 		modifier = {
 			add = -1
 			has_origin = origin_post_apocalyptic
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_hegemon
-		}						
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_remnants
-		}						
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_reanimated_armies"
-		}					
+		}
 		modifier = {
-			add = 1			
+			add = 1
 			has_civic = "civic_crafters"
-		}	
-	}	
+		}
+	}
 }
 
-
 #mythic dawn
-map_bringers_of_paradise = { 
+map_bringers_of_paradise = {
 	aggressiveness = 1.4
 	trade_willingness = 0.2
 	bravery = 0.6
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 1.2
-	colony_spending = 1.2	
-	
+	colony_spending = 1.2
 	federation_acceptance = -250
 	nap_acceptance = -250
 	commercial_pact_acceptance = -100
 	research_agreement_acceptance = -100
 	defensive_pact_acceptance = -250
-	migration_pact_acceptance = 0		
-	
+	migration_pact_acceptance = 0
 	advanced_start_chance = 75
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.2
 	shields_ratio = 0.6
 	hull_ratio = 0.2
-	
 	threat_modifier = 1
 	threat_others_modifier = 1
 	friction_modifier = 0.5
-	claims_modifier = 3.0
-
+	claims_modifier = 3
 	behaviour = {
 		conqueror = yes
 		subjugator = no
@@ -5208,7 +4819,6 @@ map_bringers_of_paradise = {
 		crisis_fighter = yes
 		attack_neutrals = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
@@ -5222,8 +4832,8 @@ map_bringers_of_paradise = {
 			has_origin = origin_scion
 		}
 		OR = {
-			has_ethic = "ethic_spiritualist"	
-			has_ethic = "ethic_fanatic_spiritualist"	
+			has_ethic = "ethic_spiritualist"
+			has_ethic = "ethic_fanatic_spiritualist"
 		}
 		OR = {
 			has_civic = "civic_exalted_priesthood"
@@ -5235,14 +4845,13 @@ map_bringers_of_paradise = {
 			has_origin = origin_necrophage
 		}
 	}
-	
 	weight_modifier = {
 		weight = 10
 		modifier = {
 			add = 1
 			OR = {
 				has_ethic = "ethic_militarist"
-				has_ethic = "ethic_fanatic_militarist"			
+				has_ethic = "ethic_fanatic_militarist"
 			}
 		}
 		modifier = {
@@ -5252,51 +4861,45 @@ map_bringers_of_paradise = {
 		modifier = {
 			add = 1
 			has_origin = origin_life_seeded
-		}	
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_doomsday
-		}		
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_reanimated_armies"
-		}						
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_idyllic_bloom"
-		}				
+		}
 	}
 }
 
 #ayleids
-map_sadistic_loremasters = { 
+map_sadistic_loremasters = {
 	aggressiveness = 1
 	trade_willingness = 0.5
 	bravery = 0.8
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 1.2
-	colony_spending = 1.0
-	
+	colony_spending = 1
 	federation_acceptance = -10
 	nap_acceptance = -20
 	commercial_pact_acceptance = -20
 	research_agreement_acceptance = -100
 	defensive_pact_acceptance = 10
 	migration_pact_acceptance = -100
-	
 	advanced_start_chance = 100
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.2
 	shields_ratio = 0.7
 	hull_ratio = 0.1
-	
-	threat_modifier = 1.0
+	threat_modifier = 1
 	threat_others_modifier = 0.5
-	friction_modifier = 1.0
-	claims_modifier = 2.0
-	
+	friction_modifier = 1
+	claims_modifier = 2
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -5317,19 +4920,18 @@ map_sadistic_loremasters = {
 		crisis_fighter = yes
 		# decadent = yes	# special - resettles slaves to planets lacking them
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_pacifist"
 			has_ethic = "ethic_fanatic_pacifist"
 			has_ethic = "ethic_materialist"
-			has_ethic = "ethic_fanatic_materialist"	
+			has_ethic = "ethic_fanatic_materialist"
 			has_ethic = "ethic_egalitarian"
 			has_ethic = "ethic_fanatic_egalitarian"
 			has_civic = "civic_free_haven"
 		}
-		OR = {	
+		OR = {
 			has_ethic = "ethic_authoritarian"
 			has_ethic = "ethic_fanatic_authoritarian"
 			has_ethic = "ethic_xenophobe"
@@ -5341,7 +4943,7 @@ map_sadistic_loremasters = {
 			has_trait = "trait_traditional"
 			has_origin = origin_necrophage
 			has_civic = "civic_memorialist"
-		}			
+		}
 		OR = {
 			has_ethic = "ethic_spiritualist"
 			has_ethic = "ethic_fanatic_spiritualist"
@@ -5349,7 +4951,6 @@ map_sadistic_loremasters = {
 			has_ethic = "ethic_militarist"
 		}
 	}
-	
 	weight_modifier = {
 		weight = 9
 		modifier = {
@@ -5359,13 +4960,13 @@ map_sadistic_loremasters = {
 		modifier = {
 			add = 1
 			has_ethic = "ethic_fanatic_authoritarian"
-		}	
+		}
 		modifier = {
 			add = 2
-			OR = {	
+			OR = {
 				has_civic = "civic_slaver_guilds"
 				has_trait = "trait_decadent"
-			}			
+			}
 		}
 		modifier = {
 			add = 1
@@ -5374,27 +4975,27 @@ map_sadistic_loremasters = {
 		modifier = {
 			add = 2
 			has_origin = origin_life_seeded
-		}	
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_shared_burden"
-		}		
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_ingenious"
-		}			
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_lithoid_scintillating"
-		}				
+		}
 		modifier = {
 			add = 1
-			has_trait = "trait_lithoid_gaseous_byproducts" 
-		}			
+			has_trait = "trait_lithoid_gaseous_byproducts"
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground
-		}				
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground_npc
@@ -5410,47 +5011,41 @@ map_sadistic_loremasters = {
 		modifier = {
 			add = 1
 			has_civic = "civic_reanimated_armies"
-		}					
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_memorialist"
-		}					
+		}
 		modifier = {
-			add = 1			
+			add = 1
 			has_civic = "civic_crafters"
 		}
 	}
 }
 
 #Glarthir
-map_total_nutcases = { 
+map_total_nutcases = {
 	aggressiveness = 1.5
-	trade_willingness = 0.0
+	trade_willingness = 0
 	bravery = 0.2
 	combat_bravery = 1.5
-	
 	military_spending = 1.4
-	colony_spending = 1.0	
-	
+	colony_spending = 1
 	federation_acceptance = -1000
 	nap_acceptance = -1000
 	commercial_pact_acceptance = -1000
 	research_agreement_acceptance = -1000
 	defensive_pact_acceptance = -1000
-	migration_pact_acceptance = -1000		
-	
+	migration_pact_acceptance = -1000
 	advanced_start_chance = 10
-	
 	weapon_preferences = weapon_type_explosive
 	armor_ratio = 0.5
 	shields_ratio = 0.2
 	hull_ratio = 0.3
-	
 	threat_modifier = 3
 	threat_others_modifier = 2
 	friction_modifier = 5
-	claims_modifier = 6.0
-
+	claims_modifier = 6
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -5471,7 +5066,6 @@ map_total_nutcases = {
 		crisis_fighter = yes
 		attack_neutrals = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
@@ -5481,77 +5075,69 @@ map_total_nutcases = {
 			has_origin = origin_necrophage
 		}
 		OR = {
-			has_ethic = "ethic_xenophobe"	
-			has_ethic = "ethic_fanatic_xenophobe"	
+			has_ethic = "ethic_xenophobe"
+			has_ethic = "ethic_fanatic_xenophobe"
 		}
 		OR = {
 			has_ethic = "ethic_fanatic_xenophobe"
-			has_trait = "trait_nonadaptive"		
-			has_trait = "trait_deviants"		
-			has_trait = "trait_repugnant"		
+			has_trait = "trait_nonadaptive"
+			has_trait = "trait_deviants"
+			has_trait = "trait_repugnant"
 			has_trait = "trait_quarrelsome"
 			has_trait = "trait_unruly"
 		}
 	}
-	
 	weight_modifier = {
-		weight = 9	
+		weight = 9
 		modifier = {
 			add = 1
-			OR = {	
+			OR = {
 				has_civic = "civic_cutthroat_politics"
 				has_civic = "civic_shadow_council"
-			}			
-		}	
+			}
+		}
 		modifier = {
 			add = 1
-			has_trait = "trait_lithoid_gaseous_byproducts" 		
-		}		
+			has_trait = "trait_lithoid_gaseous_byproducts"
+		}
 		modifier = {
 			add = 2
 			has_trait = "trait_unruly"
-		}				
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_hegemon
-		}						
+		}
 		modifier = {
-			add = -1			
+			add = -1
 			has_civic = "civic_crafters"
 		}
 	}
 }
 
-
 #Shivering Isles & Sheogorath
 map_princes_of_madness = {
 	aggressiveness = 0.9
-	trade_willingness = 1	
+	trade_willingness = 1
 	bravery = 1.5
-	combat_bravery = 1.0
-	
-	military_spending = 1.0
-	colony_spending = 1.0	
-	
+	combat_bravery = 1
+	military_spending = 1
+	colony_spending = 1
 	federation_acceptance = 0
 	nap_acceptance = 10
 	commercial_pact_acceptance = 0
 	research_agreement_acceptance = 15
 	defensive_pact_acceptance = 0
-	migration_pact_acceptance = 25		
-	
+	migration_pact_acceptance = 25
 	advanced_start_chance = 25
-	
 	weapon_preferences = weapon_type_explosive
 	armor_ratio = 0.1
 	shields_ratio = 0.8
 	hull_ratio = 0.1
-	
 	threat_modifier = 1
 	threat_others_modifier = 0.9
 	friction_modifier = 1.1
-	claims_modifier = 1.0
-	
+	claims_modifier = 1
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -5571,37 +5157,35 @@ map_princes_of_madness = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"	
+			has_ethic = "ethic_fanatic_xenophobe"
 			has_ethic = "ethic_authoritarian"
-			has_ethic = "ethic_fanatic_authoritarian"	
+			has_ethic = "ethic_fanatic_authoritarian"
 			has_ethic = "ethic_militarist"
 			has_ethic = "ethic_fanatic_militarist"
 			has_trait = "trait_docile"
 		}
 		AND = {
 			OR = {
-				has_ethic = "ethic_xenophile"	
-				has_ethic = "ethic_fanatic_xenophile"			
+				has_ethic = "ethic_xenophile"
+				has_ethic = "ethic_fanatic_xenophile"
 			}
 			OR = {
 				has_ethic = "ethic_egalitarian"
-				has_ethic = "ethic_fanatic_egalitarian"			
-			}			
+				has_ethic = "ethic_fanatic_egalitarian"
+			}
 		}
 	}
-	
 	weight_modifier = {
 		weight = 9
 		modifier = {
 			add = 1
 			OR = {
 				has_ethic = "ethic_spiritualist"
-				has_ethic = "ethic_fanatic_spiritualist"			
+				has_ethic = "ethic_fanatic_spiritualist"
 			}
 		}
 		modifier = {
@@ -5611,52 +5195,45 @@ map_princes_of_madness = {
 		modifier = {
 			add = 1
 			has_origin = origin_life_seeded
-		}	
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_ingenious"
-		}		
+		}
 		modifier = {
 			add = 2
 			has_trait = "trait_unruly"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_death_cult"
 		}
-	}	
+	}
 }
-
 
 #STOP RIGHT THERE CRIMINAL SCUM
 map_enforcers_of_law = {
 	aggressiveness = 0.5
-	trade_willingness = 1	
+	trade_willingness = 1
 	bravery = 1.5
-	combat_bravery = 1.0
-	
+	combat_bravery = 1
 	military_spending = 1.2
-	colony_spending = 1.0	
-	
+	colony_spending = 1
 	federation_acceptance = 10
 	nap_acceptance = 10
 	commercial_pact_acceptance = 0
 	research_agreement_acceptance = 0
 	defensive_pact_acceptance = 10
-	migration_pact_acceptance = 20		
-	
+	migration_pact_acceptance = 20
 	advanced_start_chance = 50
-	
 	weapon_preferences = weapon_type_explosive
 	armor_ratio = 0.7
 	shields_ratio = 0.1
 	hull_ratio = 0.2
-	
 	threat_modifier = 1.5
 	threat_others_modifier = 1
 	friction_modifier = 1.5
 	claims_modifier = 1.5
-	
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -5676,7 +5253,6 @@ map_enforcers_of_law = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
@@ -5688,8 +5264,8 @@ map_enforcers_of_law = {
 		OR = {
 			has_ethic = "ethic_egalitarian"
 			has_ethic = "ethic_fanatic_egalitarian"
-			has_ethic = "ethic_xenophile"	
-			has_ethic = "ethic_fanatic_xenophile"			
+			has_ethic = "ethic_xenophile"
+			has_ethic = "ethic_fanatic_xenophile"
 		}
 		OR = {
 			has_civic = "civic_citizen_service"
@@ -5700,7 +5276,6 @@ map_enforcers_of_law = {
 			has_origin = "origin_clone_army"
 		}
 	}
-	
 	weight_modifier = {
 		weight = 9
 		#modifier = {
@@ -5711,7 +5286,7 @@ map_enforcers_of_law = {
 			add = 1
 			OR = {
 				has_ethic = "ethic_militarist"
-				has_ethic = "ethic_fanatic_militarist"	
+				has_ethic = "ethic_fanatic_militarist"
 			}
 		}
 		modifier = {
@@ -5742,12 +5317,12 @@ map_enforcers_of_law = {
 			add = -1
 			OR = {
 				has_ethic = "ethic_pacifist"
-				has_ethic = "ethic_fanatic_pacifist"	
+				has_ethic = "ethic_fanatic_pacifist"
 			}
 		}
 		modifier = {
 			add = -1
-			has_trait = "trait_lithoid_gaseous_byproducts" 
+			has_trait = "trait_lithoid_gaseous_byproducts"
 		}
 		modifier = {
 			add = 1
@@ -5761,45 +5336,36 @@ map_enforcers_of_law = {
 			add = -1
 			has_civic = "civic_death_cult"
 		}
-	}	
+	}
 }
-
 
 #################################################
 # "TAIZONG" CHINA THEME 
 #################################################
-
 #Scholar Gentry class, y'know
 map_cultivated_scholar_gentry = {
 	#type = capitalist
-
 	aggressiveness = 0.7
-	trade_willingness = 1.0
+	trade_willingness = 1
 	bravery = 0.8
-	combat_bravery = 1.0
-	
-	military_spending = 1.0
+	combat_bravery = 1
+	military_spending = 1
 	colony_spending = 1.1
-	
 	federation_acceptance = -10
 	nap_acceptance = 20
 	commercial_pact_acceptance = -10
 	research_agreement_acceptance = 50
 	defensive_pact_acceptance = 20
 	migration_pact_acceptance = 0
-	
 	advanced_start_chance = 75
-	
 	weapon_preferences = weapon_type_explosive
 	armor_ratio = 0.4
 	shields_ratio = 0.4
 	hull_ratio = 0.2
-	
 	threat_modifier = 1.3
 	threat_others_modifier = 1.1
 	friction_modifier = 1.1
-	claims_modifier = 1.0
-	
+	claims_modifier = 1
 	behaviour = {
 		conqueror = no
 		subjugator = yes
@@ -5819,10 +5385,9 @@ map_cultivated_scholar_gentry = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
-		NOR = {	
+		NOR = {
 			has_ethic = "ethic_fanatic_xenophobe"
 			has_ethic = "ethic_xenophobe"
 			has_ethic = "ethic_fanatic_militarist"
@@ -5839,21 +5404,20 @@ map_cultivated_scholar_gentry = {
 			has_civic = "civic_memorialist"
 		}
 	}
-	
 	weight_modifier = {
 		weight = 10
 		modifier = {
 			add = 1
 			has_trait = "trait_traditional"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_conformists"
-		}		
+		}
 		modifier = {
 			add = 2
 			OR = {
-				has_government = gov_irenic_bureaucracy 
+				has_government = gov_irenic_bureaucracy
 				has_government = gov_irenic_monarchy
 			}
 		}
@@ -5871,24 +5435,24 @@ map_cultivated_scholar_gentry = {
 		modifier = {
 			add = -2
 			has_civic = "civic_merchant_guilds"
-		}		
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_unruly"
-		}					
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_scion
-		}					
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_necrophage
-		}						
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_diplomatic_corps"
-		}	
-	}	
+		}
+	}
 }
 
 #LE ZHONGGUO
@@ -5896,30 +5460,24 @@ map_middle_kingdom = {
 	aggressiveness = 1.1
 	trade_willingness = 0.7
 	bravery = 0.9
-	combat_bravery = 1.0
-	
-	military_spending = 1.0
-	colony_spending = 1.0
-	
+	combat_bravery = 1
+	military_spending = 1
+	colony_spending = 1
 	federation_acceptance = -50
 	nap_acceptance = 10
 	commercial_pact_acceptance = 10
 	research_agreement_acceptance = -20
 	defensive_pact_acceptance = 10
-	migration_pact_acceptance = 0		
-	
+	migration_pact_acceptance = 0
 	advanced_start_chance = 100
-	
 	weapon_preferences = weapon_type_explosive
 	armor_ratio = 0.5
-	shields_ratio = 0.3	
+	shields_ratio = 0.3
 	hull_ratio = 0.2
-	
 	threat_modifier = 1.3
 	threat_others_modifier = 1.1
 	friction_modifier = 1.3
-	claims_modifier = 2.0
-	
+	claims_modifier = 2
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -5940,20 +5498,19 @@ map_middle_kingdom = {
 		crisis_fighter = yes
 		wants_tribute = yes
 	}
-	
 	allow = {
 		is_country_type = default
-		NOR = {	
+		NOR = {
 			has_ethic = "ethic_fanatic_materialist"
 			has_ethic = "ethic_materialist"
 			has_ethic = "ethic_fanatic_egalitarian"
 			has_ethic = "ethic_egalitarian"
-			has_ethic = "ethic_fanatic_xenophile"			
-			has_ethic = "ethic_fanatic_xenophobe"			
+			has_ethic = "ethic_fanatic_xenophile"
+			has_ethic = "ethic_fanatic_xenophobe"
 			has_trait = trait_deviants
-			has_civic = "civic_functional_architecture" 
-			has_civic = "civic_barbaric_despoilers" 
-			has_civic = "civic_shared_burden" 
+			has_civic = "civic_functional_architecture"
+			has_civic = "civic_barbaric_despoilers"
+			has_civic = "civic_shared_burden"
 		}
 		OR = {
 			has_ethic = "ethic_authoritarian"
@@ -5963,25 +5520,24 @@ map_middle_kingdom = {
 		}
 		has_authority = auth_imperial
 	}
-	
 	weight_modifier = {
-		weight = 10	
+		weight = 10
 		modifier = {
 			add = 1
 			has_trait = "trait_agrarian"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_conformists"
-		}		
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_traditional"
-		}		
+		}
 		modifier = {
 			add = 1
 			has_ethic = "ethic_xenophobe"
-		}	
+		}
 		modifier = {
 			add = 1
 			OR = {
@@ -6007,59 +5563,53 @@ map_middle_kingdom = {
 		modifier = {
 			add = -1
 			has_civic = "civic_merchant_guilds"
-		}		
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_unruly"
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_hegemon
-		}						
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_remnants
-		}					
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_scion
-		}					
+		}
 		modifier = {
-			add = 1			
+			add = 1
 			has_civic = "civic_crafters"
-		}		
-	}	
+		}
+	}
 }
 
 #fox spirits, c.f. Pu Songling's "Strange Tales from a Chinese Studio" - highly recommended Chinese literature from the 18th century
-map_benign_spirits = { 
+map_benign_spirits = {
 	aggressiveness = 0.8
 	trade_willingness = 0.9
 	bravery = 1.1
 	combat_bravery = 0.9
-	
 	military_spending = 0.8
-	colony_spending = 1.0
-	
+	colony_spending = 1
 	federation_acceptance = 20
 	nap_acceptance = 20
 	commercial_pact_acceptance = 15
 	research_agreement_acceptance = 15
 	defensive_pact_acceptance = 20
-	migration_pact_acceptance = 30		
-	
+	migration_pact_acceptance = 30
 	advanced_start_chance = 75
-	
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.2
-	shields_ratio = 0.6	
+	shields_ratio = 0.6
 	hull_ratio = 0.2
-	
 	threat_modifier = 1.2
 	threat_others_modifier = 1.1
 	friction_modifier = 0.8
-	claims_modifier = 1.0
-	
+	claims_modifier = 1
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -6079,12 +5629,11 @@ map_benign_spirits = {
 		multispecies = yes
 		crisis_fighter = yes
 	}
-	
 	allow = {
 		is_country_type = default
 		NOR = {
 			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"	
+			has_ethic = "ethic_fanatic_xenophobe"
 			has_trait = "trait_repugnant"
 			has_trait = "trait_solitary"
 			has_trait = "trait_decadent"
@@ -6092,7 +5641,7 @@ map_benign_spirits = {
 			has_civic = "civic_slaver_guilds"
 			has_origin = origin_necrophage
 		}
-		OR = {	
+		OR = {
 			has_ethic = "ethic_xenophile"
 			has_ethic = "ethic_fanatic_xenophile"
 			has_trait = "trait_charismatic"
@@ -6105,7 +5654,6 @@ map_benign_spirits = {
 			has_ethic = "ethic_fanatic_spiritualist"
 		}
 	}
-	
 	weight_modifier = {
 		weight = 11
 		modifier = {
@@ -6127,7 +5675,7 @@ map_benign_spirits = {
 		modifier = {
 			add = 2
 			has_trait = "trait_venerable"
-		}	
+		}
 		modifier = {
 			add = 1
 			OR = {
@@ -6135,15 +5683,15 @@ map_benign_spirits = {
 				has_civic = "civic_agrarian_idyll"
 				has_civic = "civic_free_haven"
 			}
-		}	
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_nonadaptive"
-		}	
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_fleeting"
-		}	
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_sedentary"
@@ -6155,71 +5703,64 @@ map_benign_spirits = {
 		modifier = {
 			add = 1
 			has_origin = origin_life_seeded
-		}	
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_merchant_guilds"
-		}	
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_shared_burden"
-		}			
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_common_ground_npc
-		}						
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_diplomatic_corps"
-		}						
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_idyllic_bloom"
-		}					
+		}
 		modifier = {
-			add = 1			
+			add = 1
 			has_civic = "civic_crafters"
-		}					
+		}
 	}
 }
 
 ##############################################################
 # "TALOS" SKYRIM THEME
 ##############################################################
-
 #SKYRIM BELONGS TO THE NORDS
 map_proud_nationalists = {
 	aggressiveness = 1.2
 	trade_willingness = 0.8
 	bravery = 1.1
-	combat_bravery = 1.0
-
+	combat_bravery = 1
 	military_spending = 1.2
 	colony_spending = 0.9
-
 	federation_acceptance = -10
 	nap_acceptance = 0
 	commercial_pact_acceptance = 0
 	research_agreement_acceptance = -10
 	defensive_pact_acceptance = -10
 	migration_pact_acceptance = -30
-
 	advanced_start_chance = 10
-
 	weapon_preferences = weapon_type_explosive
 	armor_ratio = 0.6
 	shields_ratio = 0.1
 	hull_ratio = 0.3
-
 	threat_modifier = 0.75
 	threat_others_modifier = 0.75
-	friction_modifier = 2.0
-	claims_modifier = 3.0
-
+	friction_modifier = 2
+	claims_modifier = 3
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -6238,7 +5779,6 @@ map_proud_nationalists = {
 		multispecies = no
 		crisis_fighter = yes
 	}
-
 	allow = {
 		is_country_type = default
 		NOR = {
@@ -6266,25 +5806,24 @@ map_proud_nationalists = {
 			has_trait = "trait_unruly"
 		}
 	}
-
 	weight_modifier = {
 		weight = 9
 		modifier = {
 			add = -1
 			has_ethic = "ethic_fanatic_xenophobe"
-		}	
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_barbaric_despoilers"
-		}			
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground
-		}			
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground_npc
-		}			
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_unruly"
@@ -6297,30 +5836,24 @@ map_haughty_supremacists = {
 	aggressiveness = 1.1
 	trade_willingness = 0.5
 	bravery = 0.9
-	combat_bravery = 1.0
-
+	combat_bravery = 1
 	military_spending = 1.1
-	colony_spending = 1.0
-
+	colony_spending = 1
 	federation_acceptance = -40
 	nap_acceptance = -20
 	commercial_pact_acceptance = -50
 	research_agreement_acceptance = -100
 	defensive_pact_acceptance = -10
 	migration_pact_acceptance = -100
-
 	advanced_start_chance = 50
-
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.2
 	shields_ratio = 0.7
 	hull_ratio = 0.1
-
-	threat_modifier = 1.0
+	threat_modifier = 1
 	threat_others_modifier = 0.66
 	friction_modifier = 1.5
-	claims_modifier = 3.0
-
+	claims_modifier = 3
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -6340,8 +5873,6 @@ map_haughty_supremacists = {
 		crisis_fighter = yes
 		wants_tribute = yes
 	}
-
-
 	allow = {
 		is_country_type = default
 		NOR = {
@@ -6363,7 +5894,6 @@ map_haughty_supremacists = {
 			has_ethic = "ethic_fanatic_xenophobe"
 		}
 	}
-
 	weight_modifier = {
 		weight = 9
 		modifier = {
@@ -6404,15 +5934,15 @@ map_haughty_supremacists = {
 		modifier = {
 			add = -1
 			has_origin = origin_post_apocalyptic
-		}	
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_barbaric_despoilers"
-		}			
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground
-		}			
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground_npc
@@ -6420,31 +5950,31 @@ map_haughty_supremacists = {
 		modifier = {
 			add = -1
 			has_origin = origin_doomsday
-		}				
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_hegemon
-		}						
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_remnants
-		}						
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_necrophage
-		}					
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_memorialist"
-		}							
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_diplomatic_corps"
-		}					
+		}
 		modifier = {
-			add = 1			
+			add = 1
 			has_civic = "civic_crafters"
-		}	
+		}
 	}
 }
 
@@ -6453,30 +5983,24 @@ map_reclusive_hermits = {
 	aggressiveness = 0.25
 	trade_willingness = 0.7
 	bravery = 0.5
-	combat_bravery = 1.0
-
+	combat_bravery = 1
 	military_spending = 1.1
 	colony_spending = 1.1
-
 	federation_acceptance = -50
 	nap_acceptance = 0
 	commercial_pact_acceptance = -1000
 	research_agreement_acceptance = -30
 	defensive_pact_acceptance = 0
 	migration_pact_acceptance = 0
-
 	advanced_start_chance = 75
-
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.6
 	shields_ratio = 0.3
 	hull_ratio = 0.1
-
 	threat_modifier = 0.75
 	threat_others_modifier = 0.75
-	friction_modifier = 2.0
-	claims_modifier = 1.0
-
+	friction_modifier = 2
+	claims_modifier = 1
 	behaviour = {
 		conqueror = no
 		subjugator = no
@@ -6496,7 +6020,6 @@ map_reclusive_hermits = {
 		isolationist = yes
 		crisis_fighter = yes
 	}
-
 	allow = {
 		is_country_type = default
 		NOR = {
@@ -6524,7 +6047,6 @@ map_reclusive_hermits = {
 			has_ethic = "ethic_fanatic_spiritualist"
 		}
 	}
-
 	weight_modifier = {
 		weight = 10
 		modifier = {
@@ -6544,7 +6066,7 @@ map_reclusive_hermits = {
 				OR = {
 					has_ethic = "ethic_spiritualist"
 					has_ethic = "ethic_fanatic_spiritualist"
-				}				
+				}
 			}
 		}
 		modifier = {
@@ -6596,15 +6118,15 @@ map_reclusive_hermits = {
 		modifier = {
 			add = -1
 			has_origin = origin_doomsday
-		}					
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_scion
-		}					
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_memorialist"
-		}	
+		}
 	}
 }
 
@@ -6613,30 +6135,24 @@ map_unfathomable_artificers = {
 	aggressiveness = 0.75
 	trade_willingness = 0.5
 	bravery = 0.75
-	combat_bravery = 1.0
-
-	military_spending = 1.0
-	colony_spending = 1.0
-
+	combat_bravery = 1
+	military_spending = 1
+	colony_spending = 1
 	federation_acceptance = -50
 	nap_acceptance = -25
 	commercial_pact_acceptance = -50
 	research_agreement_acceptance = -1000
 	defensive_pact_acceptance = 0
 	migration_pact_acceptance = -100
-
 	advanced_start_chance = 75
-
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.3
 	shields_ratio = 0.5
 	hull_ratio = 0.2
-
 	threat_modifier = 0.9
 	threat_others_modifier = 0.9
 	friction_modifier = 1.5
-	claims_modifier = 5.0
-
+	claims_modifier = 5
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -6656,7 +6172,6 @@ map_unfathomable_artificers = {
 		isolationist = yes
 		crisis_fighter = yes
 	}
-
 	allow = {
 		is_country_type = default
 		NOR = {
@@ -6664,9 +6179,9 @@ map_unfathomable_artificers = {
 			has_ethic = "ethic_fanatic_pacifist"
 			has_ethic = "ethic_xenophile"
 			has_ethic = "ethic_fanatic_xenophile"
-			has_civic = "civic_beacon_of_liberty"			
-			has_civic = "civic_environmentalist"			
-			has_civic = "civic_corporate_dominion"			
+			has_civic = "civic_beacon_of_liberty"
+			has_civic = "civic_environmentalist"
+			has_civic = "civic_corporate_dominion"
 		}
 		OR = {
 			has_ethic = "ethic_materialist"
@@ -6686,7 +6201,6 @@ map_unfathomable_artificers = {
 			has_civic = "civic_crafters"
 		}
 	}
-
 	weight_modifier = {
 		weight = 9
 		modifier = {
@@ -6720,39 +6234,39 @@ map_unfathomable_artificers = {
 		modifier = {
 			add = -1
 			has_civic = "civic_merchant_guilds"
-		}	
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_lithoid_scintillating"
-		}		
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_lithoid_volatile_excretions"
-		}			
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground
-		}			
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_common_ground_npc
-		}						
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_remnants
-		}					
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_scion
-		}					
+		}
 		modifier = {
 			add = 1
 			has_origin = origin_necrophage
-		}					
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_memorialist"
-		}				
+		}
 	}
 }
 
@@ -6761,30 +6275,24 @@ map_outcast_pariahs = {
 	aggressiveness = 1.1
 	trade_willingness = 0.6
 	bravery = 1.5
-	combat_bravery = 1.0
-
+	combat_bravery = 1
 	military_spending = 1.1
 	colony_spending = 0.9
-
 	federation_acceptance = -20
 	nap_acceptance = 0
 	commercial_pact_acceptance = -10
 	research_agreement_acceptance = -10
 	defensive_pact_acceptance = 0
 	migration_pact_acceptance = -50
-
 	advanced_start_chance = 75
-
 	weapon_preferences = weapon_type_strike_craft
 	armor_ratio = 0.7
 	shields_ratio = 0.1
 	hull_ratio = 0.2
-
 	threat_modifier = 0.8
 	threat_others_modifier = 0.8
 	friction_modifier = 1.1
-	claims_modifier = 2.0
-
+	claims_modifier = 2
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -6803,13 +6311,12 @@ map_outcast_pariahs = {
 		multispecies = no
 		crisis_fighter = yes
 	}
-
 	allow = {
 		is_country_type = default
 		has_ethic = "ethic_fanatic_militarist"
 		NOR = {
 			has_ethic = "ethic_pacifist"
-			has_ethic = "ethic_fanatic_pacifist"		
+			has_ethic = "ethic_fanatic_pacifist"
 			has_ethic = "ethic_materialist"
 			has_ethic = "ethic_fanatic_materialist"
 			has_trait = "trait_charismatic"
@@ -6821,7 +6328,7 @@ map_outcast_pariahs = {
 			AND = {
 				NOR = {
 					has_ethic = "ethic_xenophile"
-					has_ethic = "ethic_fanatic_xenophile"		
+					has_ethic = "ethic_fanatic_xenophile"
 				}
 				OR = {
 					has_trait = "trait_strong"
@@ -6835,7 +6342,6 @@ map_outcast_pariahs = {
 			has_ethic = "ethic_xenophobe"
 		}
 	}
-
 	weight_modifier = {
 		weight = 10
 		modifier = {
@@ -6865,27 +6371,27 @@ map_outcast_pariahs = {
 		modifier = {
 			add = -2
 			has_origin = origin_life_seeded
-		}	
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_barbaric_despoilers"
-		}		
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_shared_burden"
-		}		
+		}
 		modifier = {
 			add = -1
 			has_trait = "trait_lithoid_scintillating"
-		}		
+		}
 		modifier = {
 			add = 1
-			has_trait = "trait_lithoid_gaseous_byproducts" 
-		}		
+			has_trait = "trait_lithoid_gaseous_byproducts"
+		}
 		modifier = {
 			add = 1
 			has_trait = "trait_lithoid_volatile_excretions"
-		}				
+		}
 		modifier = {
 			add = -1
 			has_origin = origin_hegemon
@@ -6893,18 +6399,18 @@ map_outcast_pariahs = {
 		modifier = {
 			add = -1
 			has_origin = origin_lost_colony
-		}	
+		}
 		modifier = {
 			add = 1
 			has_civic = "civic_reanimated_armies"
-		}							
+		}
 		modifier = {
 			add = -1
 			has_civic = "civic_idyllic_bloom"
-		}					
+		}
 		modifier = {
-			add = 1			
+			add = 1
 			has_civic = "civic_crafters"
-		}		
+		}
 	}
 }

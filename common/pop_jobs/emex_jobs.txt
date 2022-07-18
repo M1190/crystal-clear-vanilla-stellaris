@@ -1,13 +1,11 @@
 ###################
 # Mod Jobs
 ###################
-
 xeno_arcane = {
 	category = specialist
 	condition_string = SPECIALIST_JOB_TRIGGER
 	building_icon = building_xeno_corps
 	clothes_texture_index = 5
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_being_purged = no
@@ -15,13 +13,10 @@ xeno_arcane = {
 		is_sapient = yes
 		is_enslaved = no
 	}
-
 	possible_precalc = can_fill_specialist_job
-
 	planet_modifier = {
 		#none
 	}
-	
 	resources = {
 		category = planet_archaeologists
 		produces = {
@@ -31,7 +26,6 @@ xeno_arcane = {
 			consumer_goods = 1.5
 		}
 	}
-
 	weight = {
 		weight = @specialist_job_weight
 		modifier = {
@@ -64,16 +58,13 @@ xeno_drone = {
 	category = complex_drone
 	condition_string = DRONE_JOB_TRIGGER
 	building_icon = building_xeno_corps
-	
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
 		is_being_purged = no
 		is_being_assimilated = no
 	}
-
 	possible_precalc = can_fill_drone_job
-
 	resources = {
 		category = planet_archaeologists
 		produces = {
@@ -81,9 +72,8 @@ xeno_drone = {
 		}
 		upkeep = {
 			minerals = 3
-		}		
+		}
 	}
-	
 	weight = {
 		weight = @complex_drone_job_weight
 		modifier = {
@@ -100,20 +90,23 @@ xeno_drone = {
 				has_trait = trait_natural_physicists
 				has_trait = trait_natural_sociologists
 			}
-		}	
+		}
 		modifier = {
 			factor = 0.65
 			OR = {
 				has_trait = trait_syncretic_proles
-				has_trait = trait_presapient_proles	
+				has_trait = trait_presapient_proles
 			}
-		}	
+		}
 		modifier = {
 			factor = 0
 			planet = {
 				owner = {
 					is_ai = yes
-					has_resource = { type = minerals amount < 500 }
+					has_resource = {
+						type = minerals
+						amount < 500
+					}
 				}
 			}
 		}
@@ -124,16 +117,13 @@ xeno_bot = {
 	category = complex_drone
 	condition_string = DRONE_JOB_TRIGGER
 	building_icon = building_xeno_corps
-	
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
 		is_being_purged = no
 		is_being_assimilated = no
 	}
-
 	possible_precalc = can_fill_drone_job
-
 	resources = {
 		category = planet_archaeologists
 		produces = {
@@ -141,9 +131,8 @@ xeno_bot = {
 		}
 		upkeep = {
 			minerals = 3
-		}		
+		}
 	}
-	
 	weight = {
 		weight = @complex_drone_job_weight
 		modifier = {
@@ -154,15 +143,20 @@ xeno_bot = {
 			factor = 0.9
 			exists = owner
 			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
+			owner = {
+				has_valid_civic = civic_machine_assimilator
+			}
 			has_trait = trait_cybernetic
-		}		
+		}
 		modifier = {
 			factor = 0
 			planet = {
 				owner = {
 					is_ai = yes
-					has_resource = { type = minerals amount < 500 }
+					has_resource = {
+						type = minerals
+						amount < 500
+					}
 				}
 			}
 		}

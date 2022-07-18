@@ -1,6 +1,5 @@
 #root = starbase
 #from = player
-
 # Weights in the ai_design part are multiplied with the base weight of 00_starbase_buildings.txt and 00_starbase_modules.txt
 # Then, a random number between that value and and extra 50% of that it is ADDED to it
 # F.e. 100 base weight multiplies with 2.00 = 200. Then we take a random number between 0 and 100 (50% of 200) and ADD it to 200. 235 then, for example
@@ -8,7 +7,6 @@
 # And the building or module with the highest value will be chosen to being built
 # The implication of that is that you can not balance the weights TOO FAR from each other - otherwise some modules will never be chosen, unless they are the only thing on the evaluation
 # Due to the progression of the game and the unlocking of tech, though, it is often the case that there will only be 1 item on the list at any given time anyway
-
 # Shipyard
 sshipyard = {
 	potential = {
@@ -27,10 +25,10 @@ sshipyard = {
 			}
 		}
 	}
-
 	weight_modifier = {
 		base = 100
-		complex_trigger_modifier = { #+100 for each shipyard
+		complex_trigger_modifier = {
+			#+100 for each shipyard
 			trigger = count_starbase_modules
 			parameters = {
 				type = shipyard
@@ -49,13 +47,11 @@ sshipyard = {
 			}
 		}
 	}
-
 	ai_design = {
 		min = {
 			base = 1
 			factor = 1
 		}
-
 		ratio = {
 			base = 0.25
 			modifier = {
@@ -66,76 +62,61 @@ sshipyard = {
 				}
 			}
 			modifier = {
-				add = 0.10
+				add = 0.1
 				exists = owner
 				owner = {
 					has_ethic = ethic_fanatic_militarist
 				}
 			}
 		}
-
 		# token followed by priority
 		buildings = {
 			crew_quarters = {
-				base = 1.00
+				base = 1
 			}
-
 			fleet_academy = {
-				base = 2.00
+				base = 2
 			}
-
 			titan_yards = {
-				base = 2.00
+				base = 2
 			}
-
 			colossus_yards = {
-				base = 5.00
+				base = 5
 			}
-
 			ice_mining_station = {
-				base = 1.00
+				base = 1
 			}
-
 			dragon_hatchery = {
-				base = 5.00
+				base = 5
 			}
-
 			hydroponics_bay = {
-				base = 1.00
+				base = 1
 			}
-			
 			space_production = {
 				base = 0.5
 			}
-			
 			deep_space_black_site = {
 				base = 0.5
 			}
-			
 			listening_post = {
 				base = 0.25
 			}
-			
 			transit_hub = {
 				base = 0.25
 			}
 		}
-
 		modules = {
 			shipyard = {
-				base = 1.00
+				base = 1
 			}
-
 			anchorage = {
 				base = 0.25
 			}
-
 			hangar_bay = {
 				base = 0.25
 			}
-			
 			stellar_reducer = {
-				base = 1.00
+				base = 1
 			}
 		}
 	}
@@ -150,10 +131,10 @@ sanchorage = {
 			count > 0
 		}
 	}
-
 	weight_modifier = {
 		base = 100
-		complex_trigger_modifier = { #+100 for each anchorage
+		complex_trigger_modifier = {
+			#+100 for each anchorage
 			trigger = count_starbase_modules
 			parameters = {
 				type = anchorage
@@ -162,13 +143,11 @@ sanchorage = {
 			mult = 100
 		}
 	}
-
 	ai_design = {
 		min = {
 			base = 0
 			factor = 0
 		}
-
 		ratio = {
 			base = 0.45
 			modifier = {
@@ -179,7 +158,7 @@ sanchorage = {
 				}
 			}
 			modifier = {
-				add = 0.10
+				add = 0.1
 				exists = owner
 				owner = {
 					has_ethic = ethic_fanatic_militarist
@@ -200,94 +179,72 @@ sanchorage = {
 				}
 			}
 		}
-
 		# token followed by priority
 		buildings = {
-
 			naval_logistics_office = {
-				base = 10.00
+				base = 10
 			}
-
 			defense_grid = {
 				base = 0.25
 			}
-			
 			starbase_fortifications = {
 				base = 0.25
 			}
-
 			communications_jammer = {
 				base = 0.25
 			}
-
 			curator_think_tank = {
-				base = 2.00
+				base = 2
 			}
-
 			art_college = {
-				base = 2.00
+				base = 2
 			}
-
 			nebula_refinery = {
-				base = 2.00
+				base = 2
 			}
-			
 			dathnak_embassy = {
-				base = 2.00
+				base = 2
 			}
-
 			ice_mining_station = {
-				base = 2.00
+				base = 2
 			}
-
 			dragon_hatchery = {
-				base = 2.00
+				base = 2
 			}
-
 			hydroponics_bay = {
-				base = 2.00
+				base = 2
 			}
-			
 			space_production = {
-				base = 1.00
+				base = 1
 			}
-			
 			deep_space_black_site = {
-				base = 1.00
+				base = 1
 			}
-			
 			listening_post = {
 				base = 0.9
 			}
-			
 			customs_office = {
 				base = 0.5
 			}
-			
 			customs_office_criminal = {
 				base = 0.5
 			}
-			
 			customs_office_gestalt = {
 				base = 0.5
 			}
-			
 			transit_hub = {
 				base = 0.5
 			}
 		}
-
 		modules = {
 			anchorage = {
-				base = 1.00
+				base = 1
 			}
-
 			solar_panel_network = {
 				base = 0.25
 			}
-			
 			stellar_reducer = {
-				base = 1.00
+				base = 1
 			}
 		}
 	}
@@ -302,12 +259,16 @@ strading_hub = {
 			count > 0
 		}
 		exists = owner
-		owner = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+		owner = {
+			NOT = {
+				has_ethic = ethic_gestalt_consciousness
+			}
+		}
 	}
-
 	weight_modifier = {
 		base = 100
-		complex_trigger_modifier = { #+100 for each trading_hub
+		complex_trigger_modifier = {
+			#+100 for each trading_hub
 			trigger = count_starbase_modules
 			parameters = {
 				type = trading_hub
@@ -316,13 +277,11 @@ strading_hub = {
 			mult = 100
 		}
 	}
-
 	ai_design = {
 		min = {
 			base = 0
 			factor = 0
 		}
-
 		ratio = {
 			base = 0.3
 			modifier = {
@@ -333,115 +292,92 @@ strading_hub = {
 				}
 			}
 			modifier = {
-				add = 0.10
+				add = 0.1
 				exists = owner
 				owner = {
 					has_ethic = ethic_fanatic_materialist
 				}
 			}
 			modifier = {
-				add = 0.10
+				add = 0.1
 				exists = owner
 				owner = {
 					is_megacorp = yes
 				}
 			}
 		}
-
 		# token followed by priority
 		buildings = {
 			offworld_trading_company = {
-				base = 2.00
+				base = 2
 			}
-			
 			trade_patrol = {
-				base = 1.00
+				base = 1
 			}
-			
 			customs_office = {
-				base = 1.00
+				base = 1
 			}
-			
 			customs_office_criminal = {
-				base = 1.00
+				base = 1
 			}
-
 			nebula_refinery = {
-				base = 1.00
+				base = 1
 			}
-			
 			dathnak_embassy = {
-				base = 1.00
+				base = 1
 			}
-
 			resource_silo = {
 				base = 0.25
 			}
-
 			art_college = {
-				base = 1.00
+				base = 1
 			}
-
 			curator_think_tank = {
-				base = 1.00
+				base = 1
 			}
-			
 			trader_proxy_office = {
-				base = 2.00
+				base = 2
 			}
-
 			ice_mining_station = {
-				base = 1.00
+				base = 1
 			}
-
 			dragon_hatchery = {
-				base = 1.00
+				base = 1
 			}
-
 			hydroponics_bay = {
-				base = 1.00
+				base = 1
 			}
-			
 			warp_fluctuator = {
 				base = 0.9
 			}
-			
 			space_production = {
-				base = 2.00
+				base = 2
 			}
-			
 			deep_space_black_site = {
-				base = 1.00
+				base = 1
 			}
-			
 			listening_post = {
 				base = 0.5
 			}
-
 			defense_grid = {
 				base = 0.05
 			}
-			
 			starbase_fortifications = {
 				base = 0.05
 			}
-
 			communications_jammer = {
 				base = 0.05
 			}
-			
 			transit_hub = {
-				base = 2.00
+				base = 2
 			}
 		}
-
 		modules = {
 			trading_hub = {
-				base = 1.0
+				base = 1
 			}
-			
 			stellar_reducer = {
-				base = 1.00
+				base = 1
 			}
 		}
 	}
@@ -453,10 +389,10 @@ sresearch = {
 		has_starbase_size > starbase_outpost
 		has_starbase_module = orbital_lab
 	}
-
 	weight_modifier = {
 		base = 75
-		complex_trigger_modifier = { #+100 for each solar_panel_network
+		complex_trigger_modifier = {
+			#+100 for each solar_panel_network
 			trigger = count_starbase_modules
 			parameters = {
 				type = orbital_lab
@@ -468,22 +404,56 @@ sresearch = {
 			add = 300
 			OR = {
 				# Black Hole
-				star = { is_star_class = sc_black_hole }
-				star = { is_star_class = sc_microquasar_1 }
-				star = { is_star_class = sc_microquasar_2 }
-				solar_system = { any_system_planet = { is_planet_class = pc_black_hole } }
-				solar_system = { has_natural_wormhole = yes }
+				star = {
+					is_star_class = sc_black_hole
+				}
+				star = {
+					is_star_class = sc_microquasar_1
+				}
+				star = {
+					is_star_class = sc_microquasar_2
+				}
+				solar_system = {
+					any_system_planet = {
+						is_planet_class = pc_black_hole
+					}
+				}
+				solar_system = {
+					has_natural_wormhole = yes
+				}
 				# Pulsar
-				star = { is_star_class = sc_pulsar }
-				star = { is_star_class = sc_magnetar }
-				solar_system = { any_system_planet = { is_planet_class = pc_pulsar } }
-				solar_system = { any_system_planet = { is_planet_class = pc_magnetar } }
+				star = {
+					is_star_class = sc_pulsar
+				}
+				star = {
+					is_star_class = sc_magnetar
+				}
+				solar_system = {
+					any_system_planet = {
+						is_planet_class = pc_pulsar
+					}
+				}
+				solar_system = {
+					any_system_planet = {
+						is_planet_class = pc_magnetar
+					}
+				}
 				# Protostar
-				star = { is_star_class = sc_protostar }
-				star = { is_star_class = sc_tt_red }
-				star = { is_star_class = sc_tt_orange }
-				star = { is_star_class = sc_tt_white }
-				star = { is_star_class = sc_ae }
+				star = {
+					is_star_class = sc_protostar
+				}
+				star = {
+					is_star_class = sc_tt_red
+				}
+				star = {
+					is_star_class = sc_tt_orange
+				}
+				star = {
+					is_star_class = sc_tt_white
+				}
+				star = {
+					is_star_class = sc_ae
+				}
 				# Curator
 				solar_system = {
 					has_star_flag = enclave
@@ -506,13 +476,11 @@ sresearch = {
 			}
 		}
 	}
-
 	ai_design = {
 		min = {
 			base = 0
 			factor = 0
 		}
-
 		ratio = {
 			base = 0.1
 			modifier = {
@@ -547,89 +515,69 @@ sresearch = {
 				}
 			}
 		}
-
 		# token followed by priority
 		buildings = {
 			orbital_institute = {
-				base = 10.00
+				base = 10
 			}
-			
 			curator_think_tank = {
-				base = 8.00
+				base = 8
 			}
-			
 			black_hole_observatory = {
-				base = 6.00
+				base = 6
 			}
-			
 			protostar_observatory = {
-				base = 6.00
+				base = 6
 			}
-			
 			dathnak_embassy = {
-				base = 6.00
+				base = 6
 			}
-			
 			pulsar_hole_observatory = {
-				base = 6.00
+				base = 6
 			}
-			
 			nebula_refinery = {
-				base = 1.00
+				base = 1
 			}
-
 			resource_silo = {
-				base = 1.00
+				base = 1
 			}
-
 			art_college = {
-				base = 2.00
+				base = 2
 			}
-			
 			ice_mining_station = {
-				base = 2.00
+				base = 2
 			}
-
 			hydroponics_bay = {
-				base = 2.00
+				base = 2
 			}
-			
 			space_production = {
-				base = 1.00
+				base = 1
 			}
-			
 			deep_space_black_site = {
-				base = 1.00
+				base = 1
 			}
-			
 			defense_grid = {
 				base = 0.05
 			}
-			
 			starbase_fortifications = {
 				base = 0.05
 			}
-
 			communications_jammer = {
 				base = 0.05
 			}
-			
 			transit_hub = {
-				base = 2.00
+				base = 2
 			}
 		}
-
 		modules = {
 			orbital_lab = {
-				base = 5.00
+				base = 5
 			}
-			
 			trading_hub = {
 				base = 0.25
 			}
-			
 			stellar_reducer = {
-				base = 1.00
+				base = 1
 			}
 		}
 	}
@@ -648,10 +596,10 @@ sfortress = {
 			has_starbase_module = titanic_battery
 		}
 	}
-
 	weight_modifier = {
 		base = 75
-		complex_trigger_modifier = { #+75 for each gun_battery
+		complex_trigger_modifier = {
+			#+75 for each gun_battery
 			trigger = count_starbase_modules
 			parameters = {
 				type = gun_battery
@@ -659,7 +607,8 @@ sfortress = {
 			mode = add
 			mult = 75
 		}
-		complex_trigger_modifier = { #+75 for each missile_battery
+		complex_trigger_modifier = {
+			#+75 for each missile_battery
 			trigger = count_starbase_modules
 			parameters = {
 				type = missile_battery
@@ -667,7 +616,8 @@ sfortress = {
 			mode = add
 			mult = 75
 		}
-		complex_trigger_modifier = { #+75 for each hangar_bay
+		complex_trigger_modifier = {
+			#+75 for each hangar_bay
 			trigger = count_starbase_modules
 			parameters = {
 				type = hangar_bay
@@ -675,7 +625,8 @@ sfortress = {
 			mode = add
 			mult = 75
 		}
-		complex_trigger_modifier = { #+75 for each hangar_bay
+		complex_trigger_modifier = {
+			#+75 for each hangar_bay
 			trigger = count_starbase_modules
 			parameters = {
 				type = large_battery
@@ -683,7 +634,8 @@ sfortress = {
 			mode = add
 			mult = 75
 		}
-		complex_trigger_modifier = { #+75 for each hangar_bay
+		complex_trigger_modifier = {
+			#+75 for each hangar_bay
 			trigger = count_starbase_modules
 			parameters = {
 				type = extra_large_battery
@@ -691,7 +643,8 @@ sfortress = {
 			mode = add
 			mult = 100
 		}
-		complex_trigger_modifier = { #+75 for each hangar_bay
+		complex_trigger_modifier = {
+			#+75 for each hangar_bay
 			trigger = count_starbase_modules
 			parameters = {
 				type = titanic_battery
@@ -700,13 +653,11 @@ sfortress = {
 			mult = 125
 		}
 	}
-
 	ai_design = {
 		min = {
 			base = 0
 			factor = 0
 		}
-
 		ratio = {
 			base = 0.25
 			modifier = {
@@ -724,87 +675,66 @@ sfortress = {
 				}
 			}
 		}
-
 		# token followed by priority
 		buildings = {
-
 			target_uplink_computer = {
-				base = 2.00
+				base = 2
 			}
-
 			command_center = {
-				base = 2.00
+				base = 2
 			}
-
-			
 			starbase_minefield = {
-				base = 1.00
+				base = 1
 			}
-
 			defense_grid = {
-				base = 1.00
+				base = 1
 			}
-			
 			starbase_fortifications = {
-				base = 1.00
+				base = 1
 			}
-
 			communications_jammer = {
-				base = 0.90
+				base = 0.9
 			}
-
 			disruption_field = {
-				base = 0.90
+				base = 0.9
 			}
-
 			ice_mining_station = {
-				base = 3.00
+				base = 3
 			}
-
 			dragon_hatchery = {
-				base = 3.00
-			}			
-
+				base = 3
+			}
 			hydroponics_bay = {
 				base = 0.25
 			}
-			
 			space_production = {
 				base = 0.25
 			}
-			
 			deep_space_black_site = {
 				base = 0.25
 			}
-			
 			customs_office = {
 				base = 0.5
 			}
-			
 			customs_office_criminal = {
 				base = 0.5
 			}
-			
 			customs_office_gestalt = {
 				base = 0.5
 			}
-			
 			warp_fluctuator = {
 				base = 0.5
 			}
-			
 			listening_post = {
 				base = 0.5
 			}
-			
 			trade_patrol = {
 				base = 0.5
 			}
 		}
-
 		modules = {
 			hangar_bay = {
-				base = 1.00
+				base = 1
 				modifier = {
 					factor = 3
 					owner = {
@@ -812,9 +742,8 @@ sfortress = {
 					}
 				}
 			}
-
 			missile_battery = {
-				base = 1.00
+				base = 1
 				modifier = {
 					factor = 3
 					owner = {
@@ -822,9 +751,8 @@ sfortress = {
 					}
 				}
 			}
-
 			gun_battery = {
-				base = 1.00
+				base = 1
 				modifier = {
 					factor = 3
 					owner = {
@@ -835,9 +763,8 @@ sfortress = {
 					}
 				}
 			}
-			
 			large_battery = {
-				base = 1.00
+				base = 1
 				modifier = {
 					factor = 3
 					owner = {
@@ -848,9 +775,8 @@ sfortress = {
 					}
 				}
 			}
-			
 			extra_large_battery = {
-				base = 1.00
+				base = 1
 				modifier = {
 					factor = 3
 					owner = {
@@ -861,9 +787,8 @@ sfortress = {
 					}
 				}
 			}
-			
 			stellar_reducer = {
-				base = 1.00
+				base = 1
 			}
 		}
 	}
@@ -878,12 +803,14 @@ strading_hub_gestalt = {
 			count > 0
 		}
 		exists = owner
-		owner = { has_ethic = ethic_gestalt_consciousness }
+		owner = {
+			has_ethic = ethic_gestalt_consciousness
+		}
 	}
-
 	weight_modifier = {
 		base = 100
-		complex_trigger_modifier = { #+100 for each solar_panel_network
+		complex_trigger_modifier = {
+			#+100 for each solar_panel_network
 			trigger = count_starbase_modules
 			parameters = {
 				type = solar_panel_network
@@ -892,13 +819,11 @@ strading_hub_gestalt = {
 			mult = 100
 		}
 	}
-
 	ai_design = {
 		min = {
 			base = 0
 			factor = 0
 		}
-
 		ratio = {
 			base = 0.2
 			modifier = {
@@ -920,114 +845,100 @@ strading_hub_gestalt = {
 				}
 			}
 		}
-
 		# token followed by priority
 		buildings = {
 			customs_office_gestalt = {
-				base = 1.00
+				base = 1
 			}
-
 			nebula_refinery = {
-				base = 1.00
+				base = 1
 			}
-			
 			dathnak_embassy = {
-				base = 1.00
+				base = 1
 			}
-
 			resource_silo = {
-				base = 1.00
+				base = 1
 			}
-
 			art_college = {
-				base = 1.00
+				base = 1
 			}
-
 			curator_think_tank = {
-				base = 1.00
+				base = 1
 			}
-			
 			trader_proxy_office = {
-				base = 2.00
+				base = 2
 			}
-
 			ice_mining_station = {
-				base = 1.00
+				base = 1
 			}
-
 			dragon_hatchery = {
-				base = 1.00
+				base = 1
 			}
-
 			hydroponics_bay = {
-				base = 2.00
+				base = 2
 			}
-			
 			space_production = {
-				base = 2.00
+				base = 2
 			}
-			
 			listening_post = {
 				base = 0.5
 			}
-
 			defense_grid = {
 				base = 0.05
 			}
-			
 			starbase_fortifications = {
 				base = 0.05
 			}
-
 			communications_jammer = {
 				base = 0.05
 			}
-			
 			transit_hub = {
-				base = 2.00
+				base = 2
 			}
 		}
-
 		modules = {
 			solar_panel_network = {
-				base = 1.0
+				base = 1
 			}
-			
 			stellar_reducer = {
-				base = 1.00
+				base = 1
 			}
 		}
 	}
 }
 
 ### ORBITAL RINGS
-
-sorbital_ring = { # generic
-	potential = { is_orbital_ring = yes }
-	weight_modifier = { base = 10 }
+sorbital_ring = {
+	# generic
+	potential = {
+		is_orbital_ring = yes
+	}
+	weight_modifier = {
+		base = 10
+	}
 	ai_design = {
 		min = {
 			base = 0
 		}
 		modules = {
 			orbital_ring_habitation = {
-				base = 2.00
+				base = 2
 				modifier = {
 					factor = 2
 					planet = {
-						num_free_districts = { type = any value <= 2 }
+						num_free_districts = {
+							type = any
+							value <= 2
+						}
 					}
 				}
 			}
-
 			orbital_ring_shipyard = {
-				base = 0.10 # Generally better to use normal starbases for this
+				base = 0.1				# Generally better to use normal starbases for this
 			}
-
 			orbital_ring_anchorage = {
-				base = 0.10 # Generally better to use normal starbases for this
+				base = 0.1				# Generally better to use normal starbases for this
 			}
-
 			orbital_ring_gun_battery = {
 				base = 0.25
 				modifier = {
@@ -1040,7 +951,6 @@ sorbital_ring = { # generic
 					}
 				}
 			}
-
 			orbital_ring_missile_battery = {
 				base = 0.25
 				modifier = {
@@ -1050,7 +960,6 @@ sorbital_ring = { # generic
 					}
 				}
 			}
-
 			orbital_ring_hangar_bay = {
 				base = 0.25
 				modifier = {
@@ -1070,11 +979,10 @@ sorbital_shipyard = {
 		is_orbital_ring = yes
 		has_starbase_module = orbital_ring_shipyard
 	}
-
 	weight_modifier = {
 		base = 0
-
-		complex_trigger_modifier = { # +100 for each shipyard
+		complex_trigger_modifier = {
+			# +100 for each shipyard
 			trigger = count_starbase_modules
 			parameters = {
 				type = orbital_ring_shipyard
@@ -1082,7 +990,6 @@ sorbital_shipyard = {
 			mode = add
 			mult = 100
 		}
-
 		modifier = {
 			add = 1000
 			owner = {
@@ -1103,58 +1010,46 @@ sorbital_shipyard = {
 			}
 		}
 	}
-
 	ai_design = {
 		min = {
 			base = 0
 		}
-
 		# token followed by priority
 		buildings = {
 			crew_quarters = {
-				base = 1.00
+				base = 1
 			}
-
 			fleet_academy = {
-				base = 1.00
+				base = 1
 			}
-			
 			titan_yards = {
-				base = 2.00
+				base = 2
 			}
-
 			colossus_yards = {
-				base = 5.00
+				base = 5
 			}
-
 			hydroponics_bay = {
 				base = 0.25
 			}
-			
 			space_production = {
 				base = 0.5
 			}
-			
 			transit_hub = {
 				base = 0.25
 			}
 		}
-
 		modules = {
 			shipyard = {
-				base = 1.00
+				base = 1
 			}
-
 			anchorage = {
 				base = 0.25
 			}
-
 			hangar_bay = {
 				base = 0.25
 			}
-			
 			stellar_reducer = {
-				base = 1.00
+				base = 1
 			}
 		}
 	}
@@ -1166,10 +1061,10 @@ sorbital_anchorage = {
 		is_orbital_ring = yes
 		has_starbase_module = orbital_ring_anchorage
 	}
-
 	weight_modifier = {
 		base = 0
-		complex_trigger_modifier = { # +100 for each anchorage
+		complex_trigger_modifier = {
+			# +100 for each anchorage
 			trigger = count_starbase_modules
 			parameters = {
 				type = orbital_ring_anchorage
@@ -1178,12 +1073,10 @@ sorbital_anchorage = {
 			mult = 100
 		}
 	}
-
 	ai_design = {
 		min = {
 			base = 0
 		}
-
 		ratio = {
 			base = 0.35
 			modifier = {
@@ -1194,57 +1087,49 @@ sorbital_anchorage = {
 				}
 			}
 		}
-
 		# token followed by priority
 		buildings = {
 			naval_logistics_office = {
-				base = 10.00
+				base = 10
 			}
-
 			defense_grid = {
 				base = 0.25
 			}
-			
 			starbase_fortifications = {
 				base = 0.25
 			}
-
 			communications_jammer = {
 				base = 0.25
 			}
-
 			nebula_refinery = {
-				base = 2.00
+				base = 2
 			}
-
 			hydroponics_bay = {
-				base = 1.00
+				base = 1
 			}
-			
 			space_production = {
-				base = 1.00
+				base = 1
 			}
-			
 			transit_hub = {
 				base = 0.5
 			}
 		}
-
 		modules = {
 			anchorage = {
-				base = 1.00
+				base = 1
 			}
-			
 			stellar_reducer = {
-				base = 1.00
+				base = 1
 			}
-
 			orbital_ring_habitation = {
 				base = 0
 				modifier = {
 					add = 1
 					planet = {
-						num_free_districts = { type = any value <= 2 }
+						num_free_districts = {
+							type = any
+							value <= 2
+						}
 					}
 				}
 			}
@@ -1265,10 +1150,10 @@ sorbital_fortress = {
 			has_starbase_module = orbital_ring_titanic_battery
 		}
 	}
-
 	weight_modifier = {
 		base = 0
-		complex_trigger_modifier = { # +75 for each gun_battery
+		complex_trigger_modifier = {
+			# +75 for each gun_battery
 			trigger = count_starbase_modules
 			parameters = {
 				type = orbital_ring_gun_battery
@@ -1276,7 +1161,8 @@ sorbital_fortress = {
 			mode = add
 			mult = 75
 		}
-		complex_trigger_modifier = { # +75 for each missile_battery
+		complex_trigger_modifier = {
+			# +75 for each missile_battery
 			trigger = count_starbase_modules
 			parameters = {
 				type = orbital_ring_missile_battery
@@ -1284,7 +1170,8 @@ sorbital_fortress = {
 			mode = add
 			mult = 75
 		}
-		complex_trigger_modifier = { # +75 for each hangar_bay
+		complex_trigger_modifier = {
+			# +75 for each hangar_bay
 			trigger = count_starbase_modules
 			parameters = {
 				type = orbital_ring_hangar_bay
@@ -1292,7 +1179,8 @@ sorbital_fortress = {
 			mode = add
 			mult = 75
 		}
-		complex_trigger_modifier = { # +75 for each hangar_bay
+		complex_trigger_modifier = {
+			# +75 for each hangar_bay
 			trigger = count_starbase_modules
 			parameters = {
 				type = orbital_ring_large_battery
@@ -1300,7 +1188,8 @@ sorbital_fortress = {
 			mode = add
 			mult = 75
 		}
-		complex_trigger_modifier = { # +75 for each hangar_bay
+		complex_trigger_modifier = {
+			# +75 for each hangar_bay
 			trigger = count_starbase_modules
 			parameters = {
 				type = orbital_ring_extra_large_battery
@@ -1308,7 +1197,8 @@ sorbital_fortress = {
 			mode = add
 			mult = 100
 		}
-		complex_trigger_modifier = { # +75 for each hangar_bay
+		complex_trigger_modifier = {
+			# +75 for each hangar_bay
 			trigger = count_starbase_modules
 			parameters = {
 				type = orbital_ring_titanic_battery
@@ -1317,12 +1207,10 @@ sorbital_fortress = {
 			mult = 125
 		}
 	}
-
 	ai_design = {
 		min = {
 			base = 0
 		}
-
 		ratio = {
 			base = 0.25
 			modifier = {
@@ -1333,45 +1221,36 @@ sorbital_fortress = {
 				}
 			}
 		}
-
 		# token followed by priority
 		buildings = {
 			target_uplink_computer = {
-				base = 2.00
+				base = 2
 			}
-
 			command_center = {
-				base = 2.00
+				base = 2
 			}
-
 			defense_grid = {
-				base = 1.00
+				base = 1
 			}
-			
 			starbase_fortifications = {
-				base = 1.00
+				base = 1
 			}
-
 			communications_jammer = {
-				base = 0.90
+				base = 0.9
 			}
-
 			disruption_field = {
-				base = 0.90
+				base = 0.9
 			}
-			
 			hydroponics_bay = {
 				base = 0.25
 			}
-			
 			space_production = {
 				base = 0.25
 			}
 		}
-
 		modules = {
 			hangar_bay = {
-				base = 1.00
+				base = 1
 				modifier = {
 					factor = 3
 					owner = {
@@ -1379,9 +1258,8 @@ sorbital_fortress = {
 					}
 				}
 			}
-
 			missile_battery = {
-				base = 1.00
+				base = 1
 				modifier = {
 					factor = 3
 					owner = {
@@ -1389,9 +1267,8 @@ sorbital_fortress = {
 					}
 				}
 			}
-
 			gun_battery = {
-				base = 1.00
+				base = 1
 				modifier = {
 					factor = 3
 					owner = {
@@ -1402,9 +1279,8 @@ sorbital_fortress = {
 					}
 				}
 			}
-			
 			orbital_ring_large_battery = {
-				base = 1.00
+				base = 1
 				modifier = {
 					factor = 3
 					owner = {
@@ -1415,9 +1291,8 @@ sorbital_fortress = {
 					}
 				}
 			}
-			
 			orbital_ring_extra_large_battery = {
-				base = 1.00
+				base = 1
 				modifier = {
 					factor = 3
 					owner = {
@@ -1428,9 +1303,8 @@ sorbital_fortress = {
 					}
 				}
 			}
-			
 			stellar_reducer = {
-				base = 1.00
+				base = 1
 			}
 		}
 	}
@@ -1441,10 +1315,10 @@ sorbital_habitation = {
 		is_orbital_ring = yes
 		has_starbase_module = orbital_ring_habitation
 	}
-
 	weight_modifier = {
 		base = 0
-		complex_trigger_modifier = { # +75 for each habitation module
+		complex_trigger_modifier = {
+			# +75 for each habitation module
 			trigger = count_starbase_modules
 			parameters = {
 				type = orbital_ring_habitation
@@ -1453,14 +1327,12 @@ sorbital_habitation = {
 			mult = 75
 		}
 	}
-
 	ai_design = {
 		min = {
 			base = 1
 		}
-
 		ratio = {
-			base = 0.50
+			base = 0.5
 			modifier = {
 				add = 0.25
 				exists = owner
@@ -1469,17 +1341,14 @@ sorbital_habitation = {
 				}
 			}
 		}
-
 		# token followed by priority
 		buildings = {
 			ring_synapse_hub = {
-				base = 1.00
+				base = 1
 			}
-
 			ring_maintenance_hub = {
-				base = 1.00
+				base = 1
 			}
-
 			ring_bureaucracy_hub = {
 				base = 0
 				modifier = {
@@ -1499,7 +1368,6 @@ sorbital_habitation = {
 					}
 				}
 			}
-
 			ring_minerals_hub = {
 				base = 0
 				modifier = {
@@ -1513,7 +1381,6 @@ sorbital_habitation = {
 					}
 				}
 			}
-
 			ring_energy_hub = {
 				base = 0
 				modifier = {
@@ -1527,7 +1394,6 @@ sorbital_habitation = {
 					}
 				}
 			}
-
 			ring_food_hub = {
 				base = 0
 				modifier = {
@@ -1541,11 +1407,9 @@ sorbital_habitation = {
 					}
 				}
 			}
-			
 			climate_control = {
-				base = 3.00
+				base = 3
 			}
-
 			ring_consumer_goods_hub = {
 				base = 0
 				modifier = {
@@ -1564,7 +1428,6 @@ sorbital_habitation = {
 					}
 				}
 			}
-			
 			ring_super_computer = {
 				base = 0
 				modifier = {
@@ -1572,14 +1435,22 @@ sorbital_habitation = {
 					planet = {
 						OR = {
 							has_designation = col_refinery
-							num_buildings = { type = building_refinery value >= 2 }
-							num_buildings = { type = building_crystal_plant value >= 2 }
-							num_buildings = { type = building_chemical_plant value >= 2 }
+							num_buildings = {
+								type = building_refinery
+								value >= 2
+							}
+							num_buildings = {
+								type = building_crystal_plant
+								value >= 2
+							}
+							num_buildings = {
+								type = building_chemical_plant
+								value >= 2
+							}
 						}
 					}
 				}
 			}
-			
 			ring_nanite_refinery = {
 				base = 0
 				modifier = {
@@ -1594,7 +1465,6 @@ sorbital_habitation = {
 					}
 				}
 			}
-
 			ring_alloys_hub = {
 				base = 0
 				modifier = {
@@ -1614,7 +1484,6 @@ sorbital_habitation = {
 					}
 				}
 			}
-
 			ring_trade_hub = {
 				base = 1
 				modifier = {
@@ -1627,31 +1496,25 @@ sorbital_habitation = {
 					}
 				}
 			}
-			
 			ring_security_center = {
 				base = 1
 			}
-			
 			space_production = {
-				base = 2.00
+				base = 2
 			}
-			
 			dathnak_embassy = {
-				base = 2.00
+				base = 2
 			}
-			
 			transit_hub = {
-				base = 2.00
+				base = 2
 			}
 		}
-
 		modules = {
 			orbital_ring_habitation = {
-				base = 1.00
+				base = 1
 			}
-			
 			stellar_reducer = {
-				base = 1.00
+				base = 1
 			}
 		}
 	}
