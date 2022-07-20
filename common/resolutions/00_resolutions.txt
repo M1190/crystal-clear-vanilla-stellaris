@@ -2738,8 +2738,8 @@ resolution_galacticstudies_repeal_1 = {
 		}
 		modifier = {
 			factor = 0
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
+			has_valid_civic = civic_bugged_machine_cult
+			desc = civic_bugged_machine_cult_desc
 		}
 		modifier = {
 			factor = 0.75
@@ -2873,8 +2873,8 @@ resolution_galacticstudies_repeal_2 = {
 		}
 		modifier = {
 			factor = 0
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
+			has_valid_civic = civic_bugged_machine_cult
+			desc = civic_bugged_machine_cult_desc
 		}
 		modifier = {
 			factor = 0.75
@@ -3045,8 +3045,8 @@ resolution_galacticstudies_repeal_3 = {
 		}
 		modifier = {
 			factor = 0
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
+			has_valid_civic = civic_bugged_machine_cult
+			desc = civic_bugged_machine_cult_desc
 		}
 		modifier = {
 			factor = 2.5
@@ -3232,8 +3232,8 @@ resolution_galacticstudies_repeal_4 = {
 		}
 		modifier = {
 			factor = 0
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
+			has_valid_civic = civic_bugged_machine_cult
+			desc = civic_bugged_machine_cult_desc
 		}
 		modifier = {
 			factor = 2
@@ -3497,8 +3497,8 @@ resolution_galacticstudies_repeal_5 = {
 		}
 		modifier = {
 			factor = 0.5
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
+			has_valid_civic = civic_bugged_machine_cult
+			desc = civic_bugged_machine_cult_desc
 		}
 		modifier = {
 			factor = 3
@@ -3657,7 +3657,7 @@ resolution_galacticstudies_cooperative_research_channels = {
 			is_spiritualist = yes
 			desc = ethic_spiritualist
 			NOT = {
-				has_valid_civic = civic_machine_cult
+				has_valid_civic = civic_bugged_machine_cult
 			}
 		}
 		modifier = {
@@ -3665,13 +3665,13 @@ resolution_galacticstudies_cooperative_research_channels = {
 			has_ethic = ethic_fanatic_spiritualist
 			desc = ethic_spiritualist
 			NOT = {
-				has_valid_civic = civic_machine_cult
+				has_valid_civic = civic_bugged_machine_cult
 			}
 		}
 		modifier = {
 			factor = 10
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
+			has_valid_civic = civic_bugged_machine_cult
+			desc = civic_bugged_machine_cult_desc
 		}
 		modifier = {
 			factor = 1.5
@@ -3799,7 +3799,7 @@ resolution_galacticstudies_astral_studies_network = {
 			is_spiritualist = yes
 			desc = ethic_spiritualist
 			NOT = {
-				has_valid_civic = civic_machine_cult
+				has_valid_civic = civic_bugged_machine_cult
 			}
 		}
 		modifier = {
@@ -3807,13 +3807,13 @@ resolution_galacticstudies_astral_studies_network = {
 			has_ethic = ethic_fanatic_spiritualist
 			desc = ethic_spiritualist
 			NOT = {
-				has_valid_civic = civic_machine_cult
+				has_valid_civic = civic_bugged_machine_cult
 			}
 		}
 		modifier = {
 			factor = 10
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
+			has_valid_civic = civic_bugged_machine_cult
+			desc = civic_bugged_machine_cult_desc
 		}
 		modifier = {
 			factor = 0.75
@@ -4145,67 +4145,90 @@ resolution_galacticstudies_ethical_guideline_refactoring = {
 								has_policy_flag = leader_enhancement_capacity_boosters
 							}
 						}
-				
-				
-						}
 					}
 				}
-				country_event = {
-					id = federations.10110
+			}
+			country_event = {
+				id = federations.10110
+			}
+		}
+	}
+}
+
+fail_effects = {
+	hidden_effect = {
+		add_modifier = {
+			modifier = resolution_failed_diplomatic_weight
+			days = 2200
+		}
+	}
+	hidden_effect = {
+		set_timed_country_flag = {
+			flag = galactic_community_resolution_failed_galacticstudies
+			days = @resolution_flag_timer
+		}
+	}
+}
+
+allow = {
+	is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+}
+
+breach = {
+	OR = {
+		AND = {
+			has_technology = tech_selected_lineages
+			has_policy_flag = leader_enhancement_natural_selection
+		}
+		AND = {
+			has_technology = tech_capacity_boosters
+			NOT = {
+				has_policy_flag = leader_enhancement_capacity_boosters
+			}
+		}
+		AND = {
+			has_global_flag = expanded_megastructures_installed
+			has_technology = tech_selected_lineages_machine
+			NOT = {
+				has_policy_flag = leader_enhancement_selected_lineages_machine
+			}
+		}
+		AND = {
+			has_global_flag = expanded_megastructures_installed
+			has_technology = tech_capacity_boosters_machine
+			NOT = {
+				has_policy_flag = leader_enhancement_capacity_boosters_machine
+			}
+		}
+	}
+}
+
+ai_weight = {
+	weight = @resolution_weight_unpopular
+	modifier = {
+		factor = 2
+		desc = gal_com_increase_weight
+		count_country = {
+			count < 4
+			limit = {
+				is_galactic_community_member = yes
+				relative_power = {
+					who = prev
+					category = technology
+					value >= equivalent
 				}
 			}
 		}
 	}
-	fail_effects = {
-		hidden_effect = {
-			add_modifier = {
-				modifier = resolution_failed_diplomatic_weight
-				days = 2200
+	modifier = {
+		factor = 0.5
+		desc = gal_com_help_rival
+		any_relation = {
+			is_galactic_community_member = yes
+			OR = {
+				is_rival = prev
+				is_at_war_with = prev
 			}
-		}
-		hidden_effect = {
-			set_timed_country_flag = {
-				flag = galactic_community_resolution_failed_galacticstudies
-				days = @resolution_flag_timer
-			}
-		}
-	}
-	allow = {
-		is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
-	}
-	breach = {
-		OR = {
-			AND = {
-				has_technology = tech_selected_lineages
-				has_policy_flag = leader_enhancement_natural_selection
-			}
-			AND = {
-				has_technology = tech_capacity_boosters
-				NOT = {
-					has_policy_flag = leader_enhancement_capacity_boosters
-				}
-			}
-			AND = {
-				has_global_flag = expanded_megastructures_installed
-				has_technology = tech_selected_lineages_machine
-				NOT = {
-					has_policy_flag = leader_enhancement_selected_lineages_machine
-				}
-			}
-			AND = {
-				has_global_flag = expanded_megastructures_installed
-				has_technology = tech_capacity_boosters_machine
-				NOT = {
-					has_policy_flag = leader_enhancement_capacity_boosters_machine
-				}
-			}
-		}
-	}
-	ai_weight = {
-		weight = @resolution_weight_unpopular
-		modifier = {
-			factor = 2
-			desc = gal_com_increase_weight
 			count_country = {
 				count < 4
 				limit = {
@@ -4218,185 +4241,163 @@ resolution_galacticstudies_ethical_guideline_refactoring = {
 				}
 			}
 		}
-		modifier = {
-			factor = 0.5
-			desc = gal_com_help_rival
-			any_relation = {
-				is_galactic_community_member = yes
-				OR = {
-					is_rival = prev
-					is_at_war_with = prev
-				}
-				count_country = {
-					count < 4
-					limit = {
-						is_galactic_community_member = yes
-						relative_power = {
-							who = prev
-							category = technology
-							value >= equivalent
-						}
-					}
-				}
-			}
+	}
+	modifier = {
+		factor = 2
+		has_origin = origin_shroud_pact
+		desc = origin_shroud_pact
+	}
+	modifier = {
+		factor = 2
+		is_civic_materialist = yes
+		desc = ethic_materialist
+	}
+	modifier = {
+		factor = 2
+		is_civic_materialist = yes
+		desc = ethic_materialist
+		is_xenophile = no
+		is_egalitarian = no
+	}
+	modifier = {
+		factor = 1.5
+		OR = {
+			has_valid_civic = civic_merchant_guilds
+			has_valid_civic = civic_philosopher_king
 		}
-		modifier = {
-			factor = 2
-			has_origin = origin_shroud_pact
-			desc = origin_shroud_pact
+		desc = gal_com_supporting_civics
+		is_xenophile = no
+		is_egalitarian = no
+	}
+	modifier = {
+		factor = 2
+		is_authoritarian = yes
+		desc = ethic_authoritarian
+	}
+	modifier = {
+		factor = 1.5
+		is_xenophobe = yes
+		desc = ethic_xenophobe
+	}
+	modifier = {
+		factor = 0.25
+		is_spiritualist = yes
+		desc = ethic_spiritualist
+		NOT = {
+			has_valid_civic = civic_bugged_machine_cult
 		}
-		modifier = {
-			factor = 2
-			is_civic_materialist = yes
-			desc = ethic_materialist
+	}
+	modifier = {
+		factor = 0.25
+		has_ethic = ethic_fanatic_spiritualist
+		desc = ethic_spiritualist
+		NOT = {
+			has_valid_civic = civic_bugged_machine_cult
 		}
-		modifier = {
-			factor = 2
-			is_civic_materialist = yes
-			desc = ethic_materialist
-			is_xenophile = no
-			is_egalitarian = no
+	}
+	modifier = {
+		factor = 10
+		has_valid_civic = civic_bugged_machine_cult
+		desc = civic_bugged_machine_cult_desc
+	}
+	modifier = {
+		factor = 0.5
+		is_xenophile = yes
+		desc = ethic_xenophile
+	}
+	modifier = {
+		factor = 1.25
+		is_civic_has_elite = yes
+		desc = gal_com_elite_civic
+	}
+	modifier = {
+		factor = 1.5
+		is_civic_has_elite = yes
+		desc = gal_com_elite_civic
+	}
+	modifier = {
+		factor = 0.25
+		OR = {
+			is_civic_has_meritocracy = yes
+			is_civic_machine_servitor = yes
 		}
-		modifier = {
-			factor = 1.5
-			OR = {
-				has_valid_civic = civic_merchant_guilds
-				has_valid_civic = civic_philosopher_king
-			}
-			desc = gal_com_supporting_civics
-			is_xenophile = no
-			is_egalitarian = no
+		desc = gal_com_opposing_civics
+	}
+	modifier = {
+		factor = 0.25
+		is_egalitarian = yes
+		desc = ethic_egalitarian
+	}
+	modifier = {
+		factor = 0
+		has_ethic = ethic_fanatic_egalitarian
+		desc = ethic_egalitarian
+	}
+	modifier = {
+		factor = 0
+		is_egalitarian = yes
+		OR = {
+			has_technology = tech_selected_lineages
+			has_technology = tech_capacity_boosters
 		}
-		modifier = {
-			factor = 2
-			is_authoritarian = yes
-			desc = ethic_authoritarian
+		desc = gal_com_cannot_comply_with_proposed_resolution
+	}
+	modifier = {
+		factor = 0
+		OR = {
+			has_valid_civic = civic_beacon_of_liberty
+			has_valid_civic = civic_idealistic_foundation
 		}
-		modifier = {
-			factor = 1.5
-			is_xenophobe = yes
-			desc = ethic_xenophobe
+		OR = {
+			has_technology = tech_selected_lineages
+			has_technology = tech_capacity_boosters
 		}
-		modifier = {
-			factor = 0.25
-			is_spiritualist = yes
-			desc = ethic_spiritualist
+		desc = gal_com_cannot_comply_with_proposed_resolution
+	}
+	modifier = {
+		factor = 0
+		desc = gal_com_in_breach_of_proposed_resolution
+		in_breach_of = resolution_galacticstudies_ethical_guideline_refactoring
+	}
+	modifier = {
+		factor = 0.75
+		desc = gal_com_ally_in_breach_of_proposed_resolution
+		any_federation_ally = {
 			NOT = {
-				has_valid_civic = civic_machine_cult
+				federation = {
+					has_federation_type = hegemony_federation
+				}
 			}
-		}
-		modifier = {
-			factor = 0.25
-			has_ethic = ethic_fanatic_spiritualist
-			desc = ethic_spiritualist
-			NOT = {
-				has_valid_civic = civic_machine_cult
-			}
-		}
-		modifier = {
-			factor = 10
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
-		}
-		modifier = {
-			factor = 0.5
-			is_xenophile = yes
-			desc = ethic_xenophile
-		}
-		modifier = {
-			factor = 1.25
-			is_civic_has_elite = yes
-			desc = gal_com_elite_civic
-		}
-		modifier = {
-			factor = 1.5
-			is_civic_has_elite = yes
-			desc = gal_com_elite_civic
-		}
-		modifier = {
-			factor = 0.25
-			OR = {
-				is_civic_has_meritocracy = yes
-				is_civic_machine_servitor = yes
-			}
-			desc = gal_com_opposing_civics
-		}
-		modifier = {
-			factor = 0.25
-			is_egalitarian = yes
-			desc = ethic_egalitarian
-		}
-		modifier = {
-			factor = 0
-			has_ethic = ethic_fanatic_egalitarian
-			desc = ethic_egalitarian
-		}
-		modifier = {
-			factor = 0
-			is_egalitarian = yes
-			OR = {
-				has_technology = tech_selected_lineages
-				has_technology = tech_capacity_boosters
-			}
-			desc = gal_com_cannot_comply_with_proposed_resolution
-		}
-		modifier = {
-			factor = 0
-			OR = {
-				has_valid_civic = civic_beacon_of_liberty
-				has_valid_civic = civic_idealistic_foundation
-			}
-			OR = {
-				has_technology = tech_selected_lineages
-				has_technology = tech_capacity_boosters
-			}
-			desc = gal_com_cannot_comply_with_proposed_resolution
-		}
-		modifier = {
-			factor = 0
-			desc = gal_com_in_breach_of_proposed_resolution
 			in_breach_of = resolution_galacticstudies_ethical_guideline_refactoring
 		}
-		modifier = {
-			factor = 0.75
-			desc = gal_com_ally_in_breach_of_proposed_resolution
-			any_federation_ally = {
-				NOT = {
-					federation = {
-						has_federation_type = hegemony_federation
-					}
-				}
-				in_breach_of = resolution_galacticstudies_ethical_guideline_refactoring
-			}
+	}
+	modifier = {
+		factor = 1.5
+		NOT = {
+			in_breach_of = resolution_galacticstudies_ethical_guideline_refactoring
 		}
-		modifier = {
-			factor = 1.5
-			NOT = {
-				in_breach_of = resolution_galacticstudies_ethical_guideline_refactoring
+		desc = gal_com_hurt_rival
+		any_relation = {
+			is_galactic_community_member = yes
+			OR = {
+				is_rival = prev
+				is_at_war_with = prev
 			}
-			desc = gal_com_hurt_rival
-			any_relation = {
-				is_galactic_community_member = yes
-				OR = {
-					is_rival = prev
-					is_at_war_with = prev
-				}
-				in_breach_of = resolution_galacticstudies_ethical_guideline_refactoring
-			}
+			in_breach_of = resolution_galacticstudies_ethical_guideline_refactoring
 		}
-		modifier = {
-			factor = 0.5
-			has_monthly_income = {
-				resource = consumer_goods
-				value < 20
-			}
-			desc = gal_com_good_income
+	}
+	modifier = {
+		factor = 0.5
+		has_monthly_income = {
+			resource = consumer_goods
+			value < 20
 		}
-		modifier = {
-			factor = 0
-			has_deficit = consumer_goods
-			desc = gal_com_good_income
-		}
+		desc = gal_com_good_income
+	}
+	modifier = {
+		factor = 0
+		has_deficit = consumer_goods
+		desc = gal_com_good_income
 	}
 }
 
@@ -14940,7 +14941,7 @@ resolution_divinity_repeal_2 = {
 			is_spiritualist = yes
 			desc = ethic_spiritualist
 			NOT = {
-				has_valid_civic = civic_machine_cult
+				has_valid_civic = civic_bugged_machine_cult
 			}
 		}
 		modifier = {
@@ -14948,13 +14949,13 @@ resolution_divinity_repeal_2 = {
 			has_ethic = ethic_fanatic_spiritualist
 			desc = ethic_spiritualist
 			NOT = {
-				has_valid_civic = civic_machine_cult
+				has_valid_civic = civic_bugged_machine_cult
 			}
 		}
 		modifier = {
 			factor = 10
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
+			has_valid_civic = civic_bugged_machine_cult
+			desc = civic_bugged_machine_cult_desc
 		}
 		modifier = {
 			factor = 1.25
@@ -15180,7 +15181,7 @@ resolution_divinity_repeal_3 = {
 			is_spiritualist = yes
 			desc = ethic_spiritualist
 			NOT = {
-				has_valid_civic = civic_machine_cult
+				has_valid_civic = civic_bugged_machine_cult
 			}
 		}
 		modifier = {
@@ -15188,13 +15189,13 @@ resolution_divinity_repeal_3 = {
 			has_ethic = ethic_fanatic_spiritualist
 			desc = ethic_spiritualist
 			NOT = {
-				has_valid_civic = civic_machine_cult
+				has_valid_civic = civic_bugged_machine_cult
 			}
 		}
 		modifier = {
 			factor = 10
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
+			has_valid_civic = civic_bugged_machine_cult
+			desc = civic_bugged_machine_cult_desc
 		}
 		modifier = {
 			factor = 0.5
@@ -15694,13 +15695,13 @@ resolution_divinity_repeal_5 = {
 			is_spiritualist = yes
 			desc = ethic_spiritualist
 			NOT = {
-				has_valid_civic = civic_machine_cult
+				has_valid_civic = civic_bugged_machine_cult
 			}
 		}
 		modifier = {
 			factor = 10
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
+			has_valid_civic = civic_bugged_machine_cult
+			desc = civic_bugged_machine_cult_desc
 		}
 		modifier = {
 			factor = 10
@@ -16210,8 +16211,8 @@ resolution_divinity_tithe_on_the_soulless = {
 		}
 		modifier = {
 			factor = 0
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
+			has_valid_civic = civic_bugged_machine_cult
+			desc = civic_bugged_machine_cult_desc
 		}
 		modifier = {
 			factor = 0.75
@@ -16456,8 +16457,8 @@ resolution_divinity_right_to_work = {
 		}
 		modifier = {
 			factor = 0
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
+			has_valid_civic = civic_bugged_machine_cult
+			desc = civic_bugged_machine_cult_desc
 		}
 		modifier = {
 			factor = 1.5
@@ -16749,8 +16750,8 @@ resolution_divinity_silence_the_soulless = {
 		}
 		modifier = {
 			factor = 0
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
+			has_valid_civic = civic_bugged_machine_cult
+			desc = civic_bugged_machine_cult_desc
 		}
 		modifier = {
 			factor = 0.75
@@ -17120,8 +17121,8 @@ resolution_divinity_a_defined_purpose = {
 		}
 		modifier = {
 			factor = 0
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
+			has_valid_civic = civic_bugged_machine_cult
+			desc = civic_bugged_machine_cult_desc
 		}
 		modifier = {
 			factor = 100
@@ -25191,7 +25192,7 @@ resolution_drone_conservation_act = {
 			is_spiritualist = yes
 			desc = ethic_spiritualist
 			NOT = {
-				has_valid_civic = civic_machine_cult
+				has_valid_civic = civic_bugged_machine_cult
 			}
 		}
 		modifier = {
@@ -25199,7 +25200,7 @@ resolution_drone_conservation_act = {
 			is_civic_spiritualist = yes
 			desc = ethic_spiritualist
 			NOT = {
-				has_valid_civic = civic_machine_cult
+				has_valid_civic = civic_bugged_machine_cult
 			}
 		}
 		modifier = {
@@ -25207,13 +25208,13 @@ resolution_drone_conservation_act = {
 			has_ethic = ethic_fanatic_spiritualist
 			desc = ethic_spiritualist
 			NOT = {
-				has_valid_civic = civic_machine_cult
+				has_valid_civic = civic_bugged_machine_cult
 			}
 		}
 		modifier = {
 			factor = 10
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
+			has_valid_civic = civic_bugged_machine_cult
+			desc = civic_bugged_machine_cult_desc
 		}
 		modifier = {
 			factor = 0.5
@@ -25302,7 +25303,7 @@ resolution_repeal_drone_conservation_act = {
 						}
 						is_materialist = yes
 						is_robot_empire = yes
-						has_valid_civic = civic_machine_cult
+						has_valid_civic = civic_bugged_machine_cult
 					}
 				}
 				country_event = {
@@ -25357,8 +25358,8 @@ resolution_repeal_drone_conservation_act = {
 		weight = @resolution_weight_disliked
 		modifier = {
 			factor = 0
-			has_valid_civic = civic_machine_cult
-			desc = civic_machine_cult
+			has_valid_civic = civic_bugged_machine_cult
+			desc = civic_bugged_machine_cult_desc
 		}
 		modifier = {
 			factor = 1.5
@@ -25461,7 +25462,6 @@ resolution_repeal_drone_conservation_act = {
 			is_civic_terraformer = yes
 			desc = gal_com_terraforming_civic
 		}
-
 		modifier = {
 			factor = 0.5
 			is_xenophile = yes
