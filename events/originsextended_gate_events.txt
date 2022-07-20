@@ -1,8 +1,5 @@
-
 ### GATE EVENTS
-
 namespace = originsextended_gate
-
 # Gateway Construction Site Finished
 # from originsextended_gate.14
 country_event = {
@@ -14,13 +11,12 @@ country_event = {
 	picture = GFX_evt_megastructure_construction
 	show_sound = event_construction
 	location = from
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { save_event_target_as = gateway_system }
+		from = {
+			save_event_target_as = gateway_system
+		}
 	}
-
 	option = {
 		name = "originsextended_gate.11.option"
 	}
@@ -35,21 +31,19 @@ country_event = {
 	picture = GFX_evt_drifting_gateway
 	show_sound = event_radio_chatter
 	location = from
-
 	is_triggered_only = yes
-
 	trigger = {
 		NOR = {
 			has_country_flag = gateway_reactivated
 			has_country_flag = gateway_built
 		}
 	}
-
 	immediate = {
-		from = { save_event_target_as = gateway_system }
+		from = {
+			save_event_target_as = gateway_system
+		}
 		set_country_flag = gateway_built
 	}
-
 	option = {
 		name = "originsextended_gate.12.option"
 	}
@@ -64,20 +58,18 @@ country_event = {
 	picture = GFX_evt_drifting_gateway
 	show_sound = event_radio_chatter
 	location = from
-
 	is_triggered_only = yes
-
 	trigger = {
 		OR = {
 			has_country_flag = gateway_reactivated
 			has_country_flag = gateway_built
 		}
 	}
-
 	immediate = {
-		from = { save_event_target_as = gateway_system }
+		from = {
+			save_event_target_as = gateway_system
+		}
 	}
-
 	option = {
 		name = "originsextended_gate.12.option"
 	}
@@ -94,15 +86,11 @@ fleet_event = {
 	#show_sound = event_radio_chatter
 	location = THIS
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		FROMFROM = {
 			any_system_megastructure = {
-
 				is_megastructure_type = originsextended_gateway_final
-
 				# any_fleet_in_orbit ={
 				# 	is_mobile = yes
 				# }
@@ -114,22 +102,23 @@ fleet_event = {
 				# 	same_solar_system = yes
 				# }
 			}
-
 		}
 		#has_fleet_order = use_bypass_order
 		# owner = {
 		# 	has_origin = originsextended_gate
 		# }
 	}
-
 	immediate = {
 		save_event_target_as = originsextended_rolled_gateway_fleet
-
 		random_list = {
-			5 = { fleet_event = { id = originsextended_gate.99 } }
-			100 = {}
+			5 = {
+				fleet_event = {
+					id = originsextended_gate.99
+				}
+			}
+			100 = {
+			}
 		}
-
 	}
 }
 
@@ -140,9 +129,7 @@ fleet_event = {
 	picture = GFX_evt_exploding_ship
 	show_sound = event_red_alert
 	location = event_target:originsextended_rolled_gateway_fleet
-
 	is_triggered_only = yes
-
 	# trigger = {
 	# 	FROMFROM = {
 	# 		has_megastructure = originsextended_gateway_final
@@ -152,18 +139,15 @@ fleet_event = {
 	# 		has_country_flag = gateway_built
 	# 	}
 	# }
-
 	immediate = {
 		delete_fleet = event_target:originsextended_rolled_gateway_fleet
 	}
-
 	option = {
 		name = "originsextended_gate.99.a"
 	}
 	# option = {
 	# 	name = "originsextended_gate.99.b"
 	# }
-
 	# after = {
 	# 	delete_fleet = event_target:originsextended_rolled_gateway_fleet
 	# }
@@ -182,11 +166,8 @@ country_event = {
 	show_sound = event_structural_collapse
 	location = ROOT
 	is_triggered_only = yes
-
 	trigger = {
-
 		AND = {
-			
 			FROM = {
 				OR = {
 					is_megastructure_type = gateway_0
@@ -197,18 +178,19 @@ country_event = {
 					# is_megastructure_type = originsextended_gateway_final
 				}
 			}
-
 			FROM = {
 				solar_system = {
 					OR = {
-						any_system_megastructure = { is_megastructure_type = originsextended_gateway_0 }
-						any_system_megastructure = { is_megastructure_type = originsextended_gateway_final }
+						any_system_megastructure = {
+							is_megastructure_type = originsextended_gateway_0
+						}
+						any_system_megastructure = {
+							is_megastructure_type = originsextended_gateway_final
+						}
 					}
 				}
 			}
-		
 		}
-
 		# FROMFROM = {
 		# 	OR = {
 		# 		any_system_megastructure = { is_megastructure_type = originsextended_gateway_0 }
@@ -216,11 +198,9 @@ country_event = {
 		# 	}
 		# }
 	}
-
 	option = {
 		name = "originsextended_gate.88.a"
 	}
-
 	immediate = {
 		FROM = {
 			solar_system = {
@@ -245,14 +225,12 @@ country_event = {
 		# 	}
 		# }
 	}
-
 	after = {
 		# FROMFROM = {
 		# 	random_system_megastructure = {
 		# 		limit = {
 		# 			is_megastructure_type = originsextended_gateway_final
 		# 		}
-				
 		# 	}
 		# }
 		every_megastructure = {
@@ -304,9 +282,7 @@ country_event = {
 		# 		# 	same_solar_system = yes
 		# 		# }
 		# 	}
-
 		# }
-		
 	}
 }
 
@@ -318,25 +294,27 @@ country_event = {
 		text = apoc.3.desc
 		trigger = {
 			NOT = {
-				owner = { has_country_flag = encountered_first_gateway }
+				owner = {
+					has_country_flag = encountered_first_gateway
+				}
 			}
 		}
 	}
 	desc = {
 		text = apoc.3.b.desc
 		trigger = {
-			owner = { has_country_flag = encountered_first_gateway }
+			owner = {
+				has_country_flag = encountered_first_gateway
+			}
 		}
 	}
 	picture = GFX_evt_l-gateway
 	show_sound = event_radio_chatter
 	location = event_target:originsextended_gate_system_global
 	fire_only_once = yes
-
 	trigger = {
 		has_origin = originsextended_gate
 	}
-
 	immediate = {
 		capital_scope = {
 			solar_system = {
@@ -344,7 +322,9 @@ country_event = {
 			}
 		}
 		#FROM = { save_event_target_as = gateway_system }
-		owner = { set_country_flag = encountered_first_lgate }
+		owner = {
+			set_country_flag = encountered_first_lgate
+		}
 		# any_owned_ship = {
 		# 	limit = {
 		# 		is_ship_size = science
@@ -353,7 +333,6 @@ country_event = {
 		# 		id = apoc.3
 		# 	}
 		# }
-
 		#start_lcluster_chain = yes
 		# begin_event_chain = {
 		# 	event_chain = l_cluster_chain
@@ -363,16 +342,13 @@ country_event = {
 		# 	which = num_lcluster_clues
 		# 	value = 0
 		# }
-
 	}
-
 	option = {
 		name = INTRIGUING
 		owner = {
 			start_lcluster_chain = yes
 		}
 	}
-
 	after = {
 		custom_tooltip = add_lcluster_clue
 		#generate_lcluster_clue = yes
@@ -388,7 +364,6 @@ country_event = {
 				value = 1
 			}
 		}
-
 		# if = {
 		# 	# limit = {
 		# 	# 	has_distar = yes
@@ -409,5 +384,4 @@ country_event = {
 		# 	}
 		# }
 	}
-
 }

@@ -1,20 +1,18 @@
 namespace = eo_gray_goo
-
 planet_event = {
 	id = eo_gray_goo.1
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		is_planet_class = pc_gray_goo
 		has_planet_flag = gray_goo_harvest_world
 	}
-
 	immediate = {
 		if = {
 			limit = {
-				NOT = { has_deposit = d_gray_goo_resources }
+				NOT = {
+					has_deposit = d_gray_goo_resources
+				}
 				from = {
 					has_origin = origin_gray_goo
 				}
@@ -24,9 +22,13 @@ planet_event = {
 		}
 		if = {
 			limit = {
-				NOT = { has_deposit = d_nanites_deposit }
+				NOT = {
+					has_deposit = d_nanites_deposit
+				}
 				from = {
-					NOT = { has_origin = origin_gray_goo }
+					NOT = {
+						has_origin = origin_gray_goo
+					}
 				}
 			}
 			remove_deposit = d_gray_goo_resources
@@ -41,9 +43,7 @@ country_event = {
 	desc = eo_gray_goo.2.desc
 	picture = GFX_evt_gray_goo
 	location = event_target:gray_gooed_planet
-
 	is_triggered_only = yes
-
 	option = {
 		name = eo_exofungus.14.a
 		add_monthly_resource_mult = {
@@ -70,13 +70,10 @@ country_event = {
 planet_event = {
 	id = eo_gray_goo.3
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		has_orbital_bombardment_stance = nanomachine
 	}
-	
 	immediate = {
 		save_event_target_as = bombarded_planet
 		from = {
@@ -101,13 +98,10 @@ planet_event = {
 planet_event = {
 	id = eo_gray_goo.4
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		has_orbital_bombardment_stance = nanomachine
 	}
-	
 	immediate = {
 		change_pc = pc_gray_goo
 		clear_deposits = yes

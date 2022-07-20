@@ -1,22 +1,17 @@
 # Government Variety Pack
 # Events - Galactic Backdoor Origin
 # Author: littleraskol
-
 namespace = lrsk_gov_var_galactic_backdoor
-
 # Sets wormholes to seen, tech progress, and creates wormhole pair.
 country_event = {
 	id = lrsk_gov_var_galactic_backdoor.1
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
 		has_origin = lrsk_gov_var_origin_galactic_backdoor
 	}
-
 	immediate = {
 		set_country_flag = lrsk_gov_var_galactic_backdoor_nation
-		
 		set_country_flag = encountered_first_wormhole
 		add_seen_bypass_type = wormhole
 		add_research_option = tech_wormhole_stabilization
@@ -24,7 +19,6 @@ country_event = {
 			tech = tech_wormhole_stabilization
 			progress = 0.05
 		}
-
 		this.capital_scope.solar_system = {
 			random_system = {
 				limit = {
@@ -35,10 +29,10 @@ country_event = {
 					}
 					distance = {
 						source = prev
-						min_distance >= 250 # Ideally, this wildcard opening should create opportunities for new interactions with more nearby neighbors.
+						min_distance >= 250						# Ideally, this wildcard opening should create opportunities for new interactions with more nearby neighbors.
 					}
 				}
-				prev = { 
+				prev = {
 					spawn_natural_wormhole = {
 						bypass_type = wormhole
 						random_pos = yes

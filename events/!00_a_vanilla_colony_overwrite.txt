@@ -1,5 +1,4 @@
 namespace = colony
-
 # Special Project Completed 1		-- overwriting to apply correct planet modifiers
 planet_event = {
 	id = colony.104
@@ -8,195 +7,428 @@ planet_event = {
 	picture = GFX_evt_alien_nature
 	show_sound = event_activating_unknown_technology
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = colony.104.a
 		custom_tooltip = abandoned_terraforming_completed
 		hidden_effect = {
 			# planetary diversity compatibility
 			if = {
-				limit = { has_global_flag = planetarydiversity }
+				limit = {
+					has_global_flag = planetarydiversity
+				}
 				remove_planet_flag = pdaquapicture
 				remove_modifier = "abandoned_terraforming"
 				random_list = {
-					3.7 = { change_pc = pc_mangrove }
-					3.7 = { change_pc = pc_wetswamp }
-					3.7 = { change_pc = pc_fog }
-					3.7 = { change_pc = pc_desertislands }
-					3.7 = { change_pc = pc_hajungle }
-					3.7 = { change_pc = pc_cenote }
-					3.7 = { change_pc = pc_cascadian }
-					3.7 = { change_pc = pc_swamp }
-					3.7 = { change_pc = pc_mud }
-					3.7 = { change_pc = pc_basalt }
-					3.7 = { change_pc = pc_subarctic }
-					3.7 = { change_pc = pc_glacial }
-					3.7 = { change_pc = pc_sandsea }
-					3.7 = { change_pc = pc_mesa }
-					3.7 = { change_pc = pc_badlands }
-					3.7 = { change_pc = pc_outback }
-					3.7 = { change_pc = pc_coastal }
-					3.7 = { change_pc = pc_oasis }
-					3.7 = { change_pc = pc_hadesert }
-					3.7 = { change_pc = pc_steppe }
-					3.7 = { change_pc = pc_frozen_desert }
-					3.7 = { change_pc = pc_boreal }
-					3.7 = { change_pc = pc_desert }
-					3.7 = { change_pc = pc_tropical }
-					3.7 = { change_pc = pc_arid }
-					3.7 = { change_pc = pc_continental }
-					3.7 = { change_pc = pc_ocean }
-					3.7 = { change_pc = pc_tundra }
-					3.7 = { change_pc = pc_arctic }
-					3.7 = { change_pc = pc_alpine }
-					3.7 = { change_pc = pc_savannah }
-					3.7 = { change_pc = pc_mushroom }
+					3.7 = {
+						change_pc = pc_mangrove
+					}
+					3.7 = {
+						change_pc = pc_wetswamp
+					}
+					3.7 = {
+						change_pc = pc_fog
+					}
+					3.7 = {
+						change_pc = pc_desertislands
+					}
+					3.7 = {
+						change_pc = pc_hajungle
+					}
+					3.7 = {
+						change_pc = pc_cenote
+					}
+					3.7 = {
+						change_pc = pc_cascadian
+					}
+					3.7 = {
+						change_pc = pc_swamp
+					}
+					3.7 = {
+						change_pc = pc_mud
+					}
+					3.7 = {
+						change_pc = pc_basalt
+					}
+					3.7 = {
+						change_pc = pc_subarctic
+					}
+					3.7 = {
+						change_pc = pc_glacial
+					}
+					3.7 = {
+						change_pc = pc_sandsea
+					}
+					3.7 = {
+						change_pc = pc_mesa
+					}
+					3.7 = {
+						change_pc = pc_badlands
+					}
+					3.7 = {
+						change_pc = pc_outback
+					}
+					3.7 = {
+						change_pc = pc_coastal
+					}
+					3.7 = {
+						change_pc = pc_oasis
+					}
+					3.7 = {
+						change_pc = pc_hadesert
+					}
+					3.7 = {
+						change_pc = pc_steppe
+					}
+					3.7 = {
+						change_pc = pc_frozen_desert
+					}
+					3.7 = {
+						change_pc = pc_boreal
+					}
+					3.7 = {
+						change_pc = pc_desert
+					}
+					3.7 = {
+						change_pc = pc_tropical
+					}
+					3.7 = {
+						change_pc = pc_arid
+					}
+					3.7 = {
+						change_pc = pc_continental
+					}
+					3.7 = {
+						change_pc = pc_ocean
+					}
+					3.7 = {
+						change_pc = pc_tundra
+					}
+					3.7 = {
+						change_pc = pc_arctic
+					}
+					3.7 = {
+						change_pc = pc_alpine
+					}
+					3.7 = {
+						change_pc = pc_savannah
+					}
+					3.7 = {
+						change_pc = pc_mushroom
+					}
 				}
 			}
 			# standard
 			if = {
-				limit = { NOT = { has_global_flag = planetarydiversity } }
+				limit = {
+					NOT = {
+						has_global_flag = planetarydiversity
+					}
+				}
 				remove_modifier = "abandoned_terraforming"
 				switch = {
 					trigger = is_planet_class
 					pc_desert = {
 						random_list = {
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 					pc_arid = {
 						random_list = {
-							15 = { change_pc = pc_desert }
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_desert
+							}
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 					pc_savannah = {
 						random_list = {
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_desert }
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_desert
+							}
 						}
 					}
 					pc_tropical = {
 						random_list = {
-							15 = { change_pc = pc_desert }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_desert
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 					pc_ocean = {
 						random_list = {
-							15 = { change_pc = pc_desert }
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_desert
+							}
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 					pc_continental = {
 						random_list = {
-							15 = { change_pc = pc_desert }
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_desert
+							}
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 					pc_tundra = {
 						random_list = {
-							15 = { change_pc = pc_desert }
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_desert
+							}
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 					pc_arctic = {
 						random_list = {
-							15 = { change_pc = pc_desert }
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_desert
+							}
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 					pc_alpine = {
 						random_list = {
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_desert }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_desert
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 					default = {
 						random_list = {
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_desert }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_desert
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 				}
 			}
-			if = {									# -guilli
+			if = {
+				# -guilli
 				limit = {
 					NOT = {
 						gpm_has_precursor_modifiers = yes
 					}
 				}
-				reroll_planet_modifiers = yes		# -guilli
-				gpm_remove_precursor_modifiers = yes 	# -guilli
-				gpm_remove_planetary_features = yes 		# -guilli roll tombworld modifiers
-				gpm_roll_planetary_features = yes 			# -guilli up to X times planetary feature 
+				reroll_planet_modifiers = yes				# -guilli
+				gpm_remove_precursor_modifiers = yes				# -guilli
+				gpm_remove_planetary_features = yes				# -guilli roll tombworld modifiers
+				gpm_roll_planetary_features = yes				# -guilli up to X times planetary feature 
 			}
 			if = {
-				limit = { has_modifier = gpm_precursor_energy_grid }
+				limit = {
+					has_modifier = gpm_precursor_energy_grid
+				}
 				gpm_set_precursor_energy_grid = yes
 			}
 		}
@@ -211,181 +443,413 @@ planet_event = {
 	picture = GFX_evt_ground_combat
 	show_sound = event_ground_battle
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
 			# planetary diversity compatibility
 			if = {
-				limit = { has_global_flag = planetarydiversity }
+				limit = {
+					has_global_flag = planetarydiversity
+				}
 				remove_planet_flag = pdaquapicture
 				remove_modifier = "abandoned_terraforming"
 				random_list = {
-					3.7 = { change_pc = pc_mangrove }
-					3.7 = { change_pc = pc_wetswamp }
-					3.7 = { change_pc = pc_fog }
-					3.7 = { change_pc = pc_desertislands }
-					3.7 = { change_pc = pc_hajungle }
-					3.7 = { change_pc = pc_cenote }
-					3.7 = { change_pc = pc_cascadian }
-					3.7 = { change_pc = pc_swamp }
-					3.7 = { change_pc = pc_mud }
-					3.7 = { change_pc = pc_basalt }
-					3.7 = { change_pc = pc_subarctic }
-					3.7 = { change_pc = pc_glacial }
-					3.7 = { change_pc = pc_sandsea }
-					3.7 = { change_pc = pc_mesa }
-					3.7 = { change_pc = pc_badlands }
-					3.7 = { change_pc = pc_outback }
-					3.7 = { change_pc = pc_coastal }
-					3.7 = { change_pc = pc_oasis }
-					3.7 = { change_pc = pc_hadesert }
-					3.7 = { change_pc = pc_steppe }
-					3.7 = { change_pc = pc_frozen_desert }
-					3.7 = { change_pc = pc_boreal }
-					3.7 = { change_pc = pc_desert }
-					3.7 = { change_pc = pc_tropical }
-					3.7 = { change_pc = pc_arid }
-					3.7 = { change_pc = pc_continental }
-					3.7 = { change_pc = pc_ocean }
-					3.7 = { change_pc = pc_tundra }
-					3.7 = { change_pc = pc_arctic }
-					3.7 = { change_pc = pc_alpine }
-					3.7 = { change_pc = pc_savannah }
-					3.7 = { change_pc = pc_mushroom }
+					3.7 = {
+						change_pc = pc_mangrove
+					}
+					3.7 = {
+						change_pc = pc_wetswamp
+					}
+					3.7 = {
+						change_pc = pc_fog
+					}
+					3.7 = {
+						change_pc = pc_desertislands
+					}
+					3.7 = {
+						change_pc = pc_hajungle
+					}
+					3.7 = {
+						change_pc = pc_cenote
+					}
+					3.7 = {
+						change_pc = pc_cascadian
+					}
+					3.7 = {
+						change_pc = pc_swamp
+					}
+					3.7 = {
+						change_pc = pc_mud
+					}
+					3.7 = {
+						change_pc = pc_basalt
+					}
+					3.7 = {
+						change_pc = pc_subarctic
+					}
+					3.7 = {
+						change_pc = pc_glacial
+					}
+					3.7 = {
+						change_pc = pc_sandsea
+					}
+					3.7 = {
+						change_pc = pc_mesa
+					}
+					3.7 = {
+						change_pc = pc_badlands
+					}
+					3.7 = {
+						change_pc = pc_outback
+					}
+					3.7 = {
+						change_pc = pc_coastal
+					}
+					3.7 = {
+						change_pc = pc_oasis
+					}
+					3.7 = {
+						change_pc = pc_hadesert
+					}
+					3.7 = {
+						change_pc = pc_steppe
+					}
+					3.7 = {
+						change_pc = pc_frozen_desert
+					}
+					3.7 = {
+						change_pc = pc_boreal
+					}
+					3.7 = {
+						change_pc = pc_desert
+					}
+					3.7 = {
+						change_pc = pc_tropical
+					}
+					3.7 = {
+						change_pc = pc_arid
+					}
+					3.7 = {
+						change_pc = pc_continental
+					}
+					3.7 = {
+						change_pc = pc_ocean
+					}
+					3.7 = {
+						change_pc = pc_tundra
+					}
+					3.7 = {
+						change_pc = pc_arctic
+					}
+					3.7 = {
+						change_pc = pc_alpine
+					}
+					3.7 = {
+						change_pc = pc_savannah
+					}
+					3.7 = {
+						change_pc = pc_mushroom
+					}
 				}
 			}
 			# standard
 			if = {
-				limit = { NOT = { has_global_flag = planetarydiversity } }
+				limit = {
+					NOT = {
+						has_global_flag = planetarydiversity
+					}
+				}
 				remove_modifier = "abandoned_terraforming"
 				switch = {
 					trigger = is_planet_class
 					pc_desert = {
 						random_list = {
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 					pc_arid = {
 						random_list = {
-							15 = { change_pc = pc_desert }
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_desert
+							}
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 					pc_savannah = {
 						random_list = {
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_desert }
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_desert
+							}
 						}
 					}
 					pc_tropical = {
 						random_list = {
-							15 = { change_pc = pc_desert }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_desert
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 					pc_ocean = {
 						random_list = {
-							15 = { change_pc = pc_desert }
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_desert
+							}
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 					pc_continental = {
 						random_list = {
-							15 = { change_pc = pc_desert }
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_desert
+							}
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 					pc_tundra = {
 						random_list = {
-							15 = { change_pc = pc_desert }
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_desert
+							}
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 					pc_arctic = {
 						random_list = {
-							15 = { change_pc = pc_desert }
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_desert
+							}
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 					pc_alpine = {
 						random_list = {
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_desert }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_desert
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 					default = {
 						random_list = {
-							15 = { change_pc = pc_tropical }
-							15 = { change_pc = pc_arid }
-							15 = { change_pc = pc_continental }
-							15 = { change_pc = pc_ocean }
-							15 = { change_pc = pc_tundra }
-							15 = { change_pc = pc_arctic }
-							15 = { change_pc = pc_alpine }
-							15 = { change_pc = pc_desert }
-							15 = { change_pc = pc_savannah }
+							15 = {
+								change_pc = pc_tropical
+							}
+							15 = {
+								change_pc = pc_arid
+							}
+							15 = {
+								change_pc = pc_continental
+							}
+							15 = {
+								change_pc = pc_ocean
+							}
+							15 = {
+								change_pc = pc_tundra
+							}
+							15 = {
+								change_pc = pc_arctic
+							}
+							15 = {
+								change_pc = pc_alpine
+							}
+							15 = {
+								change_pc = pc_desert
+							}
+							15 = {
+								change_pc = pc_savannah
+							}
 						}
 					}
 				}
 			}
-			owner = { set_country_flag = terraforming_mutants_invade_country }
+			owner = {
+				set_country_flag = terraforming_mutants_invade_country
+			}
 			set_planet_flag = terraforming_mutants_invade_planet
 			create_country = {
 				name = "NAME_Deformed_Creatures"
@@ -409,24 +873,26 @@ planet_event = {
 				owner = last_created_country
 				type = "mutant_army"
 			}
-			if = {									# -guilli
+			if = {
+				# -guilli
 				limit = {
 					NOT = {
 						gpm_has_precursor_modifiers = yes
 					}
 				}
-				reroll_planet_modifiers = yes		# -guilli
-				gpm_remove_precursor_modifiers = yes 	# -guilli
-				gpm_remove_planetary_features = yes 		# -guilli roll tombworld modifiers
-				gpm_roll_planetary_features = yes 			# -guilli up to X times planetary feature 
+				reroll_planet_modifiers = yes				# -guilli
+				gpm_remove_precursor_modifiers = yes				# -guilli
+				gpm_remove_planetary_features = yes				# -guilli roll tombworld modifiers
+				gpm_roll_planetary_features = yes				# -guilli up to X times planetary feature 
 			}
 			if = {
-				limit = { has_modifier = gpm_precursor_energy_grid }
+				limit = {
+					has_modifier = gpm_precursor_energy_grid
+				}
 				gpm_set_precursor_energy_grid = yes
 			}
 		}
 	}
-	
 	option = {
 		name = colony.105.a
 		custom_tooltip = terraforming_mutants_attack
@@ -441,9 +907,7 @@ planet_event = {
 	picture = GFX_evt_alien_nature
 	show_sound = event_activating_unknown_technology
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = MARVELOUS
 		change_pc = pc_gaia
@@ -454,25 +918,29 @@ planet_event = {
 		hidden_effect = {
 			# planetary diversity compatibility
 			if = {
-				limit = { has_global_flag = planetarydiversity }
+				limit = {
+					has_global_flag = planetarydiversity
+				}
 				remove_planet_flag = pdaquapicture
 			}
 			#
-
 			remove_modifier = "abandoned_terraforming"
-			if = {									# -guilli
+			if = {
+				# -guilli
 				limit = {
 					NOT = {
 						gpm_has_precursor_modifiers = yes
 					}
 				}
-				reroll_planet_modifiers = yes		# -guilli
-				gpm_remove_precursor_modifiers = yes 	# -guilli
-				gpm_remove_planetary_features = yes 		# -guilli roll tombworld modifiers
-				gpm_roll_planetary_features = yes 			# -guilli up to X times planetary feature 
+				reroll_planet_modifiers = yes				# -guilli
+				gpm_remove_precursor_modifiers = yes				# -guilli
+				gpm_remove_planetary_features = yes				# -guilli roll tombworld modifiers
+				gpm_roll_planetary_features = yes				# -guilli up to X times planetary feature 
 			}
 			if = {
-				limit = { has_modifier = gpm_precursor_energy_grid }
+				limit = {
+					has_modifier = gpm_precursor_energy_grid
+				}
 				gpm_set_precursor_energy_grid = yes
 			}
 		}
@@ -486,8 +954,12 @@ planet_event = {
 	desc = {
 		trigger = {
 			NOR = {
-				owner = { has_origin = origin_post_apocalyptic } 
-				owner.species = { has_trait = trait_pc_nuked_preference }
+				owner = {
+					has_origin = origin_post_apocalyptic
+				}
+				owner.species = {
+					has_trait = trait_pc_nuked_preference
+				}
 			}
 		}
 		text = "colony.107.desc"
@@ -495,8 +967,12 @@ planet_event = {
 	desc = {
 		trigger = {
 			OR = {
-				owner = { has_origin = origin_post_apocalyptic } 
-				owner.species = { has_trait = trait_pc_nuked_preference }
+				owner = {
+					has_origin = origin_post_apocalyptic
+				}
+				owner.species = {
+					has_trait = trait_pc_nuked_preference
+				}
 			}
 		}
 		text = "colony.107.desc.nuked_pref"
@@ -504,20 +980,25 @@ planet_event = {
 	picture = GFX_evt_dead_city
 	show_sound = event_activating_unknown_technology
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		trigger = {
 			NOR = {
-				owner = { has_origin = origin_post_apocalyptic } 
-				owner.species = { has_trait = trait_pc_nuked_preference }
+				owner = {
+					has_origin = origin_post_apocalyptic
+				}
+				owner.species = {
+					has_trait = trait_pc_nuked_preference
+				}
 			}
 		}
 		name = colony.107.a
 		change_pc = pc_nuked
-		hidden_effect = { set_planet_flag = nuked_planet_anomalies_disabled }
-		if = { #Destroys colony if no planet pops can live on Tomb Worlds
+		hidden_effect = {
+			set_planet_flag = nuked_planet_anomalies_disabled
+		}
+		if = {
+			#Destroys colony if no planet pops can live on Tomb Worlds
 			limit = {
 				NOT = {
 					any_owned_pop = {
@@ -531,7 +1012,8 @@ planet_event = {
 			}
 			destroy_colony = yes
 		}
-		else = { #Kills only planet pops that cannot live on Tomb Worlds
+		else = {
+			#Kills only planet pops that cannot live on Tomb Worlds
 			hidden_effect = {
 				every_owned_pop = {
 					limit = {
@@ -549,38 +1031,49 @@ planet_event = {
 		hidden_effect = {
 			# planetary diversity compatibility
 			if = {
-				limit = { has_global_flag = planetarydiversity }
+				limit = {
+					has_global_flag = planetarydiversity
+				}
 				remove_planet_flag = pdaquapicture
 			}
 			#
-
 			remove_modifier = "abandoned_terraforming"
-			if = {									# -guilli
+			if = {
+				# -guilli
 				limit = {
 					NOT = {
 						gpm_has_precursor_modifiers = yes
 					}
 				}
-				reroll_planet_modifiers = yes		# -guilli
-				gpm_remove_precursor_modifiers = yes 	# -guilli
+				reroll_planet_modifiers = yes				# -guilli
+				gpm_remove_precursor_modifiers = yes				# -guilli
 			}
 			if = {
-				limit = { has_modifier = gpm_precursor_energy_grid }
+				limit = {
+					has_modifier = gpm_precursor_energy_grid
+				}
 				gpm_set_precursor_energy_grid = yes
 			}
 			if = {
-				limit = { has_planet_flag = gpm_is_wondrous_planet }
+				limit = {
+					has_planet_flag = gpm_is_wondrous_planet
+				}
 				remove_planet_flag = gpm_is_wondrous_planet
 				remove_planet_flag = gpm_is_wondrous_world_colour
 				remove_modifier = gpm_planet_wonder_discovered
 				set_name = {
 					key = "NAME_color_default_white"
 					variable_string = "[This.Solar_System.GetName]"
-				} 
+				}
 			}
 			if = {
-				limit = { has_planet_flag = gpm_is_precursor_world }
-				add_modifier = { modifier = terraforming_candidate days = -1 } 
+				limit = {
+					has_planet_flag = gpm_is_precursor_world
+				}
+				add_modifier = {
+					modifier = terraforming_candidate
+					days = -1
+				}
 				set_name = {
 					key = "NAME_color_precursor"
 					variable_string = "[This.GetName]"
@@ -591,8 +1084,12 @@ planet_event = {
 	option = {
 		trigger = {
 			OR = {
-				owner = { has_origin = origin_post_apocalyptic} 
-				owner.species = { has_trait = trait_pc_nuked_preference }
+				owner = {
+					has_origin = origin_post_apocalyptic
+				}
+				owner.species = {
+					has_trait = trait_pc_nuked_preference
+				}
 			}
 		}
 		name = EXCELLENT
@@ -600,27 +1097,33 @@ planet_event = {
 		hidden_effect = {
 			# planetary diversity compatibility
 			if = {
-				limit = { has_global_flag = planetarydiversity }
+				limit = {
+					has_global_flag = planetarydiversity
+				}
 				remove_planet_flag = pdaquapicture
 			}
 			#
-			
 			remove_modifier = "abandoned_terraforming"
-			if = {									# -guilli
+			if = {
+				# -guilli
 				limit = {
 					NOT = {
 						gpm_has_precursor_modifiers = yes
 					}
 				}
-				reroll_planet_modifiers = yes		# -guilli
-				gpm_remove_precursor_modifiers = yes 	# -guilli
+				reroll_planet_modifiers = yes				# -guilli
+				gpm_remove_precursor_modifiers = yes				# -guilli
 			}
 			if = {
-				limit = { has_modifier = gpm_precursor_energy_grid }
+				limit = {
+					has_modifier = gpm_precursor_energy_grid
+				}
 				gpm_set_precursor_energy_grid = yes
 			}
 			if = {
-				limit = { has_planet_flag = gpm_is_wondrous_planet }
+				limit = {
+					has_planet_flag = gpm_is_wondrous_planet
+				}
 				remove_planet_flag = gpm_is_wondrous_planet
 				remove_planet_flag = gpm_is_wondrous_world_colour
 				remove_modifier = gpm_planet_wonder_discovered
@@ -630,8 +1133,13 @@ planet_event = {
 				}
 			}
 			if = {
-				limit = { has_planet_flag = gpm_is_precursor_world }
-				add_modifier = { modifier = terraforming_candidate days = -1 } 
+				limit = {
+					has_planet_flag = gpm_is_precursor_world
+				}
+				add_modifier = {
+					modifier = terraforming_candidate
+					days = -1
+				}
 				set_name = {
 					key = "NAME_color_precursor"
 					variable_string = "[This.GetName]"

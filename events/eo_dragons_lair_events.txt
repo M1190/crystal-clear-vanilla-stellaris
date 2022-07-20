@@ -1,15 +1,12 @@
 namespace = eo_dragons_lair
-
 #####Reset Ravinax's patrol
 planet_event = {
 	id = eo_dragons_lair.1
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_planet_flag = ravinax_alive
 	}
-	
 	immediate = {
 		solar_system = {
 			every_system_planet = {
@@ -79,7 +76,11 @@ planet_event = {
 			limit = {
 				has_planet_flag = ravinax_alive
 			}
-			planet_event = { id = eo_dragons_lair.1 days = 1825 random = 5 }
+			planet_event = {
+				id = eo_dragons_lair.1
+				days = 1825
+				random = 5
+			}
 		}
 	}
 }
@@ -89,11 +90,9 @@ country_event = {
 	id = eo_dragons_lair.2
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		is_same_value = event_target:ravinax_country
 	}
-
 	immediate = {
 		event_target:ravinax_lair = {
 			remove_planet_flag = ravinax_alive
@@ -106,14 +105,12 @@ planet_event = {
 	id = eo_dragons_lair.3
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
 		has_planet_flag = ravinax_world
 		event_target:ravinax_lair = {
 			has_planet_flag = ravinax_alive
 		}
 	}
-
 	immediate = {
 		if = {
 			limit = {
@@ -144,7 +141,6 @@ event = {
 	id = eo_dragons_lair.4
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		event_target:ravinax_world = {
 			has_planet_flag = dragon_feed_3
@@ -157,7 +153,11 @@ event = {
 		event_target:ravinax_world = {
 			remove_planet_flag = dragon_feed_3
 			set_planet_flag = dragon_feed_0
-			planet_event = { id = eo_dragons_lair.5 days = 10 random = 10 }
+			planet_event = {
+				id = eo_dragons_lair.5
+				days = 10
+				random = 10
+			}
 		}
 	}
 }
@@ -168,9 +168,7 @@ planet_event = {
 	picture = GFX_evt_space_dragon_green
 	show_sound = distance_dragon_attack_mouth
 	location = this
-	
 	is_triggered_only = yes
-
 	desc = {
 		text = eo_dragons_lair.5.desc.a
 		trigger = {
@@ -179,7 +177,6 @@ planet_event = {
 			}
 		}
 	}
-
 	desc = {
 		text = eo_dragons_lair.5.desc.b
 		trigger = {
@@ -188,7 +185,6 @@ planet_event = {
 			}
 		}
 	}
-
 	immediate = {
 		random_owned_pop = {
 			limit = {
@@ -197,7 +193,6 @@ planet_event = {
 			save_event_target_as = snack
 		}
 	}
-
 	option = {
 		name = eo_dragons_lair.5.a
 		ai_chance = {
@@ -208,7 +203,6 @@ planet_event = {
 		}
 		add_planet_devastation = 20
 	}
-
 	option = {
 		name = eo_dragons_lair.5.b
 		ai_chance = {
@@ -246,7 +240,7 @@ planet_event = {
 			}
 			modifier = {
 				factor = 0.1
-    			owner = {
+				owner = {
 					OR = {
 						has_ethic = ethic_fanatic_spiritualist
 						has_ethic = ethic_spiritualist
@@ -255,7 +249,7 @@ planet_event = {
 			}
 			modifier = {
 				factor = 1.5
-    			owner = {
+				owner = {
 					OR = {
 						has_ethic = ethic_fanatic_militarist
 						has_ethic = ethic_militarist
@@ -283,7 +277,6 @@ country_event = {
 	id = eo_dragons_lair.6
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		OR = {
 			this = {
@@ -338,7 +331,6 @@ country_event = {
 	id = eo_dragons_lair.7
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		OR = {
 			this = {

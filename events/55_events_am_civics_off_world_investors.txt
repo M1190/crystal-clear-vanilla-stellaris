@@ -1,32 +1,28 @@
-
-
 ###############################################################################
 ### Civic: Off World Investors                                              ###
 ###############################################################################
-
 namespace = events_am_civics_off_world_investors
-
 ### Triggered by on_action: yearly_pulse
 ### Summary: Upgrades Orbital Trade Value Deposits over time. Smaller deposits have a higher chance to be upgraded.
 country_event = {
 	id = events_am_civics_off_world_investors.1
 	hide_window = yes
-	
 	is_triggered_only = yes
-	trigger = { has_valid_civic = civic_am_civics_off_world_investors }
-	
-	
+	trigger = {
+		has_valid_civic = civic_am_civics_off_world_investors
+	}
 	immediate = {
-		country_event = { id = events_am_civics_off_world_investors.2 days = 3 }
+		country_event = {
+			id = events_am_civics_off_world_investors.2
+			days = 3
+		}
 	}
 }
 
 country_event = {
 	id = events_am_civics_off_world_investors.2
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		every_planet_within_border = {
 			limit = {
@@ -42,12 +38,12 @@ country_event = {
 					has_deposit = d_trade_value_9
 				}
 			}
-			
 			# log = "events_am_civics_off_world_investors.1 for [this.GetName]."
 			random_list = {
-				85 = { }
-				15 = { 
-					add_deposit = d_trade_value_1				
+				85 = {
+				}
+				15 = {
+					add_deposit = d_trade_value_1
 				}
 			}
 		}

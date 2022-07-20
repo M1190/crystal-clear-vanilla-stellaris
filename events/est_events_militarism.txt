@@ -1,27 +1,23 @@
 namespace = est_militarism
-
 ### MILITARISM ###
-
 #Militarism Adopt, gives bonus production while not under Naval Capacity.
 country_event = {
 	id = est_militarism.1
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
-		has_active_tradition = tr_est_militarism_adopt	
+		has_active_tradition = tr_est_militarism_adopt
 	}
-
 	immediate = {
-		if = {	
+		if = {
 			limit = {
-				Not = {
-					used_naval_capacity_percent < 1.0
+				NOT = {
+					used_naval_capacity_percent < 1
 				}
 			}
 			if = {
 				limit = {
-					Not = {
+					NOT = {
 						has_modifier = mod_est_militarism_adopt
 					}
 				}
@@ -38,32 +34,30 @@ country_event = {
 				remove_modifier = "mod_est_militarism_adopt"
 			}
 		}
-	}	
+	}
 }
-	
+
 #Militarism/Might 5, leader gets xp trait and additional trait.
 country_event = {
 	id = est_militarism.2
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_tradition = tr_est_militarism_5
 		from = {
-			leader_class = admiral 
-			Not = {
+			leader_class = admiral
+			NOT = {
 				has_leader_flag = flag_est_militarism_5
 			}
 		}
 	}
-
 	immediate = {
 		from = {
 			set_leader_flag = flag_est_militarism_5
 		}
 		if = {
 			limit = {
-				has_active_tradition =  tr_est_militarism_5
+				has_active_tradition = tr_est_militarism_5
 			}
 			from = {
 				if = {
@@ -71,12 +65,12 @@ country_event = {
 						has_trait = leader_trait_admiral_est_militarism_5
 					}
 					add_trait = leader_trait_admiral_est_militarism_5
-				}		
+				}
 			}
 		}
 		if = {
 			limit = {
-				has_active_tradition =  tr_est_might_5
+				has_active_tradition = tr_est_might_5
 			}
 			from = {
 				if = {
@@ -84,7 +78,7 @@ country_event = {
 						has_trait = leader_trait_admiral_est_might_5
 					}
 					add_trait = leader_trait_admiral_est_might_5
-				}		
+				}
 			}
 		}
 		from = {
@@ -92,7 +86,7 @@ country_event = {
 				1 = {
 					modifier = {
 						factor = 0
-						Or = {
+						OR = {
 							has_trait = leader_trait_trickster
 							has_trait = leader_trait_unyielding
 						}
@@ -102,7 +96,7 @@ country_event = {
 				1 = {
 					modifier = {
 						factor = 0
-						Or = {
+						OR = {
 							has_trait = leader_trait_fleet_logistician
 							owner = {
 								has_authority = "auth_machine_intelligence"
@@ -114,10 +108,10 @@ country_event = {
 				1 = {
 					modifier = {
 						factor = 0
-						Or = {
+						OR = {
 							has_trait = leader_trait_engineer
 							owner = {
-								Not = {
+								NOT = {
 									has_technology = tech_doctrine_fleet_size_3
 								}
 							}
@@ -128,7 +122,7 @@ country_event = {
 				1 = {
 					modifier = {
 						factor = 0
-						Or = {
+						OR = {
 							has_trait = leader_trait_aggressive
 							has_trait = leader_trait_cautious
 						}
@@ -138,7 +132,7 @@ country_event = {
 				1 = {
 					modifier = {
 						factor = 0
-						Or = {
+						OR = {
 							has_trait = leader_trait_aggressive
 							has_trait = leader_trait_cautious
 						}
@@ -148,10 +142,10 @@ country_event = {
 				1 = {
 					modifier = {
 						factor = 0
-						Or = {
+						OR = {
 							has_trait = leader_trait_scout
 							owner = {
-								Not = {
+								NOT = {
 									has_technology = tech_sensors_2
 								}
 							}
@@ -162,7 +156,7 @@ country_event = {
 				1 = {
 					modifier = {
 						factor = 0
-						Or = {
+						OR = {
 							has_trait = leader_trait_unyielding
 							has_trait = leader_trait_trickster
 							has_trait = leader_trait_nervous
@@ -173,7 +167,7 @@ country_event = {
 				1 = {
 					modifier = {
 						factor = 0
-						Or = {
+						OR = {
 							has_trait = leader_trait_gale_speed
 							has_trait = leader_trait_lethargic
 						}
@@ -184,4 +178,3 @@ country_event = {
 		}
 	}
 }
-

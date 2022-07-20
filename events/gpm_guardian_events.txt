@@ -1,29 +1,29 @@
 namespace = gpm_guardian
-
 # Ego, the living planet
 # spawning of "planet"
 planet_event = {
 	id = gpm_guardian.1
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 		# log = "Guardian event has run"
 		if = {
 			limit = {
 				solar_system = {
-					NOT = { has_star_flag = gpm_ego_spawned }
+					NOT = {
+						has_star_flag = gpm_ego_spawned
+					}
 				}
 			}
 			solar_system = {
 				set_star_flag = gpm_ego_spawned
 				save_event_target_as = gpm_ego_system
 				random_system_planet = {
-					limit = { is_star = yes }
+					limit = {
+						is_star = yes
+					}
 					create_country = {
 						name = "NAME_gpm_ego"
 						type = faction
@@ -36,7 +36,7 @@ planet_event = {
 								category = "backgrounds"
 								file = "00_solid.dds"
 							}
-							colors={
+							colors = {
 								"red"
 								"red"
 								"null"
@@ -47,7 +47,9 @@ planet_event = {
 					last_created_country = {
 						save_global_event_target_as = gpm_ego_country
 						set_country_flag = gpm_ego_country
-						set_faction_hostility = { set_hostile = no }
+						set_faction_hostility = {
+							set_hostile = no
+						}
 					}
 					create_fleet = {
 						name = "NAME_gpm_ego_ship"
@@ -61,7 +63,9 @@ planet_event = {
 							create_ship = {
 								name = "NAME_gpm_ego_ship"
 								design = "gpm_ego"
-								effect = { set_disabled = yes }
+								effect = {
+									set_disabled = yes
+								}
 								prefix = no
 							}
 							set_location = {
@@ -71,13 +75,11 @@ planet_event = {
 							}
 						}
 					}
-					
 					last_created_fleet = {
 						create_ambient_object = {
 							type = "gpm_ego_spawn_object"
 							location = THIS
 							# use_3d_location = yes
-							
 						}
 						last_created_ambient_object = {
 							set_ambient_object_flag = gpm_ambient_ego_flag
@@ -99,29 +101,34 @@ country_event = {
 	id = gpm_guardian.2
 	hide_window = yes
 	location = this
-	
 	fire_only_once = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		THIS = {
 			#is_country_type = guardian_horror
 			#has_country_flag = gpm_ego_country
-			FROMFROM = { is_ship_size = gpm_ego }
+			FROMFROM = {
+				is_ship_size = gpm_ego
+			}
 		}
 	}
-	
 	immediate = {
-		fromfrom = { save_event_target_as = gpm_ego }
+		fromfrom = {
+			save_event_target_as = gpm_ego
+		}
 		random_system = {
 			limit = {
 				has_star_flag = gpm_ego_spawned
-				NOT = { has_global_flag = gpm_ego_gaia_planet_spawned }
+				NOT = {
+					has_global_flag = gpm_ego_gaia_planet_spawned
+				}
 			}
 			save_event_target_as = gpm_guardians_ego_system
 			# event_target:gpm_ego = { destroy_ambient_object = this }
 			random_ambient_object = {
-				limit = { has_ambient_object_flag = gpm_ambient_ego_flag }
+				limit = {
+					has_ambient_object_flag = gpm_ambient_ego_flag
+				}
 				destroy_ambient_object = this
 			}
 			gpm_spawn_xandar_gaia_world = yes
@@ -135,23 +142,19 @@ country_event = {
 				limit = {
 					is_ship_size = gpm_ego
 				}
-				fleet = { 
+				fleet = {
 					destroy_fleet = THIS
 				}
 			}
 			destroy_country = yes
 		}
-
-
 		# FROMFROM = {
 		# 	solar_system = {
 		# 		save_event_target_as = gpm_guardians_ego_system
-				
 		# 		random_ambient_object = {
 		# 			limit = { has_ambient_object_flag = gpm_ambient_ego_flag }
 		# 			destroy_ambient_object = this
 		# 		}
-				
 		# 	}
 		# }
 	}
@@ -168,28 +171,36 @@ ship_event = {
 	show_sound = event_ship_bridge
 	picture = GFX_evt_ship_in_orbit
 	trackable = yes
-
 	is_triggered_only = yes
-
 	trigger = {
-		NOT = { has_global_flag = gpm_ego_chain_completed }
+		NOT = {
+			has_global_flag = gpm_ego_chain_completed
+		}
 		FROM = {
 			has_star_flag = gpm_guardians_ego_system
 		}
-		FROMFROM = { NOT = { has_country_flag = gpm_ego_first_meet } }
-		FROMFROM = { is_ai = no }
+		FROMFROM = {
+			NOT = {
+				has_country_flag = gpm_ego_first_meet
+			}
+		}
+		FROMFROM = {
+			is_ai = no
+		}
 	}
-
 	immediate = {
-		FROMFROM = { set_country_flag = gpm_ego_first_meet }
+		FROMFROM = {
+			set_country_flag = gpm_ego_first_meet
+		}
 		solar_system = {
 			random_system_planet = {
-				limit = { has_planet_flag = gpm_guardian_partner }
+				limit = {
+					has_planet_flag = gpm_guardian_partner
+				}
 				save_event_target_as = "gpm_ego_planet_location_temp"
 			}
 		}
 	}
-
 	option = {
 		name = gpm_guardian.100.a
 		FROMFROM = {
@@ -210,13 +221,15 @@ ship_event = {
 	location = root
 	show_sound = event_ship_bridge
 	picture = GFX_evt_ship_in_orbit
-
 	is_triggered_only = yes
-
 	# biological option
 	option = {
 		trigger = {
-			owner = { NOT = { has_authority = auth_machine_intelligence	} }
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
 		}
 		name = gpm_guardian.101.a
 		FROMFROM = {
@@ -230,7 +243,9 @@ ship_event = {
 	# robot option
 	option = {
 		trigger = {
-			owner = { has_authority = auth_machine_intelligence	}
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
 		}
 		name = gpm_guardian.101.b
 		FROMFROM = {
@@ -243,7 +258,6 @@ ship_event = {
 	}
 }
 
-
 # on completion of special project EGO_THE_SECOND_VISIT
 ship_event = {
 	id = gpm_guardian.102
@@ -252,24 +266,40 @@ ship_event = {
 	location = root
 	show_sound = event_ship_bridge
 	picture = GFX_evt_ship_in_orbit
-
 	is_triggered_only = yes
-
 	# biological option
 	option = {
 		trigger = {
-			owner = { NOT = { has_authority = auth_machine_intelligence	} }
+			owner = {
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
+			}
 		}
 		name = gpm_guardian.102.a
-		hidden_effect = { FROMFROM = { country_event = { id = gpm_guardian.105 } } }
+		hidden_effect = {
+			FROMFROM = {
+				country_event = {
+					id = gpm_guardian.105
+				}
+			}
+		}
 	}
 	# robot option
 	option = {
 		trigger = {
-			owner = { has_authority = auth_machine_intelligence	}
+			owner = {
+				has_authority = auth_machine_intelligence
+			}
 		}
 		name = gpm_guardian.102.b
-		hidden_effect = { FROMFROM = { country_event = { id = gpm_guardian.105 } } }
+		hidden_effect = {
+			FROMFROM = {
+				country_event = {
+					id = gpm_guardian.105
+				}
+			}
+		}
 	}
 }
 
@@ -279,19 +309,14 @@ country_event = {
 	title = "gpm_guardian.105.name"
 	desc = "gpm_guardian.105.desc"
 	show_sound = event_ship_bridge
-
 	diplomatic = yes
 	is_triggered_only = yes
-	
-
 	picture_event_data = {
 		room = ego_nice_room
 	}
-	
-	immediate = { 
+	immediate = {
 		set_global_flag = gpm_ego_chain_completed
 	}
-
 	option = {
 		trigger = {
 			owner = {
@@ -307,7 +332,11 @@ country_event = {
 			}
 		}
 		name = gpm_guardian.105.a		# "We are merely exploring, Xandar."
-		hidden_effect = { country_event = { id = gpm_guardian.110 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.110
+			}
+		}
 	}
 	option = {
 		trigger = {
@@ -321,16 +350,24 @@ country_event = {
 			}
 		}
 		name = gpm_guardian.105.b		# "We are here to claim what is rightfully ours."
-		hidden_effect = { country_event = { id = gpm_guardian.160 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.160
+			}
+		}
 	}
 	option = {
 		trigger = {
-			owner = { 
+			owner = {
 				has_civic = civic_machine_terminator
 			}
 		}
 		name = gpm_guardian.105.c		# "§YTHREAT LEVEL:§! §REXTREME§! §Y---§! §R!EXTERMINATE!§!"
-		hidden_effect = { country_event = { id = gpm_guardian.160 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.160
+			}
+		}
 	}
 	option = {
 		trigger = {
@@ -342,7 +379,11 @@ country_event = {
 			}
 		}
 		name = gpm_guardian.105.d		# "Oh great and mighty one, we have finally found you!"
-		hidden_effect = { country_event = { id = gpm_guardian.170 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.170
+			}
+		}
 	}
 	option = {
 		trigger = {
@@ -359,7 +400,11 @@ country_event = {
 			}
 		}
 		name = gpm_guardian.105.e		# "We come in peace"
-		hidden_effect = { country_event = { id = gpm_guardian.180 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.180
+			}
+		}
 	}
 	option = {
 		trigger = {
@@ -371,12 +416,15 @@ country_event = {
 					has_ethic = ethic_fanatic_xenophobe
 					has_ethic = ethic_authoritarian
 					has_ethic = ethic_fanatic_authoritarian
-		
 				}
 			}
 		}
 		name = gpm_guardian.105.f		# "Whatever you are abomination, you will be purged!"
-		hidden_effect = { country_event = { id = gpm_guardian.160 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.160
+			}
+		}
 	}
 	option = {
 		trigger = {
@@ -391,7 +439,11 @@ country_event = {
 			}
 		}
 		name = gpm_guardian.105.g		# "Who or what are you?"
-		hidden_effect = { country_event = { id = gpm_guardian.111 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.111
+			}
+		}
 	}
 }
 
@@ -400,18 +452,18 @@ country_event = {
 	title = "gpm_guardian.110.name"
 	desc = "gpm_guardian.110.desc"
 	show_sound = event_ship_bridge
-
 	diplomatic = yes
 	is_triggered_only = yes
-
-
 	picture_event_data = {
 		room = ego_nice_room
 	}
-
 	option = {
 		name = gpm_guardian.110.a
-		hidden_effect = { country_event = { id = gpm_guardian.111 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.111
+			}
+		}
 	}
 }
 
@@ -420,18 +472,18 @@ country_event = {
 	title = "gpm_guardian.111.name"
 	desc = "gpm_guardian.111.desc"
 	show_sound = event_ship_bridge
-
 	diplomatic = yes
 	is_triggered_only = yes
-
-
 	picture_event_data = {
 		room = ego_nice_room
 	}
-
 	option = {
 		name = gpm_guardian.111.a
-		hidden_effect = { country_event = { id = gpm_guardian.112 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.112
+			}
+		}
 	}
 }
 
@@ -440,22 +492,26 @@ country_event = {
 	title = "gpm_guardian.112.name"
 	desc = "gpm_guardian.112.desc"
 	show_sound = event_ship_bridge
-
 	diplomatic = yes
 	is_triggered_only = yes
-
-
 	picture_event_data = {
 		room = ego_nice_room
 	}
-
 	option = {
 		name = gpm_guardian.112.a
-		hidden_effect = { country_event = { id = gpm_guardian.120 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.120
+			}
+		}
 	}
 	option = {
 		name = gpm_guardian.112.b
-		hidden_effect = { country_event = { id = gpm_guardian.130 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.130
+			}
+		}
 	}
 }
 
@@ -464,18 +520,18 @@ country_event = {
 	title = "gpm_guardian.120.name"
 	desc = "gpm_guardian.120.desc"
 	show_sound = event_ship_bridge
-
 	diplomatic = yes
 	is_triggered_only = yes
-
-
 	picture_event_data = {
 		room = ego_nice_room
 	}
-
 	option = {
 		name = gpm_guardian.120.a
-		hidden_effect = { country_event = { id = gpm_guardian.121 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.121
+			}
+		}
 	}
 }
 
@@ -484,15 +540,11 @@ country_event = {
 	title = "gpm_guardian.121.name"
 	desc = "gpm_guardian.121.desc"
 	show_sound = event_ship_bridge
-
 	diplomatic = yes
 	is_triggered_only = yes
-
-
 	picture_event_data = {
 		room = ego_nice_room
 	}
-
 	option = {
 		trigger = {
 			owner = {
@@ -508,7 +560,11 @@ country_event = {
 			}
 		}
 		name = gpm_guardian.121.a		# "I think it is best to leave you in peace, Xandar"
-		hidden_effect = { country_event = { id = gpm_guardian.140 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.140
+			}
+		}
 	}
 	option = {
 		trigger = {
@@ -527,7 +583,11 @@ country_event = {
 			}
 		}
 		name = gpm_guardian.121.b		# "Perhaps it is best to study you from a distance"
-		hidden_effect = { country_event = { id = gpm_guardian.150 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.150
+			}
+		}
 	}
 	option = {
 		trigger = {
@@ -557,7 +617,11 @@ country_event = {
 			}
 		}
 		name = gpm_guardian.121.c		# "Fascinating"
-		hidden_effect = { country_event = { id = gpm_guardian.150 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.150
+			}
+		}
 	}
 	option = {
 		trigger = {
@@ -573,7 +637,11 @@ country_event = {
 			}
 		}
 		name = gpm_guardian.121.d		# "You will make a fine weapon, Xandar"
-		hidden_effect = { country_event = { id = gpm_guardian.160 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.160
+			}
+		}
 	}
 	option = {
 		trigger = {
@@ -589,7 +657,11 @@ country_event = {
 			}
 		}
 		name = gpm_guardian.121.e		# "It is kinder to put you down right now, so we will."
-		hidden_effect = { country_event = { id = gpm_guardian.160 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.160
+			}
+		}
 	}
 }
 
@@ -598,18 +670,18 @@ country_event = {
 	title = "gpm_guardian.130.name"
 	desc = "gpm_guardian.130.desc"
 	show_sound = event_ship_bridge
-
 	diplomatic = yes
 	is_triggered_only = yes
-
-
 	picture_event_data = {
 		room = ego_nice_room
 	}
-
 	option = {
 		name = gpm_guardian.130.a
-		hidden_effect = { country_event = { id = gpm_guardian.120 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.120
+			}
+		}
 	}
 }
 
@@ -621,19 +693,14 @@ country_event = {
 	title = "gpm_guardian.140.name"
 	desc = "gpm_guardian.140.desc"
 	show_sound = event_ship_bridge
-
 	diplomatic = yes
 	is_triggered_only = yes
-
-
 	picture_event_data = {
 		room = ego_nice_room
 	}
-
 	immediate = {
 		set_country_flag = gpm_ego_friendly_reward
 	}
-
 	option = {
 		name = gpm_guardian.140.a
 		custom_tooltip = gpm_guardian.140.aTT
@@ -641,12 +708,18 @@ country_event = {
 			random_system = {
 				limit = {
 					has_star_flag = gpm_ego_spawned
-					NOT = { has_global_flag = gpm_ego_gaia_planet_spawned }
+					NOT = {
+						has_global_flag = gpm_ego_gaia_planet_spawned
+					}
 				}
 				save_event_target_as = gpm_guardians_ego_system
-				event_target:gpm_ego = { destroy_ambient_object = this }
+				event_target:gpm_ego = {
+					destroy_ambient_object = this
+				}
 				random_ambient_object = {
-					limit = { has_ambient_object_flag = gpm_ambient_ego_flag }
+					limit = {
+						has_ambient_object_flag = gpm_ambient_ego_flag
+					}
 					destroy_ambient_object = this
 				}
 				gpm_spawn_xandar_gaia_world = yes
@@ -660,7 +733,7 @@ country_event = {
 					limit = {
 						is_ship_size = gpm_ego
 					}
-					fleet = { 
+					fleet = {
 						destroy_fleet = THIS
 					}
 				}
@@ -675,18 +748,14 @@ country_event = {
 	title = "gpm_guardian.150.name"
 	desc = "gpm_guardian.150.desc"
 	show_sound = event_ship_bridge
-
 	diplomatic = yes
 	is_triggered_only = yes
-
-
 	picture_event_data = {
 		room = ego_nice_room
 	}
-
 	option = {
 		name = gpm_guardian.150.a
-		custom_tooltip =  gpm_guardian.150.aTT
+		custom_tooltip = gpm_guardian.150.aTT
 		add_monthly_resource_mult = {
 			resource = society_research
 			value = @tier3researchreward
@@ -702,8 +771,12 @@ country_event = {
 		hidden_effect = {
 			#create custom scientist
 			random_country = {
-				limit = { is_country_type = default }
-				owner_species = { save_event_target_as = gpm_random_species }
+				limit = {
+					is_country_type = default
+				}
+				owner_species = {
+					save_event_target_as = gpm_random_species
+				}
 			}
 			create_leader = {
 				class = scientist
@@ -721,46 +794,48 @@ country_event = {
 		}
 		#give terraforming tech
 		if = {
-			limit = { 
-				has_technology = "tech_terrestrial_sculpting" 
-				has_technology = "tech_ecological_adaptation" 
+			limit = {
+				has_technology = "tech_terrestrial_sculpting"
+				has_technology = "tech_ecological_adaptation"
 			}
 			add_research_option = tech_climate_restoration
 			hidden_effect = {
 				add_tech_progress = {
-					tech = tech_climate_restoration 
+					tech = tech_climate_restoration
 					progress = 0.75
 				}
 			}
 		}
 		if = {
 			limit = {
-				has_technology = "tech_terrestrial_sculpting" 
-				NOT = { has_technology = "tech_ecological_adaptation" }
+				has_technology = "tech_terrestrial_sculpting"
+				NOT = {
+					has_technology = "tech_ecological_adaptation"
+				}
 			}
 			add_research_option = tech_ecological_adaptation
 			hidden_effect = {
 				add_tech_progress = {
-					tech = tech_ecological_adaptation 
+					tech = tech_ecological_adaptation
 					progress = 0.75
 				}
 			}
 		}
 		if = {
-			limit = { 
+			limit = {
 				NAND = {
-					has_technology = "tech_terrestrial_sculpting" 
-					has_technology = "tech_ecological_adaptation" 
+					has_technology = "tech_terrestrial_sculpting"
+					has_technology = "tech_ecological_adaptation"
 				}
 			}
 			add_research_option = tech_terrestrial_sculpting
 			hidden_effect = {
 				add_tech_progress = {
-					tech = tech_terrestrial_sculpting 
+					tech = tech_terrestrial_sculpting
 					progress = 0.75
 				}
 			}
-		}		
+		}
 	}
 }
 
@@ -770,22 +845,22 @@ country_event = {
 	title = "gpm_guardian.160.name"
 	desc = "gpm_guardian.160.desc"
 	show_sound = event_ship_bridge
-
 	diplomatic = yes
 	is_triggered_only = yes
-
-
 	picture_event_data = {
 		room = ego_angry_room
 	}
-
 	option = {
 		name = gpm_guardian.160.a
 		custom_tooltip = gpm_guardian.160.aTT
 		hidden_effect = {
 			random_country = {
-				limit = { has_country_flag = gpm_ego_country }
-				set_faction_hostility = { set_hostile = yes }
+				limit = {
+					has_country_flag = gpm_ego_country
+				}
+				set_faction_hostility = {
+					set_hostile = yes
+				}
 			}
 		}
 	}
@@ -803,26 +878,24 @@ country_event = {
 	desc = "gpm_guardian.161.desc"
 	show_sound = event_ship_bridge
 	picture = GFX_evt_ship_in_orbit
-
 	is_triggered_only = yes
-
 	trigger = {
 		FROM = {
 			has_country_flag = gpm_ego_country
 		}
 		#FROMFROMFROM = { any_owned_ship = { is_ship_size = gpm_ego } }
-		THIS = { 
+		THIS = {
 			has_country_flag = gpm_ego_first_meet
-			NOT = { has_country_flag = gpm_ego_first_fleet_destroyed }
+			NOT = {
+				has_country_flag = gpm_ego_first_fleet_destroyed
+			}
 		}
 	}
-
 	immediate = {
 		THIS = {
 			set_country_flag = gpm_ego_first_fleet_destroyed
 		}
 	}
-
 	option = {
 		name = gpm_guardian.161.a
 	}
@@ -837,20 +910,21 @@ country_event = {
 	location = root
 	show_sound = event_ship_bridge
 	picture = GFX_evt_ship_in_orbit
-
 	is_triggered_only = yes
-
 	trigger = {
 		THIS = {
 			is_country_type = guardian_horror
 			has_country_flag = gpm_ego_country
-			FROMFROM = { is_ship_size = gpm_ego }
+			FROMFROM = {
+				is_ship_size = gpm_ego
+			}
 		}
 		FROM = {
-			NOT = { has_country_flag = "gpm_ego_friendly_reward"}
+			NOT = {
+				has_country_flag = "gpm_ego_friendly_reward"
+			}
 		}
 	}
-
 	option = {
 		name = gpm_guardian.162.a
 		custom_tooltip = gpm_guardian.162.aTT
@@ -862,18 +936,18 @@ country_event = {
 	title = "gpm_guardian.170.name"
 	desc = "gpm_guardian.170.desc"
 	show_sound = event_ship_bridge
-
 	diplomatic = yes
 	is_triggered_only = yes
-
-
 	picture_event_data = {
 		room = ego_nice_room
 	}
-
 	option = {
 		name = gpm_guardian.170.a
-		hidden_effect = { country_event = { id = gpm_guardian.171 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.171
+			}
+		}
 	}
 }
 
@@ -882,18 +956,18 @@ country_event = {
 	title = "gpm_guardian.171.name"
 	desc = "gpm_guardian.171.desc"
 	show_sound = event_ship_bridge
-
 	diplomatic = yes
 	is_triggered_only = yes
-
-
 	picture_event_data = {
 		room = ego_nice_room
 	}
-
 	option = {
 		name = gpm_guardian.171.a
-		hidden_effect = { country_event = { id = gpm_guardian.172 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.172
+			}
+		}
 	}
 }
 
@@ -902,18 +976,18 @@ country_event = {
 	title = "gpm_guardian.172.name"
 	desc = "gpm_guardian.172.desc"
 	show_sound = event_ship_bridge
-
 	diplomatic = yes
 	is_triggered_only = yes
-
-
 	picture_event_data = {
 		room = ego_nice_room
 	}
-
 	option = {
 		name = gpm_guardian.172.a
-		hidden_effect = { country_event = { id = gpm_guardian.173 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.173
+			}
+		}
 	}
 }
 
@@ -922,22 +996,26 @@ country_event = {
 	title = "gpm_guardian.173.name"
 	desc = "gpm_guardian.173.desc"
 	show_sound = event_ship_bridge
-
 	diplomatic = yes
 	is_triggered_only = yes
-
-
 	picture_event_data = {
 		room = ego_nice_room
 	}
-
 	option = {
 		name = gpm_guardian.173.a
-		hidden_effect = { country_event = { id = gpm_guardian.160 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.160
+			}
+		}
 	}
 	option = {
 		name = gpm_guardian.173.b
-		hidden_effect = { country_event = { id = gpm_guardian.140 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.140
+			}
+		}
 	}
 }
 
@@ -946,17 +1024,17 @@ country_event = {
 	title = "gpm_guardian.180.name"
 	desc = "gpm_guardian.180.desc"
 	show_sound = event_ship_bridge
-
 	diplomatic = yes
 	is_triggered_only = yes
-
-
 	picture_event_data = {
 		room = ego_nice_room
 	}
-
 	option = {
 		name = gpm_guardian.180.a
-		hidden_effect = { country_event = { id = gpm_guardian.110 } }
+		hidden_effect = {
+			country_event = {
+				id = gpm_guardian.110
+			}
+		}
 	}
 }

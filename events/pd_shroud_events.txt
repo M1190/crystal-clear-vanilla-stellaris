@@ -1,8 +1,5 @@
 namespace = pdshroud
-
 #Destory Temple
-
-
 planet_event = {
 	id = pdshroud.00
 	title = pdshroud.00.name
@@ -10,11 +7,9 @@ planet_event = {
 	picture = GFX_evt_alien_planet
 	show_sound = event_alien_nature
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
-		remove_planet_flag = pd_shroud_whispers	
+		remove_planet_flag = pd_shroud_whispers
 		remove_planet_flag = pd_shroud_composer
 		remove_modifier = pdwhispers
 		remove_modifier = pdnowhispers
@@ -25,17 +20,22 @@ planet_event = {
 		remove_modifier = pddesire
 		remove_modifier = pdnodesire
 	}
-
 	option = {
 		name = pdshroud.00.a
 		custom_tooltip = pdshroud.00.a.desc
 		hidden_effect = {
 			random_list = {
-				33 = { change_pc = pc_gaia }
-				33 = { change_pc = pc_hot_gaia }
-				33 = { change_pc = pc_cold_gaia }
+				33 = {
+					change_pc = pc_gaia
+				}
+				33 = {
+					change_pc = pc_hot_gaia
+				}
+				33 = {
+					change_pc = pc_cold_gaia
+				}
 			}
-			reroll_deposits = yes 
+			reroll_deposits = yes
 			add_deposit = d_pdshroudtempleruin
 			remove_deposit = d_pdgaia
 			add_deposit = d_pdgaia
@@ -43,15 +43,15 @@ planet_event = {
 	}
 }
 
-
 event = {
 	id = pdshroud.01
 	hide_window = yes
 	is_triggered_only = yes
 	fire_only_once = yes
-	immediate = { set_global_flag = planetarydiversityshroud }
+	immediate = {
+		set_global_flag = planetarydiversityshroud
+	}
 }
-
 
 #Whisper in the Void
 #SurveyPlanet
@@ -61,33 +61,38 @@ ship_event = {
 	picture = GFX_evt_shroud1
 	location = from
 	show_sound = event_ship_bridge
-
 	desc = {
 		text = pdshroud.10.desc
-		trigger = { 
-			NOT = { 
+		trigger = {
+			NOT = {
 				OR = {
-					owner = { has_ascension_perk = ap_mind_over_matter } 
-					owner = { has_ascension_perk = ap_transcendence } 
+					owner = {
+						has_ascension_perk = ap_mind_over_matter
+					}
+					owner = {
+						has_ascension_perk = ap_transcendence
+					}
 				}
 			}
 		}
 	}
 	desc = {
 		text = pdshroud.10.desc.mom
-		trigger = { 
-			owner = { has_ascension_perk = ap_mind_over_matter } 
+		trigger = {
+			owner = {
+				has_ascension_perk = ap_mind_over_matter
+			}
 		}
 	}
 	desc = {
 		text = pdshroud.10.desc.tra
-		trigger = { 
-			owner = { has_ascension_perk = ap_transcendence } 
+		trigger = {
+			owner = {
+				has_ascension_perk = ap_transcendence
+			}
 		}
 	}
-
 	is_triggered_only = yes
-
 	trigger = {
 		from = {
 			has_planet_flag = pd_shroud_whispers
@@ -103,13 +108,11 @@ ship_event = {
 			}
 		}
 	}
-
 	immediate = {
 		owner = {
 			set_country_flag = found_pd_shroud_whispers_planet
 		}
 	}
-
 	option = {
 		name = pdshroud.10.a
 	}
@@ -122,7 +125,6 @@ planet_event = {
 	picture = GFX_evt_alien_ruins
 	show_sound = event_mystic_reveal
 	location = root
-
 	pre_triggers = {
 		has_owner = yes
 		is_homeworld = no
@@ -131,41 +133,43 @@ planet_event = {
 		is_occupied_flag = no
 	}
 	trigger = {
-		has_planet_flag = pd_shroud_whispers	
+		has_planet_flag = pd_shroud_whispers
 		owner = {
 			NOR = {
 				has_authority = auth_machine_intelligence
 			}
 		}
-		
-		
 	}
-
 	is_triggered_only = yes
-
 	immediate = {
-		set_planet_flag = colony_event	
+		set_planet_flag = colony_event
 	}
-
 	option = {
 		name = pdshroud.11.a
-			add_deposit = d_pdshroud_whispers
-			hidden_effect = {
-				planet_event = { id = pdshroud.12 days = 720 }
+		add_deposit = d_pdshroud_whispers
+		hidden_effect = {
+			planet_event = {
+				id = pdshroud.12
+				days = 720
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.11.b
 		hidden_effect = {
-			planet_event = { id = pdshroud.13 days = 720 } 
+			planet_event = {
+				id = pdshroud.13
+				days = 720
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.11.c
 		hidden_effect = {
-			planet_event = { id = pdshroud.00 days = 7 } 
+			planet_event = {
+				id = pdshroud.00
+				days = 7
+			}
 			remove_deposit = d_pdshroud_whispers
 		}
 	}
@@ -178,25 +182,32 @@ planet_event = {
 	picture = GFX_evt_surreal_visions
 	show_sound = event_mystic_reveal
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
 		add_modifier = {
 			modifier = pdwhispers
 			days = -1
-		}	
+		}
 	}
-
 	option = {
 		name = pdshroud.12.a
-		hidden_effect = { owner = { country_event = { id = pdshroud.15 days = 7200 random = 3600 } }	}
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = pdshroud.15
+					days = 7200
+					random = 3600
+				}
+			}
+		}
 	}
-
 	option = {
 		name = pdshroud.12.b
 		hidden_effect = {
-			planet_event = { id = pdshroud.00 days = 7 } 
+			planet_event = {
+				id = pdshroud.00
+				days = 7
+			}
 			remove_deposit = d_pdshroud_whispers
 		}
 	}
@@ -209,32 +220,33 @@ planet_event = {
 	picture = GFX_evt_colony_settlement
 	show_sound = event_default
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
 		add_modifier = {
 			modifier = pdnowhispers
 			days = -1
 		}
 	}
-
 	option = {
 		name = pdshroud.13.a
 	}
-
 	option = {
 		name = pdshroud.13.b
 		add_deposit = d_pdshroud_whispers
 		hidden_effect = {
-			planet_event = { id = pdshroud.14 days = 720 } 
+			planet_event = {
+				id = pdshroud.14
+				days = 720
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.13.c
 		hidden_effect = {
-			planet_event = { id = pdshroud.00 days = 7 } 
+			planet_event = {
+				id = pdshroud.00
+				days = 7
+			}
 			remove_deposit = d_pdshroud_whispers
 		}
 	}
@@ -247,7 +259,6 @@ planet_event = {
 	picture = GFX_evt_surreal_visions
 	show_sound = event_mystic_reveal
 	location = root
-
 	immediate = {
 		remove_modifier = pdnowhispers
 		add_modifier = {
@@ -255,18 +266,26 @@ planet_event = {
 			days = -1
 		}
 	}
-
 	is_triggered_only = yes
-
 	option = {
 		name = pdshroud.14.a
-		hidden_effect = { owner = { country_event = { id = pdshroud.15 days = 7200 random = 3600 } } } 
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = pdshroud.15
+					days = 7200
+					random = 3600
+				}
+			}
+		}
 	}
-
 	option = {
 		name = pdshroud.12.b
 		hidden_effect = {
-			planet_event = { id = pdshroud.00 days = 7 } 
+			planet_event = {
+				id = pdshroud.00
+				days = 7
+			}
 			remove_deposit = d_pdshroud_whispers
 		}
 	}
@@ -278,62 +297,70 @@ country_event = {
 	desc = pdshroud.15.desc
 	picture = GFX_evt_engineering_research
 	show_sound = event_laboratory_sound
-	location = root	
-
+	location = root
 	is_triggered_only = yes
-
 	option = {
 		name = pdshroud.15.a
 		locked_random_list = {
-				10 = {
-					add_random_research_option = {
-						add_progress = 0.20
-						area = engineering
-						ignore_prereqs = no
-						fail_effects = {
-							add_monthly_resource_mult = {
-								resource = engineering_research
-								value = @tier3researchreward
-								min = @tier3researchmin
-								max = @tier3researchmax
-							}
-						}
-					}
-				}
-				10 = {
-					add_random_research_option = {
-						add_progress = 0.20
-						area = physics
-						ignore_prereqs = no
-						fail_effects = {
-							add_monthly_resource_mult = {
-								resource = physics_research
-								value = @tier3researchreward
-								min = @tier3researchmin
-								max = @tier3researchmax
-							}
-						}
-					}
-				}
-				10 = {
-					add_random_research_option = {
-						add_progress = 0.20
-						area = society
-						ignore_prereqs = no
-						fail_effects = {
-							add_monthly_resource_mult = {
-								resource = society_research
-								value = @tier3researchreward
-								min = @tier3researchmin
-								max = @tier3researchmax
-							}
+			10 = {
+				add_random_research_option = {
+					add_progress = 0.2
+					area = engineering
+					ignore_prereqs = no
+					fail_effects = {
+						add_monthly_resource_mult = {
+							resource = engineering_research
+							value = @tier3researchreward
+							min = @tier3researchmin
+							max = @tier3researchmax
 						}
 					}
 				}
 			}
+			10 = {
+				add_random_research_option = {
+					add_progress = 0.2
+					area = physics
+					ignore_prereqs = no
+					fail_effects = {
+						add_monthly_resource_mult = {
+							resource = physics_research
+							value = @tier3researchreward
+							min = @tier3researchmin
+							max = @tier3researchmax
+						}
+					}
+				}
+			}
+			10 = {
+				add_random_research_option = {
+					add_progress = 0.2
+					area = society
+					ignore_prereqs = no
+					fail_effects = {
+						add_monthly_resource_mult = {
+							resource = society_research
+							value = @tier3researchreward
+							min = @tier3researchmin
+							max = @tier3researchmax
+						}
+					}
+				}
+			}
+		}
 		hidden_effect = {
-		owner = { country_event = { id = pdshroud.15 days = 7200 random = 3600 } }
-		from = { planet_event = { id = pdshroud.16 } }
+			owner = {
+				country_event = {
+					id = pdshroud.15
+					days = 7200
+					random = 3600
+				}
+			}
+			from = {
+				planet_event = {
+					id = pdshroud.16
+				}
+			}
 		}
 	}
 }
@@ -341,10 +368,8 @@ country_event = {
 planet_event = {
 	id = pdshroud.16
 	hide_window = yes
-	location = root	
-
+	location = root
 	is_triggered_only = yes
-
 	immediate = {
 		random_owned_pop = {
 			kill_pop = yes
@@ -354,9 +379,7 @@ planet_event = {
 			days = 360
 		}
 	}
-	
 }
-
 
 #Composer of Strands
 #SurveyPlanet
@@ -366,33 +389,38 @@ ship_event = {
 	picture = GFX_evt_shroud1
 	location = from
 	show_sound = event_ship_bridge
-	
 	desc = {
 		text = pdshroud.20.desc
-		trigger = { 
-			NOT = { 
+		trigger = {
+			NOT = {
 				OR = {
-					owner = { has_ascension_perk = ap_mind_over_matter } 
-					owner = { has_ascension_perk = ap_transcendence } 
+					owner = {
+						has_ascension_perk = ap_mind_over_matter
+					}
+					owner = {
+						has_ascension_perk = ap_transcendence
+					}
 				}
 			}
 		}
 	}
 	desc = {
 		text = pdshroud.20.desc.mom
-		trigger = { 
-			owner = { has_ascension_perk = ap_mind_over_matter } 
+		trigger = {
+			owner = {
+				has_ascension_perk = ap_mind_over_matter
+			}
 		}
 	}
 	desc = {
 		text = pdshroud.20.desc.tra
-		trigger = { 
-			owner = { has_ascension_perk = ap_transcendence } 
+		trigger = {
+			owner = {
+				has_ascension_perk = ap_transcendence
+			}
 		}
 	}
-
 	is_triggered_only = yes
-
 	trigger = {
 		from = {
 			has_planet_flag = pd_shroud_composer
@@ -408,13 +436,11 @@ ship_event = {
 			}
 		}
 	}
-
 	immediate = {
 		owner = {
 			set_country_flag = found_pd_shroud_composer_planet
 		}
 	}
-
 	option = {
 		name = pdshroud.20.a
 	}
@@ -427,7 +453,6 @@ planet_event = {
 	picture = GFX_evt_alien_ruins
 	show_sound = event_dangerous_animals
 	location = root
-
 	pre_triggers = {
 		has_owner = yes
 		is_homeworld = no
@@ -436,42 +461,44 @@ planet_event = {
 		is_occupied_flag = no
 	}
 	trigger = {
-		has_planet_flag = pd_shroud_composer	
+		has_planet_flag = pd_shroud_composer
 		owner = {
 			NOR = {
 				has_authority = auth_machine_intelligence
 			}
 		}
-		
-		
 	}
-
 	is_triggered_only = yes
-
 	immediate = {
-		set_planet_flag = colony_event	
+		set_planet_flag = colony_event
 	}
-
 	option = {
 		name = pdshroud.21.a
-			add_deposit = d_pdshroud_composer
-			hidden_effect = {
-				planet_event = { id = pdshroud.22 days = 720 }
+		add_deposit = d_pdshroud_composer
+		hidden_effect = {
+			planet_event = {
+				id = pdshroud.22
+				days = 720
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.21.b
 		hidden_effect = {
-			planet_event = { id = pdshroud.25 days = 720 } 
+			planet_event = {
+				id = pdshroud.25
+				days = 720
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.21.c
 		hidden_effect = {
-			planet_event = { id = pdshroud.00 days = 7 }
-			remove_deposit = d_pdshroud_composer 
+			planet_event = {
+				id = pdshroud.00
+				days = 7
+			}
+			remove_deposit = d_pdshroud_composer
 		}
 	}
 }
@@ -483,23 +510,22 @@ planet_event = {
 	picture = GFX_evt_discovered_hidden_door
 	show_sound = event_mystic_reveal
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
 		add_modifier = {
 			modifier = pdcomposer
 			days = -1
 		}
 	}
-
 	option = {
 		name = pdshroud.22.a
-			hidden_effect = {
-				planet_event = { id = pdshroud.23 days = 14 }
+		hidden_effect = {
+			planet_event = {
+				id = pdshroud.23
+				days = 14
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.22.b
 	}
@@ -512,51 +538,73 @@ planet_event = {
 	picture = GFX_evt_habitable_dig_site
 	show_sound = event_dig_site
 	location = root
-
 	is_triggered_only = yes
-
 	option = {
 		name = pdshroud.23.a
-			hidden_effect = {
-			owner = { country_event = { id = pdshroud.24 days = 7 } } 
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = pdshroud.24
+					days = 7
+				}
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.23.b
-			hidden_effect = {
-			owner = { country_event = { id = pdshroud.24 days = 7 } } 
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = pdshroud.24
+					days = 7
+				}
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.23.c
-			hidden_effect = {
-			owner = { country_event = { id = pdshroud.24 days = 7 } } 
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = pdshroud.24
+					days = 7
+				}
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.23.d
-			hidden_effect = {
-			owner = { country_event = { id = pdshroud.24 days = 7 } } 
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = pdshroud.24
+					days = 7
+				}
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.23.e
-			hidden_effect = {
-			owner = { country_event = { id = pdshroud.24 days = 7 } } 
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = pdshroud.24
+					days = 7
+				}
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.23.f
-			hidden_effect = {
-			owner = { country_event = { id = pdshroud.24 days = 7 } }
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = pdshroud.24
+					days = 7
+				}
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.23.g
 	}
@@ -569,11 +617,11 @@ country_event = {
 	picture = GFX_evt_genetic_modification
 	show_sound = event_big_door_opening
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
-		give_technology = { tech = tech_pdshroudcomposer }
+		give_technology = {
+			tech = tech_pdshroudcomposer
+		}
 		every_owned_pop = {
 			limit = {
 				is_robot_pop = no
@@ -585,7 +633,6 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = pdshroud.24.a
 	}
@@ -598,32 +645,33 @@ planet_event = {
 	picture = GFX_evt_habitable_dig_site
 	show_sound = event_life_support_fail
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
 		add_modifier = {
 			modifier = pdnocomposer
 			days = -1
 		}
 	}
-
 	option = {
 		name = pdshroud.25.a
 		add_deposit = d_pdshroud_composer
-			hidden_effect = {
-				planet_event = { id = pdshroud.26 days = 180 } 
+		hidden_effect = {
+			planet_event = {
+				id = pdshroud.26
+				days = 180
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.25.b
 	}
-
 	option = {
 		name = pdshroud.25.c
 		hidden_effect = {
-			planet_event = { id = pdshroud.00 days = 7 } 
+			planet_event = {
+				id = pdshroud.00
+				days = 7
+			}
 			remove_deposit = d_pdshroud_composer
 		}
 	}
@@ -636,9 +684,7 @@ planet_event = {
 	picture = GFX_evt_discovered_hidden_door
 	show_sound = event_mystic_reveal
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
 		remove_modifier = pdnocomposer
 		add_modifier = {
@@ -646,22 +692,25 @@ planet_event = {
 			days = -1
 		}
 	}
-
 	option = {
 		name = pdshroud.26.a
 		hidden_effect = {
-				planet_event = { id = pdshroud.23 days = 14 } 
+			planet_event = {
+				id = pdshroud.23
+				days = 14
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.26.b
 	}
-
 	option = {
 		name = pdshroud.26.c
 		hidden_effect = {
-			planet_event = { id = pdshroud.00 days = 7 } 
+			planet_event = {
+				id = pdshroud.00
+				days = 7
+			}
 			remove_deposit = d_pdshroud_composer
 		}
 	}
@@ -675,33 +724,38 @@ ship_event = {
 	picture = GFX_evt_shroud1
 	location = from
 	show_sound = event_ship_bridge
-
 	desc = {
 		text = pdshroud.30.desc
-		trigger = { 
-			NOT = { 
+		trigger = {
+			NOT = {
 				OR = {
-					owner = { has_ascension_perk = ap_mind_over_matter } 
-					owner = { has_ascension_perk = ap_transcendence } 
+					owner = {
+						has_ascension_perk = ap_mind_over_matter
+					}
+					owner = {
+						has_ascension_perk = ap_transcendence
+					}
 				}
 			}
 		}
 	}
 	desc = {
 		text = pdshroud.30.desc.mom
-		trigger = { 
-			owner = { has_ascension_perk = ap_mind_over_matter } 
+		trigger = {
+			owner = {
+				has_ascension_perk = ap_mind_over_matter
+			}
 		}
 	}
 	desc = {
 		text = pdshroud.30.desc.tra
-		trigger = { 
-			owner = { has_ascension_perk = ap_transcendence } 
+		trigger = {
+			owner = {
+				has_ascension_perk = ap_transcendence
+			}
 		}
 	}
-
 	is_triggered_only = yes
-
 	trigger = {
 		from = {
 			has_planet_flag = pd_shroud_eater
@@ -717,13 +771,11 @@ ship_event = {
 			}
 		}
 	}
-
 	immediate = {
 		owner = {
 			set_country_flag = found_pd_shroud_eater_planet
 		}
 	}
-
 	option = {
 		name = pdshroud.30.a
 	}
@@ -736,7 +788,6 @@ planet_event = {
 	picture = GFX_evt_alien_ruins
 	show_sound = event_mystic_reveal
 	location = root
-
 	pre_triggers = {
 		has_owner = yes
 		is_homeworld = no
@@ -745,42 +796,44 @@ planet_event = {
 		is_occupied_flag = no
 	}
 	trigger = {
-		has_planet_flag = pd_shroud_eater	
+		has_planet_flag = pd_shroud_eater
 		owner = {
 			NOR = {
 				has_authority = auth_machine_intelligence
 			}
 		}
-		
-		
 	}
-
 	is_triggered_only = yes
-
 	immediate = {
-		set_planet_flag = colony_event	
+		set_planet_flag = colony_event
 	}
-
 	option = {
 		name = pdshroud.31.a
-			hidden_effect = {
-				planet_event = { id = pdshroud.32 days = 720 }
+		hidden_effect = {
+			planet_event = {
+				id = pdshroud.32
+				days = 720
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.31.b
 		add_deposit = d_pdshroud_eater
 		hidden_effect = {
-			planet_event = { id = pdshroud.33 days = 720 }
+			planet_event = {
+				id = pdshroud.33
+				days = 720
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.31.c
 		hidden_effect = {
-			planet_event = { id = pdshroud.00 days = 7 }
-			remove_deposit = d_pdshroud_eater 
+			planet_event = {
+				id = pdshroud.00
+				days = 7
+			}
+			remove_deposit = d_pdshroud_eater
 		}
 	}
 }
@@ -792,35 +845,39 @@ planet_event = {
 	picture = GFX_evt_interior_battle
 	show_sound = event_conversation
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
 		add_modifier = {
 			modifier = pdnoeater
 			days = -1
 		}
 	}
-
 	option = {
 		name = pdshroud.32.a
 		hidden_effect = {
-				planet_event = { id = pdshroud.34 days = 180 } 
+			planet_event = {
+				id = pdshroud.34
+				days = 180
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.32.b
 		add_deposit = d_pdshroud_eater
 		hidden_effect = {
-				planet_event = { id = pdshroud.33 days = 180 } 
+			planet_event = {
+				id = pdshroud.33
+				days = 180
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.32.c
 		hidden_effect = {
-			planet_event = { id = pdshroud.00 days = 7 } 
+			planet_event = {
+				id = pdshroud.00
+				days = 7
+			}
 			remove_deposit = d_pdshroud_eater
 		}
 	}
@@ -833,11 +890,14 @@ planet_event = {
 	picture = GFX_evt_gray_gooed_planet
 	show_sound = event_bad_omen
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
-		owner = { add_modifier = { modifier = pd_eater_of_worlds days = -1 } }
+		owner = {
+			add_modifier = {
+				modifier = pd_eater_of_worlds
+				days = -1
+			}
+		}
 		random_owned_pop = {
 			kill_pop = yes
 		}
@@ -847,25 +907,33 @@ planet_event = {
 		}
 		remove_modifier = pdnoeater
 		IF = {
-			LIMIT = { NOT = { has_modifier = pdeater } }
+			LIMIT = {
+				NOT = {
+					has_modifier = pdeater
+				}
+			}
 			add_modifier = {
 				modifier = pdeater
 				days = -1
 			}
 		}
 	}
-
 	option = {
 		name = pdshroud.33.a
 		hidden_effect = {
-			planet_event = { id = pdshroud.35 days = 9000 }
+			planet_event = {
+				id = pdshroud.35
+				days = 9000
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.33.b
 		hidden_effect = {
-			planet_event = { id = pdshroud.00 days = 7 } 
+			planet_event = {
+				id = pdshroud.00
+				days = 7
+			}
 			remove_deposit = d_pdshroud_eater
 		}
 	}
@@ -878,17 +946,17 @@ planet_event = {
 	picture = GFX_evt_interior_battle
 	show_sound = event_ground_battle
 	location = root
-
 	is_triggered_only = yes
-
 	option = {
 		name = pdshroud.34.a
 	}
-
 	option = {
 		name = pdshroud.34.b
 		hidden_effect = {
-			planet_event = { id = pdshroud.00 days = 7 } 
+			planet_event = {
+				id = pdshroud.00
+				days = 7
+			}
 			remove_deposit = d_pdshroud_eater
 		}
 	}
@@ -897,32 +965,45 @@ planet_event = {
 planet_event = {
 	id = pdshroud.35
 	hide_window = yes
-	location = root	
-
+	location = root
 	is_triggered_only = yes
-
 	immediate = {
 		random_list = {
 			75 = {
-				random_owned_pop = { kill_pop = yes }
-				random_owned_pop = { kill_pop = yes }
+				random_owned_pop = {
+					kill_pop = yes
+				}
+				random_owned_pop = {
+					kill_pop = yes
+				}
 				add_modifier = {
 					modifier = pdeater_unhappiness_planet_1
 					days = 1800
 				}
 			}
 			25 = {
-				random_owned_pop = { kill_pop = yes }
-				random_owned_pop = { kill_pop = yes }
-				random_owned_pop = { kill_pop = yes }
-				random_owned_pop = { kill_pop = yes }
+				random_owned_pop = {
+					kill_pop = yes
+				}
+				random_owned_pop = {
+					kill_pop = yes
+				}
+				random_owned_pop = {
+					kill_pop = yes
+				}
+				random_owned_pop = {
+					kill_pop = yes
+				}
 				add_modifier = {
 					modifier = pdeater_unhappiness_planet_2
 					days = 1800
 				}
 			}
 		}
-		planet_event = { id = pdshroud.35 days = 9000 }
+		planet_event = {
+			id = pdshroud.35
+			days = 9000
+		}
 	}
 }
 
@@ -934,33 +1015,38 @@ ship_event = {
 	picture = GFX_evt_shroud1
 	location = from
 	show_sound = event_ship_bridge
-
 	desc = {
 		text = pdshroud.40.desc
-		trigger = { 
-			NOT = { 
+		trigger = {
+			NOT = {
 				OR = {
-					owner = { has_ascension_perk = ap_mind_over_matter } 
-					owner = { has_ascension_perk = ap_transcendence } 
+					owner = {
+						has_ascension_perk = ap_mind_over_matter
+					}
+					owner = {
+						has_ascension_perk = ap_transcendence
+					}
 				}
 			}
 		}
 	}
 	desc = {
 		text = pdshroud.40.desc.mom
-		trigger = { 
-			owner = { has_ascension_perk = ap_mind_over_matter } 
+		trigger = {
+			owner = {
+				has_ascension_perk = ap_mind_over_matter
+			}
 		}
 	}
 	desc = {
 		text = pdshroud.40.desc.tra
-		trigger = { 
-			owner = { has_ascension_perk = ap_transcendence } 
+		trigger = {
+			owner = {
+				has_ascension_perk = ap_transcendence
+			}
 		}
 	}
-
 	is_triggered_only = yes
-
 	trigger = {
 		from = {
 			has_planet_flag = pd_shroud_desire
@@ -976,13 +1062,11 @@ ship_event = {
 			}
 		}
 	}
-
 	immediate = {
 		owner = {
 			set_country_flag = found_pd_shroud_desire_planet
 		}
 	}
-
 	option = {
 		name = pdshroud.40.a
 	}
@@ -995,7 +1079,6 @@ planet_event = {
 	picture = GFX_evt_alien_ruins
 	show_sound = event_mystic_reveal
 	location = root
-
 	pre_triggers = {
 		has_owner = yes
 		is_homeworld = no
@@ -1004,39 +1087,43 @@ planet_event = {
 		is_occupied_flag = no
 	}
 	trigger = {
-		has_planet_flag = pd_shroud_desire	
+		has_planet_flag = pd_shroud_desire
 		owner = {
 			NOR = {
 				has_authority = auth_machine_intelligence
 			}
-		}		
+		}
 	}
-
 	is_triggered_only = yes
-
 	immediate = {
-		set_planet_flag = colony_event	
+		set_planet_flag = colony_event
 	}
-
 	option = {
 		name = pdshroud.41.a
 		add_deposit = d_pdshroud_desire
-			hidden_effect = {
-				planet_event = { id = pdshroud.42 days = 720 } 
+		hidden_effect = {
+			planet_event = {
+				id = pdshroud.42
+				days = 720
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.41.b
 		hidden_effect = {
-			planet_event = { id = pdshroud.43 days = 720 }
+			planet_event = {
+				id = pdshroud.43
+				days = 720
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.41.c
 		hidden_effect = {
-			planet_event = { id = pdshroud.00 days = 7 } 
+			planet_event = {
+				id = pdshroud.00
+				days = 7
+			}
 		}
 	}
 }
@@ -1048,27 +1135,29 @@ planet_event = {
 	picture = GFX_evt_tradestation_interior
 	show_sound = event_celebration
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
 		add_modifier = {
 			modifier = pddesire
 			days = -1
-		}	
-	}
-
-	option = {
-		name = pdshroud.42.a
-			hidden_effect = {
-				planet_event = { id = pdshroud.45 days = 9000 }
 		}
 	}
-
+	option = {
+		name = pdshroud.42.a
+		hidden_effect = {
+			planet_event = {
+				id = pdshroud.45
+				days = 9000
+			}
+		}
+	}
 	option = {
 		name = pdshroud.42.b
 		hidden_effect = {
-			planet_event = { id = pdshroud.00 days = 7 } 
+			planet_event = {
+				id = pdshroud.00
+				days = 7
+			}
 		}
 	}
 }
@@ -1080,31 +1169,32 @@ planet_event = {
 	picture = GFX_evt_smugglers_in_bar
 	show_sound = event_public_unrest
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
 		add_modifier = {
 			modifier = pdnodesire
 			days = -1
-		}	
+		}
 	}
-
 	option = {
 		name = pdshroud.43.a
 	}
-
 	option = {
 		name = pdshroud.43.b
-			hidden_effect = {
-				planet_event = { id = pdshroud.44 days = 720 }
+		hidden_effect = {
+			planet_event = {
+				id = pdshroud.44
+				days = 720
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.43.c
 		hidden_effect = {
-			planet_event = { id = pdshroud.00 days = 7 } 
+			planet_event = {
+				id = pdshroud.00
+				days = 7
+			}
 		}
 	}
 }
@@ -1116,28 +1206,30 @@ planet_event = {
 	picture = GFX_evt_tradestation_interior
 	show_sound = event_celebration
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
 		remove_modifier = pdnodesire
 		add_modifier = {
 			modifier = pddesire
 			days = -1
-		}	
+		}
 	}
-
 	option = {
 		name = pdshroud.44.a
 		hidden_effect = {
-			planet_event = { id = pdshroud.45 days = 9000 } 
+			planet_event = {
+				id = pdshroud.45
+				days = 9000
+			}
 		}
 	}
-
 	option = {
 		name = pdshroud.44.b
 		hidden_effect = {
-			planet_event = { id = pdshroud.00 days = 7 } 
+			planet_event = {
+				id = pdshroud.00
+				days = 7
+			}
 		}
 	}
 }
@@ -1145,10 +1237,8 @@ planet_event = {
 planet_event = {
 	id = pdshroud.45
 	hide_window = yes
-	location = root	
-
+	location = root
 	is_triggered_only = yes
-
 	immediate = {
 		random_list = {
 			80 = {
@@ -1158,14 +1248,19 @@ planet_event = {
 				}
 			}
 			20 = {
-				random_owned_pop = { kill_pop = yes }
+				random_owned_pop = {
+					kill_pop = yes
+				}
 				add_modifier = {
 					modifier = pddesirepurge
 					days = 360
 				}
 			}
 		}
-		planet_event = { id = pdshroud.45 days = 9000 }
+		planet_event = {
+			id = pdshroud.45
+			days = 9000
+		}
 	}
 }
 
@@ -1176,59 +1271,86 @@ planet_event = {
 	picture = GFX_evt_shroud1
 	show_sound = event_mystic_reveal
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
 		planet = {
-			IF = { limit = { is_planet_class = pc_shrouded }
+			IF = {
+				limit = {
+					is_planet_class = pc_shrouded
+				}
 				change_pc = pc_pdshroud
 				reroll_deposits = yes
 				add_deposit = d_pdshroud
 				remove_planet_flag = pd_shroud_transformation
 				remove_modifier = pdshroudtransformation
 			}
-			IF = { limit = { NOT = { is_planet_class = pc_shrouded } }
-				change_pc = pc_pdshroud		if = {
-					limit = { has_modifier = engineered_environment_gaia }
+			IF = {
+				limit = {
+					NOT = {
+						is_planet_class = pc_shrouded
+					}
+				}
+				change_pc = pc_pdshroud
+				if = {
+					limit = {
+						has_modifier = engineered_environment_gaia
+					}
 					remove_modifier = engineered_environment_gaia
 				}
 				if = {
-					limit = { has_modifier = engineered_environment }
+					limit = {
+						has_modifier = engineered_environment
+					}
 					remove_modifier = engineered_environment
 				}
 				if = {
-					limit = { has_modifier = bleak_planet }
+					limit = {
+						has_modifier = bleak_planet
+					}
 					remove_modifier = bleak_planet
 				}
 				if = {
-					limit = { has_modifier = high_gravity }
+					limit = {
+						has_modifier = high_gravity
+					}
 					remove_modifier = high_gravity
 				}
 				if = {
-					limit = { has_modifier = irradiated_planet }
+					limit = {
+						has_modifier = irradiated_planet
+					}
 					remove_modifier = irradiated_planet
 				}
 				if = {
-					limit = { has_modifier = mineral_poor }
+					limit = {
+						has_modifier = mineral_poor
+					}
 					remove_modifier = mineral_poor
 				}
 				if = {
-					limit = { has_modifier = unstable_tectonics }
+					limit = {
+						has_modifier = unstable_tectonics
+					}
 					remove_modifier = unstable_tectonics
 				}
 				if = {
-					limit = { has_modifier = weak_magnetic_field }
+					limit = {
+						has_modifier = weak_magnetic_field
+					}
 					remove_modifier = weak_magnetic_field
 				}
 				if = {
-					limit = { has_modifier = exofungus }
+					limit = {
+						has_modifier = exofungus
+					}
 					remove_modifier = exofungus
 				}
 				if = {
-					limit = { has_modifier = exofungus }
+					limit = {
+						has_modifier = exofungus
+					}
 					remove_modifier = exofungus
-				} 
+				}
 				hidden_effect = {
 					remove_planet_flag = pd_shroud_transformation
 					remove_modifier = pdshroudtransformation
@@ -1246,7 +1368,6 @@ planet_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = pdshroud.98.a
 	}
@@ -1259,36 +1380,73 @@ planet_event = {
 	picture = GFX_evt_zro_3
 	show_sound = event_mystic_reveal
 	location = root
-
 	is_triggered_only = yes
-
-
 	option = {
 		name = pdshroud.99.a
 		#custom_tooltip = pdshroud.99.a.desc
-		trigger = {	NOT = { owner = { any_owned_planet = { has_modifier = pddesire } } } }
-		add_modifier = { modifier = pddesire }
+		trigger = {
+			NOT = {
+				owner = {
+					any_owned_planet = {
+						has_modifier = pddesire
+					}
+				}
+			}
+		}
+		add_modifier = {
+			modifier = pddesire
+		}
 		add_deposit = d_pdshroud_desire
 	}
 	option = {
 		name = pdshroud.99.b
 		#custom_tooltip = pdshroud.99.b.desc
-		trigger = {	NOT = { owner = { any_owned_planet = { has_modifier = pdeater } } } }
-		add_modifier = { modifier = pdeater }
+		trigger = {
+			NOT = {
+				owner = {
+					any_owned_planet = {
+						has_modifier = pdeater
+					}
+				}
+			}
+		}
+		add_modifier = {
+			modifier = pdeater
+		}
 		add_deposit = d_pdshroud_eater
 	}
 	option = {
 		name = pdshroud.99.c
 		#custom_tooltip = pdshroud.99.c.desc
-		trigger = {	NOT = { owner = { any_owned_planet = { has_modifier = pdcomposer } } } }
-		add_modifier = { modifier = pdcomposer }
+		trigger = {
+			NOT = {
+				owner = {
+					any_owned_planet = {
+						has_modifier = pdcomposer
+					}
+				}
+			}
+		}
+		add_modifier = {
+			modifier = pdcomposer
+		}
 		add_deposit = d_pdshroud_composer
 	}
 	option = {
 		name = pdshroud.99.d
 		#custom_tooltip = pdshroud.99.d.desc
-		trigger = {	NOT = { owner = { any_owned_planet = { has_modifier = pdwhispers } } } }
-		add_modifier = { modifier = pdwhispers }
+		trigger = {
+			NOT = {
+				owner = {
+					any_owned_planet = {
+						has_modifier = pdwhispers
+					}
+				}
+			}
+		}
+		add_modifier = {
+			modifier = pdwhispers
+		}
 		add_deposit = d_pdshroud_whispers
 	}
 }
@@ -1301,13 +1459,12 @@ country_event = {
 	picture = GFX_evt_shroud1
 	show_sound = event_ship_bridge
 	location = root
-
 	is_triggered_only = yes
-
 	trigger = {
-		owner = { has_origin = origin_pd_shroud }
+		owner = {
+			has_origin = origin_pd_shroud
+		}
 	}
-	
 	immediate = {
 		every_galaxy_planet = {
 			IF = {
@@ -1315,18 +1472,22 @@ country_event = {
 					has_planet_flag = planet_earth
 				}
 				set_planet_entity = {
-                    entity = "pdshroud_planet_earth_entity"
+					entity = "pdshroud_planet_earth_entity"
 				}
 			}
 		}
 	}
-	
 	#Eater
 	option = {
 		name = pdstartgame.27.a
 		random_planet_within_border = {
-			limit = { is_capital = yes }
-			add_modifier = { modifier = pdeater days = -1 }
+			limit = {
+				is_capital = yes
+			}
+			add_modifier = {
+				modifier = pdeater
+				days = -1
+			}
 			add_deposit = d_pdshroud_eater
 		}
 	}
@@ -1334,8 +1495,13 @@ country_event = {
 	option = {
 		name = pdstartgame.27.b
 		random_planet_within_border = {
-			limit = { is_capital = yes }
-			add_modifier = { modifier = pdcomposer days = -1 }
+			limit = {
+				is_capital = yes
+			}
+			add_modifier = {
+				modifier = pdcomposer
+				days = -1
+			}
 			add_deposit = d_pdshroud_composer
 		}
 	}
@@ -1343,8 +1509,13 @@ country_event = {
 	option = {
 		name = pdstartgame.27.c
 		random_planet_within_border = {
-			limit = { is_capital = yes }
-			add_modifier = { modifier = pddesire days = -1 }
+			limit = {
+				is_capital = yes
+			}
+			add_modifier = {
+				modifier = pddesire
+				days = -1
+			}
 			add_deposit = d_pdshroud_desire
 		}
 	}
@@ -1352,8 +1523,13 @@ country_event = {
 	option = {
 		name = pdstartgame.27.d
 		random_planet_within_border = {
-			limit = { is_capital = yes }
-			add_modifier = { modifier = pdwhispers days = -1 }
+			limit = {
+				is_capital = yes
+			}
+			add_modifier = {
+				modifier = pdwhispers
+				days = -1
+			}
 			add_deposit = d_pdshroud_whispers
 		}
 	}

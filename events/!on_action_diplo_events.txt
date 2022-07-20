@@ -1,24 +1,20 @@
-
 #########################################
 #
 # on_action_events
 #
 #########################################
-
 namespace = action
-
 # Primitive Civilization Conquered - HIDDEN
 country_event = {
 	id = action.14
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
-		FROM = { is_country_type = primitive }
+		FROM = {
+			is_country_type = primitive
+		}
 		is_country_type = default
 	}
-
 	immediate = {
 		if = {
 			limit = {
@@ -37,39 +33,52 @@ country_event = {
 				set_owner = ROOT
 			}
 		}
-		
 		FROMFROM = {
 			if = {
 				limit = {
-					count_owned_pop = { count < 8 }
-					count_owned_pop = { count > 3 }
+					count_owned_pop = {
+						count < 8
+					}
+					count_owned_pop = {
+						count > 3
+					}
 				}
-				random_owned_pop = { kill_pop = yes }
-				random_owned_pop = { kill_pop = yes }
+				random_owned_pop = {
+					kill_pop = yes
+				}
+				random_owned_pop = {
+					kill_pop = yes
+				}
 			}
 			else = {
 				while = {
 					count = 6
 					if = {
-						limit = { count_owned_pop = { count > 5 } }
-						random_owned_pop = { kill_pop = yes }
+						limit = {
+							count_owned_pop = {
+								count > 5
+							}
+						}
+						random_owned_pop = {
+							kill_pop = yes
+						}
 					}
 				}
 			}
 		}
-
 		every_country = {
 			limit = {
 				has_communications = root
 				is_country_type = default
-				NOT = { is_same_value = root }
+				NOT = {
+					is_same_value = root
+				}
 			}
 			add_opinion_modifier = {
 				who = root
 				modifier = opinion_primitive_violation
 			}
 		}
-
 		if = {
 			limit = {
 				is_ai = no
@@ -82,9 +91,10 @@ country_event = {
 					save_event_target_as = conquered_primitive_species
 				}
 			}
-			country_event = { id = action.140 }
+			country_event = {
+				id = action.140
+			}
 		}
-
 		reset_years_of_peace = yes
 	}
 }
@@ -93,9 +103,7 @@ country_event = {
 country_event = {
 	id = action.61
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	immediate = {
 		every_subject = {
 			set_subject_of = {
@@ -119,8 +127,14 @@ country_event = {
 							owner = root
 							type = wg_leave_hegemony
 						}
-						is_war_participant = { who = prev side = defenders }
-						is_war_participant = { who = root side = attackers }
+						is_war_participant = {
+							who = prev
+							side = defenders
+						}
+						is_war_participant = {
+							who = root
+							side = attackers
+						}
 					}
 				}
 				federation = {
@@ -133,11 +147,12 @@ country_event = {
 		}
 		# Territory unclaimed if original owner dies
 		every_system = {
-			limit = { has_star_flag = original_owner_is@root }
+			limit = {
+				has_star_flag = original_owner_is@root
+			}
 			remove_star_flag = has_original_owner
 			remove_star_flag = original_owner_is@root
 		}
-		
 		if = {
 			limit = {
 				is_subject = no
@@ -146,31 +161,47 @@ country_event = {
 					is_country_type = fallen_empire
 					is_country_type = awakened_fallen_empire
 				}
-				NOT = { has_country_flag = silence_destroy_event }
+				NOT = {
+					has_country_flag = silence_destroy_event
+				}
 			}
 			if = {
-				limit = { is_country_type = default }
+				limit = {
+					is_country_type = default
+				}
 				every_playable_country = {
 					limit = {
 						has_communications = root
-						NOT = { is_same_value = root }
+						NOT = {
+							is_same_value = root
+						}
 					}
-					country_event = { id = action.62 }
+					country_event = {
+						id = action.62
+					}
 				}
 				random_playable_country = {
-					observer_event = { id = observer.2 }
+					observer_event = {
+						id = observer.2
+					}
 				}
 			}
 			else = {
 				every_playable_country = {
 					limit = {
 						has_communications = root
-						NOT = { is_same_value = root }
+						NOT = {
+							is_same_value = root
+						}
 					}
-					country_event = { id = action.63 }
+					country_event = {
+						id = action.63
+					}
 				}
 				random_playable_country = {
-					observer_event = { id = observer.3 }
+					observer_event = {
+						id = observer.3
+					}
 				}
 			}
 		}

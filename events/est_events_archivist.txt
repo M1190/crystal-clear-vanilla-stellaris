@@ -1,19 +1,15 @@
 namespace = est_archivist
-
-
 #Archivist 1, find alien pets on planets
 planet_event = {
 	id = est_archivist.1
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		owner = {
 			has_active_tradition = tr_est_archivist_1
 		}
 		num_pops > 0
 	}
-	
 	immediate = {
 		if = {
 			limit = {
@@ -28,7 +24,8 @@ planet_event = {
 				1 = {
 					add_deposit = d_alien_pets_deposit
 				}
-				9 = {}
+				9 = {
+				}
 			}
 		}
 	}
@@ -39,48 +36,59 @@ country_event = {
 	id = est_archivist.2
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_active_tradition = tr_est_archivist_2
 		from = {
-			leader_class = scientist		
+			leader_class = scientist
 		}
-		Not = {
+		NOT = {
 			has_country_flag = flag_est_got_recent_librarian
 			has_country_flag = flag_est_made_recent_librarian_roll
 		}
 	}
-
 	immediate = {
 		set_timed_country_flag = {
 			flag = flag_est_made_recent_librarian_roll
 			days = 7
-		}	
+		}
 		random_list = {
-			3 = {}
+			3 = {
+			}
 			1 = {
 				set_timed_country_flag = {
 					flag = flag_est_got_recent_librarian
 					days = 90
-				}	
+				}
 				from = {
 					random_list = {
-						1 = { add_trait = leader_trait_scientist_est_librarian_astronomy }
-						1 = { add_trait = leader_trait_scientist_est_librarian_mathematics }
-						1 = { add_trait = leader_trait_scientist_est_librarian_electronics }
-						1 = { add_trait = leader_trait_scientist_est_librarian_software }
-						1 = { add_trait = leader_trait_scientist_est_librarian_history }
-						1 = { add_trait = leader_trait_scientist_est_librarian_taxonomy }
-						1 = { 
+						1 = {
+							add_trait = leader_trait_scientist_est_librarian_astronomy
+						}
+						1 = {
+							add_trait = leader_trait_scientist_est_librarian_mathematics
+						}
+						1 = {
+							add_trait = leader_trait_scientist_est_librarian_electronics
+						}
+						1 = {
+							add_trait = leader_trait_scientist_est_librarian_software
+						}
+						1 = {
+							add_trait = leader_trait_scientist_est_librarian_history
+						}
+						1 = {
+							add_trait = leader_trait_scientist_est_librarian_taxonomy
+						}
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
 									has_civic = civic_fanatic_purifiers
 								}
 							}
-							add_trait = leader_trait_scientist_est_librarian_culture 
+							add_trait = leader_trait_scientist_est_librarian_culture
 						}
-						1 = { 
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
@@ -92,21 +100,29 @@ country_event = {
 							}
 							add_trait = leader_trait_scientist_est_librarian_communication
 						}
-						1 = { 
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
-									Not = {
+									NOT = {
 										has_civic = civic_fanatic_purifiers
 									}
 								}
 							}
 							add_trait = leader_trait_scientist_est_librarian_war
 						}
-						1 = { add_trait = leader_trait_scientist_est_librarian_chemistry }
-						1 = { add_trait = leader_trait_scientist_est_librarian_geology }
-						1 = { add_trait = leader_trait_scientist_est_librarian_architecture }
-						1 = { add_trait = leader_trait_scientist_est_librarian_mechanics }
+						1 = {
+							add_trait = leader_trait_scientist_est_librarian_chemistry
+						}
+						1 = {
+							add_trait = leader_trait_scientist_est_librarian_geology
+						}
+						1 = {
+							add_trait = leader_trait_scientist_est_librarian_architecture
+						}
+						1 = {
+							add_trait = leader_trait_scientist_est_librarian_mechanics
+						}
 					}
 				}
 			}
@@ -119,49 +135,60 @@ country_event = {
 	id = est_archivist.3
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_active_tradition = tr_est_archivist_2_GC
 		from = {
-			leader_class = scientist		
+			leader_class = scientist
 		}
-		Not = {
+		NOT = {
 			has_country_flag = flag_est_got_recent_keeper
 			has_country_flag = flag_est_made_recent_keeper_roll
 		}
 	}
-
 	immediate = {
 		set_timed_country_flag = {
 			flag = flag_est_made_recent_keeper_roll
 			days = 7
-		}	
+		}
 		random_list = {
-			3 = {}
+			3 = {
+			}
 			1 = {
 				set_timed_country_flag = {
 					flag = flag_est_got_recent_keeper
 					days = 90
-				}	
+				}
 				from = {
 					random_list = {
-						1 = { add_trait = leader_trait_scientist_est_keeper_astronomy }
-						1 = { add_trait = leader_trait_scientist_est_keeper_mathematics }
-						1 = { add_trait = leader_trait_scientist_est_keeper_electronics }
-						1 = { add_trait = leader_trait_scientist_est_keeper_software }
-						1 = { add_trait = leader_trait_scientist_est_keeper_history }
-						1 = { add_trait = leader_trait_scientist_est_keeper_taxonomy }
-						1 = { 
+						1 = {
+							add_trait = leader_trait_scientist_est_keeper_astronomy
+						}
+						1 = {
+							add_trait = leader_trait_scientist_est_keeper_mathematics
+						}
+						1 = {
+							add_trait = leader_trait_scientist_est_keeper_electronics
+						}
+						1 = {
+							add_trait = leader_trait_scientist_est_keeper_software
+						}
+						1 = {
+							add_trait = leader_trait_scientist_est_keeper_history
+						}
+						1 = {
+							add_trait = leader_trait_scientist_est_keeper_taxonomy
+						}
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
-								has_civic = civic_fanatic_purifiers
-								has_civic = civic_machine_terminator
+									has_civic = civic_fanatic_purifiers
+									has_civic = civic_machine_terminator
 								}
 							}
-							add_trait = leader_trait_scientist_est_keeper_culture 
+							add_trait = leader_trait_scientist_est_keeper_culture
 						}
-						1 = { 
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
@@ -173,7 +200,7 @@ country_event = {
 							}
 							add_trait = leader_trait_scientist_est_keeper_communication
 						}
-						1 = { 
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
@@ -185,10 +212,18 @@ country_event = {
 							}
 							add_trait = leader_trait_scientist_est_keeper_war
 						}
-						1 = { add_trait = leader_trait_scientist_est_keeper_chemistry }
-						1 = { add_trait = leader_trait_scientist_est_keeper_geology }
-						1 = { add_trait = leader_trait_scientist_est_keeper_architecture }
-						1 = { add_trait = leader_trait_scientist_est_keeper_mechanics }
+						1 = {
+							add_trait = leader_trait_scientist_est_keeper_chemistry
+						}
+						1 = {
+							add_trait = leader_trait_scientist_est_keeper_geology
+						}
+						1 = {
+							add_trait = leader_trait_scientist_est_keeper_architecture
+						}
+						1 = {
+							add_trait = leader_trait_scientist_est_keeper_mechanics
+						}
 					}
 				}
 			}
@@ -201,77 +236,100 @@ country_event = {
 	id = est_archivist.4
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_active_tradition = tr_est_archivist_2
 	}
-
 	immediate = {
 		switch = {
-			trigger = has_modifier 
-			
-			mod_est_archivist_2_astronomy = { remove_modifier = "mod_est_archivist_2_astronomy" }
-			mod_est_archivist_2_mathematics = { remove_modifier = "mod_est_archivist_2_mathematics" }
-			mod_est_archivist_2_electronics = { remove_modifier = "mod_est_archivist_2_electronics" }
-			mod_est_archivist_2_software = { remove_modifier = "mod_est_archivist_2_software" }
-			mod_est_archivist_2_culture = { remove_modifier = "mod_est_archivist_2_culture" }
-			mod_est_archivist_2_history = { remove_modifier = "mod_est_archivist_2_history" }
-			mod_est_archivist_2_taxonomy = { remove_modifier = "mod_est_archivist_2_taxonomy" }
-			mod_est_archivist_2_communication = { remove_modifier = "mod_est_archivist_2_communication" }
-			mod_est_archivist_2_war = { remove_modifier = "mod_est_archivist_2_war" }
-			mod_est_archivist_2_chemistry = { remove_modifier = "mod_est_archivist_2_chemistry" }
-			mod_est_archivist_2_geology = { remove_modifier = "mod_est_archivist_2_geology" }
-			mod_est_archivist_2_architecture = { remove_modifier = "mod_est_archivist_2_architecture" }
-			mod_est_archivist_2_mechanics = { remove_modifier = "mod_est_archivist_2_mechanics" }
+			trigger = has_modifier
+			mod_est_archivist_2_astronomy = {
+				remove_modifier = "mod_est_archivist_2_astronomy"
+			}
+			mod_est_archivist_2_mathematics = {
+				remove_modifier = "mod_est_archivist_2_mathematics"
+			}
+			mod_est_archivist_2_electronics = {
+				remove_modifier = "mod_est_archivist_2_electronics"
+			}
+			mod_est_archivist_2_software = {
+				remove_modifier = "mod_est_archivist_2_software"
+			}
+			mod_est_archivist_2_culture = {
+				remove_modifier = "mod_est_archivist_2_culture"
+			}
+			mod_est_archivist_2_history = {
+				remove_modifier = "mod_est_archivist_2_history"
+			}
+			mod_est_archivist_2_taxonomy = {
+				remove_modifier = "mod_est_archivist_2_taxonomy"
+			}
+			mod_est_archivist_2_communication = {
+				remove_modifier = "mod_est_archivist_2_communication"
+			}
+			mod_est_archivist_2_war = {
+				remove_modifier = "mod_est_archivist_2_war"
+			}
+			mod_est_archivist_2_chemistry = {
+				remove_modifier = "mod_est_archivist_2_chemistry"
+			}
+			mod_est_archivist_2_geology = {
+				remove_modifier = "mod_est_archivist_2_geology"
+			}
+			mod_est_archivist_2_architecture = {
+				remove_modifier = "mod_est_archivist_2_architecture"
+			}
+			mod_est_archivist_2_mechanics = {
+				remove_modifier = "mod_est_archivist_2_mechanics"
+			}
 		}
 		every_owned_leader = {
 			limit = {
-				leader_class = scientist	
+				leader_class = scientist
 			}
 			if = {
 				limit = {
-					has_trait = leader_trait_scientist_est_librarian_astronomy 
-					Not = {
+					has_trait = leader_trait_scientist_est_librarian_astronomy
+					NOT = {
 						root = {
-							has_modifier = mod_est_archivist_2_astronomy 
+							has_modifier = mod_est_archivist_2_astronomy
 						}
 					}
 				}
 				root = {
 					add_modifier = {
-						modifier = mod_est_archivist_2_astronomy 
+						modifier = mod_est_archivist_2_astronomy
 						days = -1
 					}
 				}
 			}
 			if = {
 				limit = {
-					has_trait = leader_trait_scientist_est_librarian_mathematics 
-					Not = {
+					has_trait = leader_trait_scientist_est_librarian_mathematics
+					NOT = {
 						root = {
-							has_modifier = mod_est_archivist_2_mathematics 
+							has_modifier = mod_est_archivist_2_mathematics
 						}
 					}
 				}
 				root = {
 					add_modifier = {
-						modifier = mod_est_archivist_2_mathematics 
+						modifier = mod_est_archivist_2_mathematics
 						days = -1
 					}
 				}
 			}
 			if = {
 				limit = {
-					has_trait = leader_trait_scientist_est_librarian_electronics 
-					Not = {
+					has_trait = leader_trait_scientist_est_librarian_electronics
+					NOT = {
 						root = {
-							has_modifier = mod_est_archivist_2_electronics 
+							has_modifier = mod_est_archivist_2_electronics
 						}
 					}
 				}
 				root = {
 					add_modifier = {
-						modifier = mod_est_archivist_2_electronics 
+						modifier = mod_est_archivist_2_electronics
 						days = -1
 					}
 				}
@@ -279,7 +337,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_librarian_software
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_software
 						}
@@ -295,7 +353,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_librarian_culture
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_culture
 						}
@@ -311,7 +369,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_librarian_history
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_history
 						}
@@ -327,7 +385,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_librarian_taxonomy
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_taxonomy
 						}
@@ -343,7 +401,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_librarian_communication
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_communication
 						}
@@ -359,7 +417,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_librarian_war
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_war
 						}
@@ -375,7 +433,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_librarian_chemistry
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_chemistry
 						}
@@ -391,7 +449,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_librarian_geology
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_geology
 						}
@@ -407,7 +465,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_librarian_architecture
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_architecture
 						}
@@ -423,7 +481,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_librarian_mechanics
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_mechanics
 						}
@@ -436,7 +494,7 @@ country_event = {
 					}
 				}
 			}
-		}		
+		}
 	}
 }
 
@@ -445,77 +503,100 @@ country_event = {
 	id = est_archivist.5
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_active_tradition = tr_est_archivist_2_GC
 	}
-
 	immediate = {
 		switch = {
-			trigger = has_modifier 
-			
-			mod_est_archivist_2_GC_astronomy = { remove_modifier = "mod_est_archivist_2_GC_astronomy" }
-			mod_est_archivist_2_GC_mathematics = { remove_modifier = "mod_est_archivist_2_GC_mathematics" }
-			mod_est_archivist_2_GC_electronics = { remove_modifier = "mod_est_archivist_2_GC_electronics" }
-			mod_est_archivist_2_GC_software = { remove_modifier = "mod_est_archivist_2_GC_software" }
-			mod_est_archivist_2_GC_culture = { remove_modifier = "mod_est_archivist_2_GC_culture" }
-			mod_est_archivist_2_GC_history = { remove_modifier = "mod_est_archivist_2_GC_history" }
-			mod_est_archivist_2_GC_taxonomy = { remove_modifier = "mod_est_archivist_2_GC_taxonomy" }
-			mod_est_archivist_2_GC_communication = { remove_modifier = "mod_est_archivist_2_GC_communication" }
-			mod_est_archivist_2_GC_war = { remove_modifier = "mod_est_archivist_2_GC_war" }
-			mod_est_archivist_2_GC_chemistry = { remove_modifier = "mod_est_archivist_2_GC_chemistry" }
-			mod_est_archivist_2_GC_geology = { remove_modifier = "mod_est_archivist_2_GC_geology" }
-			mod_est_archivist_2_GC_architecture = { remove_modifier = "mod_est_archivist_2_GC_architecture" }
-			mod_est_archivist_2_GC_mechanics = { remove_modifier = "mod_est_archivist_2_GC_mechanics" }
+			trigger = has_modifier
+			mod_est_archivist_2_GC_astronomy = {
+				remove_modifier = "mod_est_archivist_2_GC_astronomy"
+			}
+			mod_est_archivist_2_GC_mathematics = {
+				remove_modifier = "mod_est_archivist_2_GC_mathematics"
+			}
+			mod_est_archivist_2_GC_electronics = {
+				remove_modifier = "mod_est_archivist_2_GC_electronics"
+			}
+			mod_est_archivist_2_GC_software = {
+				remove_modifier = "mod_est_archivist_2_GC_software"
+			}
+			mod_est_archivist_2_GC_culture = {
+				remove_modifier = "mod_est_archivist_2_GC_culture"
+			}
+			mod_est_archivist_2_GC_history = {
+				remove_modifier = "mod_est_archivist_2_GC_history"
+			}
+			mod_est_archivist_2_GC_taxonomy = {
+				remove_modifier = "mod_est_archivist_2_GC_taxonomy"
+			}
+			mod_est_archivist_2_GC_communication = {
+				remove_modifier = "mod_est_archivist_2_GC_communication"
+			}
+			mod_est_archivist_2_GC_war = {
+				remove_modifier = "mod_est_archivist_2_GC_war"
+			}
+			mod_est_archivist_2_GC_chemistry = {
+				remove_modifier = "mod_est_archivist_2_GC_chemistry"
+			}
+			mod_est_archivist_2_GC_geology = {
+				remove_modifier = "mod_est_archivist_2_GC_geology"
+			}
+			mod_est_archivist_2_GC_architecture = {
+				remove_modifier = "mod_est_archivist_2_GC_architecture"
+			}
+			mod_est_archivist_2_GC_mechanics = {
+				remove_modifier = "mod_est_archivist_2_GC_mechanics"
+			}
 		}
 		every_owned_leader = {
 			limit = {
-				leader_class = scientist	
+				leader_class = scientist
 			}
 			if = {
 				limit = {
-					has_trait = leader_trait_scientist_est_keeper_astronomy 
-					Not = {
+					has_trait = leader_trait_scientist_est_keeper_astronomy
+					NOT = {
 						root = {
-							has_modifier = mod_est_archivist_2_GC_astronomy 
+							has_modifier = mod_est_archivist_2_GC_astronomy
 						}
 					}
 				}
 				root = {
 					add_modifier = {
-						modifier = mod_est_archivist_2_GC_astronomy 
+						modifier = mod_est_archivist_2_GC_astronomy
 						days = -1
 					}
 				}
 			}
 			if = {
 				limit = {
-					has_trait = leader_trait_scientist_est_keeper_mathematics 
-					Not = {
+					has_trait = leader_trait_scientist_est_keeper_mathematics
+					NOT = {
 						root = {
-							has_modifier = mod_est_archivist_2_GC_mathematics 
+							has_modifier = mod_est_archivist_2_GC_mathematics
 						}
 					}
 				}
 				root = {
 					add_modifier = {
-						modifier = mod_est_archivist_2_GC_mathematics 
+						modifier = mod_est_archivist_2_GC_mathematics
 						days = -1
 					}
 				}
 			}
 			if = {
 				limit = {
-					has_trait = leader_trait_scientist_est_keeper_electronics 
-					Not = {
+					has_trait = leader_trait_scientist_est_keeper_electronics
+					NOT = {
 						root = {
-							has_modifier = mod_est_archivist_2_GC_electronics 
+							has_modifier = mod_est_archivist_2_GC_electronics
 						}
 					}
 				}
 				root = {
 					add_modifier = {
-						modifier = mod_est_archivist_2_GC_electronics 
+						modifier = mod_est_archivist_2_GC_electronics
 						days = -1
 					}
 				}
@@ -523,7 +604,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_keeper_software
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_GC_software
 						}
@@ -539,7 +620,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_keeper_culture
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_GC_culture
 						}
@@ -555,7 +636,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_keeper_history
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_GC_history
 						}
@@ -571,7 +652,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_keeper_taxonomy
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_GC_taxonomy
 						}
@@ -587,7 +668,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_keeper_communication
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_GC_communication
 						}
@@ -603,7 +684,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_keeper_war
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_GC_war
 						}
@@ -619,7 +700,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_keeper_chemistry
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_GC_chemistry
 						}
@@ -635,7 +716,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_keeper_geology
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_GC_geology
 						}
@@ -651,7 +732,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_keeper_architecture
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_GC_architecture
 						}
@@ -667,7 +748,7 @@ country_event = {
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_est_keeper_mechanics
-					Not = {
+					NOT = {
 						root = {
 							has_modifier = mod_est_archivist_2_GC_mechanics
 						}
@@ -680,7 +761,7 @@ country_event = {
 					}
 				}
 			}
-		}		
+		}
 	}
 }
 
@@ -689,14 +770,12 @@ country_event = {
 	id = est_archivist.6
 	hide_window = yes
 	is_triggered_only = yes
-	
-	trigger = {			
+	trigger = {
 		has_tradition = tr_est_archivist_4
 		exists = fromfrom
 	}
-	
 	immediate = {
-		add_resource = { 
+		add_resource = {
 			influence = 10
 		}
 	}
@@ -707,10 +786,9 @@ country_event = {
 	id = est_archivist.7
 	hide_window = yes
 	is_triggered_only = yes
-	
-	trigger = {			
-		has_tradition = tr_est_archivist_5	
-		Nor = {
+	trigger = {
+		has_tradition = tr_est_archivist_5
+		NOR = {
 			last_increased_tech = "tech_repeatable_improved_tile_mineral_output"
 			last_increased_tech = "tech_repeatable_improved_military_station_damage"
 			last_increased_tech = "tech_repeatable_improved_military_station_health"
@@ -737,21 +815,20 @@ country_event = {
 			last_increased_tech = "tech_repeatable_improved_starbase_capacity"
 		}
 	}
-	
 	immediate = {
-		change_variable = { 
-			which = var_est_archivist_5_count_techs 
-			value = 1 
+		change_variable = {
+			which = var_est_archivist_5_count_techs
+			value = 1
 		}
 		if = {
 			limit = {
 				check_variable = {
-					which = var_est_archivist_5_count_techs 
-					value > 3 
+					which = var_est_archivist_5_count_techs
+					value > 3
 				}
 			}
-			subtract_variable = { 
-				which = var_est_archivist_5_count_techs 
+			subtract_variable = {
+				which = var_est_archivist_5_count_techs
 				value = 4
 			}
 			country_event = {
@@ -763,10 +840,9 @@ country_event = {
 
 #Archivist 5, updates unity bonus.
 country_event = {
-	id = est_archivist.8 
+	id = est_archivist.8
 	hide_window = yes
 	is_triggered_only = yes
-	
 	immediate = {
 		if = {
 			limit = {

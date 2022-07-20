@@ -1,9 +1,9 @@
 namespace = eo_war_of_the_worlds
-
 country_event = {
 	id = eo_war_of_the_worlds.1
 	title = eo_war_of_the_worlds.1.name
-	desc = { # Non-genocidal regular
+	desc = {
+		# Non-genocidal regular
 		trigger = {
 			event_target:invader_empire = {
 				is_regular_empire = yes
@@ -12,34 +12,38 @@ country_event = {
 		}
 		text = eo_war_of_the_worlds.1.desc.a
 	}
-	desc = { # Genocidal regular
+	desc = {
+		# Genocidal regular
 		trigger = {
 			event_target:invader_empire = {
 				is_regular_empire = yes
-				is_homicidal = yes 
+				is_homicidal = yes
 			}
 		}
 		text = eo_war_of_the_worlds.1.desc.b
 	}
-	desc = { # Non-genocidal hive
+	desc = {
+		# Non-genocidal hive
 		trigger = {
 			event_target:invader_empire = {
 				is_hive_empire = yes
-				is_homicidal = no 
+				is_homicidal = no
 			}
 		}
 		text = eo_war_of_the_worlds.1.desc.c
 	}
-	desc = { # Genocidal hive
+	desc = {
+		# Genocidal hive
 		trigger = {
 			event_target:invader_empire = {
 				is_hive_empire = yes
-				is_homicidal = yes 
+				is_homicidal = yes
 			}
 		}
 		text = eo_war_of_the_worlds.1.desc.d
 	}
-	desc = { # Non-genocidal machine
+	desc = {
+		# Non-genocidal machine
 		trigger = {
 			event_target:invader_empire = {
 				is_machine_empire = yes
@@ -52,25 +56,28 @@ country_event = {
 		}
 		text = eo_war_of_the_worlds.1.desc.e
 	}
-	desc = { # Genocidal machine
+	desc = {
+		# Genocidal machine
 		trigger = {
 			event_target:invader_empire = {
 				is_machine_empire = yes
-				is_homicidal = yes 
+				is_homicidal = yes
 			}
 		}
 		text = eo_war_of_the_worlds.1.desc.f
 	}
-	desc = { # Assimilator
+	desc = {
+		# Assimilator
 		trigger = {
 			event_target:invader_empire = {
 				is_machine_empire = yes
-				has_valid_civic = civic_machine_assimilator 
+				has_valid_civic = civic_machine_assimilator
 			}
 		}
 		text = eo_war_of_the_worlds.1.desc.g
 	}
-	desc = { # Assimilator
+	desc = {
+		# Assimilator
 		trigger = {
 			event_target:invader_empire = {
 				is_machine_empire = yes
@@ -81,9 +88,7 @@ country_event = {
 	}
 	show_sound = event_conversation
 	diplomatic = yes
-
 	is_triggered_only = yes
-
 	picture_event_data = {
 		portrait = event_target:invader_empire
 		planet_background = event_target:invader_empire
@@ -91,7 +96,6 @@ country_event = {
 		city_level = event_target:invader_empire
 		room = event_target:invader_empire.ruler
 	}
-
 	option = {
 		name = eo_war_of_the_worlds.1.a
 		icon = {
@@ -123,9 +127,7 @@ planet_event = {
 	picture = GFX_evt_victorious_army
 	location = this
 	show_sound = event_celebration
-
 	is_triggered_only = yes
-
 	option = {
 		name = eo_war_of_the_worlds.2.a
 		from = {
@@ -142,19 +144,18 @@ planet_event = {
 country_event = {
 	id = eo_war_of_the_worlds.3
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		from = {
-			NOT = { has_country_flag = forgave_invader }
+			NOT = {
+				has_country_flag = forgave_invader
+			}
 			has_origin = origin_war_of_the_worlds
 		}
 		this = {
 			has_country_flag = invader_of_@from
 		}
 	}
-
 	immediate = {
 		this = {
 			save_event_target_as = invader_empire
@@ -163,7 +164,9 @@ country_event = {
 			}
 		}
 		from = {
-			country_event = { id = eo_war_of_the_worlds.4 }
+			country_event = {
+				id = eo_war_of_the_worlds.4
+			}
 		}
 	}
 }
@@ -186,9 +189,7 @@ country_event = {
 	picture = GFX_evt_crisis_defeated
 	location = event_target:conquered_capital
 	show_sound = event_celebration
-
 	is_triggered_only = yes
-
 	option = {
 		name = eo_war_of_the_worlds.4.a
 		add_monthly_resource_mult = {
@@ -203,12 +204,12 @@ country_event = {
 planet_event = {
 	id = eo_war_of_the_worlds.5
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		from = {
-			NOT = { has_country_flag = forgave_invader }
+			NOT = {
+				has_country_flag = forgave_invader
+			}
 			has_origin = origin_war_of_the_worlds
 		}
 		this = {
@@ -219,7 +220,6 @@ planet_event = {
 			has_country_flag = invader_of_@from
 		}
 	}
-
 	immediate = {
 		random_country = {
 			limit = {
@@ -230,19 +230,22 @@ planet_event = {
 		from = {
 			save_event_target_as = victorious_empire
 		}
-		planet_event = { id = eo_war_of_the_worlds.2 days = 3 }
+		planet_event = {
+			id = eo_war_of_the_worlds.2
+			days = 3
+		}
 	}
 }
 
 country_event = {
 	id = eo_war_of_the_worlds.6
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		has_origin = origin_war_of_the_worlds
-		NOT = { has_country_flag = forgave_invader }
+		NOT = {
+			has_country_flag = forgave_invader
+		}
 		any_country = {
 			has_country_flag = invader_of_@root
 			OR = {
@@ -253,7 +256,6 @@ country_event = {
 			}
 		}
 	}
-
 	immediate = {
 		random_country = {
 			limit = {
@@ -261,7 +263,9 @@ country_event = {
 			}
 			save_event_target_as = friendly_invader
 		}
-		country_event = { id = eo_war_of_the_worlds.7 }
+		country_event = {
+			id = eo_war_of_the_worlds.7
+		}
 	}
 }
 
@@ -271,9 +275,7 @@ country_event = {
 	desc = eo_war_of_the_worlds.7.desc
 	show_sound = event_conversation
 	diplomatic = yes
-
 	is_triggered_only = yes
-
 	picture_event_data = {
 		portrait = event_target:friendly_invader
 		planet_background = event_target:friendly_invader
@@ -281,7 +283,6 @@ country_event = {
 		city_level = event_target:friendly_invader
 		room = event_target:friendly_invader.ruler
 	}
-
 	option = {
 		name = eo_war_of_the_worlds.7.a
 		icon = {
@@ -289,9 +290,15 @@ country_event = {
 			text = time_to_move_on_tt
 		}
 		set_country_flag = forgave_invader
-		remove_opinion_modifier = { modifier = opinion_extraterrestrial_invaders who = event_target:friendly_invader }
+		remove_opinion_modifier = {
+			modifier = opinion_extraterrestrial_invaders
+			who = event_target:friendly_invader
+		}
 		event_target:friendly_invader = {
-			remove_opinion_modifier = { modifier = opinion_primitive_upstarts who = root }
+			remove_opinion_modifier = {
+				modifier = opinion_primitive_upstarts
+				who = root
+			}
 		}
 		if = {
 			limit = {
@@ -300,7 +307,10 @@ country_event = {
 				}
 			}
 			capital_scope.solar_system = {
-				remove_claims = { who = event_target:friendly_invader num_of_claims = 10 }
+				remove_claims = {
+					who = event_target:friendly_invader
+					num_of_claims = 10
+				}
 			}
 		}
 	}
@@ -317,10 +327,18 @@ country_event = {
 			max = @tier4unitymax
 		}
 		event_target:friendly_invader = {
-			add_resource = { influence = -40 }
-			add_opinion_modifier = { modifier = opinion_renewed_hostilities who = root }
+			add_resource = {
+				influence = -40
+			}
+			add_opinion_modifier = {
+				modifier = opinion_renewed_hostilities
+				who = root
+			}
 		}
-		add_opinion_modifier = { modifier = opinion_renewed_hostilities who = event_target:friendly_invader }
+		add_opinion_modifier = {
+			modifier = opinion_renewed_hostilities
+			who = event_target:friendly_invader
+		}
 	}
 }
 
@@ -336,7 +354,9 @@ country_event = {
 	desc = {
 		text = eo_war_of_the_worlds.8.desc.b
 		trigger = {
-			NOT = { has_modifier = newly_subjugated_loyalty }
+			NOT = {
+				has_modifier = newly_subjugated_loyalty
+			}
 		}
 	}
 	picture = {
@@ -352,22 +372,21 @@ country_event = {
 			from = {
 				is_machine_empire = no
 			}
-			NOT = { has_modifier = newly_subjugated_loyalty }
+			NOT = {
+				has_modifier = newly_subjugated_loyalty
+			}
 		}
 		picture = GFX_evt_one_sided_deal
 	}
 	location = capital_scope
 	show_sound = event_planetary_riot
-
 	is_triggered_only = yes
-
 	trigger = {
 		has_origin = origin_war_of_the_worlds
 		from = {
 			has_country_flag = invader_of_@root
 		}
 	}
-
 	option = {
 		name = eo_war_of_the_worlds.8.a
 	}

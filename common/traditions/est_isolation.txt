@@ -1,12 +1,12 @@
 tr_est_isolation_adopt = {
 	modifier = {
-		empire_size_pops_mult = -0.10
-	}	
+		empire_size_pops_mult = -0.1
+	}
 }
 
 tr_est_isolation_finish = {
 	on_enabled = {
-		if = { 
+		if = {
 			limit = {
 				is_at_war = no
 			}
@@ -15,21 +15,21 @@ tr_est_isolation_finish = {
 			}
 		}
 	}
-	
-	modifier = {	
+	modifier = {
 		ascension_perks_add = 1
 	}
-	
 	tradition_swap = {
 		name = tr_est_isolation_finish_GC
 		inherit_icon = yes
 		inherit_name = yes
-		trigger = { is_gestalt = yes }	
+		trigger = {
+			is_gestalt = yes
+		}
 		modifier = {
 			ascension_perks_add = 1
 		}
 		on_enabled = {
-			if = { 
+			if = {
 				limit = {
 					is_at_war = no
 				}
@@ -38,18 +38,20 @@ tr_est_isolation_finish = {
 				}
 			}
 		}
-		weight = { factor = 1 }
+		weight = {
+			factor = 1
+		}
 	}
 }
-
 
 tr_est_isolation_1 = {
 	modifier = {
 		starbases_upkeep_mult = -0.15
 		starbase_defense_platform_capacity_add = 3
 	}
-
-	ai_weight = { factor = 5000 }
+	ai_weight = {
+		factor = 5000
+	}
 }
 
 tr_est_isolation_2 = {
@@ -57,46 +59,53 @@ tr_est_isolation_2 = {
 		army_defense_morale_mult = 0.5
 		ship_home_territory_fire_rate_mult = 0.2
 	}
-
-	ai_weight = { factor = 5000 }
+	ai_weight = {
+		factor = 5000
+	}
 }
 
 tr_est_isolation_3 = {
-	possible = { 
+	possible = {
 		has_tradition = tr_est_isolation_1
 		has_tradition = tr_est_isolation_1
 	}
-	
 	modifier = {
-		starbase_outpost_alloys_cost_mult = -0.20
-		country_starbase_influence_cost_mult = -0.10 # Only outposts should cost influence.
+		starbase_outpost_alloys_cost_mult = -0.2
+		country_starbase_influence_cost_mult = -0.1		# Only outposts should cost influence.
 	}
-
-	ai_weight = { factor = 5000 }
+	ai_weight = {
+		factor = 5000
+	}
 }
 
 tr_est_isolation_4 = {
-	possible = { has_tradition = tr_est_isolation_3 }
-	
+	possible = {
+		has_tradition = tr_est_isolation_3
+	}
 	modifier = {
 		pop_government_ethic_attraction = 0.15
 	}
-	
 	tradition_swap = {
 		name = tr_est_isolation_4_GC
-		trigger = { is_gestalt = yes }	
-		modifier = {
-			country_border_friction_mult = -0.80
+		trigger = {
+			is_gestalt = yes
 		}
-		weight = { factor = 1 }
+		modifier = {
+			country_border_friction_mult = -0.8
+		}
+		weight = {
+			factor = 1
+		}
 	}
-
-	ai_weight = { factor = 5000 }
+	ai_weight = {
+		factor = 5000
+	}
 }
 
 tr_est_isolation_5 = {
-	possible = { has_tradition = tr_est_isolation_3 }
-	
+	possible = {
+		has_tradition = tr_est_isolation_3
+	}
 	on_enabled = {
 		if = {
 			limit = {
@@ -111,19 +120,20 @@ tr_est_isolation_5 = {
 							has_defensive_pact = root
 						}
 					}
-				}	
+				}
 				#trade_income < 1
 				#trade_expenses < 1
-			}				
+			}
 			add_modifier = {
 				modifier = "mod_est_isolation_5"
-			}		
+			}
 		}
 	}
-	
 	tradition_swap = {
 		name = tr_est_isolation_5_GC
-		trigger = { is_gestalt = yes }	
+		trigger = {
+			is_gestalt = yes
+		}
 		on_enabled = {
 			if = {
 				limit = {
@@ -138,17 +148,20 @@ tr_est_isolation_5 = {
 								has_defensive_pact = root
 							}
 						}
-					}	
+					}
 					#trade_income < 1
 					#trade_expenses < 1
-				}				
+				}
 				add_modifier = {
 					modifier = "mod_est_isolation_5_GC"
-				}	
+				}
 			}
 		}
-		weight = { factor = 1 }
+		weight = {
+			factor = 1
+		}
 	}
-
-	ai_weight = { factor = 5000 }
+	ai_weight = {
+		factor = 5000
+	}
 }

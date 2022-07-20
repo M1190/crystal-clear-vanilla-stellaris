@@ -1,5 +1,4 @@
 namespace = eo_living_planet
-
 # Living planet main menu
 country_event = {
 	id = eo_living_planet.1
@@ -10,13 +9,13 @@ country_event = {
 			owns_living_planet_of_from = no
 		}
 	}
-############### Generic friendly
+	############### Generic friendly
 	desc = {
 		text = eo_living_planet.1.desc.friendly.1
 		trigger = {
 			owns_living_planet_of_from = yes
 			from = {
-				opinion ={
+				opinion = {
 					who = root
 					value > 0
 				}
@@ -28,7 +27,7 @@ country_event = {
 		trigger = {
 			owns_living_planet_of_from = yes
 			from = {
-				opinion ={
+				opinion = {
 					who = root
 					value > 0
 				}
@@ -40,7 +39,7 @@ country_event = {
 		trigger = {
 			owns_living_planet_of_from = yes
 			from = {
-				opinion ={
+				opinion = {
 					who = root
 					value > 0
 				}
@@ -52,20 +51,20 @@ country_event = {
 		trigger = {
 			owns_living_planet_of_from = yes
 			from = {
-				opinion ={
+				opinion = {
 					who = root
 					value > 0
 				}
 			}
 		}
 	}
-############### Hostile
+	############### Hostile
 	desc = {
 		text = eo_living_planet.1.desc.hostile.1
 		trigger = {
 			owns_living_planet_of_from = yes
 			from = {
-				opinion ={
+				opinion = {
 					who = root
 					value < -90
 				}
@@ -75,42 +74,40 @@ country_event = {
 	diplomatic_title = BLANK_STRING
 	diplomatic = yes
 	force_open = yes
-
 	picture_event_data = {
 		room = living_planet_room
 	}
-
 	is_triggered_only = yes
-
 	trigger = {
-		from = { is_country_type = living_planet }
+		from = {
+			is_country_type = living_planet
+		}
 		owns_living_planet_of_from = yes
 		NOT = {
 			has_country_flag = living_planet_diplomacy_engaged
 		}
 	}
-
 	immediate = {
 		set_country_flag = living_planet_diplomacy_engaged
 	}
-
 	after = {
 		hidden_effect = {
 			remove_country_flag = living_planet_diplomacy_engaged
 		}
 	}
-
-	option = { # What are you
+	option = {
+		# What are you
 		name = eo_living_planet.1.a
 		response_text = eo_living_planet.1.a.desc
 		is_dialog_only = yes
 	}
-	option = { # Can we help you?
+	option = {
+		# Can we help you?
 		name = eo_living_planet.1.b
 		trigger = {
 			owns_living_planet_of_from = yes
 			from = {
-				opinion ={
+				opinion = {
 					who = root
 					value >= -30
 				}
@@ -119,13 +116,15 @@ country_event = {
 		response_text = eo_living_planet.1.b.desc
 		is_dialog_only = yes
 	}
-	option = { # Goodbye
+	option = {
+		# Goodbye
 		name = GOODBYE
 		trigger = {
 			owns_living_planet_of_from = yes
 		}
 	}
-	option = { # No communications
+	option = {
+		# No communications
 		name = eo_living_planet.1.planet_not_owned
 		trigger = {
 			owns_living_planet_of_from = no
@@ -138,11 +137,9 @@ planet_event = {
 	id = eo_living_planet.2
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
 		has_modifier = living_planet
 	}
-
 	immediate = {
 		random_country = {
 			limit = {

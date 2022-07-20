@@ -1,15 +1,12 @@
 namespace = est_cooperativity
-
 #Cooperativity Adopt. Bonus to planets with many pops.
 country_event = {
 	id = est_cooperativity.1
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_active_tradition = tr_est_cooperativity_adopt
 	}
-	
 	immediate = {
 		every_owned_planet = {
 			if = {
@@ -18,7 +15,7 @@ country_event = {
 				}
 				if = {
 					limit = {
-						Not = {	
+						NOT = {
 							has_modifier = mod_est_cooperativity_adopt_3
 						}
 					}
@@ -47,7 +44,7 @@ country_event = {
 					}
 					if = {
 						limit = {
-							Not = {	
+							NOT = {
 								has_modifier = mod_est_cooperativity_adopt_2
 							}
 						}
@@ -68,7 +65,7 @@ country_event = {
 						}
 						remove_modifier = "mod_est_cooperativity_adopt_1"
 					}
-				}	
+				}
 				else = {
 					if = {
 						limit = {
@@ -76,7 +73,7 @@ country_event = {
 						}
 						if = {
 							limit = {
-								Not = {	
+								NOT = {
 									has_modifier = mod_est_cooperativity_adopt_1
 								}
 							}
@@ -97,7 +94,7 @@ country_event = {
 							}
 							remove_modifier = "mod_est_cooperativity_adopt_3"
 						}
-					}		
+					}
 					else = {
 						if = {
 							limit = {
@@ -117,8 +114,8 @@ country_event = {
 							}
 							remove_modifier = "mod_est_cooperativity_adopt_3"
 						}
-					}					
-				}				
+					}
+				}
 			}
 		}
 	}
@@ -129,95 +126,108 @@ country_event = {
 	id = est_cooperativity.2
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_active_tradition = tr_est_cooperativity_4
 		from = {
-			Not = {
+			NOT = {
 				has_trait = leader_trait_admiral_est_cognition_central
 				has_trait = leader_trait_general_est_cognition_central
 				has_trait = leader_trait_governor_est_cognition_central
 				has_trait = leader_trait_scientist_est_cognition_central
-			}		
+			}
 		}
 	}
-
 	immediate = {
 		from = {
 			if = {
-				limit = { leader_class = admiral }
+				limit = {
+					leader_class = admiral
+				}
 				add_trait = leader_trait_admiral_est_cognition_central
 				break = yes
 			}
 			if = {
-				limit = { leader_class = general }
+				limit = {
+					leader_class = general
+				}
 				add_trait = leader_trait_general_est_cognition_central
 				break = yes
 			}
 			if = {
-				limit = { leader_class = governor }
+				limit = {
+					leader_class = governor
+				}
 				add_trait = leader_trait_governor_est_cognition_central
 				break = yes
 			}
 			if = {
-				limit = { leader_class = scientist }
+				limit = {
+					leader_class = scientist
+				}
 				add_trait = leader_trait_scientist_est_cognition_central
 				break = yes
 			}
 		}
 	}
 }
-	
+
 #Cooperativity 4, spawned leader gets cognition_central trait.
 country_event = {
 	id = est_cooperativity.3
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_active_tradition = tr_est_cooperativity_4
 		from = {
-			Not = {
+			NOT = {
 				has_trait = leader_trait_admiral_est_cognition_central
 				has_trait = leader_trait_general_est_cognition_central
 				has_trait = leader_trait_governor_est_cognition_central
 				has_trait = leader_trait_scientist_est_cognition_central
-			}		
+			}
 		}
 	}
-
 	immediate = {
 		from = {
 			if = {
-				limit = { leader_class = admiral }
+				limit = {
+					leader_class = admiral
+				}
 				add_trait = leader_trait_admiral_est_cognition_central
 				add_ruler_trait = leader_trait_ruler_est_cognition_central
 				break = yes
 			}
 			if = {
-				limit = { leader_class = general }
+				limit = {
+					leader_class = general
+				}
 				add_trait = leader_trait_general_est_cognition_central
 				add_ruler_trait = leader_trait_ruler_est_cognition_central
 				break = yes
 			}
 			if = {
-				limit = { leader_class = governor }
+				limit = {
+					leader_class = governor
+				}
 				add_trait = leader_trait_governor_est_cognition_central
 				add_ruler_trait = leader_trait_ruler_est_cognition_central
 				break = yes
 			}
 			if = {
-				limit = { leader_class = scientist }
+				limit = {
+					leader_class = scientist
+				}
 				add_trait = leader_trait_scientist_est_cognition_central
 				add_ruler_trait = leader_trait_ruler_est_cognition_central
 				break = yes
 			}
 			if = {
-				limit = { leader_class = ruler }
+				limit = {
+					leader_class = ruler
+				}
 				add_ruler_trait = leader_trait_ruler_est_cognition_central
 				break = yes
 			}
 		}
 	}
 }
-

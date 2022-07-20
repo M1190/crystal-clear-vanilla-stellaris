@@ -1,13 +1,11 @@
 namespace = est_friendship
-
 #Friendship Opener, gives unity and remove penalty for first contact.
 country_event = {
 	id = est_friendship.1
 	hide_window = yes
 	is_triggered_only = yes
-	
-	trigger = {	
-		Or = {
+	trigger = {
+		OR = {
 			has_active_tradition = tr_est_friendship_adopt
 			from = {
 				has_active_tradition = tr_est_friendship_adopt
@@ -17,12 +15,12 @@ country_event = {
 	immediate = {
 		if = {
 			limit = {
-				has_opinion_modifier = { 
+				has_opinion_modifier = {
 					who = from
 					modifier = opinion_new_contact
 				}
 			}
-			remove_opinion_modifier = { 
+			remove_opinion_modifier = {
 				who = from
 				modifier = opinion_new_contact
 			}
@@ -31,7 +29,7 @@ country_event = {
 			limit = {
 				has_active_tradition = tr_est_friendship_adopt
 			}
-			add_monthly_resource_mult = { 
+			add_monthly_resource_mult = {
 				resource = unity
 				value = 12
 				max = 1000000
@@ -41,12 +39,12 @@ country_event = {
 		from = {
 			if = {
 				limit = {
-					has_opinion_modifier = { 
+					has_opinion_modifier = {
 						who = root
 						modifier = opinion_new_contact
 					}
 				}
-				remove_opinion_modifier = { 
+				remove_opinion_modifier = {
 					who = root
 					modifier = opinion_new_contact
 				}
@@ -55,7 +53,7 @@ country_event = {
 				limit = {
 					has_active_tradition = tr_est_friendship_adopt
 				}
-				add_monthly_resource_mult = { 
+				add_monthly_resource_mult = {
 					resource = unity
 					value = 12
 					max = 1000000
@@ -71,20 +69,19 @@ country_event = {
 	id = est_friendship.2
 	hide_window = yes
 	is_triggered_only = yes
-	
-	trigger = {	
+	trigger = {
 		has_active_tradition = tr_est_friendship_4_militarist
-		Not = {
+		NOT = {
 			has_modifier = mod_est_friendship_4_militarist
 		}
 		from = {
-			Or = {
+			OR = {
 				And = {
 					any_defender = {
 						is_same_value = root
 					}
 					any_defender = {
-						Not = {
+						NOT = {
 							is_same_value = root
 						}
 					}
@@ -94,7 +91,7 @@ country_event = {
 						is_same_value = root
 					}
 					any_attacker = {
-						Not = {
+						NOT = {
 							is_same_value = root
 						}
 					}
@@ -102,12 +99,11 @@ country_event = {
 			}
 		}
 	}
-	
 	immediate = {
 		add_modifier = {
 			modifier = "mod_est_friendship_4_militarist"
 			days = -1
-		}		
+		}
 	}
 }
 
@@ -116,12 +112,10 @@ country_event = {
 	id = est_friendship.3
 	hide_window = yes
 	is_triggered_only = yes
-	
-	trigger = {	
+	trigger = {
 		has_active_tradition = tr_est_friendship_4_militarist
 		has_modifier = mod_est_friendship_4_militarist
 	}
-	
 	immediate = {
 		if = {
 			limit = {
@@ -132,15 +126,15 @@ country_event = {
 		}
 		if = {
 			limit = {
-				Not = {
+				NOT = {
 					any_war = {
-						Or = {
+						OR = {
 							And = {
 								any_defender = {
 									is_same_value = root
 								}
 								any_defender = {
-									Not = {
+									NOT = {
 										is_same_value = root
 									}
 								}
@@ -150,7 +144,7 @@ country_event = {
 									is_same_value = root
 								}
 								any_attacker = {
-									Not = {
+									NOT = {
 										is_same_value = root
 									}
 								}
@@ -169,11 +163,9 @@ country_event = {
 	id = est_friendship.4
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_active_tradition = tr_est_friendship_finish
 	}
-	
 	immediate = {
 		every_owned_planet = {
 			if = {
@@ -182,7 +174,7 @@ country_event = {
 				}
 				if = {
 					limit = {
-						Not = {
+						NOT = {
 							has_modifier = mod_est_friendship_finish
 						}
 					}
@@ -195,12 +187,11 @@ country_event = {
 			else = {
 				if = {
 					limit = {
-						has_modifier = mod_est_friendship_finish					
+						has_modifier = mod_est_friendship_finish
 					}
 					remove_modifier = "mod_est_friendship_finish"
-				}				
+				}
 			}
 		}
 	}
 }
-

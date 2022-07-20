@@ -1,15 +1,12 @@
 namespace = est_order
-
 #Order 1. Checks if factions are supressed or have stopped being supressed and modify accordingly.
 country_event = {
 	id = est_order.1
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_active_tradition = tr_est_order_1
 	}
-	
 	immediate = {
 		every_pop_faction = {
 			if = {
@@ -17,9 +14,9 @@ country_event = {
 					has_modifier = suppressed_faction
 				}
 				if = {
-					limit = {							
-						Not = {
-							has_modifier = mod_est_order_1_faction	
+					limit = {
+						NOT = {
+							has_modifier = mod_est_order_1_faction
 						}
 					}
 					add_modifier = {
@@ -36,15 +33,15 @@ country_event = {
 			else = {
 				if = {
 					limit = {
-						has_modifier = mod_est_order_1_faction									
+						has_modifier = mod_est_order_1_faction
 					}
 					remove_modifier = "mod_est_order_1_faction"
 					owner = {
 						country_event = {
 							id = est_order.3
 						}
-					}							
-				}						
+					}
+				}
 			}
 		}
 	}
@@ -55,11 +52,9 @@ country_event = {
 	id = est_order.2
 	hide_window = yes
 	is_triggered_only = yes
-
 	immediate = {
 		switch = {
 			trigger = has_modifier
-				
 			mod_est_order_1_8 = {
 				break = yes
 			}
@@ -119,7 +114,7 @@ country_event = {
 				}
 				break = yes
 			}
-		}	
+		}
 		add_modifier = {
 			modifier = "mod_est_order_1_1"
 			days = -1
@@ -132,11 +127,9 @@ country_event = {
 	id = est_order.3
 	hide_window = yes
 	is_triggered_only = yes
-
 	immediate = {
 		switch = {
 			trigger = has_modifier
-				
 			mod_est_order_1_8 = {
 				remove_modifier = "mod_est_order_1_8"
 				add_modifier = {
@@ -197,7 +190,7 @@ country_event = {
 				remove_modifier = "mod_est_order_1_1"
 				break = yes
 			}
-		}	
+		}
 	}
 }
 
@@ -206,15 +199,13 @@ country_event = {
 	id = est_order.4
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_active_tradition = tr_est_order_2
 	}
-	
 	immediate = {
 		every_pop_faction = {
 			limit = {
-				Not = {
+				NOT = {
 					has_modifier = mod_est_order_2
 				}
 			}
@@ -231,15 +222,13 @@ country_event = {
 	id = est_order.5
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_active_tradition = tr_est_order_2_egali
 	}
-	
 	immediate = {
 		every_pop_faction = {
 			limit = {
-				Not = {
+				NOT = {
 					has_modifier = mod_est_order_2_egali
 				}
 			}

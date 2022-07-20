@@ -1,7 +1,6 @@
 ############################################################
 ###                 Technologies : other                 ###
 ############################################################
-
 # ── Orbital Power Stations				: unlocks advanced reactor for starfortresses
 # ── Stellar Energy Tower				: unique power plant; requires killed Stellarite Devourer / Leviathans DLC
 # ── Quantum Computation Node			: unique science laboratory; requires 'greeted' Infinity Machine / Leviathans DLC
@@ -16,19 +15,21 @@
 # ── Precursor Armaments				: unlocks special aux slot component
 # ── Bio-Horror Armies					: bio-ascension armies
 # ── Psionic Avatar Armies				: psi-ascension armies
-
 ############################################################
 ##                 Orbital Power Station                  ##
 ############################################################
-
 esc_tech_orbital_powerplant = {
 	area = physics
-	category = { industry }
+	category = {
+		industry
+	}
 	tier = 4
 	cost = @tier4cost3
 	weight = @tier4weight3
-	prerequisites = { "tech_starbase_4" "tech_zero_point_power" }
-
+	prerequisites = {
+		"tech_starbase_4"
+		"tech_zero_point_power"
+	}
 	weight_modifier = {
 		modifier = {
 			factor = 2
@@ -38,7 +39,6 @@ esc_tech_orbital_powerplant = {
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 	}
@@ -47,25 +47,29 @@ esc_tech_orbital_powerplant = {
 ############################################################
 ##                Stellar Enengy Tower                    ##
 ############################################################
-
 esc_tech_stellar_energy_tower = {
 	area = physics
-	category = { field_manipulation }
+	category = {
+		field_manipulation
+	}
 	tier = 4
 	cost = @tier4cost2
 	weight = @tier4weight2
 	ai_update_type = all
-	prerequisites = { }
-	is_rare = yes
-
-	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_stellarite_tech_forbidden }
+	prerequisites = {
 	}
-
+	is_rare = yes
+	potential = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_stellarite_tech_forbidden
+		}
+	}
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOT = { has_country_flag = ESC_COUNTRY_FLAG_killed_stellarite_devourer }
+			NOT = {
+				has_country_flag = ESC_COUNTRY_FLAG_killed_stellarite_devourer
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -79,12 +83,13 @@ esc_tech_stellar_energy_tower = {
 			has_ascension_perk = ap_technological_ascendancy
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
 			factor = 0
-			NOT = { has_country_flag = ESC_COUNTRY_FLAG_killed_stellarite_devourer }
+			NOT = {
+				has_country_flag = ESC_COUNTRY_FLAG_killed_stellarite_devourer
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -103,24 +108,28 @@ esc_tech_stellar_energy_tower = {
 ############################################################
 ##               Quantum Computation Node                 ##
 ############################################################
-
 esc_tech_quantum_node = {
 	area = physics
-	category = { computing }
+	category = {
+		computing
+	}
 	tier = 4
 	cost = @tier4cost2
 	weight = @tier4weight2
-	prerequisites = {  }
-	is_rare = yes
-
-	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_technosphere_tech_forbidden }
+	prerequisites = {
 	}
-
+	is_rare = yes
+	potential = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_technosphere_tech_forbidden
+		}
+	}
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOT = { has_country_flag = technosphere_studied }
+			NOT = {
+				has_country_flag = technosphere_studied
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -138,16 +147,19 @@ esc_tech_quantum_node = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_quantum_node }
+				any_member = {
+					has_technology = esc_tech_quantum_node
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
 			factor = 0
-			NOT = { has_country_flag = technosphere_studied }
+			NOT = {
+				has_country_flag = technosphere_studied
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -165,7 +177,9 @@ esc_tech_quantum_node = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_quantum_node }
+				any_member = {
+					has_technology = esc_tech_quantum_node
+				}
 			}
 		}
 	}
@@ -174,24 +188,28 @@ esc_tech_quantum_node = {
 ############################################################
 ##                    Reprocessing Plant                  ##
 ############################################################
-
 esc_tech_reprocessing_plant = {
 	area = engineering
-	category = { materials }
+	category = {
+		materials
+	}
 	tier = 4
 	cost = @tier4cost2
 	weight = @tier4weight2
-	prerequisites = {  }
-	is_rare = yes
-
-	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_scrapper_tech_forbidden }
+	prerequisites = {
 	}
-
+	is_rare = yes
+	potential = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_scrapper_tech_forbidden
+		}
+	}
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOT = { has_country_flag = scrapper_killed }
+			NOT = {
+				has_country_flag = scrapper_killed
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -205,12 +223,13 @@ esc_tech_reprocessing_plant = {
 			has_ascension_perk = ap_technological_ascendancy
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
 			factor = 0
-			NOT = { has_country_flag = technosphere_studied }
+			NOT = {
+				has_country_flag = technosphere_studied
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -229,21 +248,24 @@ esc_tech_reprocessing_plant = {
 ############################################################
 ##                    Zro Distilleries                    ##
 ############################################################
-
 esc_tech_zro_distilleries = {
 	area = engineering
-	category = { materials }
+	category = {
+		materials
+	}
 	tier = 3
 	cost = @tier3cost3
 	weight = @tier3weight3
-	prerequisites = { "esc_tech_grand_research_initiative" }
+	prerequisites = {
+		"esc_tech_grand_research_initiative"
+	}
 	is_rare = yes
-
 	potential = {
 		ESC_TRIGGER_may_research_psionic_weapons_basic = yes
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_psionic_weapons_forbidden }
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_psionic_weapons_forbidden
+		}
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -260,11 +282,12 @@ esc_tech_zro_distilleries = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_zro_distilleries }
+				any_member = {
+					has_technology = esc_tech_zro_distilleries
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -282,7 +305,9 @@ esc_tech_zro_distilleries = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_zro_distilleries }
+				any_member = {
+					has_technology = esc_tech_zro_distilleries
+				}
 			}
 		}
 	}
@@ -291,16 +316,19 @@ esc_tech_zro_distilleries = {
 ############################################################
 ##              Dark Matter Drawing Facilities            ##
 ############################################################
-
 esc_tech_dark_matter_facilities = {
 	area = physics
-	category = { field_manipulation }
+	category = {
+		field_manipulation
+	}
 	tier = 4
 	cost = @tier4cost3
 	weight = @tier4weight3
-	prerequisites = { "tech_mine_dark_matter" "esc_tech_grand_research_initiative" }
+	prerequisites = {
+		"tech_mine_dark_matter"
+		"esc_tech_grand_research_initiative"
+	}
 	is_rare = yes
-
 	potential = {
 		NOR = {
 			has_global_flag = ESC_GLOBAL_FLAG_chronospatial_weapons_forbidden
@@ -308,7 +336,6 @@ esc_tech_dark_matter_facilities = {
 			has_global_flag = ESC_GLOBAL_FLAG_gravitic_weapons_forbidden
 		}
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 1.5
@@ -326,13 +353,14 @@ esc_tech_dark_matter_facilities = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_dark_matter_facilities }
+				any_member = {
+					has_technology = esc_tech_dark_matter_facilities
+				}
 			}
 		}
 	}
-
 	ai_weight = {
-		factor = @ESC_AI_tech_weight_multiplier #strategic resource
+		factor = @ESC_AI_tech_weight_multiplier		#strategic resource
 		modifier = {
 			factor = 1.25
 			research_leader = {
@@ -349,7 +377,9 @@ esc_tech_dark_matter_facilities = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_dark_matter_facilities }
+				any_member = {
+					has_technology = esc_tech_dark_matter_facilities
+				}
 			}
 		}
 	}
@@ -358,24 +388,32 @@ esc_tech_dark_matter_facilities = {
 ############################################################
 ##                 Planetary Core Mining                  ##
 ############################################################
-
 esc_tech_magmaminer_1 = {
 	area = engineering
-	category = { industry }
+	category = {
+		industry
+	}
 	tier = 5
 	cost = @tier5cost2
 	weight = @tier5weight2
-	prerequisites = { "tech_mega_engineering" "esc_tech_advanced_materials" }
-	is_rare = yes
-
-	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_mantle_mining_facility_forbidden }
+	prerequisites = {
+		"tech_mega_engineering"
+		"esc_tech_advanced_materials"
 	}
-
+	is_rare = yes
+	potential = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_mantle_mining_facility_forbidden
+		}
+	}
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOT = { any_owned_planet = { ESC_TRIGGER_can_host_mantle_miner = yes } }
+			NOT = {
+				any_owned_planet = {
+					ESC_TRIGGER_can_host_mantle_miner = yes
+				}
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -400,16 +438,21 @@ esc_tech_magmaminer_1 = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_magmaminer_1 }
+				any_member = {
+					has_technology = esc_tech_magmaminer_1
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
 			factor = 0
-			NOT = { any_owned_planet = { ESC_TRIGGER_can_host_mantle_miner = yes } }
+			NOT = {
+				any_owned_planet = {
+					ESC_TRIGGER_can_host_mantle_miner = yes
+				}
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -434,7 +477,9 @@ esc_tech_magmaminer_1 = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_magmaminer_1 }
+				any_member = {
+					has_technology = esc_tech_magmaminer_1
+				}
 			}
 		}
 	}
@@ -443,24 +488,31 @@ esc_tech_magmaminer_1 = {
 ############################################################
 ##             Improved Planetary Core Mining             ##
 ############################################################
-
 esc_tech_magmaminer_2 = {
 	area = engineering
-	category = { industry }
+	category = {
+		industry
+	}
 	tier = 5
 	cost = @tier5cost3
 	weight = @tier5weight3
-	prerequisites = { "esc_tech_magmaminer_1" }
-	is_rare = yes
-
-	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_mantle_mining_facility_forbidden }
+	prerequisites = {
+		"esc_tech_magmaminer_1"
 	}
-
+	is_rare = yes
+	potential = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_mantle_mining_facility_forbidden
+		}
+	}
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOT = { any_owned_planet = { ESC_TRIGGER_can_host_upgraded_mantle_miner = yes } }
+			NOT = {
+				any_owned_planet = {
+					ESC_TRIGGER_can_host_upgraded_mantle_miner = yes
+				}
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -485,16 +537,21 @@ esc_tech_magmaminer_2 = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_magmaminer_2 }
+				any_member = {
+					has_technology = esc_tech_magmaminer_2
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
 			factor = 0
-			NOT = { any_owned_planet = { ESC_TRIGGER_can_host_upgraded_mantle_miner = yes } }
+			NOT = {
+				any_owned_planet = {
+					ESC_TRIGGER_can_host_upgraded_mantle_miner = yes
+				}
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -519,7 +576,9 @@ esc_tech_magmaminer_2 = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_magmaminer_2 }
+				any_member = {
+					has_technology = esc_tech_magmaminer_2
+				}
 			}
 		}
 	}
@@ -528,25 +587,30 @@ esc_tech_magmaminer_2 = {
 ############################################################
 ##              Colossal Creature Cloning                 ##
 ############################################################
-
 esc_tech_dragon_hatchery = {
 	area = society
-	category = { biology }
+	category = {
+		biology
+	}
 	tier = 5
 	cost = @tier5cost3
 	weight = @ESC_TECH_tier6_weight1
 	is_rare = yes
-	prerequisites = { "tech_society_3" }
-
+	prerequisites = {
+		"tech_society_3"
+	}
 	potential = {
 		#NOT = { has_global_flag = ESC_GLOBAL_FLAG_ether_dragon_tech_forbidden }
-		NOT = { has_valid_civic = civic_machine_terminator }
+		NOT = {
+			has_valid_civic = civic_machine_terminator
+		}
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOT = { has_country_flag = ESC_COUNTRY_FLAG_killed_ether_drake }
+			NOT = {
+				has_country_flag = ESC_COUNTRY_FLAG_killed_ether_drake
+			}
 		}
 		modifier = {
 			factor = 0
@@ -563,12 +627,13 @@ esc_tech_dragon_hatchery = {
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
 			factor = 0
-			NOT = { has_country_flag = ESC_COUNTRY_FLAG_killed_ether_drake }
+			NOT = {
+				has_country_flag = ESC_COUNTRY_FLAG_killed_ether_drake
+			}
 		}
 		modifier = {
 			factor = 0
@@ -590,20 +655,23 @@ esc_tech_dragon_hatchery = {
 ############################################################
 ##              Large Scale Automatic Cannons             ##
 ############################################################
-
 esc_tech_autocannons_m = {
 	area = engineering
-	category = { propulsion }
+	category = {
+		propulsion
+	}
 	tier = 5
 	cost = @tier5cost1
 	weight = @tier5weight1
-	prerequisites = { "esc_tech_autocannon_4" }
-	gateway = ESC_BIG_AUTOCANNONS
-
-	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_big_autocannons_forbidden }
+	prerequisites = {
+		"esc_tech_autocannon_4"
 	}
-
+	gateway = ESC_BIG_AUTOCANNONS
+	potential = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_big_autocannons_forbidden
+		}
+	}
 	prereqfor_desc = {
 		hide_prereq_for_desc = component
 		custom = {
@@ -611,7 +679,6 @@ esc_tech_autocannons_m = {
 			desc = "ESC_TECH_UNLOCK_M_AUTOCANNONS_DESC"
 		}
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
@@ -628,7 +695,6 @@ esc_tech_autocannons_m = {
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -651,28 +717,30 @@ esc_tech_autocannons_m = {
 ############################################################
 ##              Superscale Automatic Cannons              ##
 ############################################################
-
 esc_tech_autocannons_l = {
 	area = engineering
-	category = { propulsion }
+	category = {
+		propulsion
+	}
 	tier = 5
 	cost = @tier5cost1
 	weight = @tier5weight1
-	prerequisites = { "esc_tech_autocannons_m" }
+	prerequisites = {
+		"esc_tech_autocannons_m"
+	}
 	is_rare = yes
 	gateway = ESC_BIG_AUTOCANNONS
-
 	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_big_autocannons_forbidden }
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_big_autocannons_forbidden
+		}
 	}
-
 	prereqfor_desc = {
 		custom = {
 			title = "ESC_TECH_UNLOCK_L_AUTOCANNONS_TITLE"
 			desc = "ESC_TECH_UNLOCK_L_AUTOCANNONS_DESC"
 		}
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
@@ -697,11 +765,12 @@ esc_tech_autocannons_l = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_autocannons_l }
+				any_member = {
+					has_technology = esc_tech_autocannons_l
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -727,7 +796,9 @@ esc_tech_autocannons_l = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_autocannons_l }
+				any_member = {
+					has_technology = esc_tech_autocannons_l
+				}
 			}
 		}
 	}
@@ -736,38 +807,44 @@ esc_tech_autocannons_l = {
 ############################################################
 ##                   Precursor Armaments                  ##
 ############################################################
-
 esc_tech_precursor_armaments = {
 	area = physics
-	category = { field_manipulation }
+	category = {
+		field_manipulation
+	}
 	tier = 7
 	cost = @ESC_TECH_tier7_cost1
-	weight = 0 # can only be found in FE debris if playing with ESC overwrites
+	weight = 0	# can only be found in FE debris if playing with ESC overwrites
 	ai_update_type = all
 	is_rare = yes
-
 	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_auxiliary_forbidden }
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_auxiliary_forbidden
+		}
 	}
 }
 
 ############################################################
 ##                    Bio-Horror Armies                   ##
 ############################################################
-
 esc_tech_bio_horror_army = {
 	area = society
-	category = { biology }
+	category = {
+		biology
+	}
 	tier = 5
 	cost = @tier5cost1
 	weight = @tier5weight1
-	prerequisites = { "esc_tech_biological_weapons" "tech_morphogenetic_field_mastery" }
-	is_rare = yes
-
-	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_biological_weapons_forbidden }
+	prerequisites = {
+		"esc_tech_biological_weapons"
+		"tech_morphogenetic_field_mastery"
 	}
-
+	is_rare = yes
+	potential = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_biological_weapons_forbidden
+		}
+	}
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -790,7 +867,6 @@ esc_tech_bio_horror_army = {
 			has_ascension_perk = ap_technological_ascendancy
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -819,20 +895,23 @@ esc_tech_bio_horror_army = {
 ############################################################
 ##                 Psionic Avatar Armies                  ##
 ############################################################
-
 esc_tech_psi_avatar_army = {
 	area = society
-	category = { psionics }
+	category = {
+		psionics
+	}
 	tier = 5
 	cost = @tier5cost1
 	weight = @tier5weight1
-	prerequisites = { "esc_tech_psionic_weapons" }
-	is_rare = yes
-
-	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_psionic_weapons_forbidden }
+	prerequisites = {
+		"esc_tech_psionic_weapons"
 	}
-
+	is_rare = yes
+	potential = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_psionic_weapons_forbidden
+		}
+	}
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -855,7 +934,6 @@ esc_tech_psi_avatar_army = {
 			has_ascension_perk = ap_technological_ascendancy
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {

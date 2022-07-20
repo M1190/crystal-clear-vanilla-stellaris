@@ -1,23 +1,20 @@
 namespace = est_perseverance
-
 #Perseverance 1, updates when building built.
 planet_event = {
 	id = est_perseverance.1
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		owner = {
 			has_active_tradition = tr_est_perseverance_1
 		}
 		from = {
-			Or = {
+			OR = {
 				has_building = building_planetary_shield_generator
 				last_building_changed = building_planetary_shield_generator
 			}
 		}
 	}
-	
 	immediate = {
 		planet_event = {
 			id = est_perseverance.2
@@ -30,13 +27,11 @@ planet_event = {
 	id = est_perseverance.2
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		owner = {
 			has_active_tradition = tr_est_perseverance_1
 		}
 	}
-	
 	immediate = {
 		if = {
 			limit = {
@@ -44,7 +39,7 @@ planet_event = {
 			}
 			if = {
 				limit = {
-					Not = {
+					NOT = {
 						has_modifier = mod_est_perseverance_1_shield
 					}
 				}
@@ -63,7 +58,7 @@ planet_event = {
 		else = {
 			if = {
 				limit = {
-					Not = {
+					NOT = {
 						has_modifier = mod_est_perseverance_1_no_shield
 					}
 				}
@@ -87,7 +82,6 @@ country_event = {
 	id = est_perseverance.3
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_global_flag = est_perseverance_5_picked_flag
 		fromfrom = {
@@ -96,7 +90,6 @@ country_event = {
 			}
 		}
 	}
-	
 	immediate = {
 		fromfrom = {
 			every_war_participant = {
@@ -117,11 +110,9 @@ country_event = {
 	id = est_perseverance.4
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		recently_lost_war = yes
 	}
-	
 	immediate = {
 		if = {
 			limit = {

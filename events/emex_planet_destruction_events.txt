@@ -1,5 +1,4 @@
 namespace = emex_planet_destruction
-
 #planet_event = {
 #	id = planet_destruction.1
 #	is_triggered_only = yes
@@ -9,29 +8,34 @@ namespace = emex_planet_destruction
 #		remove_planet = yes
 #	}
 #}
-
 # Add static war exhaustion for these planet destruction events with: 
 # add_static_war_exhaustion = {
 #				attacker = <country>		 				# attacker in this battle
 #				location = <planet>							# location for battle
 #				value_for_planet_destruction = <0.0-1.0>	# scale amount of WE added to this battle
 #			}
-
 # Corrupted
 planet_event = {
 	id = emex_planet_destruction.1
 	is_triggered_only = yes
 	hide_window = yes
-
 	immediate = {
 		if = {
 			limit = {
-				from.owner = { NOT = { is_country_type = master_ai_country } }
+				from.owner = {
+					NOT = {
+						is_country_type = master_ai_country
+					}
+				}
 				NOT = {
 					has_global_flag = corrupter_fired_by_default_empire
 				}
 			}
-			owner = { country_event = { id = maai.4 } } #for corrupted empire
+			owner = {
+				country_event = {
+					id = maai.4
+				}
+			}			#for corrupted empire
 			#every_playable_country = {
 			#	limit = {
 			#		is_ai = no
@@ -40,25 +44,38 @@ planet_event = {
 			#			is_same_value = from.owner
 			#		}
 			#	}
-				#country_event = { id = maai.6 days = 3 } #for galaxy (normal empire first time)
+			#country_event = { id = maai.6 days = 3 } #for galaxy (normal empire first time)
 			#}
 		}
 		else = {
 			#nothing
 		}
-		if = { #for corrupter empire
+		if = {
+			#for corrupter empire
 			limit = {
 				exists = owner
-				owner = { NOT = { is_country_type = swarm } }
-				NOT = { is_planet_class = pc_ai }
+				owner = {
+					NOT = {
+						is_country_type = swarm
+					}
+				}
+				NOT = {
+					is_planet_class = pc_ai
+				}
 			}
-			from.owner = { country_event = { id = maai.3 } } #for tech + other shit
+			from.owner = {
+				country_event = {
+					id = maai.3
+				}
+			}			#for tech + other shit
 		}
 		if = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_value = from.owner }
+					NOT = {
+						is_same_value = from.owner
+					}
 					OR = {
 						is_country_type = default
 						is_country_type = fallen_empire
@@ -71,7 +88,10 @@ planet_event = {
 				limit = {
 					is_colony = yes
 				}
-				add_threat = { who = from.owner amount = 1 }
+				add_threat = {
+					who = from.owner
+					amount = 1
+				}
 				# modifier for allies + those upset by genocide
 				every_country = {
 					limit = {
@@ -103,7 +123,11 @@ planet_event = {
 						}
 					}
 					if = {
-						limit = { root = { is_colony = no } }
+						limit = {
+							root = {
+								is_colony = no
+							}
+						}
 						add_opinion_modifier = {
 							modifier = opinion_cracked_an_uninhabited_world
 							who = from.owner
@@ -118,12 +142,19 @@ planet_event = {
 				}
 			}
 			else = {
-				add_threat = { who = from.owner amount = 1 }
+				add_threat = {
+					who = from.owner
+					amount = 1
+				}
 			}
 			# modifiers for victim
 			owner = {
 				if = {
-					limit = { root = { is_colony = no } }
+					limit = {
+						root = {
+							is_colony = no
+						}
+					}
 					add_opinion_modifier = {
 						modifier = opinion_cracked_my_uninhabited_world
 						who = from.owner
@@ -136,22 +167,30 @@ planet_event = {
 					}
 				}
 				if = {
-					limit = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+					limit = {
+						NOT = {
+							has_ethic = ethic_gestalt_consciousness
+						}
+					}
 					add_modifier = {
 						modifier = colossus_victim
-						days = 10800 # 30 years
+						days = 10800						# 30 years
 					}
 				}
 			}
 			if = {
 				limit = {
 					exists = owner
-					owner = { is_country_type = primitive }
+					owner = {
+						is_country_type = primitive
+					}
 				}
 				# modifier for allies + those upset by genocide
 				every_country = {
 					limit = {
-						NOT = { is_same_value = from.owner }
+						NOT = {
+							is_same_value = from.owner
+						}
 						OR = {
 							has_communications = from.owner
 							has_communications = root.owner
@@ -175,7 +214,9 @@ planet_event = {
 				}
 				every_country = {
 					limit = {
-						NOT = { is_same_value = from.owner }
+						NOT = {
+							is_same_value = from.owner
+						}
 						OR = {
 							has_communications = from.owner
 							has_communications = root.owner
@@ -206,7 +247,7 @@ planet_event = {
 					location = root
 					value_for_planet_destruction = 0.75
 				}
-			}			
+			}
 		}
 		every_owned_pop = {
 			kill_pop = yes

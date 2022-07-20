@@ -1,33 +1,30 @@
 namespace = est_justice
-
 #Justice Finish, increased unity to countries with stored influence.
 country_event = {
 	id = est_justice.1
 	hide_window = yes
 	is_triggered_only = yes
-	
-	trigger = {	
+	trigger = {
 		has_active_tradition = tr_est_justice_finish
 	}
-	
 	immediate = {
 		if = {
 			limit = {
 				has_resource = {
-					type = influence 
+					type = influence
 					amount > 749
 				}
 			}
 			if = {
 				limit = {
 					has_resource = {
-						type = influence 
+						type = influence
 						amount > 999
 					}
 				}
 				if = {
 					limit = {
-						Not = {
+						NOT = {
 							has_modifier = mod_est_justice_finish_2
 						}
 					}
@@ -46,7 +43,7 @@ country_event = {
 			else = {
 				if = {
 					limit = {
-						Not = {
+						NOT = {
 							has_modifier = mod_est_justice_finish_1
 						}
 					}
@@ -61,7 +58,6 @@ country_event = {
 					}
 					remove_modifier = "mod_est_justice_finish_2"
 				}
-
 			}
 		}
 		else = {
@@ -80,4 +76,3 @@ country_event = {
 		}
 	}
 }
-

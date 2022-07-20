@@ -1,7 +1,5 @@
 namespace = eo_infiltrators
-
 @InfiltrateTimer = 1460
-
 #First stage
 espionage_operation_event = {
 	id = eo_infiltrators.1
@@ -9,22 +7,22 @@ espionage_operation_event = {
 	desc = eo_infiltrators.1.desc
 	espionage_operation = yes
 	picture = GFX_evt_decryption
-    location = target.capital_scope
+	location = target.capital_scope
 	show_sound = event_default
 	is_triggered_only = yes
-
 	immediate = {
 		infiltration_choose_target_types = yes
 		set_espionage_operation_progress_locked = yes
 	}
-
 	option = {
 		name = eo_infiltrators.1.option
-        hidden_effect = {
-            owner = {
-                country_event = { id = eo_infiltrators.2 }
-            }
-        }
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = eo_infiltrators.2
+				}
+			}
+		}
 	}
 }
 
@@ -34,12 +32,12 @@ country_event = {
 	title = eo_infiltrators.2.name
 	desc = eo_infiltrators.2.desc
 	picture = GFX_evt_intelligence_report
-    location = from.target.capital_scope
+	location = from.target.capital_scope
 	show_sound = event_default
 	is_triggered_only = yes
-
 	# Government
-	option = { # Official
+	option = {
+		# Official
 		name = eo_infiltrators.2.a.asset_infilitrator_official
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_official.tt
 		trigger = {
@@ -51,7 +49,8 @@ country_event = {
 			clear_non_government_asset_flags = yes
 		}
 	}
-	option = { # Noble
+	option = {
+		# Noble
 		name = eo_infiltrators.2.a.asset_infilitrator_noble
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_noble.tt
 		trigger = {
@@ -63,9 +62,10 @@ country_event = {
 			clear_non_government_asset_flags = yes
 		}
 	}
-	option = { # Officer
-		name = eo_infiltrators.2.a.asset_infilitrator_officer 
-		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_officer.tt 
+	option = {
+		# Officer
+		name = eo_infiltrators.2.a.asset_infilitrator_officer
+		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_officer.tt
 		trigger = {
 			from = {
 				has_espionage_operation_flag = asset_infilitrator_officer
@@ -75,8 +75,9 @@ country_event = {
 			clear_non_government_asset_flags = yes
 		}
 	}
-	option = { # Politician
-		name = eo_infiltrators.2.a.asset_infilitrator_politican 
+	option = {
+		# Politician
+		name = eo_infiltrators.2.a.asset_infilitrator_politican
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_politican.tt
 		trigger = {
 			from = {
@@ -87,11 +88,11 @@ country_event = {
 			clear_non_government_asset_flags = yes
 		}
 	}
-
 	# Diplomacy
-	option = { # Diplomat
+	option = {
+		# Diplomat
 		name = eo_infiltrators.2.a.asset_infilitrator_diplomat
-		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_diplomat.tt 
+		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_diplomat.tt
 		trigger = {
 			from = {
 				OR = {
@@ -104,9 +105,10 @@ country_event = {
 			clear_non_diplomacy_asset_flags = yes
 		}
 	}
-	option = { # Spy
+	option = {
+		# Spy
 		name = eo_infiltrators.2.a.asset_infilitrator_spy
-		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_spy.tt 
+		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_spy.tt
 		trigger = {
 			from = {
 				has_espionage_operation_flag = asset_infilitrator_spy
@@ -116,7 +118,8 @@ country_event = {
 			clear_non_diplomacy_asset_flags = yes
 		}
 	}
-	option = { # Journalist
+	option = {
+		# Journalist
 		name = eo_infiltrators.2.a.asset_infilitrator_journalist
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_journalist.tt
 		trigger = {
@@ -128,11 +131,11 @@ country_event = {
 			clear_non_diplomacy_asset_flags = yes
 		}
 	}
-
 	# Economy
-	option = { # CEO
+	option = {
+		# CEO
 		name = eo_infiltrators.2.a.asset_infilitrator_ceo
-		custom_tooltip =eo_infiltrators.2.a.asset_infilitrator_ceo.tt
+		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_ceo.tt
 		trigger = {
 			from = {
 				has_espionage_operation_flag = asset_infilitrator_ceo
@@ -142,7 +145,8 @@ country_event = {
 			clear_non_economy_asset_flags = yes
 		}
 	}
-	option = { # Manager
+	option = {
+		# Manager
 		name = eo_infiltrators.2.a.asset_infilitrator_manager
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_manager.tt
 		trigger = {
@@ -154,7 +158,8 @@ country_event = {
 			clear_non_economy_asset_flags = yes
 		}
 	}
-	option = { # Executive
+	option = {
+		# Executive
 		name = eo_infiltrators.2.a.asset_infilitrator_executive
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_executive.tt
 		trigger = {
@@ -166,7 +171,8 @@ country_event = {
 			clear_non_economy_asset_flags = yes
 		}
 	}
-	option = { # Labor Organizer
+	option = {
+		# Labor Organizer
 		name = eo_infiltrators.2.a.asset_infilitrator_labor_organizer
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_labor_organizer.tt
 		trigger = {
@@ -178,7 +184,8 @@ country_event = {
 			clear_non_economy_asset_flags = yes
 		}
 	}
-	option = { # Resource Coordinator
+	option = {
+		# Resource Coordinator
 		name = eo_infiltrators.2.a.asset_infilitrator_resource_coordinator
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_resource_coordinator.tt
 		trigger = {
@@ -190,9 +197,11 @@ country_event = {
 			clear_non_economy_asset_flags = yes
 		}
 	}
-	option = { # Economist
+	option = {
+		# Economist
 		name = eo_infiltrators.2.a.asset_infilitrator_economist
-		custom_tooltip eo_infiltrators.2.a.asset_infilitrator_economist.tt
+		custom_tooltip
+		eo_infiltrators.2.a.asset_infilitrator_economist.tt
 		trigger = {
 			from = {
 				has_espionage_operation_flag = asset_infilitrator_economist
@@ -202,7 +211,8 @@ country_event = {
 			clear_non_economy_asset_flags = yes
 		}
 	}
-	option = { # Banker
+	option = {
+		# Banker
 		name = eo_infiltrators.2.a.asset_infilitrator_banker
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_banker.tt
 		trigger = {
@@ -214,7 +224,8 @@ country_event = {
 			clear_non_economy_asset_flags = yes
 		}
 	}
-	option = { # Regulator
+	option = {
+		# Regulator
 		name = eo_infiltrators.2.a.asset_infilitrator_regulator
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_regulator.tt
 		trigger = {
@@ -226,7 +237,8 @@ country_event = {
 			clear_non_economy_asset_flags = yes
 		}
 	}
-	option = { # Lobbyist
+	option = {
+		# Lobbyist
 		name = eo_infiltrators.2.a.asset_infilitrator_lobbyist
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_lobbyist.tt
 		trigger = {
@@ -238,9 +250,9 @@ country_event = {
 			clear_non_economy_asset_flags = yes
 		}
 	}
-
 	# Technology
-	option = { # Scientist
+	option = {
+		# Scientist
 		name = eo_infiltrators.2.a.asset_infilitrator_scientist
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_scientist.tt
 		trigger = {
@@ -252,7 +264,8 @@ country_event = {
 			clear_non_technology_asset_flags = yes
 		}
 	}
-	option = { # Academic
+	option = {
+		# Academic
 		name = eo_infiltrators.2.a.asset_infilitrator_academic
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_academic.tt
 		trigger = {
@@ -264,9 +277,9 @@ country_event = {
 			clear_non_technology_asset_flags = yes
 		}
 	}
-
 	# Military
-	option = { # Fleet commander
+	option = {
+		# Fleet commander
 		name = eo_infiltrators.2.a.asset_infilitrator_fleet_commander
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_fleet_commander.tt
 		trigger = {
@@ -278,7 +291,8 @@ country_event = {
 			clear_non_military_asset_flags = yes
 		}
 	}
-	option = { # Army commander
+	option = {
+		# Army commander
 		name = eo_infiltrators.2.a.asset_infilitrator_army_commander
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_army_commander.tt
 		trigger = {
@@ -290,7 +304,8 @@ country_event = {
 			clear_non_military_asset_flags = yes
 		}
 	}
-	option = { # Military advisor
+	option = {
+		# Military advisor
 		name = eo_infiltrators.2.a.asset_infilitrator_military_advisor
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_military_advisor.tt
 		trigger = {
@@ -302,7 +317,8 @@ country_event = {
 			clear_non_military_asset_flags = yes
 		}
 	}
-	option = { # Security contractor
+	option = {
+		# Security contractor
 		name = eo_infiltrators.2.a.asset_infilitrator_security_contractor
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_security_contractor.tt
 		trigger = {
@@ -314,7 +330,8 @@ country_event = {
 			clear_non_military_asset_flags = yes
 		}
 	}
-	option = { # Civilian official
+	option = {
+		# Civilian official
 		name = eo_infiltrators.2.a.asset_infilitrator_civilian_official
 		custom_tooltip = eo_infiltrators.2.a.asset_infilitrator_civilian_official.tt
 		trigger = {
@@ -326,12 +343,11 @@ country_event = {
 			clear_non_military_asset_flags = yes
 		}
 	}
-
-    after = {
+	after = {
 		from = {
 			set_espionage_operation_progress_locked = no
 		}
-    }
+	}
 }
 
 #Second stage
@@ -339,43 +355,88 @@ espionage_operation_event = {
 	id = eo_infiltrators.3
 	title = eo_infiltrators.3.title
 	show_sound = event_default
-
 	espionage_operation = yes
-    location = target.capital_scope
+	location = target.capital_scope
 	is_triggered_only = yes
-
 	desc = {
 		trigger = {
 			switch = {
 				trigger = has_espionage_operation_flag
-				asset_infilitrator_official = { text = eo_infiltrators.3.asset_infilitrator_official.desc }
-				asset_infilitrator_noble = { text = eo_infiltrators.3.asset_infilitrator_officer.desc }
-				asset_infilitrator_officer = { text = eo_infiltrators.3.asset_infilitrator_officer.desc }
-				asset_infilitrator_politican = { text = eo_infiltrators.3.asset_infilitrator_politican.desc }
-				asset_infilitrator_spy = { text = eo_infiltrators.3.asset_infilitrator_spy.desc }
-				asset_infilitrator_diplomat = { text = eo_infiltrators.3.asset_infilitrator_diplomat.desc }
-				asset_infilitrator_diplomat_backchannel = { text = eo_infiltrators.3.asset_infilitrator_diplomat_backchannel.desc }
-				asset_infilitrator_journalist = { text = eo_infiltrators.3.asset_infilitrator_journalist.desc }
-				asset_infilitrator_ceo = { text = eo_infiltrators.3.asset_infilitrator_ceo.desc }
-				asset_infilitrator_manager = { text = eo_infiltrators.3.asset_infilitrator_manager.desc }
-				asset_infilitrator_executive = { text = eo_infiltrators.3.asset_infilitrator_executive.desc }
-				asset_infilitrator_labor_organizer = { text = eo_infiltrators.3.asset_infilitrator_labor_organizer.desc }
-				asset_infilitrator_resource_coordinator = { text = eo_infiltrators.3.asset_infilitrator_resource_coordinator.desc }
-				asset_infilitrator_economist = { text = eo_infiltrators.3.asset_infilitrator_economist.desc }
-				asset_infilitrator_banker = { text = eo_infiltrators.3.asset_infilitrator_banker.desc }
-				asset_infilitrator_regulator = { text = eo_infiltrators.3.asset_infilitrator_regulator.desc }
-				asset_infilitrator_lobbyist = { text = eo_infiltrators.3.asset_infilitrator_lobbyist.desc }
-				asset_infilitrator_scientist = { text = eo_infiltrators.3.asset_infilitrator_scientist.desc }
-				asset_infilitrator_academic = { text = eo_infiltrators.3.asset_infilitrator_academic.desc }
-				asset_infilitrator_fleet_commander = { text = eo_infiltrators.3.asset_infilitrator_fleet_commander.desc }
-				asset_infilitrator_army_commander = { text = eo_infiltrators.3.asset_infilitrator_army_commander.desc }
-				asset_infilitrator_military_advisor = { text = eo_infiltrators.3.asset_infilitrator_military_advisor.desc }
-				asset_infilitrator_security_contractor = { text = eo_infiltrators.3.asset_infilitrator_security_contractor.desc }
-				asset_infilitrator_civilian_official = { text = eo_infiltrators.3.asset_infilitrator_civilian_official.desc }
+				asset_infilitrator_official = {
+					text = eo_infiltrators.3.asset_infilitrator_official.desc
+				}
+				asset_infilitrator_noble = {
+					text = eo_infiltrators.3.asset_infilitrator_officer.desc
+				}
+				asset_infilitrator_officer = {
+					text = eo_infiltrators.3.asset_infilitrator_officer.desc
+				}
+				asset_infilitrator_politican = {
+					text = eo_infiltrators.3.asset_infilitrator_politican.desc
+				}
+				asset_infilitrator_spy = {
+					text = eo_infiltrators.3.asset_infilitrator_spy.desc
+				}
+				asset_infilitrator_diplomat = {
+					text = eo_infiltrators.3.asset_infilitrator_diplomat.desc
+				}
+				asset_infilitrator_diplomat_backchannel = {
+					text = eo_infiltrators.3.asset_infilitrator_diplomat_backchannel.desc
+				}
+				asset_infilitrator_journalist = {
+					text = eo_infiltrators.3.asset_infilitrator_journalist.desc
+				}
+				asset_infilitrator_ceo = {
+					text = eo_infiltrators.3.asset_infilitrator_ceo.desc
+				}
+				asset_infilitrator_manager = {
+					text = eo_infiltrators.3.asset_infilitrator_manager.desc
+				}
+				asset_infilitrator_executive = {
+					text = eo_infiltrators.3.asset_infilitrator_executive.desc
+				}
+				asset_infilitrator_labor_organizer = {
+					text = eo_infiltrators.3.asset_infilitrator_labor_organizer.desc
+				}
+				asset_infilitrator_resource_coordinator = {
+					text = eo_infiltrators.3.asset_infilitrator_resource_coordinator.desc
+				}
+				asset_infilitrator_economist = {
+					text = eo_infiltrators.3.asset_infilitrator_economist.desc
+				}
+				asset_infilitrator_banker = {
+					text = eo_infiltrators.3.asset_infilitrator_banker.desc
+				}
+				asset_infilitrator_regulator = {
+					text = eo_infiltrators.3.asset_infilitrator_regulator.desc
+				}
+				asset_infilitrator_lobbyist = {
+					text = eo_infiltrators.3.asset_infilitrator_lobbyist.desc
+				}
+				asset_infilitrator_scientist = {
+					text = eo_infiltrators.3.asset_infilitrator_scientist.desc
+				}
+				asset_infilitrator_academic = {
+					text = eo_infiltrators.3.asset_infilitrator_academic.desc
+				}
+				asset_infilitrator_fleet_commander = {
+					text = eo_infiltrators.3.asset_infilitrator_fleet_commander.desc
+				}
+				asset_infilitrator_army_commander = {
+					text = eo_infiltrators.3.asset_infilitrator_army_commander.desc
+				}
+				asset_infilitrator_military_advisor = {
+					text = eo_infiltrators.3.asset_infilitrator_military_advisor.desc
+				}
+				asset_infilitrator_security_contractor = {
+					text = eo_infiltrators.3.asset_infilitrator_security_contractor.desc
+				}
+				asset_infilitrator_civilian_official = {
+					text = eo_infiltrators.3.asset_infilitrator_civilian_official.desc
+				}
 			}
 		}
 	}
-
 	picture = {
 		trigger = {
 			has_espionage_operation_flag = asset_infilitrator_official
@@ -520,226 +581,323 @@ espionage_operation_event = {
 		}
 		picture = GFX_evt_acquire_asset
 	}
-
 	immediate = {
 		set_espionage_operation_progress_locked = yes
 	}
-
 	option = {
 		name = LAUNCH_OPERATION
-        hidden_effect = {
-            owner = {
-                country_event = { id = eo_infiltrators.4 days = 15 }
-            }
-        }
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = eo_infiltrators.4
+					days = 15
+				}
+			}
+		}
 	}
-
-    after = {
-        set_espionage_operation_progress_locked = no
-    }
+	after = {
+		set_espionage_operation_progress_locked = no
+	}
 }
 
 #Conclusion
 country_event = {
 	id = eo_infiltrators.4
 	title = eo_infiltrators.4.title
-
 	location = from.target.capital_scope
 	is_triggered_only = yes
-
 	desc = {
 		trigger = {
 			hidden:from = {
 				switch = {
 					trigger = has_espionage_operation_flag
-					asset_infilitrator_official = { text = eo_infiltrators.4.asset_infilitrator_official.desc }
-					asset_infilitrator_noble = { text = eo_infiltrators.4.asset_infilitrator_noble.desc }
-					asset_infilitrator_officer = { text = eo_infiltrators.4.asset_infilitrator_officer.desc }
-					asset_infilitrator_politican = { text = eo_infiltrators.4.asset_infilitrator_politican.desc }
-					asset_infilitrator_diplomat = { text = eo_infiltrators.4.asset_infilitrator_diplomat.desc }
-					asset_infilitrator_diplomat_backchannel = { text = eo_infiltrators.4.asset_infilitrator_diplomat_backchannel.desc }
-					asset_infilitrator_spy = { text = eo_infiltrators.4.asset_infilitrator_spy.desc }
-					asset_infilitrator_journalist = { text = eo_infiltrators.4.asset_infilitrator_journalist.desc }
-					asset_infilitrator_ceo = { text = eo_infiltrators.4.asset_infilitrator_ceo.desc }
-					asset_infilitrator_manager = { text = eo_infiltrators.4.asset_infilitrator_manager.desc }
-					asset_infilitrator_executive = { text = eo_infiltrators.4.asset_infilitrator_executive.desc }
-					asset_infilitrator_labor_organizer = { text = eo_infiltrators.4.asset_infilitrator_labor_organizer.desc }
-					asset_infilitrator_resource_coordinator = { text = eo_infiltrators.4.asset_infilitrator_resource_coordinator.desc }
-					asset_infilitrator_economist = { text = eo_infiltrators.4.asset_infilitrator_economist.desc }
-					asset_infilitrator_banker = { text = eo_infiltrators.4.asset_infilitrator_banker.desc }
-					asset_infilitrator_regulator = { text = eo_infiltrators.4.asset_infilitrator_regulator.desc }
-					asset_infilitrator_lobbyist = { text = eo_infiltrators.4.asset_infilitrator_lobbyist.desc }
-					asset_infilitrator_scientist = { text = eo_infiltrators.4.asset_infilitrator_scientist.desc }
-					asset_infilitrator_academic = { text = eo_infiltrators.4.asset_infilitrator_academic.desc }
-					asset_infilitrator_fleet_commander = { text = eo_infiltrators.4.asset_infilitrator_fleet_commander.desc }
-					asset_infilitrator_army_commander = { text = eo_infiltrators.4.asset_infilitrator_army_commander.desc }
-					asset_infilitrator_military_advisor = { text = eo_infiltrators.4.asset_infilitrator_military_advisor.desc }
-					asset_infilitrator_security_contractor = { text = eo_infiltrators.4.asset_infilitrator_security_contractor.desc }
-					asset_infilitrator_civilian_official = { text = eo_infiltrators.4.asset_infilitrator_civilian_official.desc }
+					asset_infilitrator_official = {
+						text = eo_infiltrators.4.asset_infilitrator_official.desc
+					}
+					asset_infilitrator_noble = {
+						text = eo_infiltrators.4.asset_infilitrator_noble.desc
+					}
+					asset_infilitrator_officer = {
+						text = eo_infiltrators.4.asset_infilitrator_officer.desc
+					}
+					asset_infilitrator_politican = {
+						text = eo_infiltrators.4.asset_infilitrator_politican.desc
+					}
+					asset_infilitrator_diplomat = {
+						text = eo_infiltrators.4.asset_infilitrator_diplomat.desc
+					}
+					asset_infilitrator_diplomat_backchannel = {
+						text = eo_infiltrators.4.asset_infilitrator_diplomat_backchannel.desc
+					}
+					asset_infilitrator_spy = {
+						text = eo_infiltrators.4.asset_infilitrator_spy.desc
+					}
+					asset_infilitrator_journalist = {
+						text = eo_infiltrators.4.asset_infilitrator_journalist.desc
+					}
+					asset_infilitrator_ceo = {
+						text = eo_infiltrators.4.asset_infilitrator_ceo.desc
+					}
+					asset_infilitrator_manager = {
+						text = eo_infiltrators.4.asset_infilitrator_manager.desc
+					}
+					asset_infilitrator_executive = {
+						text = eo_infiltrators.4.asset_infilitrator_executive.desc
+					}
+					asset_infilitrator_labor_organizer = {
+						text = eo_infiltrators.4.asset_infilitrator_labor_organizer.desc
+					}
+					asset_infilitrator_resource_coordinator = {
+						text = eo_infiltrators.4.asset_infilitrator_resource_coordinator.desc
+					}
+					asset_infilitrator_economist = {
+						text = eo_infiltrators.4.asset_infilitrator_economist.desc
+					}
+					asset_infilitrator_banker = {
+						text = eo_infiltrators.4.asset_infilitrator_banker.desc
+					}
+					asset_infilitrator_regulator = {
+						text = eo_infiltrators.4.asset_infilitrator_regulator.desc
+					}
+					asset_infilitrator_lobbyist = {
+						text = eo_infiltrators.4.asset_infilitrator_lobbyist.desc
+					}
+					asset_infilitrator_scientist = {
+						text = eo_infiltrators.4.asset_infilitrator_scientist.desc
+					}
+					asset_infilitrator_academic = {
+						text = eo_infiltrators.4.asset_infilitrator_academic.desc
+					}
+					asset_infilitrator_fleet_commander = {
+						text = eo_infiltrators.4.asset_infilitrator_fleet_commander.desc
+					}
+					asset_infilitrator_army_commander = {
+						text = eo_infiltrators.4.asset_infilitrator_army_commander.desc
+					}
+					asset_infilitrator_military_advisor = {
+						text = eo_infiltrators.4.asset_infilitrator_military_advisor.desc
+					}
+					asset_infilitrator_security_contractor = {
+						text = eo_infiltrators.4.asset_infilitrator_security_contractor.desc
+					}
+					asset_infilitrator_civilian_official = {
+						text = eo_infiltrators.4.asset_infilitrator_civilian_official.desc
+					}
 				}
 			}
 		}
 	}
-
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_official }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_official
+			}
 		}
 		picture = GFX_evt_vivisection
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_noble }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_noble
+			}
 		}
 		picture = GFX_evt_alien_abduction
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_officer }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_officer
+			}
 		}
 		picture = GFX_evt_interior_battle
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_politican }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_politican
+			}
 		}
 		picture = GFX_evt_smear_campaign
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_diplomat }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_diplomat
+			}
 		}
 		picture = GFX_evt_diplomatic_visit
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_diplomat_backchannel }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_diplomat_backchannel
+			}
 		}
 		picture = GFX_evt_ship_under_attack
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_spy }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_spy
+			}
 		}
 		picture = GFX_evt_cover_blown
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_journalist }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_journalist
+			}
 		}
 		picture = GFX_evt_vivisection
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_ceo }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_ceo
+			}
 		}
 		picture = GFX_evt_vivisection
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_manager }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_manager
+			}
 		}
 		picture = GFX_evt_acquire_asset
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_executive }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_executive
+			}
 		}
 		picture = GFX_evt_vivisection
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_labor_organizer }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_labor_organizer
+			}
 		}
 		picture = GFX_evt_dark_alley
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_resource_coordinator }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_resource_coordinator
+			}
 		}
 		picture = GFX_evt_vivisection
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_economist }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_economist
+			}
 		}
 		picture = GFX_evt_spy_network
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_banker }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_banker
+			}
 		}
 		picture = GFX_evt_dark_alley
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_regulator }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_regulator
+			}
 		}
 		picture = GFX_evt_ship_offloading_cargo
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_lobbyist }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_lobbyist
+			}
 		}
 		picture = GFX_evt_hand_shake
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_scientist }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_scientist
+			}
 		}
 		picture = GFX_evt_worrying_signal
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_academic }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_academic
+			}
 		}
 		picture = GFX_evt_operative_chase
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_fleet_commander }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_fleet_commander
+			}
 		}
 		picture = GFX_evt_face_off_in_space
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_army_commander }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_army_commander
+			}
 		}
 		picture = GFX_evt_surrender
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_military_advisor }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_military_advisor
+			}
 		}
 		picture = GFX_evt_vivisection
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_security_contractor }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_security_contractor
+			}
 		}
 		picture = GFX_evt_interior_battle
 	}
 	picture = {
 		trigger = {
-			from = { has_espionage_operation_flag = asset_infilitrator_civilian_official }
+			from = {
+				has_espionage_operation_flag = asset_infilitrator_civilian_official
+			}
 		}
 		picture = GFX_evt_vivisection
 	}
-
 	option = {
 		name = eo_infiltrators.4.a
-        set_infiltrator_asset_flags_for_check = yes
-        from.spynetwork = {
-            add_spy_network_level = -10
+		set_infiltrator_asset_flags_for_check = yes
+		from.spynetwork = {
+			add_spy_network_level = -10
 			save_event_target_as = infiltrated_spynetwork
-        }
+		}
 		if = {
 			limit = {
 				from = {
 					has_espionage_operation_flag = government_infiltrator_intel
 				}
 			}
-			add_intel_report = { category = government level = 2 days = 360 who = from.target }
+			add_intel_report = {
+				category = government
+				level = 2
+				days = 360
+				who = from.target
+			}
 		}
 		if = {
 			limit = {
@@ -747,7 +905,12 @@ country_event = {
 					has_espionage_operation_flag = diplomacy_infiltrator_intel
 				}
 			}
-			add_intel_report = { category = diplomacy level = 2 days = 360 who = from.target }
+			add_intel_report = {
+				category = diplomacy
+				level = 2
+				days = 360
+				who = from.target
+			}
 		}
 		if = {
 			limit = {
@@ -755,7 +918,12 @@ country_event = {
 					has_espionage_operation_flag = economy_infiltrator_intel
 				}
 			}
-			add_intel_report = { category = economy level = 2 days = 360 who = from.target }
+			add_intel_report = {
+				category = economy
+				level = 2
+				days = 360
+				who = from.target
+			}
 		}
 		if = {
 			limit = {
@@ -763,7 +931,12 @@ country_event = {
 					has_espionage_operation_flag = technology_infiltrator_intel
 				}
 			}
-			add_intel_report = { category = technology level = 2 days = 360 who = from.target }
+			add_intel_report = {
+				category = technology
+				level = 2
+				days = 360
+				who = from.target
+			}
 		}
 		if = {
 			limit = {
@@ -771,19 +944,29 @@ country_event = {
 					has_espionage_operation_flag = military_infiltrator_intel
 				}
 			}
-			add_intel_report = { category = military level = 2 days = 360 who = from.target }
+			add_intel_report = {
+				category = military
+				level = 2
+				days = 360
+				who = from.target
+			}
 		}
 		hidden_effect = {
 			random_list = {
 				70 = {
-					country_event = { id = eo_infiltrators.5 days = 30 }
+					country_event = {
+						id = eo_infiltrators.5
+						days = 30
+					}
 				}
 				30 = {
 					modifier = {
 						factor = 0
 						NOT = {
 							any_country = {
-								NOT = { is_same_value = prev }
+								NOT = {
+									is_same_value = prev
+								}
 								has_origin = origin_infiltrators
 								any_spynetwork = {
 									target = from.target
@@ -794,7 +977,9 @@ country_event = {
 					}
 					random_country = {
 						limit = {
-							NOT = { is_same_value = prev }
+							NOT = {
+								is_same_value = prev
+							}
 							has_origin = origin_infiltrators
 							any_spynetwork = {
 								target = from.target
@@ -803,7 +988,10 @@ country_event = {
 						}
 						save_event_target_as = parallel_infiltrator
 					}
-					country_event = { id = eo_infiltrators.6 days = 30 }
+					country_event = {
+						id = eo_infiltrators.6
+						days = 30
+					}
 				}
 			}
 		}
@@ -814,7 +1002,7 @@ country_event = {
 				expires = @InfiltrateTimer
 			}
 		}
-        destroy_espionage_operation = from
+		destroy_espionage_operation = from
 	}
 }
 
@@ -822,17 +1010,13 @@ country_event = {
 country_event = {
 	id = eo_infiltrators.5
 	title = eo_infiltrators.5.title
-
 	location = from.target.capital_scope
 	is_triggered_only = yes
-
 	desc = eo_infiltrators.5.desc
-
 	picture = GFX_evt_vivisection
-
 	option = {
 		name = EXCELLENT
-        event_target:infiltrated_spynetwork = {
+		event_target:infiltrated_spynetwork = {
 			create_infiltrator_asset = yes
 		}
 	}
@@ -842,22 +1026,24 @@ country_event = {
 country_event = {
 	id = eo_infiltrators.6
 	title = eo_infiltrators.6.title
-
 	location = from.target.capital_scope
 	is_triggered_only = yes
-
 	desc = eo_infiltrators.6.desc
-
 	picture = GFX_evt_vivisection
-
 	option = {
 		name = eo_infiltrators.6.a
-        event_target:infiltrated_spynetwork = {
+		event_target:infiltrated_spynetwork = {
 			create_infiltrator_asset = yes
 		}
 		random_spynetwork = {
-			limit = { target = { is_same_value = event_target:parallel_infiltrator } }
-			create_espionage_asset = { type = asset_internal_organs }
+			limit = {
+				target = {
+					is_same_value = event_target:parallel_infiltrator
+				}
+			}
+			create_espionage_asset = {
+				type = asset_internal_organs
+			}
 		}
 	}
 }
@@ -872,22 +1058,21 @@ country_event = {
 			has_country_flag = infiltrators_parent_of@prev
 		}
 	}
-
 	immediate = {
-		country_event = { id = eo_infiltrators.8 days = 90 random = 30 }
+		country_event = {
+			id = eo_infiltrators.8
+			days = 90
+			random = 30
+		}
 	}
 }
 
 country_event = {
 	id = eo_infiltrators.8
 	title = eo_infiltrators.8.title
-
 	is_triggered_only = yes
-
 	desc = eo_infiltrators.8.desc
-
 	picture = GFX_evt_spymaster
-
 	option = {
 		name = eo_infiltrators.8.a
 	}

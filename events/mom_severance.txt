@@ -1,17 +1,14 @@
 namespace = mom_severance
-
 #gamestart
 event = {
 	id = mom_severance.1
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		any_country = {
 			has_origin = origin_mom_severance
-		}		
+		}
 	}
-	
 	immediate = {
 		while = {
 			limit = {
@@ -40,7 +37,7 @@ event = {
 					solar_system = {
 						IF = {
 							limit = {
-								event_target:mom_severance_country.capital_scope ={
+								event_target:mom_severance_country.capital_scope = {
 									habitable_planet = yes
 									NOR = {
 										is_planet_class = pc_city
@@ -67,7 +64,7 @@ event = {
 										}
 										any_system_planet = {
 											is_planet_class = event_target:mom_severance_country.capital_scope
-										}							
+										}
 										distance = {
 											source = prev
 											min_jumps = 7
@@ -93,7 +90,7 @@ event = {
 										}
 										any_system_planet = {
 											is_planet_class = event_target:mom_severance_country.capital_scope
-										}							
+										}
 										distance = {
 											source = prev
 											min_jumps = 7
@@ -118,7 +115,7 @@ event = {
 											limit = {
 												owner = {
 													is_hive_empire = yes
-												}										
+												}
 											}
 											add_building = building_hive_capital
 										}
@@ -126,7 +123,7 @@ event = {
 											limit = {
 												owner = {
 													is_machine_empire = yes
-												}										
+												}
 											}
 											add_building = building_machine_capital
 										}
@@ -135,12 +132,12 @@ event = {
 										}
 									}
 									set_star_flag = mom_severance_system
-									prev = { # done this way to ensure we don't spawn "orphan" wormholes (wormholes that aren't linked to anything)
+									prev = {
+										# done this way to ensure we don't spawn "orphan" wormholes (wormholes that aren't linked to anything)
 										spawn_natural_wormhole = {
 											bypass_type = wormhole
 											random_pos = yes
 											orbit_angle = 360
-											
 										}
 									}
 									spawn_natural_wormhole = {
@@ -169,11 +166,14 @@ event = {
 											}
 										}
 										any_system_planet = {
-											habitability = { who = event_target:mom_severance_country.owner_main_species value >= 0.6 }
+											habitability = {
+												who = event_target:mom_severance_country.owner_main_species
+												value >= 0.6
+											}
 											NOT = {
 												has_modifier = holy_planet
 											}
-										}							
+										}
 										distance = {
 											source = prev
 											min_jumps = 7
@@ -198,11 +198,14 @@ event = {
 											}
 										}
 										any_system_planet = {
-											habitability = { who = event_target:mom_severance_country.owner_main_species value >= 0.6 }
+											habitability = {
+												who = event_target:mom_severance_country.owner_main_species
+												value >= 0.6
+											}
 											NOT = {
 												has_modifier = holy_planet
 											}
-										}							
+										}
 										distance = {
 											source = prev
 											min_jumps = 7
@@ -211,7 +214,10 @@ event = {
 									}
 									random_system_planet = {
 										limit = {
-											habitability = { who = event_target:mom_severance_country.owner_main_species value >= 0.6 }
+											habitability = {
+												who = event_target:mom_severance_country.owner_main_species
+												value >= 0.6
+											}
 											NOT = {
 												has_modifier = holy_planet
 											}
@@ -230,7 +236,7 @@ event = {
 											limit = {
 												owner = {
 													is_hive_empire = yes
-												}										
+												}
 											}
 											add_building = building_hive_capital
 										}
@@ -238,7 +244,7 @@ event = {
 											limit = {
 												owner = {
 													is_machine_empire = yes
-												}										
+												}
 											}
 											add_building = building_machine_capital
 										}
@@ -247,7 +253,8 @@ event = {
 										}
 									}
 									set_star_flag = mom_severance_system
-									prev = { # done this way to ensure we don't spawn "orphan" wormholes (wormholes that aren't linked to anything)
+									prev = {
+										# done this way to ensure we don't spawn "orphan" wormholes (wormholes that aren't linked to anything)
 										spawn_natural_wormhole = {
 											bypass_type = wormhole
 											random_pos = yes
@@ -281,11 +288,14 @@ event = {
 										}
 									}
 									any_system_planet = {
-										habitability = { who = event_target:mom_severance_country.owner_main_species value >= 0.6 }
+										habitability = {
+											who = event_target:mom_severance_country.owner_main_species
+											value >= 0.6
+										}
 										NOT = {
 											has_modifier = holy_planet
 										}
-									}							
+									}
 									distance = {
 										source = prev
 										min_jumps = 7
@@ -309,11 +319,14 @@ event = {
 											}
 										}
 										any_system_planet = {
-											habitability = { who = event_target:mom_severance_country.owner_main_species value >= 0.6 }
+											habitability = {
+												who = event_target:mom_severance_country.owner_main_species
+												value >= 0.6
+											}
 											NOT = {
 												has_modifier = holy_planet
 											}
-										}							
+										}
 										distance = {
 											source = prev
 											min_jumps = 7
@@ -322,7 +335,10 @@ event = {
 									}
 									random_system_planet = {
 										limit = {
-											habitability = { who = event_target:mom_severance_country.owner_main_species value >= 0.6 }
+											habitability = {
+												who = event_target:mom_severance_country.owner_main_species
+												value >= 0.6
+											}
 											NOT = {
 												has_modifier = holy_planet
 											}
@@ -341,7 +357,7 @@ event = {
 											limit = {
 												owner = {
 													is_hive_empire = yes
-												}										
+												}
 											}
 											add_building = building_hive_capital
 										}
@@ -349,16 +365,17 @@ event = {
 											limit = {
 												owner = {
 													is_machine_empire = yes
-												}										
+												}
 											}
 											add_building = building_machine_capital
 										}
 										ELSE = {
 											add_building = building_colony_shelter
-										}								
+										}
 									}
 									set_star_flag = mom_severance_system
-									prev = { # done this way to ensure we don't spawn "orphan" wormholes (wormholes that aren't linked to anything)
+									prev = {
+										# done this way to ensure we don't spawn "orphan" wormholes (wormholes that aren't linked to anything)
 										spawn_natural_wormhole = {
 											bypass_type = wormhole
 											random_pos = yes
@@ -403,7 +420,7 @@ event = {
 										is_moon = no
 										planet_size > 12
 										planet_size < 26
-									}							
+									}
 									distance = {
 										source = prev
 										min_jumps = 7
@@ -433,7 +450,7 @@ event = {
 										limit = {
 											owner = {
 												is_hive_empire = yes
-											}										
+											}
 										}
 										add_building = building_hive_capital
 									}
@@ -441,16 +458,17 @@ event = {
 										limit = {
 											owner = {
 												is_machine_empire = yes
-											}										
+											}
 										}
 										add_building = building_machine_capital
 									}
 									ELSE = {
 										add_building = building_colony_shelter
-									}								
+									}
 								}
 								set_star_flag = mom_severance_system
-								prev = { # done this way to ensure we don't spawn "orphan" wormholes (wormholes that aren't linked to anything)
+								prev = {
+									# done this way to ensure we don't spawn "orphan" wormholes (wormholes that aren't linked to anything)
 									spawn_natural_wormhole = {
 										bypass_type = wormhole
 										random_pos = yes
@@ -475,7 +493,7 @@ event = {
 									AND = {
 										has_deposit_for = shipclass_research_station
 										has_research_station = no
-									}								
+									}
 								}
 							}
 							IF = {
@@ -523,7 +541,7 @@ event = {
 							owner = event_target:mom_severance_country
 						}
 					}
-				}							
+				}
 				create_starbase = {
 					size = starbase_outpost
 					owner = event_target:mom_severance_country

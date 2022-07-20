@@ -1,13 +1,10 @@
 namespace = pdstorm
-
 #EnterSystem
-
 #Unkown Attackers
 planet_event = {
 	id = pdstorm.01
 	hide_window = yes
 	location = root
-
 	pre_triggers = {
 		has_owner = yes
 		original_owner = yes
@@ -15,19 +12,30 @@ planet_event = {
 		is_occupied_flag = no
 	}
 	trigger = {
-		NOT = { owner = { is_gestalt = yes } }
-		NOT = { any_galaxy_planet = { has_planet_flag = pdstorm_onlyonce } }
-		NOT = { has_planet_flag = pdnoseamonster }
+		NOT = {
+			owner = {
+				is_gestalt = yes
+			}
+		}
+		NOT = {
+			any_galaxy_planet = {
+				has_planet_flag = pdstorm_onlyonce
+			}
+		}
+		NOT = {
+			has_planet_flag = pdnoseamonster
+		}
 		is_planet_class = pc_storm
 		has_building = building_storm_lab
 	}
-
 	is_triggered_only = yes
-
 	immediate = {
-		planet_event = { id = pdstorm.10 days = 30 random = 120 }
+		planet_event = {
+			id = pdstorm.10
+			days = 30
+			random = 120
+		}
 	}
-
 }
 
 planet_event = {
@@ -38,24 +46,22 @@ planet_event = {
 	show_sound = event_air_raid_siren
 	location = root
 	is_triggered_only = yes
-
 	immediate = {
-		set_planet_flag = pdstorm_onlyonce	
+		set_planet_flag = pdstorm_onlyonce
 		add_modifier = {
 			modifier = "badseamonster"
 			days = -1
-		}	
+		}
 		add_planet_devastation = 25
 		#add_deposit = d_zro_dune
 	}
-
 	option = {
 		name = pdstorm.10.a
 		enable_special_project = {
 			name = "sea_monster_pd"
 			location = this
 			owner = root
-		}	
+		}
 	}
 }
 
@@ -68,18 +74,20 @@ ship_event = {
 	#picture = GFX_evt_pdseamonster
 	show_sound = event_ship_explosion
 	location = root
-
 	is_triggered_only = yes
-
-
 	immediate = {
 		destroy_ship = this
 	}
-
 	option = {
 		name = pdstorm.20.a
 		hidden_effect = {
-			owner = { country_event = { id = pdstorm.30 days = 180 random = 180 } }
+			owner = {
+				country_event = {
+					id = pdstorm.30
+					days = 180
+					random = 180
+				}
+			}
 		}
 	}
 }
@@ -92,18 +100,22 @@ country_event = {
 	picture = GFX_evt_pdseamonster
 	show_sound = event_alien_nature
 	location = root
-
 	is_triggered_only = yes
-
-
 	immediate = {
-		fromfromfrom = { remove_modifier = badseamonster }
+		fromfromfrom = {
+			remove_modifier = badseamonster
+		}
 	}
-
 	option = {
 		name = pdstorm.30.a
 		hidden_effect = {
-			FROMFROMFROM = { planet_event = { id = pdstorm.40 days = 360 random = 120 } }
+			FROMFROMFROM = {
+				planet_event = {
+					id = pdstorm.40
+					days = 360
+					random = 120
+				}
+			}
 			create_leader = {
 				class = scientist
 				species = owner_main_species
@@ -125,12 +137,9 @@ planet_event = {
 	picture = GFX_evt_pdseamonster
 	show_sound = event_alien_nature
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
 	}
-
 	option = {
 		name = pdstorm.40.a
 		custom_tooltip = pdstorm.40.a.tooltip
@@ -138,9 +147,8 @@ planet_event = {
 			name = "sea_monster_good_pd"
 			location = this
 			owner = root
-		}	
+		}
 	}
-
 	option = {
 		name = pdstorm.40.b
 		custom_tooltip = pdstorm.40.b.tooltip
@@ -148,16 +156,23 @@ planet_event = {
 			name = "sea_monster_stuff_pd"
 			location = this
 			owner = root
-		}	
+		}
 	}
-
 	option = {
 		name = pdstorm.40.c
 		custom_tooltip = pdstorm.40.c.tooltip
 		trigger = {
-			owner = { has_valid_civic = civic_fanatic_purifiers }
+			owner = {
+				has_valid_civic = civic_fanatic_purifiers
+			}
 		}
-		hidden_effect = { planet_event = { id = pdstorm.43 days = 180 random = 180 } }
+		hidden_effect = {
+			planet_event = {
+				id = pdstorm.43
+				days = 180
+				random = 180
+			}
+		}
 	}
 }
 
@@ -169,14 +184,11 @@ planet_event = {
 	picture = GFX_evt_pdstormfactory
 	show_sound = event_alien_nature
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
 		remove_deposit = d_storm_waters
 		add_deposit = d_pdstorm_nice
 	}
-
 	option = {
 		name = pdstorm.41.a
 	}
@@ -189,14 +201,11 @@ planet_event = {
 	picture = GFX_evt_pdstormfactory
 	show_sound = event_construction
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
 		remove_deposit = d_storm_waters
 		add_deposit = d_pdstorm_greedy
 	}
-
 	option = {
 		name = pdstorm.42.a
 	}
@@ -209,19 +218,22 @@ planet_event = {
 	picture = GFX_evt_pdglacial
 	show_sound = event_air_raid_siren
 	location = root
-
 	is_triggered_only = yes
-
 	immediate = {
 		remove_deposit = d_storm_waters
 		add_deposit = d_pdstorm_purge
 		remove_modifier = pdstorm
 		remove_deposit = d_storm_corridor
 		change_pc = pc_glacial
-		add_modifier = { modifier = bleak_planet days = -1 }
-		add_modifier = { modifier = wild_storms days = -1 }
+		add_modifier = {
+			modifier = bleak_planet
+			days = -1
+		}
+		add_modifier = {
+			modifier = wild_storms
+			days = -1
+		}
 	}
-
 	option = {
 		name = pdstorm.43.a
 	}

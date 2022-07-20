@@ -1,12 +1,9 @@
 namespace = est_destruction
-
-
 #Destruction 1, influence from purging.
 planet_event = {
 	id = est_destruction.1
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		from = {
 			OR = {
@@ -21,7 +18,6 @@ planet_event = {
 		}
 		is_controlled_by = from
 	}
-	
 	immediate = {
 		from = {
 			add_resource = {
@@ -36,17 +32,15 @@ country_event = {
 	id = est_destruction.2
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
 		has_global_flag = est_destruction_3_picked_flag
-		Or = {
+		OR = {
 			has_active_tradition = tr_est_destruction_3
 			from = {
 				has_active_tradition = tr_est_destruction_3
 			}
 		}
 	}
-	
 	immediate = {
 		if = {
 			limit = {
@@ -54,7 +48,7 @@ country_event = {
 					has_active_tradition = tr_est_destruction_3
 				}
 				fromfrom = {
-					Not = {
+					NOT = {
 						has_modifier = mod_est_destruction_3
 					}
 				}
@@ -72,7 +66,7 @@ country_event = {
 					root = {
 						has_active_tradition = tr_est_destruction_3
 					}
-					Not = {
+					NOT = {
 						has_modifier = mod_est_destruction_3
 					}
 				}
@@ -90,11 +84,10 @@ country_event = {
 	id = est_destruction.3
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
-		always = no #Temporary, developers fix "has_modifier = mod_est_destruction_3" for ships.
+		always = no		#Temporary, developers fix "has_modifier = mod_est_destruction_3" for ships.
 		has_global_flag = est_destruction_3_picked_flag
-		Or = {
+		OR = {
 			fromfrom = {
 				has_modifier = mod_est_destruction_3
 			}
@@ -103,7 +96,6 @@ country_event = {
 			}
 		}
 	}
-	
 	immediate = {
 		if = {
 			limit = {
@@ -133,16 +125,14 @@ country_event = {
 	id = est_destruction.4
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_active_tradition = tr_est_destruction_4
 	}
-
 	immediate = {
 		every_neighbor_country = {
 			limit = {
-				Not = {
-					has_ethic = ethic_gestalt_consciousness					
+				NOT = {
+					has_ethic = ethic_gestalt_consciousness
 				}
 			}
 			set_timed_country_flag = {
@@ -151,7 +141,7 @@ country_event = {
 			}
 			if = {
 				limit = {
-					Not = {
+					NOT = {
 						has_modifier = mod_est_destruction_4
 					}
 				}
@@ -169,14 +159,12 @@ country_event = {
 	id = est_destruction.5
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
-		Not = {	
-			has_country_flag = est_destruction_4_flag			
+		NOT = {
+			has_country_flag = est_destruction_4_flag
 		}
 		has_modifier = mod_est_destruction_4
 	}
-
 	immediate = {
 		remove_modifier = "mod_est_destruction_4"
 	}
@@ -187,11 +175,9 @@ country_event = {
 	id = est_destruction.6
 	hide_window = yes
 	is_triggered_only = yes
-	
-	trigger = {	
+	trigger = {
 		has_active_tradition = tr_est_destruction_5_no_rivals
 	}
-	
 	immediate = {
 		if = {
 			limit = {
@@ -199,7 +185,7 @@ country_event = {
 			}
 			if = {
 				limit = {
-					Not = {
+					NOT = {
 						has_modifier = mod_est_destruction_5_no_rivals
 					}
 				}
@@ -215,7 +201,7 @@ country_event = {
 					has_modifier = mod_est_destruction_5_no_rivals
 				}
 				remove_modifier = mod_est_destruction_5_no_rivals
-			}					
+			}
 		}
 	}
 }
@@ -225,20 +211,18 @@ country_event = {
 	id = est_destruction.7
 	hide_window = yes
 	is_triggered_only = yes
-	
-	trigger = {	
+	trigger = {
 		has_global_flag = est_destruction_finish_picked_flag
 		from = {
-			any_war_participant = { 
+			any_war_participant = {
 				is_at_war_with = root
 				has_active_tradition = tr_est_destruction_finish
 			}
 		}
-		Not = {
+		NOT = {
 			has_modifier = mod_est_destruction_finish
 		}
 	}
-	
 	immediate = {
 		add_modifier = {
 			modifier = "mod_est_destruction_finish"
@@ -252,12 +236,11 @@ country_event = {
 	id = est_destruction.8
 	hide_window = yes
 	is_triggered_only = yes
-	
-	trigger = {	
+	trigger = {
 		has_modifier = mod_est_destruction_finish
-		Or = {
+		OR = {
 			is_at_war = no
-			Not = {
+			NOT = {
 				any_country = {
 					is_at_war_with = root
 					has_active_tradition = tr_est_destruction_finish
@@ -265,7 +248,6 @@ country_event = {
 			}
 		}
 	}
-	
 	immediate = {
 		remove_modifier = "mod_est_destruction_finish"
 	}

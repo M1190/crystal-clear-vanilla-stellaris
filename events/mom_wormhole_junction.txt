@@ -1,5 +1,4 @@
 namespace = mom_junction
-
 #Spawns Initial Termini
 country_event = {
 	id = mom_junction.1
@@ -26,7 +25,10 @@ country_event = {
 				set_star_flag = mom_junction_master_system
 			}
 			save_global_event_target_as = mom_junction_master_system
-			set_variable = { which = mom_wormhole_termini_discover_var value = 2 }
+			set_variable = {
+				which = mom_wormhole_termini_discover_var
+				value = 2
+			}
 		}
 		while = {
 			count = 2
@@ -43,11 +45,11 @@ country_event = {
 							is_megastructure_type = mom_junction_master
 						}
 						any_ship_in_system = {
-							is_ship_class = shipclass_starbase # Empire Check
+							is_ship_class = shipclass_starbase							# Empire Check
 						}
-						has_star_flag = empire_cluster # To not be too close to other's home system
+						has_star_flag = empire_cluster						# To not be too close to other's home system
 						any_ship_in_system = {
-							is_ship_class = shipclass_military # Levaiathan Check
+							is_ship_class = shipclass_military							# Levaiathan Check
 						}
 					}
 				}
@@ -142,7 +144,9 @@ country_event = {
 				}
 			}
 		}
-		country_event = { id = mom_junction.2 }
+		country_event = {
+			id = mom_junction.2
+		}
 	}
 }
 
@@ -150,30 +154,56 @@ country_event = {
 	id = mom_junction.2
 	hide_window = yes
 	is_triggered_only = yes
-	
 	immediate = {
 		save_event_target_as = mom_wormhole_system_current_master
 		event_target:mom_junction_master_system = {
-			random_list = {#random Delay for Option to Discover new termini
-				10 = { planet_event = { id = mom_junction.21 days = 3600 } }#Ten Years
-				30 = { planet_event = { id = mom_junction.21 days = 7200 } }#Twenty years
-				30 = { planet_event = { id = mom_junction.21 days = 10800 } }#Thirty Years
-				20 = { planet_event = { id = mom_junction.21 days = 14400 } }# Forty Years
-				10 = { planet_event = { id = mom_junction.21 days = 18000 } }# Fifty Years
+			random_list = {
+				#random Delay for Option to Discover new termini
+				10 = {
+					planet_event = {
+						id = mom_junction.21
+						days = 3600
+					}
+				}				#Ten Years
+				30 = {
+					planet_event = {
+						id = mom_junction.21
+						days = 7200
+					}
+				}				#Twenty years
+				30 = {
+					planet_event = {
+						id = mom_junction.21
+						days = 10800
+					}
+				}				#Thirty Years
+				20 = {
+					planet_event = {
+						id = mom_junction.21
+						days = 14400
+					}
+				}				# Forty Years
+				10 = {
+					planet_event = {
+						id = mom_junction.21
+						days = 18000
+					}
+				}				# Fifty Years
 			}
-
 		}
 	}
 }
 
-planet_event = { #Fires Event to Space Owner
+planet_event = {
+	#Fires Event to Space Owner
 	id = mom_junction.21
 	hide_window = yes
 	is_triggered_only = yes
-
 	immediate = {
 		space_owner = {
-			country_event = { id = mom_junction.3 }
+			country_event = {
+				id = mom_junction.3
+			}
 		}
 	}
 }
@@ -184,10 +214,8 @@ country_event = {
 	desc = mom_junction.3.desc
 	picture = GFX_evt_wormhole
 	is_triggered_only = yes
-	
 	option = {
 		name = mom_junction.3.a
-		
 		enable_special_project = {
 			name = MOM_DISCOVER_TERMINI_PROJECT
 			owner = THIS
@@ -197,18 +225,21 @@ country_event = {
 			limit = {
 				is_ai = no
 			}
-			add_modifier = { modifier = mom_wormhole_junction_modifier days = -1 }
+			add_modifier = {
+				modifier = mom_wormhole_junction_modifier
+				days = -1
+			}
 		}
 		ai_chance = {
 			factor = 100
 		}
 	}
-	
 	option = {
 		name = mom_junction.3.b
-		
 		hidden_effect = {
-			country_event = { id = mom_junction.2 }
+			country_event = {
+				id = mom_junction.2
+			}
 		}
 		ai_chance = {
 			factor = 0
@@ -222,11 +253,11 @@ country_event = {
 	desc = mom_junction.4.desc
 	picture = GFX_evt_wormhole
 	is_triggered_only = yes
-	
 	immediate = {
-		country_event = { id = mom_junction.2 }
+		country_event = {
+			id = mom_junction.2
+		}
 	}
-	
 	option = {
 		name = mom_junction.4.a
 		remove_modifier = mom_wormhole_junction_modifier
@@ -237,13 +268,16 @@ country_event = {
 	id = mom_junction.5
 	hide_window = yes
 	is_triggered_only = yes
-	
 	immediate = {
 		save_event_target_as = mom_junction_new_system_master
 		event_target:mom_junction_master_system = {
-			change_variable = { which = mom_wormhole_termini_discover_var value = 1 }
+			change_variable = {
+				which = mom_wormhole_termini_discover_var
+				value = 1
+			}
 		}
-		random_system = { # Generated Wormholes can go anywhere, except another terminus system
+		random_system = {
+			# Generated Wormholes can go anywhere, except another terminus system
 			limit = {
 				NOR = {
 					has_star_flag = mom_junction_master_system
@@ -340,10 +374,14 @@ country_event = {
 			if = {
 				limit = {
 					exists = space_owner
-					space_owner = { is_ai = no }
+					space_owner = {
+						is_ai = no
+					}
 				}
 				space_owner = {
-					country_event = { id = mom_junction.6 }
+					country_event = {
+						id = mom_junction.6
+					}
 				}
 			}
 			save_event_target_as = mom_junction_new_system
@@ -351,23 +389,34 @@ country_event = {
 		if = {
 			limit = {
 				event_target:mom_junction_master_system = {
-					check_variable = { which = mom_wormhole_termini_discover_var value < 7 }
+					check_variable = {
+						which = mom_wormhole_termini_discover_var
+						value < 7
+					}
 				}
 			}
-			country_event = { id = mom_junction.2 }
-			country_event = { id = mom_junction.7 }
+			country_event = {
+				id = mom_junction.2
+			}
+			country_event = {
+				id = mom_junction.7
+			}
 		}
 		if = {
 			limit = {
 				event_target:mom_junction_master_system = {
-					check_variable = { which = mom_wormhole_termini_discover_var value > 6 }
+					check_variable = {
+						which = mom_wormhole_termini_discover_var
+						value > 6
+					}
 				}
 			}
-			country_event = { id = mom_junction.8 }
+			country_event = {
+				id = mom_junction.8
+			}
 		}
 	}
 }
-
 
 country_event = {
 	id = mom_junction.6
@@ -376,7 +425,6 @@ country_event = {
 	picture = GFX_evt_wormhole
 	location = from
 	is_triggered_only = yes
-
 	option = {
 		name = mom_junction.6.a
 	}
@@ -389,7 +437,6 @@ country_event = {
 	picture = GFX_evt_wormhole
 	location = from
 	is_triggered_only = yes
-
 	option = {
 		name = mom_junction.7.a
 		remove_modifier = mom_wormhole_junction_modifier
@@ -403,7 +450,6 @@ country_event = {
 	picture = GFX_evt_wormhole
 	location = from
 	is_triggered_only = yes
-
 	option = {
 		name = mom_junction.7.a
 		remove_modifier = mom_wormhole_junction_modifier

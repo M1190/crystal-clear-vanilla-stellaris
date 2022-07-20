@@ -1,7 +1,5 @@
 # The Mask of Transformation
-
 namespace = ancrel
-
 # Spawn Site
 planet_event = {
 	id = ancrel.15010
@@ -9,7 +7,6 @@ planet_event = {
 	desc = "ancrel.15010.desc"
 	picture = GFX_evt_archaeology_camp
 	show_sound = event_dig_site
-
 	pre_triggers = {
 		has_owner = yes
 		is_homeworld = no
@@ -19,7 +16,6 @@ planet_event = {
 		is_capital = no
 		is_occupied_flag = no
 	}
-
 	trigger = {
 		num_pops > 0
 		OR = {
@@ -27,27 +23,27 @@ planet_event = {
 			is_pd_tropical = yes
 			is_pd_gaia = yes
 		}
-		NOT = { exists = archaeological_site }
+		NOT = {
+			exists = archaeological_site
+		}
 		NOR = {
 			has_global_flag = arc_transformation
 			has_planet_flag = colony_event
 			has_planet_flag = suppress_archaeological_sites
 		}
 	}
-
 	is_triggered_only = yes
-
 	immediate = {
 		set_global_flag = arc_transformation
 		set_planet_flag = colony_event
 	}
-
 	option = {
 		name = CURIOUS
 		create_archaeological_site = site_transformation_dig
 	}
-}## Archaeology: Hunting Grounds
+}
 
+## Archaeology: Hunting Grounds
 # Spawn Site
 planet_event = {
 	id = ancrel.6049
@@ -55,7 +51,6 @@ planet_event = {
 	desc = "ancrel.6049.desc"
 	picture = GFX_evt_archaeology_camp
 	show_sound = event_dig_site
-
 	pre_triggers = {
 		has_owner = yes
 		is_homeworld = no
@@ -65,28 +60,26 @@ planet_event = {
 		is_capital = no
 		is_occupied_flag = no
 	}
-
 	trigger = {
 		has_ancrel = yes
 		num_pops > 0
 		OR = {
 			is_pd_regular = yes
 		}
-		NOT = { exists = archaeological_site }
+		NOT = {
+			exists = archaeological_site
+		}
 		NOR = {
 			has_global_flag = arc_hunting_grounds
 			has_planet_flag = colony_event
 			has_planet_flag = suppress_archaeological_sites
 		}
 	}
-
 	is_triggered_only = yes
-
 	immediate = {
 		set_global_flag = arc_hunting_grounds
 		set_planet_flag = colony_event
 	}
-
 	option = {
 		name = CURIOUS
 		create_archaeological_site = site_hunting_ground

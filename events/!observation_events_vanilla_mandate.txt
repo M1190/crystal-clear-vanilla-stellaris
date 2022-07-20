@@ -5,9 +5,7 @@
 # Written by Henrik Eklund
 #
 ############################
-
 namespace = observation
-
 # Enlightenment Completed
 country_event = {
 	id = observation.2000
@@ -16,21 +14,25 @@ country_event = {
 	picture = GFX_evt_metropolis
 	show_sound = event_laboratory_sound
 	location = FROMFROM
-
 	is_triggered_only = yes
-
 	immediate = {
 		FROMFROM = {
-			owner = { save_event_target_as = primitive_country }
+			owner = {
+				save_event_target_as = primitive_country
+			}
 			observation_outpost_owner = {
 				# Xenoist Faction Enlightenment Demand
 				set_timed_country_flag = {
 					flag = recent_enlightenment_timed
-					days = 7200 # 20 years
+					days = 7200					# 20 years
 				}
 				if = {
-					limit = { has_event_chain = mandate_uplift_chain }
-					country_event = { id = moremandate.83 }
+					limit = {
+						has_event_chain = mandate_uplift_chain
+					}
+					country_event = {
+						id = moremandate.83
+					}
 				}
 				add_intel = {
 					who = event_target:primitive_country
@@ -43,12 +45,18 @@ country_event = {
 			solar_system = {
 				if = {
 					limit = {
-						starbase = { owner = { is_same_value = root } }
+						starbase = {
+							owner = {
+								is_same_value = root
+							}
+						}
 					}
 					starbase = {
 						set_owner = event_target:primitive_country
 						if = {
-							limit = { has_starbase_size = starbase_outpost }
+							limit = {
+								has_starbase_size = starbase_outpost
+							}
 							set_starbase_size = starbase_starport
 						}
 					}
@@ -56,7 +64,9 @@ country_event = {
 				every_system_planet = {
 					limit = {
 						exists = owner
-						owner = { is_same_value = root }
+						owner = {
+							is_same_value = root
+						}
 					}
 					set_owner = event_target:primitive_country
 				}
@@ -66,36 +76,65 @@ country_event = {
 					trigger = has_country_flag
 					stone_age = {
 						remove_country_flag = stone_age
-						root = { set_country_flag = uplifted_stone }
+						root = {
+							set_country_flag = uplifted_stone
+						}
 					}
 					bronze_age = {
 						remove_country_flag = bronze_age
-						root = { set_country_flag = uplifted_bronze }
+						root = {
+							set_country_flag = uplifted_bronze
+						}
 					}
 					iron_age = {
 						remove_country_flag = iron_age
 						if = {
-							limit = { has_country_flag = was_bronze }
-							root = { set_country_flag = uplifted_bronze }
+							limit = {
+								has_country_flag = was_bronze
+							}
+							root = {
+								set_country_flag = uplifted_bronze
+							}
 						}
 					}
-					late_medieval_age = { remove_country_flag = late_medieval_age }
-					renaissance_age = { remove_country_flag = renaissance_age }
-					steam_age = { remove_country_flag = steam_age }
-					industrial_age = { remove_country_flag = industrial_age }
-					machine_age = { remove_country_flag = machine_age }
-					atomic_age = { remove_country_flag = atomic_age }
+					late_medieval_age = {
+						remove_country_flag = late_medieval_age
+					}
+					renaissance_age = {
+						remove_country_flag = renaissance_age
+					}
+					steam_age = {
+						remove_country_flag = steam_age
+					}
+					industrial_age = {
+						remove_country_flag = industrial_age
+					}
+					machine_age = {
+						remove_country_flag = machine_age
+					}
+					atomic_age = {
+						remove_country_flag = atomic_age
+					}
 				}
 				set_country_flag = early_space_age
-				country_event = { id = primitive.16 }
-				add_opinion_modifier = { who = root modifier = opinion_enlightened_us }
+				country_event = {
+					id = primitive.16
+				}
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_enlightened_us
+				}
 				if = {
 					limit = {
-						root = { is_country_type = default }
+						root = {
+							is_country_type = default
+						}
 					}
 					if = {
 						limit = {
-							root = { has_valid_civic = "civic_inwards_perfection" }
+							root = {
+								has_valid_civic = "civic_inwards_perfection"
+							}
 						}
 						set_subject_of = {
 							who = root
@@ -113,7 +152,9 @@ country_event = {
 				}
 				if = {
 					limit = {
-						root = { is_country_type = awakened_fallen_empire }
+						root = {
+							is_country_type = awakened_fallen_empire
+						}
 					}
 					if = {
 						limit = {
@@ -164,7 +205,6 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = "observation.2000.a"
 		if = {

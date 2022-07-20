@@ -1,7 +1,6 @@
 ############################################################
 ###                  Technologies : core                 ###
 ############################################################
-
 # ── Grand Research Initiative								: gateway tech; unlocks Central Research Bureau superlab
 #     ├─ Culture Nexus / Cerebral Node / Network Regulator	: superlab for society research
 #     ├─ Advanced Materials Laboratory						: superlab for engineering research
@@ -22,58 +21,65 @@
 # ── New Age Warfare										: gateway tech; unlocks research of advanced weapons
 #     └─ Advanced Heavy Weapon Systems						: gateway tech; unlocks research of advanced X and T slot weapons
 # ── Biological Weapons										: unlocks research of biological weapons [*] also requires 'New Age Warfare'
-
 ############################################################
 ##                Grand Research Initiative               ##
 ############################################################
-
 esc_tech_grand_research_initiative = {
 	area = society
-	category = { statecraft }
+	category = {
+		statecraft
+	}
 	tier = 3
 	cost = @tier3cost2
 	weight = @ESC_TECH_weight_core_tech
-	prerequisites = { "tech_physics_2" "tech_society_2" "tech_engineering_2" }
-	is_rare = yes # purely for cosmetic purposes
+	prerequisites = {
+		"tech_physics_2"
+		"tech_society_2"
+		"tech_engineering_2"
+	}
+	is_rare = yes	# purely for cosmetic purposes
 	gateway = ESC_TECHNOLOGIES
-
 	prereqfor_desc = {
 		custom = {
 			title = "ESC_TECH_UNLOCK_ADV_RESEARCH_TITLE"
 			desc = "ESC_TECH_UNLOCK_ADV_RESEARCH_DESC"
 		}
 	}
-
 	weight_modifier = {
 		modifier = {
-			factor = 1.10
+			factor = 1.1
 			OR = {
 				has_ethic = ethic_materialist
 				has_ethic = ethic_fanatic_materialist
 			}
 		}
 	}
-
-	ai_weight = { factor = @ESC_AI_tech_weight_multiplier }
+	ai_weight = {
+		factor = @ESC_AI_tech_weight_multiplier
+	}
 }
 
 ############################################################
 ##                      Culture Nexus                     ##
 ############################################################
-
 esc_tech_culture_nexus = {
 	area = society
-	category = { statecraft }
+	category = {
+		statecraft
+	}
 	tier = 4
 	cost = @tier4cost3
 	weight = @tier4cost3
-	prerequisites = { "esc_tech_grand_research_initiative" "tech_society_3" }
-	is_rare = yes
-
-	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_culture_nexus_forbidden }
+	prerequisites = {
+		"esc_tech_grand_research_initiative"
+		"tech_society_3"
 	}
-
+	is_rare = yes
+	potential = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_culture_nexus_forbidden
+		}
+	}
 	weight_modifier = {
 		modifier = {
 			factor = 0.9
@@ -98,11 +104,12 @@ esc_tech_culture_nexus = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_culture_nexus }
+				any_member = {
+					has_technology = esc_tech_culture_nexus
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -128,7 +135,9 @@ esc_tech_culture_nexus = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_culture_nexus }
+				any_member = {
+					has_technology = esc_tech_culture_nexus
+				}
 			}
 		}
 	}
@@ -137,20 +146,24 @@ esc_tech_culture_nexus = {
 ############################################################
 ##               Advanced Materials Laboratory            ##
 ############################################################
-
 esc_tech_advanced_materials_lab = {
 	area = engineering
-	category = { materials }
+	category = {
+		materials
+	}
 	tier = 4
 	cost = @tier4cost3
 	weight = @tier4cost3
-	prerequisites = { "esc_tech_grand_research_initiative" "tech_engineering_3" }
-	is_rare = yes
-
-	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_advanced_materials_laboratory_forbidden }
+	prerequisites = {
+		"esc_tech_grand_research_initiative"
+		"tech_engineering_3"
 	}
-
+	is_rare = yes
+	potential = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_advanced_materials_laboratory_forbidden
+		}
+	}
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
@@ -168,11 +181,12 @@ esc_tech_advanced_materials_lab = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_advanced_materials_lab }
+				any_member = {
+					has_technology = esc_tech_advanced_materials_lab
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -191,7 +205,9 @@ esc_tech_advanced_materials_lab = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_advanced_materials_lab }
+				any_member = {
+					has_technology = esc_tech_advanced_materials_lab
+				}
 			}
 		}
 	}
@@ -200,20 +216,24 @@ esc_tech_advanced_materials_lab = {
 ############################################################
 ##                   Technology Institute                 ##
 ############################################################
-
 esc_tech_technology_institute = {
 	area = physics
-	category = { computing }
+	category = {
+		computing
+	}
 	tier = 4
 	cost = @tier4cost3
 	weight = @tier4cost3
-	prerequisites = { "esc_tech_grand_research_initiative" "tech_physics_3" }
-	is_rare = yes
-
-	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_technology_institute_forbidden }
+	prerequisites = {
+		"esc_tech_grand_research_initiative"
+		"tech_physics_3"
 	}
-
+	is_rare = yes
+	potential = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_technology_institute_forbidden
+		}
+	}
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
@@ -231,11 +251,12 @@ esc_tech_technology_institute = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_technology_institute }
+				any_member = {
+					has_technology = esc_tech_technology_institute
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -254,7 +275,9 @@ esc_tech_technology_institute = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_technology_institute }
+				any_member = {
+					has_technology = esc_tech_technology_institute
+				}
 			}
 		}
 	}
@@ -263,27 +286,28 @@ esc_tech_technology_institute = {
 ############################################################
 ##                     New Age Warfare                    ##
 ############################################################
-
 esc_tech_new_age_warfare = {
 	area = society
-	category = { military_theory }
+	category = {
+		military_theory
+	}
 	tier = 4
 	cost = @tier4cost3
 	weight = @ESC_TECH_weight_core_tech
 	is_rare = yes
 	### actual prerequisites are set in weight_modifiers since they are of OR type
-	prerequisites = {}
+	prerequisites = {
+	}
 	gateway = ESC_WEAPONS
-
 	prereqfor_desc = {
 		custom = {
 			title = "ESC_TECH_UNLOCK_ADV_WEAPONS_TITLE"
 			desc = "ESC_TECH_UNLOCK_ADV_WEAPONS_DESC"
 		}
 	}
-
-	potential = { ESC_TRIGGER_advanced_weapons_enabled = yes }
-
+	potential = {
+		ESC_TRIGGER_advanced_weapons_enabled = yes
+	}
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -326,11 +350,12 @@ esc_tech_new_age_warfare = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_new_age_warfare }
+				any_member = {
+					has_technology = esc_tech_new_age_warfare
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -374,7 +399,9 @@ esc_tech_new_age_warfare = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_new_age_warfare }
+				any_member = {
+					has_technology = esc_tech_new_age_warfare
+				}
 			}
 		}
 	}
@@ -383,27 +410,29 @@ esc_tech_new_age_warfare = {
 ############################################################
 ##            Advanced Heavy Weapon Systems               ##
 ############################################################
-
 esc_tech_advanced_heavy_weapons = {
 	area = society
-	category = { military_theory }
+	category = {
+		military_theory
+	}
 	tier = 5
 	cost = @tier5cost2
 	weight = @tier5weight2
 	### this tech has additional prerequisites beyond this one, those are set in modifiers
-	prerequisites = { "esc_tech_new_age_warfare" }
+	prerequisites = {
+		"esc_tech_new_age_warfare"
+	}
 	is_rare = yes
 	gateway = ESC_SUPERHEAVY_WEAPONS
-
 	prereqfor_desc = {
 		custom = {
 			title = "ESC_TECH_UNLOCK_ADV_HEAVY_WEAPONS_TITLE"
 			desc = "ESC_TECH_UNLOCK_ADV_HEAVY_WEAPONS_DESC"
 		}
 	}
-
-	potential = { ESC_TRIGGER_advanced_heavy_weapons_enabled = yes }
-
+	potential = {
+		ESC_TRIGGER_advanced_heavy_weapons_enabled = yes
+	}
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -445,11 +474,12 @@ esc_tech_advanced_heavy_weapons = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_advanced_heavy_weapons }
+				any_member = {
+					has_technology = esc_tech_advanced_heavy_weapons
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -492,7 +522,9 @@ esc_tech_advanced_heavy_weapons = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_advanced_heavy_weapons }
+				any_member = {
+					has_technology = esc_tech_advanced_heavy_weapons
+				}
 			}
 		}
 	}
@@ -501,24 +533,26 @@ esc_tech_advanced_heavy_weapons = {
 ############################################################
 ##             Gravity Manipulation Techniques            ##
 ############################################################
-
 esc_tech_gravity_manipulation = {
 	area = physics
-	category = { field_manipulation }
+	category = {
+		field_manipulation
+	}
 	tier = 4
 	cost = @tier4cost3
 	weight = @tier4weight3
-	prerequisites = { "esc_tech_grand_research_initiative" "tech_physics_3" }
-	is_rare = yes # purely for cosmetic purposes
+	prerequisites = {
+		"esc_tech_grand_research_initiative"
+		"tech_physics_3"
+	}
+	is_rare = yes	# purely for cosmetic purposes
 	gateway = ESC_GRAVITY_MANIPULATION
-
 	prereqfor_desc = {
 		custom = {
 			title = "ESC_TECH_UNLOCK_GRAVITY_MANIPULATION_TITLE"
 			desc = "ESC_TECH_UNLOCK_GRAVITY_MANIPULATION_DESC"
 		}
 	}
-
 	modifier = {
 		starbase_buildings_cost_mult = -0.1
 		planet_buildings_cost_mult = -0.1
@@ -527,7 +561,6 @@ esc_tech_gravity_manipulation = {
 		starbase_upgrade_cost_mult = -0.1
 		starbase_modules_cost_mult = -0.1
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 1.15
@@ -551,7 +584,6 @@ esc_tech_gravity_manipulation = {
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -581,28 +613,31 @@ esc_tech_gravity_manipulation = {
 ############################################################
 ##                    Weaponized Gravity                  ##
 ############################################################
-
 esc_tech_gravity_weapons = {
 	area = physics
-	category = { field_manipulation }
+	category = {
+		field_manipulation
+	}
 	tier = 5
 	cost = @tier5cost1
 	weight = @tier5weight1
-	prerequisites = { "esc_tech_new_age_warfare" "esc_tech_gravity_manipulation" }
+	prerequisites = {
+		"esc_tech_new_age_warfare"
+		"esc_tech_gravity_manipulation"
+	}
 	is_rare = yes
 	gateway = ESC_GRAVITIC_WEAPONS
-
 	prereqfor_desc = {
 		custom = {
 			title = "ESC_TECH_UNLOCK_GRAV_WEAPONS_TITLE"
 			desc = "ESC_TECH_UNLOCK_GRAV_WEAPONS_DESC"
 		}
 	}
-
 	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_gravitic_weapons_forbidden }
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_gravitic_weapons_forbidden
+		}
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
@@ -636,11 +671,12 @@ esc_tech_gravity_weapons = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_gravity_weapons }
+				any_member = {
+					has_technology = esc_tech_gravity_weapons
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -673,7 +709,9 @@ esc_tech_gravity_weapons = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_gravity_weapons }
+				any_member = {
+					has_technology = esc_tech_gravity_weapons
+				}
 			}
 		}
 	}
@@ -682,30 +720,31 @@ esc_tech_gravity_weapons = {
 ############################################################
 ##                    Advanced Materials                  ##
 ############################################################
-
 esc_tech_advanced_materials = {
 	area = engineering
-	category = { materials }
+	category = {
+		materials
+	}
 	tier = 5
 	cost = @tier5cost1
 	weight = @tier5weight1
-	prerequisites = { "esc_tech_grand_research_initiative" "tech_engineering_3" }
-	is_rare = yes # purely for cosmetic purposes
+	prerequisites = {
+		"esc_tech_grand_research_initiative"
+		"tech_engineering_3"
+	}
+	is_rare = yes	# purely for cosmetic purposes
 	gateway = ESC_MATERIALS
-
 	prereqfor_desc = {
 		custom = {
 			title = "ESC_TECH_UNLOCK_ADV_MATERIALS_TITLE"
 			desc = "ESC_TECH_UNLOCK_ADV_MATERIALS_DESC"
 		}
 	}
-
 	modifier = {
 		ship_hull_mult = 0.1
 		shipclass_military_station_hull_mult = 0.1
 		ship_armor_mult = 0.1
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 1.15
@@ -722,7 +761,6 @@ esc_tech_advanced_materials = {
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -745,20 +783,21 @@ esc_tech_advanced_materials = {
 ############################################################
 ##                Superconducting Materials               ##
 ############################################################
-
 esc_tech_superconductors = {
 	area = physics
-	category = { materials }
+	category = {
+		materials
+	}
 	tier = 5
 	cost = @tier5cost1
 	weight = @tier5weight1
-	prerequisites = { "esc_tech_advanced_materials" }
+	prerequisites = {
+		"esc_tech_advanced_materials"
+	}
 	is_rare = yes
-
 	modifier = {
 		country_energy_produces_mult = 0.1
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
@@ -776,11 +815,12 @@ esc_tech_superconductors = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_superconductors }
+				any_member = {
+					has_technology = esc_tech_superconductors
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -799,7 +839,9 @@ esc_tech_superconductors = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_superconductors }
+				any_member = {
+					has_technology = esc_tech_superconductors
+				}
 			}
 		}
 	}
@@ -808,20 +850,21 @@ esc_tech_superconductors = {
 ############################################################
 ##              Neutronium-Tipped Powertools              ##
 ############################################################
-
 esc_tech_neutronium_tools = {
 	area = engineering
-	category = { materials }
+	category = {
+		materials
+	}
 	tier = 4
 	cost = @tier4cost3
 	weight = @tier4weight3
-	prerequisites = { "esc_tech_advanced_materials" }
+	prerequisites = {
+		"esc_tech_advanced_materials"
+	}
 	is_rare = yes
-
 	modifier = {
 		country_minerals_produces_mult = 0.1
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
@@ -839,11 +882,12 @@ esc_tech_neutronium_tools = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_neutronium_tools }
+				any_member = {
+					has_technology = esc_tech_neutronium_tools
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -862,7 +906,9 @@ esc_tech_neutronium_tools = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_neutronium_tools }
+				any_member = {
+					has_technology = esc_tech_neutronium_tools
+				}
 			}
 		}
 	}
@@ -871,35 +917,35 @@ esc_tech_neutronium_tools = {
 ############################################################
 ##                 Synthetic Lifeform Studies             ##
 ############################################################
-
 esc_tech_synthetic_lifeform_studies = {
 	area = society
-	category = { materials }
+	category = {
+		materials
+	}
 	tier = 5
 	cost = @tier5cost2
 	weight = @tier5weight2
-	prerequisites = { "esc_tech_new_age_warfare" "esc_tech_advanced_materials" }
+	prerequisites = {
+		"esc_tech_new_age_warfare"
+		"esc_tech_advanced_materials"
+	}
 	is_rare = yes
 	gateway = ESC_NANITE_COMPONENTS
-
 	prereqfor_desc = {
 		custom = {
 			title = "ESC_TECH_UNLOCK_NANITIES_TITLE"
 			desc = "ESC_TECH_UNLOCK_NANITIES_DESC"
 		}
 	}
-
 	potential = {
 		#NOT = { has_global_flag = ESC_GLOBAL_FLAG_nanite_technology_fobidden }
 	}
-
 	modifier = {
-		planet_building_build_speed_mult = 0.10
-		starbase_shipyard_build_speed_mult = 0.10
-		megastructure_build_speed_mult = 0.10
+		planet_building_build_speed_mult = 0.1
+		starbase_shipyard_build_speed_mult = 0.1
+		megastructure_build_speed_mult = 0.1
 		starbase_upgrade_speed_mult = 0.15
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 2
@@ -935,11 +981,12 @@ esc_tech_synthetic_lifeform_studies = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_synthetic_lifeform_studies }
+				any_member = {
+					has_technology = esc_tech_synthetic_lifeform_studies
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -976,7 +1023,9 @@ esc_tech_synthetic_lifeform_studies = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_synthetic_lifeform_studies }
+				any_member = {
+					has_technology = esc_tech_synthetic_lifeform_studies
+				}
 			}
 		}
 	}
@@ -985,28 +1034,31 @@ esc_tech_synthetic_lifeform_studies = {
 ############################################################
 ##                      Psionic Weapons                   ##
 ############################################################
-
 esc_tech_psionic_weapons = {
-    area = society
-	category = { psionics }
+	area = society
+	category = {
+		psionics
+	}
 	tier = 5
 	cost = @tier5cost1
 	weight = @tier5weight1
-	prerequisites = { "esc_tech_new_age_warfare" "esc_tech_grand_research_initiative" }
+	prerequisites = {
+		"esc_tech_new_age_warfare"
+		"esc_tech_grand_research_initiative"
+	}
 	is_rare = yes
 	gateway = ESC_PSIONIC_WEAPONS
-
 	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_psionic_weapons_forbidden }
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_psionic_weapons_forbidden
+		}
 	}
-
 	prereqfor_desc = {
 		custom = {
 			title = "ESC_TECH_UNLOCK_PSI_WEAPONS_TITLE"
 			desc = "ESC_TECH_UNLOCK_PSI_WEAPONS_DESC"
 		}
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -1049,11 +1101,12 @@ esc_tech_psionic_weapons = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_psionic_weapons }
+				any_member = {
+					has_technology = esc_tech_psionic_weapons
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -1097,7 +1150,9 @@ esc_tech_psionic_weapons = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_psionic_weapons }
+				any_member = {
+					has_technology = esc_tech_psionic_weapons
+				}
 			}
 		}
 	}
@@ -1106,28 +1161,30 @@ esc_tech_psionic_weapons = {
 ############################################################
 ##                       Bio-Weapons                      ##
 ############################################################
-
 esc_tech_biological_weapons = {
-    area = society
-	category = { biology }
+	area = society
+	category = {
+		biology
+	}
 	tier = 3
 	cost = @tier3cost2
 	weight = @tier3weight3
-	prerequisites = { "esc_tech_grand_research_initiative" }
-	is_rare = yes # purely for cosmetic reasons
-	gateway = ESC_BIOLOGICAL_WEAPONS
-
-	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_biological_weapons_forbidden }
+	prerequisites = {
+		"esc_tech_grand_research_initiative"
 	}
-
+	is_rare = yes	# purely for cosmetic reasons
+	gateway = ESC_BIOLOGICAL_WEAPONS
+	potential = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_biological_weapons_forbidden
+		}
+	}
 	prereqfor_desc = {
 		custom = {
 			title = "ESC_TECH_UNLOCK_BIO_WEAPONS_TITLE"
 			desc = "ESC_TECH_UNLOCK_BIO_WEAPONS_DESC"
 		}
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -1168,11 +1225,12 @@ esc_tech_biological_weapons = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_biological_weapons }
+				any_member = {
+					has_technology = esc_tech_biological_weapons
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -1214,7 +1272,9 @@ esc_tech_biological_weapons = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_biological_weapons }
+				any_member = {
+					has_technology = esc_tech_biological_weapons
+				}
 			}
 		}
 	}
@@ -1223,28 +1283,32 @@ esc_tech_biological_weapons = {
 ############################################################
 ##                       Tesla Weapons                    ##
 ############################################################
-
 esc_tech_tesla_weapons = {
-    area = physics
-	category = { field_manipulation }
+	area = physics
+	category = {
+		field_manipulation
+	}
 	tier = 5
 	cost = @tier5cost1
 	weight = @tier5weight1
-	prerequisites = { "esc_tech_new_age_warfare" "esc_tech_grand_research_initiative" "tech_power_plant_4" }
+	prerequisites = {
+		"esc_tech_new_age_warfare"
+		"esc_tech_grand_research_initiative"
+		"tech_power_plant_4"
+	}
 	is_rare = yes
 	gateway = ESC_TESLA_WEAPONS
-
 	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_tesla_weapons_forbidden }
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_tesla_weapons_forbidden
+		}
 	}
-
 	prereqfor_desc = {
 		custom = {
 			title = "ESC_TECH_UNLOCK_TESLA_WEAPONS_TITLE"
 			desc = "ESC_TECH_UNLOCK_TESLA_WEAPONS_DESC"
 		}
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -1273,11 +1337,12 @@ esc_tech_tesla_weapons = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_tesla_weapons }
+				any_member = {
+					has_technology = esc_tech_tesla_weapons
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -1307,7 +1372,9 @@ esc_tech_tesla_weapons = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_tesla_weapons }
+				any_member = {
+					has_technology = esc_tech_tesla_weapons
+				}
 			}
 		}
 	}
@@ -1316,24 +1383,26 @@ esc_tech_tesla_weapons = {
 ############################################################
 ##          Time-Space Continuum Manipulation             ##
 ############################################################
-
 esc_tech_spacetime_manipulation = {
 	area = physics
-	category = { field_manipulation }
+	category = {
+		field_manipulation
+	}
 	tier = 6
 	cost = @ESC_TECH_tier6_cost2
 	weight = @ESC_TECH_tier6_weight2
-	prerequisites = { "esc_tech_sensors_6" "esc_tech_gravity_manipulation" }
+	prerequisites = {
+		"esc_tech_sensors_6"
+		"esc_tech_gravity_manipulation"
+	}
 	is_rare = yes
 	gateway = ESC_SPACETIME_TECH
-
 	prereqfor_desc = {
 		custom = {
 			title = "ESC_TECH_UNLOCK_REALITY_ALTER_TITLE"
 			desc = "ESC_TECH_UNLOCK_REALITY_ALTER_DESC"
 		}
 	}
-
 	modifier = {
 		planet_decision_enact_speed_mult = 0.5
 		planet_building_build_speed_mult = 0.1
@@ -1341,7 +1410,6 @@ esc_tech_spacetime_manipulation = {
 		megastructure_build_speed_mult = 0.1
 		starbase_upgrade_speed_mult = 0.1
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -1382,11 +1450,12 @@ esc_tech_spacetime_manipulation = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_spacetime_manipulation }
+				any_member = {
+					has_technology = esc_tech_spacetime_manipulation
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -1426,7 +1495,9 @@ esc_tech_spacetime_manipulation = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_spacetime_manipulation }
+				any_member = {
+					has_technology = esc_tech_spacetime_manipulation
+				}
 			}
 		}
 	}
@@ -1435,21 +1506,24 @@ esc_tech_spacetime_manipulation = {
 ############################################################
 ##               Weaponized Reality Warping               ##
 ############################################################
-
 esc_tech_chrono_spatial_weapons = {
 	area = physics
-	category = { field_manipulation }
+	category = {
+		field_manipulation
+	}
 	tier = 6
 	cost = @ESC_TECH_tier6_cost3
 	weight = @ESC_TECH_tier6_weight3
-	prerequisites = { esc_tech_spacetime_manipulation }
+	prerequisites = {
+		esc_tech_spacetime_manipulation
+	}
 	is_rare = yes
 	gateway = ESC_CHRONOSPATIAL_WEAPONS
-
 	potential = {
-		NOT = { has_global_flag = ESC_GLOBAL_FLAG_chronospatial_weapons_forbidden }
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_chronospatial_weapons_forbidden
+		}
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 1.15
@@ -1474,11 +1548,12 @@ esc_tech_chrono_spatial_weapons = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_chrono_spatial_weapons }
+				any_member = {
+					has_technology = esc_tech_chrono_spatial_weapons
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -1504,7 +1579,9 @@ esc_tech_chrono_spatial_weapons = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_chrono_spatial_weapons }
+				any_member = {
+					has_technology = esc_tech_chrono_spatial_weapons
+				}
 			}
 		}
 	}
@@ -1513,16 +1590,18 @@ esc_tech_chrono_spatial_weapons = {
 ############################################################
 ##                   Watcher of Eternity                  ##
 ############################################################
-
 esc_tech_watcher_of_eternity = {
 	area = society
-	category = { field_manipulation }
+	category = {
+		field_manipulation
+	}
 	tier = 6
 	cost = @ESC_TECH_tier6_cost3
 	weight = @ESC_TECH_tier6_weight3
-	prerequisites = { esc_tech_spacetime_manipulation }
+	prerequisites = {
+		esc_tech_spacetime_manipulation
+	}
 	is_rare = yes
-
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
@@ -1554,11 +1633,12 @@ esc_tech_watcher_of_eternity = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_watcher_of_eternity }
+				any_member = {
+					has_technology = esc_tech_watcher_of_eternity
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -1591,7 +1671,9 @@ esc_tech_watcher_of_eternity = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_watcher_of_eternity }
+				any_member = {
+					has_technology = esc_tech_watcher_of_eternity
+				}
 			}
 		}
 	}
@@ -1600,28 +1682,29 @@ esc_tech_watcher_of_eternity = {
 ############################################################
 ##                Phase-Shifted Ammunition                ##
 ############################################################
-
 esc_tech_phase_shifted_ammunition = {
 	area = physics
-	category = { field_manipulation }
+	category = {
+		field_manipulation
+	}
 	tier = 6
 	cost = @ESC_TECH_tier6_cost3
 	weight = @ESC_TECH_tier6_weight3
-	prerequisites = { esc_tech_watcher_of_eternity }
+	prerequisites = {
+		esc_tech_watcher_of_eternity
+	}
 	is_rare = yes
-
 	potential = {
 		NOR = {
 			is_country_type = fallen_empire
 			is_country_type = awakened_fallen_empire
-		} # hopefully this will prevent FE/AFE from getting this tech... otherwise, the balance might end up too much in their favor
+		}
+		# hopefully this will prevent FE/AFE from getting this tech... otherwise, the balance might end up too much in their favor
 	}
-
 	modifier = {
 		ship_shield_penetration_mult = 0.1
 		ship_armor_penetration_mult = 0.1
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 2
@@ -1639,11 +1722,12 @@ esc_tech_phase_shifted_ammunition = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_phase_shifted_ammunition }
+				any_member = {
+					has_technology = esc_tech_phase_shifted_ammunition
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -1655,7 +1739,9 @@ esc_tech_phase_shifted_ammunition = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_phase_shifted_ammunition }
+				any_member = {
+					has_technology = esc_tech_phase_shifted_ammunition
+				}
 			}
 		}
 	}
@@ -1664,24 +1750,25 @@ esc_tech_phase_shifted_ammunition = {
 ############################################################
 ##                 Time-Dilation Chambers                 ##
 ############################################################
-
 esc_tech_time_dilation_chambers = {
 	area = physics
-	category = { field_manipulation }
+	category = {
+		field_manipulation
+	}
 	tier = 6
 	cost = @ESC_TECH_tier6_cost3
 	weight = @ESC_TECH_tier6_weight3
-	prerequisites = { esc_tech_watcher_of_eternity }
+	prerequisites = {
+		esc_tech_watcher_of_eternity
+	}
 	is_rare = yes
-
 	modifier = {
 		leader_skill_levels = 1
-		species_leader_exp_gain = 0.50
+		species_leader_exp_gain = 0.5
 		planet_army_build_speed_mult = 0.1
 		army_starting_experience_add = 100
 		ship_starting_experience_add = 100
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 2
@@ -1699,11 +1786,12 @@ esc_tech_time_dilation_chambers = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_time_dilation_chambers }
+				any_member = {
+					has_technology = esc_tech_time_dilation_chambers
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = @ESC_AI_tech_weight_multiplier
 		modifier = {
@@ -1715,7 +1803,9 @@ esc_tech_time_dilation_chambers = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = esc_tech_time_dilation_chambers }
+				any_member = {
+					has_technology = esc_tech_time_dilation_chambers
+				}
 			}
 		}
 	}

@@ -1,20 +1,19 @@
 namespace = esap_hive
-
 # The Great Swarm, bonus to new ships.
 ship_event = {
 	id = esap_hive.1
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		owner = {
 			has_ascension_perk = ap_esap_hive_swarm
-		}	
+		}
 	}
-	
 	immediate = {
 		if = {
-			limit = { is_ship_size = corvette }
+			limit = {
+				is_ship_size = corvette
+			}
 			add_modifier = {
 				modifier = "mod_esap_hive_swarm_beneficial"
 				days = -1
@@ -29,13 +28,11 @@ ship_event = {
 	}
 }
 
-
 # The Hungering Swarm, more resources from purges.
 planet_event = {
 	id = esap_hive.2
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		FROM = {
 			has_valid_civic = civic_hive_devouring_swarm
@@ -48,7 +45,6 @@ planet_event = {
 		}
 		is_controlled_by = FROM
 	}
-	
 	immediate = {
 		FROM = {
 			add_monthly_resource_mult = {

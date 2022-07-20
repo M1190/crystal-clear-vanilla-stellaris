@@ -5,12 +5,9 @@
 # Written by Miranda van den Brink
 #
 ############################
-
 namespace = anomaly
-
 # ROOT = ship scope
 # FROM = planet scope
-
 # The synths make a colony, inside or outside of the player's borders
 country_event = {
 	id = anomaly.189
@@ -19,9 +16,7 @@ country_event = {
 	picture = GFX_evt_synth_organic_relations
 	show_sound = event_radio_chatter
 	location = FROM
-
 	is_triggered_only = yes
-
 	immediate = {
 		random_planet_within_border = {
 			limit = {
@@ -29,20 +24,29 @@ country_event = {
 				is_colony = no
 				has_anomaly = no
 				is_capital = no
-				NOT = { has_modifier = holy_planet }
-				NOT = { has_modifier = phaseshifted }
-				NOT = { solar_system = { has_star_flag = hostile_system } }
+				NOT = {
+					has_modifier = holy_planet
+				}
+				NOT = {
+					has_modifier = phaseshifted
+				}
+				NOT = {
+					solar_system = {
+						has_star_flag = hostile_system
+					}
+				}
 			}
 			save_event_target_as = new_colony
 		}
 	}
-
 	# build a colony within our borders option
 	option = {
 		name = anomaly.189.a
 		custom_tooltip = anomaly.189.a.tooltip
 		trigger = {
-			NOT = { has_policy_flag = ai_outlawed }
+			NOT = {
+				has_policy_flag = ai_outlawed
+			}
 			any_planet_within_border = {
 				habitable_planet = yes
 				is_colony = no
@@ -51,7 +55,9 @@ country_event = {
 			}
 		}
 		allow = {
-			NOT = { has_policy_flag = ai_outlawed }
+			NOT = {
+				has_policy_flag = ai_outlawed
+			}
 			any_planet_within_border = {
 				habitable_planet = yes
 				is_colony = no
@@ -65,7 +71,9 @@ country_event = {
 				set_controller = root
 				prevent_anomaly = yes
 				if = {
-					limit = { host_has_dlc = "Synthetic Dawn Story Pack" }
+					limit = {
+						host_has_dlc = "Synthetic Dawn Story Pack"
+					}
 					create_species = {
 						name = "NAME_Awoken_Robot"
 						plural = "NAME_Awoken_Robot"
@@ -95,30 +103,40 @@ country_event = {
 					count = 3
 					create_pop = {
 						species = last_created_species
-					}					
+					}
 				}
 			}
 		}
 		hidden_effect = {
-			country_event = { id = anomaly.1197 }
-			if = {
-				limit = { has_event_chain = mandate_colonize_planet_chain }
-				country_event = { id = moremandate.62 }
+			country_event = {
+				id = anomaly.1197
 			}
 			if = {
-				limit = { has_event_chain = mandate_uplift_chain }
-				country_event = { id = moremandate.83 }
+				limit = {
+					has_event_chain = mandate_colonize_planet_chain
+				}
+				country_event = {
+					id = moremandate.62
+				}
+			}
+			if = {
+				limit = {
+					has_event_chain = mandate_uplift_chain
+				}
+				country_event = {
+					id = moremandate.83
+				}
 			}
 		}
 	}
-
 	# They're on their own (the droids colonize a planet outside the borders if available or "just disappear")
 	option = {
 		name = anomaly.189.b
 		custom_tooltip = anomaly.189.b.tooltip
-
 		trigger = {
-			NOT = { has_policy_flag = ai_outlawed }
+			NOT = {
+				has_policy_flag = ai_outlawed
+			}
 			any_system = {
 				NOR = {
 					exists = space_owner
@@ -135,7 +153,9 @@ country_event = {
 			}
 		}
 		allow = {
-			NOT = { has_policy_flag = ai_outlawed }
+			NOT = {
+				has_policy_flag = ai_outlawed
+			}
 			any_system = {
 				NOR = {
 					exists = space_owner
@@ -152,23 +172,34 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			country_event = { id = anomaly.1197 }
+			country_event = {
+				id = anomaly.1197
+			}
 		}
 		hidden_effect = {
-			country_event = { id = anomaly.1197 }
+			country_event = {
+				id = anomaly.1197
+			}
 			if = {
-				limit = { has_event_chain = mandate_uplift_chain }
-				country_event = { id = moremandate.83 }
+				limit = {
+					has_event_chain = mandate_uplift_chain
+				}
+				country_event = {
+					id = moremandate.83
+				}
 			}
 		}
 	}
-
 	#dismantle the robots for parts
 	option = {
 		name = anomaly.189.c
 		custom_tooltip = anomaly.186.a.alt.tooltip
-		trigger = { has_policy_flag = ai_servitude }
-		add_resource = { minerals = 200 }
+		trigger = {
+			has_policy_flag = ai_servitude
+		}
+		add_resource = {
+			minerals = 200
+		}
 	}
 }
 
@@ -176,9 +207,7 @@ country_event = {
 country_event = {
 	id = anomaly.1197
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	immediate = {
 		if = {
 			limit = {
@@ -222,25 +251,34 @@ country_event = {
 						}
 					}
 				}
-
 				random_system_planet = {
 					limit = {
 						habitable_planet = yes
-						is_colony = no	
+						is_colony = no
 						has_anomaly = no
 						is_capital = no
-						NOT = { has_modifier = holy_planet }
-						NOT = { has_modifier = phaseshifted }
-						NOT = { solar_system = { has_star_flag = hostile_system } }
+						NOT = {
+							has_modifier = holy_planet
+						}
+						NOT = {
+							has_modifier = phaseshifted
+						}
+						NOT = {
+							solar_system = {
+								has_star_flag = hostile_system
+							}
+						}
 					}
 					save_event_target_as = colonized_planet
-    				set_surveyed = {
-    					surveyed = yes
-    					surveyor = root
-    				}
-    				prevent_anomaly = yes
-    				if = {
-						limit = { host_has_dlc = "Synthetic Dawn Story Pack" }
+					set_surveyed = {
+						surveyed = yes
+						surveyor = root
+					}
+					prevent_anomaly = yes
+					if = {
+						limit = {
+							host_has_dlc = "Synthetic Dawn Story Pack"
+						}
 						create_species = {
 							name = "NAME_Awoken_Robot"
 							plural = "NAME_Awoken_Robot"
@@ -304,8 +342,13 @@ country_event = {
 							set_country_flag = limbo_country
 							set_country_flag = synthetic_empire
 							species = {
-								if = { limit = { host_has_dlc = "Synthetic Dawn Story Pack" }
-									change_species_characteristics = { portrait = "sd_fun_robot" }
+								if = {
+									limit = {
+										host_has_dlc = "Synthetic Dawn Story Pack"
+									}
+									change_species_characteristics = {
+										portrait = "sd_fun_robot"
+									}
 								}
 							}
 							create_leader = {
@@ -367,20 +410,26 @@ country_event = {
 					add_district = district_city
 					add_district = district_industrial
 					add_district = district_industrial
-					add_building = building_research_lab_1		  
+					add_building = building_research_lab_1
 					add_district = district_generator
 					add_district = district_generator
 					add_district = district_mining
 					add_district = district_mining
-								 
-								 
-					root = { country_event = { id = anomaly.1196 days = 10 } }
+					root = {
+						country_event = {
+							id = anomaly.1196
+							days = 10
+						}
+					}
 				}
 			}
 		}
 		else_if = {
 			# There are no colonizable planets outside the player's borders
-			country_event = { id = anomaly.1195 days = 40 }
+			country_event = {
+				id = anomaly.1195
+				days = 40
+			}
 		}
 	}
 }
@@ -393,9 +442,7 @@ country_event = {
 	show_sound = event_mystic_reveal
 	picture = GFX_evt_synth_organic_relations
 	location = event_target:potential_target
-
 	is_triggered_only = yes
-
 	immediate = {
 		if = {
 			limit = {
@@ -416,9 +463,17 @@ country_event = {
 					is_colony = no
 					has_anomaly = no
 					is_capital = no
-					NOT = { has_modifier = holy_planet }
-					NOT = { has_modifier = phaseshifted }
-					NOT = { solar_system = { has_star_flag = hostile_system } }
+					NOT = {
+						has_modifier = holy_planet
+					}
+					NOT = {
+						has_modifier = phaseshifted
+					}
+					NOT = {
+						solar_system = {
+							has_star_flag = hostile_system
+						}
+					}
 					NOR = {
 						exists = owner
 						exists = controller
@@ -433,7 +488,6 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = anomaly.189.a
 		custom_tooltip = anomaly.189.a.tooltip
@@ -480,9 +534,17 @@ country_event = {
 						is_colony = no
 						has_anomaly = no
 						is_capital = no
-						NOT = { has_modifier = holy_planet }
-						NOT = { has_modifier = phaseshifted }
-						NOT = { solar_system = { has_star_flag = hostile_system } }
+						NOT = {
+							has_modifier = holy_planet
+						}
+						NOT = {
+							has_modifier = phaseshifted
+						}
+						NOT = {
+							solar_system = {
+								has_star_flag = hostile_system
+							}
+						}
 						NOR = {
 							exists = owner
 							exists = controller
@@ -496,7 +558,9 @@ country_event = {
 				set_controller = root
 				prevent_anomaly = yes
 				if = {
-					limit = { host_has_dlc = "Synthetic Dawn Story Pack" }
+					limit = {
+						host_has_dlc = "Synthetic Dawn Story Pack"
+					}
 					create_species = {
 						name = "NAME_Awoken_Robot"
 						plural = "NAME_Awoken_Robot"
@@ -526,39 +590,55 @@ country_event = {
 					count = 3
 					create_pop = {
 						species = last_created_species
-					}					
+					}
 				}
 			}
 			if = {
-				limit = { has_event_chain = mandate_colonize_planet_chain }
-				country_event = { id = moremandate.62 }
+				limit = {
+					has_event_chain = mandate_colonize_planet_chain
+				}
+				country_event = {
+					id = moremandate.62
+				}
 			}
-			
 			if = {
-				limit = { has_event_chain = mandate_uplift_chain }
-				country_event = { id = moremandate.83 }
+				limit = {
+					has_event_chain = mandate_uplift_chain
+				}
+				country_event = {
+					id = moremandate.83
+				}
 			}
 		}
 	}
-
 	option = {
 		name = anomaly.1198.a
 		custom_tooltip = anomaly.189.b.tooltip
 		hidden_effect = {
-			country_event = { id = anomaly.1195 days = 40 }
+			country_event = {
+				id = anomaly.1195
+				days = 40
+			}
 			if = {
-				limit = { has_event_chain = mandate_uplift_chain }
-				country_event = { id = moremandate.83 }
+				limit = {
+					has_event_chain = mandate_uplift_chain
+				}
+				country_event = {
+					id = moremandate.83
+				}
 			}
 		}
 	}
-
 	# dismantle the robots for parts
 	option = {
 		name = anomaly.189.c
 		custom_tooltip = anomaly.186.a.alt.tooltip
-		trigger = { has_policy_flag = ai_servitude }
-		add_resource = { minerals = 200 }
+		trigger = {
+			has_policy_flag = ai_servitude
+		}
+		add_resource = {
+			minerals = 200
+		}
 	}
 }
 
@@ -570,17 +650,18 @@ country_event = {
 	show_sound = event_mystic_reveal
 	picture = GFX_evt_synth_organic_relations
 	location = capital_scope
-
 	is_triggered_only = yes
-
 	#dismantle the robots for parts
 	option = {
 		name = anomaly.189.c
 		custom_tooltip = anomaly.186.a.alt.tooltip
-		trigger = { has_policy_flag = ai_servitude }
-		add_resource = { minerals = 200 }
+		trigger = {
+			has_policy_flag = ai_servitude
+		}
+		add_resource = {
+			minerals = 200
+		}
 	}
-
 	option = {
 		name = anomaly.1199.a
 		custom_tooltip = anomaly.189.b.tooltip
@@ -632,7 +713,6 @@ country_event = {
 				}
 			}
 		}
-
 		hidden_effect = {
 			random_system = {
 				limit = {
@@ -660,18 +740,28 @@ country_event = {
 						is_colony = no
 						has_anomaly = no
 						is_capital = no
-						NOT = { has_modifier = holy_planet }
-						NOT = { has_modifier = phaseshifted }
-						NOT = { solar_system = { has_star_flag = hostile_system } }
+						NOT = {
+							has_modifier = holy_planet
+						}
+						NOT = {
+							has_modifier = phaseshifted
+						}
+						NOT = {
+							solar_system = {
+								has_star_flag = hostile_system
+							}
+						}
 					}
 					save_event_target_as = colonized_planet
 					set_surveyed = {
 						surveyed = yes
 						surveyor = root
-    				}
-    				prevent_anomaly = yes
-    				if = {
-						limit = { host_has_dlc = "Synthetic Dawn Story Pack" }
+					}
+					prevent_anomaly = yes
+					if = {
+						limit = {
+							host_has_dlc = "Synthetic Dawn Story Pack"
+						}
 						create_species = {
 							name = "NAME_Awoken_Robot"
 							plural = "NAME_Awoken_Robot"
@@ -741,8 +831,13 @@ country_event = {
 							set_country_flag = limbo_country
 							set_country_flag = synthetic_empire
 							species = {
-								if = { limit = { host_has_dlc = "Synthetic Dawn Story Pack" }
-									change_species_characteristics = { portrait = "sd_fun_robot" }
+								if = {
+									limit = {
+										host_has_dlc = "Synthetic Dawn Story Pack"
+									}
+									change_species_characteristics = {
+										portrait = "sd_fun_robot"
+									}
 								}
 							}
 							create_leader = {
@@ -815,7 +910,12 @@ country_event = {
 						species = event_target:awoken_country
 						type = "defense_army"
 					}
-					root = { country_event = { id = anomaly.1196 days = 10 } }
+					root = {
+						country_event = {
+							id = anomaly.1196
+							days = 10
+						}
+					}
 				}
 			}
 		}

@@ -1,9 +1,7 @@
 # Government Variety Pack
 # Events - Combat Data
 # Author: littleraskol
-
 namespace = lrsk_gov_var_combat_data
-
 #On winning a space battle, mark this fact.
 # From = Opponent
 # FromFrom = Player fleet, used for location.
@@ -11,19 +9,29 @@ country_event = {
 	id = lrsk_gov_var_combat_data.1
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
 		has_valid_civic = lrsk_gov_var_civic_machine_combat_data
-
 		# Skip if already processing a win
-		NOT = { has_country_flag = lrsk_cd_won_battle }
+		NOT = {
+			has_country_flag = lrsk_cd_won_battle
+		}
 	}
-
 	immediate = {
-		set_timed_country_flag = { flag = lrsk_cd_won_battle days = 7 }			
-		from = { save_event_target_as = lrsk_cd_anttag }
-		fromfrom = { random_owned_ship = { save_event_target_as = lrsk_cd_fleet_loc } } 
-		country_event = { id = lrsk_gov_var_combat_data.2 }
+		set_timed_country_flag = {
+			flag = lrsk_cd_won_battle
+			days = 7
+		}
+		from = {
+			save_event_target_as = lrsk_cd_anttag
+		}
+		fromfrom = {
+			random_owned_ship = {
+				save_event_target_as = lrsk_cd_fleet_loc
+			}
+		}
+		country_event = {
+			id = lrsk_gov_var_combat_data.2
+		}
 	}
 }
 
@@ -38,30 +46,54 @@ country_event = {
 	id = lrsk_gov_var_combat_data.2
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
 		has_valid_civic = lrsk_gov_var_civic_machine_combat_data
-
 		# Skip if already processing a loss
-		NOT = { has_country_flag = lrsk_cd_lost_battle }
+		NOT = {
+			has_country_flag = lrsk_cd_lost_battle
+		}
 	}
-
 	immediate = {
 		# In the case that we won, we already "marked" the opponent and battle loc; if we lost, we must do that now.
 		IF = {
-			limit = { NOT = { has_country_flag = lrsk_cd_won_battle } }
-			set_timed_country_flag = { flag = lrsk_cd_lost_battle days = 7 }	
-			from = { save_event_target_as = lrsk_cd_anttag }
-			fromfromfrom = { random_owned_ship = { save_event_target_as = lrsk_cd_fleet_loc } } 
+			limit = {
+				NOT = {
+					has_country_flag = lrsk_cd_won_battle
+				}
+			}
+			set_timed_country_flag = {
+				flag = lrsk_cd_lost_battle
+				days = 7
+			}
+			from = {
+				save_event_target_as = lrsk_cd_anttag
+			}
+			fromfromfrom = {
+				random_owned_ship = {
+					save_event_target_as = lrsk_cd_fleet_loc
+				}
+			}
 		}
-		
 		IF = {
-			limit = { has_intel_level = { who = event_target:lrsk_cd_anttag category = military level = 1 } }
+			limit = {
+				has_intel_level = {
+					who = event_target:lrsk_cd_anttag
+					category = military
+					level = 1
+				}
+			}
 			random_list = {
 				15 = {
 					# Get next level report
-					add_intel_report = { category = military days = 30 level = 2 who = event_target:lrsk_cd_anttag }
-					country_event = { id = lrsk_gov_var_combat_data.3 }	# Inform of new intel
+					add_intel_report = {
+						category = military
+						days = 30
+						level = 2
+						who = event_target:lrsk_cd_anttag
+					}
+					country_event = {
+						id = lrsk_gov_var_combat_data.3
+					}					# Inform of new intel
 					modifier = {
 						add = -12
 						has_country_flag = lrsk_cd_lost_battle
@@ -69,8 +101,15 @@ country_event = {
 				}
 				25 = {
 					# Refresh this level report
-					add_intel_report = { category = military days = 30 level = 1 who = event_target:lrsk_cd_anttag }
-					country_event = { id = lrsk_gov_var_combat_data.4 }	# Inform of refreshed intel
+					add_intel_report = {
+						category = military
+						days = 30
+						level = 1
+						who = event_target:lrsk_cd_anttag
+					}
+					country_event = {
+						id = lrsk_gov_var_combat_data.4
+					}					# Inform of refreshed intel
 					modifier = {
 						add = -20
 						has_country_flag = lrsk_cd_lost_battle
@@ -86,12 +125,25 @@ country_event = {
 			}
 		}
 		ELSE_IF = {
-			limit = { has_intel_level = { who = event_target:lrsk_cd_anttag category = military level = 2 } }
+			limit = {
+				has_intel_level = {
+					who = event_target:lrsk_cd_anttag
+					category = military
+					level = 2
+				}
+			}
 			random_list = {
 				10 = {
 					# Get next level report
-					add_intel_report = { category = military days = 30 level = 3 who = event_target:lrsk_cd_anttag }
-					country_event = { id = lrsk_gov_var_combat_data.3 }	# Inform of new intel
+					add_intel_report = {
+						category = military
+						days = 30
+						level = 3
+						who = event_target:lrsk_cd_anttag
+					}
+					country_event = {
+						id = lrsk_gov_var_combat_data.3
+					}					# Inform of new intel
 					modifier = {
 						add = -8
 						has_country_flag = lrsk_cd_lost_battle
@@ -99,8 +151,15 @@ country_event = {
 				}
 				20 = {
 					# Refresh this level report
-					add_intel_report = { category = military days = 30 level = 2 who = event_target:lrsk_cd_anttag }
-					country_event = { id = lrsk_gov_var_combat_data.4 }	# Inform of refreshed intel
+					add_intel_report = {
+						category = military
+						days = 30
+						level = 2
+						who = event_target:lrsk_cd_anttag
+					}
+					country_event = {
+						id = lrsk_gov_var_combat_data.4
+					}					# Inform of refreshed intel
 					modifier = {
 						add = -16
 						has_country_flag = lrsk_cd_lost_battle
@@ -116,12 +175,25 @@ country_event = {
 			}
 		}
 		ELSE_IF = {
-			limit = { has_intel_level = { who = event_target:lrsk_cd_anttag category = military level = 3 } }
+			limit = {
+				has_intel_level = {
+					who = event_target:lrsk_cd_anttag
+					category = military
+					level = 3
+				}
+			}
 			random_list = {
 				5 = {
 					# Get next level report
-					add_intel_report = { category = military days = 30 level = 4 who = event_target:lrsk_cd_anttag }
-					country_event = { id = lrsk_gov_var_combat_data.3 }	# Inform of new intel
+					add_intel_report = {
+						category = military
+						days = 30
+						level = 4
+						who = event_target:lrsk_cd_anttag
+					}
+					country_event = {
+						id = lrsk_gov_var_combat_data.3
+					}					# Inform of new intel
 					modifier = {
 						add = -4
 						has_country_flag = lrsk_cd_lost_battle
@@ -129,8 +201,15 @@ country_event = {
 				}
 				15 = {
 					# Refresh this level report
-					add_intel_report = { category = military days = 30 level = 3 who = event_target:lrsk_cd_anttag }
-					country_event = { id = lrsk_gov_var_combat_data.4 }	# Inform of refreshed intel
+					add_intel_report = {
+						category = military
+						days = 30
+						level = 3
+						who = event_target:lrsk_cd_anttag
+					}
+					country_event = {
+						id = lrsk_gov_var_combat_data.4
+					}					# Inform of refreshed intel
 					modifier = {
 						add = -12
 						has_country_flag = lrsk_cd_lost_battle
@@ -146,12 +225,25 @@ country_event = {
 			}
 		}
 		ELSE_IF = {
-			limit = { has_intel_level = { who = event_target:lrsk_cd_anttag category = military level = 4 } }
+			limit = {
+				has_intel_level = {
+					who = event_target:lrsk_cd_anttag
+					category = military
+					level = 4
+				}
+			}
 			random_list = {
 				10 = {
 					# Refresh this level report
-					add_intel_report = { category = military days = 30 level = 4 who = event_target:lrsk_cd_anttag }
-					country_event = { id = lrsk_gov_var_combat_data.4 }	# Inform of refreshed intel
+					add_intel_report = {
+						category = military
+						days = 30
+						level = 4
+						who = event_target:lrsk_cd_anttag
+					}
+					country_event = {
+						id = lrsk_gov_var_combat_data.4
+					}					# Inform of refreshed intel
 					modifier = {
 						add = -8
 						has_country_flag = lrsk_cd_lost_battle
@@ -170,8 +262,15 @@ country_event = {
 			random_list = {
 				25 = {
 					# Get next level report
-					add_intel_report = { category = military days = 30 level = 1 who = event_target:lrsk_cd_anttag }
-					country_event = { id = lrsk_gov_var_combat_data.3 }	# Inform of new intel
+					add_intel_report = {
+						category = military
+						days = 30
+						level = 1
+						who = event_target:lrsk_cd_anttag
+					}
+					country_event = {
+						id = lrsk_gov_var_combat_data.3
+					}					# Inform of new intel
 					modifier = {
 						add = -20
 						has_country_flag = lrsk_cd_lost_battle
@@ -186,14 +285,16 @@ country_event = {
 				}
 			}
 		}
-
 		IF = {
-			limit = { has_country_flag = lrsk_cd_won_battle }
+			limit = {
+				has_country_flag = lrsk_cd_won_battle
+			}
 			remove_country_flag = lrsk_cd_won_battle
 		}
-
 		IF = {
-			limit = { has_country_flag = lrsk_cd_lost_battle }
+			limit = {
+				has_country_flag = lrsk_cd_lost_battle
+			}
 			remove_country_flag = lrsk_cd_lost_battle
 		}
 	}
@@ -207,21 +308,22 @@ country_event = {
 	location = event_target:lrsk_cd_fleet_loc
 	picture = GFX_evt_small_space_battle
 	is_triggered_only = yes
-
 	trigger = {
-		has_valid_civic = lrsk_gov_var_civic_machine_combat_data	#JIC
-		NOT = { has_country_flag = lrsk_no_combat_data_improvement_notice }
+		has_valid_civic = lrsk_gov_var_civic_machine_combat_data		#JIC
+		NOT = {
+			has_country_flag = lrsk_no_combat_data_improvement_notice
+		}
 	}
-
 	option = {
 		name = lrsk_gov_var_combat_data.3.a
 		custom_tooltip = lrsk_gov_var_combat_data.3.a.tooltip
 	}
-
 	option = {
 		name = lrsk_gov_var_combat_data.3.b
 		custom_tooltip = lrsk_gov_var_combat_data.3.b.tooltip
-		hidden_effect = { set_country_flag = lrsk_no_combat_data_improvement_notice }
+		hidden_effect = {
+			set_country_flag = lrsk_no_combat_data_improvement_notice
+		}
 	}
 }
 
@@ -233,20 +335,21 @@ country_event = {
 	location = event_target:lrsk_cd_fleet_loc
 	picture = GFX_evt_small_space_battle
 	is_triggered_only = yes
-
 	trigger = {
-		has_valid_civic = lrsk_gov_var_civic_machine_combat_data	#JIC
-		NOT = { has_country_flag = lrsk_no_combat_data_refresh_notice }
+		has_valid_civic = lrsk_gov_var_civic_machine_combat_data		#JIC
+		NOT = {
+			has_country_flag = lrsk_no_combat_data_refresh_notice
+		}
 	}
-
 	option = {
 		name = lrsk_gov_var_combat_data.4.a
 		custom_tooltip = lrsk_gov_var_combat_data.4.a.tooltip
 	}
-
 	option = {
 		name = lrsk_gov_var_combat_data.4.b
 		custom_tooltip = lrsk_gov_var_combat_data.4.b.tooltip
-		hidden_effect = { set_country_flag = lrsk_no_combat_data_refresh_notice }
+		hidden_effect = {
+			set_country_flag = lrsk_no_combat_data_refresh_notice
+		}
 	}
 }

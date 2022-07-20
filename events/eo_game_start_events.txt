@@ -1,11 +1,9 @@
 namespace = eo_game_start
-
 ####Give techs
 country_event = {
 	id = eo_game_start.1
 	hide_window = yes
 	is_triggered_only = yes
-
 	immediate = {
 		if = {
 			limit = {
@@ -17,7 +15,10 @@ country_event = {
 			limit = {
 				has_origin = origin_biomedical_renaissance
 			}
-			give_technology = { message = no tech = tech_gene_tailoring }
+			give_technology = {
+				message = no
+				tech = tech_gene_tailoring
+			}
 		}
 		if = {
 			limit = {
@@ -26,7 +27,10 @@ country_event = {
 					has_origin = origin_reactivated
 				}
 			}
-			give_technology = { message = no tech = tech_cryostasis_1 }
+			give_technology = {
+				message = no
+				tech = tech_cryostasis_1
+			}
 		}
 	}
 }
@@ -38,13 +42,14 @@ planet_event = {
 	id = eo_game_start.2
 	hide_window = yes
 	is_triggered_only = yes
-
 	immediate = {
 		eo_pops = yes
 		if = {
 			limit = {
-				NOT = { has_planet_flag = special_start_planet }
-####PD workaround
+				NOT = {
+					has_planet_flag = special_start_planet
+				}
+				####PD workaround
 				OR = {
 					is_planet_class = pc_desert
 					is_planet_class = pc_tropical
@@ -62,9 +67,13 @@ planet_event = {
 			}
 			if = {
 				limit = {
-					NOT = { has_planet_flag = planet_earth }
-					NOT = { 
-						owner = { has_origin = origin_shattered_ring } 	#setup in initializer 
+					NOT = {
+						has_planet_flag = planet_earth
+					}
+					NOT = {
+						owner = {
+							has_origin = origin_shattered_ring
+						}						#setup in initializer 
 					}
 				}
 				eo_deposits_and_blockers = yes
@@ -87,7 +96,10 @@ country_event = {
 			random_owned_species = {
 				limit = {
 					NOT = {
-						has_citizenship_type = { country = prev type = citizenship_full }
+						has_citizenship_type = {
+							country = prev
+							type = citizenship_full
+						}
 					}
 				}
 				set_citizenship_type = {

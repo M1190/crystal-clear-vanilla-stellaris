@@ -1,20 +1,17 @@
 namespace = est_spaceborn
-
 #Spaceborn 4, energy from stars, update when a system lost.
 country_event = {
 	id = est_spaceborn.1
 	hide_window = yes
 	is_triggered_only = yes
-	
-	trigger = {		
-		has_tradition = tr_est_spaceborn_4	
+	trigger = {
+		has_tradition = tr_est_spaceborn_4
 	}
-	
-	immediate = {	
+	immediate = {
 		from = {
 			random_system_planet = {
 				limit = {
-					Or = {
+					OR = {
 						is_planet_class = pc_b_star
 						is_planet_class = pc_a_star
 						is_planet_class = pc_f_star
@@ -24,14 +21,14 @@ country_event = {
 						is_planet_class = pc_m_giant_star
 						is_planet_class = pc_t_star
 					}
-					has_resource = { 
+					has_resource = {
 						type = energy
-						amount > 0 
+						amount > 0
 					}
 				}
 				if = {
 					limit = {
-						Nand = {
+						NAND = {
 							exists = owner
 							owner = {
 								has_tradition = tr_est_spaceborn_4
@@ -51,16 +48,14 @@ country_event = {
 	id = est_spaceborn.2
 	hide_window = yes
 	is_triggered_only = yes
-	
-	trigger = {		
-		has_tradition = tr_est_spaceborn_4	
+	trigger = {
+		has_tradition = tr_est_spaceborn_4
 	}
-	
-	immediate = {	
+	immediate = {
 		from = {
 			random_system_planet = {
 				limit = {
-					Or = {
+					OR = {
 						is_planet_class = pc_b_star
 						is_planet_class = pc_a_star
 						is_planet_class = pc_f_star
@@ -70,15 +65,15 @@ country_event = {
 						is_planet_class = pc_m_giant_star
 						is_planet_class = pc_t_star
 					}
-					has_resource = { 
+					has_resource = {
 						type = energy
-						amount > 0 
+						amount > 0
 					}
 				}
 				if = {
 					limit = {
-						Not = {
-							has_deposit = d_est_spaceborn_4_sun				
+						NOT = {
+							has_deposit = d_est_spaceborn_4_sun
 						}
 					}
 					add_deposit = d_est_spaceborn_4_sun
@@ -93,24 +88,22 @@ planet_event = {
 	id = est_spaceborn.3
 	hide_window = yes
 	is_triggered_only = yes
-	
-	trigger = {		
-		is_planet_class = pc_habitat	
+	trigger = {
+		is_planet_class = pc_habitat
 	}
-	
 	immediate = {
 		if = {
 			limit = {
 				owner = {
-					Or = {
+					OR = {
 						has_active_tradition = tr_est_spaceborn_5_habitat
 						has_active_tradition = tr_est_spaceborn_5_habitat_megastruct
 					}
-				}			
+				}
 			}
 			if = {
 				limit = {
-					Not = {
+					NOT = {
 						has_modifier = mod_est_spaceborn_5_habitat
 					}
 				}

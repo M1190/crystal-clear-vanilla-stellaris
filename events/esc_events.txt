@@ -1,20 +1,16 @@
 namespace = esc_events
-
 ## ##################################################### ##
 ##             Setting up mod-is-in-use flags            ##
 ## ##################################################### ##
-
 event = {
 	id = esc_events.1
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
 		NOT = {
 			has_global_flag = Extra_Ship_Components_NEXT
 		}
 	}
-
 	immediate = {
 		set_global_flag = Extra_Ship_Components_NEXT
 		set_global_flag = ESC_AI_research_boost_easy_scaling
@@ -25,7 +21,6 @@ event = {
 ## ##################################################### ##
 ##                  Ether Drake Events                   ##
 ## ##################################################### ##
-
 ### spawn an ether drake hatchling
 planet_event = {
 	id = esc_events.2000
@@ -33,10 +28,8 @@ planet_event = {
 	picture = GFX_evt_space_dragon
 	location = root
 	show_sound = event_mystic_reveal
-
 	title = esc_events.2000.title
 	desc = esc_events.2000.desc
-
 	immediate = {
 		create_fleet = {
 			name = "NAME_Ether_Hatchling"
@@ -56,7 +49,6 @@ planet_event = {
 			}
 		}
 	}
-
 	option = {
 		name = EXCELLENT
 	}
@@ -67,20 +59,22 @@ planet_event = {
 	id = esc_events.2001
 	is_triggered_only = yes
 	hide_window = yes
-
 	trigger = {
 		has_building = esc_building_dragon_hatchery
 		FROM = {
-			NOT = { has_valid_civic = civic_machine_terminator }
+			NOT = {
+				has_valid_civic = civic_machine_terminator
+			}
 			NOR = {
 				has_technology = esc_tech_dragon_hatchery
 				has_tech_option = esc_tech_dragon_hatchery
 			}
 		}
 	}
-
 	immediate = {
-		owner = { add_research_option = esc_tech_dragon_hatchery }
+		owner = {
+			add_research_option = esc_tech_dragon_hatchery
+		}
 	}
 }
 
@@ -91,10 +85,8 @@ planet_event = {
 	picture = GFX_evt_here_be_dragons
 	location = root
 	show_sound = event_mystic_reveal
-
 	title = esc_events.2002.title
 	desc = esc_events.2002.desc
-
 	immediate = {
 		create_fleet = {
 			name = "NAME_Sky_Dragon_Baby"
@@ -114,7 +106,6 @@ planet_event = {
 			}
 		}
 	}
-
 	option = {
 		name = EXCELLENT
 	}
@@ -123,146 +114,165 @@ planet_event = {
 ## ##################################################### ##
 ##            Mantle Mining Facility Resources           ##
 ## ##################################################### ##
-
 ### random resource boons from mantle miner
 country_event = {
-    id = esc_events.3000
-    is_triggered_only = yes
-    hide_window = yes
-
-    trigger = {
-        OR = {
-            ESC_TRIGGER_is_playable_empire = yes
-            is_fallen_empire = yes
-        }
-    }
-
-    immediate = {
-        every_owned_planet = {
-            limit = {
-                is_colony = yes
-                num_pops > 0
-                OR = {
-                    has_building = esc_building_magmaminer_1
-                    has_building = esc_building_magmaminer_2
-                }
-            }
-
-            random_list = {
-                90 = {}
-                2 = { planet_event = { id = esc_events.3001 days = 30 random = 90 } }
-                2 = { planet_event = { id = esc_events.3002 days = 30 random = 90 } }
-                2 = { planet_event = { id = esc_events.3003 days = 30 random = 90 } }
-                2 = { planet_event = { id = esc_events.3004 days = 30 random = 90 } }
-                2 = { planet_event = { id = esc_events.3005 days = 30 random = 90 } }
-            }
-        }
-    }
+	id = esc_events.3000
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = {
+		OR = {
+			ESC_TRIGGER_is_playable_empire = yes
+			is_fallen_empire = yes
+		}
+	}
+	immediate = {
+		every_owned_planet = {
+			limit = {
+				is_colony = yes
+				num_pops > 0
+				OR = {
+					has_building = esc_building_magmaminer_1
+					has_building = esc_building_magmaminer_2
+				}
+			}
+			random_list = {
+				90 = {
+				}
+				2 = {
+					planet_event = {
+						id = esc_events.3001
+						days = 30
+						random = 90
+					}
+				}
+				2 = {
+					planet_event = {
+						id = esc_events.3002
+						days = 30
+						random = 90
+					}
+				}
+				2 = {
+					planet_event = {
+						id = esc_events.3003
+						days = 30
+						random = 90
+					}
+				}
+				2 = {
+					planet_event = {
+						id = esc_events.3004
+						days = 30
+						random = 90
+					}
+				}
+				2 = {
+					planet_event = {
+						id = esc_events.3005
+						days = 30
+						random = 90
+					}
+				}
+			}
+		}
+	}
 }
 
 # extra minerals
 planet_event = {
-    id = esc_events.3001
-    is_triggered_only = yes
-    title = esc_events.3001.name
-    desc = esc_events.3001.desc
-    picture = GFX_evt_mining_operations
-
-    option = {
-        name = EXCELLENT
-            owner = {
-            add_resource = {
-                minerals = 500
-            }
-        }
-    }
+	id = esc_events.3001
+	is_triggered_only = yes
+	title = esc_events.3001.name
+	desc = esc_events.3001.desc
+	picture = GFX_evt_mining_operations
+	option = {
+		name = EXCELLENT
+		owner = {
+			add_resource = {
+				minerals = 500
+			}
+		}
+	}
 }
 
 # some alloys
 planet_event = {
-    id = esc_events.3002
-    is_triggered_only = yes
-    title = esc_events.3002.name
-    desc = esc_events.3002.desc
-    picture = GFX_evt_mining_operations
-
-    option = {
-        name = EXCELLENT
-        owner = {
-            add_resource = {
-                alloys = 100
-            }
-        }
-    }
+	id = esc_events.3002
+	is_triggered_only = yes
+	title = esc_events.3002.name
+	desc = esc_events.3002.desc
+	picture = GFX_evt_mining_operations
+	option = {
+		name = EXCELLENT
+		owner = {
+			add_resource = {
+				alloys = 100
+			}
+		}
+	}
 }
 
 # some rare crystals
 planet_event = {
-    id = esc_events.3003
-    is_triggered_only = yes
-    title = esc_events.3003.name
-    desc = esc_events.3003.desc
-    picture = GFX_evt_mining_operations
-
-    option = {
-        name = EXCELLENT
-        owner = {
-            add_resource = {
-                rare_crystals = 50
-            }
-        }
-    }
+	id = esc_events.3003
+	is_triggered_only = yes
+	title = esc_events.3003.name
+	desc = esc_events.3003.desc
+	picture = GFX_evt_mining_operations
+	option = {
+		name = EXCELLENT
+		owner = {
+			add_resource = {
+				rare_crystals = 50
+			}
+		}
+	}
 }
 
 # some volatile motes
 planet_event = {
-    id = esc_events.3004
-    is_triggered_only = yes
-    title = esc_events.3004.name
-    desc = esc_events.3004.desc
-    picture = GFX_evt_mining_operations
-
-    option = {
-        name = EXCELLENT
-        owner = {
-            add_resource = {
-                volatile_motes = 50
-            }
-        }
-    }
+	id = esc_events.3004
+	is_triggered_only = yes
+	title = esc_events.3004.name
+	desc = esc_events.3004.desc
+	picture = GFX_evt_mining_operations
+	option = {
+		name = EXCELLENT
+		owner = {
+			add_resource = {
+				volatile_motes = 50
+			}
+		}
+	}
 }
 
 # some exotic gases
 planet_event = {
-    id = esc_events.3005
-    is_triggered_only = yes
-    title = esc_events.3005.name
-    desc = esc_events.3005.desc
-    picture = GFX_evt_mining_operations
-
-    option = {
-        name = EXCELLENT
-        owner = {
-            add_resource = {
-                exotic_gases = 50
-            }
-        }
-    }
+	id = esc_events.3005
+	is_triggered_only = yes
+	title = esc_events.3005.name
+	desc = esc_events.3005.desc
+	picture = GFX_evt_mining_operations
+	option = {
+		name = EXCELLENT
+		owner = {
+			add_resource = {
+				exotic_gases = 50
+			}
+		}
+	}
 }
 
 ## ##################################################### ##
 ##             Dark Matter technologies events           ##
 ## ##################################################### ##
-
 country_event = {
 	id = esc_events.4000
 	is_triggered_only = yes
 	hide_window = yes
-
 	trigger = {
 		ESC_TRIGGER_is_playable_empire = yes
 	}
-
 	immediate = {
 		# dark matter power core >>> dark matter deflectors
 		if = {
@@ -330,29 +340,27 @@ country_event = {
 			}
 			add_research_option = tech_dark_matter_deflector
 		}
-
 	}
 }
 
 ## ##################################################### ##
 ##             Setting up AI boost modifiers             ##
 ## ##################################################### ##
-
 country_event = {
 	id = esc_events.5000
 	is_triggered_only = yes
 	hide_window = yes
-
 	trigger = {
 		ESC_TRIGGER_is_playable_empire = yes
 	}
-
 	immediate = {
 		# remove AI bonus modifiers
 		ESC_EFFECT_ai_remove_science_boost = yes
 		# if is AI, set bonus modifiers
 		if = {
-			limit = { is_ai = yes }
+			limit = {
+				is_ai = yes
+			}
 			ESC_EFFECT_ai_set_science_boost = yes
 		}
 	}
@@ -361,16 +369,13 @@ country_event = {
 ## ##################################################### ##
 ##   TEST: Grant access to all weapon types to empire    ##
 ## ##################################################### ##
-
 country_event = {
 	id = esc_events.9999
 	is_triggered_only = yes
 	hide_window = yes
-
 	trigger = {
 		ESC_TRIGGER_is_playable_empire = yes
 	}
-
 	immediate = {
 		# biological weapons
 		set_country_flag = ESC_COUNTRY_FLAG_mod_allow_basic_biological_weapons

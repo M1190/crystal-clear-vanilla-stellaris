@@ -5,19 +5,13 @@
 # Written by Henrik Thyrwall
 #
 ########################
-
 namespace = precursor
-
-
 ## SPECIAL GUILLI MESSAGE EVENT
-
-
 # Someone else got there first
 # vultaum
 country_event = {
 	id = precursor.99336
 	title = "precursor.99336.name"
-	
 	desc = {
 		text = precursor.99336.desc.vultaum
 		trigger = {
@@ -27,24 +21,24 @@ country_event = {
 			}
 		}
 	}
-	
 	location = from
 	picture = GFX_evt_archaeological_dig
-	
 	is_triggered_only = yes
-	
 	immediate = {
 	}
-	
 	option = {
 		name = "UNFORTUNATE"
 		# vultaum
 		if = {
-			limit = { has_event_chain = vultaum_chain }
+			limit = {
+				has_event_chain = vultaum_chain
+			}
 			end_event_chain = "vultaum_chain"
 		}
 		if = {
-			limit = { has_event_chain = "vultaum_homeworld_chain" }
+			limit = {
+				has_event_chain = "vultaum_homeworld_chain"
+			}
 			end_event_chain = "vultaum_homeworld_chain"
 		}
 	}
@@ -55,7 +49,6 @@ country_event = {
 country_event = {
 	id = precursor.99337
 	title = "precursor.99336.name"
-	
 	desc = {
 		text = precursor.99336.desc.yuht
 		trigger = {
@@ -65,24 +58,24 @@ country_event = {
 			}
 		}
 	}
-	
 	location = from
 	picture = GFX_evt_archaeological_dig
-	
 	is_triggered_only = yes
-	
 	immediate = {
 	}
-	
 	option = {
 		name = "UNFORTUNATE"
 		# yuht
 		if = {
-			limit = { has_event_chain = yuht_chain }
+			limit = {
+				has_event_chain = yuht_chain
+			}
 			end_event_chain = "yuht_chain"
 		}
 		if = {
-			limit = { has_event_chain = "yuht_homeworld_chain" }
+			limit = {
+				has_event_chain = "yuht_homeworld_chain"
+			}
 			end_event_chain = "yuht_homeworld_chain"
 		}
 	}
@@ -93,7 +86,6 @@ country_event = {
 country_event = {
 	id = precursor.99338
 	title = "precursor.99336.name"
-	
 	desc = {
 		text = precursor.99336.desc.first_league
 		trigger = {
@@ -103,24 +95,24 @@ country_event = {
 			}
 		}
 	}
-	
 	location = from
 	picture = GFX_evt_archaeological_dig
-	
 	is_triggered_only = yes
-	
 	immediate = {
 	}
-	
 	option = {
 		name = "UNFORTUNATE"
 		# first_league
 		if = {
-			limit = { has_event_chain = first_league_chain }
+			limit = {
+				has_event_chain = first_league_chain
+			}
 			end_event_chain = "first_league_chain"
 		}
 		if = {
-			limit = { has_event_chain = "first_league_homeworld_chain" }
+			limit = {
+				has_event_chain = "first_league_homeworld_chain"
+			}
 			end_event_chain = "first_league_homeworld_chain"
 		}
 	}
@@ -131,7 +123,6 @@ country_event = {
 country_event = {
 	id = precursor.99339
 	title = "precursor.99336.name"
-	
 	desc = {
 		text = precursor.99336.desc.irassian
 		trigger = {
@@ -141,24 +132,24 @@ country_event = {
 			}
 		}
 	}
-	
 	location = from
 	picture = GFX_evt_archaeological_dig
-	
 	is_triggered_only = yes
-	
 	immediate = {
 	}
-	
 	option = {
 		name = "UNFORTUNATE"
 		# irassian
 		if = {
-			limit = { has_event_chain = irassian_chain }
+			limit = {
+				has_event_chain = irassian_chain
+			}
 			end_event_chain = "irassian_chain"
 		}
 		if = {
-			limit = { has_event_chain = "irassian_homeworld_chain" }
+			limit = {
+				has_event_chain = "irassian_homeworld_chain"
+			}
 			end_event_chain = "irassian_homeworld_chain"
 		}
 	}
@@ -169,7 +160,6 @@ country_event = {
 country_event = {
 	id = precursor.99340
 	title = "precursor.99336.name"
-	
 	desc = {
 		text = precursor.99336.desc.cybrex
 		trigger = {
@@ -179,51 +169,53 @@ country_event = {
 			}
 		}
 	}
-	
 	location = from
 	picture = GFX_evt_archaeological_dig
-	
 	is_triggered_only = yes
-	
 	immediate = {
 	}
-	
 	option = {
 		name = "UNFORTUNATE"
 		# cybrex
 		if = {
-			limit = { has_event_chain = cybrex_chain }
+			limit = {
+				has_event_chain = cybrex_chain
+			}
 			end_event_chain = "cybrex_chain"
 		}
 		if = {
-			limit = { has_event_chain = "cybrex_homeworld_chain" }
+			limit = {
+				has_event_chain = "cybrex_homeworld_chain"
+			}
 			end_event_chain = "cybrex_homeworld_chain"
 		}
 	}
 }
 
-
 ### The Vultaum Star Assembly
-
 # Vultaum Introduction
 ship_event = {
 	id = precursor.1
 	title = "precursor.1.name"
 	desc = "precursor.1.desc"
 	picture = GFX_evt_archaeological_dig
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		# owner = { is_ai = no }
-		solar_system = { has_star_flag = precursor_1 }
-		solar_system = { NOT = { is_same_value = root.owner.capital_scope.solar_system } }
-		FROM = { 
-			has_anomaly = no 
+		solar_system = {
+			has_star_flag = precursor_1
+		}
+		solar_system = {
+			NOT = {
+				is_same_value = root.owner.capital_scope.solar_system
+			}
+		}
+		FROM = {
+			has_anomaly = no
 			is_star = no
 		}
 		owner = {
-			NOR = { 
+			NOR = {
 				has_country_flag = vultaum_intro
 				has_country_flag = yuht_intro
 				has_country_flag = first_league_intro
@@ -234,21 +226,30 @@ ship_event = {
 			}
 		}
 	}
-	
 	immediate = {
-		owner = { set_country_flag = vultaum_intro }
+		owner = {
+			set_country_flag = vultaum_intro
+		}
 	}
-	
 	option = {
 		name = INTERESTING
-		hidden_effect = { owner = { country_event = { id = story.5 days = 30 } } }
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = story.5
+					days = 30
+				}
+			}
+		}
 		owner = {
 			begin_event_chain = {
 				event_chain = "vultaum_chain"
 				target = THIS
 			}
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
 		}
@@ -263,28 +264,31 @@ ship_event = {
 	picture = GFX_evt_outpost
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = vultaum_1 }
+			owner = {
+				set_country_flag = vultaum_1
+			}
 		}
 	}
-	
 	option = {
 		name = FASCINATING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
 					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -301,8 +305,15 @@ ship_event = {
 				}
 			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_mines } }
-				add_modifier = { modifier = gpm_precursor_mines }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_mines
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_mines
+				}
 			}
 			enable_special_project = {
 				name = "VULTAUM_ARCHEOLOGY_1"
@@ -320,20 +331,20 @@ ship_event = {
 	desc = "precursor.6.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "vultaum_chain" 
-				counter = "vultaum_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "vultaum_chain"
+				counter = "vultaum_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -341,12 +352,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.97 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.97
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -354,8 +371,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -370,28 +390,31 @@ ship_event = {
 	picture = GFX_evt_outpost
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = vultaum_2 }
+			owner = {
+				set_country_flag = vultaum_2
+			}
 		}
 	}
-	
 	option = {
 		name = INTERESTING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -406,10 +429,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_outpost_ruins } }
-				add_modifier = { modifier = gpm_precursor_outpost_ruins }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_outpost_ruins
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_outpost_ruins
+				}
 			}
 			enable_special_project = {
 				name = "VULTAUM_ARCHEOLOGY_2"
@@ -427,20 +457,20 @@ ship_event = {
 	desc = "precursor.11.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "vultaum_chain" 
-				counter = "vultaum_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "vultaum_chain"
+				counter = "vultaum_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = physics_research
@@ -448,12 +478,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.97 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.97
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -461,8 +497,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -477,28 +516,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = vultaum_3 }
+			owner = {
+				set_country_flag = vultaum_3
+			}
 		}
 	}
-	
 	option = {
 		name = INTRIGUING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -513,17 +555,24 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_city } }
-				add_modifier = { modifier = gpm_precursor_city }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_city
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_city
+				}
 			}
 			enable_special_project = {
 				name = "VULTAUM_ARCHEOLOGY_3"
 				location = this
 				owner = root.owner
 			}
-		}	
+		}
 	}
 }
 
@@ -534,20 +583,20 @@ ship_event = {
 	desc = "precursor.16.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "vultaum_chain" 
-				counter = "vultaum_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "vultaum_chain"
+				counter = "vultaum_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -555,12 +604,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.97 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.97
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -568,8 +623,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -584,28 +642,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = vultaum_4 }
+			owner = {
+				set_country_flag = vultaum_4
+			}
 		}
 	}
-	
 	option = {
 		name = ASTOUNDING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -620,10 +681,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_ruins } }
-				add_modifier = { modifier = gpm_precursor_ruins }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_ruins
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_ruins
+				}
 			}
 			enable_special_project = {
 				name = "VULTAUM_ARCHEOLOGY_4"
@@ -641,20 +709,20 @@ ship_event = {
 	desc = "precursor.21.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "vultaum_chain" 
-				counter = "vultaum_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "vultaum_chain"
+				counter = "vultaum_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -662,12 +730,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.97 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.97
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -675,8 +749,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -691,28 +768,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = vultaum_5 }
+			owner = {
+				set_country_flag = vultaum_5
+			}
 		}
 	}
-	
 	option = {
 		name = REMARKABLE
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -727,10 +807,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_remnants } }
-				add_modifier = { modifier = gpm_precursor_remnants }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_remnants
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_remnants
+				}
 			}
 			enable_special_project = {
 				name = "VULTAUM_ARCHEOLOGY_5"
@@ -748,20 +835,20 @@ ship_event = {
 	desc = "precursor.26.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "vultaum_chain" 
-				counter = "vultaum_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "vultaum_chain"
+				counter = "vultaum_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -769,12 +856,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.97 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.97
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -782,8 +875,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -798,28 +894,31 @@ ship_event = {
 	picture = GFX_evt_outpost
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = vultaum_7 }
+			owner = {
+				set_country_flag = vultaum_7
+			}
 		}
 	}
-	
 	option = {
 		name = FASCINATING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -834,10 +933,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_outpost_ruins } }
-				add_modifier = { modifier = gpm_precursor_outpost_ruins }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_outpost_ruins
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_outpost_ruins
+				}
 			}
 			enable_special_project = {
 				name = "VULTAUM_ARCHEOLOGY_7"
@@ -855,20 +961,20 @@ ship_event = {
 	desc = "precursor.36.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "vultaum_chain" 
-				counter = "vultaum_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "vultaum_chain"
+				counter = "vultaum_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -876,12 +982,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.97 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.97
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -889,8 +1001,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -905,28 +1020,31 @@ ship_event = {
 	picture = GFX_evt_satellite_in_orbit
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = vultaum_8 }
+			owner = {
+				set_country_flag = vultaum_8
+			}
 		}
 	}
-	
 	option = {
 		name = CURIOUS
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -941,10 +1059,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_satalite_grid } }
-				add_modifier = { modifier = gpm_precursor_satalite_grid }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_satalite_grid
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_satalite_grid
+				}
 			}
 			enable_special_project = {
 				name = "VULTAUM_ARCHEOLOGY_8"
@@ -962,20 +1087,20 @@ ship_event = {
 	desc = "precursor.41.desc"
 	picture = GFX_evt_satellite_in_orbit
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "vultaum_chain" 
-				counter = "vultaum_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "vultaum_chain"
+				counter = "vultaum_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -983,12 +1108,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.97 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.97
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -996,8 +1127,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -1012,28 +1146,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = vultaum_9 }
+			owner = {
+				set_country_flag = vultaum_9
+			}
 		}
 	}
-	
 	option = {
 		name = INTRIGUING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -1048,17 +1185,24 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_remnants } }
-				add_modifier = { modifier = gpm_precursor_remnants }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_remnants
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_remnants
+				}
 			}
 			enable_special_project = {
 				name = "VULTAUM_ARCHEOLOGY_9"
 				location = this
 				owner = root.owner
 			}
-		}	
+		}
 	}
 }
 
@@ -1069,20 +1213,20 @@ ship_event = {
 	desc = "precursor.46.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "vultaum_chain" 
-				counter = "vultaum_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "vultaum_chain"
+				counter = "vultaum_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -1090,12 +1234,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.97 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.97
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -1103,8 +1253,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -1119,28 +1272,31 @@ ship_event = {
 	picture = GFX_evt_ship_in_orbit
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = vultaum_10 }
+			owner = {
+				set_country_flag = vultaum_10
+			}
 		}
 	}
-	
 	option = {
 		name = INTERESTING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -1155,10 +1311,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_singularity_drive } }
-				add_modifier = { modifier = gpm_precursor_singularity_drive }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_singularity_drive
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_singularity_drive
+				}
 			}
 			enable_special_project = {
 				name = "VULTAUM_ARCHEOLOGY_10"
@@ -1176,20 +1339,20 @@ ship_event = {
 	desc = "precursor.51.desc"
 	picture = GFX_evt_ship_in_orbit
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "vultaum_chain" 
-				counter = "vultaum_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "vultaum_chain"
+				counter = "vultaum_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = physics_research
@@ -1197,12 +1360,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.97 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.97
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -1210,8 +1379,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -1225,20 +1397,20 @@ ship_event = {
 	desc = "precursor.56.desc"
 	picture = GFX_evt_mining_station
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "vultaum_chain" 
-				counter = "vultaum_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "vultaum_chain"
+				counter = "vultaum_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -1246,12 +1418,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.97 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.97
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -1259,8 +1437,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -1274,27 +1455,30 @@ ship_event = {
 	desc = "precursor.101.desc"
 	picture = GFX_evt_archaeological_dig
 	location = from
-	
 	is_triggered_only = yes
-
 	trigger = {
-		fromfrom = { has_planet_flag = vultaum_homeworld }
-		owner = { 
+		fromfrom = {
+			has_planet_flag = vultaum_homeworld
+		}
+		owner = {
 			# is_ai = no 
 			has_country_flag = vultaum_system
 		}
 	}
-
 	immediate = {
 		owner = {
 			set_country_flag = vultaum_world_found
 			set_global_flag = vultaum_homeworld_found
 			if = {
-				limit = { has_event_chain = vultaum_chain }
+				limit = {
+					has_event_chain = vultaum_chain
+				}
 				end_event_chain = "vultaum_chain"
 			}
 			if = {
-				limit = { has_event_chain = "vultaum_homeworld_chain" }
+				limit = {
+					has_event_chain = "vultaum_homeworld_chain"
+				}
 				end_event_chain = "vultaum_homeworld_chain"
 			}
 		}
@@ -1305,15 +1489,18 @@ ship_event = {
 					has_event_chain = "vultaum_homeworld_chain"
 				}
 			}
-			country_event = { id = precursor.99336 }
+			country_event = {
+				id = precursor.99336
+			}
 		}
 	}
-	
 	option = {
 		name = "FASCINATING"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				add_relic = r_reality_perforator
 				log = "<< RELICS >> | ADD_RELIC <<< r_reality_perforator >>> to OWNER = [owner.GetName] ; precursor homeworld event"
 				every_relation = {
@@ -1360,7 +1547,9 @@ ship_event = {
 				max = @tier3researchmax
 			}
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				custom_tooltip = vultaum_artifact_research_unlocked
 			}
 		}
@@ -1368,7 +1557,6 @@ ship_event = {
 }
 
 ### The Yuht Empire
-
 # Yuht Intro
 ship_event = {
 	id = precursor.500
@@ -1376,19 +1564,23 @@ ship_event = {
 	desc = "precursor.500.desc"
 	picture = GFX_evt_archaeological_dig
 	location = from
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	trigger = {
-		solar_system = { has_star_flag = precursor_2 }
-		solar_system = { NOT = { is_same_value = root.owner.capital_scope.solar_system } }
+		solar_system = {
+			has_star_flag = precursor_2
+		}
+		solar_system = {
+			NOT = {
+				is_same_value = root.owner.capital_scope.solar_system
+			}
+		}
 		# owner = { is_ai = no }
-		FROM = { 
-			has_anomaly = no 
+		FROM = {
+			has_anomaly = no
 			is_star = no
 		}
-		owner = { 
-			NOR = { 
+		owner = {
+			NOR = {
 				has_country_flag = vultaum_intro
 				has_country_flag = yuht_intro
 				has_country_flag = first_league_intro
@@ -1399,21 +1591,30 @@ ship_event = {
 			}
 		}
 	}
-	
 	immediate = {
-		owner = { set_country_flag = yuht_intro }
+		owner = {
+			set_country_flag = yuht_intro
+		}
 	}
-	
 	option = {
 		name = INTERESTING
-		hidden_effect = { owner = { country_event = { id = story.5 days = 30 } } }
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = story.5
+					days = 30
+				}
+			}
+		}
 		owner = {
 			begin_event_chain = {
 				event_chain = "yuht_chain"
 				target = THIS
 			}
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
 		}
@@ -1428,28 +1629,31 @@ ship_event = {
 	picture = GFX_evt_alien_nature
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = yuht_1 }
+			owner = {
+				set_country_flag = yuht_1
+			}
 		}
 	}
-	
 	option = {
 		name = INTERESTING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -1464,10 +1668,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_eternal_fortress } }
-				add_modifier = { modifier = gpm_precursor_eternal_fortress }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_eternal_fortress
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_eternal_fortress
+				}
 			}
 			enable_special_project = {
 				name = "YUHT_ARCHEOLOGY_1"
@@ -1485,20 +1696,20 @@ ship_event = {
 	desc = "precursor.506.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "yuht_chain" 
-				counter = "yuht_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "yuht_chain"
+				counter = "yuht_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -1506,12 +1717,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -1519,8 +1736,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -1535,28 +1755,31 @@ ship_event = {
 	picture = GFX_evt_outpost
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = yuht_2 }
+			owner = {
+				set_country_flag = yuht_2
+			}
 		}
 	}
-	
 	option = {
 		name = INTRIGUING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -1571,10 +1794,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_outpost_ruins } }
-				add_modifier = { modifier = gpm_precursor_outpost_ruins }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_outpost_ruins
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_outpost_ruins
+				}
 			}
 			enable_special_project = {
 				name = "YUHT_ARCHEOLOGY_2"
@@ -1592,20 +1822,20 @@ ship_event = {
 	desc = "precursor.511.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "yuht_chain" 
-				counter = "yuht_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "yuht_chain"
+				counter = "yuht_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -1613,12 +1843,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -1626,8 +1862,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -1642,28 +1881,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = yuht_3 }
+			owner = {
+				set_country_flag = yuht_3
+			}
 		}
 	}
-	
 	option = {
 		name = CURIOUS
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -1678,10 +1920,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_mines } }
-				add_modifier = { modifier = gpm_precursor_mines }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_mines
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_mines
+				}
 			}
 			enable_special_project = {
 				name = "YUHT_ARCHEOLOGY_3"
@@ -1699,20 +1948,20 @@ ship_event = {
 	desc = "precursor.516.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "yuht_chain" 
-				counter = "yuht_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "yuht_chain"
+				counter = "yuht_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -1720,12 +1969,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -1733,8 +1988,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -1749,28 +2007,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = yuht_4 }
+			owner = {
+				set_country_flag = yuht_4
+			}
 		}
 	}
-	
 	option = {
 		name = PECULIAR
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -1785,10 +2046,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_ruins } }
-				add_modifier = { modifier = gpm_precursor_ruins }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_ruins
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_ruins
+				}
 			}
 			enable_special_project = {
 				name = "YUHT_ARCHEOLOGY_4"
@@ -1806,20 +2074,20 @@ ship_event = {
 	desc = "precursor.521.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "yuht_chain" 
-				counter = "yuht_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "yuht_chain"
+				counter = "yuht_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -1827,12 +2095,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -1840,8 +2114,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -1856,28 +2133,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = yuht_5 }
+			owner = {
+				set_country_flag = yuht_5
+			}
 		}
 	}
-	
 	option = {
 		name = FASCINATING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -1892,10 +2172,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_remnants } }
-				add_modifier = { modifier = gpm_precursor_remnants }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_remnants
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_remnants
+				}
 			}
 			enable_special_project = {
 				name = "YUHT_ARCHEOLOGY_5"
@@ -1913,20 +2200,20 @@ ship_event = {
 	desc = "precursor.526.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "yuht_chain" 
-				counter = "yuht_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "yuht_chain"
+				counter = "yuht_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -1934,12 +2221,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -1947,8 +2240,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -1963,28 +2259,31 @@ ship_event = {
 	picture = GFX_evt_satellite_in_orbit
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = yuht_6 }
+			owner = {
+				set_country_flag = yuht_6
+			}
 		}
 	}
-	
 	option = {
 		name = REMARKABLE
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -1999,10 +2298,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_communication_hub } }
-				add_modifier = { modifier = gpm_precursor_communication_hub }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_communication_hub
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_communication_hub
+				}
 			}
 			enable_special_project = {
 				name = "YUHT_ARCHEOLOGY_6"
@@ -2020,20 +2326,20 @@ ship_event = {
 	desc = "precursor.531.desc"
 	picture = GFX_evt_satellite_in_orbit
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "yuht_chain" 
-				counter = "yuht_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "yuht_chain"
+				counter = "yuht_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = physics_research
@@ -2041,12 +2347,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -2054,8 +2366,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -2070,28 +2385,31 @@ ship_event = {
 	picture = GFX_evt_ship_in_orbit
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = yuht_7 }
+			owner = {
+				set_country_flag = yuht_7
+			}
 		}
 	}
-	
 	option = {
 		name = INTRIGUING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -2106,10 +2424,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_planetary_gun } }
-				add_modifier = { modifier = gpm_precursor_planetary_gun }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_planetary_gun
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_planetary_gun
+				}
 			}
 			enable_special_project = {
 				name = "YUHT_ARCHEOLOGY_7"
@@ -2127,20 +2452,20 @@ ship_event = {
 	desc = "precursor.536.desc"
 	picture = GFX_evt_ship_in_orbit
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "yuht_chain" 
-				counter = "yuht_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "yuht_chain"
+				counter = "yuht_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -2148,12 +2473,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -2161,8 +2492,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -2177,28 +2511,31 @@ ship_event = {
 	picture = GFX_evt_ship_in_orbit
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = yuht_8 }
+			owner = {
+				set_country_flag = yuht_8
+			}
 		}
 	}
-	
 	option = {
 		name = CURIOUS
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -2213,10 +2550,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_remnants } }
-				add_modifier = { modifier = gpm_precursor_remnants }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_remnants
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_remnants
+				}
 			}
 			enable_special_project = {
 				name = "YUHT_ARCHEOLOGY_8"
@@ -2234,20 +2578,20 @@ ship_event = {
 	desc = "precursor.541.desc"
 	picture = GFX_evt_ship_in_orbit
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "yuht_chain" 
-				counter = "yuht_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "yuht_chain"
+				counter = "yuht_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = physics_research
@@ -2255,12 +2599,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -2268,8 +2618,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -2283,20 +2636,20 @@ ship_event = {
 	desc = "precursor.546.desc"
 	picture = GFX_evt_mining_station
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "yuht_chain" 
-				counter = "yuht_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "yuht_chain"
+				counter = "yuht_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -2304,12 +2657,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -2317,8 +2676,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -2332,17 +2694,16 @@ ship_event = {
 	desc = "precursor.601.desc"
 	picture = GFX_evt_archaeological_dig
 	location = from
-	
 	is_triggered_only = yes
-
 	trigger = {
-		fromfrom = { has_planet_flag = yuht_homeworld }
-		owner = { 
+		fromfrom = {
+			has_planet_flag = yuht_homeworld
+		}
+		owner = {
 			# is_ai = no 
 			has_country_flag = yuht_system
 		}
 	}
-	
 	immediate = {
 		set_global_flag = yuht_homeworld_found
 		owner = {
@@ -2356,15 +2717,18 @@ ship_event = {
 					has_event_chain = "yuht_homeworld_chain"
 				}
 			}
-			country_event = { id = precursor.99337 }
+			country_event = {
+				id = precursor.99337
+			}
 		}
 	}
-	
 	option = {
 		name = "FASCINATING"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				add_relic = r_cryo_core
 				log = "<< RELICS >> | ADD_RELIC <<< r_cryo_core >>> to OWNER = [owner.GetName] ; precursor homeworld event"
 				every_relation = {
@@ -2404,9 +2768,10 @@ ship_event = {
 				min = @tier4materialmin
 				max = @tier4materialmax
 			}
-
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				custom_tooltip = yuht_artifact_research_unlocked
 			}
 		}
@@ -2414,26 +2779,29 @@ ship_event = {
 }
 
 ### The First League
-
 # First League Notification Event
 ship_event = {
 	id = precursor.1000
 	title = "precursor.1000.name"
 	desc = "precursor.1000.desc"
 	picture = GFX_evt_archaeological_dig
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	trigger = {
-		solar_system = { has_star_flag = precursor_3 }
-		solar_system = { NOT = { is_same_value = root.owner.capital_scope.solar_system } }
+		solar_system = {
+			has_star_flag = precursor_3
+		}
+		solar_system = {
+			NOT = {
+				is_same_value = root.owner.capital_scope.solar_system
+			}
+		}
 		# owner = { is_ai = no }
 		FROM = {
-			has_anomaly = no 
+			has_anomaly = no
 			is_star = no
 		}
-		owner = { 
-			NOR = { 
+		owner = {
+			NOR = {
 				has_country_flag = vultaum_intro
 				has_country_flag = yuht_intro
 				has_country_flag = first_league_intro
@@ -2444,21 +2812,30 @@ ship_event = {
 			}
 		}
 	}
-	
 	immediate = {
-		owner = { set_country_flag = first_league_intro }
+		owner = {
+			set_country_flag = first_league_intro
+		}
 	}
-	
 	option = {
 		name = INTERESTING
-		hidden_effect = { owner = { country_event = { id = story.5 days = 30 } } }
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = story.5
+					days = 30
+				}
+			}
+		}
 		owner = {
 			begin_event_chain = {
 				event_chain = "first_league_chain"
 				target = THIS
 			}
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
 		}
@@ -2473,28 +2850,31 @@ ship_event = {
 	picture = GFX_evt_ship_in_orbit
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = first_league_1 }
+			owner = {
+				set_country_flag = first_league_1
+			}
 		}
 	}
-	
 	option = {
 		name = REMARKABLE
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -2509,10 +2889,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_crashed_spacestation } }
-				add_modifier = { modifier = gpm_precursor_crashed_spacestation }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_crashed_spacestation
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_crashed_spacestation
+				}
 			}
 			enable_special_project = {
 				name = "FIRST_LEAGUE_ARCHEOLOGY_1"
@@ -2530,20 +2917,20 @@ ship_event = {
 	desc = "precursor.1006.desc"
 	picture = GFX_evt_ship_in_orbit
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "first_league_chain" 
-				counter = "first_league_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "first_league_chain"
+				counter = "first_league_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -2551,12 +2938,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1097 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1097
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -2564,8 +2957,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -2580,28 +2976,31 @@ ship_event = {
 	picture = GFX_evt_ship_in_orbit
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = first_league_2 }
+			owner = {
+				set_country_flag = first_league_2
+			}
 		}
 	}
-	
 	option = {
 		name = INTERESTING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -2616,10 +3015,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_planetary_gun } }
-				add_modifier = { modifier = gpm_precursor_planetary_gun }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_planetary_gun
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_planetary_gun
+				}
 			}
 			enable_special_project = {
 				name = "FIRST_LEAGUE_ARCHEOLOGY_2"
@@ -2637,20 +3043,20 @@ ship_event = {
 	desc = "precursor.1011.desc"
 	picture = GFX_evt_ship_in_orbit
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "first_league_chain" 
-				counter = "first_league_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "first_league_chain"
+				counter = "first_league_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -2658,12 +3064,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1097 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1097
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -2671,8 +3083,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -2687,28 +3102,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = first_league_3 }
+			owner = {
+				set_country_flag = first_league_3
+			}
 		}
 	}
-	
 	option = {
 		name = INTRIGUING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -2723,10 +3141,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_vaults } }
-				add_modifier = { modifier = gpm_precursor_vaults }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_vaults
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_vaults
+				}
 			}
 			enable_special_project = {
 				name = "FIRST_LEAGUE_ARCHEOLOGY_3"
@@ -2744,20 +3169,20 @@ ship_event = {
 	desc = "precursor.1016.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "first_league_chain" 
-				counter = "first_league_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "first_league_chain"
+				counter = "first_league_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -2765,12 +3190,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1097 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1097
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -2778,8 +3209,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -2794,28 +3228,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = first_league_4 }
+			owner = {
+				set_country_flag = first_league_4
+			}
 		}
 	}
-	
 	option = {
 		name = CURIOUS
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -2830,10 +3267,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_energy_grid } }
-				add_modifier = { modifier = gpm_precursor_energy_grid }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_energy_grid
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_energy_grid
+				}
 			}
 			enable_special_project = {
 				name = "FIRST_LEAGUE_ARCHEOLOGY_4"
@@ -2851,20 +3295,20 @@ ship_event = {
 	desc = "precursor.1021.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "first_league_chain" 
-				counter = "first_league_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "first_league_chain"
+				counter = "first_league_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -2872,12 +3316,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1097 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1097
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -2885,8 +3335,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -2901,28 +3354,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = first_league_5 }
+			owner = {
+				set_country_flag = first_league_5
+			}
 		}
 	}
-	
 	option = {
 		name = FASCINATING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -2937,10 +3393,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_floating_city } }
-				add_modifier = { modifier = gpm_precursor_floating_city }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_floating_city
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_floating_city
+				}
 			}
 			enable_special_project = {
 				name = "FIRST_LEAGUE_ARCHEOLOGY_5"
@@ -2958,20 +3421,20 @@ ship_event = {
 	desc = "precursor.1026.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "first_league_chain" 
-				counter = "first_league_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "first_league_chain"
+				counter = "first_league_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -2979,12 +3442,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1097 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1097
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -2992,8 +3461,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -3008,28 +3480,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = first_league_6 }
+			owner = {
+				set_country_flag = first_league_6
+			}
 		}
 	}
-	
 	option = {
 		name = PECULIAR
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -3044,10 +3519,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_capital_complex } }
-				add_modifier = { modifier = gpm_precursor_capital_complex }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_capital_complex
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_capital_complex
+				}
 				add_deposit = gpm_d_precursor_capital_complex
 			}
 			enable_special_project = {
@@ -3066,20 +3548,20 @@ ship_event = {
 	desc = "precursor.1031.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "first_league_chain" 
-				counter = "first_league_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "first_league_chain"
+				counter = "first_league_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -3087,12 +3569,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1097 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1097
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -3100,8 +3588,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -3116,28 +3607,31 @@ ship_event = {
 	picture = GFX_evt_outpost
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = first_league_7 }
+			owner = {
+				set_country_flag = first_league_7
+			}
 		}
 	}
-	
 	option = {
 		name = INTERESTING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -3152,10 +3646,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_singularity_drive } }
-				add_modifier = { modifier = gpm_precursor_singularity_drive }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_singularity_drive
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_singularity_drive
+				}
 			}
 			enable_special_project = {
 				name = "FIRST_LEAGUE_ARCHEOLOGY_7"
@@ -3173,20 +3674,20 @@ ship_event = {
 	desc = "precursor.1036.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "first_league_chain" 
-				counter = "first_league_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "first_league_chain"
+				counter = "first_league_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = physics_research
@@ -3194,12 +3695,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1097 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1097
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -3207,8 +3714,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -3223,28 +3733,31 @@ ship_event = {
 	picture = GFX_evt_alien_nature
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = first_league_8 }
+			owner = {
+				set_country_flag = first_league_8
+			}
 		}
 	}
-	
 	option = {
 		name = FASCINATING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -3259,10 +3772,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_remnants } }
-				add_modifier = { modifier = gpm_precursor_remnants }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_remnants
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_remnants
+				}
 			}
 			enable_special_project = {
 				name = "FIRST_LEAGUE_ARCHEOLOGY_8"
@@ -3280,20 +3800,20 @@ ship_event = {
 	desc = "precursor.1041.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "first_league_chain" 
-				counter = "first_league_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "first_league_chain"
+				counter = "first_league_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -3301,12 +3821,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1097 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1097
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -3314,8 +3840,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -3330,28 +3859,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = first_league_9 }
+			owner = {
+				set_country_flag = first_league_9
+			}
 		}
 	}
-	
 	option = {
 		name = AMAZING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -3366,10 +3898,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_city } }
-				add_modifier = { modifier = gpm_precursor_city }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_city
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_city
+				}
 			}
 			enable_special_project = {
 				name = "FIRST_LEAGUE_ARCHEOLOGY_9"
@@ -3387,20 +3926,20 @@ ship_event = {
 	desc = "precursor.1046.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "first_league_chain" 
-				counter = "first_league_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "first_league_chain"
+				counter = "first_league_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -3408,12 +3947,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1097 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1097
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -3421,8 +3966,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -3437,28 +3985,31 @@ ship_event = {
 	picture = GFX_evt_ship_in_orbit
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = first_league_10 }
+			owner = {
+				set_country_flag = first_league_10
+			}
 		}
 	}
-	
 	option = {
 		name = INTRIGUING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -3473,10 +4024,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_mechs } }
-				add_modifier = { modifier = gpm_precursor_mechs }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_mechs
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_mechs
+				}
 			}
 			enable_special_project = {
 				name = "FIRST_LEAGUE_ARCHEOLOGY_10"
@@ -3494,20 +4052,20 @@ ship_event = {
 	desc = "precursor.1051.desc"
 	picture = GFX_evt_ship_in_orbit
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "first_league_chain" 
-				counter = "first_league_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "first_league_chain"
+				counter = "first_league_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = physics_research
@@ -3515,12 +4073,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1097 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1097
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -3528,8 +4092,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -3544,28 +4111,31 @@ ship_event = {
 	picture = GFX_evt_outpost
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = first_league_11 }
+			owner = {
+				set_country_flag = first_league_11
+			}
 		}
 	}
-	
 	option = {
 		name = INTERESTING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -3580,10 +4150,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_prison_planet } }
-				add_modifier = { modifier = gpm_precursor_prison_planet }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_prison_planet
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_prison_planet
+				}
 			}
 			enable_special_project = {
 				name = "FIRST_LEAGUE_ARCHEOLOGY_11"
@@ -3601,20 +4178,20 @@ ship_event = {
 	desc = "precursor.1056.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "first_league_chain" 
-				counter = "first_league_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "first_league_chain"
+				counter = "first_league_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = physics_research
@@ -3622,12 +4199,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1097 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1097
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -3635,8 +4218,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -3651,28 +4237,31 @@ ship_event = {
 	picture = GFX_evt_alien_nature
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = first_league_12 }
+			owner = {
+				set_country_flag = first_league_12
+			}
 		}
 	}
-	
 	option = {
 		name = REMARKABLE
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -3687,10 +4276,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_obelisks } }
-				add_modifier = { modifier = gpm_precursor_obelisks }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_obelisks
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_obelisks
+				}
 			}
 			enable_special_project = {
 				name = "FIRST_LEAGUE_ARCHEOLOGY_12"
@@ -3708,20 +4304,20 @@ ship_event = {
 	desc = "precursor.1061.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "first_league_chain" 
-				counter = "first_league_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "first_league_chain"
+				counter = "first_league_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -3729,12 +4325,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1097 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1097
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -3742,8 +4344,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -3758,28 +4363,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = first_league_13 }
+			owner = {
+				set_country_flag = first_league_13
+			}
 		}
 	}
-	
 	option = {
 		name = CURIOUS
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -3794,10 +4402,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_satalite_grid } }
-				add_modifier = { modifier = gpm_precursor_satalite_grid }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_satalite_grid
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_satalite_grid
+				}
 			}
 			enable_special_project = {
 				name = "FIRST_LEAGUE_ARCHEOLOGY_13"
@@ -3815,20 +4430,20 @@ ship_event = {
 	desc = "precursor.1066.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "first_league_chain" 
-				counter = "first_league_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "first_league_chain"
+				counter = "first_league_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = physics_research
@@ -3836,12 +4451,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1097 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1097
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -3849,8 +4470,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -3864,24 +4488,22 @@ ship_event = {
 	desc = "precursor.1101.desc"
 	picture = GFX_evt_dead_city
 	location = from
-	
 	is_triggered_only = yes
-
 	trigger = {
-		fromfrom = { has_planet_flag = first_league_homeworld }
-		owner = { 
+		fromfrom = {
+			has_planet_flag = first_league_homeworld
+		}
+		owner = {
 			# is_ai = no 
 			has_country_flag = first_league_system
 		}
 	}
-
 	immediate = {
 		owner = {
 			set_country_flag = league_world_found
 			set_global_flag = first_league_homeworld_found
 		}
 	}
-
 	after = {
 		owner = {
 			add_monthly_resource_mult = {
@@ -3902,14 +4524,14 @@ ship_event = {
 				min = @tier4influencemin
 				max = @tier4influencemax
 			}
-
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				custom_tooltip = league_artifact_research_unlocked
 			}
 		}
 	}
-	
 	option = {
 		name = "FASCINATING"
 		trigger = {
@@ -3928,11 +4550,12 @@ ship_event = {
 						has_event_chain = "first_league_homeworld_chain"
 					}
 				}
-				country_event = { id = precursor.99338 }
+				country_event = {
+					id = precursor.99338
+				}
 			}
 		}
 	}
-
 	option = {
 		name = "FASCINATING"
 		trigger = {
@@ -3950,33 +4573,38 @@ ship_event = {
 						has_event_chain = "first_league_homeworld_chain"
 					}
 				}
-				country_event = { id = precursor.99338 }
+				country_event = {
+					id = precursor.99338
+				}
 			}
 		}
 	}
 }
 
 ### The Irassian Concordat
-
 # Irassian Notification Event
 ship_event = {
 	id = precursor.1500
 	title = "precursor.1500.name"
 	desc = "precursor.1500.desc"
 	picture = GFX_evt_archaeological_dig
-	
 	is_triggered_only = yes
-	
 	trigger = {
-		solar_system = { has_star_flag = precursor_4 }
-		solar_system = { NOT = { is_same_value = root.owner.capital_scope.solar_system } }
+		solar_system = {
+			has_star_flag = precursor_4
+		}
+		solar_system = {
+			NOT = {
+				is_same_value = root.owner.capital_scope.solar_system
+			}
+		}
 		# owner = { is_ai = no }
-		FROM = { 
-			has_anomaly = no 
+		FROM = {
+			has_anomaly = no
 			is_star = no
 		}
 		owner = {
-			NOR = { 
+			NOR = {
 				has_country_flag = vultaum_intro
 				has_country_flag = yuht_intro
 				has_country_flag = first_league_intro
@@ -3987,21 +4615,30 @@ ship_event = {
 			}
 		}
 	}
-	
 	immediate = {
-		owner = { set_country_flag = irassian_intro }
+		owner = {
+			set_country_flag = irassian_intro
+		}
 	}
-	
 	option = {
 		name = INTERESTING
-		hidden_effect = { owner = { country_event = { id = story.5 days = 30 } } }
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = story.5
+					days = 30
+				}
+			}
+		}
 		owner = {
 			begin_event_chain = {
 				event_chain = "irassian_chain"
 				target = ROOT
 			}
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
 		}
@@ -4016,28 +4653,31 @@ ship_event = {
 	picture = GFX_evt_landing_ship
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = irassians_1 }
+			owner = {
+				set_country_flag = irassians_1
+			}
 		}
 	}
-	
 	option = {
 		name = FASCINATING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -4052,10 +4692,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_satalite_grid } }
-				add_modifier = { modifier = gpm_precursor_satalite_grid }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_satalite_grid
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_satalite_grid
+				}
 			}
 			enable_special_project = {
 				name = "IRASSIAN_ARCHEOLOGY_1"
@@ -4073,20 +4720,20 @@ ship_event = {
 	desc = "precursor.1506.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "irassian_chain" 
-				counter = "irassian_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "irassian_chain"
+				counter = "irassian_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -4094,12 +4741,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -4107,8 +4760,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -4123,28 +4779,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = irassians_2 }
+			owner = {
+				set_country_flag = irassians_2
+			}
 		}
 	}
-	
 	option = {
 		name = REMARKABLE
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -4159,10 +4818,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_crashed_spacestation } }
-				add_modifier = { modifier = gpm_precursor_crashed_spacestation }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_crashed_spacestation
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_crashed_spacestation
+				}
 			}
 			enable_special_project = {
 				name = "IRASSIAN_ARCHEOLOGY_2"
@@ -4180,20 +4846,20 @@ ship_event = {
 	desc = "precursor.1511.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "irassian_chain" 
-				counter = "irassian_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "irassian_chain"
+				counter = "irassian_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = physics_research
@@ -4201,12 +4867,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -4214,8 +4886,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -4230,28 +4905,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = irassians_3 }
+			owner = {
+				set_country_flag = irassians_3
+			}
 		}
 	}
-	
 	option = {
 		name = INTERESTING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -4266,10 +4944,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_remnants } }
-				add_modifier = { modifier = gpm_precursor_remnants }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_remnants
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_remnants
+				}
 			}
 			enable_special_project = {
 				name = "IRASSIAN_ARCHEOLOGY_3"
@@ -4287,20 +4972,20 @@ ship_event = {
 	desc = "precursor.1516.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "irassian_chain" 
-				counter = "irassian_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "irassian_chain"
+				counter = "irassian_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = physics_research
@@ -4308,12 +4993,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -4321,8 +5012,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -4337,28 +5031,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = irassians_4 }
+			owner = {
+				set_country_flag = irassians_4
+			}
 		}
 	}
-	
 	option = {
 		name = INTRIGUING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -4373,10 +5070,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_remnants } }
-				add_modifier = { modifier = gpm_precursor_remnants }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_remnants
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_remnants
+				}
 			}
 			enable_special_project = {
 				name = "IRASSIAN_ARCHEOLOGY_4"
@@ -4394,20 +5098,20 @@ ship_event = {
 	desc = "precursor.1521.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "irassian_chain" 
-				counter = "irassian_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "irassian_chain"
+				counter = "irassian_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = physics_research
@@ -4415,12 +5119,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -4428,8 +5138,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -4444,28 +5157,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = irassians_5 }
+			owner = {
+				set_country_flag = irassians_5
+			}
 		}
 	}
-	
 	option = {
 		name = CURIOUS
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -4480,10 +5196,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_ruins } }
-				add_modifier = { modifier = gpm_precursor_ruins }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_ruins
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_ruins
+				}
 			}
 			enable_special_project = {
 				name = "IRASSIAN_ARCHEOLOGY_5"
@@ -4501,20 +5224,20 @@ ship_event = {
 	desc = "precursor.1526.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "irassian_chain" 
-				counter = "irassian_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "irassian_chain"
+				counter = "irassian_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = physics_research
@@ -4522,12 +5245,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -4535,8 +5264,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -4551,28 +5283,31 @@ ship_event = {
 	picture = GFX_evt_outpost
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = irassians_6 }
+			owner = {
+				set_country_flag = irassians_6
+			}
 		}
 	}
-	
 	option = {
 		name = PECULIAR
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -4587,10 +5322,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_mines } }
-				add_modifier = { modifier = gpm_precursor_mines }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_mines
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_mines
+				}
 			}
 			enable_special_project = {
 				name = "IRASSIAN_ARCHEOLOGY_6"
@@ -4608,20 +5350,20 @@ ship_event = {
 	desc = "precursor.1531.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "irassian_chain" 
-				counter = "irassian_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "irassian_chain"
+				counter = "irassian_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -4629,12 +5371,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -4642,8 +5390,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -4658,28 +5409,31 @@ ship_event = {
 	picture = GFX_evt_alien_nature
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = irassians_7 }
+			owner = {
+				set_country_flag = irassians_7
+			}
 		}
 	}
-	
 	option = {
 		name = FASCINATING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -4694,10 +5448,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_remnants } }
-				add_modifier = { modifier = gpm_precursor_remnants }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_remnants
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_remnants
+				}
 			}
 			enable_special_project = {
 				name = "IRASSIAN_ARCHEOLOGY_7"
@@ -4715,20 +5476,20 @@ ship_event = {
 	desc = "precursor.1536.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "irassian_chain" 
-				counter = "irassian_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "irassian_chain"
+				counter = "irassian_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -4736,12 +5497,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -4749,8 +5516,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -4765,28 +5535,31 @@ ship_event = {
 	picture = GFX_evt_ship_in_orbit
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = irassians_8 }
+			owner = {
+				set_country_flag = irassians_8
+			}
 		}
 	}
-	
 	option = {
 		name = REMARKABLE
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -4801,10 +5574,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_planetary_gun } }
-				add_modifier = { modifier = gpm_precursor_planetary_gun }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_planetary_gun
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_planetary_gun
+				}
 			}
 			enable_special_project = {
 				name = "IRASSIAN_ARCHEOLOGY_8"
@@ -4822,20 +5602,20 @@ ship_event = {
 	desc = "precursor.1541.desc"
 	picture = GFX_evt_ship_in_orbit
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "irassian_chain" 
-				counter = "irassian_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "irassian_chain"
+				counter = "irassian_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -4843,12 +5623,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -4856,8 +5642,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -4872,28 +5661,31 @@ ship_event = {
 	picture = GFX_evt_ship_in_orbit
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = irassians_9 }
+			owner = {
+				set_country_flag = irassians_9
+			}
 		}
 	}
-	
 	option = {
 		name = INTERESTING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -4908,17 +5700,24 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_ruins } }
-				add_modifier = { modifier = gpm_precursor_ruins }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_ruins
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_ruins
+				}
 			}
 			enable_special_project = {
 				name = "IRASSIAN_ARCHEOLOGY_9"
 				location = this
 				owner = root.owner
 			}
-		}	
+		}
 	}
 }
 
@@ -4929,20 +5728,20 @@ ship_event = {
 	desc = "precursor.1546.desc"
 	picture = GFX_evt_ship_in_orbit
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "irassian_chain" 
-				counter = "irassian_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "irassian_chain"
+				counter = "irassian_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -4950,12 +5749,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -4963,8 +5768,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -4978,20 +5786,20 @@ ship_event = {
 	desc = "precursor.1551.desc"
 	picture = GFX_evt_ship_in_orbit
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "irassian_chain" 
-				counter = "irassian_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "irassian_chain"
+				counter = "irassian_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -4999,12 +5807,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.1597 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.1597
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -5012,8 +5826,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -5027,27 +5844,30 @@ ship_event = {
 	desc = "precursor.1601.desc"
 	picture = GFX_evt_dead_city
 	location = from
-	
 	is_triggered_only = yes
-
 	trigger = {
-		fromfrom = { has_planet_flag = irassian_homeworld }
-		owner = { 
+		fromfrom = {
+			has_planet_flag = irassian_homeworld
+		}
+		owner = {
 			# is_ai = no 
 			has_country_flag = irassian_system
 		}
 	}
-
 	immediate = {
 		owner = {
 			set_country_flag = irassian_world_found
 			set_global_flag = irassian_homeworld_found
 			if = {
-				limit = { has_event_chain = irassian_chain }
+				limit = {
+					has_event_chain = irassian_chain
+				}
 				end_event_chain = "irassian_chain"
 			}
 			if = {
-				limit = { has_event_chain = irassian_homeworld_chain }
+				limit = {
+					has_event_chain = irassian_homeworld_chain
+				}
 				end_event_chain = irassian_homeworld_chain
 			}
 		}
@@ -5058,15 +5878,18 @@ ship_event = {
 					has_event_chain = "irassian_homeworld_chain"
 				}
 			}
-			country_event = { id = precursor.99339 }
+			country_event = {
+				id = precursor.99339
+			}
 		}
 	}
-	
 	option = {
 		name = "FASCINATING"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				add_relic = r_pox_sample
 				log = "<< RELICS >> | ADD_RELIC <<< r_pox_sample >>> to OWNER = [owner.GetName] ; precursor homeworld event"
 				every_relation = {
@@ -5106,37 +5929,40 @@ ship_event = {
 				min = @tier4materialmin
 				max = @tier4materialmax
 			}
-
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				custom_tooltip = irassian_artifact_research_unlocked
 			}
 		}
 	}
 }
 
-
 ### The Cybrex
-
 # Cybrex Notification Event
 ship_event = {
 	id = precursor.2000
 	title = "precursor.2000.name"
 	desc = "precursor.2000.desc"
 	picture = GFX_evt_archaeological_dig
-	
 	is_triggered_only = yes
-	
 	trigger = {
-		solar_system = { has_star_flag = precursor_5 }
-		solar_system = { NOT = { is_same_value = root.owner.capital_scope.solar_system } }
+		solar_system = {
+			has_star_flag = precursor_5
+		}
+		solar_system = {
+			NOT = {
+				is_same_value = root.owner.capital_scope.solar_system
+			}
+		}
 		# owner = { is_ai = no }
-		FROM = { 
-			has_anomaly = no 
+		FROM = {
+			has_anomaly = no
 			is_star = no
 		}
 		owner = {
-			NOR = { 
+			NOR = {
 				has_country_flag = vultaum_intro
 				has_country_flag = yuht_intro
 				has_country_flag = first_league_intro
@@ -5147,21 +5973,30 @@ ship_event = {
 			}
 		}
 	}
-	
 	immediate = {
-		owner = { set_country_flag = cybrex_intro }
+		owner = {
+			set_country_flag = cybrex_intro
+		}
 	}
-	
 	option = {
 		name = INTERESTING
-		hidden_effect = { owner = { country_event = { id = story.5 days = 30 } } }
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = story.5
+					days = 30
+				}
+			}
+		}
 		owner = {
 			begin_event_chain = {
 				event_chain = "cybrex_chain"
 				target = ROOT
 			}
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
 		}
@@ -5176,28 +6011,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = cybrex_1 }
+			owner = {
+				set_country_flag = cybrex_1
+			}
 		}
 	}
-	
 	option = {
 		name = FASCINATING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -5212,17 +6050,24 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_city } }
-				add_modifier = { modifier = gpm_precursor_city }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_city
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_city
+				}
 			}
 			enable_special_project = {
 				name = "CYBREX_ARCHEOLOGY_1"
 				location = this
 				owner = root.owner
 			}
-		}	
+		}
 	}
 }
 
@@ -5233,20 +6078,20 @@ ship_event = {
 	desc = "precursor.2006.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "cybrex_chain" 
-				counter = "cybrex_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "cybrex_chain"
+				counter = "cybrex_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -5254,12 +6099,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.2103 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.2103
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -5267,8 +6118,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -5283,28 +6137,31 @@ ship_event = {
 	picture = GFX_evt_dead_city
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = cybrex_2 }
+			owner = {
+				set_country_flag = cybrex_2
+			}
 		}
 	}
-	
 	option = {
 		name = REMARKABLE
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -5319,10 +6176,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_capital_complex } }
-				add_modifier = { modifier = gpm_precursor_capital_complex }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_capital_complex
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_capital_complex
+				}
 				add_deposit = gpm_d_precursor_capital_complex
 			}
 			enable_special_project = {
@@ -5341,20 +6205,20 @@ ship_event = {
 	desc = "precursor.2011.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "cybrex_chain" 
-				counter = "cybrex_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "cybrex_chain"
+				counter = "cybrex_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = physics_research
@@ -5362,12 +6226,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.2103 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.2103
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -5375,8 +6245,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -5391,28 +6264,31 @@ ship_event = {
 	picture = GFX_evt_ship_in_orbit
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = cybrex_3 }
+			owner = {
+				set_country_flag = cybrex_3
+			}
 		}
 	}
-	
 	option = {
 		name = INTERESTING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -5427,10 +6303,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_mechs } }
-				add_modifier = { modifier = gpm_precursor_mechs }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_mechs
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_mechs
+				}
 			}
 			enable_special_project = {
 				name = "CYBREX_ARCHEOLOGY_3"
@@ -5448,20 +6331,20 @@ ship_event = {
 	desc = "precursor.2016.desc"
 	picture = GFX_evt_ship_in_orbit
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "cybrex_chain" 
-				counter = "cybrex_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "cybrex_chain"
+				counter = "cybrex_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = physics_research
@@ -5469,12 +6352,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.2103 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.2103
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -5482,8 +6371,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -5498,28 +6390,31 @@ ship_event = {
 	picture = GFX_evt_city_ruins
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = cybrex_4 }
+			owner = {
+				set_country_flag = cybrex_4
+			}
 		}
 	}
-	
 	option = {
 		name = INTRIGUING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -5534,17 +6429,24 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_bunker_grid } }
-				add_modifier = { modifier = gpm_precursor_bunker_grid }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_bunker_grid
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_bunker_grid
+				}
 			}
 			enable_special_project = {
 				name = "CYBREX_ARCHEOLOGY_4"
 				location = this
 				owner = root.owner
 			}
-		}	
+		}
 	}
 }
 
@@ -5555,20 +6457,20 @@ ship_event = {
 	desc = "precursor.2021.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "cybrex_chain" 
-				counter = "cybrex_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "cybrex_chain"
+				counter = "cybrex_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = physics_research
@@ -5576,12 +6478,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.2103 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.2103
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -5589,8 +6497,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -5605,28 +6516,31 @@ ship_event = {
 	picture = GFX_evt_dead_city
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = cybrex_5 }
+			owner = {
+				set_country_flag = cybrex_5
+			}
 		}
 	}
-	
 	option = {
 		name = CURIOUS
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -5641,10 +6555,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_city } }
-				add_modifier = { modifier = gpm_precursor_city }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_city
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_city
+				}
 			}
 			enable_special_project = {
 				name = "CYBREX_ARCHEOLOGY_5"
@@ -5662,20 +6583,20 @@ ship_event = {
 	desc = "precursor.2026.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "cybrex_chain" 
-				counter = "cybrex_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "cybrex_chain"
+				counter = "cybrex_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = physics_research
@@ -5683,12 +6604,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.2103 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.2103
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -5696,8 +6623,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -5712,28 +6642,31 @@ ship_event = {
 	picture = GFX_evt_mining_station
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = cybrex_6 }
+			owner = {
+				set_country_flag = cybrex_6
+			}
 		}
 	}
-	
 	option = {
 		name = PECULIAR
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -5748,10 +6681,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_outpost_ruins } }
-				add_modifier = { modifier = gpm_precursor_outpost_ruins }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_outpost_ruins
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_outpost_ruins
+				}
 			}
 			enable_special_project = {
 				name = "CYBREX_ARCHEOLOGY_6"
@@ -5769,20 +6709,20 @@ ship_event = {
 	desc = "precursor.2031.desc"
 	picture = GFX_evt_mining_station
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "cybrex_chain" 
-				counter = "cybrex_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "cybrex_chain"
+				counter = "cybrex_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -5790,12 +6730,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.2103 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.2103
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -5803,8 +6749,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -5819,28 +6768,31 @@ ship_event = {
 	picture = GFX_evt_ship_in_orbit
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = cybrex_7 }
+			owner = {
+				set_country_flag = cybrex_7
+			}
 		}
 	}
-	
 	option = {
 		name = FASCINATING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -5855,17 +6807,24 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_manufactorium } }
-				add_modifier = { modifier = gpm_precursor_manufactorium }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_manufactorium
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_manufactorium
+				}
 			}
 			enable_special_project = {
 				name = "CYBREX_ARCHEOLOGY_7"
 				location = this
 				owner = root.owner
 			}
-		}	
+		}
 	}
 }
 
@@ -5876,20 +6835,20 @@ ship_event = {
 	desc = "precursor.2036.desc"
 	picture = GFX_evt_ship_in_orbit
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "cybrex_chain" 
-				counter = "cybrex_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "cybrex_chain"
+				counter = "cybrex_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -5897,12 +6856,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.2103 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.2103
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -5910,8 +6875,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -5926,28 +6894,31 @@ ship_event = {
 	picture = GFX_evt_small_space_battle
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = cybrex_8 }
+			owner = {
+				set_country_flag = cybrex_8
+			}
 		}
 	}
-	
 	option = {
 		name = REMARKABLE
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -5962,17 +6933,24 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_battleground_ruins } }
-				add_modifier = { modifier = gpm_precursor_battleground_ruins }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_battleground_ruins
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_battleground_ruins
+				}
 			}
 			enable_special_project = {
 				name = "CYBREX_ARCHEOLOGY_8"
 				location = this
 				owner = root.owner
 			}
-		}	
+		}
 	}
 }
 
@@ -5983,20 +6961,20 @@ ship_event = {
 	desc = "precursor.2041.desc"
 	picture = GFX_evt_small_space_battle
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "cybrex_chain" 
-				counter = "cybrex_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "cybrex_chain"
+				counter = "cybrex_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -6004,12 +6982,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.2103 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.2103
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -6017,8 +7001,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -6033,28 +7020,31 @@ ship_event = {
 	picture = GFX_evt_ship_in_orbit
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = cybrex_9 }
+			owner = {
+				set_country_flag = cybrex_9
+			}
 		}
 	}
-	
 	option = {
 		name = INTERESTING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -6069,17 +7059,24 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_ruins } }
-				add_modifier = { modifier = gpm_precursor_ruins }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_ruins
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_ruins
+				}
 			}
 			enable_special_project = {
 				name = "CYBREX_ARCHEOLOGY_9"
 				location = this
 				owner = root.owner
 			}
-		}	
+		}
 	}
 }
 
@@ -6090,20 +7087,20 @@ ship_event = {
 	desc = "precursor.2046.desc"
 	picture = GFX_evt_archaeological_dig
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "cybrex_chain" 
-				counter = "cybrex_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "cybrex_chain"
+				counter = "cybrex_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -6111,12 +7108,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.2103 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.2103
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -6124,8 +7127,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -6140,28 +7146,31 @@ ship_event = {
 	picture = GFX_evt_ship_in_orbit
 	location = FROM
 	trackable = yes
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		hidden_effect = {
-			owner = { set_country_flag = cybrex_10 }
+			owner = {
+				set_country_flag = cybrex_10
+			}
 		}
 	}
-	
 	option = {
 		name = INTERESTING
 		from = {
 			hidden_effect = {
 				set_planet_flag = gpm_is_precursor_world
 				gpm_colour_planet_name = yes
-				add_modifier = { modifier = gpm_recent_archeological_expedition }
-				if = { 
-					limit = { 
+				add_modifier = {
+					modifier = gpm_recent_archeological_expedition
+				}
+				if = {
+					limit = {
 						gpm_has_required_terraform_modifier = no
 						gpm_is_planet_class_normal_uninhabitable = yes
 					}
-					add_modifier = { modifier = terraforming_candidate }
+					add_modifier = {
+						modifier = terraforming_candidate
+					}
 					root.owner = {
 						create_message = {
 							type = GPM_MESSAGE_VALUABLE_WORLD
@@ -6176,10 +7185,17 @@ ship_event = {
 						}
 					}
 				}
-			}			
+			}
 			if = {
-				limit = { gpm_are_precursors_enabled = yes NOT = { has_modifier = gpm_precursor_battleground_ruins } }
-				add_modifier = { modifier = gpm_precursor_battleground_ruins }
+				limit = {
+					gpm_are_precursors_enabled = yes
+					NOT = {
+						has_modifier = gpm_precursor_battleground_ruins
+					}
+				}
+				add_modifier = {
+					modifier = gpm_precursor_battleground_ruins
+				}
 			}
 			enable_special_project = {
 				name = "CYBREX_ARCHEOLOGY_10"
@@ -6197,20 +7213,20 @@ ship_event = {
 	desc = "precursor.2051.desc"
 	picture = GFX_evt_society_research
 	location = FROMFROM
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "precursor.completed.a"
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				small_artifact_reward = yes
 			}
-			add_event_chain_counter = { 
-				event_chain = "cybrex_chain" 
-				counter = "cybrex_artifacts" 
-				amount = 1 
+			add_event_chain_counter = {
+				event_chain = "cybrex_chain"
+				counter = "cybrex_artifacts"
+				amount = 1
 			}
 			add_monthly_resource_mult = {
 				resource = engineering_research
@@ -6218,12 +7234,18 @@ ship_event = {
 				min = @tier1researchmin
 				max = @tier1researchmax
 			}
-			hidden_effect = { country_event = { id = precursor.2103 } }
+			hidden_effect = {
+				country_event = {
+					id = precursor.2103
+				}
+			}
 		}
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = { exists = archaeological_site }
+					NOT = {
+						exists = archaeological_site
+					}
 					NOR = {
 						gpm_is_planet_class_star = yes
 						gpm_is_planet_class_asteroid = yes
@@ -6231,8 +7253,11 @@ ship_event = {
 					}
 				}
 				locked_random_list = {
-					5 = {}
-					1 = { create_archaeological_site = gpm_precursor_generic_digsite }
+					5 = {
+					}
+					1 = {
+						create_archaeological_site = gpm_precursor_generic_digsite
+					}
 				}
 			}
 		}
@@ -6246,40 +7271,48 @@ ship_event = {
 	desc = "precursor.2101.desc"
 	picture = GFX_evt_dead_city
 	location = from
-	
 	is_triggered_only = yes
-
 	trigger = {
 		owner = {
 			has_country_flag = cybrex_system
-			NOT = { has_country_flag = cybrex_world_found }
+			NOT = {
+				has_country_flag = cybrex_world_found
+			}
 		}
-		solar_system = { has_star_flag = cybrex }
+		solar_system = {
+			has_star_flag = cybrex
+		}
 	}
-
 	immediate = {
 		owner = {
 			set_country_flag = cybrex_world_found
 			if = {
-				limit = { has_event_chain = cybrex_chain }
+				limit = {
+					has_event_chain = cybrex_chain
+				}
 				set_country_flag = cybrex_end1
 			}
 			if = {
-				limit = { has_event_chain = cybrex_homeworld_chain }
+				limit = {
+					has_event_chain = cybrex_homeworld_chain
+				}
 				set_country_flag = cybrex_end2
 			}
 		}
 		set_global_flag = cybrex_homeworld_found
 	}
-
 	after = {
 		owner = {
 			if = {
-				limit = { has_event_chain = "cybrex_chain" }
+				limit = {
+					has_event_chain = "cybrex_chain"
+				}
 				end_event_chain = "cybrex_chain"
 			}
 			if = {
-				limit = { has_event_chain = "cybrex_homeworld_chain" }
+				limit = {
+					has_event_chain = "cybrex_homeworld_chain"
+				}
 				end_event_chain = "cybrex_homeworld_chain"
 			}
 		}
@@ -6290,10 +7323,11 @@ ship_event = {
 					has_event_chain = "cybrex_homeworld_chain"
 				}
 			}
-			country_event = { id = precursor.99340 }
+			country_event = {
+				id = precursor.99340
+			}
 		}
 	}
-	
 	option = {
 		name = "FASCINATING"
 		trigger = {
@@ -6303,7 +7337,9 @@ ship_event = {
 		}
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				add_relic = r_war_forge
 				log = "<< RELICS >> | ADD_RELIC <<< r_war_forge >>> to OWNER = [owner.GetName] ; precursor homeworld event"
 				every_relation = {
@@ -6344,12 +7380,13 @@ ship_event = {
 				max = @tier4materialmax
 			}
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				custom_tooltip = cybrex_artifact_research_unlocked
 			}
 		}
 	}
-
 	option = {
 		name = "FASCINATING"
 		trigger = {
@@ -6359,7 +7396,9 @@ ship_event = {
 		}
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				add_relic = r_war_forge
 				log = "<< RELICS >> | ADD_RELIC <<< r_war_forge >>> to OWNER = [owner.GetName] ; precursor homeworld event"
 				every_relation = {
@@ -6400,12 +7439,13 @@ ship_event = {
 				max = @tier4materialmax
 			}
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				custom_tooltip = cybrex_artifact_research_unlocked
 			}
 		}
 	}
-
 	option = {
 		name = "FASCINATING"
 		trigger = {
@@ -6418,7 +7458,9 @@ ship_event = {
 		}
 		owner = {
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				add_relic = r_war_forge
 				log = "<< RELICS >> | ADD_RELIC <<< r_war_forge >>> to OWNER = [owner.GetName] ; precursor homeworld event"
 				every_relation = {
@@ -6459,10 +7501,11 @@ ship_event = {
 				max = @tier4materialmax
 			}
 			if = {
-				limit = { has_ancrel = yes }
+				limit = {
+					has_ancrel = yes
+				}
 				custom_tooltip = cybrex_artifact_research_unlocked
 			}
-
 		}
 	}
 }

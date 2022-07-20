@@ -1,18 +1,17 @@
 namespace = eo_immortal_messiah
-
 #####Setup Immortal Messiah
 country_event = {
 	id = eo_immortal_messiah.1
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_origin = origin_immortal_messiah
 	}
-	
 	immediate = {
 		random_owned_leader = {
-			limit = { leader_class = ruler }
+			limit = {
+				leader_class = ruler
+			}
 			add_trait = leader_trait_ruler_chosen
 			set_age = 2200
 			set_skill = 10
@@ -28,12 +27,12 @@ country_event = {
 	desc = eo_immortal_messiah.2.desc
 	picture = GFX_evt_civil_action
 	show_sound = event_public_unrest
-
 	is_triggered_only = yes
-	
 	trigger = {
 		has_origin = origin_immortal_messiah
-		from = { has_leader_flag = immortal_messiah }
+		from = {
+			has_leader_flag = immortal_messiah
+		}
 	}
 	immediate = {
 		set_variable = {
@@ -48,7 +47,6 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = eo_immortal_messiah.2.a
 		add_modifier = {
@@ -67,7 +65,10 @@ country_event = {
 		}
 	}
 	after = {
-		country_event = { id = eo_immortal_messiah.3 days = 30 }
+		country_event = {
+			id = eo_immortal_messiah.3
+			days = 30
+		}
 	}
 }
 
@@ -78,9 +79,7 @@ country_event = {
 	desc = eo_immortal_messiah.3.desc
 	picture = GFX_evt_space_funeral
 	show_sound = event_mystic_reveal
-
 	is_triggered_only = yes
-
 	option = {
 		name = eo_immortal_messiah.3.a
 		add_modifier = {
@@ -90,7 +89,10 @@ country_event = {
 	}
 	after = {
 		hidden_effect = {
-			country_event = { id = eo_immortal_messiah.4 days = 5 } # 3650 }
+			country_event = {
+				id = eo_immortal_messiah.4
+				days = 5
+			}			# 3650 }
 		}
 	}
 }
@@ -109,10 +111,16 @@ country_event = {
 					has_communications = event_target:immortal_messiah_country
 				}
 			}
-			country_event = { id = eo_immortal_messiah.5 days = 5 } # 1825 random = 1825 }
+			country_event = {
+				id = eo_immortal_messiah.5
+				days = 5
+			}			# 1825 random = 1825 }
 		}
 		else = {
-			country_event = { id = eo_immortal_messiah.4 days = 5 } # 3650 }
+			country_event = {
+				id = eo_immortal_messiah.4
+				days = 5
+			}			# 3650 }
 		}
 	}
 }
@@ -124,15 +132,15 @@ country_event = {
 	desc = eo_immortal_messiah.5.desc
 	picture = GFX_evt_surreal_visions
 	show_sound = event_mystic_reveal
-
 	is_triggered_only = yes
-
 	option = {
 		name = eo_immortal_messiah.5.a
 	}
 	after = {
 		hidden_effect = {
-			country_event = { id = eo_immortal_messiah.6 }
+			country_event = {
+				id = eo_immortal_messiah.6
+			}
 		}
 	}
 }
@@ -144,7 +152,9 @@ country_event = {
 	desc = {
 		text = eo_immortal_messiah.6.desc
 		trigger = {
-			NOT = { has_country_flag = messiah_challenged }
+			NOT = {
+				has_country_flag = messiah_challenged
+			}
 		}
 	}
 	desc = {
@@ -167,85 +177,108 @@ country_event = {
 	}
 	diplomatic_title = eo_immortal_messiah.6.title
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:immortal_messiah
 		room = shroud_room
 	}
-
 	is_triggered_only = yes
-
 	immediate = {
 		if = {
 			limit = {
-				NOT = { has_country_flag = messiah_resurrection_rolled }
+				NOT = {
+					has_country_flag = messiah_resurrection_rolled
+				}
 			}
 			random_list = {
-				90 = { }
-				10 = { set_country_flag = messiah_shroud_impostor }
+				90 = {
+				}
+				10 = {
+					set_country_flag = messiah_shroud_impostor
+				}
 			}
 			set_country_flag = messiah_resurrection_rolled
 		}
 	}
-
-	option = { # How did you survive?
+	option = {
+		# How did you survive?
 		name = eo_immortal_messiah.6.d
 		custom_tooltip = messiah_trustworthiness
 		response_text = eo_immortal_messiah.6.d.desc
 		is_dialog_only = yes
 	}
-	option = { # What was it like?
+	option = {
+		# What was it like?
 		name = eo_immortal_messiah.6.f
 		custom_tooltip = messiah_trustworthiness
 		response_text = eo_immortal_messiah.6.f.desc
 		is_dialog_only = yes
 	}
-	option = { # Prove it's you
+	option = {
+		# Prove it's you
 		name = eo_immortal_messiah.6.e
 		custom_tooltip = eo_immortal_messiah.6.e.tooltip
 		hidden_effect = {
 			set_country_flag = messiah_challenged
 			set_country_flag = messiah_challenged_conversation
 			random_list = {
-				30 = { # Probably them
+				30 = {
+					# Probably them
 					set_country_flag = messiah_challenged_passed
-					country_event = { id = eo_immortal_messiah.6 }
+					country_event = {
+						id = eo_immortal_messiah.6
+					}
 					modifier = {
 						factor = 2
 						has_country_flag = messiah_resurrected_bad_outcome
-						NOT = { has_country_flag = messiah_shroud_impostor }
-						
+						NOT = {
+							has_country_flag = messiah_shroud_impostor
+						}
 					}
 					modifier = {
 						factor = 0
 						has_country_flag = messiah_shroud_impostor
 					}
 				}
-				30 = { # Maybe them
+				30 = {
+					# Maybe them
 					set_country_flag = messiah_challenged_questionable
-					country_event = { id = eo_immortal_messiah.6 }
+					country_event = {
+						id = eo_immortal_messiah.6
+					}
 					modifier = {
 						factor = 0.5
-						NOT = { has_country_flag = messiah_shroud_impostor }
+						NOT = {
+							has_country_flag = messiah_shroud_impostor
+						}
 					}
 				}
-				30 = { # Probably not them
+				30 = {
+					# Probably not them
 					set_country_flag = messiah_challenged_doubtful
-					country_event = { id = eo_immortal_messiah.6 }
+					country_event = {
+						id = eo_immortal_messiah.6
+					}
 					modifier = {
 						factor = 0.2
-						NOT = { has_country_flag = messiah_shroud_impostor }
+						NOT = {
+							has_country_flag = messiah_shroud_impostor
+						}
 					}
 					modifier = {
 						factor = 2
 						has_country_flag = messiah_resurrected_bad_outcome
 					}
 				}
-				10 = { # Not them
-					country_event = { id = eo_immortal_messiah.8 }
+				10 = {
+					# Not them
+					country_event = {
+						id = eo_immortal_messiah.8
+					}
 					modifier = {
 						factor = 0
-						NOT = { has_country_flag = messiah_shroud_impostor }
+						NOT = {
+							has_country_flag = messiah_shroud_impostor
+						}
 					}
 					modifier = {
 						factor = 2
@@ -257,11 +290,14 @@ country_event = {
 		allow = {
 			custom_tooltip = {
 				fail_text = eo_immortal_messiah.6.e.messiah_challenged
-				NOT = { has_country_flag = messiah_challenged }
+				NOT = {
+					has_country_flag = messiah_challenged
+				}
 			}
 		}
 	}
-	option = { # Yes, please be emperor again
+	option = {
+		# Yes, please be emperor again
 		name = eo_immortal_messiah.6.b
 		custom_tooltip = messiah_trustworthiness
 		custom_tooltip = eo_immortal_messiah.6.b.tooltip
@@ -286,7 +322,9 @@ country_event = {
 				limit = {
 					has_country_flag = messiah_shroud_impostor
 				}
-				country_event = { id = eo_immortal_messiah.9 }
+				country_event = {
+					id = eo_immortal_messiah.9
+				}
 			}
 			else = {
 				set_leader = event_target:immortal_messiah
@@ -310,21 +348,28 @@ country_event = {
 			}
 		}
 	}
-	option = { # We have moved on
+	option = {
+		# We have moved on
 		name = eo_immortal_messiah.6.c
 		custom_tooltip = messiah_trustworthiness
 		custom_tooltip = eo_immortal_messiah.6.c.tooltip
 		hidden_effect = {
-			country_event = { id = eo_immortal_messiah.7 }
+			country_event = {
+				id = eo_immortal_messiah.7
+			}
 		}
 	}
-	option = { # This is not our Messiah
+	option = {
+		# This is not our Messiah
 		name = eo_immortal_messiah.6.g
 		custom_tooltip = messiah_trustworthiness
 		custom_tooltip = eo_immortal_messiah.6.g.tooltip
 		hidden_effect = {
 			messiah_conversation_cleanup = yes
-			country_event = { id = eo_immortal_messiah.4 days = 3650 }
+			country_event = {
+				id = eo_immortal_messiah.4
+				days = 3650
+			}
 		}
 	}
 }
@@ -336,15 +381,13 @@ country_event = {
 	desc = eo_immortal_messiah.7.desc
 	diplomatic_title = eo_immortal_messiah.6.title
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:immortal_messiah
 		room = shroud_room
 	}
-
 	is_triggered_only = yes
-
-	option = { # Governor
+	option = {
+		# Governor
 		name = eo_immortal_messiah.7.a
 		custom_tooltip = messiah_trustworthiness
 		custom_tooltip = eo_immortal_messiah.7.a.tooltip
@@ -356,7 +399,9 @@ country_event = {
 				limit = {
 					has_country_flag = messiah_shroud_impostor
 				}
-				country_event = { id = eo_immortal_messiah.9 }
+				country_event = {
+					id = eo_immortal_messiah.9
+				}
 			}
 			else = {
 				clone_leader = {
@@ -372,13 +417,16 @@ country_event = {
 					}
 				}
 				event_target:immortal_messiah = {
-					kill_leader = { show_notification = no }
+					kill_leader = {
+						show_notification = no
+					}
 				}
 				messiah_resurrection_cleanup = yes
 			}
 		}
 	}
-	option = { # Scientist
+	option = {
+		# Scientist
 		name = eo_immortal_messiah.7.b
 		custom_tooltip = messiah_trustworthiness
 		custom_tooltip = eo_immortal_messiah.7.b.tooltip
@@ -390,7 +438,9 @@ country_event = {
 				limit = {
 					has_country_flag = messiah_shroud_impostor
 				}
-				country_event = { id = eo_immortal_messiah.9 }
+				country_event = {
+					id = eo_immortal_messiah.9
+				}
 			}
 			else = {
 				clone_leader = {
@@ -407,13 +457,16 @@ country_event = {
 					}
 				}
 				event_target:immortal_messiah = {
-					kill_leader = { show_notification = no }
+					kill_leader = {
+						show_notification = no
+					}
 				}
 				messiah_resurrection_cleanup = yes
 			}
 		}
 	}
-	option = { # Admiral
+	option = {
+		# Admiral
 		name = eo_immortal_messiah.7.c
 		custom_tooltip = messiah_trustworthiness
 		custom_tooltip = eo_immortal_messiah.7.c.tooltip
@@ -425,7 +478,9 @@ country_event = {
 				limit = {
 					has_country_flag = messiah_shroud_impostor
 				}
-				country_event = { id = eo_immortal_messiah.9 }
+				country_event = {
+					id = eo_immortal_messiah.9
+				}
 			}
 			else = {
 				clone_leader = {
@@ -441,13 +496,16 @@ country_event = {
 					}
 				}
 				event_target:immortal_messiah = {
-					kill_leader = { show_notification = no }
+					kill_leader = {
+						show_notification = no
+					}
 				}
 				messiah_resurrection_cleanup = yes
 			}
 		}
 	}
-	option = { # General
+	option = {
+		# General
 		name = eo_immortal_messiah.7.d
 		custom_tooltip = messiah_trustworthiness
 		custom_tooltip = eo_immortal_messiah.7.d.tooltip
@@ -459,7 +517,9 @@ country_event = {
 				limit = {
 					has_country_flag = messiah_shroud_impostor
 				}
-				country_event = { id = eo_immortal_messiah.9 }
+				country_event = {
+					id = eo_immortal_messiah.9
+				}
 			}
 			else = {
 				clone_leader = {
@@ -475,20 +535,26 @@ country_event = {
 					}
 				}
 				event_target:immortal_messiah = {
-					kill_leader = { show_notification = no }
+					kill_leader = {
+						show_notification = no
+					}
 				}
 				messiah_resurrection_cleanup = yes
 			}
 		}
 	}
-	option = { # Perhaps we should reconsider
+	option = {
+		# Perhaps we should reconsider
 		custom_tooltip = messiah_trustworthiness
 		name = eo_immortal_messiah.7.e
 		hidden_effect = {
-			country_event = { id = eo_immortal_messiah.6 }
+			country_event = {
+				id = eo_immortal_messiah.6
+			}
 		}
 	}
-	option = { # No, your time is over
+	option = {
+		# No, your time is over
 		custom_tooltip = messiah_trustworthiness
 		name = eo_immortal_messiah.7.f
 		tooltip = {
@@ -499,20 +565,26 @@ country_event = {
 				limit = {
 					has_country_flag = messiah_shroud_impostor
 				}
-				country_event = { id = eo_immortal_messiah.9 }
+				country_event = {
+					id = eo_immortal_messiah.9
+				}
 			}
 			else = {
 				messiah_resurrection_cleanup = yes
 			}
 		}
 	}
-	option = { # This is not our Messiah
+	option = {
+		# This is not our Messiah
 		name = eo_immortal_messiah.6.g
 		custom_tooltip = messiah_trustworthiness
 		custom_tooltip = eo_immortal_messiah.6.g.tooltip
 		hidden_effect = {
 			messiah_conversation_cleanup = yes
-			country_event = { id = eo_immortal_messiah.4 days = 3650 }
+			country_event = {
+				id = eo_immortal_messiah.4
+				days = 3650
+			}
 		}
 	}
 	after = {
@@ -527,14 +599,11 @@ country_event = {
 	desc = eo_immortal_messiah.8.desc
 	diplomatic_title = eo_immortal_messiah.8.title
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:immortal_messiah
 		room = shroud_room
 	}
-
 	is_triggered_only = yes
-
 	option = {
 		name = eo_immortal_messiah.8.a
 	}
@@ -545,7 +614,10 @@ country_event = {
 				limit = {
 					has_country_flag = messiah_shroud_impostor
 				}
-				country_event = { id = eo_immortal_messiah.4 days = 3650 }
+				country_event = {
+					id = eo_immortal_messiah.4
+					days = 3650
+				}
 			}
 		}
 	}
@@ -558,9 +630,7 @@ country_event = {
 	desc = eo_immortal_messiah.9.desc
 	picture = GFX_evt_space_monster
 	show_sound = event_red_alert
-
 	is_triggered_only = yes
-
 	immediate = {
 		set_country_flag = messiah_resurrected_bad_outcome
 		hidden_effect = {
@@ -585,7 +655,11 @@ country_event = {
 				}
 			}
 			if = {
-				limit = { NOT = { exists = event_target:shroud_country } }
+				limit = {
+					NOT = {
+						exists = event_target:shroud_country
+					}
+				}
 				create_country = {
 					name = "NAME_Creatures_of_the_Shroud"
 					type = shroud_spirits
@@ -594,11 +668,11 @@ country_event = {
 							category = "special"
 							file = "the_shroud.dds"
 						}
-						background= {
+						background = {
 							category = "backgrounds"
 							file = "00_solid.dds"
 						}
-						colors={
+						colors = {
 							"dark_purple"
 							"black"
 							"null"
@@ -637,7 +711,6 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = eo_immortal_messiah.9.a
 		custom_tooltip = eo_immortal_messiah.9.a.tooltip
@@ -664,7 +737,10 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			country_event = { id = eo_immortal_messiah.4 days = 3650 }
+			country_event = {
+				id = eo_immortal_messiah.4
+				days = 3650
+			}
 		}
 	}
 }
@@ -676,16 +752,13 @@ country_event = {
 	desc = eo_immortal_messiah.10.desc
 	picture = GFX_evt_space_monster
 	show_sound = event_red_alert
-
 	is_triggered_only = yes
-	
 	trigger = {
 		has_origin = origin_immortal_messiah
 		FromFromFrom = {
 			has_fleet_flag = immortal_messiah_shroud_entity_incursion
 		}
 	}
-
 	option = {
 		name = eo_immortal_messiah.10.a
 	}
@@ -708,7 +781,9 @@ country_event = {
 		trigger = {
 			any_owned_leader = {
 				has_leader_flag = immortal_messiah
-				NOT = { leader_class = ruler }
+				NOT = {
+					leader_class = ruler
+				}
 			}
 		}
 	}
@@ -734,7 +809,9 @@ country_event = {
 		trigger = {
 			any_owned_leader = {
 				has_leader_flag = immortal_messiah
-				NOT = { leader_class = ruler }
+				NOT = {
+					leader_class = ruler
+				}
 			}
 		}
 		picture = GFX_evt_crisis_defeated
@@ -750,9 +827,7 @@ country_event = {
 		picture = GFX_evt_alien_propaganda
 	}
 	show_sound = event_celebration
-
 	is_triggered_only = yes
-
 	immediate = {
 		random_owned_leader = {
 			limit = {
@@ -761,7 +836,6 @@ country_event = {
 			save_event_target_as = immortal_messiah
 		}
 	}
-
 	option = {
 		name = {
 			text = eo_immortal_messiah.11.a
@@ -776,7 +850,9 @@ country_event = {
 			trigger = {
 				any_owned_leader = {
 					has_leader_flag = immortal_messiah
-					NOT = { leader_class = ruler }
+					NOT = {
+						leader_class = ruler
+					}
 				}
 			}
 		}

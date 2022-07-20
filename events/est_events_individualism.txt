@@ -1,23 +1,22 @@
 namespace = est_individualism
-
 #Individualism adopt, influence on leader level up.
 country_event = {
 	id = est_individualism.1
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_active_tradition = tr_est_individualism_adopt
 		from = {
-			Nor = {
+			NOR = {
 				has_leader_flag = flag_est_got_individualism_bonus_xp
 				has_leader_flag = flag_est_got_academy_bonus_xp
 			}
 		}
 	}
-	
 	immediate = {
-		add_resource = { influence = 10 }
+		add_resource = {
+			influence = 10
+		}
 	}
 }
 
@@ -26,41 +25,49 @@ country_event = {
 	id = est_individualism.2
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_active_tradition = tr_est_individualism_adopt
-		Or = {
+		OR = {
 			And = {
 				has_active_tradition = tr_est_individualism_1
-				from = { leader_class = scientist }
+				from = {
+					leader_class = scientist
+				}
 			}
 			And = {
 				has_active_tradition = tr_est_individualism_2
-				from = { leader_class = admiral }
+				from = {
+					leader_class = admiral
+				}
 			}
 		}
 	}
-	
 	immediate = {
 		every_owned_leader = {
 			limit = {
-				Or = {
+				OR = {
 					And = {
-						owner = { has_active_tradition = tr_est_individualism_1 }
+						owner = {
+							has_active_tradition = tr_est_individualism_1
+						}
 						leader_class = scientist
 					}
 					And = {
-						owner = { has_active_tradition = tr_est_individualism_2 }
+						owner = {
+							has_active_tradition = tr_est_individualism_2
+						}
 						leader_class = admiral
 					}
 				}
-				Or = {
+				OR = {
 					has_skill < 2
 					has_leader_flag = flag_est_got_academy_bonus_xp
 				}
-				Not = {  has_leader_flag = flag_est_got_academy_bonus_xp }
+				NOT = {
+					has_leader_flag = flag_est_got_academy_bonus_xp
+				}
 			}
-			set_timed_leader_flag = { 
+			set_timed_leader_flag = {
 				flag = flag_est_got_individualism_bonus_xp
 				days = 1
 			}
@@ -98,7 +105,7 @@ country_event = {
 						add_experience = 380
 					}
 					else = {
-						add_experience = 475						
+						add_experience = 475
 					}
 				}
 			}
@@ -124,7 +131,6 @@ ship_event = {
 	id = est_individualism.3
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		owner = {
 			has_active_tradition = tr_est_individualism_1
@@ -132,30 +138,41 @@ ship_event = {
 		exists = leader
 		leader = {
 			leader_class = scientist
-			Not = {
+			NOT = {
 				has_leader_flag = flag_est_individualism_1_trait_gained
 			}
 		}
 	}
-
 	immediate = {
 		leader = {
 			if = {
 				limit = {
-					Not = {
+					NOT = {
 						has_leader_flag = flag_est_individualism_1_in_progression
 					}
 				}
 				set_leader_flag = flag_est_individualism_1_in_progression
-				set_variable = { which = var_est_individualism_1 value = 1 }
+				set_variable = {
+					which = var_est_individualism_1
+					value = 1
+				}
 			}
 			else = {
-				change_variable = { which = var_est_individualism_1 value = 1 }
+				change_variable = {
+					which = var_est_individualism_1
+					value = 1
+				}
 				if = {
 					limit = {
-						check_variable = { which = var_est_individualism_1 value = 300 }
+						check_variable = {
+							which = var_est_individualism_1
+							value = 300
+						}
 					}
-					set_variable = { which = var_est_individualism_1 value = 0 }
+					set_variable = {
+						which = var_est_individualism_1
+						value = 0
+					}
 					set_leader_flag = flag_est_individualism_1_trait_gained
 					random_list = {
 						1 = {
@@ -210,10 +227,14 @@ ship_event = {
 						1 = {
 							modifier = {
 								factor = 0
-								Or = {
+								OR = {
 									has_trait = leader_trait_expertise_psionics
-									owner = { has_ethic = ethic_fanatic_materialist }
-									owner = { has_ethic = ethic_materialist }
+									owner = {
+										has_ethic = ethic_fanatic_materialist
+									}
+									owner = {
+										has_ethic = ethic_materialist
+									}
 								}
 							}
 							add_trait = leader_trait_expertise_psionics

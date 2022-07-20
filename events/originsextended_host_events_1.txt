@@ -1,29 +1,25 @@
-
 ### HOST EVENTS
-
 namespace = originsextended_host
-
 # everyone gets a brain slug
 country_event = {
 	id = originsextended_host.0
 	hide_window = yes
 	fire_only_once = yes
 	#is_triggered_only = yes
-
 	trigger = {
 		any_country = {
 			has_origin = originsextended_host
 		}
 	}
-
 	immediate = {
 		every_country = {
 			limit = {
 				has_origin = originsextended_host
 			}
-			set_country_flag = finished_brainslug_chain # so that the on_action gives new leaders the brain slug trait
+			set_country_flag = finished_brainslug_chain			# so that the on_action gives new leaders the brain slug trait
 			#country_event = { id = distar.174 } # Pool leaders get trait
-			every_owned_leader = { # Current leaders get trait
+			every_owned_leader = {
+				# Current leaders get trait
 				#limit = {
 				#	owner = root
 				#}
@@ -103,7 +99,8 @@ country_event = {
 					add_ruler_trait = leader_trait_ruler_brainslug
 				}
 			}
-			every_pool_leader = { # copied distar.174, all pool leaders get trait
+			every_pool_leader = {
+				# copied distar.174, all pool leaders get trait
 				if = {
 					limit = {
 						leader_class = general
@@ -119,7 +116,6 @@ country_event = {
 					}
 					add_trait = leader_trait_general_brainslug
 					add_ruler_trait = leader_trait_ruler_brainslug
-			
 				}
 				if = {
 					limit = {
@@ -194,9 +190,7 @@ country_event = {
 country_event = {
 	id = originsextended_host.1
 	hide_window = yes
-	
 	is_triggered_only = yes
-
 	trigger = {
 		has_country_flag = finished_brainslug_chain
 		from.species = {
@@ -208,7 +202,6 @@ country_event = {
 			}
 		}
 	}
-
 	immediate = {
 		from = {
 			if = {
@@ -301,11 +294,11 @@ country_event = {
 	#hide_window = yes
 	#is_triggered_only = yes
 	fire_only_once = yes
-
 	trigger = {
-		owner = { has_origin = originsextended_host }
+		owner = {
+			has_origin = originsextended_host
+		}
 	}
-
 	immediate = {
 		THIS = {
 			save_global_event_target_as = originsextended_host_empire_global
@@ -314,13 +307,13 @@ country_event = {
 			save_global_event_target_as = originsextended_host_planet_global
 		}
 	}
-
 	option = {
 		name = "originsextended_host.9999.a"
 	}
-
 	after = {
-		event_target:originsextended_host_planet_global = { create_archaeological_site = originsextended_host_slug_home_site }
+		event_target:originsextended_host_planet_global = {
+			create_archaeological_site = originsextended_host_slug_home_site
+		}
 		# begin_event_chain = {
 		# 	event_chain = originsextended_terminal_chain_1
 		# }
@@ -335,13 +328,12 @@ fleet_event = {
 	show_sound = event_laboratory_sound
 	location = from
 	archaeology = yes
-	
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	option = {
 		name = originsextended_host.101.a
 	}
@@ -355,7 +347,9 @@ fleet_event = {
 		# 		max = 350
 		# 	}
 		# }
-		from = { set_site_progress_locked = no } 
+		from = {
+			set_site_progress_locked = no
+		}
 	}
 }
 
@@ -367,13 +361,12 @@ fleet_event = {
 	show_sound = event_drilling
 	location = from
 	archaeology = yes
-	
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	option = {
 		name = originsextended_host.102.a
 	}
@@ -387,7 +380,9 @@ fleet_event = {
 				max = 750
 			}
 		}
-		from = { set_site_progress_locked = no } 
+		from = {
+			set_site_progress_locked = no
+		}
 	}
 }
 
@@ -399,13 +394,12 @@ fleet_event = {
 	show_sound = event_whispering
 	location = from
 	archaeology = yes
-	
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	option = {
 		name = originsextended_host.103.a
 	}
@@ -419,7 +413,9 @@ fleet_event = {
 				max = 500
 			}
 		}
-		from = { set_site_progress_locked = no } 
+		from = {
+			set_site_progress_locked = no
+		}
 	}
 }
 
@@ -431,13 +427,12 @@ fleet_event = {
 	show_sound = event_alien_nature
 	location = from
 	archaeology = yes
-	
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	option = {
 		name = originsextended_host.104.a
 	}
@@ -451,7 +446,9 @@ fleet_event = {
 				max = 1350
 			}
 		}
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 		event_target:originsextended_host_planet_global = {
 			add_deposit = d_oe_host_slug_home
 		}

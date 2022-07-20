@@ -1,29 +1,31 @@
 tr_est_mechanicum_adopt = {
 	modifier = {
-		ship_hull_mult = 0.10
-		ship_armor_mult = 0.10
+		ship_hull_mult = 0.1
+		ship_armor_mult = 0.1
 	}
-
 	tradition_swap = {
 		name = tr_est_mechanicum_adopt_robots
 		trigger = {
 			est_uses_robots = yes
-			Not = { has_ethic = ethic_gestalt_consciousness }
+			NOT = {
+				has_ethic = ethic_gestalt_consciousness
+			}
 		}
 		modifier = {
 			planet_pops_robotics_upkeep_mult = -0.15
 		}
-		weight = { factor = 1 }
+		weight = {
+			factor = 1
+		}
 	}
 }
 
 tr_est_mechanicum_finish = {
-	modifier = {	
+	modifier = {
 		planet_technician_energy_produces_add = 1
 		ascension_perks_add = 1
 	}
 }
-
 
 tr_est_mechanicum_1 = {
 	on_enabled = {
@@ -38,31 +40,32 @@ tr_est_mechanicum_1 = {
 			}
 		}
 	}
-	
 	modifier = {
-		station_gatherers_cost_mult = -0.20
+		station_gatherers_cost_mult = -0.2
 	}
-
 	tradition_swap = {
 		name = tr_est_mechanicum_1_GC
 		inherit_effects = yes
 		inherit_icon = yes
-		trigger = { has_ethic = ethic_gestalt_consciousness }
-		weight = { factor = 1 }
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+		}
+		weight = {
+			factor = 1
+		}
 	}
-
-	ai_weight = { factor = 5000 }
+	ai_weight = {
+		factor = 5000
+	}
 }
 
 tr_est_mechanicum_2 = {
 	possible = {
 		has_tradition = tr_est_mechanicum_1
 	}
-	
 	modifier = {
 		country_engineering_tech_research_speed = 0.15
 	}
-
 	tradition_swap = {
 		name = tr_est_mechanicum_2_robots
 		inherit_icon = yes
@@ -74,19 +77,23 @@ tr_est_mechanicum_2 = {
 		modifier = {
 			ROBOT_species_trait_points_add = 1
 		}
-		weight = { factor = 1 }
+		weight = {
+			factor = 1
+		}
 	}
-
 	tradition_swap = {
 		name = tr_est_mechanicum_2_machines
 		inherit_icon = yes
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		modifier = {
 			MACHINE_species_trait_points_add = 1
 		}
-		weight = { factor = 1 }
+		weight = {
+			factor = 1
+		}
 	}
-	
 	tradition_swap = {
 		name = tr_est_mechanicum_2_GC
 		inherit_effects = yes
@@ -94,10 +101,13 @@ tr_est_mechanicum_2 = {
 		trigger = {
 			is_hive_empire = yes
 		}
-		weight = { factor = 1 }
+		weight = {
+			factor = 1
+		}
 	}
-
-	ai_weight = { factor = 5000 }
+	ai_weight = {
+		factor = 5000
+	}
 }
 
 tr_est_mechanicum_3 = {
@@ -107,62 +117,45 @@ tr_est_mechanicum_3 = {
 			message = no
 		}
 	}
-	
 	modifier = {
-		army_damage_mult = 0.10
+		army_damage_mult = 0.1
 	}
-
-	ai_weight = { factor = 5000 }
+	ai_weight = {
+		factor = 5000
+	}
 }
 
 tr_est_mechanicum_4 = {
 	possible = {
 		has_tradition = tr_est_mechanicum_3
 	}
-	
 	modifier = {
 		shipclass_starbase_hull_mult = 0.33
 	}
-
 	tradition_swap = {
 		name = tr_est_mechanicum_4_GC
 		inherit_effects = yes
 		inherit_icon = yes
 		trigger = {
 			has_ethic = ethic_gestalt_consciousness
-			Not = {
+			NOT = {
 				has_ascension_perk = ap_voidborn
 				est_uses_megastructures = yes
 			}
 		}
-		weight = { factor = 1 }
+		weight = {
+			factor = 1
+		}
 	}
 	tradition_swap = {
 		name = tr_est_mechanicum_4_megastruct
 		inherit_icon = yes
 		inherit_name = yes
 		trigger = {
-			Not = {
+			NOT = {
 				has_ethic = ethic_gestalt_consciousness
 			}
-			Or = {
-				has_ascension_perk = ap_voidborn
-				est_uses_megastructures = yes
-			}
-		}
-		modifier = {
-			megastructure_build_speed_mult = 0.20
-			megastructures_cost_mult = -0.10
-		}
-		weight = { factor = 1 }
-	}
-
-	tradition_swap = {
-		name = tr_est_mechanicum_4_megastruct_GC
-		inherit_icon = yes
-		trigger = {
-			has_ethic = ethic_gestalt_consciousness
-			Or = {
+			OR = {
 				has_ascension_perk = ap_voidborn
 				est_uses_megastructures = yes
 			}
@@ -171,10 +164,31 @@ tr_est_mechanicum_4 = {
 			megastructure_build_speed_mult = 0.2
 			megastructures_cost_mult = -0.1
 		}
-		weight = { factor = 1 }
+		weight = {
+			factor = 1
+		}
 	}
-
-	ai_weight = { factor = 5000 }
+	tradition_swap = {
+		name = tr_est_mechanicum_4_megastruct_GC
+		inherit_icon = yes
+		trigger = {
+			has_ethic = ethic_gestalt_consciousness
+			OR = {
+				has_ascension_perk = ap_voidborn
+				est_uses_megastructures = yes
+			}
+		}
+		modifier = {
+			megastructure_build_speed_mult = 0.2
+			megastructures_cost_mult = -0.1
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	ai_weight = {
+		factor = 5000
+	}
 }
 
 tr_est_mechanicum_5 = {
@@ -182,7 +196,6 @@ tr_est_mechanicum_5 = {
 		has_tradition = tr_est_mechanicum_2
 		has_tradition = tr_est_mechanicum_3
 	}
-
 	tradition_swap = {
 		name = tr_est_mechanicum_5_robots
 		inherit_icon = yes
@@ -191,18 +204,24 @@ tr_est_mechanicum_5 = {
 			is_machine_empire = no
 			est_uses_robots = yes
 		}
-		weight = { factor = 1 }
+		weight = {
+			factor = 1
+		}
 	}
-
 	tradition_swap = {
 		name = tr_est_mechanicum_5_GC
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		modifier = {
 			ship_hull_regen_add_perc = 0.5
 			ship_armor_regen_add_perc = 0.5
 		}
-		weight = { factor = 1 }
+		weight = {
+			factor = 1
+		}
 	}
-
-	ai_weight = { factor = 5000 }
+	ai_weight = {
+		factor = 5000
+	}
 }

@@ -1,26 +1,19 @@
-
 #########################################
 #
 # on_action_events
 #
 #########################################
-
 namespace = action
-
-
 # Called when a Starbase changes owner
 # THIS = Ship (Starbase)
 # FROM = Former Owner (Country)
 ship_event = {
 	id = action.223
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		exists = starbase
 	}
-
 	immediate = {
 		starbase = {
 			if = {
@@ -90,7 +83,9 @@ ship_event = {
 			if = {
 				limit = {
 					owner = {
-						NOT = { has_ascension_perk = ap_hydrocentric }
+						NOT = {
+							has_ascension_perk = ap_hydrocentric
+						}
 					}
 				}
 				remove_starbase_building = {

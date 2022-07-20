@@ -1,17 +1,14 @@
 namespace = mom_god_emperor
-
 #gamestart
 event = {
 	id = mom_god_emperor.1
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		any_country = {
 			has_origin = origin_mom_god_emperor
-		}		
+		}
 	}
-	
 	immediate = {
 		while = {
 			limit = {
@@ -46,14 +43,14 @@ event = {
 					random_list = {
 						1 = {
 							set_age = 2231
-#							prev = {
-#								country_event = { id = mom_god_emperor.2 days = 6480 } #19 years 2250
-#								country_event = { id = mom_god_emperor.2 days = 24480 } #69 years 2300
-#								country_event = { id = mom_god_emperor.2 days = 42480 } #119 years 2350
-#								country_event = { id = mom_god_emperor.2 days = 60480 } #169 years 2400
-#								country_event = { id = mom_god_emperor.2 days = 78480 } #219 years 2450
-#								country_event = { id = mom_god_emperor.2 days = 96480 } #269 years 2500
-#							}
+							#							prev = {
+							#								country_event = { id = mom_god_emperor.2 days = 6480 } #19 years 2250
+							#								country_event = { id = mom_god_emperor.2 days = 24480 } #69 years 2300
+							#								country_event = { id = mom_god_emperor.2 days = 42480 } #119 years 2350
+							#								country_event = { id = mom_god_emperor.2 days = 60480 } #169 years 2400
+							#								country_event = { id = mom_god_emperor.2 days = 78480 } #219 years 2450
+							#								country_event = { id = mom_god_emperor.2 days = 96480 } #269 years 2500
+							#							}
 						}
 						1 = {
 							set_age = 2257
@@ -72,27 +69,25 @@ country_event = {
 	id = mom_god_emperor.2
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
 		has_country_flag = mom_god_emperor_country
 		ruler = {
 			has_leader_flag = mom_god_emperor
-#			or = {
-#				leader_age = 2250
-#				leader_age = 2300
-#				leader_age = 2350
-#				leader_age = 2400
-#				leader_age = 2450
-#				leader_age = 2500
-#			}
+			#			or = {
+			#				leader_age = 2250
+			#				leader_age = 2300
+			#				leader_age = 2350
+			#				leader_age = 2400
+			#				leader_age = 2450
+			#				leader_age = 2500
+			#			}
 		}
 	}
-
 	immediate = {
 		if = {
 			limit = {
 				ruler = {
-#					leader_age = 2250
+					#					leader_age = 2250
 				}
 			}
 			set_timed_country_flag = {
@@ -103,7 +98,7 @@ country_event = {
 		if = {
 			limit = {
 				ruler = {
-#					leader_age = 2300
+					#					leader_age = 2300
 				}
 			}
 			set_timed_country_flag = {
@@ -114,7 +109,7 @@ country_event = {
 		if = {
 			limit = {
 				ruler = {
-#					leader_age = 2350
+					#					leader_age = 2350
 				}
 			}
 			set_timed_country_flag = {
@@ -125,7 +120,7 @@ country_event = {
 		if = {
 			limit = {
 				ruler = {
-#					leader_age = 2400
+					#					leader_age = 2400
 				}
 			}
 			set_timed_country_flag = {
@@ -136,7 +131,7 @@ country_event = {
 		if = {
 			limit = {
 				ruler = {
-#					leader_age = 2450
+					#					leader_age = 2450
 				}
 			}
 			set_timed_country_flag = {
@@ -147,7 +142,7 @@ country_event = {
 		if = {
 			limit = {
 				ruler = {
-#					leader_age = 2500
+					#					leader_age = 2500
 				}
 			}
 			set_timed_country_flag = {
@@ -155,7 +150,10 @@ country_event = {
 				days = 360
 			}
 		}
-		country_event = { id = mom_god_emperor.3 days = 90 }
+		country_event = {
+			id = mom_god_emperor.3
+			days = 90
+		}
 	}
 }
 
@@ -167,7 +165,6 @@ country_event = {
 	show_sound = event_celebration
 	location = root.capital_scope
 	is_triggered_only = yes
-
 	option = {
 		name = mom_god_emperor.3.a
 	}
@@ -181,14 +178,12 @@ country_event = {
 	id = mom_god_emperor.4
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
 		has_country_flag = mom_god_emperor_country
 		from = {
 			has_leader_flag = mom_god_emperor
 		}
 	}
-
 	immediate = {
 		remove_modifier = mom_god_emperor_alive
 		clone_leader = {
@@ -200,7 +195,10 @@ country_event = {
 			}
 		}
 		set_country_flag = mom_god_emperor_dead
-		country_event = { id = mom_god_emperor.5 days = 5 }
+		country_event = {
+			id = mom_god_emperor.5
+			days = 5
+		}
 	}
 }
 
@@ -213,7 +211,6 @@ country_event = {
 	show_sound = event_planetary_riot
 	location = root.capital_scope
 	is_triggered_only = yes
-
 	option = {
 		name = mom_god_emperor.5.a
 		trigger = {
@@ -234,7 +231,6 @@ country_event = {
 			location = capital_scope
 		}
 	}
-
 	option = {
 		name = mom_god_emperor.5.b
 		trigger = {
@@ -250,7 +246,6 @@ country_event = {
 			days = -1
 		}
 	}
-
 	option = {
 		name = mom_god_emperor.5.c
 		trigger = {
@@ -277,17 +272,14 @@ country_event = {
 	show_sound = event_laboratory_sound
 	location = capital_scope
 	is_triggered_only = yes
-
 	trigger = {
 		has_country_flag = mom_god_emperor_waiting_for_cloning_tech
 		has_technology = tech_cloning
 	}
-
 	immediate = {
 		remove_country_flag = mom_god_emperor_waiting_for_cloning_tech
 		set_country_flag = mom_god_emperor_tech
 	}
-
 	option = {
 		name = mom_god_emperor.6.a
 		enable_special_project = {
@@ -306,13 +298,11 @@ planet_event = {
 	show_sound = event_laboratory_sound
 	location = owner.capital_scope
 	is_triggered_only = yes
-
 	immediate = {
 		owner = {
 			set_country_flag = mom_god_emperor_ressurection
 		}
 	}
-
 	option = {
 		name = mom_god_emperor.7.a
 		custom_tooltip = mom_god_emperor.7.a.tooltip
@@ -328,7 +318,6 @@ country_event = {
 	show_sound = event_celebration
 	location = capital_scope
 	is_triggered_only = yes
-
 	immediate = {
 		random_owned_leader = {
 			limit = {
@@ -350,7 +339,6 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = mom_god_emperor.8.a
 		add_modifier = {

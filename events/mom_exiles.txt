@@ -1,5 +1,4 @@
 namespace = mom_exiles
-
 # Sets country flag for empire starting in Durin´s Forge System
 event = {
 	id = mom_exiles.1
@@ -10,7 +9,10 @@ event = {
 			limit = {
 				has_origin = origin_mom_exiles
 			}
-			country_event = { id = mom_exiles.2 days = 5 }
+			country_event = {
+				id = mom_exiles.2
+				days = 5
+			}
 			capital_scope = {
 				solar_system = {
 					spawn_system = {
@@ -33,15 +35,13 @@ country_event = {
 	picture = GFX_evt_ship_in_orbit
 	show_sound = event_default
 	location = capital_star
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		begin_event_chain = {
 			event_chain = "mom_exiles"
 		}
 		closest_system = {
-			limit = { 
+			limit = {
 				has_star_flag = mom_exiles_system
 			}
 			save_event_target_as = mom_exiles_system
@@ -54,7 +54,6 @@ country_event = {
 			location = event_target:mom_exiles_system
 		}
 	}
-	
 	option = {
 		name = mom_exiles.2.a
 	}
@@ -65,37 +64,38 @@ ship_event = {
 	id = mom_exiles.3
 	title = "mom_exiles.3.name"
 	desc = "mom_exiles.3.desc"
-	is_triggered_only = yes 
+	is_triggered_only = yes
 	show_sound = event_mystic_reveal
 	picture = GFX_evt_fallen_empire
 	location = root
-	
 	trigger = {
-		FROM = { # system
+		FROM = {
+			# system
 			has_star_flag = mom_exiles_system
 		}
-		owner = { # Country
+		owner = {
+			# Country
 			has_event_chain = mom_exiles
 			NOT = {
 				has_country_flag = mom_exiles_system_found
 			}
 		}
 	}
-	
 	immediate = {
-		FROM = { # system
+		FROM = {
+			# system
 			random_system_planet = {
-				limit = { has_planet_flag = mom_exiles_planet }
+				limit = {
+					has_planet_flag = mom_exiles_planet
+				}
 				save_event_target_as = mom_exiles_planet
 			}
 		}
-
 		owner = {
 			set_country_flag = mom_exiles_system_found
 			remove_point_of_interest = mom_exiles_system.1
 		}
 	}
-	
 	option = {
 		name = mom_exiles.3.a
 		owner = {
@@ -123,9 +123,9 @@ ship_event = {
 	is_triggered_only = yes
 	location = from
 	show_sound = event_ghost_town
-	
 	trigger = {
-		FROM = { #planet
+		FROM = {
+			#planet
 			has_planet_flag = mom_exiles_planet
 		}
 		owner = {
@@ -161,7 +161,8 @@ ship_event = {
 	show_sound = event_default
 	is_triggered_only = yes
 	immediate = {
-		FromFromFrom = { # planet
+		FromFromFrom = {
+			# planet
 			save_event_target_as = mom_exiles_planet
 		}
 		owner = {
@@ -175,7 +176,6 @@ ship_event = {
 			remove_point_of_interest = mom_exiles_system.2
 		}
 	}
-	
 	option = {
 		name = mom_exiles.5.a
 		FromFromFrom = {
@@ -196,7 +196,6 @@ ship_event = {
 }
 
 # event 6 removed
-
 planet_event = {
 	id = mom_exiles.7
 	title = "mom_exiles.7.name"
@@ -204,9 +203,7 @@ planet_event = {
 	location = ROOT
 	show_sound = event_construction
 	picture = GFX_evt_city_ruins
-	
 	is_triggered_only = yes
-
 	pre_triggers = {
 		has_owner = yes
 	}
@@ -239,9 +236,11 @@ planet_event = {
 	id = mom_exiles.8001
 	hide_window = yes
 	is_triggered_only = yes
-
 	immediate = {
-		planet_event = { id = mom_exiles.8002 days = 1 }
+		planet_event = {
+			id = mom_exiles.8002
+			days = 1
+		}
 	}
 }
 
@@ -249,7 +248,6 @@ planet_event = {
 	id = mom_exiles.8002
 	hide_window = yes
 	is_triggered_only = yes
-
 	immediate = {
 		if = {
 			limit = {
@@ -257,7 +255,9 @@ planet_event = {
 					has_deposit = d_mom_city_ruins
 				}
 			}
-			planet_event = { id = mom_exiles.8 }
+			planet_event = {
+				id = mom_exiles.8
+			}
 		}
 	}
 }
@@ -270,7 +270,6 @@ planet_event = {
 	show_sound = event_mystic_reveal
 	picture = GFX_evt_alien_ruins
 	is_triggered_only = yes
-
 	immediate = {
 		set_planet_flag = mom_exiles_mines
 		owner = {
@@ -291,7 +290,6 @@ planet_event = {
 }
 
 # Expedition leads to Attack
-
 planet_event = {
 	id = mom_exiles.9
 	title = "mom_exiles.9.name"
@@ -299,15 +297,12 @@ planet_event = {
 	show_sound = event_air_raid_siren
 	location = ROOT
 	picture = GFX_evt_ground_combat
-	
 	is_triggered_only = yes
- 
 	trigger = {
 		owner = {
 			has_event_chain = mom_exiles_planet
 		}
 	}
-	
 	immediate = {
 		create_country = {
 			name = "Underground Horrors"
@@ -320,7 +315,7 @@ planet_event = {
 					category = "pirate"
 					file = "flag_pirate_10.dds"
 				}
-				background= {
+				background = {
 					category = "backgrounds"
 					file = "new_dawn.dds"
 				}
@@ -361,7 +356,6 @@ planet_event = {
 				type = "mom_ancient_horrors"
 			}
 		}
-		
 		last_created_country = {
 			save_global_event_target_as = mom_underground_horrors
 		}
@@ -369,7 +363,6 @@ planet_event = {
 			set_country_flag = mom_exiles_fight_1
 		}
 	}
-	
 	option = {
 		name = mom_exiles.9.a
 		add_modifier = {
@@ -380,7 +373,6 @@ planet_event = {
 }
 
 #Lost to Ancient Horrors
-
 planet_event = {
 	id = mom_exiles.10
 	title = "mom_exiles.10.name"
@@ -388,11 +380,9 @@ planet_event = {
 	location = root
 	show_sound = event_ground_battle
 	picture = GFX_evt_ground_combat
-
 	mean_time_to_happen = {
 		months = 2
 	}
-
 	pre_triggers = {
 		has_owner = yes
 		is_occupied_flag = yes
@@ -400,13 +390,13 @@ planet_event = {
 	trigger = {
 		has_planet_flag = mom_exiles_planet
 		#Owner of the planet has event chain
-		owner = { # Country
+		owner = {
+			# Country
 			has_event_chain = mom_exiles_planet
 			not = {
 				has_country_flag = mom_exiles_lost_1
 			}
 		}
-		
 		#Attackers are horrors
 		controller = {
 			is_same_value = event_target:mom_underground_horrors
@@ -414,13 +404,14 @@ planet_event = {
 	}
 	immediate = {
 		planet_event = {
-			id = mom_exiles.14 #Start the rolling purge
+			id = mom_exiles.14			#Start the rolling purge
 			days = 60
 		}
-		owner = { # country
+		owner = {
+			# country
 			set_country_flag = mom_exiles_lost_1
 			country_event = {
-				id = mom_exiles.11 # Inform player about what will happen when the horrors are controlling the planet
+				id = mom_exiles.11				# Inform player about what will happen when the horrors are controlling the planet
 				days = 60
 			}
 		}
@@ -439,14 +430,12 @@ country_event = {
 	show_sound = event_red_alert
 	picture = GFX_evt_interior_battle
 	location = event_target:mom_exiles_planet
-
 	option = {
 		name = mom_exiles.11.a
 	}
 }
 
 #Defended against Ancient Horrors
-
 # defend win
 # This = country, planet owner
 # From = country, attack leader
@@ -459,9 +448,9 @@ country_event = {
 	location = FromFrom
 	show_sound = event_ground_battle
 	picture = GFX_evt_ground_combat
-	
 	trigger = {
-		fromfrom = { #planet
+		fromfrom = {
+			#planet
 			has_planet_flag = mom_exiles_planet
 			is_occupied_flag = no
 		}
@@ -490,7 +479,6 @@ country_event = {
 }
 
 #Reconquest against Horrors
-
 planet_event = {
 	id = mom_exiles.13
 	title = "mom_exiles.13.name"
@@ -498,18 +486,16 @@ planet_event = {
 	location = root
 	show_sound = event_ground_battle
 	picture = GFX_evt_ground_combat
-
 	mean_time_to_happen = {
 		months = 2
 	}
-
 	pre_triggers = {
 		has_owner = yes
 		has_ground_combat = no
 		is_occupied_flag = no
 	}
-	trigger = {		
-		has_planet_flag = mom_exiles_planet		
+	trigger = {
+		has_planet_flag = mom_exiles_planet
 		owner = {
 			has_event_chain = mom_exiles_planet
 			has_country_flag = mom_exiles_fight_1
@@ -543,7 +529,7 @@ planet_event = {
 		is_occupied_flag = yes
 	}
 	trigger = {
-		has_planet_flag = mom_exiles_planet		
+		has_planet_flag = mom_exiles_planet
 		owner = {
 			OR = {
 				has_country_flag = mom_exiles_fight_1
@@ -553,23 +539,25 @@ planet_event = {
 	}
 	immediate = {
 		IF = {
-			limit = { 
+			limit = {
 				count_owned_pop = {
 					count > 10
-				} 
+				}
 			}
 			random_owned_pop = {
 				kill_pop = yes
 			}
 			planet_event = {
-				id = mom_exiles.14 #Re fire this event in a month
+				id = mom_exiles.14				#Re fire this event in a month
 				days = 90
 				random = 15
 			}
 		}
 		else = {
 			owner = {
-				country_event = { id = mom_exiles.15 } # The last pops have fortified their position.
+				country_event = {
+					id = mom_exiles.15
+				}				# The last pops have fortified their position.
 			}
 		}
 	}
@@ -584,7 +572,6 @@ country_event = {
 	show_sound = event_red_alert
 	picture = GFX_evt_interior_battle
 	location = event_target:mom_exiles_planet
-	
 	option = {
 		name = mom_exiles.15.a
 	}
@@ -598,15 +585,13 @@ planet_event = {
 	show_sound = event_air_raid_siren
 	location = ROOT
 	picture = GFX_evt_ground_combat
-	
 	is_triggered_only = yes
-	
 	trigger = {
-		owner = { # Country
+		owner = {
+			# Country
 			has_event_chain = mom_exiles_planet
 		}
 	}
-	
 	immediate = {
 		owner = {
 			set_country_flag = mom_exiles_retaliation
@@ -622,7 +607,7 @@ planet_event = {
 					category = "pirate"
 					file = "flag_pirate_10.dds"
 				}
-				background= {
+				background = {
 					category = "backgrounds"
 					file = "new_dawn.dds"
 				}
@@ -632,7 +617,7 @@ planet_event = {
 					"null"
 					"null"
 				}
-			}	
+			}
 		}
 		IF = {
 			limit = {
@@ -688,7 +673,6 @@ planet_event = {
 }
 
 #Defended against Ancient Horrors
-
 # defend win
 # This = country, planet owner
 # From = country, attack leader
@@ -701,9 +685,9 @@ country_event = {
 	location = FromFrom
 	show_sound = event_ground_battle
 	picture = GFX_evt_ground_combat
-
 	trigger = {
-		fromfrom = { #planet
+		fromfrom = {
+			#planet
 			has_planet_flag = mom_exiles_planet
 			is_occupied_flag = no
 		}
@@ -727,13 +711,16 @@ country_event = {
 		}
 		end_event_chain = "mom_exiles_planet"
 		hidden_effect = {
-			country_event = { id = mom_exiles.181 days = 1000 random = 500 }
+			country_event = {
+				id = mom_exiles.181
+				days = 1000
+				random = 500
+			}
 		}
 	}
 }
 
 #Reconquest against Horrors
-
 planet_event = {
 	id = mom_exiles.18
 	title = "mom_exiles.17.name"
@@ -741,21 +728,16 @@ planet_event = {
 	location = root
 	show_sound = event_ground_battle
 	picture = GFX_evt_ground_combat
-
 	mean_time_to_happen = {
 		months = 2
 	}
-	
 	pre_triggers = {
 		has_owner = yes
 		has_ground_combat = no
 		is_occupied_flag = no
 	}
 	trigger = {
-		
 		has_planet_flag = mom_exiles_planet
-		
-		
 		owner = {
 			has_event_chain = mom_exiles_planet
 			has_country_flag = mom_exiles_retaliation
@@ -775,7 +757,11 @@ planet_event = {
 		}
 		hidden_effect = {
 			owner = {
-				country_event = { id = mom_exiles.181 days = 1000 random = 500 }
+				country_event = {
+					id = mom_exiles.181
+					days = 1000
+					random = 500
+				}
 			}
 		}
 	}
@@ -789,7 +775,6 @@ country_event = {
 	is_triggered_only = yes
 	show_sound = event_mystic_reveal
 	picture = GFX_evt_physics_research
-	
 	immediate = {
 		random_owned_planet = {
 			limit = {
@@ -798,7 +783,6 @@ country_event = {
 			save_event_target_as = mom_exiles_planet
 		}
 	}
-	
 	option = {
 		name = mom_exiles.181.a
 		begin_event_chain = {
@@ -826,21 +810,23 @@ planet_event = {
 	location = ROOT
 	show_sound = event_construction
 	picture = GFX_evt_physics_research
-	
 	is_triggered_only = yes
-	
 	trigger = {
-		owner = { # Country
+		owner = {
+			# Country
 			has_event_chain = mom_exiles_planet_rebuilding
 		}
 	}
-	
 	option = {
 		name = mom_exiles.19.a
 		hidden_effect = {
-			planet_event = { id = mom_exiles.20 days = 1800 random = 60 }
+			planet_event = {
+				id = mom_exiles.20
+				days = 1800
+				random = 60
+			}
 		}
-	}	
+	}
 }
 
 # Atmosphere Restored
@@ -851,15 +837,12 @@ planet_event = {
 	location = ROOT
 	show_sound = event_cityscape
 	picture = GFX_evt_news_room
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		owner = {
 			has_event_chain = mom_exiles_planet_rebuilding
 		}
 	}
-	
 	immediate = {
 		if = {
 			limit = {
@@ -966,16 +949,15 @@ planet_event = {
 							is_planet_class = pc_savannah
 							is_planet_class = pc_alpine
 						}
-					}	
+					}
 				}
 			}
 			change_pc = pc_gaia
 		}
 	}
-	
 	option = {
 		name = mom_exiles.20.a
-		owner = {	
+		owner = {
 			random_owned_planet = {
 				limit = {
 					has_planet_flag = mom_exiles_planet
@@ -986,7 +968,11 @@ planet_event = {
 			}
 		}
 		hidden_effect = {
-			planet_event = { id = mom_exiles.21 days = 1800 random = 150 }
+			planet_event = {
+				id = mom_exiles.21
+				days = 1800
+				random = 150
+			}
 		}
 	}
 }
@@ -999,16 +985,14 @@ planet_event = {
 	location = ROOT
 	show_sound = event_mystic_reveal
 	picture = GFX_evt_news_room
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		has_planet_flag = mom_exiles_planet_restored
-		owner = { # Country
+		owner = {
+			# Country
 			has_event_chain = mom_exiles_planet_rebuilding
 		}
 	}
-	
 	option = {
 		name = mom_exiles.21.a
 		owner = {
@@ -1034,16 +1018,14 @@ planet_event = {
 	location = ROOT
 	show_sound = event_construction
 	picture = GFX_evt_space_station
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		has_planet_flag = mom_exiles_planet_restored
-		owner = { # Country
+		owner = {
+			# Country
 			has_event_chain = mom_exiles_planet_rebuilding
 		}
 	}
-	
 	option = {
 		name = mom_exiles.22.a
 		owner = {
@@ -1059,7 +1041,11 @@ planet_event = {
 			}
 		}
 		hidden_effect = {
-			planet_event = { id = mom_exiles.23 days = 3600 random = 300 }
+			planet_event = {
+				id = mom_exiles.23
+				days = 3600
+				random = 300
+			}
 		}
 	}
 }
@@ -1072,16 +1058,14 @@ planet_event = {
 	location = ROOT
 	show_sound = event_celebration
 	picture = GFX_evt_ringworld
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		has_planet_flag = mom_exiles_ring_restoration
-		owner = { # Country
+		owner = {
+			# Country
 			has_event_chain = mom_exiles_planet_rebuilding
 		}
 	}
-	
 	option = {
 		name = mom_exiles.23.a
 		remove_modifier = "mom_ringworld_reconstruction"
@@ -1100,7 +1084,6 @@ planet_event = {
 				modifier = "mom_ringworld_reconstructed"
 				days = 3600
 			}
-
 			random_owned_planet = {
 				limit = {
 					has_planet_flag = mom_exiles_ring_restoration

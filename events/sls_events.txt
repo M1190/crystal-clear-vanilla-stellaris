@@ -1,14 +1,11 @@
 namespace = sls
-
 ####GIVE SLS TRAITS WHEN NEW SCI PPL APPEARS###
 country_event = {
 	id = sls.1
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 	}
-	
 	immediate = {
 		from = {
 			if = {
@@ -21,15 +18,18 @@ country_event = {
 				set_leader_flag = sls_have_traits
 			}
 		}
-		country_event = { id = sls.21 days = 1 }
+		country_event = {
+			id = sls.21
+			days = 1
+		}
 	}
 }
+
 ###SET SKILLS###
 country_event = {
 	id = sls.21
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		any_owned_leader = {
 			leader_class = scientist
@@ -38,7 +38,6 @@ country_event = {
 			}
 		}
 	}
-	
 	immediate = {
 		every_owned_leader = {
 			limit = {
@@ -48,84 +47,120 @@ country_event = {
 				}
 			}
 			set_leader_flag = sls_have_skill_set
-			
-####
-###RANDOM POINTS###
+			####
+			###RANDOM POINTS###
 			random_list = {
-				3 = { 
-					change_variable = { which = sls_leader_random_points value = 1 } 
+				3 = {
+					change_variable = {
+						which = sls_leader_random_points
+						value = 1
+					}
 				}
-				2 = { 
-					change_variable = { which = sls_leader_random_points value = 2 } 
+				2 = {
+					change_variable = {
+						which = sls_leader_random_points
+						value = 2
+					}
 				}
 				1 = {
-					change_variable = { which = sls_leader_random_points value = 3 } 
+					change_variable = {
+						which = sls_leader_random_points
+						value = 3
+					}
 				}
 			}
-			
-###FOR ONGOING GAME LEADERS###
+			###FOR ONGOING GAME LEADERS###
 			if = {
 				limit = {
 					has_skill = 2
 				}
-				change_variable = { which = sls_leader_random_points value = 1 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 1
+				}
 			}
 			if = {
 				limit = {
 					has_skill = 3
 				}
-				change_variable = { which = sls_leader_random_points value = 2 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 2
+				}
 			}
 			if = {
 				limit = {
 					has_skill = 4
 				}
-				change_variable = { which = sls_leader_random_points value = 3 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 3
+				}
 			}
 			if = {
 				limit = {
 					has_skill = 5
 				}
-				change_variable = { which = sls_leader_random_points value = 5 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 5
+				}
 			}
 			if = {
 				limit = {
 					has_skill = 6
 				}
-				change_variable = { which = sls_leader_random_points value = 7 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 7
+				}
 			}
 			if = {
 				limit = {
 					has_skill = 7
 				}
-				change_variable = { which = sls_leader_random_points value = 9 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 9
+				}
 			}
 			if = {
 				limit = {
 					has_skill = 8
 				}
-				change_variable = { which = sls_leader_random_points value = 11 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 11
+				}
 			}
 			if = {
 				limit = {
 					has_skill = 9
 				}
-				change_variable = { which = sls_leader_random_points value = 13 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 13
+				}
 			}
 			if = {
 				limit = {
 					has_skill = 10
 				}
-				change_variable = { which = sls_leader_random_points value = 15 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 15
+				}
 			}
 			if = {
 				limit = {
 					has_skill > 10
 				}
-				change_variable = { which = sls_leader_random_points value = 20 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 20
+				}
 			}
-###CHECK TRAITS THEY HAD###
-			
+			###CHECK TRAITS THEY HAD###
 			if = {
 				limit = {
 					OR = {
@@ -139,7 +174,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_leader_eng_points value = 2 }
+				change_variable = {
+					which = sls_leader_eng_points
+					value = 2
+				}
 			}
 			if = {
 				limit = {
@@ -152,13 +190,19 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_leader_phy_points value = 2 }
+				change_variable = {
+					which = sls_leader_phy_points
+					value = 2
+				}
 			}
 			if = {
 				limit = {
 					has_trait = leader_trait_scientist_brainslug
 				}
-				change_variable = { which = sls_leader_random_points value = 2 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 2
+				}
 			}
 			if = {
 				limit = {
@@ -166,7 +210,10 @@ country_event = {
 						has_trait = trait_genetic_memory
 					}
 				}
-				change_variable = { which = sls_leader_random_points value = 2 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 2
+				}
 			}
 			if = {
 				limit = {
@@ -182,7 +229,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_leader_soc_points value = 2 }
+				change_variable = {
+					which = sls_leader_soc_points
+					value = 2
+				}
 			}
 			if = {
 				limit = {
@@ -190,7 +240,10 @@ country_event = {
 						has_trait = leader_trait_curator
 					}
 				}
-				change_variable = { which = sls_leader_random_points value = 15 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 15
+				}
 			}
 			if = {
 				limit = {
@@ -200,7 +253,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_leader_eng_points value = 3 }
+				change_variable = {
+					which = sls_leader_eng_points
+					value = 3
+				}
 			}
 			if = {
 				limit = {
@@ -210,7 +266,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_leader_soc_points value = 3 }
+				change_variable = {
+					which = sls_leader_soc_points
+					value = 3
+				}
 			}
 			if = {
 				limit = {
@@ -220,7 +279,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_leader_phy_points value = 3 }
+				change_variable = {
+					which = sls_leader_phy_points
+					value = 3
+				}
 			}
 			if = {
 				limit = {
@@ -234,7 +296,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_leader_random_points value = 6 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 6
+				}
 			}
 			if = {
 				limit = {
@@ -246,7 +311,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_leader_random_points value = 4 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 4
+				}
 			}
 			if = {
 				limit = {
@@ -254,27 +322,35 @@ country_event = {
 						OR = {
 							has_trait = trait_psionic
 							has_trait = trait_machinedlcmod_psionic
-							
-						}	
+						}
 					}
 				}
-				change_variable = { which = sls_leader_random_points value = 5 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 5
+				}
 			}
 			if = {
 				limit = {
 					species = {
 						OR = {
 							has_trait = trait_mechanical
-						}	
+						}
 					}
 				}
-				change_variable = { which = sls_leader_random_points value = 5 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 5
+				}
 			}
 			if = {
 				limit = {
 					has_trait = leader_trait_custom_AI_assistant
 				}
-				change_variable = { which = sls_leader_random_points value = 2 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 2
+				}
 			}
 			if = {
 				limit = {
@@ -289,10 +365,13 @@ country_event = {
 								has_trait = trait_robot_sociologist
 								has_trait = trait_robot_physicist
 							}
-						}	
+						}
 					}
 				}
-				change_variable = { which = sls_leader_random_points value = 3 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 3
+				}
 			}
 			if = {
 				limit = {
@@ -300,10 +379,13 @@ country_event = {
 						OR = {
 							has_ethic = ethic_materialist
 							has_ethic = ethic_fanatic_materialist
-						}						
+						}
 					}
 				}
-				change_variable = { which = sls_leader_random_points value = 1 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 1
+				}
 			}
 			if = {
 				limit = {
@@ -314,7 +396,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_leader_random_points value = 1 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 1
+				}
 			}
 			if = {
 				limit = {
@@ -327,7 +412,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_leader_random_points value = 2 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 2
+				}
 			}
 			if = {
 				limit = {
@@ -336,10 +424,13 @@ country_event = {
 							has_trait = trait_additrait_presapient_natural_inventors
 							has_trait = trait_natural_engineers
 							has_trait = trait_robot_engineer
-						}	
+						}
 					}
 				}
-				change_variable = { which = sls_leader_eng_points value = 1 }
+				change_variable = {
+					which = sls_leader_eng_points
+					value = 1
+				}
 			}
 			if = {
 				limit = {
@@ -351,7 +442,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_leader_phy_points value = 1 }
+				change_variable = {
+					which = sls_leader_phy_points
+					value = 1
+				}
 			}
 			if = {
 				limit = {
@@ -362,7 +456,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_leader_soc_points value = 1 }
+				change_variable = {
+					which = sls_leader_soc_points
+					value = 1
+				}
 			}
 			if = {
 				limit = {
@@ -370,8 +467,14 @@ country_event = {
 						has_trait = trait_analytical
 					}
 				}
-				change_variable = { which = sls_leader_phy_points value = 4 }
-				subtract_variable = { which = sls_leader_random_points value = 2 }
+				change_variable = {
+					which = sls_leader_phy_points
+					value = 4
+				}
+				subtract_variable = {
+					which = sls_leader_random_points
+					value = 2
+				}
 			}
 			if = {
 				limit = {
@@ -379,8 +482,14 @@ country_event = {
 						has_trait = trait_theoretical
 					}
 				}
-				change_variable = { which = sls_leader_soc_points value = 4 }
-				subtract_variable = { which = sls_leader_random_points value = 2 }
+				change_variable = {
+					which = sls_leader_soc_points
+					value = 4
+				}
+				subtract_variable = {
+					which = sls_leader_random_points
+					value = 2
+				}
 			}
 			if = {
 				limit = {
@@ -388,8 +497,14 @@ country_event = {
 						has_trait = trait_practical
 					}
 				}
-				change_variable = { which = sls_leader_eng_points value = 4 }
-				subtract_variable = { which = sls_leader_random_points value = 2 }
+				change_variable = {
+					which = sls_leader_eng_points
+					value = 4
+				}
+				subtract_variable = {
+					which = sls_leader_random_points
+					value = 2
+				}
 			}
 			if = {
 				limit = {
@@ -397,7 +512,10 @@ country_event = {
 						has_trait = trait_additrait_unfit_engineers
 					}
 				}
-				subtract_variable = { which = sls_leader_eng_points value = 1 }
+				subtract_variable = {
+					which = sls_leader_eng_points
+					value = 1
+				}
 			}
 			if = {
 				limit = {
@@ -405,7 +523,10 @@ country_event = {
 						has_trait = trait_additrait_unfit_physicists
 					}
 				}
-				subtract_variable = { which = sls_leader_phy_points value = 1 }
+				subtract_variable = {
+					which = sls_leader_phy_points
+					value = 1
+				}
 			}
 			if = {
 				limit = {
@@ -413,7 +534,10 @@ country_event = {
 						has_trait = trait_additrait_unfit_sociologists
 					}
 				}
-				subtract_variable = { which = sls_leader_soc_points value = 1 }
+				subtract_variable = {
+					which = sls_leader_soc_points
+					value = 1
+				}
 			}
 			if = {
 				limit = {
@@ -424,7 +548,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_leader_random_points value = 1 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 1
+				}
 			}
 			if = {
 				limit = {
@@ -437,7 +564,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_leader_random_points value = 1 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 1
+				}
 			}
 			if = {
 				limit = {
@@ -453,7 +583,10 @@ country_event = {
 						}
 					}
 				}
-				subtract_variable = { which = sls_leader_random_points value = 1 }
+				subtract_variable = {
+					which = sls_leader_random_points
+					value = 1
+				}
 			}
 			if = {
 				limit = {
@@ -469,7 +602,10 @@ country_event = {
 						}
 					}
 				}
-				subtract_variable = { which = sls_leader_random_points value = 2 }
+				subtract_variable = {
+					which = sls_leader_random_points
+					value = 2
+				}
 			}
 			if = {
 				limit = {
@@ -481,7 +617,10 @@ country_event = {
 						}
 					}
 				}
-				subtract_variable = { which = sls_leader_random_points value = 4 }
+				subtract_variable = {
+					which = sls_leader_random_points
+					value = 4
+				}
 			}
 			if = {
 				limit = {
@@ -492,7 +631,10 @@ country_event = {
 					}
 					days_passed < 5
 				}
-				change_variable = { which = sls_leader_eng_points value = 2 }
+				change_variable = {
+					which = sls_leader_eng_points
+					value = 2
+				}
 				subtract_variable = {
 					which = sls_leader_random_points
 					value = 2
@@ -507,7 +649,10 @@ country_event = {
 					}
 					days_passed < 5
 				}
-				change_variable = { which = sls_leader_soc_points value = 2 }
+				change_variable = {
+					which = sls_leader_soc_points
+					value = 2
+				}
 				subtract_variable = {
 					which = sls_leader_random_points
 					value = 2
@@ -522,7 +667,10 @@ country_event = {
 					}
 					days_passed < 5
 				}
-				change_variable = { which = sls_leader_phy_points value = 2 }
+				change_variable = {
+					which = sls_leader_phy_points
+					value = 2
+				}
 				subtract_variable = {
 					which = sls_leader_random_points
 					value = 2
@@ -530,29 +678,53 @@ country_event = {
 			}
 			if = {
 				limit = {
-					check_variable = { which = sls_leader_random_points value < 1 }
+					check_variable = {
+						which = sls_leader_random_points
+						value < 1
+					}
 				}
-				set_variable = { which = sls_leader_random_points value = 0 }
+				set_variable = {
+					which = sls_leader_random_points
+					value = 0
+				}
 			}
 			if = {
 				limit = {
-					check_variable = { which = sls_leader_phy_points value < 1 }
+					check_variable = {
+						which = sls_leader_phy_points
+						value < 1
+					}
 				}
-				set_variable = { which = sls_leader_phy_points value = 0 }
+				set_variable = {
+					which = sls_leader_phy_points
+					value = 0
+				}
 			}
 			if = {
 				limit = {
-					check_variable = { which = sls_leader_soc_points value < 1 }
+					check_variable = {
+						which = sls_leader_soc_points
+						value < 1
+					}
 				}
-				set_variable = { which = sls_leader_soc_points value = 0 }
+				set_variable = {
+					which = sls_leader_soc_points
+					value = 0
+				}
 			}
 			if = {
 				limit = {
-					check_variable = { which = sls_leader_eng_points value < 1 }
+					check_variable = {
+						which = sls_leader_eng_points
+						value < 1
+					}
 				}
-				set_variable = { which = sls_leader_eng_points value = 0 }
+				set_variable = {
+					which = sls_leader_eng_points
+					value = 0
+				}
 			}
-###COUNT WHAT THEY HAD###
+			###COUNT WHAT THEY HAD###
 			while = {
 				count = sls_leader_random_points
 				random_list = {
@@ -568,16 +740,28 @@ country_event = {
 						}
 						if = {
 							limit = {
-								check_variable = { which = sls_leader_phy_points value < 15 }
+								check_variable = {
+									which = sls_leader_phy_points
+									value < 15
+								}
 							}
-							change_variable = { which = sls_leader_phy_points value = 1 }
+							change_variable = {
+								which = sls_leader_phy_points
+								value = 1
+							}
 						}
 						else = {
-							change_variable = { which = sls_leader_soc_points value = 0.5 }
-							change_variable = { which = sls_leader_eng_points value = 0.5 }
+							change_variable = {
+								which = sls_leader_soc_points
+								value = 0.5
+							}
+							change_variable = {
+								which = sls_leader_eng_points
+								value = 0.5
+							}
 						}
 					}
-					1 = { 
+					1 = {
 						modifier = {
 							factor = 2
 							OR = {
@@ -591,13 +775,25 @@ country_event = {
 						}
 						if = {
 							limit = {
-								check_variable = { which = sls_leader_soc_points value < 15 }
+								check_variable = {
+									which = sls_leader_soc_points
+									value < 15
+								}
 							}
-							change_variable = { which = sls_leader_soc_points value = 1 }
+							change_variable = {
+								which = sls_leader_soc_points
+								value = 1
+							}
 						}
 						else = {
-							change_variable = { which = sls_leader_eng_points value = 0.5 }
-							change_variable = { which = sls_leader_phy_points value = 0.5 }
+							change_variable = {
+								which = sls_leader_eng_points
+								value = 0.5
+							}
+							change_variable = {
+								which = sls_leader_phy_points
+								value = 0.5
+							}
 						}
 					}
 					1 = {
@@ -613,20 +809,35 @@ country_event = {
 						}
 						if = {
 							limit = {
-								check_variable = { which = sls_leader_eng_points value < 15 }
+								check_variable = {
+									which = sls_leader_eng_points
+									value < 15
+								}
 							}
-							change_variable = { which = sls_leader_eng_points value = 1 }
+							change_variable = {
+								which = sls_leader_eng_points
+								value = 1
+							}
 						}
 						else = {
-							change_variable = { which = sls_leader_phy_points value = 0.5 }
-							change_variable = { which = sls_leader_soc_points value = 0.5 }
+							change_variable = {
+								which = sls_leader_phy_points
+								value = 0.5
+							}
+							change_variable = {
+								which = sls_leader_soc_points
+								value = 0.5
+							}
 						}
 					}
 				}
 			}
-#
-###IT'S DONE SO SET THEIR RANDOMS TO 0###
-			set_variable = { which = sls_leader_random_points value = 0 }
+			#
+			###IT'S DONE SO SET THEIR RANDOMS TO 0###
+			set_variable = {
+				which = sls_leader_random_points
+				value = 0
+			}
 		}
 	}
 }
@@ -654,7 +865,10 @@ country_event = {
 						has_trait = leader_trait_expertise_industry
 					}
 				}
-				change_variable = { which = sls_leader_eng_points value = 0.5 }
+				change_variable = {
+					which = sls_leader_eng_points
+					value = 0.5
+				}
 			}
 			if = {
 				limit = {
@@ -665,7 +879,10 @@ country_event = {
 						has_trait = leader_trait_expertise_computing
 					}
 				}
-				change_variable = { which = sls_leader_phy_points value = 0.5 }
+				change_variable = {
+					which = sls_leader_phy_points
+					value = 0.5
+				}
 			}
 			if = {
 				limit = {
@@ -679,71 +896,119 @@ country_event = {
 						has_trait = leader_trait_expertise_good_trading
 					}
 				}
-				change_variable = { which = sls_leader_soc_points value = 0.5 }
+				change_variable = {
+					which = sls_leader_soc_points
+					value = 0.5
+				}
 			}
-			change_variable = { which = sls_leader_random_points value = 1 }
+			change_variable = {
+				which = sls_leader_random_points
+				value = 1
+			}
 			if = {
 				limit = {
 					has_skill > 4
 				}
-				change_variable = { which = sls_leader_random_points value = 1 }
+				change_variable = {
+					which = sls_leader_random_points
+					value = 1
+				}
 			}
 			while = {
 				count = sls_leader_random_points
 				random_list = {
-					1 = { 
+					1 = {
 						if = {
 							limit = {
-								check_variable = { which = sls_leader_phy_points value < 15 }
+								check_variable = {
+									which = sls_leader_phy_points
+									value < 15
+								}
 							}
-							change_variable = { which = sls_leader_phy_points value = 1 }
+							change_variable = {
+								which = sls_leader_phy_points
+								value = 1
+							}
 						}
 						else = {
-							change_variable = { which = sls_leader_soc_points value = 0.5 }
-							change_variable = { which = sls_leader_eng_points value = 0.5 }
+							change_variable = {
+								which = sls_leader_soc_points
+								value = 0.5
+							}
+							change_variable = {
+								which = sls_leader_eng_points
+								value = 0.5
+							}
 						}
 					}
-					1 = { 
+					1 = {
 						if = {
 							limit = {
-								check_variable = { which = sls_leader_soc_points value < 15 }
+								check_variable = {
+									which = sls_leader_soc_points
+									value < 15
+								}
 							}
-							change_variable = { which = sls_leader_soc_points value = 1 }
+							change_variable = {
+								which = sls_leader_soc_points
+								value = 1
+							}
 						}
 						else = {
-							change_variable = { which = sls_leader_eng_points value = 0.5 }
-							change_variable = { which = sls_leader_phy_points value = 0.5 }
+							change_variable = {
+								which = sls_leader_eng_points
+								value = 0.5
+							}
+							change_variable = {
+								which = sls_leader_phy_points
+								value = 0.5
+							}
 						}
 					}
-					1 = { 
+					1 = {
 						if = {
 							limit = {
-								check_variable = { which = sls_leader_eng_points value < 15 }
+								check_variable = {
+									which = sls_leader_eng_points
+									value < 15
+								}
 							}
-							change_variable = { which = sls_leader_eng_points value = 1 }
+							change_variable = {
+								which = sls_leader_eng_points
+								value = 1
+							}
 						}
 						else = {
-							change_variable = { which = sls_leader_phy_points value = 0.5 }
-							change_variable = { which = sls_leader_soc_points value = 0.5 }
+							change_variable = {
+								which = sls_leader_phy_points
+								value = 0.5
+							}
+							change_variable = {
+								which = sls_leader_soc_points
+								value = 0.5
+							}
 						}
 					}
 				}
 			}
-			set_variable = { which = sls_leader_random_points value = 0 }
+			set_variable = {
+				which = sls_leader_random_points
+				value = 0
+			}
 			root = {
-				country_event = { id = sls.3 }
+				country_event = {
+					id = sls.3
+				}
 			}
 		}
 	}
 }
+
 ###MOVE TRAITS TO RIGHT###
 country_event = {
 	id = sls.3
 	hide_window = yes
 	is_triggered_only = yes
-	
-
-	
 	trigger = {
 		any_owned_leader = {
 			leader_class = scientist
@@ -758,7 +1023,6 @@ country_event = {
 			}
 		}
 	}
-	
 	immediate = {
 		random_owned_leader = {
 			limit = {
@@ -777,6 +1041,7 @@ country_event = {
 		}
 	}
 }
+
 ###SET GLOBAL FLAG###
 event = {
 	id = sls.4
@@ -799,7 +1064,9 @@ event = {
 	is_triggered_only = yes
 	immediate = {
 		every_playable_country = {
-			country_event = { id = sls.6 }
+			country_event = {
+				id = sls.6
+			}
 		}
 	}
 }
@@ -815,8 +1082,8 @@ country_event = {
 				leader_class = scientist
 				has_leader_flag = sls_have_traits
 				is_researching_area = physics
-#				is_researching_area = society
-#				is_researching_area = engineering
+				#				is_researching_area = society
+				#				is_researching_area = engineering
 			}
 			sls_run_check_research_level_bar_effect = yes
 			sls_run_check_research_corps_effect = yes
@@ -861,9 +1128,9 @@ country_event = {
 			limit = {
 				leader_class = scientist
 				has_leader_flag = sls_have_traits
-#				is_researching_area = physics
+				#				is_researching_area = physics
 				is_researching_area = society
-#				is_researching_area = engineering
+				#				is_researching_area = engineering
 			}
 			sls_run_check_research_level_bar_effect = yes
 			sls_run_check_research_corps_effect = yes
@@ -908,8 +1175,8 @@ country_event = {
 			limit = {
 				leader_class = scientist
 				has_leader_flag = sls_have_traits
-#				is_researching_area = physics
-#				is_researching_area = society
+				#				is_researching_area = physics
+				#				is_researching_area = society
 				is_researching_area = engineering
 			}
 			sls_run_check_research_level_bar_effect = yes
@@ -959,14 +1226,13 @@ country_event = {
 	id = sls.7
 	hide_window = yes
 	is_triggered_only = yes
-
 	immediate = {
 		from = {
 			if = {
 				limit = {
 					leader_class = scientist
-						num_traits > 2
-						num_traits < 10
+					num_traits > 2
+					num_traits < 10
 					NOR = {
 						has_leader_flag = has_gained_level_trait
 						is_researching_area = society
@@ -975,7 +1241,8 @@ country_event = {
 					}
 				}
 				random_list = {
-					90 = { }
+					90 = {
+					}
 					10 = {
 						modifier = {
 							factor = 1.5
@@ -984,7 +1251,7 @@ country_event = {
 						modifier = {
 							factor = 2.5
 							has_level = 4
-						}						
+						}
 						modifier = {
 							factor = 5
 							has_level > 4
@@ -997,12 +1264,12 @@ country_event = {
 		}
 	}
 }
+
 ###SURVEY CROP'S###
 ship_event = {
 	id = sls.8
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = leader
 		leader = {
@@ -1012,7 +1279,6 @@ ship_event = {
 			has_policy_flag = sls_survey_physics_research
 		}
 	}
-	
 	immediate = {
 		owner = {
 			add_monthly_resource_mult = {
@@ -1029,7 +1295,6 @@ ship_event = {
 	id = sls.9
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = leader
 		leader = {
@@ -1039,7 +1304,6 @@ ship_event = {
 			has_policy_flag = sls_survey_society_research
 		}
 	}
-	
 	immediate = {
 		owner = {
 			add_monthly_resource_mult = {
@@ -1056,7 +1320,6 @@ ship_event = {
 	id = sls.10
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = leader
 		leader = {
@@ -1066,7 +1329,6 @@ ship_event = {
 			has_policy_flag = sls_survey_engineering_research
 		}
 	}
-	
 	immediate = {
 		owner = {
 			add_monthly_resource_mult = {
@@ -1078,12 +1340,12 @@ ship_event = {
 		}
 	}
 }
+
 ###
 ship_event = {
 	id = sls.11
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = leader
 		leader = {
@@ -1093,7 +1355,6 @@ ship_event = {
 			has_policy_flag = sls_survey_energy
 		}
 	}
-	
 	immediate = {
 		if = {
 			limit = {
@@ -1104,25 +1365,39 @@ ship_event = {
 			owner = {
 				random_list = {
 					1 = {
-						add_resource = { energy = 30 }
+						add_resource = {
+							energy = 30
+						}
 					}
 					1 = {
-						add_resource = { energy = 35 }
+						add_resource = {
+							energy = 35
+						}
 					}
 					1 = {
-						add_resource = { energy = 40 }
+						add_resource = {
+							energy = 40
+						}
 					}
 					1 = {
-						add_resource = { energy = 45 }
+						add_resource = {
+							energy = 45
+						}
 					}
 					1 = {
-						add_resource = { energy = 50 }
+						add_resource = {
+							energy = 50
+						}
 					}
 					1 = {
-						add_resource = { energy = 55 }
+						add_resource = {
+							energy = 55
+						}
 					}
 					1 = {
-						add_resource = { energy = 60 }
+						add_resource = {
+							energy = 60
+						}
 					}
 				}
 			}
@@ -1130,30 +1405,40 @@ ship_event = {
 		owner = {
 			random_list = {
 				1 = {
-					add_resource = { energy = 2 }
+					add_resource = {
+						energy = 2
+					}
 				}
 				1 = {
-					add_resource = { energy = 4 }
+					add_resource = {
+						energy = 4
+					}
 				}
 				1 = {
-					add_resource = { energy = 6 }
+					add_resource = {
+						energy = 6
+					}
 				}
 				1 = {
-					add_resource = { energy = 8 }
+					add_resource = {
+						energy = 8
+					}
 				}
 				1 = {
-					add_resource = { energy = 10 }
+					add_resource = {
+						energy = 10
+					}
 				}
 			}
-		}		
+		}
 	}
 }
+
 ###
 ship_event = {
 	id = sls.12
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = leader
 		leader = {
@@ -1163,24 +1448,33 @@ ship_event = {
 			has_policy_flag = sls_survey_minerals
 		}
 	}
-	
 	immediate = {
 		owner = {
 			random_list = {
 				1 = {
-					add_resource = { minerals = 2 }
+					add_resource = {
+						minerals = 2
+					}
 				}
 				1 = {
-					add_resource = { minerals = 4 }
+					add_resource = {
+						minerals = 4
+					}
 				}
 				1 = {
-					add_resource = { minerals = 6 }
+					add_resource = {
+						minerals = 6
+					}
 				}
 				1 = {
-					add_resource = { minerals = 8 }
+					add_resource = {
+						minerals = 8
+					}
 				}
 				1 = {
-					add_resource = { minerals = 10 }
+					add_resource = {
+						minerals = 10
+					}
 				}
 			}
 		}
@@ -1188,42 +1482,48 @@ ship_event = {
 			limit = {
 				FROM = {
 					is_asteroid = yes
-				}			
+				}
 			}
 			owner = {
 				random_list = {
 					1 = {
-						add_resource = { minerals = 20 }
+						add_resource = {
+							minerals = 20
+						}
 					}
 					1 = {
-						add_resource = { minerals = 30 }
+						add_resource = {
+							minerals = 30
+						}
 					}
 					1 = {
-						add_resource = { minerals = 40 }
+						add_resource = {
+							minerals = 40
+						}
 					}
 					1 = {
-						add_resource = { minerals = 50 }
+						add_resource = {
+							minerals = 50
+						}
 					}
 				}
 			}
 		}
 	}
 }
+
 ###GAIN RESEARCH POINTS FOR SURVEY A COLONIZABLE PLANET###
 ship_event = {
 	id = sls.13
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = leader
 		leader = {
 			leader_class = scientist
 			has_trait = sls_trait_survey_planet
 		}
-
 	}
-	
 	immediate = {
 		owner = {
 			add_monthly_resource_mult = {
@@ -1249,7 +1549,7 @@ ship_event = {
 			limit = {
 				FROM = {
 					is_colonizable = yes
-				}			
+				}
 			}
 			owner = {
 				add_monthly_resource_mult = {
@@ -1272,14 +1572,13 @@ ship_event = {
 				}
 			}
 		}
-		
 	}
 }
+
 ship_event = {
 	id = sls.16
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = leader
 		leader = {
@@ -1289,7 +1588,6 @@ ship_event = {
 			has_policy_flag = sls_survey_unity
 		}
 	}
-	
 	immediate = {
 		owner = {
 			add_monthly_resource_mult = {
@@ -1301,20 +1599,19 @@ ship_event = {
 		}
 	}
 }
+
 ###FULLY SURVEY A SYSTEM###
 ship_event = {
 	id = sls.17
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		always = no
 		exists = leader
 		leader = {
 			leader_class = scientist
-		}		
+		}
 	}
-	
 	immediate = {
 		owner = {
 			add_monthly_resource_mult = {
@@ -1323,7 +1620,7 @@ ship_event = {
 				min = 10
 				max = 99999
 			}
-		}		
+		}
 	}
 }
 
@@ -1341,8 +1638,6 @@ country_event = {
 			}
 		}
 	}
-	
-	
 	immediate = {
 		random_owned_leader = {
 			limit = {
@@ -1351,13 +1646,15 @@ country_event = {
 					has_trait = sls_trait_research_unknown
 					has_leader_flag = sls_have_research_crops
 					has_leader_flag = sls_have_research_crops_owned
-				}			
+				}
 			}
 			add_trait = sls_trait_research_unknown
 			set_leader_flag = sls_have_research_crops
 			remove_leader_flag = sls_have_moved_traits
 		}
-		country_event = { id = sls.3 }
+		country_event = {
+			id = sls.3
+		}
 	}
 }
 
@@ -1419,21 +1716,20 @@ country_event = {
 			has_country_flag = sls_research_crop_swaping
 		}
 	}
-	
 	mean_time_to_happen = {
 		days = 50
 	}
-	
 	after = {
 		remove_country_flag = sls_research_crop_swaping
 		event_target:sls_swap_leader_name = {
 			remove_leader_flag = sls_have_moved_traits
 		}
 		hidden_effect = {
-			country_event = { id = sls.3 }
+			country_event = {
+				id = sls.3
+			}
 		}
 	}
-	
 	immediate = {
 		set_country_flag = sls_research_crop_swaping
 		random_owned_leader = {
@@ -1444,12 +1740,11 @@ country_event = {
 				has_skill > 4
 				NOT = {
 					has_leader_flag = sls_have_research_crops_owned
-				}				
+				}
 			}
 			save_event_target_as = sls_swap_leader_name
 		}
 	}
-	
 	option = {
 		name = sls_trait_research_industry_1_lv1
 		trigger = {
@@ -1465,101 +1760,131 @@ country_event = {
 				remove_trait = sls_trait_research_unknown
 				if = {
 					limit = {
-						check_variable = { which = sls_leader_eng_points value > 7.5 }
+						check_variable = {
+							which = sls_leader_eng_points
+							value > 7.5
+						}
 					}
 					random_list = {
-						1 = { add_trait = sls_trait_research_industry_1_lv2 }
-						1 = { add_trait = sls_trait_research_industry_2_lv2 }
-						1 = { add_trait = sls_trait_research_industry_3_lv2 }
-						1 = { 
+						1 = {
+							add_trait = sls_trait_research_industry_1_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_industry_2_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_industry_3_lv2
+						}
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
 									OR = {
 										AND = {
-											NOT = { has_technology = tech_robotic_workers }
+											NOT = {
+												has_technology = tech_robotic_workers
+											}
 											has_policy_flag = robots_outlawed
 										}
-										NOR = { 
+										NOR = {
 											has_authority = auth_hive_mind
 											has_authority = auth_machine_intelligence
 										}
-									}									
+									}
 								}
 							}
 							add_trait = sls_trait_research_industry_4_lv2
 						}
-						1 = { 
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
 									OR = {
 										AND = {
-											NOT = { has_technology = tech_robotic_workers }
+											NOT = {
+												has_technology = tech_robotic_workers
+											}
 											has_policy_flag = robots_outlawed
 										}
-										NOR = { 
+										NOR = {
 											has_authority = auth_hive_mind
 											has_authority = auth_machine_intelligence
 										}
-									}									
+									}
 								}
 							}
 							add_trait = sls_trait_research_industry_5_lv2
 						}
-						1 = { add_trait = sls_trait_research_industry_6_lv2 }
-						1 = { add_trait = sls_trait_research_industry_7_lv2 }
+						1 = {
+							add_trait = sls_trait_research_industry_6_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_industry_7_lv2
+						}
 					}
 				}
 				else = {
 					random_list = {
-						1 = { add_trait = sls_trait_research_industry_1_lv1 }
-						1 = { add_trait = sls_trait_research_industry_2_lv1 }
-						1 = { add_trait = sls_trait_research_industry_3_lv1 }
-						1 = { 
+						1 = {
+							add_trait = sls_trait_research_industry_1_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_industry_2_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_industry_3_lv1
+						}
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
 									OR = {
 										AND = {
-											NOT = { has_technology = tech_robotic_workers }
+											NOT = {
+												has_technology = tech_robotic_workers
+											}
 											has_policy_flag = robots_outlawed
 										}
-										NOR = { 
+										NOR = {
 											has_authority = auth_hive_mind
 											has_authority = auth_machine_intelligence
 										}
-									}									
+									}
 								}
 							}
 							add_trait = sls_trait_research_industry_4_lv1
 						}
-						1 = { 
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
 									OR = {
 										AND = {
-											NOT = { has_technology = tech_robotic_workers }
+											NOT = {
+												has_technology = tech_robotic_workers
+											}
 											has_policy_flag = robots_outlawed
 										}
-										NOR = { 
+										NOR = {
 											has_authority = auth_hive_mind
 											has_authority = auth_machine_intelligence
 										}
-									}									
+									}
 								}
 							}
 							add_trait = sls_trait_research_industry_5_lv1
 						}
-						1 = { add_trait = sls_trait_research_industry_6_lv1 }
-						1 = { add_trait = sls_trait_research_industry_7_lv1 }
+						1 = {
+							add_trait = sls_trait_research_industry_6_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_industry_7_lv1
+						}
 					}
-				}					
+				}
 			}
 		}
 	}
-
 	option = {
 		name = sls_trait_research_materials_1_lv1
 		trigger = {
@@ -1575,33 +1900,63 @@ country_event = {
 				remove_trait = sls_trait_research_unknown
 				if = {
 					limit = {
-						check_variable = { which = sls_leader_eng_points value > 7.5 }
+						check_variable = {
+							which = sls_leader_eng_points
+							value > 7.5
+						}
 					}
 					random_list = {
-						1 = { add_trait = sls_trait_research_materials_1_lv2 }
-						1 = { add_trait = sls_trait_research_materials_2_lv2 }
-						1 = { add_trait = sls_trait_research_materials_3_lv2 }
-						1 = { add_trait = sls_trait_research_materials_4_lv2 }
-						1 = { add_trait = sls_trait_research_materials_5_lv2 }
-						1 = { add_trait = sls_trait_research_materials_6_lv2 }
-						1 = { add_trait = sls_trait_research_materials_7_lv2 }
+						1 = {
+							add_trait = sls_trait_research_materials_1_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_materials_2_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_materials_3_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_materials_4_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_materials_5_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_materials_6_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_materials_7_lv2
+						}
 					}
 				}
 				else = {
 					random_list = {
-						1 = { add_trait = sls_trait_research_materials_1_lv1 }
-						1 = { add_trait = sls_trait_research_materials_2_lv1 }
-						1 = { add_trait = sls_trait_research_materials_3_lv1 }
-						1 = { add_trait = sls_trait_research_materials_4_lv1 }
-						1 = { add_trait = sls_trait_research_materials_5_lv1 }
-						1 = { add_trait = sls_trait_research_materials_6_lv1 }
-						1 = { add_trait = sls_trait_research_materials_7_lv1 }
+						1 = {
+							add_trait = sls_trait_research_materials_1_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_materials_2_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_materials_3_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_materials_4_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_materials_5_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_materials_6_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_materials_7_lv1
+						}
 					}
-				}				
+				}
 			}
 		}
 	}
-
 	option = {
 		name = sls_trait_research_propulsion_1_lv1
 		trigger = {
@@ -1617,31 +1972,57 @@ country_event = {
 				remove_trait = sls_trait_research_unknown
 				if = {
 					limit = {
-						check_variable = { which = sls_leader_eng_points value > 7.5 }
+						check_variable = {
+							which = sls_leader_eng_points
+							value > 7.5
+						}
 					}
 					random_list = {
-						1 = { add_trait = sls_trait_research_propulsion_1_lv2 }
-						1 = { add_trait = sls_trait_research_propulsion_2_lv2 }
-						1 = { add_trait = sls_trait_research_propulsion_3_lv2 }
-						1 = { add_trait = sls_trait_research_propulsion_4_lv2 }
-						1 = { add_trait = sls_trait_research_propulsion_5_lv2 }
-						1 = { add_trait = sls_trait_research_propulsion_6_lv2 }
+						1 = {
+							add_trait = sls_trait_research_propulsion_1_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_propulsion_2_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_propulsion_3_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_propulsion_4_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_propulsion_5_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_propulsion_6_lv2
+						}
 					}
 				}
 				else = {
 					random_list = {
-						1 = { add_trait = sls_trait_research_propulsion_1_lv1 }
-						1 = { add_trait = sls_trait_research_propulsion_2_lv1 }
-						1 = { add_trait = sls_trait_research_propulsion_3_lv1 }
-						1 = { add_trait = sls_trait_research_propulsion_4_lv1 }
-						1 = { add_trait = sls_trait_research_propulsion_5_lv1 }
-						1 = { add_trait = sls_trait_research_propulsion_6_lv1 }
+						1 = {
+							add_trait = sls_trait_research_propulsion_1_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_propulsion_2_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_propulsion_3_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_propulsion_4_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_propulsion_5_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_propulsion_6_lv1
+						}
 					}
 				}
 			}
 		}
 	}
-	
 	option = {
 		name = sls_trait_research_voidcraft_1_lv1
 		trigger = {
@@ -1657,15 +2038,28 @@ country_event = {
 				remove_trait = sls_trait_research_unknown
 				if = {
 					limit = {
-						check_variable = { which = sls_leader_eng_points value > 7.5 }
+						check_variable = {
+							which = sls_leader_eng_points
+							value > 7.5
+						}
 					}
 					random_list = {
-						1 = { add_trait = sls_trait_research_voidcraft_1_lv2 }
-						1 = { add_trait = sls_trait_research_voidcraft_2_lv2 }
-						1 = { add_trait = sls_trait_research_voidcraft_3_lv2 }
-						1 = { add_trait = sls_trait_research_voidcraft_4_lv2 }
-						1 = { add_trait = sls_trait_research_voidcraft_5_lv2 }
-						1 = { 
+						1 = {
+							add_trait = sls_trait_research_voidcraft_1_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_voidcraft_2_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_voidcraft_3_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_voidcraft_4_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_voidcraft_5_lv2
+						}
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
@@ -1686,7 +2080,7 @@ country_event = {
 										has_technology = tech_mega_engineering
 										has_technology = tech_gateway_activation
 										has_ascension_perk = ap_voidborn
-									}									
+									}
 								}
 							}
 							add_trait = sls_trait_research_voidcraft_7_lv2
@@ -1695,12 +2089,22 @@ country_event = {
 				}
 				else = {
 					random_list = {
-						1 = { add_trait = sls_trait_research_voidcraft_1_lv1 }
-						1 = { add_trait = sls_trait_research_voidcraft_2_lv1 }
-						1 = { add_trait = sls_trait_research_voidcraft_3_lv1 }
-						1 = { add_trait = sls_trait_research_voidcraft_4_lv1 }
-						1 = { add_trait = sls_trait_research_voidcraft_5_lv1 }
-						1 = { 
+						1 = {
+							add_trait = sls_trait_research_voidcraft_1_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_voidcraft_2_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_voidcraft_3_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_voidcraft_4_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_voidcraft_5_lv1
+						}
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
@@ -1721,7 +2125,7 @@ country_event = {
 										has_technology = tech_mega_engineering
 										has_technology = tech_gateway_activation
 										has_ascension_perk = ap_voidborn
-									}									
+									}
 								}
 							}
 							add_trait = sls_trait_research_voidcraft_7_lv1
@@ -1731,7 +2135,6 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = sls_trait_research_computing_1_lv1
 		trigger = {
@@ -1747,31 +2150,57 @@ country_event = {
 				remove_trait = sls_trait_research_unknown
 				if = {
 					limit = {
-						check_variable = { which = sls_leader_phy_points value > 7.5 }
+						check_variable = {
+							which = sls_leader_phy_points
+							value > 7.5
+						}
 					}
 					random_list = {
-						1 = { add_trait = sls_trait_research_computing_1_lv2 }
-						1 = { add_trait = sls_trait_research_computing_2_lv2 }
-						1 = { add_trait = sls_trait_research_computing_3_lv2 }
-						1 = { add_trait = sls_trait_research_computing_4_lv2 }
-						1 = { add_trait = sls_trait_research_computing_5_lv2 }
-						1 = { add_trait = sls_trait_research_computing_6_lv2 }
+						1 = {
+							add_trait = sls_trait_research_computing_1_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_computing_2_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_computing_3_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_computing_4_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_computing_5_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_computing_6_lv2
+						}
 					}
 				}
 				else = {
 					random_list = {
-						1 = { add_trait = sls_trait_research_computing_1_lv1 }
-						1 = { add_trait = sls_trait_research_computing_2_lv1 }
-						1 = { add_trait = sls_trait_research_computing_3_lv1 }
-						1 = { add_trait = sls_trait_research_computing_4_lv1 }
-						1 = { add_trait = sls_trait_research_computing_5_lv1 }
-						1 = { add_trait = sls_trait_research_computing_6_lv1 }
+						1 = {
+							add_trait = sls_trait_research_computing_1_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_computing_2_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_computing_3_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_computing_4_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_computing_5_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_computing_6_lv1
+						}
 					}
 				}
 			}
 		}
 	}
-	
 	option = {
 		name = sls_trait_research_field_manipulation_1_lv1
 		trigger = {
@@ -1787,31 +2216,57 @@ country_event = {
 				remove_trait = sls_trait_research_unknown
 				if = {
 					limit = {
-						check_variable = { which = sls_leader_phy_points value > 7.5 }
+						check_variable = {
+							which = sls_leader_phy_points
+							value > 7.5
+						}
 					}
 					random_list = {
-						1 = { add_trait = sls_trait_research_field_manipulation_1_lv2 }
-						1 = { add_trait = sls_trait_research_field_manipulation_2_lv2 }
-						1 = { add_trait = sls_trait_research_field_manipulation_3_lv2 }
-						1 = { add_trait = sls_trait_research_field_manipulation_4_lv2 }
-						1 = { add_trait = sls_trait_research_field_manipulation_5_lv2 }
-						1 = { add_trait = sls_trait_research_field_manipulation_6_lv2 }
+						1 = {
+							add_trait = sls_trait_research_field_manipulation_1_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_field_manipulation_2_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_field_manipulation_3_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_field_manipulation_4_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_field_manipulation_5_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_field_manipulation_6_lv2
+						}
 					}
 				}
 				else = {
 					random_list = {
-						1 = { add_trait = sls_trait_research_field_manipulation_1_lv1 }
-						1 = { add_trait = sls_trait_research_field_manipulation_2_lv1 }
-						1 = { add_trait = sls_trait_research_field_manipulation_3_lv1 }
-						1 = { add_trait = sls_trait_research_field_manipulation_4_lv1 }
-						1 = { add_trait = sls_trait_research_field_manipulation_5_lv1 }
-						1 = { add_trait = sls_trait_research_field_manipulation_6_lv1 }
+						1 = {
+							add_trait = sls_trait_research_field_manipulation_1_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_field_manipulation_2_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_field_manipulation_3_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_field_manipulation_4_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_field_manipulation_5_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_field_manipulation_6_lv1
+						}
 					}
 				}
 			}
 		}
 	}
-	
 	option = {
 		name = sls_trait_research_particles_1_lv1
 		trigger = {
@@ -1827,31 +2282,57 @@ country_event = {
 				remove_trait = sls_trait_research_unknown
 				if = {
 					limit = {
-						check_variable = { which = sls_leader_phy_points value > 7.5 }
+						check_variable = {
+							which = sls_leader_phy_points
+							value > 7.5
+						}
 					}
 					random_list = {
-						1 = { add_trait = sls_trait_research_particles_1_lv2 }
-						1 = { add_trait = sls_trait_research_particles_2_lv2 }
-						1 = { add_trait = sls_trait_research_particles_3_lv2 }
-						1 = { add_trait = sls_trait_research_particles_4_lv2 }
-						1 = { add_trait = sls_trait_research_particles_5_lv2 }
-						1 = { add_trait = sls_trait_research_particles_6_lv2 }
+						1 = {
+							add_trait = sls_trait_research_particles_1_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_particles_2_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_particles_3_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_particles_4_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_particles_5_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_particles_6_lv2
+						}
 					}
 				}
 				else = {
 					random_list = {
-						1 = { add_trait = sls_trait_research_particles_1_lv1 }
-						1 = { add_trait = sls_trait_research_particles_2_lv1 }
-						1 = { add_trait = sls_trait_research_particles_3_lv1 }
-						1 = { add_trait = sls_trait_research_particles_4_lv1 }
-						1 = { add_trait = sls_trait_research_particles_5_lv1 }
-						1 = { add_trait = sls_trait_research_particles_6_lv1 }
+						1 = {
+							add_trait = sls_trait_research_particles_1_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_particles_2_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_particles_3_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_particles_4_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_particles_5_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_particles_6_lv1
+						}
 					}
 				}
 			}
 		}
 	}
-
 	option = {
 		name = sls_trait_research_biology_1_lv1
 		trigger = {
@@ -1867,16 +2348,19 @@ country_event = {
 				remove_trait = sls_trait_research_unknown
 				if = {
 					limit = {
-						check_variable = { which = sls_leader_soc_points value > 7.5 }
+						check_variable = {
+							which = sls_leader_soc_points
+							value > 7.5
+						}
 					}
 					random_list = {
-						1 = { 
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
 									NOT = {
 										has_technology = tech_gene_tailoring
-									}									
+									}
 								}
 							}
 							add_trait = sls_trait_research_biology_1_lv2
@@ -1911,18 +2395,20 @@ country_event = {
 							}
 							add_trait = sls_trait_research_biology_5_lv2
 						}
-						1 = { add_trait = sls_trait_research_biology_6_lv2 }
+						1 = {
+							add_trait = sls_trait_research_biology_6_lv2
+						}
 					}
 				}
 				else = {
 					random_list = {
-						1 = { 
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
 									NOT = {
 										has_technology = tech_gene_tailoring
-									}									
+									}
 								}
 							}
 							add_trait = sls_trait_research_biology_1_lv1
@@ -1956,19 +2442,20 @@ country_event = {
 						1 = {
 							modifier = {
 								factor = 0
-									root = {
+								root = {
 									has_authority = auth_machine_intelligence
 								}
 							}
 							add_trait = sls_trait_research_biology_5_lv1
 						}
-						1 = { add_trait = sls_trait_research_biology_6_lv1 }
+						1 = {
+							add_trait = sls_trait_research_biology_6_lv1
+						}
 					}
 				}
 			}
 		}
 	}
-
 	option = {
 		name = sls_trait_research_military_theory_1_lv1
 		trigger = {
@@ -1984,31 +2471,57 @@ country_event = {
 				remove_trait = sls_trait_research_unknown
 				if = {
 					limit = {
-						check_variable = { which = sls_leader_soc_points value > 7.5 }
+						check_variable = {
+							which = sls_leader_soc_points
+							value > 7.5
+						}
 					}
 					random_list = {
-						1 = { add_trait = sls_trait_research_military_theory_1_lv2 }
-						1 = { add_trait = sls_trait_research_military_theory_2_lv2 }
-						1 = { add_trait = sls_trait_research_military_theory_3_lv2 }
-						1 = { add_trait = sls_trait_research_military_theory_4_lv2 }
-						1 = { add_trait = sls_trait_research_military_theory_5_lv2 }
-						1 = { add_trait = sls_trait_research_military_theory_6_lv2 }
+						1 = {
+							add_trait = sls_trait_research_military_theory_1_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_military_theory_2_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_military_theory_3_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_military_theory_4_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_military_theory_5_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_military_theory_6_lv2
+						}
 					}
 				}
 				else = {
 					random_list = {
-						1 = { add_trait = sls_trait_research_military_theory_1_lv1 }
-						1 = { add_trait = sls_trait_research_military_theory_2_lv1 }
-						1 = { add_trait = sls_trait_research_military_theory_3_lv1 }
-						1 = { add_trait = sls_trait_research_military_theory_4_lv1 }
-						1 = { add_trait = sls_trait_research_military_theory_5_lv1 }
-						1 = { add_trait = sls_trait_research_military_theory_6_lv1 }
+						1 = {
+							add_trait = sls_trait_research_military_theory_1_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_military_theory_2_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_military_theory_3_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_military_theory_4_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_military_theory_5_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_military_theory_6_lv1
+						}
 					}
 				}
 			}
 		}
 	}
-	
 	option = {
 		name = sls_trait_research_new_worlds_1_lv1
 		trigger = {
@@ -2024,61 +2537,78 @@ country_event = {
 				remove_trait = sls_trait_research_unknown
 				if = {
 					limit = {
-						check_variable = { which = sls_leader_soc_points value > 7.5 }
+						check_variable = {
+							which = sls_leader_soc_points
+							value > 7.5
+						}
 					}
 					random_list = {
-						1 = { add_trait = sls_trait_research_new_worlds_1_lv2 }
-						1 = { add_trait = sls_trait_research_new_worlds_2_lv2 }
-						1 = { add_trait = sls_trait_research_new_worlds_3_lv2 }
-						1 = { 
+						1 = {
+							add_trait = sls_trait_research_new_worlds_1_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_new_worlds_2_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_new_worlds_3_lv2
+						}
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
 									OR = {
 										has_authority = auth_hive_mind
 										has_authority = auth_machine_intelligence
-									}									
+									}
 								}
 							}
 							add_trait = sls_trait_research_new_worlds_4_lv2
 						}
-						1 = { 
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
 									has_authority = auth_machine_intelligence
 								}
-							}							
+							}
 							add_trait = sls_trait_research_new_worlds_5_lv2
 						}
-						1 = { 
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
 									OR = {
 										has_authority = auth_hive_mind
 										has_authority = auth_machine_intelligence
-									}									
+									}
 								}
-							}							
+							}
 							add_trait = sls_trait_research_new_worlds_6_lv2
 						}
-						1 = { add_trait = sls_trait_research_new_worlds_7_lv2 }
+						1 = {
+							add_trait = sls_trait_research_new_worlds_7_lv2
+						}
 					}
 				}
 				else = {
 					random_list = {
-						1 = { add_trait = sls_trait_research_new_worlds_1_lv1 }
-						1 = { add_trait = sls_trait_research_new_worlds_2_lv1 }
-						1 = { add_trait = sls_trait_research_new_worlds_3_lv1 }
-						1 = { 
+						1 = {
+							add_trait = sls_trait_research_new_worlds_1_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_new_worlds_2_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_new_worlds_3_lv1
+						}
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
 									OR = {
 										has_authority = auth_hive_mind
 										has_authority = auth_machine_intelligence
-									}									
+									}
 								}
 							}
 							add_trait = sls_trait_research_new_worlds_4_lv1
@@ -2089,7 +2619,7 @@ country_event = {
 								root = {
 									has_authority = auth_machine_intelligence
 								}
-							}							
+							}
 							add_trait = sls_trait_research_new_worlds_5_lv1
 						}
 						1 = {
@@ -2099,18 +2629,19 @@ country_event = {
 									OR = {
 										has_authority = auth_hive_mind
 										has_authority = auth_machine_intelligence
-									}									
+									}
 								}
 							}
 							add_trait = sls_trait_research_new_worlds_6_lv1
 						}
-						1 = { add_trait = sls_trait_research_new_worlds_7_lv1 }
+						1 = {
+							add_trait = sls_trait_research_new_worlds_7_lv1
+						}
 					}
 				}
 			}
 		}
 	}
-	
 	option = {
 		name = sls_trait_research_statecraft_1_lv1
 		trigger = {
@@ -2126,14 +2657,27 @@ country_event = {
 				remove_trait = sls_trait_research_unknown
 				if = {
 					limit = {
-						check_variable = { which = sls_leader_soc_points value > 7.5 }
+						check_variable = {
+							which = sls_leader_soc_points
+							value > 7.5
+						}
 					}
 					random_list = {
-						1 = { add_trait = sls_trait_research_statecraft_1_lv2 }
-						1 = { add_trait = sls_trait_research_statecraft_2_lv2 }
-						1 = { add_trait = sls_trait_research_statecraft_3_lv2 }
-						1 = { add_trait = sls_trait_research_statecraft_4_lv2 }
-						1 = { add_trait = sls_trait_research_statecraft_5_lv2 }
+						1 = {
+							add_trait = sls_trait_research_statecraft_1_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_statecraft_2_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_statecraft_3_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_statecraft_4_lv2
+						}
+						1 = {
+							add_trait = sls_trait_research_statecraft_5_lv2
+						}
 						1 = {
 							modifier = {
 								factor = 0
@@ -2142,12 +2686,12 @@ country_event = {
 										has_valid_civic = "civic_fanatic_purifiers"
 										has_valid_civic = "civic_hive_devouring_swarm"
 										has_valid_civic = "civic_machine_terminator"
-									}									
+									}
 								}
 							}
 							add_trait = sls_trait_research_statecraft_6_lv2
 						}
-						1 = { 
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
@@ -2155,7 +2699,7 @@ country_event = {
 										has_valid_civic = "civic_fanatic_purifiers"
 										has_valid_civic = "civic_hive_devouring_swarm"
 										has_valid_civic = "civic_machine_terminator"
-									}									
+									}
 								}
 							}
 							add_trait = sls_trait_research_statecraft_7_lv2
@@ -2164,12 +2708,22 @@ country_event = {
 				}
 				else = {
 					random_list = {
-						1 = { add_trait = sls_trait_research_statecraft_1_lv1 }
-						1 = { add_trait = sls_trait_research_statecraft_2_lv1 }
-						1 = { add_trait = sls_trait_research_statecraft_3_lv1 }
-						1 = { add_trait = sls_trait_research_statecraft_4_lv1 }
-						1 = { add_trait = sls_trait_research_statecraft_5_lv1 }
-						1 = { 
+						1 = {
+							add_trait = sls_trait_research_statecraft_1_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_statecraft_2_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_statecraft_3_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_statecraft_4_lv1
+						}
+						1 = {
+							add_trait = sls_trait_research_statecraft_5_lv1
+						}
+						1 = {
 							modifier = {
 								factor = 0
 								root = {
@@ -2177,7 +2731,7 @@ country_event = {
 										has_valid_civic = "civic_fanatic_purifiers"
 										has_valid_civic = "civic_hive_devouring_swarm"
 										has_valid_civic = "civic_machine_terminator"
-									}									
+									}
 								}
 							}
 							add_trait = sls_trait_research_statecraft_6_lv1
@@ -2190,7 +2744,7 @@ country_event = {
 										has_valid_civic = "civic_fanatic_purifiers"
 										has_valid_civic = "civic_hive_devouring_swarm"
 										has_valid_civic = "civic_machine_terminator"
-									}									
+									}
 								}
 							}
 							add_trait = sls_trait_research_statecraft_7_lv1
@@ -2200,9 +2754,8 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
-		name = sls_trait_research_psionics_1 
+		name = sls_trait_research_psionics_1
 		trigger = {
 			event_target:sls_swap_leader_name = {
 				has_trait = leader_trait_expertise_psionics
@@ -2215,18 +2768,31 @@ country_event = {
 				set_leader_flag = sls_have_research_crops_owned
 				remove_trait = sls_trait_research_unknown
 				random_list = {
-					1 = { add_trait = sls_trait_research_psionics_1 }
-					1 = { add_trait = sls_trait_research_psionics_2 }
-					1 = { add_trait = sls_trait_research_psionics_3 }
-					1 = { add_trait = sls_trait_research_psionics_4 }
-					1 = { add_trait = sls_trait_research_psionics_5 }
-					1 = { add_trait = sls_trait_research_psionics_6 }
-					1 = { add_trait = sls_trait_research_psionics_7 }
+					1 = {
+						add_trait = sls_trait_research_psionics_1
+					}
+					1 = {
+						add_trait = sls_trait_research_psionics_2
+					}
+					1 = {
+						add_trait = sls_trait_research_psionics_3
+					}
+					1 = {
+						add_trait = sls_trait_research_psionics_4
+					}
+					1 = {
+						add_trait = sls_trait_research_psionics_5
+					}
+					1 = {
+						add_trait = sls_trait_research_psionics_6
+					}
+					1 = {
+						add_trait = sls_trait_research_psionics_7
+					}
 				}
 			}
 		}
 	}
-	
 	option = {
 		name = sls_trait_research_options_r
 		custom_tooltip = sls.51.r.tooltip
@@ -2237,7 +2803,6 @@ country_event = {
 					has_trait = leader_trait_maniacal
 					has_trait = leader_trait_curator
 				}
-				
 			}
 		}
 		event_target:sls_swap_leader_name = {
@@ -2248,7 +2813,6 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = sls_trait_research_adaptable_r
 		trigger = {
@@ -2257,7 +2821,6 @@ country_event = {
 					has_trait = leader_trait_adaptable
 					has_trait = leader_trait_flexible_programming
 				}
-				
 			}
 		}
 		event_target:sls_swap_leader_name = {
@@ -2268,7 +2831,6 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = sls.51.a
 		trigger = {
@@ -2301,25 +2863,52 @@ country_event = {
 				remove_trait = sls_trait_research_unknown
 				if = {
 					limit = {
-						check_variable = { which = sls_leader_phy_points value > 5 }
-						check_variable = { which = sls_leader_soc_points value < 6 }
-						check_variable = { which = sls_leader_eng_points value < 6 }
+						check_variable = {
+							which = sls_leader_phy_points
+							value > 5
+						}
+						check_variable = {
+							which = sls_leader_soc_points
+							value < 6
+						}
+						check_variable = {
+							which = sls_leader_eng_points
+							value < 6
+						}
 					}
 					add_trait = sls_trait_research_physics_r
 				}
 				if = {
 					limit = {
-						check_variable = { which = sls_leader_soc_points value > 5 }
-						check_variable = { which = sls_leader_phy_points value < 6 }
-						check_variable = { which = sls_leader_eng_points value < 6 }
+						check_variable = {
+							which = sls_leader_soc_points
+							value > 5
+						}
+						check_variable = {
+							which = sls_leader_phy_points
+							value < 6
+						}
+						check_variable = {
+							which = sls_leader_eng_points
+							value < 6
+						}
 					}
 					add_trait = sls_trait_research_society_r
 				}
 				if = {
 					limit = {
-						check_variable = { which = sls_leader_eng_points value > 5 }
-						check_variable = { which = sls_leader_phy_points value < 6 }
-						check_variable = { which = sls_leader_soc_points value < 6 }
+						check_variable = {
+							which = sls_leader_eng_points
+							value > 5
+						}
+						check_variable = {
+							which = sls_leader_phy_points
+							value < 6
+						}
+						check_variable = {
+							which = sls_leader_soc_points
+							value < 6
+						}
 					}
 					add_trait = sls_trait_research_engineering_r
 				}
@@ -2332,21 +2921,27 @@ country_event = {
 						}
 					}
 					random_list = {
-						1 = { add_trait = sls_trait_research_physics_r }
-						1 = { add_trait = sls_trait_research_society_r }
-						1 = { add_trait = sls_trait_research_engineering_r }
+						1 = {
+							add_trait = sls_trait_research_physics_r
+						}
+						1 = {
+							add_trait = sls_trait_research_society_r
+						}
+						1 = {
+							add_trait = sls_trait_research_engineering_r
+						}
 					}
 				}
 			}
 		}
 	}
 }
+
 ###For game start scientist guys (for early game balance)###
 event = {
 	id = sls.90
 	hide_window = yes
 	is_triggered_only = yes
-	
 	immediate = {
 		every_playable_country = {
 			save_event_target_as = sls_country
@@ -2355,7 +2950,9 @@ event = {
 					leader_class = scientist
 				}
 				event_target:sls_country = {
-					country_event = { id = sls.21 }
+					country_event = {
+						id = sls.21
+					}
 				}
 			}
 			every_owned_leader = {
@@ -2372,6 +2969,7 @@ event = {
 		}
 	}
 }
+
 event = {
 	id = sls.200
 	hide_window = yes
@@ -2388,8 +2986,13 @@ event = {
 					}
 				}
 			}
-			country_event = { id = sls.201 }
-			country_event = { id = sls.202 days = 1 }
+			country_event = {
+				id = sls.201
+			}
+			country_event = {
+				id = sls.202
+				days = 1
+			}
 		}
 		every_playable_country = {
 			limit = {
@@ -2403,11 +3006,12 @@ event = {
 					}
 				}
 			}
-			country_event = { id = sls.203 }
+			country_event = {
+				id = sls.203
+			}
 		}
 	}
 }
-
 
 ###Set eureka status for research scientists if they don't have it
 country_event = {
@@ -2448,13 +3052,12 @@ country_event = {
 								root = {
 									is_ai = no
 								}
-								
 								OR = {
 									has_leader_flag = sls_scientist_leader_society
 									has_leader_flag = sls_scientist_leader_engineering
 								}
 							}
-							create_message = { 
+							create_message = {
 								type = SLS_MESSAGE_EUREKA_BREAK
 								localization = sls_message_eureka_removed
 								days = 60
@@ -2462,7 +3065,7 @@ country_event = {
 								variable = {
 									type = name
 									localization = LEADER
-									scope = this 
+									scope = this
 								}
 							}
 						}
@@ -2470,10 +3073,8 @@ country_event = {
 						remove_leader_flag = sls_scientist_leader_society
 						remove_leader_flag = sls_scientist_leader_engineering
 						effect_sls_set_eureka_status = yes
-						
 					}
 					set_leader_flag = sls_scientist_leader_physics
-					
 				}
 				society = {
 					if = {
@@ -2492,7 +3093,7 @@ country_event = {
 									has_leader_flag = sls_scientist_leader_engineering
 								}
 							}
-							create_message = { 
+							create_message = {
 								type = SLS_MESSAGE_EUREKA_BREAK
 								localization = sls_message_eureka_removed
 								days = 60
@@ -2500,7 +3101,7 @@ country_event = {
 								variable = {
 									type = name
 									localization = LEADER
-									scope = this 
+									scope = this
 								}
 							}
 						}
@@ -2510,7 +3111,6 @@ country_event = {
 						effect_sls_set_eureka_status = yes
 					}
 					set_leader_flag = sls_scientist_leader_society
-					
 				}
 				engineering = {
 					if = {
@@ -2529,7 +3129,7 @@ country_event = {
 									has_leader_flag = sls_scientist_leader_physics
 								}
 							}
-							create_message = { 
+							create_message = {
 								type = SLS_MESSAGE_EUREKA_BREAK
 								localization = sls_message_eureka_removed
 								days = 60
@@ -2537,7 +3137,7 @@ country_event = {
 								variable = {
 									type = name
 									localization = LEADER
-									scope = this 
+									scope = this
 								}
 							}
 						}
@@ -2547,7 +3147,6 @@ country_event = {
 						effect_sls_set_eureka_status = yes
 					}
 					set_leader_flag = sls_scientist_leader_engineering
-					
 				}
 			}
 		}
@@ -2593,7 +3192,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_eureka_points value = 1.5 }
+				change_variable = {
+					which = sls_eureka_points
+					value = 1.5
+				}
 			}
 			if = {
 				limit = {
@@ -2603,7 +3205,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_eureka_points value = 3.75 }
+				change_variable = {
+					which = sls_eureka_points
+					value = 3.75
+				}
 			}
 			if = {
 				limit = {
@@ -2613,7 +3218,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_eureka_points value = 3 }
+				change_variable = {
+					which = sls_eureka_points
+					value = 3
+				}
 			}
 			if = {
 				limit = {
@@ -2624,7 +3232,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_eureka_points value = 3 }
+				change_variable = {
+					which = sls_eureka_points
+					value = 3
+				}
 			}
 			if = {
 				limit = {
@@ -2634,7 +3245,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_eureka_points value = 3 }
+				change_variable = {
+					which = sls_eureka_points
+					value = 3
+				}
 			}
 			if = {
 				limit = {
@@ -2644,10 +3258,13 @@ country_event = {
 								has_trait = trait_robot_improved_logic
 								has_trait = trait_erudite
 							}
-						}	
+						}
 					}
 				}
-				change_variable = { which = sls_eureka_points value = 2.25 }
+				change_variable = {
+					which = sls_eureka_points
+					value = 2.25
+				}
 			}
 			if = {
 				limit = {
@@ -2657,7 +3274,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_eureka_points value = 1.5 }
+				change_variable = {
+					which = sls_eureka_points
+					value = 1.5
+				}
 			}
 			if = {
 				limit = {
@@ -2667,7 +3287,10 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_eureka_points value = 1.5 }
+				change_variable = {
+					which = sls_eureka_points
+					value = 1.5
+				}
 			}
 			if = {
 				limit = {
@@ -2679,12 +3302,15 @@ country_event = {
 						}
 					}
 				}
-				change_variable = { which = sls_eureka_points value = 1.5 }
+				change_variable = {
+					which = sls_eureka_points
+					value = 1.5
+				}
 			}
 			if = {
 				limit = {
 					OR = {
-						has_trait = leader_trait_spark_of_genius 
+						has_trait = leader_trait_spark_of_genius
 						has_leader_flag = sls_scientist_has_spark_of_genius
 					}
 				}
@@ -2711,11 +3337,10 @@ country_event = {
 				limit = {
 					OR = {
 						has_trait = leader_trait_adaptable
-						has_trait = leader_trait_flexible_programming 
+						has_trait = leader_trait_flexible_programming
 						has_trait = leader_trait_custom_AI_assistant
 						has_leader_flag = sls_scientist_has_custom_AI_assistant
 					}
-					
 				}
 				change_variable = {
 					which = sls_eureka_points
@@ -2726,7 +3351,7 @@ country_event = {
 				limit = {
 					OR = {
 						has_trait = leader_trait_stubborn
-						has_trait = leader_trait_rigid_programming 
+						has_trait = leader_trait_rigid_programming
 						has_trait = leader_trait_paranoid
 					}
 				}
@@ -3195,6 +3820,7 @@ country_event = {
 		}
 	}
 }
+
 ###Remove eureka status while not leading research###
 country_event = {
 	id = sls.203
@@ -3211,7 +3837,6 @@ country_event = {
 			has_leader_flag = sls_have_eureka_status
 		}
 	}
-
 	immediate = {
 		every_owned_leader = {
 			limit = {
@@ -3228,7 +3853,7 @@ country_event = {
 			remove_leader_flag = sls_scientist_leader_engineering
 			effect_sls_remove_eureka_status = yes
 			remove_leader_flag = sls_have_eureka_status
-			create_message = { 
+			create_message = {
 				type = SLS_MESSAGE_EUREKA_BREAK
 				localization = sls_message_eureka_removed
 				days = 60
@@ -3236,12 +3861,13 @@ country_event = {
 				variable = {
 					type = name
 					localization = LEADER
-					scope = this 
+					scope = this
 				}
 			}
 		}
 	}
 }
+
 #EUREKA!
 country_event = {
 	id = sls.204
@@ -3553,7 +4179,7 @@ country_event = {
 						sls_trait_research_physics_lv15 = {
 							add_experience = 50
 						}
-					}	
+					}
 				}
 				society = {
 					switch = {
@@ -3871,7 +4497,7 @@ country_event = {
 			value = 6
 		}
 	}
-####
+	####
 	option = {
 		name = {
 			text = BREAKTHROUGH
@@ -3890,7 +4516,6 @@ country_event = {
 		trigger = {
 			event_target:sls_scientist = {
 				is_researching_area = society
-				
 				OR = {
 					has_leader_flag = sls_scientist_leader_has_mulit_society_expert
 					NOR = {
@@ -4275,7 +4900,7 @@ country_event = {
 			}
 		}
 	}
-###
+	###
 	option = {
 		name = {
 			text = BREAKTHROUGH
@@ -4293,7 +4918,7 @@ country_event = {
 		}
 		trigger = {
 			event_target:sls_scientist = {
-				is_researching_area = engineering		
+				is_researching_area = engineering
 				OR = {
 					has_leader_flag = sls_scientist_leader_has_mulit_engineering_expert
 					NOR = {
@@ -4548,14 +5173,11 @@ country_event = {
 	}
 }
 
-
 #EUREKA! But it's simpleifed
 country_event = {
 	id = sls.205
-
 	hide_window = yes
 	is_triggered_only = yes
-
 	after = {
 		event_target:sls_scientist = {
 			switch = {
@@ -4611,7 +5233,7 @@ country_event = {
 						sls_trait_research_physics_lv15 = {
 							add_experience = 50
 						}
-					}	
+					}
 				}
 				society = {
 					switch = {
@@ -4723,7 +5345,7 @@ country_event = {
 		}
 	}
 	immediate = {
-#		play_sound = event_sls_eureka
+		#		play_sound = event_sls_eureka
 		event_target:sls_scientist = {
 			if = {
 				limit = {

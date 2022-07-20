@@ -3,18 +3,22 @@ tech_robotic_workers = {
 	cost = @tier1cost3
 	area = engineering
 	tier = 1
-	category = { industry }
-	prerequisites = { "tech_powered_exoskeletons" }
-	weight = @tier1weight3
-
-	gateway = robotics
-
-	feature_flags = { robots }
-
-	potential = {
-		NOT = { has_ethic = "ethic_gestalt_consciousness" }
+	category = {
+		industry
 	}
-
+	prerequisites = {
+		"tech_powered_exoskeletons"
+	}
+	weight = @tier1weight3
+	gateway = robotics
+	feature_flags = {
+		robots
+	}
+	potential = {
+		NOT = {
+			has_ethic = "ethic_gestalt_consciousness"
+		}
+	}
 	weight_modifier = {
 		factor = 1.5
 		modifier = {
@@ -47,7 +51,6 @@ tech_robotic_workers = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 2
 		modifier = {
@@ -83,18 +86,23 @@ tech_droid_workers = {
 	cost = @tier2cost3
 	area = engineering
 	tier = 2
-	category = { industry }
-	prerequisites = { "tech_robotic_workers" "tech_colonial_centralization" }
-	weight = @tier2weight3
-
-	gateway = robotics
-
-	feature_flags = { droids }
-
-	potential = {
-		NOT = { has_ethic = "ethic_gestalt_consciousness" }
+	category = {
+		industry
 	}
-
+	prerequisites = {
+		"tech_robotic_workers"
+		"tech_colonial_centralization"
+	}
+	weight = @tier2weight3
+	gateway = robotics
+	feature_flags = {
+		droids
+	}
+	potential = {
+		NOT = {
+			has_ethic = "ethic_gestalt_consciousness"
+		}
+	}
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -131,7 +139,6 @@ tech_droid_workers = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 2
 		modifier = {
@@ -167,24 +174,29 @@ tech_synthetic_workers = {
 	cost = @tier4cost2
 	area = engineering
 	tier = 4
-	category = { industry }
-	prerequisites = { "tech_droid_workers" "tech_galactic_administration" "tech_sapient_ai" }
+	category = {
+		industry
+	}
+	prerequisites = {
+		"tech_droid_workers"
+		"tech_galactic_administration"
+		"tech_sapient_ai"
+	}
 	is_rare = yes
 	is_dangerous = yes
 	weight = @tier4weight2
-
-	feature_flags = { synths }
-
+	feature_flags = {
+		synths
+	}
 	gateway = robotics
-
 	modifier = {
-		planet_jobs_robotic_produces_mult = 0.10
+		planet_jobs_robotic_produces_mult = 0.1
 	}
-
 	potential = {
-		NOT = { has_ethic = "ethic_gestalt_consciousness" }
+		NOT = {
+			has_ethic = "ethic_gestalt_consciousness"
+		}
 	}
-
 	weight_modifier = {
 		factor = 0.5
 		modifier = {
@@ -218,7 +230,9 @@ tech_synthetic_workers = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = tech_synthetic_workers }
+				any_member = {
+					has_technology = tech_synthetic_workers
+				}
 			}
 		}
 		modifier = {
@@ -230,7 +244,7 @@ tech_synthetic_workers = {
 			has_ascension_perk = ap_the_flesh_is_weak
 		}
 		modifier = {
-			factor = 0.20
+			factor = 0.2
 			NOR = {
 				research_leader = {
 					area = engineering
@@ -251,7 +265,6 @@ tech_synthetic_workers = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 2
 		modifier = {
@@ -287,15 +300,14 @@ tech_society_1 = {
 	cost = @tier1cost1
 	area = society
 	tier = 1
-	category = { biology }
+	category = {
+		biology
+	}
 	weight = @tier1weight1
-
 	gateway = plague
-	
 	modifier = {
 		planet_researchers_society_research_produces_mult = 0.2
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 5
@@ -325,7 +337,6 @@ tech_society_1 = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 		modifier = {
@@ -343,16 +354,17 @@ tech_society_2 = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
-	category = { biology }
-	prerequisites = { "tech_society_1" }
+	category = {
+		biology
+	}
+	prerequisites = {
+		"tech_society_1"
+	}
 	weight = @tier2weight3
-
 	gateway = plague
-	
 	modifier = {
 		planet_researchers_society_research_produces_mult = 0.2
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 2
@@ -378,7 +390,6 @@ tech_society_2 = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 		modifier = {
@@ -396,16 +407,17 @@ tech_colonization_2 = {
 	cost = @tier1cost3
 	area = society
 	tier = 2
-	category = { new_worlds }
-	prerequisites = { "tech_colonization_1" }
+	category = {
+		new_worlds
+	}
+	prerequisites = {
+		"tech_colonization_1"
+	}
 	weight = @tier1weight3
-
 	gateway = plague2
-	
 	modifier = {
 		pop_environment_tolerance = 0.05
 	}
-
 	potential = {
 		OR = {
 			is_machine_empire = no
@@ -413,7 +425,6 @@ tech_colonization_2 = {
 			has_civic = civic_machine_servitor
 		}
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
@@ -430,7 +441,6 @@ tech_colonization_2 = {
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = 1.5
 		modifier = {
@@ -448,16 +458,17 @@ tech_colonization_3 = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
-	category = { new_worlds }
-	prerequisites = { "tech_colonization_2" }
+	category = {
+		new_worlds
+	}
+	prerequisites = {
+		"tech_colonization_2"
+	}
 	weight = @tier2weight3
-
 	gateway = plague2
-	
 	modifier = {
 		pop_environment_tolerance = 0.05
 	}
-
 	potential = {
 		OR = {
 			is_machine_empire = no
@@ -465,7 +476,6 @@ tech_colonization_3 = {
 			has_civic = civic_machine_servitor
 		}
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
@@ -482,7 +492,6 @@ tech_colonization_3 = {
 			}
 		}
 	}
-
 	ai_weight = {
 		factor = 1.5
 		modifier = {
@@ -500,16 +509,18 @@ tech_frontier_health = {
 	cost = @tier1cost2
 	area = society
 	tier = 1
-	category = { biology }
-	prerequisites = { "tech_genome_mapping" "tech_colonization_1" }
+	category = {
+		biology
+	}
+	prerequisites = {
+		"tech_genome_mapping"
+		"tech_colonization_1"
+	}
 	weight = @tier1weight2
-
 	gateway = plague3
-	
 	potential = {
 		is_gestalt = no
 	}
-
 	weight_modifier = {
 		factor = 2
 		modifier = {
@@ -530,24 +541,24 @@ tech_terrestrial_sculpting = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
-	category = { new_worlds }
-	prerequisites = { "tech_colonization_1" }
+	category = {
+		new_worlds
+	}
+	prerequisites = {
+		"tech_colonization_1"
+	}
 	weight = @tier2weight3
-
 	gateway = plague2
-	
 	feature_flags = {
 		build_terraform_station
 	}
-
 	weight_modifier = {
-		factor = 1.5 	# terraforming needs to be a bit more common
+		factor = 1.5		# terraforming needs to be a bit more common
 		modifier = {
 			factor = 0
 			is_lithoid_empire = yes
 			has_valid_civic = civic_hive_devouring_swarm
 		}
-
 		modifier = {
 			factor = 1.25
 			has_tradition = tr_expansion_adopt
@@ -560,7 +571,6 @@ tech_terrestrial_sculpting = {
 			}
 		}
 	}
-
 	ai_weight = {
 		modifier = {
 			factor = 1.25
@@ -577,16 +587,17 @@ tech_ecological_adaptation = {
 	cost = @tier3cost2
 	area = society
 	tier = 3
-	category = { new_worlds }
-	prerequisites = { "tech_terrestrial_sculpting" }
+	category = {
+		new_worlds
+	}
+	prerequisites = {
+		"tech_terrestrial_sculpting"
+	}
 	weight = @tier3weight2
-
 	gateway = plague2
-	
 	feature_flags = {
 		terraform_inhabited
 	}
-
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
@@ -600,7 +611,6 @@ tech_ecological_adaptation = {
 			}
 		}
 	}
-
 	ai_weight = {
 		modifier = {
 			factor = 1.25
@@ -617,25 +627,25 @@ tech_genome_mapping = {
 	cost = @tier1cost1
 	area = society
 	tier = 1
-	category = { biology }
-	weight = @tier1weight1
-
-	gateway = plague
-
-	modifier = {
-		pop_growth_speed = 0.10
+	category = {
+		biology
 	}
-
+	weight = @tier1weight1
+	gateway = plague
+	modifier = {
+		pop_growth_speed = 0.1
+	}
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor
 		}
 	}
-
 	weight_modifier = {
-		factor = 1.5 	# genetech needs to be a bit more common
+		factor = 1.5		# genetech needs to be a bit more common
 		modifier = {
 			factor = 1.25
 			has_authority = auth_hive_mind
@@ -652,7 +662,6 @@ tech_genome_mapping = {
 			}
 		}
 	}
-
 	ai_weight = {
 		modifier = {
 			factor = 1.25
@@ -670,12 +679,14 @@ tech_gene_tailoring = {
 	cost = @tier3cost1
 	area = society
 	tier = 3
-	category = { biology }
-	prerequisites = { "tech_genome_mapping" }
+	category = {
+		biology
+	}
+	prerequisites = {
+		"tech_genome_mapping"
+	}
 	weight = @tier3weight1
-
 	gateway = plague
-	
 	modifier = {
 		description = tech_gene_tailoring_modifier_desc
 		description_parameters = {
@@ -683,20 +694,19 @@ tech_gene_tailoring = {
 		}
 		BIOLOGICAL_species_trait_points_add = @tech_gene_tailoring_POINTS
 	}
-
 	feature_flags = {
 		modify_traits
 		pop_self_modification
 	}
-
 	potential = {
 		OR = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
 			has_civic = civic_machine_assimilator
 			has_civic = civic_machine_servitor
 		}
 	}
-
 	weight_modifier = {
 		factor = 2.5
 		modifier = {
@@ -715,7 +725,6 @@ tech_gene_tailoring = {
 			}
 		}
 	}
-
 	ai_weight = {
 		modifier = {
 			factor = 1.25

@@ -1,5 +1,4 @@
 namespace = pdcity
-
 #EnterSystem
 ship_event = {
 	id = pdcity.10
@@ -8,9 +7,7 @@ ship_event = {
 	picture = GFX_evt_city
 	location = from
 	show_sound = event_ship_bridge
-
 	is_triggered_only = yes
-
 	trigger = {
 		from = {
 			has_star_flag = ecocity_system
@@ -26,17 +23,19 @@ ship_event = {
 			}
 		}
 	}
-
 	immediate = {
 		owner = {
 			set_country_flag = city_encounter
 		}
 	}
-
 	option = {
 		name = pdcity.10.a
 		hidden_effect = {
-			owner = { country_event = { id = pdcity.11 } }
+			owner = {
+				country_event = {
+					id = pdcity.11
+				}
+			}
 		}
 	}
 }
@@ -46,15 +45,11 @@ country_event = {
 	id = pdcity.11
 	title = "pdcity.11.name"
 	desc = "pdcity.11.desc"
-	
 	diplomatic = yes
-	
-	is_triggered_only = yes		
-
+	is_triggered_only = yes
 	picture_event_data = {
 		room = no_video_feed_room
 	}
-	
 	option = {
 		name = pdcity.11.a
 	}
@@ -68,9 +63,7 @@ ship_event = {
 	picture = GFX_evt_city2
 	location = from
 	show_sound = event_ship_bridge
-
 	is_triggered_only = yes
-
 	trigger = {
 		from = {
 			has_planet_flag = ecocity_planet
@@ -86,14 +79,11 @@ ship_event = {
 			}
 		}
 	}
-
 	immediate = {
 		owner = {
 			set_country_flag = found_city_planet
 		}
-		
 	}
-
 	option = {
 		name = pdcity.20.a
 	}
@@ -107,7 +97,6 @@ planet_event = {
 	picture = GFX_evt_city2
 	show_sound = event_activating_unknown_technology
 	location = ROOT
-	
 	pre_triggers = {
 		has_owner = yes
 		is_homeworld = no
@@ -116,17 +105,15 @@ planet_event = {
 		is_occupied_flag = no
 	}
 	trigger = {
-		has_planet_flag = ecocity_planet			
+		has_planet_flag = ecocity_planet
 		owner = {
 			NOT = {
 				has_authority = auth_machine_intelligence
 			}
 		}
 	}
-	
 	is_triggered_only = yes
-	
-	immediate = {	
+	immediate = {
 		create_species = {
 			name = "The Gardeners"
 			class = ROBOT
@@ -146,19 +133,20 @@ planet_event = {
 			set_country_flag = gardeners_country
 		}
 	}
-
 	option = {
-		name = "ONSCREEN"	
-		while = { 
+		name = "ONSCREEN"
+		while = {
 			count = 4
 			create_pop = {
 				species = last_created
-				}
 			}
-		owner = { country_event = { id = pdcity.31 } }
+		}
+		owner = {
+			country_event = {
+				id = pdcity.31
+			}
+		}
 	}
-		
-
 }
 
 # Robots Call
@@ -166,16 +154,12 @@ country_event = {
 	id = pdcity.31
 	title = "pdcity.31.name"
 	desc = "pdcity.31.desc"
-	
 	diplomatic = yes
-	
 	is_triggered_only = yes
-		
 	picture_event_data = {
 		portrait = event_target:robogardeners
 		room = cityworld_room
 	}
-	
 	option = {
 		name = pdcity.31.a
 		response_text = pdcity.31.a.response
@@ -198,11 +182,15 @@ country_event = {
 			add_modifier = {
 				modifier = "strangerobots"
 				days = -1
-			}	
+			}
 		}
-		hidden_effect = {		
-			FROM = { 
-				planet_event = { id = pdcity.40 days = 360 random = 360 }
+		hidden_effect = {
+			FROM = {
+				planet_event = {
+					id = pdcity.40
+					days = 360
+					random = 360
+				}
 			}
 		}
 	}
@@ -216,13 +204,15 @@ planet_event = {
 	picture = GFX_evt_metropolis
 	show_sound = event_cityscape
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = pdcity.40.a
-		hidden_effect = {		
-				planet_event = { id = pdcity.41 days = 360 random = 360  }
+		hidden_effect = {
+			planet_event = {
+				id = pdcity.41
+				days = 360
+				random = 360
+			}
 		}
 	}
 }
@@ -235,17 +225,19 @@ planet_event = {
 	picture = GFX_evt_metropolis
 	show_sound = event_cityscape
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
-		name = pdcity.41.a				
+		name = pdcity.41.a
 		hidden_effect = {
-			planet_event = { id = pdcity.32 days = 360 random = 360  }
+			planet_event = {
+				id = pdcity.32
+				days = 360
+				random = 360
+			}
 			add_modifier = {
 				modifier = "uncomfortablecolonists"
 				days = -1
-			}	
+			}
 		}
 	}
 }
@@ -258,29 +250,35 @@ planet_event = {
 	picture = GFX_evt_metropolis
 	show_sound = event_cityscape
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = pdcity.32.a
 		custom_tooltip = pdcity.32.a.tooltip
-		hidden_effect = {		
-				planet_event = { id = pdcity.33 days = 1 }
+		hidden_effect = {
+			planet_event = {
+				id = pdcity.33
+				days = 1
+			}
 		}
 	}
-	
-		option = {
-		name = pdcity.32.b	
+	option = {
+		name = pdcity.32.b
 		custom_tooltip = pdcity.32.b.tooltip
-		hidden_effect = {		
-				planet_event = { id = pdcity.34 days = 1 }
-		}	
+		hidden_effect = {
+			planet_event = {
+				id = pdcity.34
+				days = 1
+			}
+		}
 	}
-		option = {
+	option = {
 		name = pdcity.32.c
 		custom_tooltip = pdcity.32.c.tooltip
-		hidden_effect = {		
-				planet_event = { id = pdcity.35 days = 14 }
+		hidden_effect = {
+			planet_event = {
+				id = pdcity.35
+				days = 14
+			}
 		}
 	}
 }
@@ -293,15 +291,11 @@ planet_event = {
 	picture = GFX_evt_metropolis
 	show_sound = event_cityscape
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = pdcity.33.a
 	}
-	
 }
-
 
 # Reprogram the Driods
 planet_event = {
@@ -311,16 +305,13 @@ planet_event = {
 	picture = GFX_evt_robot_assembly_plant
 	show_sound = event_cityscape
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = pdcity.34.a
 		remove_modifier = "strangerobots"
 		remove_modifier = "uncomfortablecolonists"
-		}
+	}
 }
-
 
 # Scrap the Driods
 planet_event = {
@@ -330,13 +321,13 @@ planet_event = {
 	picture = GFX_evt_ground_combat
 	show_sound = event_air_raid_siren
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		set_planet_flag = robot_attacked
 		set_planet_flag = robot_attacked_planet
-		owner = { set_country_flag = robot_attacked_country }
+		owner = {
+			set_country_flag = robot_attacked_country
+		}
 		create_country = {
 			name = "Sad Robots"
 			type = faction
@@ -348,26 +339,25 @@ planet_event = {
 			type = "machine_assault_1"
 		}
 		every_owned_pop = {
+			limit = {
+				is_non_sapient_robot = yes
+			}
+			kill_pop = yes
+		}
+	}
+	option = {
+		name = pdcity.35.a
+		remove_modifier = "strangerobots"
+		remove_modifier = "uncomfortablecolonists"
+		hidden_effect = {
+			#planet_event = { id = pdcity.36 days = 70 }
+			every_owned_pop = {
 				limit = {
 					is_non_sapient_robot = yes
 				}
 				kill_pop = yes
 			}
-	}
-	
-	option = {
-		name = pdcity.35.a
-		remove_modifier = "strangerobots"	
-		remove_modifier = "uncomfortablecolonists"
-		hidden_effect = {		
-			#planet_event = { id = pdcity.36 days = 70 }
-			every_owned_pop = {
-				limit = {
-						is_non_sapient_robot = yes
-					}
-				kill_pop = yes
-			}
-		}	
+		}
 	}
 }
 
@@ -380,19 +370,18 @@ country_event = {
 	show_sound = event_cityscape
 	location = FROM
 	fire_only_once = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		has_country_flag = robot_attacked_country
 	}
-
 	option = {
 		name = pdcity.36.a
 		owner = {
-			add_resource = { minerals = 2000 }
+			add_resource = {
+				minerals = 2000
+			}
 		}
-	}	
+	}
 }
 
 #EnterSystem
@@ -403,9 +392,7 @@ ship_event = {
 	picture = GFX_evt_milarc
 	location = from
 	show_sound = event_ship_bridge
-
 	is_triggered_only = yes
-
 	trigger = {
 		from = {
 			has_star_flag = mil_relic_system
@@ -421,13 +408,11 @@ ship_event = {
 			}
 		}
 	}
-
 	immediate = {
 		owner = {
 			set_country_flag = mil_relic_encounter
 		}
 	}
-
 	option = {
 		name = pdcity.110.a
 	}
@@ -441,9 +426,7 @@ ship_event = {
 	picture = GFX_evt_milarc2
 	location = from
 	show_sound = event_ship_bridge
-
 	is_triggered_only = yes
-
 	trigger = {
 		from = {
 			has_planet_flag = milarc_planet
@@ -459,14 +442,11 @@ ship_event = {
 			}
 		}
 	}
-
 	immediate = {
 		owner = {
 			set_country_flag = found_milarc_planet
 		}
-		
 	}
-
 	option = {
 		name = pdcity.120.a
 	}

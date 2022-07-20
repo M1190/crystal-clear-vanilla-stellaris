@@ -1,5 +1,4 @@
 namespace = distar
-
 #################################
 #
 # Anomaly Events
@@ -7,20 +6,17 @@ namespace = distar
 # distar.1 - distar.999
 #
 #################################
-
 # root = ship scope
 # from = planet scope
-
-country_event = { # Helpful relocation was a success
+country_event = {
+	# Helpful relocation was a success
 	id = distar.3016
 	title = "distar.3016.name"
 	desc = "distar.3016.desc"
 	picture = GFX_evt_alien_city
 	show_sound = event_scanner
 	location = event_target:nivlac_planet
-
 	is_triggered_only = yes
-
 	trigger = {
 		any_system = {
 			any_system_planet = {
@@ -42,12 +38,13 @@ country_event = { # Helpful relocation was a success
 					min_distance >= 50
 				}
 				solar_system = {
-					NOT = { exists = starbase }
+					NOT = {
+						exists = starbase
+					}
 				}
 			}
 		}
 	}
-
 	immediate = {
 		random_galaxy_planet = {
 			limit = {
@@ -69,7 +66,9 @@ country_event = { # Helpful relocation was a success
 					min_distance >= 50
 				}
 				solar_system = {
-					NOT = { exists = starbase }
+					NOT = {
+						exists = starbase
+					}
 				}
 			}
 			save_global_event_target_as = nivlac_planet
@@ -87,10 +86,18 @@ country_event = { # Helpful relocation was a success
 			flag = random
 			effect = {
 				save_global_event_target_as = nivlac_country
-				add_resource = { minerals = 1000 }
-				add_resource = { energy = 1000 }
-				add_resource = { food = 100 }
-				add_resource = { influence = 50 }
+				add_resource = {
+					minerals = 1000
+				}
+				add_resource = {
+					energy = 1000
+				}
+				add_resource = {
+					food = 100
+				}
+				add_resource = {
+					influence = 50
+				}
 				establish_communications_no_message = root
 			}
 		}
@@ -118,7 +125,6 @@ country_event = { # Helpful relocation was a success
 					species = event_target:nivlac_species
 				}
 			}
-
 			while = {
 				count = 2
 				add_district_and_planet_size_if_needed_effect = {
@@ -153,7 +159,6 @@ country_event = { # Helpful relocation was a success
 			add_building = building_research_lab_1
 			add_building = building_foundry_1
 			add_building = building_bureaucratic_1
-
 			while = {
 				count = 2
 				create_army = {
@@ -179,19 +184,23 @@ country_event = { # Helpful relocation was a success
 			}
 		}
 	}
-
 	option = {
 		name = EXCELLENT
 		hidden_effect = {
 			if = {
-				limit = { has_event_chain = mandate_uplift_chain }
-				country_event = { id = moremandate.82 }
+				limit = {
+					has_event_chain = mandate_uplift_chain
+				}
+				country_event = {
+					id = moremandate.82
+				}
 			}
 		}
 	}
 }
 
-country_event = { # Releasing fungoids into society as pops was successful
+country_event = {
+	# Releasing fungoids into society as pops was successful
 	id = distar.3017
 	title = "distar.3017.name"
 	desc = {
@@ -212,16 +221,18 @@ country_event = { # Releasing fungoids into society as pops was successful
 	picture = GFX_evt_colony_settlement
 	show_sound = event_scanner
 	location = event_target:nivlac_joint_planet
-
 	is_triggered_only = yes
-
 	option = {
 		name = EXCELLENT
 		custom_tooltip = distar.3017.a.tooltip
 		hidden_effect = {
 			if = {
-				limit = { has_event_chain = mandate_uplift_chain }
-				country_event = { id = moremandate.82 }
+				limit = {
+					has_event_chain = mandate_uplift_chain
+				}
+				country_event = {
+					id = moremandate.82
+				}
 			}
 		}
 	}
@@ -241,19 +252,20 @@ country_event = { # Releasing fungoids into society as pops was successful
 	}
 }
 
-country_event = { # Integration into our society complete
+country_event = {
+	# Integration into our society complete
 	id = distar.3032
 	title = "distar.3032.name"
 	desc = "distar.3032.desc"
 	picture = GFX_evt_colony_settlement
 	show_sound = event_scanner
 	location = from
-
 	is_triggered_only = yes
-
 	immediate = {
 		if = {
-			limit = { has_global_flag = expanded_pops_active }
+			limit = {
+				has_global_flag = expanded_pops_active
+			}
 			create_species = {
 				name = random
 				class = MOL
@@ -297,14 +309,17 @@ country_event = { # Integration into our society complete
 			}
 		}
 	}
-
 	option = {
 		name = EXCELLENT
 		custom_tooltip = distar.3032.a.tooltip
 		hidden_effect = {
 			if = {
-				limit = { has_event_chain = mandate_uplift_chain }
-				country_event = { id = moremandate.82 }
+				limit = {
+					has_event_chain = mandate_uplift_chain
+				}
+				country_event = {
+					id = moremandate.82
+				}
 			}
 		}
 	}
