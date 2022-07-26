@@ -11639,149 +11639,149 @@ play_as_ruler_campaign_distinguished_admiralty = {
 	}
 }
 
-play_as_ruler_campaign_share_the_burden = {
-	#DISABLED
-	icon = "GFX_mod_play_as_ruler_blank"
-	resources = {
-		category = edicts
-		cost = {
-			influence = 0
-		}
-	}
-	length = 1800
-	potential = {
-		always = no
-		NOT = {
-			check_variable = {
-				which = play_as_ruler_campaign_amount
-				value < 0
-			}
-		}
-		OR = {
-			has_country_flag = play_as_ruler_share_the_burden
-			has_country_flag = play_as_ruler_share_the_burden_holded
-		}
-		NOT = {
-			has_country_flag = synthetic_empire
-		}
-		OR = {
-			allows_slavery = yes
-			has_technology = "tech_robotic_workers"
-		}
-		NOR = {
-			has_authority = auth_hive_mind
-			has_authority = auth_machine_intelligence
-			has_authority = auth_ancient_machine_intelligence
-		}
-	}
-	allow = {
-		custom_tooltip = {
-			fail_text = play_as_ruler_campaign_amount_needed
-			OR = {
-				check_variable = {
-					which = play_as_ruler_campaign_amount
-					value > 0
-				}
-				AND = {
-					has_country_flag = play_as_ruler_share_the_burden_holded
-					has_edict = play_as_ruler_campaign_share_the_burden
-				}
-			}
-		}
-	}
-	modifier = {
-		#		pop_slave_resource_output = 0.15
-		#		pop_robot_production_output = 0.15
-	}
-	effect = {
-		custom_tooltip = play_as_ruler_campaign_amount_owned
-		hidden_effect = {
-			subtract_variable = {
-				which = play_as_ruler_campaign_amount
-				value = 1
-			}
-			set_timed_country_flag = {
-				flag = play_as_ruler_share_the_burden_holded
-				days = 3600
-			}
-			change_variable = {
-				which = play_as_ruler_ruled_time_country
-				value = 3
-			}
-		}
-	}
-	ai_weight = {
-		weight = 0
-	}
-}
+# play_as_ruler_campaign_share_the_burden = {
+# 	#DISABLED
+# 	icon = "GFX_mod_play_as_ruler_blank"
+# 	resources = {
+# 		category = edicts
+# 		cost = {
+# 			influence = 0
+# 		}
+# 	}
+# 	length = 1800
+# 	potential = {
+# 		always = no
+# 		NOT = {
+# 			check_variable = {
+# 				which = play_as_ruler_campaign_amount
+# 				value < 0
+# 			}
+# 		}
+# 		OR = {
+# 			has_country_flag = play_as_ruler_share_the_burden
+# 			has_country_flag = play_as_ruler_share_the_burden_holded
+# 		}
+# 		NOT = {
+# 			has_country_flag = synthetic_empire
+# 		}
+# 		OR = {
+# 			allows_slavery = yes
+# 			has_technology = "tech_robotic_workers"
+# 		}
+# 		NOR = {
+# 			has_authority = auth_hive_mind
+# 			has_authority = auth_machine_intelligence
+# 			has_authority = auth_ancient_machine_intelligence
+# 		}
+# 	}
+# 	allow = {
+# 		custom_tooltip = {
+# 			fail_text = play_as_ruler_campaign_amount_needed
+# 			OR = {
+# 				check_variable = {
+# 					which = play_as_ruler_campaign_amount
+# 					value > 0
+# 				}
+# 				AND = {
+# 					has_country_flag = play_as_ruler_share_the_burden_holded
+# 					has_edict = play_as_ruler_campaign_share_the_burden
+# 				}
+# 			}
+# 		}
+# 	}
+# 	modifier = {
+# 		#		pop_slave_resource_output = 0.15
+# 		#		pop_robot_production_output = 0.15
+# 	}
+# 	effect = {
+# 		custom_tooltip = play_as_ruler_campaign_amount_owned
+# 		hidden_effect = {
+# 			subtract_variable = {
+# 				which = play_as_ruler_campaign_amount
+# 				value = 1
+# 			}
+# 			set_timed_country_flag = {
+# 				flag = play_as_ruler_share_the_burden_holded
+# 				days = 3600
+# 			}
+# 			change_variable = {
+# 				which = play_as_ruler_ruled_time_country
+# 				value = 3
+# 			}
+# 		}
+# 	}
+# 	ai_weight = {
+# 		weight = 0
+# 	}
+# }
 
-play_as_ruler_campaign_egalitarian_focus = {
-	#DISABLED
-	icon = "GFX_mod_play_as_ruler_blank"
-	resources = {
-		category = edicts
-		cost = {
-			influence = 0
-		}
-	}
-	length = 1800
-	potential = {
-		always = no
-		NOT = {
-			check_variable = {
-				which = play_as_ruler_campaign_amount
-				value < 0
-			}
-		}
-		OR = {
-			has_country_flag = play_as_ruler_egalitarian_focus
-			has_country_flag = play_as_ruler_egalitarian_focus_holded
-		}
-		NOR = {
-			has_authority = auth_hive_mind
-			has_authority = auth_machine_intelligence
-			has_authority = auth_ancient_machine_intelligence
-		}
-		is_egalitarian = yes
-	}
-	allow = {
-		custom_tooltip = {
-			fail_text = play_as_ruler_campaign_amount_needed
-			OR = {
-				check_variable = {
-					which = play_as_ruler_campaign_amount
-					value > 0
-				}
-				AND = {
-					has_country_flag = play_as_ruler_egalitarian_focus_holded
-					has_edict = play_as_ruler_campaign_egalitarian_focus
-				}
-			}
-		}
-	}
-	modifier = {
-		#		pop = -0.1
-		#		pop_non_slave_resource_output = 0.1
-		country_unity_produces_mult = 0.05
-	}
-	effect = {
-		custom_tooltip = play_as_ruler_campaign_amount_owned
-		hidden_effect = {
-			subtract_variable = {
-				which = play_as_ruler_campaign_amount
-				value = 1
-			}
-			set_timed_country_flag = {
-				flag = play_as_ruler_egalitarian_focus_holded
-				days = 3600
-			}
-			change_variable = {
-				which = play_as_ruler_ruled_time_country
-				value = 2
-			}
-		}
-	}
-	ai_weight = {
-		weight = 0
-	}
-}
+# play_as_ruler_campaign_egalitarian_focus = {
+# 	#DISABLED
+# 	icon = "GFX_mod_play_as_ruler_blank"
+# 	resources = {
+# 		category = edicts
+# 		cost = {
+# 			influence = 0
+# 		}
+# 	}
+# 	length = 1800
+# 	potential = {
+# 		always = no
+# 		NOT = {
+# 			check_variable = {
+# 				which = play_as_ruler_campaign_amount
+# 				value < 0
+# 			}
+# 		}
+# 		OR = {
+# 			has_country_flag = play_as_ruler_egalitarian_focus
+# 			has_country_flag = play_as_ruler_egalitarian_focus_holded
+# 		}
+# 		NOR = {
+# 			has_authority = auth_hive_mind
+# 			has_authority = auth_machine_intelligence
+# 			has_authority = auth_ancient_machine_intelligence
+# 		}
+# 		is_egalitarian = yes
+# 	}
+# 	allow = {
+# 		custom_tooltip = {
+# 			fail_text = play_as_ruler_campaign_amount_needed
+# 			OR = {
+# 				check_variable = {
+# 					which = play_as_ruler_campaign_amount
+# 					value > 0
+# 				}
+# 				AND = {
+# 					has_country_flag = play_as_ruler_egalitarian_focus_holded
+# 					has_edict = play_as_ruler_campaign_egalitarian_focus
+# 				}
+# 			}
+# 		}
+# 	}
+# 	modifier = {
+# 		#		pop = -0.1
+# 		#		pop_non_slave_resource_output = 0.1
+# 		country_unity_produces_mult = 0.05
+# 	}
+# 	effect = {
+# 		custom_tooltip = play_as_ruler_campaign_amount_owned
+# 		hidden_effect = {
+# 			subtract_variable = {
+# 				which = play_as_ruler_campaign_amount
+# 				value = 1
+# 			}
+# 			set_timed_country_flag = {
+# 				flag = play_as_ruler_egalitarian_focus_holded
+# 				days = 3600
+# 			}
+# 			change_variable = {
+# 				which = play_as_ruler_ruled_time_country
+# 				value = 2
+# 			}
+# 		}
+# 	}
+# 	ai_weight = {
+# 		weight = 0
+# 	}
+# }
