@@ -1,0 +1,68 @@
+d_divprosp_independent_country = {
+	icon = d_slums
+	time = 360
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	potential = {
+		always = no
+	}
+
+	planet_modifier = {
+		planet_max_districts_add = -1
+	}
+
+	on_cleared = {
+		if = {
+			limit = {
+				any_owned_pop = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+			}
+			random_owned_pop = {
+				limit = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+				root = {
+					create_pop = {
+						species = prev
+					}
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+		else = {
+			random_owned_pop = {
+				root = {
+					create_pop = {
+						species = prev
+					}
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+
+		root = { 
+			planet_event = {
+				id = divprosp.6
+				days = 7
+			}
+		}		
+	}
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			unity = 150
+		}
+	}
+
+	prerequisites = { "tech_planetary_unification" }
+}

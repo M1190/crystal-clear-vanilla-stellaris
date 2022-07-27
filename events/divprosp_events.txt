@@ -1,0 +1,396 @@
+namespace = divprosp
+
+#replace all prosperous unifications with random new ones
+country_event = {
+	id = divprosp.1
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		has_origin = origin_default
+	}
+
+	immediate = {
+		set_country_flag = divprosp_converted_origin
+		if = {
+			limit = {
+				any_owned_pop = {
+					is_exact_same_species = owner_main_species
+				}
+			}
+
+			while = {
+				count = 4
+				random_owned_pop = {
+					limit = {
+						is_exact_same_species = owner_main_species
+					}
+					kill_pop = yes
+				}
+			}
+		}
+		else = {
+			while = {
+				count = 4
+				random_owned_pop = {
+					kill_pop = yes
+				}
+			}
+		}
+		
+		capital_scope = {
+			remove_district = district_generator
+			if = {
+				limit = {
+					owner = {
+						OR = {
+							is_lithoid_empire = yes
+							is_machine_empire = yes
+						}
+					}
+				}
+				remove_district = district_mining
+			}
+			else = {
+				remove_district = district_farming
+			}
+			remove_modifier = prosp_uni_mod
+			remove_modifier = prosp_uni_mod_gestalt
+		}
+		random_list = {
+			20 = {
+				set_origin = origin_historical_power
+				country_event = {	id = divprosp.2	}
+			}
+			15 = {
+				modifier = {
+					factor = 0
+					has_ethic = ethic_gestalt_consciousness
+				}
+				set_origin = origin_cold_war_victor
+				country_event = {	id = divprosp.3	}
+			}
+			15 = {
+				modifier = {
+					factor = 0
+					OR = {
+						has_ethic = ethic_gestalt_consciousness
+						has_civic = civic_fanatic_purifiers
+					}
+				}
+				set_origin = origin_union_of_states
+				country_event = {	id = divprosp.4	}
+			}
+			10 = {
+				modifier = {
+					factor = 0
+					OR = {
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_pacifist
+					}
+				}
+				set_origin = origin_world_conqueror
+				country_event = {	id = divprosp.5	}
+			}
+		}
+	}
+}
+
+#historical power
+
+#setup historical powers
+country_event = {
+	id = divprosp.2
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_historical_power
+	}
+
+	immediate = {
+		capital_scope = {
+			add_district_and_planet_size_if_needed_effect = {
+				district = district_generator
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					is_lithoid_empire = yes
+					is_machine_empire = yes
+				}
+			}
+			capital_scope = {
+				add_district_and_planet_size_if_needed_effect = {
+					district = district_mining
+				}
+			}
+		}
+		else = {
+			capital_scope = {
+				add_district_and_planet_size_if_needed_effect = {
+					district = district_farming
+				}
+			}
+		}
+		while = {
+			count = 4
+			capital_scope = {
+				create_pop = {
+					species = owner_main_species
+					ethos = random
+				}
+			}
+		}
+		if = {
+			limit = {
+				is_gestalt = no
+			}
+			capital_scope = {
+				add_modifier = { modifier = prosp_uni_mod days = 7200 }
+			}
+		}
+		else = {
+			capital_scope = {
+				add_modifier = { modifier = prosp_uni_mod_gestalt days = 7200 }
+			}
+		}
+	}
+}
+
+
+#cold war victor
+
+#setup cold war victor countries
+country_event = {
+	id = divprosp.3
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_cold_war_victor
+	}
+
+	immediate = {
+		capital_scope = {
+			add_modifier = {
+				modifier = divprosp_cold_war_victor_mod
+				days = 7200
+			}
+			add_district_and_planet_size_if_needed_effect = {
+				district = district_generator
+			}
+			create_pop = {
+				species = root
+				ethos = root.owner
+			}
+		}
+	}
+}
+
+#union of states
+
+#setup union of states countries
+country_event = {
+	id = divprosp.4
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_union_of_states
+	}
+
+	immediate = {
+		capital_scope = {
+			add_district_and_planet_size_if_needed_effect = {
+				district = district_generator
+			}
+
+			while = {
+				count = 4
+				if = {
+					limit = {
+						any_owned_pop = {
+							is_exact_same_species = owner_main_species
+						}
+					}
+					random_owned_pop = {
+						limit = {
+							is_exact_same_species = owner_main_species
+						}
+						kill_pop = yes
+					}
+					add_deposit = d_divprosp_independent_country
+				}
+				else = {
+					random_owned_pop = { kill_pop = yes }
+					add_deposit = d_divprosp_independent_country
+				}
+			}
+		}
+	}
+}
+
+#fires unification day after game start
+planet_event = {
+	id = divprosp.6
+	hide_window = no
+	is_triggered_only = yes
+
+	title = divprosp.3
+	desc = divprosp.3.desc
+	picture = GFX_evt_metropolis
+	show_sound = event_celebration
+
+	trigger = {
+		NOT = { has_deposit = d_divprosp_independent_country }
+	}
+
+	option = {
+		name = "divprosp.3.a"
+		if = {
+			limit = {
+				owner = { is_gestalt = no }
+			}
+			add_modifier = { modifier = prosp_uni_mod days = 7200 }
+		}
+		else = {
+			add_modifier = { modifier = prosp_uni_mod_gestalt days = 7200 }
+		}
+	}
+}
+
+
+#world conqueror
+
+#setup world conqueror countries
+country_event = {
+	id = divprosp.5
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_world_conqueror
+	}
+
+	immediate = {
+		capital_scope = {
+			if = {
+				limit = {
+					owner = {
+						is_lithoid_empire = no
+						is_gestalt = no
+					}
+				}
+				add_modifier = {
+					modifier = divprosp_rationing_mod
+					days = 7200
+				}
+			}
+			else_if = {
+				limit = {
+					owner = {
+						is_gestalt = no
+						is_lithoid_empire = yes
+					}
+				}
+				add_modifier = {
+					modifier = divprosp_rationing_lithoid_mod
+					days = 7200
+				}
+			}
+			
+			add_planet_devastation = 25
+			add_district_and_planet_size_if_needed_effect = {
+				district = district_city
+			}
+			add_building = building_stronghold
+			if = {
+				limit = {
+					owner = {
+						is_gestalt = no
+					}
+				}
+
+				while = {
+					count = 5
+					if = {
+						limit = {
+							any_owned_pop = {
+								NOT = {
+									has_modifier = pop_recently_conquered
+								}
+							}
+						}
+						random_owned_pop = {
+							limit = {
+								NOT = {
+									has_modifier = pop_recently_conquered
+								}
+							}
+							add_modifier = {
+								modifier = pop_recently_conquered
+								days = 7200
+							}
+						}
+					}				
+				}
+			}
+		}
+	}
+}
+
+#on actions
+country_event = {
+	id = divprosp.7
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_world_conqueror
+		NOT = { has_country_flag = divprosp_converted_origin }
+	}
+
+	immediate = {
+		country_event = { id = divprosp.5 }
+	}
+}
+
+country_event = {
+	id = divprosp.8
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_union_of_states
+		NOT = { has_country_flag = divprosp_converted_origin }
+	}
+
+	immediate = {
+		country_event = { id = divprosp.4 }
+	}
+}
+
+country_event = {
+	id = divprosp.9
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_cold_war_victor
+		NOT = { has_country_flag = divprosp_converted_origin }
+	}
+
+	immediate = {
+		country_event = { id = divprosp.3 }
+	}
+}
+
+country_event = {
+	id = divprosp.10
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_historical_power
+		NOT = { has_country_flag = divprosp_converted_origin }
+	}
+
+	immediate = {
+		country_event = { id = divprosp.2 }
+	}
+}
