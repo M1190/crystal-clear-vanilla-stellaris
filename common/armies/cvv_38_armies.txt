@@ -1,0 +1,1340 @@
+# CVV Armies
+# Expanded Espionage and Diplomacy Mod
+## Imperial Legions
+republic_legion = {
+	damage = 2.5
+	health = 3
+	morale = 3
+	morale_damage = 1
+	collateral_damage = 0.75
+	war_exhaustion = 3
+	time = 150
+	icon = GFX_army_type_imperial
+	use_armynames_from = imperial_legion
+	has_species = no
+	resources = {
+		category = armies
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+	potential = {
+		owner = {
+			has_galactic_republic = yes
+			is_galactic_custodian = yes
+			is_active_resolution = resolution_republic_imperial_legions
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			text = republic_legion_limit_tooltip
+			owner = {
+				check_variable = {
+					which = "republic_legion_soldier_count"
+					value < 12
+				}
+			}
+		}
+	}
+	on_queued = {
+		owner = {
+			change_variable = {
+				which = "republic_legion_soldier_count"
+				value = 1
+			}
+		}
+	}
+	on_unqueued = {
+		owner = {
+			change_variable = {
+				which = "republic_legion_soldier_count"
+				value = -1
+			}
+		}
+	}
+}
+
+# /Expanded Espionage and Diplomacy Mod
+# Empires Expanded mod armies
+## Terrorist Army
+terrorist_army = {
+	defensive = yes
+	damage = 1.25
+	health = 0.75
+	morale = 1
+	icon = GFX_army_type_rebel
+	potential = {
+		always = no
+	}
+}
+
+## The Master AI Drone Legion Army
+tma_drones = {
+	damage = 4
+	health = 4
+	has_morale = no
+	morale_damage = 2.5
+	collateral_damage = 5
+	war_exhaustion = 3
+	time = 400
+	has_species = no
+	icon = GFX_army_type_machine_assault
+	resources = {
+		category = armies
+		cost = {
+			alloys = 300
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	potential = {
+		custom_tooltip = {
+			planet = {
+				is_capital = yes
+			}
+			owner = {
+				# resolve this flag error
+				has_country_flag = tma_armies_allowed
+			}
+		}
+	}
+}
+
+# /Empires Expanded mod armies
+# Extra Ship Components 2 Next mod armies
+## Psionic Avatar; Psionic Weapons subtree
+esc_psionic_avatar_army = {
+	damage = 5
+	health = 7
+	morale_damage = 2
+	war_exhaustion = 5
+	time = 25
+	has_species = no
+	has_morale = no
+	icon = GFX_esc_army_psi_avatar
+	resources = {
+		category = armies
+		cost = {
+			energy = 2500
+			sr_zro = 100
+		}
+	}
+	show_tech_unlock_if = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_psionic_weapons_forbidden
+		}
+	}
+	potential_country = {
+		OR = {
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
+			has_country_flag = ESC_COUNTRY_FLAG_machine_psionics
+			has_country_flag = ESC_COUNTRY_FLAG_mod_allow_basic_psionic_weapons
+		}
+	}
+	potential = {
+		custom_tooltip = {
+			planet = {
+				is_capital = yes
+			}
+		}
+	}
+	prerequisites = {
+		esc_tech_psi_avatar_army
+	}
+	ai_weight = {
+		base = 100
+		modifier = {
+			set = 0
+			is_fallen_empire = yes
+			NOT = {
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+	}
+}
+
+## Erasure Squad; Chronospatial Weapons subtree
+esc_erasure_squad_army = {
+	damage = 7
+	health = 2
+	morale = 2
+	morale_damage = 3
+	war_exhaustion = 3
+	time = 360
+	icon = GFX_esc_army_chrono_trooper
+	resources = {
+		category = armies
+		cost = {
+			energy = 250
+			minerals = 500
+			sr_dark_matter = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	show_tech_unlock_if = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_chronospatial_weapons_forbidden
+		}
+		OR = {
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
+		}
+	}
+	potential_country = {
+		OR = {
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
+		}
+	}
+	potential = {
+		from = {
+			NOR = {
+				has_trait = "trait_mechanical"
+				has_trait = "trait_machine_unit"
+				is_sapient = no
+			}
+		}
+	}
+	prerequisites = {
+		esc_tech_chrono_spatial_weapons
+	}
+	ai_weight = {
+		base = 100
+	}
+}
+
+## Eradicator Droids; mechanical verions of Erasure Squads
+esc_eradicator_droids_army = {
+	damage = 7
+	health = 2
+	morale_damage = 3
+	war_exhaustion = 3
+	time = 360
+	has_morale = no
+	has_species = no
+	icon = GFX_esc_army_chrono_trooper
+	resources = {
+		category = armies
+		cost = {
+			energy = 250
+			alloys = 200
+			sr_dark_matter = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	show_tech_unlock_if = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_chronospatial_weapons_forbidden
+		}
+		has_authority = auth_machine_intelligence
+	}
+	potential_country = {
+		OR = {
+			has_authority = auth_machine_intelligence
+			has_country_flag = synthetic_age
+		}
+	}
+	prerequisites = {
+		esc_tech_chrono_spatial_weapons
+	}
+	ai_weight = {
+		base = 100
+	}
+}
+
+## Tesla Troopers; organic tesla armies
+esc_tesla_troopers_army = {
+	damage = 3.5
+	health = 4
+	morale = 2
+	morale_damage = 2
+	war_exhaustion = 1.5
+	time = 360
+	icon = GFX_esc_army_tesla_trooper
+	resources = {
+		category = armies
+		cost = {
+			energy = 150
+			minerals = 400
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+	show_tech_unlock_if = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_tesla_weapons_forbidden
+		}
+		OR = {
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
+		}
+	}
+	potential_country = {
+		NOT = {
+			has_authority = auth_machine_intelligence
+		}
+	}
+	potential = {
+		from = {
+			NOR = {
+				has_trait = "trait_mechanical"
+				has_trait = "trait_machine_unit"
+				is_sapient = no
+			}
+		}
+	}
+	prerequisites = {
+		esc_tech_tesla_weapons
+	}
+	ai_weight = {
+		base = 100
+	}
+}
+
+## Tesla Droids; mechanical tesla armies
+esc_tesla_droids_army = {
+	damage = 3.5
+	health = 4
+	morale_damage = 2
+	war_exhaustion = 1.5
+	time = 360
+	has_morale = no
+	has_species = no
+	icon = GFX_esc_army_tesla_trooper
+	resources = {
+		category = armies
+		cost = {
+			energy = 150
+			alloys = 100
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+	show_tech_unlock_if = {
+		NOT = {
+			has_global_flag = ESC_GLOBAL_FLAG_tesla_weapons_forbidden
+		}
+		has_authority = auth_machine_intelligence
+	}
+	potential_country = {
+		OR = {
+			has_authority = auth_machine_intelligence
+			has_country_flag = synthetic_age
+		}
+	}
+	prerequisites = {
+		esc_tech_tesla_weapons
+	}
+	ai_weight = {
+		base = 100
+	}
+}
+
+## Bio-Horror Horde; advanced bio-ascension army
+esc_biohorror_army = {
+	health = 4
+	damage = 4
+	morale_damage = 2.5
+	collateral_damage = 4
+	war_exhaustion = 0.25
+	time = 100
+	has_morale = no
+	has_species = no
+	icon = GFX_army_type_xenomorph
+	resources = {
+		category = armies
+		cost = {
+			minerals = 350
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	potential_country = {
+		ESC_TRIGGER_may_research_biological_weapons_advanced = yes
+	}
+	prerequisites = {
+		esc_tech_bio_horror_army
+	}
+	ai_weight = {
+		base = 10
+		modifier = {
+			factor = 10
+			is_xenophobe = yes
+		}
+		modifier = {
+			set = 0
+			OR = {
+				is_pacifist = yes
+				is_xenophile = yes
+			}
+		}
+		modifier = {
+			set = 0
+			is_fallen_empire = yes
+			NOT = {
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+	}
+}
+
+# /Extra Ship Components 2 Next mod armies
+# Expanded Stellaris Traditions mod armies
+## Mechanicum 3: Titan army
+est_titan_army = {
+	damage = 5
+	health = 8
+	morale_damage = 4
+	collateral_damage = 1.75
+	war_exhaustion = 0.25
+	#robotic = yes
+	#assault = yes
+	time = 540
+	icon = GFX_army_type_machine_assault
+	has_morale = no
+	has_species = no
+	resources = {
+		category = armies
+		cost = {
+			minerals = 500
+			energy = 100
+		}
+		upkeep = {
+			energy = 6
+		}
+	}
+	prerequisites = {
+		"tech_est_mechanical_knights"
+	}
+}
+
+## Mechanicum 3: Mechanical Knights army
+est_mechanical_knights_army = {
+	damage = 2
+	health = 3
+	morale_damage = 2.5
+	collateral_damage = 1
+	war_exhaustion = 1
+	#robotic = yes
+	#assault = yes
+	time = 270
+	icon = GFX_army_type_machine_assault
+	has_species = no
+	resources = {
+		category = armies
+		cost = {
+			minerals = 200
+			energy = 50
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+	prerequisites = {
+		"tech_est_mechanical_knights"
+	}
+}
+
+# /Expanded Stellaris Traditions mod armies
+# EUTAB mod armies
+## Mindlink Commando
+eutab_mindlink_commando_army = {
+	damage = 1.8
+	health = 1.3
+	morale = 2.5
+	morale_damage = 1.4
+	collateral_damage = 0.75
+	war_exhaustion = 0.5
+	time = 80
+	icon = GFX_army_type_clone
+	resources = {
+		category = armies
+		cost = {
+			minerals = 100
+			energy = 25
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+	allow = {
+		OR = {
+			has_building = building_clone_vats
+			has_building = building_eutab_adv_clone_vats
+		}
+	}
+	potential = {
+		from = {
+			NOR = {
+				is_species_class = MACHINE
+				is_species_class = ROBOT
+				is_sapient = no
+			}
+		}
+		owner = {
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+	prerequisites = {
+		"tech_eutab_mindlink_commando"
+	}
+}
+
+## Terror Drones
+eutab_terror_drones = {
+	damage = 1.2
+	health = 2.5
+	has_morale = no
+	morale_damage = 2.5
+	collateral_damage = 3.5
+	war_exhaustion = 0.3
+	time = 70
+	has_species = no
+	icon = GFX_army_type_machine_assault
+	resources = {
+		category = armies
+		cost = {
+			minerals = 150
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	potential = {
+		owner = {
+			has_authority = auth_machine_intelligence
+		}
+	}
+	prerequisites = {
+		"tech_eutab_m_psychological_warfare"
+	}
+}
+
+## Janissary
+eutab_janissary_army = {
+	damage = 1.5
+	health = 1.5
+	morale = 1
+	morale_damage = 0.75
+	collateral_damage = 1.25
+	war_exhaustion = 0.6
+	time = 100
+	icon = GFX_army_type_xenomorph
+	resources = {
+		category = armies
+		cost = {
+			minerals = 90
+		}
+		upkeep = {
+			energy = 0.9
+		}
+	}
+	prerequisites = {
+		"tech_eutab_xeno_janis"
+	}
+	allow = {
+		custom_tooltip = {
+			text = "requirement_eutab_non_majority_slave"
+			any_owned_pop = {
+				AND = {
+					is_pop_category = slave
+					NOT = {
+						is_same_species = root.owner
+					}
+				}
+			}
+		}
+	}
+	potential = {
+		from = {
+			NOR = {
+				has_trait = trait_mechanical
+				has_trait = trait_machine_unit
+				has_trait = trait_hive_mind
+				is_sapient = no
+			}
+		}
+		owner = {
+			has_policy_flag = slavery_allowed
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
+		}
+	}
+}
+
+# /EUTAB mod armies
+# Guilli's Planet Modifiers mod armies
+## Relic armies
+gpm_venerable_dreadnaught_army = {
+	damage = 5
+	morale_damage = 5
+	collateral_damage = 5
+	war_exhaustion = 0.25
+	health = 50
+	has_morale = no
+	time = 360
+	has_species = no
+	icon = GFX_army_type_machine_assault
+	resources = {
+		category = armies
+		cost = {
+			alloys = 1000000
+		}
+		upkeep = {
+			energy = 10
+			alloys = 5
+		}
+	}
+	potential = {
+		always = no
+	}
+	allow = {
+		always = no
+	}
+}
+
+gpm_dreadnaught_army = {
+	damage = 2.5
+	morale_damage = 2.5
+	collateral_damage = 1
+	war_exhaustion = 3
+	health = 2.5
+	morale = 2.5
+	time = 360
+	has_species = no
+	icon = GFX_army_type_machine_assault
+	resources = {
+		category = armies
+		cost = {
+			alloys = 25
+			minor_artifacts = 5
+		}
+		upkeep = {
+			energy = 3
+			alloys = 0.2
+		}
+	}
+	potential = {
+		owner = {
+			has_relic = gpm_r_venerable_dreadnaught
+		}
+	}
+	allow = {
+		owner = {
+			has_relic = gpm_r_venerable_dreadnaught
+		}
+	}
+}
+
+## Normal armies
+gpm_precursor_mech_army = {
+	damage = 3
+	morale_damage = 3
+	collateral_damage = 3
+	war_exhaustion = 3
+	health = 3
+	morale = 3
+	time = 360
+	has_species = no
+	icon = GFX_army_type_machine_assault
+	resources = {
+		category = armies
+		cost = {
+			alloys = 50
+			minor_artifacts = 10
+		}
+		upkeep = {
+			energy = 5
+			alloys = 0.1
+		}
+	}
+	potential = {
+		planet = {
+			has_modifier = "gpm_precursor_mechs"
+		}
+		owner = {
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			text = precursor_mech_army_trigger_tooltip
+			planet = {
+				has_modifier = "gpm_precursor_mechs"
+			}
+		}
+	}
+}
+
+gpm_precursor_bunker_army = {
+	defensive = yes
+	is_pop_spawned = yes
+	damage = 3
+	health = 4
+	morale = 4
+	collateral_damage = 0
+	war_exhaustion = 0	# No WE from defense armies
+	icon = GFX_army_type_defensive
+	has_species = yes
+	potential = {
+		planet = {
+			has_modifier = "gpm_precursor_bunker_grid"
+			has_building = gpm_building_stronghold
+		}
+		owner = {
+			NOT = {
+				has_ethic = ethic_gestalt_consciousness
+			}
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			text = precursor_bunker_army_trigger_tooltip
+			planet = {
+				has_modifier = "gpm_precursor_bunker_grid"
+				has_building = gpm_building_stronghold
+			}
+		}
+	}
+}
+
+gpm_giant_arachnid_army = {
+	damage = 2
+	morale_damage = 4
+	collateral_damage = 0
+	war_exhaustion = 3
+	health = 2
+	has_morale = no
+	time = 180
+	icon = GFX_army_type_xenomorph
+	has_species = no
+	resources = {
+		category = armies
+		cost = {
+			food = 200
+		}
+		upkeep = {
+			food = 1
+		}
+	}
+	potential = {
+		owner = {
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
+			has_technology = tech_gpm_arachnophobia_discovery
+		}
+	}
+}
+
+## Arachnid defense armies (event)
+gpm_giant_arachnid_army_defensive = {
+	defensive = yes
+	damage = 2
+	morale_damage = 4
+	health = 2
+	has_morale = no
+	icon = GFX_army_type_xenomorph
+	has_species = no
+	potential = {
+		always = no
+	}
+}
+
+## Machine Empires
+gpm_precursor_mech_army_machine = {
+	damage = 3
+	morale_damage = 3
+	collateral_damage = 3
+	war_exhaustion = 3
+	health = 3
+	morale = 3
+	time = 360
+	has_species = no
+	icon = GFX_army_type_machine_assault
+	resources = {
+		category = armies
+		cost = {
+			alloys = 50
+			minor_artifacts = 10
+		}
+		upkeep = {
+			energy = 5
+			alloys = 0.1
+		}
+	}
+	potential = {
+		planet = {
+			has_modifier = "gpm_precursor_mechs"
+		}
+		owner = {
+			has_authority = auth_machine_intelligence
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			text = precursor_mech_army_machine_trigger_tooltip
+			planet = {
+				has_modifier = "gpm_precursor_mechs"
+			}
+		}
+	}
+}
+
+gpm_precursor_bunker_army_machine = {
+	defensive = yes
+	is_pop_spawned = yes
+	damage = 3
+	health = 4
+	morale = 4
+	collateral_damage = 0
+	war_exhaustion = 0	# No WE from defense armies
+	icon = GFX_army_type_defensive
+	has_species = yes
+	potential = {
+		planet = {
+			has_modifier = "gpm_precursor_bunker_grid"
+			has_building = gpm_building_stronghold
+		}
+		owner = {
+			has_ethic = ethic_gestalt_consciousness
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			text = precursor_bunker_army_machine_trigger_tooltip
+			planet = {
+				has_modifier = "gpm_precursor_bunker_grid"
+				has_building = gpm_building_stronghold
+			}
+		}
+	}
+}
+
+gpm_giant_arachnid_army_machine = {
+	damage = 2
+	morale_damage = 4
+	collateral_damage = 0
+	war_exhaustion = 3
+	health = 2
+	has_morale = no
+	time = 180
+	icon = GFX_army_type_gene_warrior
+	has_species = no
+	resources = {
+		category = armies
+		cost = {
+			alloys = 50
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+	potential = {
+		owner = {
+			has_authority = auth_machine_intelligence
+			has_technology = tech_gpm_arachnophobia_discovery
+		}
+	}
+}
+
+## Relic Armies
+gpm_relic_tank_battalion = {
+	damage = 4
+	health = 5
+	morale = 4
+	morale_damage = 2.5
+	collateral_damage = 2.5
+	war_exhaustion = 3
+	time = 120
+	icon = GFX_army_type_assault
+	has_species = no
+	prerequisites = {
+		"tech_assault_armies"
+	}
+	resources = {
+		category = armies
+		cost = {
+			alloys = 25
+			minor_artifacts = 5
+		}
+		upkeep = {
+			energy = 0.5
+			alloys = 0.1
+		}
+	}
+	potential = {
+		planet = {
+			has_deposit = gpm_d_relic_tank_factory
+		}
+	}
+}
+
+gpm_relic_mech_squadron = {
+	damage = 4
+	health = 4
+	morale = 2.5
+	morale_damage = 2.5
+	collateral_damage = 5
+	war_exhaustion = 3
+	time = 120
+	icon = GFX_army_type_assault
+	has_species = no
+	prerequisites = {
+		"tech_assault_armies"
+	}
+	resources = {
+		category = armies
+		cost = {
+			alloys = 50
+			minor_artifacts = 5
+		}
+		upkeep = {
+			energy = 1
+			alloys = 0.25
+		}
+	}
+	potential = {
+		planet = {
+			has_deposit = gpm_d_relic_mech_factory
+		}
+	}
+}
+
+gpm_relic_fighter_squadron = {
+	damage = 5
+	health = 2.5
+	morale = 2.5
+	morale_damage = 4
+	collateral_damage = 2.5
+	war_exhaustion = 3
+	time = 120
+	icon = GFX_army_type_assault
+	has_species = no
+	prerequisites = {
+		"tech_assault_armies"
+	}
+	resources = {
+		category = armies
+		cost = {
+			alloys = 30
+			minor_artifacts = 5
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+	potential = {
+		planet = {
+			has_deposit = gpm_d_relic_ship_factory
+		}
+	}
+}
+
+gpm_relic_power_armoured_troops = {
+	damage = 2.5
+	health = 3
+	morale = 3
+	morale_damage = 1.2
+	collateral_damage = 0.5
+	war_exhaustion = 3
+	time = 120
+	icon = GFX_army_type_assault
+	prerequisites = {
+		"tech_assault_armies"
+	}
+	resources = {
+		category = armies
+		cost = {
+			alloys = 15
+			minor_artifacts = 2
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	potential = {
+		planet = {
+			has_deposit = gpm_d_relic_power_armor_factory
+		}
+	}
+}
+
+## Xenomorph defense armies (event)
+gpm_xenomorph_army_defensive = {
+	defensive = yes
+	damage = 3
+	morale_damage = 2
+	health = 2
+	has_morale = no
+	icon = GFX_army_type_xenomorph
+	has_species = no
+	potential = {
+		always = no
+	}
+}
+
+## Xenomorph queen army (event)
+gpm_xenomorph_army_queen = {
+	defensive = yes
+	damage = 4
+	morale_damage = 2
+	health = 10
+	has_morale = no
+	icon = GFX_army_type_xenomorph
+	has_species = no
+	potential = {
+		always = no
+	}
+}
+
+## Dupe Xenomorph army; no upkeep
+gpm_xenomorph_army_no_upkeep = {
+	damage = 2
+	morale_damage = 2
+	collateral_damage = 5
+	war_exhaustion = 0.25
+	health = 2
+	has_morale = no
+	time = 100
+	icon = GFX_army_type_xenomorph
+	has_species = no
+	potential = {
+		always = no
+	}
+}
+
+# /Guilli's Planet Modifiers mod armies
+# More Origins mod armies
+## Ancient Robotic Warform army
+mom_ancient_horrors = {
+	defensive = yes
+	damage = 1.7
+	health = 1.6
+	morale_damage = 1.5
+	collateral_damage = 1
+	war_exhaustion = 0
+	has_morale = no
+	icon = GFX_army_type_robot
+	has_species = no
+	potential = {
+		always = no
+	}
+}
+
+# /More Origins mod armies
+# Planetary Wonders mod armies
+## Defense Armies
+### Guardian Angel army
+pw_army_flying_fortress = {
+	icon = GFX_pw_army_flying_fortress
+	defensive = yes
+	health = 8
+	damage = 5
+	morale_damage = 2
+	has_morale = no
+	has_species = no
+	collateral_damage = 0
+	war_exhaustion = 0
+	resources = {
+		category = armies
+		upkeep = {
+			energy = 10
+		}
+	}
+	# Can't be built, must be spawned (by event/decision).
+	potential = {
+		always = no
+	}
+}
+
+## Assault Armies
+### Titan Forge army
+pw_army_war_titan = {
+	icon = GFX_pw_army_war_titan
+	damage = 15
+	health = 20
+	has_morale = no
+	morale_damage = 5
+	collateral_damage = 15
+	war_exhaustion = 15
+	time = @pw_2years
+	has_species = no
+	prerequisites = {
+		pw_tech_titan_forge
+	}
+	resources = {
+		category = armies
+		cost = {
+			alloys = 1000
+		}
+		upkeep = {
+			energy = 20
+		}
+	}
+	potential = {
+		custom_tooltip = {
+			text = pw_army_war_titan_limit
+			planet = {
+				has_active_building = pw_building_titan_forge
+			}
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			text = pw_army_war_titan_limit
+			NOT = {
+				owner = {
+					any_owned_army = {
+						army_type = pw_army_war_titan
+					}
+				}
+			}
+			NOT = {
+				planet = {
+					has_planet_flag = pw_assembling_war_titan
+				}
+			}
+		}
+	}
+	on_queued = {
+		planet = {
+			set_planet_flag = pw_assembling_war_titan
+		}
+	}
+	on_unqueued = {
+		planet = {
+			remove_planet_flag = pw_assembling_war_titan
+		}
+	}
+}
+
+### Salvaged Titan Forge army (anomaly)
+pw_army_salvaged_war_titan = {
+	icon = GFX_pw_army_war_titan
+	damage = 10
+	health = 10
+	has_morale = no
+	morale_damage = 3
+	collateral_damage = 10
+	war_exhaustion = 10
+	has_species = no
+	resources = {
+		category = armies
+		upkeep = {
+			energy = 5
+		}
+	}
+	# Can't be built, must be spawned (by event/decision).
+	potential = {
+		always = no
+	}
+}
+
+### Assault Acolyte
+pw_assault_acolyte = {
+	icon = GFX_pw_assault_acolyte
+	damage = 1.25
+	morale_damage = 1.5
+	health = 0.75
+	morale = 1.5
+	collateral_damage = 1
+	war_exhaustion = 0.75
+	time = 60
+	prerequisites = {
+		"tech_assault_armies"
+	}
+	show_tech_unlock_if = {
+		always = no
+	}
+	resources = {
+		category = armies
+		cost = {
+			minerals = 75
+			#unity = 100
+		}
+		upkeep = {
+			energy = 0.5
+		}
+	}
+	potential = {
+		has_modifier = pw_holy_reliquary_supremacy_call_to_arms
+		owner = {
+			is_spiritualist = yes
+		}
+		from = {
+			NOR = {
+				has_trait = "trait_mechanical"
+				has_trait = "trait_machine_unit"
+				is_sapient = no
+			}
+		}
+	}
+}
+
+pw_army_living_metal_warform = {
+	icon = GFX_pw_army_living_metal_warform
+	damage = 2
+	health = 5
+	has_morale = no
+	morale_damage = 2
+	collateral_damage = 4
+	war_exhaustion = 3
+	time = 80
+	has_species = no
+	prerequisites = {
+		pw_tech_living_metal_warforms
+	}
+	resources = {
+		category = armies
+		cost = {
+			minerals = 50
+			sr_living_metal = 50
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	potential = {
+		owner = {
+			any_owned_planet = {
+				pw_planet_has_abyssal_test_crater = yes
+			}
+		}
+	}
+}
+
+# /Planetary Wonders mod armies
+# Unique Ascension Perks mod armies
+## Private Mercenary Army
+private_assault_army = {
+	damage = 0.8
+	health = 1
+	morale = 1
+	morale_damage = 1
+	collateral_damage = 1
+	war_exhaustion = 0.5
+	icon = GFX_army_type_assault
+	pop_limited = no
+	potential_country = {
+		always = no
+	}
+	resources = {
+		category = armies
+		upkeep = {
+			energy = 1.5
+		}
+	}
+}
+
+## Private Slave Army
+private_slave_army = {
+	damage = 0.65
+	health = 1
+	morale = 0.5
+	morale_damage = 0.75
+	collateral_damage = 1.5
+	war_exhaustion = 0.15
+	icon = GFX_army_type_slave
+	pop_limited = no
+	potential_country = {
+		always = no
+	}
+	resources = {
+		category = armies
+		upkeep = {
+			energy = 0.75
+		}
+	}
+}
+
+## Private Robotic Assault Army
+private_robotic_army = {
+	damage = 0.8
+	health = 2
+	has_morale = no
+	morale_damage = 1
+	collateral_damage = 1.5
+	war_exhaustion = 0.25
+	icon = GFX_army_type_robot
+	# time = 150
+	pop_limited = no
+	potential_country = {
+		always = no
+	}
+	resources = {
+		category = armies
+		upkeep = {
+			energy = 2
+		}
+	}
+}
+
+## Private Gene Warrior Army
+private_gene_warrior_army = {
+	damage = 2
+	health = 2.5
+	morale = 2.5
+	morale_damage = 1
+	collateral_damage = 0.75
+	war_exhaustion = 1
+	icon = GFX_army_type_gene_warrior
+	pop_limited = no
+	potential_country = {
+		always = no
+	}
+	resources = {
+		category = armies
+		upkeep = {
+			energy = 5
+		}
+	}
+}
+
+## Veteran Army
+veteran_army = {
+	damage = 1.75
+	health = 1.5
+	morale = 2
+	morale_damage = 1.5
+	collateral_damage = 0.75
+	war_exhaustion = 0.75
+	time = 75
+	icon = GFX_army_type_assault
+	resources = {
+		category = armies
+		cost = {
+			minerals = 100
+			unity = 10
+		}
+		upkeep = {
+			energy = 0.75
+		}
+	}
+	potential = {
+		owner = {
+			has_country_flag = slow_learner_army
+		}
+	}
+}
+
+# /Unique Ascension Perks mod armies
