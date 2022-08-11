@@ -1,0 +1,131 @@
+@leader_unity_upkeep = 2
+
+admiral = {
+	can_lead_navy = yes
+	max_trait_points = 1
+	can_have_traits = yes
+	resources = {
+		category = leader_admirals
+		cost = {
+			unity = 1
+			multiplier = owner.value:leader_cost
+		}
+		upkeep = {
+			trigger = {
+				has_leader_upkeep = yes
+			}
+			unity = @leader_unity_upkeep
+		}
+	}
+
+	default_category = admiral
+}
+
+general = {
+	can_lead_army = yes
+	max_trait_points = 1
+	can_have_traits = yes
+	resources = {
+		category = leader_generals
+		cost = {
+			unity = 1
+			multiplier = owner.value:leader_cost
+		}
+		upkeep = {
+			trigger = {
+				has_leader_upkeep = yes
+			}
+			unity = @leader_unity_upkeep
+		}
+	}
+
+	default_category = general
+}
+
+scientist = {
+	can_research = yes
+	max_trait_points = 1
+	can_have_traits = yes
+	resources = {
+		category = leader_scientists
+		cost = {
+			unity = 1
+			multiplier = owner.value:leader_cost
+		}
+		upkeep = {
+			trigger = {
+				has_leader_upkeep = yes
+			}
+			unity = @leader_unity_upkeep
+		}
+	}
+	default_category = scientist
+}
+
+governor = {
+	can_govern_planet = yes
+	max_trait_points = 1
+	can_have_traits = yes
+	resources = {
+		category = leader_governors
+		cost = {
+			unity = 1
+			multiplier = owner.value:leader_cost
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				has_leader_upkeep = yes
+				OR = {
+					is_idle = yes
+					owner = {
+						NOT = { has_valid_civic = civic_corp_philosopher_king }
+					}
+				}
+			}
+			unity = @leader_unity_upkeep
+		}
+		produces = {
+			trigger = {
+				is_idle = no
+				exists = owner
+				owner = {
+					OR = {
+						has_valid_civic = civic_corp_philosopher_king
+						has_valid_civic = civic_feudal_realm
+					}
+				}
+			}
+			unity = 1
+			multiplier = trigger:has_skill
+		}
+	}
+	default_category = governor
+}
+
+ruler = {
+	can_rule_empire = yes
+	max_trait_points = 2
+	can_have_traits = yes
+	default_category = ruler
+	resources = {
+		category = leaders
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_valid_civic = civic_philosopher_king
+				}
+			}
+			unity = 3
+			multiplier = trigger:has_skill
+		}
+	}
+}
+
+envoy = {
+	can_be_envoy = yes
+	default_category = envoy
+	assignment_cooldown = 360
+	can_have_traits = no
+}

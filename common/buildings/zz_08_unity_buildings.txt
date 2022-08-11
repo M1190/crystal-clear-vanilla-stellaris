@@ -1,0 +1,2344 @@
+#############
+# Unity buildings
+#############
+
+##################
+# Bureaucrats
+##################
+
+building_bureaucratic_1 = {
+	base_buildtime = @b1_time
+	position_priority = 155
+	category = government
+
+	potential = {
+		exists = owner
+
+		owner = { is_regular_empire = yes }
+		owner = { is_spiritualist = no }
+		NOT = { has_modifier = slave_colony }
+
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_regular_empire = no }
+			owner = { is_spiritualist = yes }
+		}
+	}
+
+	convert_to = {
+		building_temple
+		building_hive_node
+		building_uplink_node
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				NOT = { has_valid_civic = civic_ethical_hedonism }
+			}
+		}
+		modifier = {
+			job_bureaucrat_add = @b1_jobs
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				has_valid_civic = civic_ethical_hedonism
+			}
+		}
+		modifier = {
+			job_bureaucrat_add = 1
+			job_culture_worker_add = 1
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_megacorp = no }
+		}
+		text = job_bureaucrat_effect_desc
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				has_valid_civic = civic_ethical_hedonism
+			}
+		}
+		text = job_culture_worker_effect_desc
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				NOT = { has_valid_civic = civic_private_military_companies }
+			}
+		}
+		modifier = {
+			job_manager_add = @b1_jobs
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				has_valid_civic = civic_private_military_companies
+			}
+		}
+		modifier = {
+			job_logistics_officer_add = @b1_jobs
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_megacorp = yes }
+		}
+		text = job_manager_effect_desc
+	}
+
+	upgrades = {
+		"building_bureaucratic_2"
+	}
+
+	prerequisites = {
+		"tech_planetary_government"
+	}
+
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+		is_spiritualist = no
+	}
+}
+
+building_bureaucratic_2 = {
+	base_buildtime = @b2_time
+	position_priority = 155
+	can_build = no
+
+	category = government
+
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+		owner = { is_spiritualist = no }
+		NOT = { has_modifier = slave_colony }
+	}
+
+	allow = {
+		has_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			buildings_no_crystals = yes
+			owner = { is_regular_empire = no }
+			owner = { is_spiritualist = yes }
+		}
+	}
+
+	convert_to = {
+		building_holotemple
+		building_hive_cluster
+		building_network_junction
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				NOT = { has_valid_civic = civic_ethical_hedonism }
+			}
+		}
+		modifier = {
+			job_bureaucrat_add = @b2_jobs
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				has_valid_civic = civic_ethical_hedonism
+			}
+		}
+		modifier = {
+			job_bureaucrat_add = 2
+			job_culture_worker_add = 2
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_megacorp = no }
+		}
+		text = job_bureaucrat_effect_desc
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				has_valid_civic = civic_ethical_hedonism
+			}
+		}
+		text = job_culture_worker_effect_desc
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				NOT = { has_valid_civic = civic_private_military_companies }
+			}
+		}
+		modifier = {
+			job_manager_add = @b2_jobs
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				has_valid_civic = civic_private_military_companies
+			}
+		}
+		modifier = {
+			job_logistics_officer_add = @b2_jobs
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_megacorp = yes }
+		}
+		text = job_manager_effect_desc
+	}
+
+	upgrades = {
+		"building_bureaucratic_3"
+	}
+
+	prerequisites = {
+		"tech_colonial_bureaucracy"
+	}
+
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+		is_spiritualist = no
+	}
+}
+
+building_bureaucratic_3 = {
+	base_buildtime = @b3_time
+	position_priority = 155
+	can_build = no
+
+	category = government
+
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+		owner = { is_spiritualist = no }
+		NOT = { has_modifier = slave_colony }
+	}
+
+	allow = {
+		has_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			buildings_no_crystals = yes
+			owner = { is_regular_empire = no }
+			owner = { is_spiritualist = yes }
+		}
+	}
+
+	convert_to = {
+		building_sacred_nexus
+		building_hive_confluence
+		building_system_conflux
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			rare_crystals = @b3_rare_cost
+		}
+		upkeep = {
+			energy = @b3_upkeep
+			rare_crystals = @b3_rare_upkeep
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				NOT = { has_valid_civic = civic_ethical_hedonism }
+			}
+		}
+		modifier = {
+			job_bureaucrat_add = @b3_jobs
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				has_valid_civic = civic_ethical_hedonism
+			}
+		}
+		modifier = {
+			job_bureaucrat_add = 3
+			job_culture_worker_add = 3
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_megacorp = no }
+		}
+		text = job_bureaucrat_effect_desc
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				has_valid_civic = civic_ethical_hedonism
+			}
+		}
+		text = job_culture_worker_effect_desc
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				NOT = { has_valid_civic = civic_private_military_companies }
+			}
+		}
+		modifier = {
+			job_manager_add = @b3_jobs
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				has_valid_civic = civic_private_military_companies
+			}
+		}
+		modifier = {
+			job_logistics_officer_add = @b3_jobs
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_megacorp = yes }
+		}
+		text = job_manager_effect_desc
+	}
+
+	prerequisites = {
+		"tech_galactic_bureaucracy"
+	}
+
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+		is_spiritualist = no
+	}
+}
+
+##################
+# Spiritualists
+##################
+building_temple = {
+	base_buildtime = @b1_time
+	position_priority = 155
+	category = unity
+
+	potential = {
+		exists = owner
+		owner = {
+			is_spiritualist = yes
+			#is_death_cult_empire = no
+		}
+		NOT = { has_modifier = slave_colony }
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				#is_death_cult_empire = yes
+				is_spiritualist = no
+			}
+			has_modifier = slave_colony
+		}
+	}
+
+	convert_to = {
+		building_bureaucratic_1
+		building_sacrificial_temple_1
+		building_hive_node
+		building_uplink_node
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	planet_modifier = {
+		pop_ethic_spiritualist_attraction_mult = 0.05
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				NOT = { has_valid_civic = civic_crusaders }
+				NOT = { has_valid_civic = civic_machine_cult }
+			}
+		}
+		modifier = {
+			job_priest_add = @b1_jobs
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				NOT = { has_valid_civic = civic_private_military_companies }
+			}
+		}
+		modifier = {
+			job_priest_add = 1
+			job_manager_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_private_military_companies
+			}					
+		}
+		modifier = {
+			job_chaplain_add = 1
+			job_logistics_officer_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_crusaders
+			}					
+		}
+		modifier = {
+			job_templar_add = @b1_jobs
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_cult
+			}
+		}
+		modifier = {
+			job_tech_priest_add = @b1_jobs
+		}
+	}
+
+	triggered_desc = {
+		text = job_priest_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_megacorp = yes }
+		}
+		text = job_manager_effect_desc
+	}
+
+	upgrades = {
+		building_holotemple
+	}
+
+	prerequisites = {
+		"tech_cultural_heritage"
+	}
+
+	show_tech_unlock_if = {
+		is_spiritualist = yes
+	}
+}
+
+building_holotemple = {
+	base_buildtime = @b2_time
+	position_priority = 155
+	can_build = no
+
+	category = unity
+
+	potential = {
+		exists = owner
+		owner = {
+			is_spiritualist = yes
+			#is_death_cult_empire = no
+		}
+		NOT = { has_modifier = slave_colony }
+	}
+	
+	allow = {
+		has_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				#is_death_cult_empire = yes
+				is_spiritualist = no
+			}
+			has_modifier = slave_colony
+		}
+	}
+
+	allow = {
+		has_upgraded_capital = yes
+	}
+
+	convert_to = {
+		building_bureaucratic_2
+		building_sacrificial_temple_2
+		building_hive_cluster
+		building_network_junction
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		pop_ethic_spiritualist_attraction_mult = 0.10
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				NOT = { has_valid_civic = civic_crusaders }
+				NOT = { has_valid_civic = civic_machine_cult }
+			}
+		}
+		modifier = {
+			job_priest_add = @b2_jobs
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				NOT = { has_valid_civic = civic_private_military_companies }
+			}
+		}
+		modifier = {
+			job_priest_add = 2
+			job_manager_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_private_military_companies
+			}					
+		}
+		modifier = {
+			job_chaplain_add = 2
+			job_logistics_officer_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_crusaders
+			}					
+		}
+		modifier = {
+			job_templar_add = @b2_jobs
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_cult
+			}
+		}
+		modifier = {
+			job_tech_priest_add = @b2_jobs
+		}
+	}
+	
+
+	triggered_desc = {
+		text = job_priest_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_megacorp = yes }
+		}
+		text = job_manager_effect_desc
+	}
+
+	upgrades = {
+		building_sacred_nexus
+	}
+
+	prerequisites = {
+		"tech_holographic_rituals"
+	}
+
+	show_tech_unlock_if = {
+		is_spiritualist = yes
+	}
+}
+
+building_sacred_nexus = {
+	base_buildtime = @b3_time
+	position_priority = 155
+	can_build = no
+
+	category = unity
+
+	potential = {
+		exists = owner
+		owner = {
+			is_spiritualist = yes
+			#is_death_cult_empire = no
+		}
+		NOT = { has_modifier = slave_colony }
+	}
+	
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				#is_death_cult_empire = yes
+				is_spiritualist = no
+			}
+			has_modifier = slave_colony
+		}
+	}
+
+	convert_to = {
+		building_bureaucratic_3
+		building_sacrificial_temple_3
+		building_hive_confluence
+		building_system_conflux
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b3_minerals
+			rare_crystals = @b3_rare_cost
+		}
+		upkeep = {
+			energy = @b3_upkeep
+			rare_crystals = @b3_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		pop_ethic_spiritualist_attraction_mult = 0.15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+				NOT = { has_valid_civic = civic_crusaders }
+				NOT = { has_valid_civic = civic_machine_cult }
+			}
+		}
+		modifier = {
+			job_priest_add = @b3_jobs
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = yes
+				NOT = { has_valid_civic = civic_private_military_companies }
+			}
+		}
+		modifier = {
+			job_priest_add = 3
+			job_manager_add = 3
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_private_military_companies
+			}					
+		}
+		modifier = {
+			job_chaplain_add = 3
+			job_logistics_officer_add = 3
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_crusaders
+			}					
+		}
+		modifier = {
+			job_templar_add = @b3_jobs
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_cult
+			}
+		}
+		modifier = {
+			job_tech_priest_add = @b3_jobs
+		}
+	}
+
+	triggered_desc = {
+		text = job_priest_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_megacorp = yes }
+		}
+		text = job_manager_effect_desc
+	}
+
+	prerequisites = {
+		"tech_consecration_fields"
+	}
+
+	show_tech_unlock_if = {
+		is_spiritualist = yes
+	}
+}
+
+##################
+# Machine
+##################
+
+building_uplink_node = {
+	base_buildtime = @b1_time
+	position_priority = 155
+	icon = building_autochthon_monument
+
+	category = government
+
+	potential = {
+		exists = owner
+		owner = {
+			is_machine_empire = yes
+			NOT = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_machine_empire = no
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	convert_to = {
+		building_bureaucratic_1
+		building_temple
+		building_hive_node
+		building_sensorium_1
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	planet_modifier = {
+		job_coordinator_add = @b1_jobs
+	}
+
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}
+
+	upgrades = {
+		"building_network_junction"
+	}
+
+	prerequisites = {
+		"tech_planetary_government"
+	}
+
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+		NOT = {
+			has_valid_civic = civic_machine_servitor
+		}
+	}
+}
+
+building_network_junction = {
+	base_buildtime = @b2_time
+	position_priority = 155
+	can_build = no
+	icon = building_heritage_site
+
+	category = government
+
+	potential = {
+		exists = owner
+		owner = {
+			is_machine_empire = yes
+			NOT = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	allow = {
+		has_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			buildings_no_crystals = yes
+			owner = {
+				OR = {
+					is_machine_empire = no
+					has_valid_civic = civic_machine_servitor
+				}
+			}
+		}
+	}
+
+	convert_to = {
+		building_bureaucratic_2
+		building_holotemple
+		building_hive_cluster
+		building_sensorium_2
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		job_coordinator_add = @b2_jobs
+	}
+
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}
+
+	upgrades = {
+		"building_system_conflux"
+	}
+
+	prerequisites = {
+		"tech_colonial_bureaucracy"
+	}
+
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+		NOT = {
+			has_valid_civic = civic_machine_servitor
+		}
+	}
+}
+
+building_system_conflux = {
+	base_buildtime = @b3_time
+	position_priority = 155
+	can_build = no
+	icon = building_hypercomms_forum
+
+	category = government
+
+	potential = {
+		exists = owner
+		owner = {
+			is_machine_empire = yes
+			NOT = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	allow = {
+		has_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			buildings_no_crystals = yes
+			owner = {
+				OR = {
+					is_machine_empire = no
+					has_valid_civic = civic_machine_servitor
+				}
+			}
+		}
+	}
+
+	convert_to = {
+		building_bureaucratic_3
+		building_sacred_nexus
+		building_hive_confluence
+		building_sensorium_3
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b3_minerals
+			rare_crystals = @b3_rare_cost
+		}
+		upkeep = {
+			energy = @b3_upkeep
+			rare_crystals = @b3_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		job_coordinator_add = @b3_jobs
+	}
+
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}
+
+	prerequisites = {
+		"tech_galactic_bureaucracy"
+	}
+
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+		NOT = {
+			has_valid_civic = civic_machine_servitor
+		}
+	}
+}
+
+##################
+# Hive Minds
+##################
+building_hive_node = {
+	base_buildtime = @b1_time
+	position_priority = 155
+	exempt_from_ai_planet_specialization = no
+
+	category = unity
+
+	potential = {
+		exists = owner
+		owner = { is_hive_empire = yes }
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { is_hive_empire = no }
+	}
+
+	convert_to = {
+		building_bureaucratic_1
+		building_temple
+		building_uplink_node
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+				}
+			}
+			minerals = @b1_minerals
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					is_lithoid_empire = no
+				}
+			}
+			minerals = @b1_hive_minerals
+			food = @b1_hive_food 
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_valid_civic = civic_integrated_bioarchitecture
+					is_lithoid_empire = no
+				}
+			}
+			food = @b1_minerals
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+				}
+			}
+			energy = @b1_upkeep_hive
+			food = @b1_upkeep_food
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+				}
+			}
+			energy = @b1_upkeep
+		}
+		
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+					has_edict = synaptic_reinforcement
+				}
+			}
+			energy = 1
+			food = 1
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+					has_edict = synaptic_reinforcement
+				}
+			}
+			energy = 1
+			minerals = 1
+		}
+	}
+
+	planet_modifier = {
+		job_synapse_drone_add = @b1_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_domination_synaptic_extensions
+			}
+		}
+		modifier = {
+			planet_housing_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_edict = synaptic_reinforcement
+			}
+		}
+		job_maintenance_drone_add = 1
+	}
+
+	triggered_desc = {
+		text = job_synapse_drone_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				has_edict = synaptic_reinforcement
+			}
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+
+	prerequisites = {
+		"tech_hive_node"
+	}
+
+	upgrades = {
+		building_hive_cluster
+	}
+}
+
+building_hive_cluster = {
+	base_buildtime = @b2_time
+	position_priority = 155
+	can_build = no
+
+	exempt_from_ai_planet_specialization = no
+
+	category = unity
+
+	potential = {
+		exists = owner
+		owner = { is_hive_empire = yes }
+	}
+
+	allow = {
+		has_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			buildings_no_exotic_gases = yes
+			owner = { is_hive_empire = no }
+		}
+	}
+
+	convert_to = {
+		building_bureaucratic_2
+		building_holotemple
+		building_network_junction
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+				}
+			}
+			minerals = @b2_minerals
+			exotic_gases = @b2_rare_cost
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					is_lithoid_empire = no
+				}
+			}
+			minerals = @b2_hive_minerals
+			food = @b2_hive_food
+			exotic_gases = @b2_rare_cost
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_valid_civic = civic_integrated_bioarchitecture
+					is_lithoid_empire = no
+				}
+			}
+			food = @b2_minerals
+			exotic_gases = @b2_rare_cost
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+				}
+			}
+			energy = @b2_upkeep_hive
+			food = @b2_upkeep_food
+			exotic_gases = @b2_rare_upkeep
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+				}
+			}
+			energy = @b2_upkeep
+			exotic_gases = @b2_rare_upkeep
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+					has_edict = synaptic_reinforcement
+				}
+			}
+			energy = 1
+			food = 1
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+					has_edict = synaptic_reinforcement
+				}
+			}
+			energy = 1
+			minerals = 1
+		}
+	}
+
+	planet_modifier = {
+		job_synapse_drone_add = @b2_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_domination_synaptic_extensions
+			}
+		}
+		modifier = {
+			planet_housing_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_edict = synaptic_reinforcement
+			}
+		}
+		job_maintenance_drone_add = 1
+	}
+
+	triggered_desc = {
+		text = job_synapse_drone_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				has_edict = synaptic_reinforcement
+			}
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+
+	prerequisites = {
+		"tech_hive_cluster"
+	}
+
+	upgrades = {
+		building_hive_confluence
+	}
+}
+
+building_hive_confluence = {
+	base_buildtime = @b3_time
+	position_priority = 155
+	can_build = no
+
+	category = unity
+
+	potential = {
+		exists = owner
+		owner = {
+			is_hive_empire = yes
+		}
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			buildings_no_exotic_gases = yes
+			owner = { is_hive_empire = no }
+		}
+	}
+
+	convert_to = {
+		building_bureaucratic_3
+		building_sacred_nexus
+		building_system_conflux
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+				}
+			}
+			minerals = @b3_minerals
+			exotic_gases = @b3_rare_cost
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					is_lithoid_empire = no
+				}
+			}
+			minerals = @b3_hive_minerals
+			food = @b3_hive_food
+			exotic_gases = @b3_rare_cost
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_valid_civic = civic_integrated_bioarchitecture
+					is_lithoid_empire = no
+				}
+			}
+			food = @b3_minerals
+			exotic_gases = @b3_rare_cost
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+				}
+			}
+			energy = @b3_upkeep_hive
+			food = @b3_upkeep_food
+			exotic_gases = @b3_rare_upkeep
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+				}
+			}
+			energy = @b3_upkeep
+			exotic_gases = @b3_rare_upkeep
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+					has_edict = synaptic_reinforcement
+				}
+			}
+			energy = 1
+			food = 1
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+					has_edict = synaptic_reinforcement
+				}
+			}
+			energy = 1
+			minerals = 1
+		}
+	}
+
+	planet_modifier = {
+		job_synapse_drone_add = @b3_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_domination_synaptic_extensions
+			}
+		}
+		modifier = {
+			planet_housing_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_edict = synaptic_reinforcement
+			}
+		}
+		job_maintenance_drone_add = 1
+	}
+
+	prerequisites = {
+		"tech_hive_confluence"
+	}
+
+	triggered_desc = {
+		text = job_synapse_drone_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				has_edict = synaptic_reinforcement
+			}
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+}
+
+##################
+# Machine
+##################
+
+# Servitors
+building_organic_sanctuary = {
+	base_buildtime = @b1_time
+	position_priority = 150
+
+	category = unity
+
+	potential = {
+		exists = owner
+		owner = { 
+			OR = {
+				has_valid_civic = civic_machine_servitor
+				has_valid_civic = civic_machine_consciousness
+			}
+		}
+	}
+	
+	allow = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				num_buildings = { type = building_organic_sanctuary value < 2 }
+				NOT = { has_building = building_organic_paradise }
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { 
+				NOR = {
+					has_valid_civic = civic_machine_servitor
+					has_valid_civic = civic_machine_consciousness
+				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				count_owned_pop = { limit = { has_citizenship_type = { type = citizenship_organic_trophy } } count <= 20 }
+				num_buildings = { type = building_organic_sanctuary value > 2 }
+			}
+			AND = {
+				owner = { is_ai = yes }
+				count_owned_pop = { limit = { has_citizenship_type = { type = citizenship_organic_trophy } } count <= 40 }
+				num_buildings = { type = building_organic_paradise value > 2 }
+			}
+		}
+	}
+
+	convert_to = {
+		building_luxury_residence
+		building_communal_housing
+	}
+
+	planet_modifier = {
+		job_bio_trophy_add = 10
+		job_artisan_drone_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		modifier = {
+			job_servitor_caretaker_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_consciousness
+			}
+		}
+		modifier = {
+			job_maintenance_drone_add = 1
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	upgrades = {
+		"building_organic_paradise"
+	}
+	
+	triggered_desc = {
+		text = job_bio_trophy_effect_desc
+	}
+	
+	triggered_desc = {
+		text = job_artisan_drone_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		text = job_servitor_caretaker_drone_effect_desc
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_consciousness
+			}
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+
+	triggered_desc = {
+		text = job_artisan_drone_effect_desc
+	}
+	
+	ai_resource_production = {
+		unity = 8
+		trigger = {
+			count_owned_pop = { limit = { has_citizenship_type = { type = citizenship_organic_trophy } not = { has_job = bio_trophy } } count > 0 }
+			free_building_slots > 0
+		}
+	}
+}
+
+building_organic_paradise = {
+	base_buildtime = @b2_time
+	position_priority = 150
+	can_build = no
+	icon = building_paradise_dome
+
+	potential = {
+		exists = owner
+		owner = { 
+			OR = {
+				has_valid_civic = civic_machine_servitor
+				has_valid_civic = civic_machine_consciousness
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { 
+			NOR = {
+				has_valid_civic = civic_machine_servitor
+				has_valid_civic = civic_machine_consciousness
+			}
+		}
+	}
+
+	convert_to = {
+		building_paradise_dome
+		building_communal_housing_large
+	}
+
+	planet_modifier = {
+		job_bio_trophy_add = 20
+		job_artisan_drone_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		modifier = {
+			job_servitor_caretaker_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_consciousness
+			}
+		}
+		modifier = {
+			job_maintenance_drone_add = 1
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			exotic_gases = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			exotic_gases = @b2_rare_upkeep
+		}
+	}
+	
+	triggered_desc = {
+		text = job_bio_trophy_effect_desc
+	}
+
+	triggered_desc = {
+		text = job_artisan_drone_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		text = job_servitor_caretaker_drone_effect_desc
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_consciousness
+			}
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+
+	prerequisites = { "tech_paradise_dome" }
+
+	show_tech_unlock_if = {
+		owner = { 
+			OR = {
+				has_valid_civic = civic_machine_servitor 
+				has_valid_civic = civic_machine_consciousness 
+			}
+		}
+	}
+
+	on_queued = {
+		IF = {
+			limit = {
+				owner = { has_technology = tech_construction_templates }
+			}
+			owner = { set_timed_country_flag = { flag = buildings_new_gas_building days = 270 } }
+		}
+		ELSE_IF = {
+			limit = {
+				owner = { has_technology = tech_assembly_pattern }
+			}
+			owner = { set_timed_country_flag = { flag = buildings_new_gas_building days = 390 } }
+		}
+		else = {
+			planet = {
+				owner = { set_timed_country_flag = { flag = buildings_new_gas_building days = 510 } }
+			}
+		}
+	}
+}
+
+##################
+# Unity boosters
+##################
+
+building_autocurating_vault = {
+	base_buildtime = @b2_time
+	base_cap_amount = 1
+
+	category = unity
+
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_gestalt = no
+			is_spiritualist = no
+			is_megacorp = no
+		}
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			buildings_no_crystals = yes
+	 		owner = {
+				OR = {
+					is_gestalt = yes
+					is_spiritualist = yes
+					is_megacorp = yes
+				}
+			}
+		}
+	}
+
+	convert_to = {
+		building_citadel_of_faith
+		building_alpha_hub
+		building_corporate_vault
+		building_hive_primary_confluence
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+		produces = {
+			unity = 10
+		}
+	}
+	
+	planet_modifier = {
+		planet_administrators_unity_produces_mult = 0.15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				has_civic = civic_technocracy
+			}					
+		}
+		modifier = {
+			job_head_researcher_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_merchant_guilds }
+		}
+		modifier = {
+			job_merchant_add = 1
+		}
+	}
+
+	prerequisites = {
+		"tech_autocurating_vault"
+	}
+
+	show_tech_unlock_if = {
+		is_gestalt = no
+		is_spiritualist = no
+		is_megacorp = no
+	}
+
+	on_queued = {
+		IF = {
+			limit = {
+				owner = { has_technology = tech_construction_templates }
+			}
+			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 270 } }
+		}
+		ELSE_IF = {
+			limit = {
+				owner = { has_technology = tech_assembly_pattern }
+			}
+			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 390 } }
+		}
+		else = {
+			planet = {
+				owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 510 } }
+			}
+		}
+	}
+}
+
+building_citadel_of_faith = {
+	base_buildtime = @b2_time
+	base_cap_amount = 1
+
+	category = unity
+
+	potential = {
+		exists = owner
+		owner = { is_spiritualist = yes }
+		NOT = { has_modifier = slave_colony }
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_spiritualist = no }
+			has_modifier = slave_colony
+			buildings_no_crystals = yes
+		}
+	}
+
+	convert_to = {
+		building_autocurating_vault
+		building_alpha_hub
+		building_corporate_vault
+		building_hive_primary_confluence
+	}
+
+	planet_modifier = {
+		job_high_priest_add = 1
+		pop_ethic_spiritualist_attraction_mult = 0.20
+		planet_administrators_produces_mult = 0.15
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+		produces = {
+			unity = 10
+		}
+	}
+
+	prerequisites = {
+		"tech_transcendent_faith"
+	}
+
+	triggered_desc = {
+		text = job_high_priest_effect_desc
+	}
+
+	on_queued = {
+		IF = {
+			limit = {
+				owner = { has_technology = tech_construction_templates }
+			}
+			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 270 } }
+		}
+		ELSE_IF = {
+			limit = {
+				owner = { has_technology = tech_assembly_pattern }
+			}
+			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 390 } }
+		}
+		else = {
+			planet = {
+				owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 510 } }
+			}
+		}
+	}
+}
+
+building_corporate_vault = {
+	base_buildtime = @b3_time
+	base_cap_amount = 1
+	icon = building_autocurating_vault
+
+	category = unity
+
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_megacorp = yes
+			is_spiritualist = no
+		}
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			buildings_no_crystals = yes
+			owner = {
+				OR = {
+					is_megacorp = no
+					is_spiritualist = yes
+				}
+			}
+		}
+	}
+
+	convert_to = {
+		building_citadel_of_faith
+		building_autocurating_vault
+		building_alpha_hub
+		building_hive_primary_confluence
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+		produces = {
+			unity = 10
+		}
+	}
+
+	planet_modifier = {
+		planet_managers_produces_mult = 0.15
+		job_executive_add = 1
+	}
+
+
+	prerequisites = {
+		"tech_autocurating_vault"
+	}
+
+	show_tech_unlock_if = {
+		is_megacorp = yes
+	}
+
+	on_queued = {
+		IF = {
+			limit = {
+				owner = { has_technology = tech_construction_templates }
+			}
+			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 270 } }
+		}
+		ELSE_IF = {
+			limit = {
+				owner = { has_technology = tech_assembly_pattern }
+			}
+			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 390 } }
+		}
+		else = {
+			planet = {
+				owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 510 } }
+			}
+		}
+	}
+}
+
+building_alpha_hub = {
+	base_buildtime = @b3_time
+	base_cap_amount = 1
+	icon = building_autocurating_vault
+
+	category = unity
+
+	potential = {
+		exists = owner
+		owner = { is_machine_empire = yes }
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_machine_empire = no }
+			buildings_no_crystals = yes
+		}
+	}
+
+	convert_to = {
+		building_autocurating_vault
+		building_citadel_of_faith
+		building_corporate_vault
+		building_hive_primary_confluence
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b2_minerals
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+		produces = {
+			unity = 10
+		}
+	}
+
+	planet_modifier = {
+		planet_administrators_unity_produces_mult = 0.15
+	}
+
+	prerequisites = {
+		"tech_autocurating_vault"
+	}
+
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+	}
+
+	on_queued = {
+		IF = {
+			limit = {
+				owner = { has_technology = tech_construction_templates }
+			}
+			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 270 } }
+		}
+		ELSE_IF = {
+			limit = {
+				owner = { has_technology = tech_assembly_pattern }
+			}
+			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 390 } }
+		}
+		else = {
+			planet = {
+				owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 510 } }
+			}
+		}
+	}
+}
+
+building_hive_primary_confluence = {
+	base_buildtime = @b3_time
+	base_cap_amount = 1
+	icon = building_hive_capital
+
+	category = unity
+
+	potential = {
+		exists = owner
+		owner = { is_hive_empire = yes }
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_hive_empire = no }
+			buildings_no_crystals = yes
+		}
+	}
+
+	convert_to = {
+		building_autocurating_vault
+		building_citadel_of_faith
+		building_corporate_vault
+		building_alpha_hub
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+				}
+			}
+			minerals = @b2_minerals
+			exotic_gases = @b2_rare_cost
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					is_lithoid_empire = no
+				}
+			}
+			minerals = @b2_hive_minerals
+			food = @b2_hive_food
+			exotic_gases = @b2_rare_cost
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_valid_civic = civic_integrated_bioarchitecture
+					is_lithoid_empire = no
+				}
+			}
+			food = @b2_minerals
+			exotic_gases = @b2_rare_cost
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+				}
+			}
+			energy = @b2_upkeep_hive
+			food = @b2_upkeep_food
+			exotic_gases = @b2_rare_upkeep
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+				}
+			}
+			energy = @b2_upkeep
+			exotic_gases = @b2_rare_upkeep
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+					has_edict = synaptic_reinforcement
+				}
+			}
+			energy = 1
+			food = 1
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+					has_edict = synaptic_reinforcement
+				}
+			}
+			energy = 1
+			minerals = 1
+		}
+		produces = {
+			unity = 10
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_edict = synaptic_reinforcement
+			}
+		}
+		job_maintenance_drone_add = 1
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				has_edict = synaptic_reinforcement
+			}
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+
+	planet_modifier = {
+		planet_administrators_unity_produces_mult = 0.15
+	}
+
+	prerequisites = {
+		"tech_autocurating_vault"
+	}
+
+	show_tech_unlock_if = {
+		is_hive_empire = yes
+	}
+
+	on_queued = {
+		IF = {
+			limit = {
+				owner = { has_technology = tech_construction_templates }
+			}
+			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 270 } }
+		}
+		ELSE_IF = {
+			limit = {
+				owner = { has_technology = tech_assembly_pattern }
+			}
+			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 390 } }
+		}
+		else = {
+			planet = {
+				owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 510 } }
+			}
+		}
+	}
+}

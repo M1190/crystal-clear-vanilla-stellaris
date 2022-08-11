@@ -39,15 +39,6 @@ prosperity = {
 		produces = {
 			unity = 0.5
 		}
-		#		produces = {
-		#			trigger = {
-		#				owner = {
-		#					has_policy_flag = bugged_federal_state
-		#				}
-		#			}
-		#			energy = 0.5
-		#			#FIX ME
-		#		}	
 	}
 	can_join_pre_triggers = {
 		is_enslaved = no
@@ -56,6 +47,7 @@ prosperity = {
 	can_join_faction = {
 		is_shackled_robot = no
 		has_culture_shock = no
+		can_think = yes		
 		NOT = {
 			has_trait = trait_nerve_stapled
 		}
@@ -100,6 +92,33 @@ prosperity = {
 	leader = {
 		base = 100
 		modifier = {
+			modifier = {
+				factor = 1.25
+				OR = {
+					leader_class = governor
+					has_trait = leader_trait_expertise_biology
+					has_trait = leader_trait_expertise_industry
+				}
+			}
+			modifier = {
+				factor = 1.25
+				has_ruler_trait = trait_ruler_investor
+			}
+			factor = 0.75
+			OR = {
+				has_ruler_trait = trait_ruler_corvette_focus
+				has_ruler_trait = trait_ruler_destroyer_focus
+				has_ruler_trait = trait_ruler_cruiser_focus
+				has_ruler_trait = trait_ruler_battleship_focus
+				has_ruler_trait = trait_ruler_military_pioneer
+				has_ruler_trait = leader_trait_fleet_organizer
+			}
+		}
+		modifier = {
+			factor = 0
+			is_event_leader = yes
+		}
+		modifier = {
 			factor = 0
 			OR = {
 				leader_class = admiral
@@ -108,7 +127,22 @@ prosperity = {
 		}
 		modifier = {
 			factor = 0
-			is_event_leader = yes
+			exists = owner
+			owner = {
+				is_govenor_election = yes
+			}
+			NOR = {
+				leader_class = governor
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_trait = leader_trait_expertise_military_theory
+				has_trait = leader_trait_expertise_propulsion
+				has_ruler_trait = trait_ruler_warlike
+				has_ruler_trait = trait_ruler_recruiter
+			}
 		}
 	}
 	demand = {
@@ -130,13 +164,63 @@ prosperity = {
 		}
 	}
 	demand = {
+		title = "PROSPERITY_PROFIT"
+		unfulfilled_title = "PROSPERITY_NO_PROFIT"
+		desc = "PROSPERITY_PROFIT_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -10
+		potential = {
+			exists = owner
+			owner = {
+				is_auth_corporate = yes
+			}
+		}
+		trigger = {
+			owner = {
+				has_monthly_income = {
+					resource = energy
+					value > 0
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROSPERITY_NO_UNIONS"
+		unfulfilled_title = "PROSPERITY_UNIONS"
+		desc = "PROSPERITY_NO_UNIONS"
+		fulfilled_effect = 0.001
+		unfulfilled_effect = -10
+		potential = {
+			exists = owner
+			owner = {
+				is_auth_corporate = yes
+				NOR = {
+					has_authority = auth_democratic
+					has_authority = auth_cooperative
+				}
+			}
+		}
+		trigger = {
+			NOR = {
+				owner = {
+					has_policy_flag = worker_union_rights
+				}
+				owner = {
+					has_policy_flag = full_union_rights
+				}
+				owner = {
+					has_policy_flag = normal_union_rights
+				}
+			}
+		}
+	}
+	demand = {
 		title = "PROSPERITY_LIQUIDITY"
 		unfulfilled_title = "PROSPERITY_NO_LIQUIDITY"
 		desc = "PROSPERITY_LIQUIDITY_DESC"
 		fulfilled_effect = 10
 		unfulfilled_effect = -0.001
 		potential = {
-			# TODO get a reasonable trigger for counting colonies?
 			exists = owner
 			owner = {
 				any_owned_planet = {
@@ -166,6 +250,158 @@ prosperity = {
 		}
 	}
 	demand = {
+		title = "PROSPERITY_WANTS_STRATEGIC_RESOURCE1"
+		unfulfilled_title = "PROSPERITY_NO_STRATEGIC_RESOURCE1"
+		desc = "PROSPERITY_WANTS_STRATEGIC_RESOURCE_POP_DESC"
+		fulfilled_effect = 10
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				num_owned_planets > 2
+			}
+		}
+		trigger = {
+			owner = {
+				has_monthly_income = {
+					resource = rare_crystals
+					value > 0.1
+				}
+				has_monthly_income = {
+					resource = volatile_motes
+					value > 0.1
+				}
+				has_monthly_income = {
+					resource = exotic_gases
+					value > 0.1
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROSPERITY_TRADE_AGREEMENTS1"
+		unfulfilled_title = "PROSPERITY_TRADE_AGREEMENTS1"
+		desc = "PROSPERITY_TRADE_AGREEMENTS1_DESC"
+		unfulfilled_effect = -0.001
+		fulfilled_effect = 5
+		potential = {
+			exists = owner
+			owner = {
+				num_communications > 0
+			}
+			count_playable_country = {
+				limit = {
+					OR = {
+						has_commercial_pact = root.owner
+						AND = {
+							is_in_federation_with = root.owner
+							federation = {
+								has_federation_type = trade_federation
+							}
+						}
+					}
+				}
+				count < 2
+			}
+		}
+		trigger = {
+			count_playable_country = {
+				limit = {
+					OR = {
+						has_commercial_pact = root.owner
+						AND = {
+							is_in_federation_with = root.owner
+							federation = {
+								has_federation_type = trade_federation
+							}
+						}
+					}
+				}
+				count > 0
+			}
+		}
+	}
+	demand = {
+		title = "PROSPERITY_TRADE_AGREEMENTS2"
+		unfulfilled_title = "PROSPERITY_TRADE_AGREEMENTS2"
+		desc = "PROSPERITY_TRADE_AGREEMENTS2_DESC"
+		unfulfilled_effect = -0.001
+		fulfilled_effect = 10
+		potential = {
+			exists = owner
+			count_playable_country = {
+				limit = {
+					OR = {
+						has_commercial_pact = root.owner
+						AND = {
+							is_in_federation_with = root.owner
+							federation = {
+								has_federation_type = trade_federation
+							}
+						}
+					}
+				}
+				count = 2
+			}
+		}
+		trigger = {
+			count_playable_country = {
+				limit = {
+					OR = {
+						has_commercial_pact = root.owner
+						AND = {
+							is_in_federation_with = root.owner
+							federation = {
+								has_federation_type = trade_federation
+							}
+						}
+					}
+				}
+				count > 1
+			}
+		}
+	}
+	demand = {
+		title = "PROSPERITY_TRADE_AGREEMENTS3"
+		unfulfilled_title = "PROSPERITY_TRADE_AGREEMENTS3"
+		desc = "PROSPERITY_TRADE_AGREEMENTS3_DESC"
+		unfulfilled_effect = -0.001
+		fulfilled_effect = 15
+		potential = {
+			exists = owner
+			count_playable_country = {
+				limit = {
+					OR = {
+						has_commercial_pact = root.owner
+						AND = {
+							is_in_federation_with = root.owner
+							federation = {
+								has_federation_type = trade_federation
+							}
+						}
+					}
+				}
+				count > 2
+			}
+		}
+		trigger = {
+			count_playable_country = {
+				limit = {
+					OR = {
+						has_commercial_pact = root.owner
+						AND = {
+							is_in_federation_with = root.owner
+							federation = {
+								has_federation_type = trade_federation
+							}
+						}
+					}
+				}
+				count > 2
+			}
+		}
+	}
+	demand = {
 		title = "PROSPERITY_PHILOSOPHY"
 		unfulfilled_title = "PROSPERITY_NO_PHILOSOPHY"
 		desc = "PROSPERITY_PHILOSOPHY_DESC"
@@ -186,6 +422,44 @@ prosperity = {
 		trigger = {
 			owner = {
 				has_policy_flag = no_wars
+			}
+		}
+	}
+	demand = {
+		title = "PROSPERITY_NO_TERROR_BOMBING"
+		unfulfilled_title = "PROSPERITY_TERROR_BOMBING"
+		desc = "PROSPERITY_TERROR_BOMBING_DESC"
+		unfulfilled_effect = -5
+		fulfilled_effect = 0.001
+		potential = {
+			exists = owner
+		}
+		trigger = {
+			owner = {
+				has_policy_flag = orbital_bombardment_selective
+			}
+		}
+	}
+	demand = {
+		title = "PROSPERITY_NO_PK"
+		unfulfilled_title = "PROSPERITY_PK"
+		desc = "PROSPERITY_NO_PK_DESC"
+		unfulfilled_effect = -10
+		fulfilled_effect = 0.001
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_ascension_perk = ap_colossus
+					has_crisis_level = crisis_level_5
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				NOT = {
+					has_country_flag = killed_with_pk
+				}
 			}
 		}
 	}
@@ -226,6 +500,195 @@ prosperity = {
 							side = attackers
 						}
 					}
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROSPERITY_NOT_BULWARK"
+		unfulfilled_title = "PROSPERITY_BULWARK"
+		desc = "PROSPERITY_NOT_BULWARK_DESC"
+		unfulfilled_effect = -25
+		fulfilled_effect = 0.001
+		potential = {
+			exists = owner
+			owner = {
+				has_overlord_dlc = yes
+				is_subject = yes
+			}
+		}
+		trigger = {
+			owner = {
+				OR = {
+					is_subject = no
+					NOT = {
+						is_specialist_subject_type = {
+							TYPE = bulwark
+						}
+					}
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROSPERITY_PEACE_FESTIVALS"
+		unfulfilled_title = "PROSPERITY_NO_PEACE_FESTIVALS"
+		desc = "PROSPERITY_PEACE_FESTIVALS_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				is_pacifist = yes
+			}
+		}
+		trigger = {
+			owner = {
+				has_edict = peace_festivals
+			}
+		}
+	}
+	demand = {
+		title = "PROSPERITY_ENCOURAGE_GROWTH"
+		unfulfilled_title = "PROSPERITY_NO_ENCOURAGE_GROWTH"
+		desc = "PROSPERITY_ENCOURAGE_GROWTH_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_gene_crops
+			}
+		}
+		trigger = {
+			owner = {
+				has_edict = nutritional_plenitude
+			}
+		}
+	}
+	demand = {
+		title = "PROSPERITY_INDUSTRIAL_SUBSIDIES"
+		unfulfilled_title = "PROSPERITY_NO_INDUSTRIAL_SUBSIDIES"
+		desc = "PROSPERITY_INDUSTRIAL_SUBSIDIES_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_global_production_strategy
+			}
+			owner = {
+				is_crafter_empire = no
+			}
+		}
+		trigger = {
+			owner = {
+				has_edict = industrial_subsidies
+			}
+		}
+	}
+	demand = {
+		title = "PROSPERITY_INDUSTRIAL_SUBSIDIES_CRAFTERS"
+		unfulfilled_title = "PROSPERITY_NO_INDUSTRIAL_SUBSIDIES_CRAFTERS"
+		desc = "PROSPERITY_INDUSTRIAL_SUBSIDIES_CRAFTERS_DESC"
+		fulfilled_effect = 10
+		unfulfilled_effect = -5
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_global_production_strategy
+			}
+			owner = {
+				is_crafter_empire = yes
+			}
+		}
+		trigger = {
+			owner = {
+				has_edict = industrial_subsidies
+			}
+		}
+	}
+	demand = {
+		title = "PROSPERITY_EXTENDED_SHIFTS"
+		unfulfilled_title = "PROSPERITY_NO_EXTENDED_SHIFTS"
+		desc = "PROSPERITY_EXTENDED_SHIFTS_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_domination_workplace_motivators
+				OR = {
+					is_authoritarian = yes
+					has_authority = auth_imperial
+					has_authority = auth_dictatorial
+					AND = {
+						is_egalitarian = no
+						is_auth_corporate = yes
+					}
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				has_edict = extended_shifts
+			}
+		}
+	}
+	demand = {
+		title = "PROSPERITY_NO_FLEET_SUPREMACY"
+		unfulfilled_title = "PROSPERITY_FLEET_SUPREMACY"
+		desc = "PROSPERITY_NO_FLEET_SUPREMACY_DESC"
+		unfulfilled_effect = -10
+		fulfilled_effect = 0.001
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_doctrine_fleet_size_1
+			}
+		}
+		trigger = {
+			owner = {
+				OR = {
+					NOT = {
+						has_edict = fleet_supremacy
+					}
+					any_war = {
+						is_war_participant = {
+							who = root
+							side = defenders
+						}
+					}
+					has_crisis = yes
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROSPERITY_NO_FORGE_SUBSIDIES"
+		unfulfilled_title = "PROSPERITY_FORGE_SUBSIDIES"
+		desc = "PROSPERITY_NO_FORGE_SUBSIDIES_DESC"
+		unfulfilled_effect = -5
+		fulfilled_effect = 0.001
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_global_production_strategy
+			}
+		}
+		trigger = {
+			owner = {
+				OR = {
+					NOT = {
+						has_edict = forge_subsidies
+					}
+					any_war = {
+						is_war_participant = {
+							who = root
+							side = defenders
+						}
+					}
+					has_crisis = yes
 				}
 			}
 		}
@@ -285,6 +748,45 @@ prosperity = {
 					has_modifier = artifact_find_military_application_shield_damage
 					has_modifier = artifact_find_military_application_armor_damage
 				}
+			}
+		}
+	}
+	demand = {
+		title = "PROSPERITY_GALACTIC_LAW"
+		unfulfilled_title = "PROSPERITY_BREAKING_GALACTIC_LAW"
+		desc = "PROSPERITY_GALACTIC_LAW_DESC"
+		unfulfilled_effect = -5
+		fulfilled_effect = 0.001
+		potential = {
+			is_galactic_community_formed = yes
+		}
+		trigger = {
+			owner = {
+				is_in_breach_of_any = no
+			}
+		}
+	}
+	demand = {
+		title = "MERCANTILE_DIPLO_STANCE"
+		unfulfilled_title = "MERCANTILE_DIPLO_STANCE"
+		desc = "MERCANTILE_DIPLO_STANCE_DESC"
+		fulfilled_effect = 10
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				is_homicidal = no
+				OR = {
+					is_country_type = default
+					is_country_type = ascended_empire
+					is_country_type = lost_empire
+				}
+				has_policy_flag = diplo_stance_mercantile
+			}
+		}
+		trigger = {
+			owner = {
+				has_policy_flag = diplo_stance_mercantile
 			}
 		}
 	}
@@ -359,9 +861,12 @@ prosperity = {
 				owner = {
 					OR = {
 						is_subject = no
-						NOT = {
+						NOR = {
 							any_agreement = {
 								agreement_preset = preset_dominion
+							}
+							any_agreement = {
+								agreement_preset = preset_scion_dominion
 							}
 						}
 					}
@@ -416,6 +921,11 @@ prosperity = {
 								is_ai = no
 								is_country_type = default
 								has_communications = prev
+								has_intel_level = {
+									who = prev
+									category = government
+									level >= 1
+								}
 							}
 							country_event = {
 								id = factions.2000
@@ -432,6 +942,10 @@ prosperity = {
 					owner = {
 						has_ethic = ethic_pacifist
 					}
+				}
+				modifier = {
+					factor = 0.25
+					support < 0.5
 				}
 				modifier = {
 					factor = 0
@@ -451,6 +965,18 @@ prosperity = {
 					}
 				}
 				modifier = {
+					factor = 0.1
+					owner = {
+						has_ethic = ethic_militarist
+					}
+				}
+				modifier = {
+					factor = 0
+					owner = {
+						has_ethic = ethic_fanatic_militarist
+					}
+				}
+				modifier = {
 					factor = 0
 					owner = {
 						count_pop_faction = {
@@ -466,8 +992,7 @@ prosperity = {
 			potential = {
 				exists = owner
 				parameter:empire = {
-					NOR = {
-						has_ethic = ethic_pacifist
+					NOT = {
 						has_ethic = ethic_fanatic_pacifist
 					}
 				}

@@ -1,0 +1,160 @@
+
+##############################
+##############################
+### SYNTHETIC DAWN events  ###
+### by Maximilian Olbers,  ###
+### Miranda van den Brink, ###
+### & Dee Majek			   ###
+##############################
+##############################
+
+namespace = syndaw
+
+event = {
+	id = syndaw.10
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_playable_country = {
+			limit = {
+				OR = {
+					has_authority = auth_machine_intelligence
+					has_country_flag = synthetic_empire
+					has_technology = "tech_synthetic_workers"
+				}
+				NOT = { has_valid_civic = civic_machine_factory_overclock }
+			}
+			country_event = { id = syndaw.11 random = 200 }
+		}
+	}
+}
+
+situation_event = {
+	id = syndaw.540
+	title = syndaw.540.name
+	desc = syndaw.540.desc
+	picture = GFX_evt_organic_oppression
+	show_sound = event_ghost_town
+	location = event_target:target_planet
+	is_triggered_only = yes
+	situation = this
+
+	trigger = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		NOT = { has_situation_flag = triggered_syndaw_540 }
+		NOT = { has_situation_flag = flag_recent_event }
+		owner = {
+			OR = {
+				# Any Robots pops or robot armies? Check most likely first.
+				any_owned_planet = {
+					any_owned_pop = {
+						has_trait = trait_mechanical
+					}
+				}
+				any_owned_army = {
+					exists = planet
+					planet = {
+						is_occupied_flag = no
+						owner = { is_same_value = root.owner }
+					}
+					OR = {
+						army_type = robotic_army
+						army_type = android_army
+						army_type = robotic_defense_army
+						army_type = android_defense_army
+						army_type = cybrex_warform
+					}
+				}
+			}
+		}
+	}
+
+	immediate = {
+		set_situation_flag = triggered_syndaw_540
+		set_timed_situation_flag = { flag = flag_recent_event days = @recent_event_pause }
+		owner = {
+			# Try to pick planet with robot army, for variation. (Might still end up killing a Pop even if Army found.)
+			random_owned_army = {
+				limit = {
+					exists = planet
+					planet = {
+						is_occupied_flag = no
+						owner = { is_same_value = root.owner }
+					}
+					OR = {
+						army_type = robotic_army
+						army_type = android_army
+						army_type = robotic_defense_army
+						army_type = android_defense_army
+						army_type = cybrex_warform
+					}
+				}
+				save_event_target_as = target_army
+				planet = { save_event_target_as = target_planet }
+			}
+			if = {
+				# If no Robot Army found, check for Robot Pop.
+				limit = { NOT = { exists = event_target:target_planet } }
+				random_owned_planet = {
+					limit = {
+						any_owned_pop = { has_trait = trait_mechanical }
+					}
+					save_event_target_as = target_planet
+				}
+			}
+		}
+	}
+
+	option = { # Has Robot Pops on planet. Prio because it hurts a bit more to lose.
+		name = syndaw.540.a
+		custom_tooltip = syndaw.540.a.tooltip
+		add_situation_progress = 5
+		trigger = {
+			event_target:target_planet = {
+				any_owned_pop = { has_trait = trait_mechanical }
+			}
+		}
+		hidden_effect = {
+			event_target:target_planet = {
+				random_owned_pop = {
+					limit = { has_trait = trait_mechanical }
+					kill_pop = yes
+				}
+			}
+			owner = { add_resource = { alloys = 500 } }
+			change_variable = { which = var_cruelty_to_robots value = 1 }
+		}
+	}
+
+	option = { # Has only Robot Army but NO Robot Pops on planet.
+		name = syndaw.540.b
+		custom_tooltip = syndaw.540.b.tooltip
+		add_situation_progress = 5
+		trigger = {
+			event_target:target_planet = {
+				NOT = { any_owned_pop = { has_trait = trait_mechanical } }
+			}
+			exists = event_target:target_army
+		}
+		hidden_effect = {
+			event_target:target_army = { remove_army = yes }
+			owner = { add_resource = { minerals = 100 }	}
+			change_variable = { which = var_cruelty_to_robots value = 1 }
+		}
+	}
+
+	option = { # Leave them be.
+		name = syndaw.540.c
+		custom_tooltip = syndaw.540.c.tooltip
+		event_target:target_planet = {
+			add_modifier = {
+				modifier = syndaw_congregating_robots
+				days = 3600
+			}
+		}
+		hidden_effect = {
+			change_variable = { which = var_cruelty_to_robots value = -1 }
+		}
+	}
+}

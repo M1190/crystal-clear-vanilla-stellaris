@@ -11,14 +11,6 @@ progressive = {
 		produces = {
 			unity = 0.5
 		}
-		#		produces = {
-		#			trigger = {
-		#				owner = {
-		#					has_policy_flag = bugged_federal_state
-		#				}
-		#			}
-		#			influence = 0.01
-		#		}	
 	}
 	is_potential = {
 		is_faction_allowed = yes
@@ -55,6 +47,7 @@ progressive = {
 	can_join_faction = {
 		is_shackled_robot = no
 		has_culture_shock = no
+		can_think = yes
 		NOT = {
 			has_trait = trait_nerve_stapled
 		}
@@ -84,6 +77,17 @@ progressive = {
 				}
 			}
 		}
+		modifier = {
+			factor = 1.1
+			exists = owner
+			owner = {
+				OR = {
+					has_civic = civic_beacon_of_liberty
+					has_civic = civic_idealistic_foundation
+					has_country_flag = has_idealistic_foundation
+				}
+			}
+		}
 		# Should really check for citizenship instead
 		modifier = {
 			factor = 0.25
@@ -99,6 +103,20 @@ progressive = {
 			leader_class = ruler
 			owner = {
 				has_authority = auth_imperial
+			}
+		}
+		modifier = {
+			factor = 0
+			has_trait = leader_trait_iron_fist
+		}
+		modifier = {
+			factor = 1.25
+			has_ruler_trait = trait_ruler_champion_of_the_people
+		}
+		modifier = {
+			factor = 0.75
+			species = {
+				has_trait = trait_decadent
 			}
 		}
 		modifier = {
@@ -121,6 +139,495 @@ progressive = {
 		trigger = {
 			owner = {
 				has_country_flag = faction_egalitarian_outraged_gc
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_IDEALISTIC_FOUNDATION"
+		unfulfilled_title = "PROGRESSIVE_BROKEN_IDEALISM"
+		desc = "PROGRESSIVE_IDEALISTIC_FOUNDATION_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -30
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_civic = civic_idealistic_foundation
+					has_civic = civic_shared_burden
+					has_country_flag = has_idealistic_foundation
+					has_country_flag = has_shared_burden
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				is_egalitarian = yes
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_NO_AUTO"
+		unfulfilled_title = "PROGRESSIVE_AUTO"
+		desc = "PROGRESSIVE_DEMOCRATIC_GOVERNMENT_DESC"
+		fulfilled_effect = 10
+		unfulfilled_effect = -15
+		potential = {
+			exists = owner
+		}
+		trigger = {
+			owner = {
+				NOR = {
+					has_authority = auth_imperial
+					has_authority = auth_dictatorial
+					has_authority = auth_bugged_corporate_imperial
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_IDEALISTIC_DEMOCRACY"
+		unfulfilled_title = "PROGRESSIVE_IDEALISTIC_NOT_DEMOCRACY"
+		desc = "PROGRESSIVE_IDEALISTIC_DEMOCRACY_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_ethic = ethic_fanatic_egalitarian
+					has_civic = civic_idealistic_foundation
+					has_country_flag = has_idealistic_foundation
+				}
+				NOR = {
+					has_authority = auth_imperial
+					has_authority = auth_dictatorial
+					has_authority = auth_private
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				OR = {
+					has_authority = auth_democratic
+					has_authority = auth_cooperative
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_XENOIST_NO_CRISIS"
+		unfulfilled_title = "PROGRESSIVE_XENOIST_CRISIS"
+		desc = "PROGRESSIVE_XENOIST_NO_CRISIS_DESC"
+		fulfilled_effect = 0.001
+		unfulfilled_effect = -25
+		potential = {
+			exists = owner
+			owner = {
+				has_ascension_perk = ap_become_the_crisis
+			}
+		}
+		trigger = {
+			owner = {
+				NOT = {
+					has_ascension_perk = ap_become_the_crisis
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_NO_POLICE_STATE"
+		unfulfilled_title = "PROGRESSIVE_POLICE_STATE"
+		desc = "PROGRESSIVE_POLICE_STATE_DESC"
+		fulfilled_effect = 0.001
+		unfulfilled_effect = -10
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_police_state				# so as to not clutter up the list
+			}
+		}
+		trigger = {
+			owner = {
+				NOT = {
+					has_valid_civic = civic_police_state
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_FREE_SPEECH"
+		unfulfilled_title = "PROGRESSIVE_NO_FREE_SPEECH"
+		desc = "PROGRESSIVE_FREE_SPEECH_DESC"
+		fulfilled_effect = 0.001
+		unfulfilled_effect = -5
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_media_conglomerate
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				has_policy_flag = free_press
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_FREE_MOVEMENT"
+		unfulfilled_title = "PROGRESSIVE_NO_FREE_MOVEMENT"
+		desc = "PROGRESSIVE_FREE_MOVEMENT_DESC"
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+		potential = {
+			exists = owner
+			owner = {
+				has_encountered_other_species = yes
+			}
+		}
+		trigger = {
+			owner = {
+				NOR = {
+					has_policy_flag = resettlement_allowed
+					any_owned_pop = {
+						NOR = {
+							has_trait = trait_hive_mind
+							has_trait = trait_syncretic_proles
+							has_trait = trait_nerve_stapled
+							has_trait = trait_zombie
+							has_trait = trait_presapient_docile_livestock
+						}
+						has_migration_control = {
+							value = yes
+						}
+						is_sapient = yes
+						is_enslaved = no
+						is_being_purged = no
+						is_shackled_robot = no
+						is_robot_pop = no
+					}
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_REPRODUCTIVE_FREEDOM"
+		unfulfilled_title = "PROGRESSIVE_NO_REPRODUCTIVE_FREEDOM"
+		desc = "PROGRESSIVE_REPRODUCTIVE_FREEDOM_DESC"
+		fulfilled_effect = 7
+		unfulfilled_effect = -20
+		potential = {
+			exists = owner
+		}
+		trigger = {
+			NOR = {
+				owner = {
+					has_policy_flag = population_controls_allowed
+				}
+				owner = {
+					has_policy_flag = eco_reproductive_policy_none
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_NEEDS_MET"
+		unfulfilled_title = "PROGRESSIVE_NEEDS_MET"
+		desc = "PROGRESSIVE_NEEDS_MET_DESC"
+		fulfilled_effect = 0.001
+		unfulfilled_effect = -5
+		potential = {
+			exists = owner
+		}
+		trigger = {
+			owner = {
+				NOR = {
+					has_deficit = food
+					any_owned_planet = {
+						OR = {
+							free_housing < 0
+							free_amenities < 0
+						}
+					}
+					AND = {
+						any_owned_species = {
+							is_lithoid = yes
+						}
+						has_deficit = minerals
+					}
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_WORKER_FREEDOM"
+		unfulfilled_title = "PROGRESSIVE_NO_WORKER_FREEDOM"
+		desc = "PROGRESSIVE_WORKER_FREEDOM_DESC"
+		fulfilled_effect = 0.001
+		unfulfilled_effect = -20
+		potential = {
+			exists = owner
+		}
+		trigger = {
+			NOR = {
+				owner = {
+					has_policy_flag = no_union_rights
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_NO_STRATIFIED"
+		unfulfilled_title = "PROGRESSIVE_STRATIFIED"
+		desc = "PROGRESSIVE_NO_STRATIFIED_DESC"
+		unfulfilled_effect = -25
+		fulfilled_effect = 0.001
+		potential = {
+			exists = owner
+		}
+		trigger = {
+			owner = {
+				NOT = {
+					any_owned_species = {
+						has_living_standard = {
+							type = living_standard_stratified
+							country = prev
+						}
+					}
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_WELFARE"
+		unfulfilled_title = "PROGRESSIVE_NO_WELFARE"
+		desc = "PROGRESSIVE_WELFARE_DESC"
+		unfulfilled_effect = -0.001
+		fulfilled_effect = 5
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					any_owned_species = {
+						has_living_standard = {
+							type = living_standard_stratified
+							country = prev
+						}
+					}
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				NOR = {
+					has_policy_flag = healthcare_for_profit
+					any_owned_species = {
+						OR = {
+							has_living_standard = {
+								type = living_standard_subsistence
+								country = prev
+							}
+							has_living_standard = {
+								type = living_standard_normal
+								country = prev
+							}
+							has_living_standard = {
+								type = living_standard_academic_privilege
+								country = prev
+							}
+							has_living_standard = {
+								type = living_standard_decadent
+								country = prev
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_SLAVERY_BANNED"
+		unfulfilled_title = "PROGRESSIVE_SLAVERY_ALLOWED"
+		desc = "PROGRESSIVE_SLAVERY_BANNED_DESC"
+		fulfilled_effect = 0.001
+		unfulfilled_effect = -10
+		potential = {
+			exists = owner
+			owner = {
+				num_species > 1
+				OR = {
+					is_xenophile = yes
+					has_civic = civic_beacon_of_liberty
+					has_civic = civic_idealistic_foundation
+					has_country_flag = has_idealistic_foundation
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				NOT = {
+					has_policy_flag = slavery_allowed
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_SOCIAL_EQUALITY"
+		unfulfilled_title = "PROGRESSIVE_NO_SOCIAL_EQUALITY"
+		desc = "PROGRESSIVE_SOCIAL_EQUALITY_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -5
+		potential = {
+			exists = owner
+			owner = {
+				num_species > 1
+				OR = {
+					is_xenophile = yes
+					has_civic = civic_beacon_of_liberty
+					has_civic = civic_idealistic_foundation
+					has_country_flag = has_idealistic_foundation
+				}
+				is_xenophobe = no
+			}
+		}
+		trigger = {
+			owner = {
+				NOT = {
+					any_owned_species = {
+						is_sapient = yes
+						NOR = {
+							has_citizenship_type = {
+								country = root.owner
+								type = citizenship_slavery
+							}
+							has_citizenship_type = {
+								country = root.owner
+								type = citizenship_purge
+							}
+							has_citizenship_type = {
+								country = root.owner
+								type = citizenship_purge_machine
+							}
+						}
+						is_robotic = no
+						NOR = {
+							has_trait = trait_hive_mind
+							has_trait = trait_syncretic_proles
+							can_think = no
+							has_trait = trait_presapient_docile_livestock
+						}
+						NOT = {
+							has_citizenship_type = {
+								country = root.owner
+								type = citizenship_full
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_NO_ELITISM"
+		unfulfilled_title = "PROGRESSIVE_ELITISM"
+		desc = "PROGRESSIVE_NO_ELITISM_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -5
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_technology = tech_selected_lineages
+					has_technology = tech_capacity_boosters
+					has_ethic = ethic_elitist
+					has_ethic = ethic_fanatic_elitist
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				NOR = {
+					has_policy_flag = leader_enhancement_selected_lineages
+					has_policy_flag = leader_enhancement_capacity_boosters
+				}
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_GALACTIC_IMPERIUM"
+		unfulfilled_title = "PROGRESSIVE_NO_GALACTIC_IMPERIUM"
+		desc = "PROGRESSIVE_GALACTIC_IMPERIUM_DESC"
+		unfulfilled_effect = -30
+		fulfilled_effect = 0.001
+		potential = {
+			exists = owner
+			owner = {
+				is_galactic_emperor = yes
+			}
+		}
+		trigger = {
+			exists = owner
+			owner = {
+				is_galactic_emperor = no
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_NO_EXTENDED_SHIFTS"
+		unfulfilled_title = "PROGRESSIVE_EXTENDED_SHIFTS"
+		desc = "PROGRESSIVE_NO_EXTENDED_SHIFTS_DESC"
+		unfulfilled_effect = -10
+		fulfilled_effect = 0.001
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_domination_workplace_motivators
+			}
+		}
+		trigger = {
+			owner = {
+				NOT = {
+					has_edict = extended_shifts
+				}
+			}
+		}
+	}
+	demand = {
+		title = "COOPERATIVE_DIPLO_STANCE"
+		unfulfilled_title = "COOPERATIVE_DIPLO_STANCE"
+		desc = "COOPERATIVE_DIPLO_STANCE_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				is_homicidal = no
+				is_country_type = default
+				has_policy_flag = diplo_stance_cooperative
+			}
+		}
+		trigger = {
+			owner = {
+				has_policy_flag = diplo_stance_cooperative
+			}
+		}
+	}
+	demand = {
+		title = "PROGRESSIVE_BENEVOLENT_SUBJUGATION_POLICY"
+		unfulfilled_title = "PROGRESSIVE_BENEVOLENT_NO_OPPRESSIVE_SUBJUGATION_POLICY"
+		desc = "PROGRESSIVE_BENEVOLENT_NO_OPPRESSIVE_SUBJUGATION_POLICY_DESC"
+		unfulfilled_effect = -0.001
+		fulfilled_effect = 5
+		potential = {
+			exists = owner
+			owner = {
+				is_subject = no
+			}
+		}
+		trigger = {
+			owner = {
+				has_policy_flag = benevolent_terms
 			}
 		}
 	}
@@ -204,86 +711,6 @@ progressive = {
 			}
 		}
 	}
-	demand = {
-		title = "PROGRESSIVE_NO_AUTO"
-		unfulfilled_title = "PROGRESSIVE_AUTO"
-		desc = "PROGRESSIVE_DEMOCRATIC_GOVERNMENT_DESC"
-		fulfilled_effect = 10
-		unfulfilled_effect = -15
-		potential = {
-			exists = owner
-		}
-		trigger = {
-			owner = {
-				NOR = {
-					has_authority = auth_imperial
-					has_authority = auth_dictatorial
-				}
-			}
-		}
-	}
-	demand = {
-		title = "PROGRESSIVE_FREE_MOVEMENT"
-		unfulfilled_title = "PROGRESSIVE_NO_FREE_MOVEMENT"
-		desc = "PROGRESSIVE_FREE_MOVEMENT_DESC"
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-		potential = {
-			exists = owner
-			owner = {
-				has_encountered_other_species = yes
-			}
-		}
-		trigger = {
-			owner = {
-				NOR = {
-					any_owned_pop = {
-						is_enslaved = no
-						is_being_purged = no
-						is_shackled_robot = no
-					}
-					has_policy_flag = resettlement_allowed
-				}
-			}
-		}
-	}
-	demand = {
-		title = "PROGRESSIVE_REPRODUCTIVE_FREEDOM"
-		unfulfilled_title = "PROGRESSIVE_NO_REPRODUCTIVE_FREEDOM"
-		desc = "PROGRESSIVE_REPRODUCTIVE_FREEDOM_DESC"
-		fulfilled_effect = 7
-		unfulfilled_effect = -20
-		potential = {
-			exists = owner
-		}
-		trigger = {
-			NOT = {
-				owner = {
-					has_policy_flag = population_controls_allowed
-				}
-			}
-		}
-	}
-	demand = {
-		title = "COOPERATIVE_DIPLO_STANCE"
-		unfulfilled_title = "COOPERATIVE_DIPLO_STANCE"
-		desc = "COOPERATIVE_DIPLO_STANCE_DESC"
-		fulfilled_effect = 5
-		unfulfilled_effect = -0.001
-		potential = {
-			exists = owner
-			owner = {
-				is_homicidal = no
-				is_country_type = default
-				has_policy_flag = diplo_stance_cooperative
-			}
-		}
-		trigger = {
-			owner = {
-				has_policy_flag = diplo_stance_cooperative
-			}
-		}
-	}
 	on_create = {
 		pop_faction_event = {
 			id = factions.1
@@ -315,9 +742,12 @@ progressive = {
 				owner = {
 					OR = {
 						is_subject = no
-						NOT = {
+						NOR = {
 							any_agreement = {
 								agreement_preset = preset_dominion
+							}
+							any_agreement = {
+								agreement_preset = preset_scion_dominion
 							}
 						}
 					}
@@ -362,6 +792,46 @@ progressive = {
 								days = 3600
 							}
 						}
+						if = {
+							limit = {
+								has_ethic = ethic_fanatic_egalitarian
+								is_megacorp = no
+							}
+							change_government = {
+								authority = auth_democratic
+							}
+						}
+						else_if = {
+							limit = {
+								has_ethic = ethic_fanatic_egalitarian
+								is_megacorp = yes
+							}
+							change_government = {
+								authority = auth_cooperative
+							}
+						}
+						else_if = {
+							limit = {
+								NOT = {
+									has_authority = auth_democratic
+								}
+								is_megacorp = no
+							}
+							change_government = {
+								authority = auth_oligarchic
+							}
+						}
+						else_if = {
+							limit = {
+								NOT = {
+									has_authority = auth_democratic
+								}
+								is_megacorp = yes
+							}
+							change_government = {
+								authority = auth_corporate
+							}
+						}
 					}
 				}
 				hidden_effect = {
@@ -372,6 +842,11 @@ progressive = {
 								is_ai = no
 								is_country_type = default
 								has_communications = prev
+								has_intel_level = {
+									who = prev
+									category = government
+									level >= 1
+								}
 							}
 							country_event = {
 								id = factions.2000
@@ -390,9 +865,19 @@ progressive = {
 					}
 				}
 				modifier = {
+					factor = 0.25
+					support < 0.5
+				}
+				modifier = {
 					factor = 0
 					owner = {
 						has_valid_civic = civic_fanatic_purifiers
+					}
+				}
+				modifier = {
+					factor = 0
+					owner = {
+						has_origin = origin_iron_despot
 					}
 				}
 				modifier = {
@@ -401,8 +886,41 @@ progressive = {
 						owner = {
 							exists = ruler
 							ruler = {
-								leader_of_faction = progressive
+								OR = {
+									leader_of_faction = manifesti
+									leader_of_faction = progressive
+								}
 							}
+						}
+					}
+				}
+				modifier = {
+					factor = 0.1
+					owner = {
+						has_ethic = ethic_authoritarian
+					}
+				}
+				modifier = {
+					factor = 0
+					owner = {
+						has_ethic = ethic_fanatic_authoritarian
+					}
+				}
+				modifier = {
+					factor = 5
+					owner = {
+						is_galactic_community_member = yes
+						is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
+						in_breach_of = resolution_greatergood_universal_prosperity_mandate
+					}
+				}
+				modifier = {
+					factor = 0.5
+					owner = {
+						OR = {
+							has_authority = auth_imperial
+							has_authority = auth_dictatorial
+							has_authority = auth_private
 						}
 					}
 				}

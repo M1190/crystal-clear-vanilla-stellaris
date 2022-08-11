@@ -1,7 +1,6 @@
 ###################
 # Fancy Jobs
 ###################
-#Head Researcher
 head_researcher = {
 	category = ruler
 	condition_string = RULER_JOB_TRIGGER
@@ -10,10 +9,10 @@ head_researcher = {
 	icon = researcher
 	possible_pre_triggers = {
 		has_owner = yes
+		is_sapient = yes
 		is_enslaved = no
 		is_being_purged = no
 		is_being_assimilated = no
-		is_sapient = yes
 	}
 	possible_precalc = can_fill_ruler_job
 	resources = {
@@ -27,6 +26,61 @@ head_researcher = {
 		upkeep = {
 			consumer_goods = 2
 		}
+		upkeep = {
+			trigger = {
+				planet = {
+					has_planet_flag = has_science_ministry
+				}
+			}
+			consumer_goods = 1
+		}
+	}
+	overlord_resources = {
+		category = planet_requisitioned_research
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = has_science_ministry
+				}
+			}
+			physics_research = 3
+			engineering_research = 3
+			society_research = 3
+		}
+	}
+	triggered_pop_modifier = {
+		potential = {
+			is_enslaved = no
+			owner = {
+				has_edict = research_subsidies
+			}
+		}
+		modifier = {
+			pop_happiness = 0.05
+		}
+	}
+	triggered_pop_modifier = {
+		potential = {
+			is_enslaved = no
+			owner = {
+				has_edict = research_subsidies
+				is_materialist = yes
+			}
+		}
+		modifier = {
+			pop_happiness = 0.05
+		}
+	}
+	triggered_pop_modifier = {
+		potential = {
+			is_enslaved = no
+			owner = {
+				has_origin = origin_iron_despot
+			}
+		}
+		modifier = {
+			pop_political_power = 2
+		}
 	}
 	# This needs to be triggered planet modifier to get the correct scope.
 	triggered_planet_modifier = {
@@ -36,11 +90,70 @@ head_researcher = {
 		planet_amenities_add = 3
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_shadow_council
+					has_valid_civic = civic_shadow_council_megacorp
+				}
+			}
+		}
+		planet_amenities_add = 0.3
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				has_civic = civic_technocracy_corp
+			}
+		}
+		trade_value_add = 4
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_shadow_council_megacorp
+				has_valid_civic = civic_technocracy_corp
+			}
+		}
+		trade_value_add = 0.4
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+	}
 	weight = {
 		weight = @ruler_job_weight
 		mult = value:job_weights_research_modifier|JOB|head_researcher|
 		mult = value:job_weights_modifier|JOB|head_researcher|RESOURCE|unity|FACTOR|0.25|
 		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
+		modifier = {
+			mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_trade_mult|
+			owner = {
+				has_civic = civic_technocracy_corp
+			}
+		}
+		modifier = {
+			factor = 10
+			is_pop_category = ruler
+		}
+		modifier = {
+			factor = 8
+			is_pop_category = specialist
+			NOR = {
+				has_job = foundry
+				has_job = artisan
+				has_job = artificer
+				has_job = chemist
+				has_job = translucer
+				has_job = gas_refiner
+			}
+			exists = planet
+			planet = {
+				has_available_jobs = head_researcher
+			}
+		}
 		modifier = {
 			factor = 0.2
 			has_citizenship_rights = no
@@ -55,8 +168,28 @@ head_researcher = {
 			}
 		}
 		modifier = {
+			factor = 0
+			has_living_standard = {
+				type = living_standard_chemical_bliss
+			}
+		}
+		modifier = {
+			factor = 2
+			has_job = researcher
+		}
+		modifier = {
 			factor = 5
 			has_job = head_researcher
+		}
+		modifier = {
+			factor = 1.2
+			is_unemployed = yes
+			is_pop_category = ruler
+		}
+		modifier = {
+			factor = 1.1
+			is_unemployed = yes
+			is_pop_category = specialist
 		}
 		modifier = {
 			factor = 0.01
@@ -68,11 +201,24 @@ head_researcher = {
 					is_country_type = ai_empire
 				}
 			}
+			OR = {
+				# contingency won't purge itself
+				NOT = {
+					exists = event_target:custodian_bot
+				}
+				AND = {
+					exists = event_target:custodian_bot
+					NOT = {
+						species = {
+							is_same_value = event_target:custodian_bot
+						}
+					}
+				}
+			}
 		}
 	}
 }
 
-#High Priest
 high_priest = {
 	category = ruler
 	condition_string = RULER_JOB_TRIGGER
@@ -80,10 +226,10 @@ high_priest = {
 	clothes_texture_index = 1
 	possible_pre_triggers = {
 		has_owner = yes
+		is_sapient = yes
 		is_enslaved = no
 		is_being_purged = no
 		is_being_assimilated = no
-		is_sapient = yes
 	}
 	possible_precalc = can_fill_ruler_job
 	possible = {
@@ -114,6 +260,48 @@ high_priest = {
 		planet_amenities_add = 5
 	}
 	#Bug Branch
+	triggered_country_modifier = {
+		potential = {
+			planet = {
+				exists = owner
+				owner = {
+					has_valid_civic = civic_crusaders
+				}
+			}
+		}
+		modifier = {
+			country_naval_cap_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 5
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				has_valid_civic = civic_exalted_priesthood
+			}
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_shadow_council
+					has_valid_civic = civic_shadow_council_megacorp
+				}
+			}
+		}
+		planet_amenities_add = 0.5
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -125,17 +313,30 @@ high_priest = {
 			planet_jobs_engineering_research_produces_mult = 0.05
 		}
 	}
-	triggered_planet_modifier = {
-		potential = {
-			always = yes
-		}
-		planet_amenities_add = 5
-		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
-	}
 	weight = {
 		weight = @ruler_job_weight
 		mult = value:job_weights_modifier|JOB|high_priest|RESOURCE|unity|
 		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
+		modifier = {
+			factor = 10
+			is_pop_category = ruler
+		}
+		modifier = {
+			factor = 8
+			is_pop_category = specialist
+			NOR = {
+				has_job = foundry
+				has_job = artisan
+				has_job = artificer
+				has_job = chemist
+				has_job = translucer
+				has_job = gas_refiner
+			}
+			exists = planet
+			planet = {
+				has_available_jobs = high_priest
+			}
+		}
 		modifier = {
 			factor = 0.1
 			has_citizenship_rights = no
@@ -155,10 +356,29 @@ high_priest = {
 			}
 		}
 		modifier = {
+			factor = 2
+			has_job = priest
+		}
+		modifier = {
 			factor = 5
 			has_job = high_priest
 		}
-		# crisis purge
+		modifier = {
+			factor = 1.2
+			is_unemployed = yes
+			is_pop_category = ruler
+		}
+		modifier = {
+			factor = 1.1
+			is_unemployed = yes
+			is_pop_category = specialist
+		}
+		modifier = {
+			factor = 0
+			has_living_standard = {
+				type = living_standard_chemical_bliss
+			}
+		}
 		modifier = {
 			factor = 0.01
 			exists = planet
@@ -167,6 +387,20 @@ high_priest = {
 				OR = {
 					is_country_type = swarm
 					is_country_type = ai_empire
+				}
+			}
+			OR = {
+				# contingency won't purge itself
+				NOT = {
+					exists = event_target:custodian_bot
+				}
+				AND = {
+					exists = event_target:custodian_bot
+					NOT = {
+						species = {
+							is_same_value = event_target:custodian_bot
+						}
+					}
 				}
 			}
 		}
@@ -181,10 +415,10 @@ politician = {
 	icon = administrator
 	possible_pre_triggers = {
 		has_owner = yes
+		is_sapient = yes
 		is_enslaved = no
 		is_being_purged = no
 		is_being_assimilated = no
-		is_sapient = yes
 	}
 	possible_precalc = can_fill_ruler_job
 	resources = {
@@ -215,10 +449,43 @@ politician = {
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
 	#Bug Branch
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_shadow_council
+					has_valid_civic = civic_shadow_council_megacorp
+				}
+			}
+		}
+		planet_amenities_add = 0.3
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
 	weight = {
 		weight = @ruler_job_weight
 		mult = value:job_weights_modifier|JOB|politician|RESOURCE|unity|
 		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
+		modifier = {
+			factor = 10
+			is_pop_category = ruler
+		}
+		modifier = {
+			factor = 8
+			is_pop_category = specialist
+			NOR = {
+				has_job = foundry
+				has_job = artisan
+				has_job = artificer
+				has_job = chemist
+				has_job = translucer
+				has_job = gas_refiner
+			}
+			exists = planet
+			planet = {
+				has_available_jobs = politician
+			}
+		}
 		modifier = {
 			factor = 0.1
 			has_citizenship_rights = no
@@ -230,77 +497,22 @@ politician = {
 			factor = 5
 			has_job = politician
 		}
-		# crisis purge
+		modifier = {
+			factor = 1.2
+			is_unemployed = yes
+			is_pop_category = ruler
+		}
+		modifier = {
+			factor = 1.1
+			is_unemployed = yes
+			is_pop_category = specialist
+		}
 		modifier = {
 			factor = 0.01
-			exists = planet
-			exists = planet.controller
-			planet.controller = {
-				OR = {
-					is_country_type = swarm
-					is_country_type = ai_empire
-				}
+			has_living_standard = {
+				type = living_standard_chemical_bliss
 			}
 		}
-	}
-}
-
-#Noble
-noble = {
-	category = ruler
-	condition_string = RULER_JOB_TRIGGER
-	building_icon = building_palace
-	clothes_texture_index = 1
-	possible_pre_triggers = {
-		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
-		is_being_assimilated = no
-		is_sapient = yes
-	}
-	possible_precalc = can_fill_ruler_job
-	resources = {
-		category = planet_nobles
-		produces = {
-			unity = 6
-		}
-		upkeep = {
-			consumer_goods = 2
-		}
-	}
-	planet_modifier = {
-		planet_stability_add = 2
-	}
-	triggered_planet_modifier = {
-		potential = {
-			always = yes
-		}
-		planet_amenities_add = 3
-		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
-	}
-	weight = {
-		weight = @ruler_job_weight
-		mult = value:job_weights_modifier|JOB|noble|RESOURCE|unity|
-		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
-		modifier = {
-			factor = 0.1
-			has_citizenship_rights = no
-			NOT = {
-				has_trait = trait_mechanical
-			}
-		}
-		modifier = {
-			factor = 0.1
-			is_egalitarian = yes
-			NOT = {
-				has_job = noble
-			}
-		}
-		modifier = {
-			factor = 5
-			has_job = noble
-		}
-		# crisis purge
 		modifier = {
 			factor = 0.01
 			exists = planet
@@ -329,7 +541,146 @@ noble = {
 	}
 }
 
-#Merchant
+noble = {
+	category = ruler
+	condition_string = RULER_JOB_TRIGGER
+	building_icon = building_palace
+	clothes_texture_index = 1
+	possible_pre_triggers = {
+		has_owner = yes
+		is_sapient = yes
+		is_enslaved = no
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+	possible_precalc = can_fill_ruler_job
+	resources = {
+		category = planet_nobles
+		produces = {
+			unity = 6
+		}
+		upkeep = {
+			consumer_goods = 2
+		}
+	}
+	planet_modifier = {
+		planet_stability_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 3
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_shadow_council
+					has_valid_civic = civic_shadow_council_megacorp
+				}
+			}
+		}
+		planet_amenities_add = 0.3
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				has_civic = civic_royal_trading_company
+			}
+		}
+		trade_value_add = 4
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+	}
+	weight = {
+		weight = @ruler_job_weight
+		mult = value:job_weights_modifier|JOB|noble|RESOURCE|unity|
+		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
+		modifier = {
+			mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_trade_mult|
+			owner = {
+				has_civic = civic_royal_trading_company
+			}
+		}
+		modifier = {
+			factor = 10
+			is_pop_category = ruler
+		}
+		modifier = {
+			factor = 8
+			is_pop_category = specialist
+			NOR = {
+				has_job = foundry
+				has_job = artisan
+				has_job = artificer
+				has_job = chemist
+				has_job = translucer
+				has_job = gas_refiner
+			}
+			exists = planet
+			planet = {
+				has_available_jobs = noble
+			}
+		}
+		modifier = {
+			factor = 0.1
+			has_citizenship_rights = no
+			NOT = {
+				has_trait = trait_mechanical
+			}
+		}
+		modifier = {
+			factor = 0.1
+			is_egalitarian = yes
+			NOT = {
+				has_job = noble
+			}
+		}
+		modifier = {
+			factor = 5
+			has_job = noble
+		}
+		modifier = {
+			factor = 1.2
+			is_unemployed = yes
+			is_pop_category = ruler
+		}
+		modifier = {
+			factor = 1.1
+			is_unemployed = yes
+			is_pop_category = specialist
+		}
+		modifier = {
+			factor = 0.01
+			exists = planet
+			exists = planet.controller
+			planet.controller = {
+				OR = {
+					is_country_type = swarm
+					is_country_type = ai_empire
+				}
+			}
+			OR = {
+				# contingency won't purge itself
+				NOT = {
+					exists = event_target:custodian_bot
+				}
+				AND = {
+					exists = event_target:custodian_bot
+					NOT = {
+						species = {
+							is_same_value = event_target:custodian_bot
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 merchant = {
 	category = ruler
 	condition_string = RULER_JOB_TRIGGER
@@ -337,15 +688,19 @@ merchant = {
 	clothes_texture_index = 1
 	possible_pre_triggers = {
 		has_owner = yes
+		is_sapient = yes
 		is_enslaved = no
 		is_being_purged = no
 		is_being_assimilated = no
-		is_sapient = yes
 	}
 	possible_precalc = can_fill_ruler_job
 	resources = {
 		category = planet_merchants
 		produces = {
+			unity = 2
+		}
+		produces = {
+			
 			trigger = {
 				owner = {
 					is_bugged_peaceful_traders = yes
@@ -357,8 +712,6 @@ merchant = {
 			consumer_goods = 2
 		}
 	}
-	#Bug Branch
-	#Bug Branch
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -380,15 +733,77 @@ merchant = {
 		trade_value_add = 1
 		mult = value:bugged_stock_exchange_tv
 	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_shadow_council
+					has_valid_civic = civic_shadow_council_megacorp
+				}
+			}
+		}
+		planet_amenities_add = 0.3
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_shadow_council
+					has_valid_civic = civic_shadow_council_megacorp
+				}
+			}
+		}
+		trade_value_add = 1.2
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+	}
 	weight = {
 		weight = @ruler_job_weight
 		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
+		mult = value:job_weights_modifier|JOB|merchant|RESOURCE|unity|FACTOR|0.25|
 		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_trade_mult|
+		modifier = {
+			factor = 10
+			is_pop_category = ruler
+		}
+		modifier = {
+			factor = 8
+			is_pop_category = specialist
+			NOR = {
+				has_job = foundry
+				has_job = artisan
+				has_job = artificer
+				has_job = chemist
+				has_job = translucer
+				has_job = gas_refiner
+			}
+			exists = planet
+			planet = {
+				has_available_jobs = merchant
+			}
+		}
 		modifier = {
 			factor = 5
 			has_job = merchant
 		}
-		# crisis purge
+		modifier = {
+			factor = 1.2
+			is_unemployed = yes
+			is_pop_category = ruler
+		}
+		modifier = {
+			factor = 1.1
+			is_unemployed = yes
+			is_pop_category = specialist
+		}
+		modifier = {
+			factor = 0
+			has_living_standard = {
+				type = living_standard_chemical_bliss
+			}
+		}
 		modifier = {
 			factor = 0.01
 			exists = planet
@@ -424,10 +839,10 @@ executive = {
 	clothes_texture_index = 1
 	possible_pre_triggers = {
 		has_owner = yes
+		is_sapient = yes
 		is_enslaved = no
 		is_being_purged = no
 		is_being_assimilated = no
-		is_sapient = yes
 	}
 	possible_precalc = can_fill_ruler_job
 	resources = {
@@ -435,7 +850,6 @@ executive = {
 		produces = {
 			unity = 6
 		}
-		#Bug Branch	
 		produces = {
 			trigger = {
 				exists = owner
@@ -451,7 +865,6 @@ executive = {
 			consumer_goods = 2
 		}
 	}
-	#Bug Branch
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -462,7 +875,6 @@ executive = {
 		planet_amenities_add = 2
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-	#Bug Branch
 	triggered_planet_modifier = {
 		potential = {
 			always = yes
@@ -484,16 +896,87 @@ executive = {
 		trade_value_add = 1
 		mult = value:bugged_stock_exchange_tv
 	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_shadow_council
+					has_valid_civic = civic_shadow_council_megacorp
+				}
+			}
+		}
+		planet_amenities_add = 0.3
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_shadow_council
+					has_valid_civic = civic_shadow_council_megacorp
+				}
+			}
+		}
+		trade_value_add = 0.4
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult|
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_modifier = "planet_manager_awards"
+			}
+		}
+		modifier = {
+			trade_value_add = 0.5
+		}
+	}
 	weight = {
 		weight = @ruler_job_weight
-		mult = value:job_weights_modifier|JOB|executive|RESOURCE|unity|
 		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
+		mult = value:job_weights_modifier|JOB|executive|RESOURCE|unity|
 		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_trade_mult|
+		modifier = {
+			factor = 10
+			is_pop_category = ruler
+		}
+		modifier = {
+			factor = 8
+			is_pop_category = specialist
+			NOR = {
+				has_job = foundry
+				has_job = artisan
+				has_job = artificer
+				has_job = chemist
+				has_job = translucer
+				has_job = gas_refiner
+			}
+			exists = planet
+			planet = {
+				has_available_jobs = executive
+			}
+		}
 		modifier = {
 			factor = 5
 			has_job = executive
 		}
-		# crisis purge
+		modifier = {
+			factor = 1.2
+			is_unemployed = yes
+			is_pop_category = ruler
+		}
+		modifier = {
+			factor = 1.1
+			is_unemployed = yes
+			is_pop_category = specialist
+		}
+		modifier = {
+			factor = 0.01
+			has_living_standard = {
+				type = living_standard_chemical_bliss
+			}
+		}
 		modifier = {
 			factor = 0.01
 			exists = planet

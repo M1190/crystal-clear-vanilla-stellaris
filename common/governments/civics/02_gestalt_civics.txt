@@ -21,6 +21,18 @@ civic_hive_subspace_ephapse = {
 			value = auth_hive_mind
 		}
 	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_harm_hive
+			}
+		}
+		origin = {
+			NOR = {
+				value = origin_extant_creators
+			}
+		}
+	}
 	random_weight = {
 		base = 5
 	}
@@ -33,17 +45,18 @@ civic_hive_subspace_ephapse = {
 }
 
 civic_hive_natural_neural_network = {
+	description = "civic_tooltip_natural_neural_network_effects"
 	potential = {
 		authority = {
 			value = auth_hive_mind
 		}
 	}
-	description = "civic_tooltip_natural_neural_network_effects"
 	random_weight = {
 		base = 5
 	}
 	modifier = {
 		num_tech_alternatives_add = 1
+		planet_researchers_upkeep_mult = -0.2
 		all_technology_research_speed = 0.05
 	}
 }
@@ -102,12 +115,21 @@ civic_hive_strength_of_legions = {
 			value = auth_hive_mind
 		}
 	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_closed_collective
+				value = civic_harm_hive
+			}
+		}
+	}
 	random_weight = {
 		base = 5
 	}
 	modifier = {
 		army_starting_experience_add = 100
 		army_damage_mult = 0.2
+		planet_soldiers_unity_produces_add = 2
 		planet_army_build_speed_mult = 0.25
 		armies_upkeep_mult = -0.2
 	}
@@ -126,14 +148,23 @@ civic_hive_subsumed_will = {
 	modifier = {
 		empire_size_pops_mult = -0.2
 		country_edict_fund_add = 50
+		planet_resettlement_unemployed_mult = 0.5
 		country_influence_produces_mult = 0.25
 	}
 }
 
 civic_hive_pooled_knowledge = {
+	description = "civic_tooltip_hive_pooled_knowledge_effects"
 	potential = {
 		authority = {
 			value = auth_hive_mind
+		}
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_hive_synapses
+			}
 		}
 	}
 	random_weight = {
@@ -155,11 +186,27 @@ civic_hive_devouring_swarm = {
 		}
 	}
 	possible = {
+		civics = {
+			NOR = {
+				value = civic_harm_hive
+				value = civic_closed_collective
+				value = civic_infestation
+				value = civic_hive_memorialist
+			}
+		}
 		origin = {
 			NOR = {
 				value = origin_common_ground
+				value = origin_common_ground_npc
+				value = origin_scion
 				value = origin_hegemon
 				value = origin_tree_of_life
+				value = origin_symbiote
+				value = origin_syncretic_evolution_hive
+				value = origin_syncretic_livestock
+				value = origin_syncretic_livestock_lithoid
+				value = origin_here_be_dragons
+				value = origin_imperial_vassal
 			}
 		}
 	}
@@ -170,6 +217,7 @@ civic_hive_devouring_swarm = {
 	modifier = {
 		country_starbase_influence_cost_mult = -0.5
 		ship_hull_mult = 0.25
+		ship_armor_mult = 0.25
 		ship_hull_regen_add_perc = 0.5
 		ship_armor_regen_add_perc = 0.5
 		army_damage_mult = 0.4
@@ -181,7 +229,6 @@ civic_hive_devouring_swarm = {
 		name = civic_hive_devouring_swarm_lithoid
 		description = "civic_tooltip_devouring_swarm_lithoid_effects"
 		trigger = {
-			#No scope in empire creation but still checked. Otherwise, country scope is valid and the latter condition is checked
 			OR = {
 				AND = {
 					is_scope_valid = no
@@ -200,6 +247,9 @@ civic_hive_empath = {
 	playable = {
 		host_has_dlc = "Federations"
 	}
+	ai_playable = {
+		host_has_dlc = "Federations"
+	}
 	potential = {
 		authority = {
 			value = auth_hive_mind
@@ -209,6 +259,17 @@ civic_hive_empath = {
 		civics = {
 			NOT = {
 				value = civic_hive_devouring_swarm
+				value = civic_closed_collective
+				value = civic_infestation
+				value = civic_living_hosts
+				value = civic_hive_territorial
+				value = civic_hive_reanimated_armies
+			}
+		}
+		origin = {
+			NOR = {
+				value = origin_natural_hunters
+				value = origin_necrophage
 			}
 		}
 	}
@@ -224,6 +285,9 @@ civic_hive_memorialist = {
 	playable = {
 		host_has_dlc = "Necroids Species Pack"
 	}
+	ai_playable = {
+		host_has_dlc = "Necroids Species Pack"
+	}
 	description = "civic_tooltip_memorialist_gestalt_effects"
 	potential = {
 		authority = {
@@ -235,10 +299,11 @@ civic_hive_memorialist = {
 	}
 	possible = {
 		civics = {
-			NOT = {
+			NOR = {
 				value = civic_hive_devouring_swarm
+				value = civic_closed_collective
+				value = civic_living_hosts
 			}
-			#Includes Terravore
 		}
 	}
 }
@@ -315,7 +380,8 @@ civic_machine_servitor = {
 			}
 		}
 		origin = {
-			NOT = {
+			NOR = {
+				value = origin_extant_creators
 				value = origin_machine
 			}
 		}
@@ -334,6 +400,11 @@ civic_machine_servitor = {
 			factor = 0
 			has_global_flag = game_started
 		}
+	}
+	modifier = {
+		envoys_add = 1
+		diplo_weight_pops_mult = 0.2
+		diplo_weight_naval_mult = -0.2
 	}
 	description = civic_tooltip_machine_servitor_effects
 	has_secondary_species = {
@@ -357,12 +428,20 @@ civic_machine_terminator = {
 			NOR = {
 				value = civic_machine_servitor
 				value = civic_machine_assimilator
+				value = civic_machine_emotions
+				value = civic_machine_memorialist
 			}
 		}
 		origin = {
 			NOR = {
 				value = origin_common_ground
+				value = origin_scion
 				value = origin_hegemon
+				value = origin_extant_creators
+				value = origin_research_coop
+				value = origin_research_coop_npc
+				value = origin_here_be_dragons
+				value = origin_imperial_vassal
 			}
 		}
 	}
@@ -392,15 +471,25 @@ civic_machine_assimilator = {
 		}
 	}
 	possible = {
+		ethics = {
+			NOT = {
+				value = ethic_form_autonomous
+			}
 		civics = {
 			NOR = {
 				value = civic_machine_servitor
 				value = civic_machine_terminator
+				value = civic_machine_emotions
+				value = civic_machine_memorialist
 			}
 		}
-		ethics = {
-			NOT = {
-				value = ethic_form_autonomous
+		origin = {
+			NOR = {
+				value = origin_hegemon
+				value = origin_extant_creators
+				value = origin_research_coop
+				value = origin_research_coop_npc
+				value = origin_imperial_vassal
 			}
 		}
 	}
@@ -441,6 +530,7 @@ civic_machine_builder = {
 	}
 	modifier = {
 		planet_structures_cost_mult = -0.15
+		planet_building_build_speed_mult = 0.15
 		planet_structures_upkeep_mult = -0.15
 		building_time_mult = -0.1
 		planet_max_buildings_add = 1
@@ -448,6 +538,7 @@ civic_machine_builder = {
 }
 
 civic_machine_factory_overclock = {
+	description = "civic_tooltip_machine_factory_overclock_effects"
 	icon = "gfx/interface/icons/governments/civics/civic_machine_factory_overclock.dds"
 	potential = {
 		authority = {
@@ -460,6 +551,7 @@ civic_machine_factory_overclock = {
 	modifier = {
 		leader_skill_levels = 1
 		species_leader_exp_gain = 0.15
+		leaders_cost_mult = 0.25
 		all_technology_research_speed = 0.05
 	}
 }
@@ -475,7 +567,9 @@ civic_machine_unitary_cohesion = {
 	}
 	modifier = {
 		country_unity_produces_mult = 0.2
-		country_produces_mult = 0.1
+		country_produces_mult = 0.1		
+		diplo_weight_pops_mult = 0.1
+		diplo_weight_economy_mult = 0.1
 	}
 }
 
@@ -490,6 +584,7 @@ civic_machine_rockbreakers = {
 	}
 	modifier = {
 		planet_miners_minerals_produces_add = 1
+		station_gatherers_produces_mult = 0.1		
 		planet_district_mining_build_speed_mult = 0.25
 		district_mining_max = 2
 		job_mining_drone_per_pop = 0.066
@@ -509,6 +604,7 @@ civic_machine_zero_waste_protocols = {
 	modifier = {
 		planet_pops_robotics_upkeep_mult = -0.25
 		planet_pop_assembly_reduction = -0.2
+		ships_upkeep_mult = -0.15
 	}
 }
 
@@ -523,6 +619,7 @@ civic_machine_built_to_last = {
 	}
 	modifier = {
 		pop_amenities_usage_no_happiness_mult = -0.45
+		planet_pops_robotics_upkeep_mult = -0.15
 	}
 }
 
@@ -538,18 +635,34 @@ civic_machine_ota_updates = {
 	}
 	modifier = {
 		empire_size_pops_mult = -0.25
-		pop_housing_usage_mult = -0.2
 		country_edict_fund_add = 50
+		planet_resettlement_unemployed_mult = 0.5
+		pop_housing_usage_mult = -0.2
 	}
 }
 
 civic_machine_warbots = {
-	description = civic_tooltip_machine_warbots_effects
+	description = "civic_tooltip_machine_warbots_effects"
 	potential = {
 		authority = {
 			OR = {
 				value = auth_ancient_machine_intelligence
 				value = auth_machine_intelligence
+			}
+		}
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_harm_machine
+				value = civic_closed_network
+			}
+		}
+	}
+	possible = {
+		origin = {
+			NOR = {
+				value = origin_extant_creators
 			}
 		}
 	}
@@ -560,6 +673,9 @@ civic_machine_warbots = {
 		army_damage_mult = 0.25
 		armies_upkeep_mult = -0.2
 		planet_army_build_time_mult = -0.5
+		army_starting_experience_add = 100
+		army_damage_mult = 0.2
+		job_soldier_stability_add = 2
 	}
 }
 
@@ -585,11 +701,25 @@ civic_machine_delegated_functions = {
 			value = auth_machine_intelligence
 		}
 	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_machine_administrator
+				value = civic_master_computer
+			}
+		}
+		origin = {
+			NOR = {
+				value = origin_master_computer
+			}
+		}
+	}
 	random_weight = {
 		base = 5
 	}
 	modifier = {
 		leaders_upkeep_mult = -0.25
+		planet_jobs_complex_drone_upkeep_mult = -0.25		
 		species_leader_exp_gain = 0.15
 		country_leader_pool_size = 2
 		envoys_add = 1
@@ -597,6 +727,7 @@ civic_machine_delegated_functions = {
 }
 
 civic_machine_predictive_analysis = {
+	description = "civic_tooltip_predictive_analysis_effects"
 	potential = {
 		authority = {
 			value = auth_machine_intelligence
@@ -628,7 +759,7 @@ civic_machine_replication = {
 }
 
 civic_machine_maintenance_protocols = {
-	description = civic_tooltip_machine_maintenance_protocols_effects
+	description = "civic_tooltip_machine_maintenance_protocols_effects"
 	potential = {
 		authority = {
 			value = auth_machine_intelligence
@@ -647,6 +778,9 @@ civic_machine_memorialist = {
 	playable = {
 		host_has_dlc = "Necroids Species Pack"
 	}
+	ai_playable = {
+		host_has_dlc = "Necroids Species Pack"
+	}
 	description = "civic_tooltip_memorialist_gestalt_effects"
 	potential = {
 		authority = {
@@ -661,6 +795,7 @@ civic_machine_memorialist = {
 			NOR = {
 				value = civic_machine_terminator
 				value = civic_machine_assimilator
+				value = civic_closed_network
 			}
 		}
 	}

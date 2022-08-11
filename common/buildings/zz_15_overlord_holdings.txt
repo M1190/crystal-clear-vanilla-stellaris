@@ -1,0 +1,1181 @@
+holding_garrison = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	icon = holding_overlord_garrison
+	base_cap_amount = 1
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_crime_add = -10
+		monthly_loyalty = 0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			overlord_has_num_armies_on_planet = { NUM = 1 }
+		}
+		modifier = {
+			planet_crime_add = -10
+			pop_happiness = -0.05
+			monthly_loyalty = 0.5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			overlord_has_num_armies_on_planet = { NUM = 2 }
+		}
+		modifier = {
+			planet_crime_add = -20
+			pop_happiness = -0.1
+			monthly_loyalty = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			overlord_has_more_than_num_armies_on_planet = { NUM = 2 }
+		}
+		modifier = {
+			planet_crime_add = -30
+			pop_happiness = -0.15
+			monthly_loyalty = 1.5
+		}
+	}
+	
+	on_built = {
+		planet = {
+			while = {
+				count = 6
+				create_army = {
+					name = "NAME_Garrison_Army"
+					owner = owner
+					species = owner.overlord.owner_species
+					type = garrison_army
+				}
+				last_created_army = { set_army_flag = overlord_garrison }
+			}
+		}
+	}
+
+	on_destroy = {
+		planet = {
+			every_planet_army = {
+				limit = { has_army_flag = overlord_garrison }
+				remove_army = yes
+			}
+		}
+	}
+
+	triggered_desc = {
+		text = holding_garrison_armies_desc
+	}
+}
+
+holding_aid_agency = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	icon = holding_aid_agency
+	base_cap_amount = 1
+
+	allow = {
+		custom_tooltip = {
+			fail_text = overlord_is_homicidal
+			exists = owner.overlord
+			owner.overlord = {
+				is_homicidal = no
+			}
+		}
+		custom_tooltip = {
+			fail_text = overlord_is_xenophobe
+			exists = owner.overlord
+			owner.overlord = {
+				NOR = {
+					is_xenophobe = yes
+					is_xenophobic_isolationists = yes
+				}
+			}
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_aid_worker_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_aid_worker_drone_add = 2
+	}
+
+	planet_modifier = {
+		monthly_loyalty = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				OR = {
+					is_xenophobe = yes
+					is_xenophobic_isolationists = yes
+				}
+			}
+		}
+		monthly_loyalty = -0.5
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+		upkeep = {
+			trigger = {
+				exists = planet.owner
+				planet.owner = { is_lithoid = yes }
+			}
+			minerals = 20
+		}
+		upkeep = {
+			trigger = {
+				exists = planet.owner
+				planet.owner = {
+					OR = {
+						is_machine_empire = yes
+						is_mechanical_empire = yes
+					}
+				}
+			}
+			energy = 20
+		}
+		upkeep = {
+			trigger = {
+				exists = planet.owner
+				planet.owner = {
+					is_lithoid = no
+					is_machine_empire = no
+					is_mechanical_empire = no
+				}
+			}
+			food = 20
+		}
+	}
+
+	triggered_desc = {
+		text = job_aid_worker_effect_desc
+	}
+}
+
+holding_distributed_processing = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	icon = holding_distributed_processing
+	base_cap_amount = 1
+
+	potential = {
+		owner.overlord = {
+			is_machine_empire = yes
+			NOR = {
+				has_civic = civic_machine_servitor
+				has_valid_civic = civic_harm_machine
+				has_valid_civic = civic_machine_memorialist
+				has_valid_civic = civic_machine_emotions
+				has_origin = origin_extant_creators
+				has_origin = origin_scion
+			}
+		}
+		has_overlord_dlc = yes
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = -2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_mind_thrall_add = 4
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_mind_thrall_drone_add = 4
+	}
+
+	triggered_desc = {
+		text = job_mind_thrall_effect_desc
+	}
+}
+
+holding_noble_vacation_homes = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	icon = building_palace
+	base_cap_amount = 1
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	potential = {
+		owner.overlord = {
+			OR = {
+				has_valid_civic = civic_aristocratic_elite
+				has_valid_civic = civic_royal_trading_company
+				has_origin = origin_ancient_dynasty
+			}
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = -1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		planet_amenities_add = -15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -15
+	}
+
+	on_built = {
+		planet = {
+			owner.overlord.capital_scope = {
+				append_noble_vacation_home = yes
+				refresh_noble_vacation_home_modifier = yes
+			}
+		}
+	}
+
+	on_destroy = {
+		owner.overlord.capital_scope = {
+			remove_noble_vacation_home = yes
+			refresh_noble_vacation_home_modifier = yes
+		}
+	}
+	triggered_desc = {
+		text = holding_noble_vacation_homes_effect
+	}
+}
+
+holding_dread_outpost = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	icon = building_dread_encampment
+	base_cap_amount = 1
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	potential = {
+		owner.overlord = {
+			can_use_undead_armies = yes
+		}
+	}
+
+	allow = {
+		owner = {
+			can_use_undead_armies = no
+			is_machine_empire = no
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_necromancer_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_necromancer_drone_add = 2
+	}
+
+	on_built = {
+		planet = {
+			set_planet_flag = active_dread_outpost
+		}
+	}
+
+	on_destroy = {
+		planet = {
+			remove_planet_flag = active_dread_outpost
+		}
+	}
+	triggered_desc = {
+		text = job_overlord_necromancer_effect_desc
+	}
+}
+
+holding_communal_housing_outreach = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	icon = building_residence
+	base_cap_amount = 1
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	potential = {
+		owner.overlord = {
+			OR = {
+				has_valid_civic = civic_shared_burden
+				has_valid_civic = civic_worker_coop
+			}
+		}
+		owner = {
+			NOR = {
+				has_valid_civic = civic_shared_burden
+				has_valid_civic = civic_worker_coop
+			}
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 10
+		planet_amenities_add = 6
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_authoritarian = yes }
+		}
+		monthly_loyalty = -0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				is_egalitarian = yes
+			}
+		}
+		monthly_loyalty = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				is_egalitarian = no
+				is_gestalt = no
+			}
+		}
+		pop_ethic_egalitarian_attraction_mult = 1
+	}
+}
+
+holding_idyllic_bloom = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	icon = building_gaiaseeders_4
+	base_cap_amount = 1
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			energy = 1500
+			exotic_gases = @b4_rare_cost
+		}
+		upkeep = {
+			energy = 20
+			exotic_gases = @b3_rare_upkeep
+			multiplier = value:overlord_gaiaseeder_upkeep
+		}
+	}
+
+	potential = {
+		exists = owner
+		owner.overlord = {
+			is_country_type = default
+			OR = {
+				has_valid_civic = civic_idyllic_bloom
+				has_valid_civic = civic_hive_idyllic_bloom
+			}
+		}
+		NOR = {
+			is_planet_class = pc_gaia
+			is_planet_class = pc_city
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			is_planet_class = pc_relic
+		}
+		is_artificial = no
+	}
+
+	planet_modifier = {
+		pop_environment_tolerance = 0.2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				has_ascension_perk = ap_hydrocentric
+			}
+		}
+		monthly_loyalty = -0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				NOT = { has_ascension_perk = ap_hydrocentric }
+			}
+		}
+		monthly_loyalty = 1.5
+	}
+
+	on_built = {
+		planet = {
+			set_timed_planet_flag = {
+				flag = anti_cheese_idyllic_bloom_flag
+			days = 3599
+			}
+			set_saved_date = {
+				key = idyllic_bloom_holding_timer
+				days_from_present = 3600
+				expires = 3600
+			}
+		}
+		owner.overlord = {
+			country_event = {
+				id = plant.105
+				days = 3600
+			}
+		}
+	}
+	on_destroy = {
+		planet = {
+			remove_planet_flag = anti_cheese_idyllic_bloom_flag
+		}
+	}
+	triggered_desc = {
+		trigger = {
+			planet = {
+				has_planet_flag = anti_cheese_idyllic_bloom_flag
+			}
+		}
+		text = holding_idyllic_bloom_effect_timer
+	}
+	triggered_desc = {
+		trigger = {
+			planet = {
+				NOT = {
+					has_planet_flag = anti_cheese_idyllic_bloom_flag
+				}
+			}
+		}
+		text = holding_idyllic_bloom_effect
+	}
+	allow = {
+		can_build_overlord_gaiaseeder = yes
+	}
+}
+
+holding_park_ranger_lodge = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	icon = holding_park_ranger_lodge
+	base_cap_amount = 1
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	potential = {
+		owner.overlord = {
+			OR = {
+				has_origin = origin_delicate_ecosystem
+				has_valid_civic = civic_environmentalist
+				has_valid_civic = civic_harm_hive
+				has_valid_civic = civic_harm_machine
+			}
+		}
+		NOT = {
+			owner = {
+				OR = {
+					has_origin = origin_delicate_ecosystem
+					has_valid_civic = civic_environmentalist
+					has_valid_civic = civic_harm_hive
+					has_valid_civic = civic_harm_machine
+				}
+			}
+		}
+		NOR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			is_planet_class = pc_relic
+			has_deposit = d_exploited_homeworld
+		}
+		is_artificial = no
+	}
+
+	destroy_trigger = {
+		OR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			is_planet_class = pc_relic
+			has_deposit = d_exploited_homeworld
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = no_free_district_for_ranger_lodge
+			planet = {
+				num_free_districts = {
+					type = any
+					value > 0
+				}
+			}
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_ranger_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_ranger_drone_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				is_civic_environmentalist = yes
+			}
+		}
+		monthly_loyalty = 0.5
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				is_civic_mining_guilds = yes
+			}
+		}
+		monthly_loyalty = -0.5
+	}
+
+	on_built = {
+		planet = {
+			add_blocker = { type = d_nature_preserve_blocker }
+		}
+	}
+
+	on_destroy = {
+		planet = {
+			if = {
+				limit = { has_deposit = d_nature_preserve_blocker }
+				remove_deposit = d_nature_preserve_blocker
+			}
+		}
+	}
+
+	triggered_desc = {
+		text = job_overlord_ranger_effect_desc
+	}
+}
+
+holding_tree_of_life_sapling = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	icon = holding_tree_of_life_sapling
+	base_cap_amount = 1
+	
+	desc = {
+		trigger = {
+			exists = owner.overlord
+			owner.overlord = { has_origin = origin_tree_of_life }
+		}
+		text = holding_tree_of_life_sapling_desc
+	}
+	desc = {
+		trigger = {
+			exists = owner.overlord
+			owner.overlord = { has_origin = origin_sacred_tree }
+		}
+		text = holding_sacred_tree_sapling_desc
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			food = 1000
+		}
+	}
+
+	potential = {
+		owner.overlord = {
+			OR = {
+				has_origin = origin_tree_of_life
+				has_origin = origin_sacred_tree
+			}
+		}
+		NOR = {
+			owner = {
+				has_origin = origin_tree_of_life
+				has_origin = origin_sacred_tree
+				country_uses_food = no
+			}
+		}
+		NOR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_machine
+			is_planet_class = pc_relic
+		}
+		is_artificial = no
+	}
+	destroy_trigger = {
+		OR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_machine
+			is_planet_class = pc_relic
+		}
+	}
+
+	planet_modifier = {
+		pop_environment_tolerance = 0.1
+		planet_farmers_food_produces_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				is_lithoid_empire = no
+				is_robot_empire = no
+			}
+		}
+		monthly_loyalty = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				OR = {
+					is_lithoid_empire = yes
+					is_robot_empire
+				}
+			}
+		}
+		monthly_loyalty = 0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_arborist_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_arborist_drone_add = 1
+	}
+}
+
+holding_experimental_crater = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	icon = holding_experimental_crater
+	base_cap_amount = 1
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		produces = {
+			engineering_research = 8
+			physics_research = 4
+		}
+	}
+
+	potential = {
+		owner.overlord = { has_origin = origin_lithoid }
+	}
+
+	planet_modifier = {
+		monthly_loyalty = -1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_miner_add = 3
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_mining_drone_add = 3
+	}
+
+	on_built = {
+		planet = {
+			planet_event = { id = subject.5005 days = 360 }
+		}
+	}
+
+	triggered_desc = {
+		text = holding_experimental_crater_effect
+	}
+}
+
+holding_organic_sanctuary = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	icon = building_organic_sanctuary
+	base_cap_amount = 1
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			consumer_goods = 10
+		}
+	}
+
+	potential = {
+		owner.overlord = { has_valid_civic = civic_machine_servitor }
+		owner = { is_machine_empire = no }
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_bio_trophy_add = 5
+		monthly_loyalty = 0.5
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				OR = {
+					is_pleasure_seeker = yes
+					has_trait = trait_decadent
+					is_xenophile = yes
+				}
+			}
+		}
+		monthly_loyalty = 0.5
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_bio_trophy_drone_add = 5
+	}
+	triggered_desc = {
+		text = job_overlord_bio_trophy_effect_desc
+	}
+}
+
+### NEW ###
+holding_house_of_pleasure = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	base_cap_amount = 1
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+			rare_crystals = 2
+		}
+	}
+
+	potential = {
+		owner.overlord = { is_pleasure_seeker = yes }
+	}
+	
+	country_modifier = {
+		planet_amenities_mult = 0.1
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			planet = {
+				OR = {
+					is_planet_class = pc_gaia
+					has_modifier = resort_colony
+					has_modifier = pleasure_palace
+				}
+			}
+		}
+		planet_amenities_mult = 0.05
+	}
+
+	planet_modifier = {
+		monthly_loyalty = -1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		planet_amenities_add = -15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -15
+	}
+}
+
+holding_overlord_arena = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	icon = building_combat_arena
+	base_cap_amount = 1
+
+	potential = {
+		owner.overlord = {
+			OR = {
+				has_valid_civic = civic_warrior_culture
+				has_valid_civic = civic_barbaric_despoilers
+			}
+		}
+	}
+	
+	country_modifier = {
+		planet_amenities_mult = 0.06
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			planet.owner = {
+				OR = {
+					is_militarist = yes
+					is_civic_militarist = yes
+				}
+			}
+		}
+		planet_amenities_mult = 0.03
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				OR = {
+					is_militarist = yes
+					is_civic_militarist = yes
+				}
+			}
+		}
+		monthly_loyalty = 0.5
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				OR = {
+					is_pacifist = yes
+					is_civic_machine_servitor = yes
+					is_civic_inwards_perfection = yes
+				}
+			}
+		}
+		monthly_loyalty = -0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_duelist_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_duelist_drone_add = 2
+	}
+
+	triggered_desc = {
+		text = job_overlord_duelist_effect_desc
+	}
+}
+
+holding_hunting_lodge = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	icon = holding_park_ranger_lodge
+	base_cap_amount = 1
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	potential = {
+		owner.overlord = {
+			has_origin = origin_natural_hunters
+		}
+		NOR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			is_planet_class = pc_relic
+			has_deposit = d_exploited_homeworld
+		}
+		is_artificial = no
+	}
+
+	destroy_trigger = {
+		OR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			is_planet_class = pc_relic
+			has_deposit = d_exploited_homeworld
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = no_free_district_for_hunting_lodge
+			planet = {
+				num_free_districts = {
+					type = any
+					value > 0
+				}
+			}
+		}
+	}
+	
+	country_modifier = {
+		planet_amenities_mult = 0.06
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_huntmaster_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_huntmaster_drone_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				NOT = { has_origin = origin_natural_hunters }
+			}
+		}
+		monthly_loyalty = -1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = {
+				has_origin = origin_natural_hunters
+			}
+		}
+		monthly_loyalty = -0.5
+	}
+	
+	on_built = {
+		planet = {
+			add_blocker = { type = d_hunting_preserve_blocker }
+			planet_event = { id = onactionpops.9 days = 360 }
+		}
+	}
+
+	on_destroy = {
+		planet = {
+			if = {
+				limit = { has_deposit = d_hunting_preserve_blocker }
+				remove_deposit = d_hunting_preserve_blocker
+			}
+		}
+	}
+
+	triggered_desc = {
+		text = job_overlord_huntmaster_effect_desc
+	}
+}
+
+holding_coordination_center = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	icon = holding_distributed_processing
+	base_cap_amount = 1
+
+	potential = {
+		owner.overlord = {
+			is_machine_empire = yes
+			OR = {
+				has_valid_civic = civic_harm_machine
+				has_valid_civic = civic_machine_memorialist
+				has_valid_civic = civic_machine_emotions
+				has_origin = origin_extant_creators
+				has_origin = origin_scion
+			}
+		}
+		has_overlord_dlc = yes
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_coordinator_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_coordinator_drone_add = 2
+	}
+
+	triggered_desc = {
+		text = job_overlord_coordinator_effect_desc
+	}
+}

@@ -11,15 +11,6 @@ supremacist = {
 		produces = {
 			unity = 0.5
 		}
-		#		produces = {
-		#			trigger = {
-		#				owner = {
-		#					has_policy_flag = bugged_federal_state
-		#				}
-		#			}
-		#			energy = 0.5
-		#			#FIX ME
-		#		}	
 	}
 	is_potential = {
 		is_faction_allowed = yes
@@ -56,6 +47,7 @@ supremacist = {
 	can_join_faction = {
 		is_shackled_robot = no
 		has_culture_shock = no
+		can_think = yes
 		NOT = {
 			has_trait = trait_nerve_stapled
 		}
@@ -100,6 +92,19 @@ supremacist = {
 			leader_class = scientist
 		}
 		modifier = {
+			factor = 0.2
+			species = {
+				has_trait = "trait_mechanical"
+			}
+		}
+		modifier = {
+			factor = 1.25
+			OR = {
+				has_trait = leader_trait_iron_fist
+				has_trait = leader_trait_butcher
+			}
+		}
+		modifier = {
 			factor = 0
 			NOT = {
 				is_same_species = owner_species
@@ -107,13 +112,11 @@ supremacist = {
 		}
 		modifier = {
 			factor = 0
-			species = {
-				has_trait = "trait_mechanical"
-			}
+			is_event_leader = yes
 		}
 		modifier = {
 			factor = 0
-			is_event_leader = yes
+			has_trait = leader_trait_cautious
 		}
 	}
 	demand = {
@@ -171,7 +174,15 @@ supremacist = {
 		}
 		trigger = {
 			owner = {
-				has_federation = no
+				OR = {
+					has_federation = no
+					AND = {
+						federation = {
+							has_federation_type = hegemony_federation
+						}
+						is_federation_leader = yes
+					}
+				}
 			}
 		}
 	}
@@ -211,29 +222,107 @@ supremacist = {
 				NOT = {
 					has_valid_civic = civic_fanatic_purifiers
 				}
-				any_owned_pop = {
+				any_owned_species = {
 					NOT = {
-						is_same_species = owner_species
+						is_same_species = prev
 					}
-					is_robot_pop = no
+					is_robotic = no
 					is_sapient = yes
-					is_being_purged = no
+					NOR = {
+						has_citizenship_type = {
+							type = citizenship_purge
+							country = prev
+						}
+						has_citizenship_type = {
+							type = citizenship_purge_machine
+							country = prev
+						}
+					}
 				}
 			}
 		}
 		trigger = {
 			owner = {
 				NOT = {
-					any_owned_pop = {
+					any_owned_species = {
 						NOT = {
-							is_same_species = root.owner
+							is_same_species = prev
 						}
-						is_robot_pop = no
+						is_robotic = no
 						is_sapient = yes
 						has_citizenship_type = {
 							type = citizenship_full
 						}
 					}
+				}
+			}
+		}
+	}
+	demand = {
+		title = "SUPREMACIST_NO_PAMPERED_ALIENS"
+		unfulfilled_title = "SUPREMACIST_HAS_PAMPERED_ALIENS"
+		desc = "SUPREMACIST_PAMPERED_ALIEN_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -15
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_fanatic_purifiers
+				}
+				any_owned_species = {
+					NOT = {
+						is_same_species = owner_species
+					}
+					is_robotic = no
+					is_sapient = yes
+					NOR = {
+						has_citizenship_type = {
+							type = citizenship_purge
+						}
+						has_citizenship_type = {
+							type = citizenship_purge_machine
+						}
+					}
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				NOR = {
+					has_policy_flag = healthcare_universal
+					any_owned_species = {
+						NOT = {
+							is_same_species = prev
+						}
+						is_robotic = no
+						is_sapient = yes
+						OR = {
+							has_utopian_living_standard_type = yes
+							has_high_living_standard_type = yes
+							has_academic_living_standard_type = yes
+						}
+					}
+				}
+			}
+		}
+	}
+	demand = {
+		title = "SUPREMACIST_ISOLATIONIST_XENO_COMPATABILITY"
+		unfulfilled_title = "SUPREMACIST_NO_XENO_COMPATABILITY"
+		desc = "SUPREMACIST_ISOLATIONIST_XENO_COMPATABILITY_DESC"
+		unfulfilled_effect = -25
+		fulfilled_effect = 0.001
+		potential = {
+			exists = owner
+			owner = {
+				has_ascension_perk = ap_xeno_compatibility
+			}
+		}
+		trigger = {
+			owner = {
+				NOT = {
+					has_ascension_perk = ap_xeno_compatibility
 				}
 			}
 		}
@@ -255,10 +344,9 @@ supremacist = {
 		}
 		trigger = {
 			owner = {
-				NOT = {
-					any_country = {
-						is_country_type = default
-						has_communications = root.owner
+				NOR = {
+					num_migration_pacts > 0
+					any_relation = {
 						OR = {
 							has_diplo_migration_treaty = root.owner
 							root = {
@@ -318,6 +406,62 @@ supremacist = {
 		}
 	}
 	demand = {
+		title = "SUPREMACIST_FREE_SPEECH"
+		unfulfilled_title = "SUPREMACIST_NO_FREE_SPEECH"
+		desc = "SUPREMACIST_FREE_SPEECH_DESC"
+		fulfilled_effect = 0.001
+		unfulfilled_effect = -5
+		potential = {
+			exists = owner
+			owner = {
+				any_relation = {
+					has_communications = root.owner
+					OR = {
+						is_country_type = default
+						is_country_type = ascended_empire
+						is_country_type = lost_empire
+					}
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				NOT = {
+					has_policy_flag = free_press
+				}
+			}
+		}
+	}
+	demand = {
+		title = "SUPREMACIST_GENE_MOD"
+		unfulfilled_title = "SUPREMACIST_IMPURE"
+		desc = "SUPREMACIST_GENE_MOD_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -5
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_fanatic_purifiers
+				OR = {
+					has_technology = tech_gene_tailoring
+					has_technology = tech_gene_expressions
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				NOT = {
+					any_owned_species = {
+						is_same_species = prev
+						NOT = {
+							is_exact_same_species = prev
+						}
+					}
+				}
+			}
+		}
+	}
+	demand = {
 		title = "SUPREMACIST_GIANT_MASSACRE"
 		unfulfilled_title = "SUPREMACIST_NO_GIANT_MASSACRE"
 		desc = "SUPREMACIST_GIANT_MASSACRE_DESC"
@@ -328,20 +472,7 @@ supremacist = {
 			owner = {
 				host_has_dlc = "Leviathans Story Pack"
 				any_country = {
-					OR = {
-						is_country_type = guardian
-						is_country_type = guardian_dragon
-						is_country_type = guardian_stellarite
-						is_country_type = guardian_wraith
-						is_country_type = guardian_hiver
-						is_country_type = guardian_horror
-						is_country_type = guardian_fortress
-						is_country_type = guardian_dreadnought
-						is_country_type = guardian_sphere
-						is_country_type = guardian_scavenger_bot
-						is_country_type = guardian_elderly_tiyanki
-						is_country_type = guardian_hatchling
-					}
+					is_guardian_country = yes
 					has_communications = prev
 				}
 			}
@@ -349,6 +480,75 @@ supremacist = {
 		trigger = {
 			owner = {
 				has_country_flag = killed_guardian
+			}
+		}
+	}
+	demand = {
+		title = "SUPREMACIST_FLEET_SUPREMACY"
+		unfulfilled_title = "SUPREMACIST_NO_FLEET_SUPREMACY"
+		desc = "SUPREMACIST_FLEET_SUPREMACY_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_doctrine_fleet_size_1
+			}
+		}
+		trigger = {
+			owner = {
+				has_edict = fleet_supremacy
+			}
+		}
+	}
+	demand = {
+		title = "SUPREMACIST_NO_DIPLOMATIC_GRANTS"
+		unfulfilled_title = "SUPREMACIST_DIPLOMATIC_GRANTS"
+		desc = "SUPREMACIST_NO_DIPLOMATIC_GRANTS_DESC"
+		unfulfilled_effect = -10
+		fulfilled_effect = 0.001
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_diplomacy_adopt
+				has_comms_with_alien_empire = yes
+			}
+		}
+		trigger = {
+			owner = {
+				NOT = {
+					has_edict = diplomatic_grants
+				}
+			}
+		}
+	}
+	demand = {
+		title = "NO_ALIEN_EDICTS"
+		unfulfilled_title = "ALIEN_EDICTS"
+		desc = "NO_ALIEN_EDICTS_DESC"
+		fulfilled_effect = 0.001
+		unfulfilled_effect = -5
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_country_flag = edict_masters_writings_politics
+					has_country_flag = edict_masters_writings_diplomacy
+					has_country_flag = edict_masters_writings_philosophy
+					has_country_flag = edict_masters_writings_war
+					has_country_flag = nuumismatic_visualization
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				NOR = {
+					has_edict = masters_writings_politics
+					has_edict = masters_writings_diplomacy
+					has_edict = masters_writings_philosophy
+					has_edict = masters_writings_war
+					has_edict = nuumismatic_visualization
+				}
 			}
 		}
 	}
@@ -438,6 +638,45 @@ supremacist = {
 			}
 		}
 	}
+	demand = {
+		title = "SUPREMACIST_AGGRESSIVE_FIRST_CONTACT_POLICY"
+		unfulfilled_title = "SUPREMACIST_NO_AGGRESSIVE_FIRST_CONTACT_POLICY"
+		desc = "SUPREMACIST_NO_AGGRESSIVE_FIRST_CONTACT_POLICY_DESC"
+		unfulfilled_effect = -5
+		fulfilled_effect = 10
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					years_passed <= 75
+					has_country_flag = recent_first_contact_process_started
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				has_policy_flag = first_contact_attack_allowed
+			}
+		}
+	}
+	demand = {
+		title = "SUPREMACIST_OPPRESSIVE_SUBJUGATION_POLICY"
+		unfulfilled_title = "SUPREMACIST_NO_OPPRESSIVE_SUBJUGATION_POLICY"
+		desc = "SUPREMACIST_NO_OPPRESSIVE_SUBJUGATION_POLICY_DESC"
+		unfulfilled_effect = -5
+		fulfilled_effect = 10
+		potential = {
+			exists = owner
+			owner = {
+				is_subject = no
+			}
+		}
+		trigger = {
+			owner = {
+				has_policy_flag = oppressive_terms
+			}
+		}
+	}
 	on_create = {
 		pop_faction_event = {
 			id = factions.1
@@ -469,9 +708,12 @@ supremacist = {
 				owner = {
 					OR = {
 						is_subject = no
-						NOT = {
+						NOR = {
 							any_agreement = {
 								agreement_preset = preset_dominion
+							}
+							any_agreement = {
+								agreement_preset = preset_scion_dominion
 							}
 						}
 					}
@@ -537,6 +779,11 @@ supremacist = {
 								is_ai = no
 								is_country_type = default
 								has_communications = prev
+								has_intel_level = {
+									who = prev
+									category = government
+									level >= 1
+								}
 							}
 							country_event = {
 								id = factions.2000
@@ -555,6 +802,10 @@ supremacist = {
 					}
 				}
 				modifier = {
+					factor = 0.25
+					support < 0.5
+				}
+				modifier = {
 					factor = 0
 					owner = {
 						has_valid_civic = civic_fanatic_purifiers
@@ -569,6 +820,18 @@ supremacist = {
 								leader_of_faction = supremacist
 							}
 						}
+					}
+				}
+				modifier = {
+					factor = 0.1
+					owner = {
+						has_ethic = ethic_xenophile
+					}
+				}
+				modifier = {
+					factor = 0
+					owner = {
+						has_ethic = ethic_fanatic_xenophile
 					}
 				}
 				modifier = {

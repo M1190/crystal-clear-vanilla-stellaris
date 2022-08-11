@@ -57,10 +57,12 @@ rare_edicts = {
 	generate_mult_modifiers = {
 		produces
 		cost
+		upkeep
 	}
 	generate_add_modifiers = {
 		produces
 		cost
+		upkeep
 	}
 }
 
@@ -74,10 +76,12 @@ campaigns = {
 	generate_mult_modifiers = {
 		produces
 		cost
+		upkeep
 	}
 	generate_add_modifiers = {
 		produces
 		cost
+		upkeep
 	}
 }
 
@@ -449,6 +453,56 @@ ships = {
 			is_ship_size = ion_cannon
 		}
 	}
+	###Extended stations###	
+	triggered_cost_modifier = {
+		key = ship_extended_military_station_medium
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = extended_military_station_medium
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = ship_extended_military_station_medium
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = extended_military_station_medium
+		}
+	}
+	triggered_cost_modifier = {
+		key = ship_extended_military_station_large
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = extended_military_station_large
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = ship_extended_military_station_large
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = extended_military_station_large
+		}
+	}
+	###End of Extended stations###	
 	triggered_cost_modifier = {
 		key = ship_science
 		use_parent_icon = yes
@@ -646,6 +700,32 @@ ships = {
 			is_ship_size = starbase_citadel
 		}
 	}
+	###From Guilli Technologies? but I don't find any ship section from it###
+	triggered_cost_modifier = {
+		key = ship_supportship
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = supportship
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = ship_supportship
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			is_scope_valid = yes			#When called from ship designer the design is not valid yet.
+			is_ship_size = supportship
+		}
+	}
+	###End of Guilli Technologies...?###
 	triggered_cost_modifier = {
 		key = ship_military_station_medium
 		use_parent_icon = yes
@@ -1567,7 +1647,10 @@ planet_jobs = {
 					is_pop_category = slave					# Yes, slave should count towards both worker and slave
 					has_job_category = worker
 				}
-				is_pop_category = simple_drone
+				OR = {
+					is_pop_category = simple_drone
+					is_pop_category = resident_gestalt
+				}
 			}
 		}
 	}
@@ -1637,7 +1720,10 @@ planet_jobs = {
 			add
 		}
 		trigger = {
-			is_pop_category = simple_drone
+			OR = {
+				is_pop_category = simple_drone
+				is_pop_category = resident_gestalt
+			}
 		}
 	}
 	triggered_produces_modifier = {
@@ -1702,7 +1788,10 @@ planet_jobs = {
 			OR = {
 				is_pop_category = worker
 				is_pop_category = slave				# Yes, slave should count towards both worker and slave
-				is_pop_category = simple_drone
+				OR = {
+					is_pop_category = simple_drone
+					is_pop_category = resident_gestalt
+				}
 			}
 			is_robot_pop = no
 		}
@@ -1717,7 +1806,10 @@ planet_jobs = {
 			OR = {
 				is_pop_category = worker
 				is_pop_category = slave				# Yes, slave should count towards both worker and slave
-				is_pop_category = simple_drone
+				OR = {
+					is_pop_category = simple_drone
+					is_pop_category = resident_gestalt
+				}
 			}
 			is_robot_pop = yes
 		}
@@ -1773,7 +1865,10 @@ planet_jobs = {
 			add
 		}
 		trigger = {
-			is_pop_category = simple_drone
+			OR = {
+				is_pop_category = simple_drone
+				is_pop_category = resident_gestalt
+			}
 			is_robot_pop = no
 		}
 	}
@@ -1784,7 +1879,10 @@ planet_jobs = {
 			add
 		}
 		trigger = {
-			is_pop_category = simple_drone
+			OR = {
+				is_pop_category = simple_drone
+				is_pop_category = resident_gestalt
+			}
 			is_robot_pop = yes
 		}
 	}
@@ -2537,7 +2635,10 @@ pop_category_drones = {
 			mult
 		}
 		trigger = {
-			is_pop_category = simple_drone
+			OR = {
+				is_pop_category = simple_drone
+				is_pop_category = resident_gestalt
+			}
 		}
 	}
 	triggered_upkeep_modifier = {
@@ -2547,7 +2648,10 @@ pop_category_drones = {
 			mult
 		}
 		trigger = {
-			is_pop_category = simple_drone
+			OR = {
+				is_pop_category = simple_drone
+				is_pop_category = resident_gestalt
+			}
 		}
 	}
 	triggered_upkeep_modifier = {
@@ -2577,7 +2681,10 @@ pop_category_drones = {
 			mult
 		}
 		trigger = {
-			is_pop_category = simple_drone
+			OR = {
+				is_pop_category = simple_drone
+				is_pop_category = resident_gestalt
+			}
 			has_global_flag = machinedlc_new_feature_1
 			NOT = {
 				has_job = machinedlc_drone_inactive

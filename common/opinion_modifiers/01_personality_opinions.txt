@@ -1196,14 +1196,20 @@ opinion_hw_vs_pacifist = {
 	opinion = {
 		modifier = {
 			add = -100
-			has_ai_personality = honorbound_warriors
+			OR = {
+				has_ai_personality = honorbound_warriors
+				has_ai_personality = technological_warriors
+			}
 			FROM = {
 				has_ethic = "ethic_fanatic_pacifist"
 			}
 		}
 		modifier = {
 			add = -50
-			has_ai_personality = honorbound_warriors
+			OR = {
+				has_ai_personality = honorbound_warriors
+				has_ai_personality = technological_warriors
+			}
 			FROM = {
 				has_ethic = "ethic_pacifist"
 			}
@@ -1217,7 +1223,10 @@ opinion_dc_vs_democratic = {
 			add = 25
 			has_ai_personality = democratic_crusaders
 			FROM = {
-				has_authority = auth_democratic
+				OR = {
+					has_authority = auth_democratic
+					has_authority = auth_bugged_corporate_democratic
+				}
 			}
 		}
 	}
@@ -1228,6 +1237,34 @@ opinion_dc_vs_oligarchic = {
 		modifier = {
 			add = -50
 			has_ai_personality = democratic_crusaders
+			FROM = {
+				NOT = {
+					has_government = gov_charter_company
+				}
+			}
+			OR = {
+				FROM = {
+					has_authority = auth_oligarchic
+				}
+				FROM = {
+					has_authority = auth_corporate
+				}
+			}
+		}
+		modifier = {
+			add = 25
+			FROM = {
+				OR = {
+					has_ethic = ethic_egalitarian
+					has_ai_personality = peaceful_traders
+				}
+				is_authoritarian = no
+			}
+			FROM = {
+				NOT = {
+					has_government = gov_charter_company
+				}
+			}
 			OR = {
 				FROM = {
 					has_authority = auth_oligarchic
@@ -1249,6 +1286,8 @@ opinion_dc_vs_autocracy = {
 				OR = {
 					has_authority = auth_imperial
 					has_authority = auth_dictatorial
+					has_authority = auth_bugged_corporate_imperial
+					has_government = gov_charter_company
 				}
 			}
 		}

@@ -744,36 +744,6 @@ action_form_defensive_pact = {
 		if = {
 			limit = {
 				from = {
-					has_valid_civic = civic_pompous_purists
-				}
-				NOT = {
-					root = {
-						is_overlord_to = from
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_intel = {
-						who = from
-						intel = civics
-					}
-				}
-				custom_tooltip = {
-					fail_text = requires_recipient_not_pompous
-					always = no
-				}
-			}
-			else = {
-				custom_tooltip = {
-					fail_text = diplo_action_no_low_intel
-					always = no
-				}
-			}
-		}
-		if = {
-			limit = {
-				from = {
 					has_valid_civic = civic_closed_collective
 				}
 			}
@@ -831,6 +801,36 @@ action_form_defensive_pact = {
 			fail_text = "requires_actor_not_closed_network"
 			NOT = {
 				has_valid_civic = civic_closed_network
+			}
+		}
+		if = {
+			limit = {
+				from = {
+					has_valid_civic = civic_pompous_purists
+				}
+				NOT = {
+					root = {
+						is_overlord_to = from
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_intel = {
+						who = from
+						intel = civics
+					}
+				}
+				custom_tooltip = {
+					fail_text = requires_recipient_not_pompous
+					always = no
+				}
+			}
+			else = {
+				custom_tooltip = {
+					fail_text = diplo_action_no_low_intel
+					always = no
+				}
 			}
 		}
 		custom_tooltip = {
@@ -1346,6 +1346,68 @@ action_form_research_agreement = {
 				has_valid_civic = civic_inwards_perfection
 			}
 		}
+		if = {
+			limit = {
+				from = {
+					has_valid_civic = civic_closed_collective
+				}
+			}
+			if = {
+				limit = {
+					has_intel = {
+						who = from
+						intel = civics
+					}
+				}
+				custom_tooltip = {
+					fail_text = requires_recipient_not_closed_collective
+					always = no
+				}
+			}
+			else = {
+				custom_tooltip = {
+					fail_text = diplo_action_no_low_intel
+					always = no
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_collective"
+			NOT = {
+				has_valid_civic = civic_closed_collective
+			}
+		}
+		if = {
+			limit = {
+				from = {
+					has_valid_civic = civic_closed_network
+				}
+			}
+			if = {
+				limit = {
+					has_intel = {
+						who = from
+						intel = civics
+					}
+				}
+				custom_tooltip = {
+					fail_text = requires_recipient_not_closed_network
+					always = no
+				}
+			}
+			else = {
+				custom_tooltip = {
+					fail_text = diplo_action_no_low_intel
+					always = no
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_network"
+			NOT = {
+				has_valid_civic = civic_closed_network
+			}
+		}
 		custom_tooltip = {
 			fail_text = "requires_actor_not_machine_terminator"
 			OR = {
@@ -1680,6 +1742,18 @@ action_guarantee_independence = {
 				has_valid_civic = civic_inwards_perfection
 			}
 		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_collective"
+			NOT = {
+				has_valid_civic = civic_closed_collective
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_network"
+			NOT = {
+				has_valid_civic = civic_closed_network
+			}
+		}
 		if = {
 			limit = {
 				from = {
@@ -1855,6 +1929,18 @@ action_support_independence = {
 			fail_text = "requires_actor_not_inward_perfection"
 			NOT = {
 				has_valid_civic = civic_inwards_perfection
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_collective"
+			NOT = {
+				has_valid_civic = civic_closed_collective
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_closed_network"
+			NOT = {
+				has_valid_civic = civic_closed_network
 			}
 		}
 	}
@@ -2601,6 +2687,7 @@ action_invite_to_federation = {
 					}
 				}
 			}
+			
 		}
 		if = {
 			limit = {
@@ -2838,6 +2925,11 @@ action_kick_from_federation = {
 			NAND = {
 				is_subject = yes
 				has_overlord = FROM
+			}
+			NOT = {
+				FROM = {
+					is_subject = yes
+				}
 			}
 		}
 	}

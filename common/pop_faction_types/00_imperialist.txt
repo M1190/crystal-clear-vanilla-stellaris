@@ -11,14 +11,6 @@ imperialist = {
 		produces = {
 			unity = 0.5
 		}
-		#		produces = {
-		#			trigger = {
-		#				owner = {
-		#					has_policy_flag = bugged_federal_state
-		#				}
-		#			}
-		#			alloys = 0.25
-		#		}
 	}
 	is_potential = {
 		is_faction_allowed = yes
@@ -55,6 +47,7 @@ imperialist = {
 	can_join_faction = {
 		is_shackled_robot = no
 		has_culture_shock = no
+		can_think = yes
 		NOT = {
 			has_trait = trait_nerve_stapled
 		}
@@ -91,6 +84,55 @@ imperialist = {
 	}
 	leader = {
 		base = 100
+		modifier = {
+			factor = 0.1
+			NOR = {
+				leader_class = admiral
+				leader_class = general
+			}
+		}
+		modifier = {
+			factor = 0
+			exists = owner
+			owner = {
+				is_military_election = yes
+			}
+			NOR = {
+				leader_class = admiral
+				leader_class = general
+			}
+		}
+		modifier = {
+			factor = 1.25
+			OR = {
+				has_trait = leader_trait_butcher
+				has_trait = leader_trait_expertise_military_theory
+				has_trait = leader_trait_expertise_propulsion
+				has_trait = leader_trait_army_veteran
+				has_trait = leader_trait_retired_fleet_officer
+			}
+		}
+		modifier = {
+			factor = 0.75
+			OR = {
+				has_trait = leader_trait_cautious
+				has_trait = leader_trait_expertise_biology
+				has_trait = leader_trait_expertise_industry
+			}
+		}
+		modifier = {
+			factor = 1.25
+			OR = {
+				has_ruler_trait = trait_ruler_corvette_focus
+				has_ruler_trait = trait_ruler_destroyer_focus
+				has_ruler_trait = trait_ruler_cruiser_focus
+				has_ruler_trait = trait_ruler_battleship_focus
+				has_ruler_trait = trait_ruler_military_pioneer
+				has_ruler_trait = trait_ruler_recruiter
+				has_ruler_trait = trait_ruler_warlike
+				has_ruler_trait = leader_trait_fleet_organizer
+			}
+		}
 		modifier = {
 			factor = 0
 			is_event_leader = yes
@@ -162,6 +204,360 @@ imperialist = {
 		}
 	}
 	demand = {
+		title = "IMPERIALIST_SERVICE_BENEFITS"
+		unfulfilled_title = "IMPERIALIST_NO_SERVICE_BENEFITS"
+		desc = "IMPERIALIST_SERVICE_BENEFITS_DESC"
+		fulfilled_effect = 0.001
+		unfulfilled_effect = -10
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_citizen_service
+				num_species > 1
+			}
+		}
+		trigger = {
+			owner = {
+				NOT = {
+					any_owned_species = {
+						NOT = {
+							has_military_service_type = {
+								type = military_service_full
+								country = prev
+							}
+						}
+						OR = {
+							has_very_high_living_standard_type = yes
+							has_high_living_standard_type = yes
+							has_academic_living_standard_type = yes
+						}
+					}
+				}
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_FLEET_SIZE"
+		unfulfilled_title = "IMPERIALIST_NO_FLEET_SIZE"
+		desc = "IMPERIALIST_FLEET_SIZE_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -5
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_distinguished_admiralty
+			}
+		}
+		trigger = {
+			owner = {
+				used_naval_capacity_percent > 0.49
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_FLEET_SIZE_CORP"
+		unfulfilled_title = "IMPERIALIST_NO_FLEET_SIZE_CORP"
+		desc = "IMPERIALIST_FLEET_SIZE_DESC_CORP"
+		fulfilled_effect = 5
+		unfulfilled_effect = -5
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_naval_contractors
+			}
+		}
+		trigger = {
+			owner = {
+				used_naval_capacity_percent > 0.49
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_ARMIES"
+		unfulfilled_title = "IMPERIALIST_NO_ARMIES"
+		desc = "IMPERIALIST_ARMIES_DESC"
+		unfulfilled_effect = -5
+		fulfilled_effect = 5
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_civic = civic_warrior_culture
+					has_civic = civic_private_military_companies
+				}
+				any_relation = {
+					has_communications = root.owner
+					OR = {
+						is_country_type = default
+						is_country_type = ascended_empire
+						is_country_type = lost_empire
+					}
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				count_owned_army = {
+					limit = {
+						is_defensive_army = no
+					}
+					count > 11
+				}
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_MERC_BORDERS"
+		unfulfilled_title = "IMPERIALIST_NO_MERC_BORDERS"
+		desc = "IMPERIALIST_MERC_BORDERS_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -0.001
+		potential = {
+			has_overlord_dlc = yes
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_fanatic_purifiers
+				}
+			}
+			years_passed >= 50
+		}
+		trigger = {
+			owner = {
+				any_system_within_border = {
+					any_fleet_in_system = {
+						exists = owner
+						owner = {
+							is_country_type = enclave_mercenary
+						}
+					}
+				}
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_CONQUEST_PURE"
+		unfulfilled_title = "IMPERIALIST_NO_CONQUEST_PURE"
+		desc = "IMPERIALIST_CONQUEST_PURE_DESC"
+		fulfilled_effect = 15
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_fanatic_purifiers
+				any_relation = {
+					has_communications = root.owner
+					OR = {
+						is_country_type = default
+						is_country_type = ascended_empire
+						is_country_type = lost_empire
+					}
+					NOT = {
+						exists = overlord
+					}
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				has_country_flag = imperialist_conquest_timed_flag
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_LIBERATION"
+		unfulfilled_title = "IMPERIALIST_NO_LIBERATION"
+		desc = "IMPERIALIST_LIBERATION_DESC"
+		fulfilled_effect = 10
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_shared_burden
+				}
+				NOT = {
+					has_valid_civic = civic_fanatic_purifiers
+				}
+				OR = {
+					has_origin = origin_befrienders
+					has_valid_civic = civic_emancipators
+					has_valid_civic = civic_broken_shackles
+					has_ethic = ethic_fanatic_egalitarian
+					has_ethic = ethic_fanatic_xenophile
+				}
+				any_relation = {
+					has_communications = root.owner
+					OR = {
+						is_country_type = default
+						is_country_type = ascended_empire
+						is_country_type = lost_empire
+					}
+					NOT = {
+						exists = overlord
+					}
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				has_country_flag = imperialist_liberation_timed_flag
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_NO_SURRENDER"
+		unfulfilled_title = "IMPERIALIST_SURRENDERED"
+		desc = "IMPERIALIST_NO_SURRENDER_DESC"
+		fulfilled_effect = 0.001
+		unfulfilled_effect = -10
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					is_at_war = yes
+					has_country_flag = recently_lost_war
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				has_country_flag = recently_lost_war
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_CONQUEST"
+		unfulfilled_title = "IMPERIALIST_NO_CONQUEST"
+		desc = "IMPERIALIST_CONQUEST_DESC"
+		fulfilled_effect = 10
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				NOR = {
+					has_valid_civic = civic_fanatic_purifiers
+					has_valid_civic = civic_shared_burden
+					has_origin = origin_befrienders
+					has_valid_civic = civic_emancipators
+					has_valid_civic = civic_broken_shackles
+					has_ethic = ethic_fanatic_egalitarian
+					has_ethic = ethic_fanatic_xenophile
+				}
+				any_relation = {
+					has_communications = root.owner
+					is_country_type = default
+					NOT = {
+						exists = overlord
+					}
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				has_country_flag = imperialist_conquest_timed_flag
+			}
+		}
+	}
+	demand = {
+		title = "SUPREMACIST_FANATIC_PURIFIERS"
+		unfulfilled_title = "SUPREMACIST_NOT_FANATIC_PURIFIERS"
+		desc = "SUPREMACIST_FANATIC_PURIFIERS_DESC"
+		fulfilled_effect = 10
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_fanatic_purifiers
+			}
+		}
+		trigger = {
+			owner = {
+				has_valid_civic = civic_fanatic_purifiers
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_SUPERPOWER"
+		unfulfilled_title = "IMPERIALIST_NO_SUPERPOWER"
+		desc = "IMPERIALIST_SUPERPOWER_DESC"
+		fulfilled_effect = 10
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				num_communications > 2
+				NOT = {
+					has_valid_civic = civic_fanatic_purifiers
+				}
+				num_rivals < 2
+				NOT = {
+					any_relation = {
+						OR = {
+							is_country_type = default
+							is_country_type = ascended_empire
+							is_country_type = lost_empire
+						}
+						relative_power = {
+							who = prev
+							value >= inferior
+						}
+					}
+				}
+			}
+		}
+		trigger = {
+			exists = owner
+			owner = {
+				NOT = {
+					any_relation = {
+						OR = {
+							is_country_type = default
+							is_country_type = ascended_empire
+							is_country_type = lost_empire
+						}
+						relative_power = {
+							who = prev
+							value >= inferior
+						}
+					}
+				}
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_REVOLUTION"
+		unfulfilled_title = "IMPERIALIST_NO_REVOLUTION"
+		desc = "IMPERIALIST_REVOLUTION_DESC"
+		fulfilled_effect = 15
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_shared_burden
+				NOT = {
+					has_valid_civic = civic_fanatic_purifiers
+				}
+				any_relation = {
+					has_communications = root.owner
+					OR = {
+						is_country_type = default
+						is_country_type = ascended_empire
+						is_country_type = lost_empire
+					}
+					NOT = {
+						exists = overlord
+					}
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				has_country_flag = imperialist_liberation_timed_flag
+			}
+		}
+	}
+	demand = {
 		title = "LIBERATION_PHILOSOPHY"
 		unfulfilled_title = "LIBERATION_NO_PHILOSOPHY"
 		desc = "LIBERATION_PHILOSOPHY_DESC"
@@ -208,48 +604,6 @@ imperialist = {
 		}
 	}
 	demand = {
-		title = "IMPERIALIST_CONQUEST"
-		unfulfilled_title = "IMPERIALIST_NO_CONQUEST"
-		desc = "IMPERIALIST_CONQUEST_DESC"
-		fulfilled_effect = 10
-		unfulfilled_effect = -0.001
-		potential = {
-			exists = owner
-			owner = {
-				any_relation = {
-					has_communications = root.owner
-					is_country_type = default
-					NOT = {
-						exists = overlord
-					}
-				}
-			}
-		}
-		trigger = {
-			owner = {
-				has_country_flag = imperialist_conquest_timed_flag
-			}
-		}
-	}
-	demand = {
-		title = "SUPREMACIST_FANATIC_PURIFIERS"
-		unfulfilled_title = "SUPREMACIST_NOT_FANATIC_PURIFIERS"
-		desc = "SUPREMACIST_FANATIC_PURIFIERS_DESC"
-		fulfilled_effect = 10
-		unfulfilled_effect = -0.001
-		potential = {
-			exists = owner
-			owner = {
-				has_valid_civic = civic_fanatic_purifiers
-			}
-		}
-		trigger = {
-			owner = {
-				has_valid_civic = civic_fanatic_purifiers
-			}
-		}
-	}
-	demand = {
 		title = "IMPERIALIST_RIVALS1"
 		unfulfilled_title = "IMPERIALIST_FEW_RIVALS1"
 		desc = "IMPERIALIST_RIVALS_DESC1"
@@ -262,16 +616,19 @@ imperialist = {
 				NOT = {
 					has_valid_civic = civic_fanatic_purifiers
 				}
-				count_rival_country = {
-					count < 2
+				num_rivals < 2
+				any_country = {
+					is_country_type = default
+					relative_power = {
+						who = prev
+						value >= inferior
+					}
 				}
 			}
 		}
 		trigger = {
 			owner = {
-				any_rival_country = {
-					exists = this
-				}
+				num_rivals > 0
 			}
 		}
 	}
@@ -289,19 +646,12 @@ imperialist = {
 					has_valid_civic = civic_fanatic_purifiers
 					is_bugged_interventionalist = yes
 				}
-				count_rival_country = {
-					count > 1
-				}
-				count_rival_country = {
-					count < 3
-				}
+				num_rivals = 2
 			}
 		}
 		trigger = {
 			owner = {
-				count_rival_country = {
-					count > 1
-				}
+				num_rivals > 1
 			}
 		}
 	}
@@ -319,16 +669,36 @@ imperialist = {
 					has_valid_civic = civic_fanatic_purifiers
 					is_bugged_interventionalist = yes
 				}
-				count_rival_country = {
-					count > 2
-				}
+				num_rivals > 2
 			}
 		}
 		trigger = {
 			owner = {
-				count_rival_country = {
-					count > 2
+				num_rivals > 2
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_RESCUE_POPS"
+		unfulfilled_title = "IMPERIALIST_NO_RESCUE_POPS"
+		desc = "IMPERIALIST_RESCUE_POPS_DESC"
+		fulfilled_effect = 10
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				num_communications > 2
+				OR = {
+					has_valid_civic = civic_emancipators
+					has_valid_civic = civic_broken_shackles
+					has_ascension_perk = ap_eternal_freedom
 				}
+			}
+		}
+		trigger = {
+			exists = owner
+			owner = {
+				has_country_flag = rescued_pops_faction_timer
 			}
 		}
 	}
@@ -342,8 +712,17 @@ imperialist = {
 			exists = owner
 			owner = {
 				num_communications > 2
-				NOT = {
+				OR = {
+					NOT = {
+						has_origin = origin_scion
+					}
+					is_subject = no
+				}
+				NOR = {
 					has_valid_civic = civic_fanatic_purifiers
+					has_valid_civic = civic_emancipators
+					has_valid_civic = civic_broken_shackles
+					has_ascension_perk = ap_eternal_freedom
 				}
 			}
 		}
@@ -363,6 +742,49 @@ imperialist = {
 		}
 	}
 	demand = {
+		title = "IMPERIALIST_PRODUCTION_MINISTRY"		#Imperial Hegemony
+		unfulfilled_title = "IMPERIALIST_PRODUCTION_MINISTRY"
+		desc = "IMPERIALIST_PRODUCTION_MINISTRY_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -0.001
+		potential = {
+			has_overlord_dlc = yes
+			exists = owner
+			owner = {
+				is_overlord = yes
+			}
+		}
+		trigger = {
+			owner = {
+				any_subject = {
+					NOT = {
+						is_same_species = prev
+					}
+					any_owned_planet = {
+						OR = {
+							has_holding = {
+								holding = holding_energy_requisitorium
+								owner = root.owner
+							}
+							has_holding = {
+								holding = holding_material_requisitorium
+								owner = root.owner
+							}
+							has_holding = {
+								holding = holding_produce_requisitorium
+								owner = root.owner
+							}
+							has_holding = {
+								holding = holding_offworld_foundry
+								owner = root.owner
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	demand = {
 		title = "IMPERIALIST_UNDERLING"
 		unfulfilled_title = "IMPERIALIST_NOT_UNDERLING"
 		desc = "IMPERIALIST_UNDERLING_DESC"
@@ -371,12 +793,87 @@ imperialist = {
 		potential = {
 			exists = owner
 			owner = {
+				has_overlord_dlc = no
 				is_subject = yes
+				OR = {
+					NOT = {
+						has_origin = origin_scion
+					}
+					AND = {
+						exists = overlord
+						overlord = {
+							NOT = {
+								has_country_flag = scion_master
+							}
+						}
+					}
+				}
 			}
 		}
 		trigger = {
 			owner = {
+				is_subject = no
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_BULWARK"
+		unfulfilled_title = "IMPERIALIST_NOT_BULWARK"
+		desc = "IMPERIALIST_BULWARK_DESC"
+		unfulfilled_effect = -25
+		fulfilled_effect = 0.001
+		potential = {
+			exists = owner
+			owner = {
+				has_overlord_dlc = yes
 				is_subject = yes
+				OR = {
+					NOT = {
+						has_origin = origin_scion
+					}
+					AND = {
+						exists = overlord
+						overlord = {
+							NOT = {
+								has_country_flag = scion_master
+							}
+						}
+					}
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				OR = {
+					is_subject = no
+					is_specialist_subject_type = {
+						TYPE = bulwark
+					}
+				}
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_SCION"
+		unfulfilled_title = "IMPERIALIST_NO_SCION"
+		desc = "IMPERIALIST_SCION_DESC"
+		unfulfilled_effect = -0.001
+		fulfilled_effect = 10
+		potential = {
+			exists = owner
+			owner = {
+				num_communications > 2
+				is_subject = yes
+				has_origin = origin_scion
+				exists = overlord
+				overlord = {
+					has_country_flag = scion_master
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				has_country_flag = imperialist_scion_timed_flag
 			}
 		}
 	}
@@ -390,6 +887,8 @@ imperialist = {
 			exists = owner
 			owner = {
 				host_has_dlc = "Leviathans Story Pack"
+				OR = {
+					has_country_flag = killed_guardian
 				any_country = {
 					OR = {
 						is_country_type = guardian
@@ -412,6 +911,79 @@ imperialist = {
 		trigger = {
 			owner = {
 				has_country_flag = killed_guardian
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_FLEET_SUPREMACY"
+		unfulfilled_title = "IMPERIALIST_NO_FLEET_SUPREMACY"
+		desc = "IMPERIALIST_FLEET_SUPREMACY_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_doctrine_fleet_size_1
+			}
+		}
+		trigger = {
+			owner = {
+				has_edict = fleet_supremacy
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_FORGE_SUBSIDIES"
+		unfulfilled_title = "IMPERIALIST_NO_FORGE_SUBSIDIES"
+		desc = "IMPERIALIST_FORGE_SUBSIDIES_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_global_production_strategy
+			}
+		}
+		trigger = {
+			owner = {
+				has_edict = forge_subsidies
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_NO_INDUSTRIAL_SUBSIDIES"
+		unfulfilled_title = "IMPERIALIST_INDUSTRIAL_SUBSIDIES"
+		desc = "IMPERIALIST_NO_INDUSTRIAL_SUBSIDIES_DESC"
+		unfulfilled_effect = -10
+		fulfilled_effect = 0.001
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_technology = tech_global_production_strategy
+					has_technology = tech_space_trading
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				OR = {
+					AND = {
+						NOT = {
+							has_edict = industrial_subsidies
+						}
+						NOT = {
+							has_edict = trade_subsidies
+						}
+						NOT = {
+							has_policy_flag = economic_policy_civilian
+						}
+					}
+					AND = {
+						is_at_war = no
+						has_crisis = no
+					}
+				}
 			}
 		}
 	}
@@ -521,6 +1093,48 @@ imperialist = {
 			}
 		}
 	}
+	demand = {
+		title = "IMPERIALIST_BENEVOLENT_SUBJUGATION_POLICY"
+		unfulfilled_title = "IMPERIALIST_NO_BENEVOLENT_SUBJUGATION_POLICY"
+		desc = "IMPERIALIST_BENEVOLENT_SUBJUGATION_POLICY_DESC"
+		unfulfilled_effect = -5
+		fulfilled_effect = 0.001
+		potential = {
+			exists = owner
+			owner = {
+				is_subject = no
+				has_policy_flag = benevolent_terms
+			}
+		}
+		trigger = {
+			owner = {
+				NOT = {
+					has_policy_flag = benevolent_terms
+				}
+			}
+		}
+	}
+	demand = {
+		title = "IMPERIALIST_OPPRESSIVE_SUBJUGATION_POLICY"
+		unfulfilled_title = "IMPERIALIST_ADOPT_OPPRESSIVE_SUBJUGATION_POLICY"
+		desc = "IMPERIALIST_OPPRESSIVE_SUBJUGATION_POLICY_DESC"
+		fulfilled_effect = 5
+		unfulfilled_effect = -0.001
+		potential = {
+			exists = owner
+			owner = {
+				is_subject = no
+				NOT = {
+					has_policy_flag = benevolent_terms
+				}
+			}
+		}
+		trigger = {
+			owner = {
+				has_policy_flag = oppressive_terms
+			}
+		}
+	}
 	on_create = {
 		pop_faction_event = {
 			id = factions.1
@@ -552,9 +1166,12 @@ imperialist = {
 				owner = {
 					OR = {
 						is_subject = no
-						NOT = {
+						NOR = {
 							any_agreement = {
 								agreement_preset = preset_dominion
+							}
+							any_agreement = {
+								agreement_preset = preset_scion_dominion
 							}
 						}
 					}
@@ -609,6 +1226,11 @@ imperialist = {
 								is_ai = no
 								is_country_type = default
 								has_communications = prev
+								has_intel_level = {
+									who = prev
+									category = government
+									level >= 1
+								}
 							}
 							country_event = {
 								id = factions.2000
@@ -627,9 +1249,19 @@ imperialist = {
 					}
 				}
 				modifier = {
+					factor = 0.25
+					support < 0.5
+				}
+				modifier = {
 					factor = 0
 					owner = {
 						has_valid_civic = civic_fanatic_purifiers
+					}
+				}
+				modifier = {
+					factor = 0
+					owner = {
+						has_origin = origin_iron_despot
 					}
 				}
 				modifier = {
@@ -641,6 +1273,18 @@ imperialist = {
 								leader_of_faction = imperialist
 							}
 						}
+					}
+				}
+				modifier = {
+					factor = 0.1
+					owner = {
+						has_ethic = ethic_pacifist
+					}
+				}
+				modifier = {
+					factor = 0
+					owner = {
+						has_ethic = ethic_fanatic_pacifist
 					}
 				}
 				modifier = {
@@ -740,6 +1384,7 @@ imperialist = {
 			}
 			ai_weight = {
 				base = 0
+				}
 			}
 		}
 	}

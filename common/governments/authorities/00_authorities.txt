@@ -3,7 +3,7 @@
 #	possible = {}									# requirements list, see ../readme_requirements.txt
 #	random_weight = { value = 1 }					# random weight, no scope (DLC check etc only); default: 1
 #
-#	traits = { trait = tait1 trait = tait2 }		# force listed traits on the founder species (only verified for empire designs, no eefect after game start)
+#	traits = { trait = tait1 trait = tait2 }		# force listed traits on the founder species (only verified for empire designs, no effect after game start)
 #
 #	has_heir = yes / no								# default: no; you can either have a hereditary system (has_heir = yes), or an election system (has_heir = no)
 #	election_type = oligarchic / democratic	/ none	# default: none; oligarchic generate candidates only from leaders in the country
@@ -25,7 +25,7 @@ auth_bugged_direct_democratic = {
 	election_term_years = 5
 	re_election_allowed = yes
 	can_have_emergency_elections = yes
-	emergency_election_cost = 250
+	emergency_election_cost = 500
 	max_election_candidates = 12
 	election_type = democratic
 	uses_mandates = yes
@@ -51,7 +51,6 @@ auth_bugged_direct_democratic = {
 				value = ethic_foci_encroachment
 				value = ethic_foci_logistics
 				value = ethic_foci_progression
-				value = ethic_gestalt_consciousness
 			}
 		}
 	}
@@ -84,6 +83,7 @@ auth_democratic = {
 			}
 			NOR = {
 				text = ethic_tooltip_gestalt
+				value = ethic_gestalt_consciousness
 				value = ethic_form_autonomous
 				value = ethic_form_convergent
 				value = ethic_form_affective
@@ -96,18 +96,24 @@ auth_democratic = {
 				value = ethic_foci_encroachment
 				value = ethic_foci_logistics
 				value = ethic_foci_progression
-				value = ethic_gestalt_consciousness
 			}
 		}
 	}
-	random_weight = {
-		base = 3
-	}
 	country_modifier = {
+		planet_resettlement_unemployed_mult = 0.5
+		diplo_weight_pops_mult = 0.2
+		empire_size_pops_mult = -0.2
+		empire_size_systems_mult = 0.2
 		pop_factions_produces_mult = 0.15
 		pop_cat_worker_political_power = 3
 		pop_cat_specialist_political_power = 4
 		pop_cat_ruler_political_power = 3
+	}
+	random_weight = {
+		modifier = {
+			factor = 4
+			always = yes
+		}
 	}
 	tags = {
 		AUTHORITY_ELECTION_DEMOCRATIC
@@ -130,6 +136,7 @@ auth_oligarchic = {
 			}
 			NOR = {
 				text = ethic_tooltip_gestalt
+				value = ethic_gestalt_consciousness
 				value = ethic_form_autonomous
 				value = ethic_form_convergent
 				value = ethic_form_affective
@@ -142,20 +149,25 @@ auth_oligarchic = {
 				value = ethic_foci_encroachment
 				value = ethic_foci_logistics
 				value = ethic_foci_progression
-				value = ethic_gestalt_consciousness
 			}
 		}
 	}
-	random_weight = {
-		base = 5
-	}
 	country_modifier = {
+		pop_factions_produces_mult = 0.15
+		diplo_weight_economy_mult = 0.2
+		empire_size_districts_mult = -0.2
+		empire_size_colonies_mult = 0.2
 		ruler_skill_levels = 2
 		species_leader_exp_gain = 0.25
 		country_election_cost_mult = -0.5
 		pop_cat_worker_political_power = 2
 		pop_cat_specialist_political_power = 3
 		pop_cat_ruler_political_power = 5
+	}
+	random_weight = {
+		modifier = {
+			factor = 3
+		}
 	}
 	tags = {
 		AUTHORITY_ELECTION_OLIGARCHIC
@@ -174,6 +186,7 @@ auth_dictatorial = {
 			}
 			NOR = {
 				text = ethic_tooltip_gestalt
+				value = ethic_gestalt_consciousness
 				value = ethic_form_autonomous
 				value = ethic_form_convergent
 				value = ethic_form_affective
@@ -186,19 +199,26 @@ auth_dictatorial = {
 				value = ethic_foci_encroachment
 				value = ethic_foci_logistics
 				value = ethic_foci_progression
-				value = ethic_gestalt_consciousness
 			}
 		}
 	}
-	random_weight = {
-		base = 3
-	}
 	country_modifier = {
 		country_edict_fund_mult = 0.2
+		edicts_upkeep_mult = -0.2
+		diplo_weight_naval_mult = 0.2
+		diplo_weight_pops_mult = -0.2
+		empire_size_penalty_mult = -0.1
+		pop_cat_ruler_political_power = 5
 		pop_government_ethic_attraction = 0.5
 		pop_cat_worker_political_power = 1
 		pop_cat_specialist_political_power = 3
-		pop_cat_ruler_political_power = 6
+		pop_cat_ruler_happiness = 0.05
+		pop_cat_worker_happiness = -0.05
+	}
+	random_weight = {
+		modifier = {
+			factor = 3
+		}
 	}
 	tags = {
 		AUTHORITY_ELECTION_ON_RULER_DEATH
@@ -218,6 +238,7 @@ auth_imperial = {
 			}
 			NOR = {
 				text = ethic_tooltip_gestalt
+				value = ethic_gestalt_consciousness
 				value = ethic_form_autonomous
 				value = ethic_form_convergent
 				value = ethic_form_affective
@@ -230,18 +251,24 @@ auth_imperial = {
 				value = ethic_foci_encroachment
 				value = ethic_foci_logistics
 				value = ethic_foci_progression
-				value = ethic_gestalt_consciousness
 			}
 		}
 	}
-	random_weight = {
-		base = 2
-	}
 	country_modifier = {
 		country_power_projection_influence_produces_add = 1
+		diplo_weight_mult = 0.1
+		empire_size_colonies_mult = -0.2
+		empire_size_pops_mult = 0.2
+		pop_cat_ruler_political_power = 7
+		pop_cat_ruler_happiness = 0.05
+		pop_cat_worker_happiness = -0.05
 		pop_cat_worker_political_power = 1
 		pop_cat_specialist_political_power = 2
-		pop_cat_ruler_political_power = 7
+	}
+	random_weight = {
+		modifier = {
+			factor = 3
+		}
 	}
 	tags = {
 		AUTHORITY_HAS_HEIR
@@ -254,7 +281,7 @@ auth_hive_mind = {
 	has_factions = no
 	can_reform = no
 	localization_postfix = hive_mind
-	valid_for_released_vassal = no
+	valid_for_released_vassal = yes
 	playable = {
 		host_has_dlc = "Utopia"
 	}
@@ -295,13 +322,26 @@ auth_hive_mind = {
 		}
 	}
 	random_weight = {
-		base = 5
+		modifier = {
+			factor = 0
+			NOT = {
+				host_has_dlc = "Utopia"
+			}
+		}
+		modifier = {
+			factor = 2
+			host_has_dlc = "Utopia"
+		}
 	}
 	traits = {
 		trait = trait_hive_mind
 	}
 	country_modifier = {
 		pop_growth_speed = 0.25
+		planet_pop_assembly_organic_mult = 0.25
+		diplo_weight_pops_mult = 0.2
+		empire_size_systems_mult = -0.2
+		empire_size_pops_mult = 0.2
 		empire_size_penalty_mult = -0.25
 	}
 	tags = {
@@ -319,7 +359,7 @@ auth_machine_intelligence = {
 	has_factions = no
 	can_reform = no
 	localization_postfix = machine_intelligence
-	valid_for_released_vassal = no
+	valid_for_released_vassal = yes
 	playable = {
 		host_has_dlc = "Synthetic Dawn Story Pack"
 	}
@@ -360,7 +400,16 @@ auth_machine_intelligence = {
 		}
 	}
 	random_weight = {
-		base = 5
+		modifier = {
+			factor = 0
+			NOT = {
+				host_has_dlc = "Synthetic Dawn Story Pack"
+			}
+		}
+		modifier = {
+			factor = 2
+			host_has_dlc = "Synthetic Dawn Story Pack"
+		}
 	}
 	traits = {
 		trait = trait_machine_unit
@@ -369,7 +418,8 @@ auth_machine_intelligence = {
 		colony_start_num_pops_add = 1
 		planet_pop_assembly_add = 1
 		station_gatherers_produces_mult = 0.1
-		empire_size_pops_mult = -0.15
+		diplo_weight_technology_mult = 0.2
+		empire_size_pops_mult = -0.2
 		empire_size_colonies_mult = 0.5
 		pop_growth_speed_reduction = 0.5
 	}
@@ -397,11 +447,11 @@ auth_ancient_machine_intelligence = {
 }
 
 auth_bugged_corporate_democratic = {
-	election_term_years = 10
+	election_term_years = 5
 	re_election_allowed = yes
 	can_have_emergency_elections = yes
-	emergency_election_cost = 250
-	max_election_candidates = 12
+	emergency_election_cost = 500
+	max_election_candidates = 10
 	election_type = democratic
 	uses_mandates = yes
 	localization_postfix = corporate
@@ -409,24 +459,8 @@ auth_bugged_corporate_democratic = {
 	playable = {
 		host_has_dlc = "Megacorp"
 	}
-	random_weight = {
-		base = 2
-	}
-	country_modifier = {
-		planet_resettlement_unemployed_mult = 0.5
-		empire_size_penalty_mult = 0.25
-		pop_cat_worker_political_power = 4
-		pop_cat_specialist_political_power = 4
-		pop_cat_ruler_political_power = 2
-	}
 	possible = {
 		ethics = {
-			# NO LONGER COMPETITIVE
-			# OR = {
-			#     text = civic_tooltip_competitive
-			#     value = ethic_competitive
-			#     value = ethic_fanatic_competitive
-			# }
 			OR = {
 				text = civic_tooltip_egal_or_coop
 				value = ethic_egalitarian
@@ -436,6 +470,7 @@ auth_bugged_corporate_democratic = {
 			}
 			NOR = {
 				text = ethic_tooltip_gestalt
+				value = ethic_gestalt_consciousness
 				value = ethic_form_autonomous
 				value = ethic_form_convergent
 				value = ethic_form_affective
@@ -448,9 +483,31 @@ auth_bugged_corporate_democratic = {
 				value = ethic_foci_encroachment
 				value = ethic_foci_logistics
 				value = ethic_foci_progression
-				value = ethic_gestalt_consciousness
 			}
 		}
+	}
+	random_weight = {
+		modifier = {
+			factor = 0
+			NOT = {
+				host_has_dlc = "Megacorp"
+			}
+		}
+		modifier = {
+			factor = 1
+			host_has_dlc = "Megacorp"
+		}
+	}
+	country_modifier = {
+		planet_resettlement_unemployed_mult = 0.5
+		diplo_weight_pops_mult = 0.2
+		country_unity_produces_mult = 0.1
+		empire_size_systems_mult = 0.2
+		empire_size_pops_mult = -0.2
+		empire_size_penalty_mult = 0.25
+		pop_cat_worker_political_power = 4
+		pop_cat_specialist_political_power = 4
+		pop_cat_ruler_political_power = 2
 	}
 	tags = {
 		AUTHORITY_BUGGED_ELECTION_DIRECT_DEMOCRATIC
@@ -469,10 +526,23 @@ auth_corporate = {
 		host_has_dlc = "Megacorp"
 	}
 	random_weight = {
-		base = 3
+		modifier = {
+			factor = 0
+			NOT = {
+				host_has_dlc = "Megacorp"
+			}
+		}
+		modifier = {
+			factor = 1
+			host_has_dlc = "Megacorp"
+		}
 	}
 	country_modifier = {
+		pop_factions_produces_mult = 0.15
+		diplo_weight_economy_mult = 0.2
 		country_unity_produces_mult = 0.1
+		empire_size_districts_mult = -0.2
+		empire_size_systems_mult = 0.2
 		empire_size_penalty_mult = 0.25
 		pop_cat_worker_political_power = 2
 		pop_cat_specialist_political_power = 3
@@ -480,18 +550,13 @@ auth_corporate = {
 	}
 	possible = {
 		ethics = {
-			# NO LONGER COMPETITIVE
-			# OR = {
-			#     text = civic_tooltip_competitive
-			#     value = ethic_competitive
-			#     value = ethic_fanatic_competitive
-			# }
 			NOR = {
 				value = ethic_fanatic_authoritarian
 				value = ethic_fanatic_egalitarian
 			}
 			NOR = {
 				text = ethic_tooltip_gestalt
+				value = ethic_gestalt_consciousness
 				value = ethic_form_autonomous
 				value = ethic_form_convergent
 				value = ethic_form_affective
@@ -504,7 +569,6 @@ auth_corporate = {
 				value = ethic_foci_encroachment
 				value = ethic_foci_logistics
 				value = ethic_foci_progression
-				value = ethic_gestalt_consciousness
 			}
 		}
 	}
@@ -517,28 +581,37 @@ auth_bugged_corporate_imperial = {
 	has_heir = yes
 	has_agendas = yes
 	localization_postfix = corporate
-	has_agendas = yes
 	playable = {
 		host_has_dlc = "Megacorp"
 	}
 	random_weight = {
-		base = 2
+		modifier = {
+			factor = 0
+			NOT = {
+				host_has_dlc = "Megacorp"
+			}
+		}
+		modifier = {
+			factor = 1
+			host_has_dlc = "Megacorp"
+		}
 	}
 	country_modifier = {
 		country_power_projection_influence_produces_add = 1
+		country_edict_fund_add = 50
+		diplo_weight_mult = 0.05
+		country_unity_produces_mult = 0.1
+		empire_size_colonies_mult = -0.2
+		empire_size_pops_mult = 0.2
 		empire_size_penalty_mult = 0.25
-		pop_cat_worker_political_power = 1
-		pop_cat_specialist_political_power = 2
 		pop_cat_ruler_political_power = 7
+		pop_cat_ruler_happiness = 0.05
+		pop_cat_specialist_political_power = 2
+		pop_cat_worker_political_power = 1
+		pop_cat_worker_happiness = -0.05
 	}
 	possible = {
 		ethics = {
-			# NO LONGER COMPETITIVE
-			# OR = {
-			#     text = civic_tooltip_competitive
-			#     value = ethic_competitive
-			#     value = ethic_fanatic_competitive
-			# }
 			OR = {
 				text = civic_tooltip_auth_or_comp
 				value = ethic_authoritarian
@@ -548,6 +621,7 @@ auth_bugged_corporate_imperial = {
 			}
 			NOR = {
 				text = ethic_tooltip_gestalt
+				value = ethic_gestalt_consciousness
 				value = ethic_form_autonomous
 				value = ethic_form_convergent
 				value = ethic_form_affective
@@ -560,7 +634,6 @@ auth_bugged_corporate_imperial = {
 				value = ethic_foci_encroachment
 				value = ethic_foci_logistics
 				value = ethic_foci_progression
-				value = ethic_gestalt_consciousness
 			}
 		}
 	}
