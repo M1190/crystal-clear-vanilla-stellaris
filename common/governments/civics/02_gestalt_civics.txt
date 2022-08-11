@@ -466,6 +466,7 @@ civic_machine_terminator = {
 
 civic_machine_assimilator = {
 	potential = {
+		description = civic_tooltip_machine_assimilator_effects
 		authority = {
 			value = auth_machine_intelligence
 		}
@@ -475,45 +476,45 @@ civic_machine_assimilator = {
 			NOT = {
 				value = ethic_form_autonomous
 			}
-		civics = {
-			NOR = {
-				value = civic_machine_servitor
-				value = civic_machine_terminator
-				value = civic_machine_emotions
-				value = civic_machine_memorialist
+			civics = {
+				NOR = {
+					value = civic_machine_servitor
+					value = civic_machine_terminator
+					value = civic_machine_emotions
+					value = civic_machine_memorialist
+				}
+			}
+			origin = {
+				NOR = {
+					value = origin_hegemon
+					value = origin_extant_creators
+					value = origin_research_coop
+					value = origin_research_coop_npc
+					value = origin_imperial_vassal
+				}
 			}
 		}
-		origin = {
-			NOR = {
-				value = origin_hegemon
-				value = origin_extant_creators
-				value = origin_research_coop
-				value = origin_research_coop_npc
-				value = origin_imperial_vassal
+		modification = no
+		random_weight = {
+			base = 5
+			modifier = {
+				factor = 0
+				NOT = {
+					host_has_dlc = "Synthetic Dawn Story Pack"
+				}
+			}
+			modifier = {
+				# civic has no effect after galaxy generation, disable for random generation
+				factor = 0
+				has_global_flag = game_started
 			}
 		}
-	}
-	modification = no
-	random_weight = {
-		base = 5
-		modifier = {
-			factor = 0
-			NOT = {
-				host_has_dlc = "Synthetic Dawn Story Pack"
+		has_secondary_species = {
+			# see game_start.11
+			title = civic_machine_assimilator_secondary_species
+			traits = {
+				trait = trait_cybernetic
 			}
-		}
-		modifier = {
-			# civic has no effect after galaxy generation, disable for random generation
-			factor = 0
-			has_global_flag = game_started
-		}
-	}
-	description = civic_tooltip_machine_assimilator_effects
-	has_secondary_species = {
-		# see game_start.11
-		title = civic_machine_assimilator_secondary_species
-		traits = {
-			trait = trait_cybernetic
 		}
 	}
 }
@@ -567,7 +568,7 @@ civic_machine_unitary_cohesion = {
 	}
 	modifier = {
 		country_unity_produces_mult = 0.2
-		country_produces_mult = 0.1		
+		country_produces_mult = 0.1
 		diplo_weight_pops_mult = 0.1
 		diplo_weight_economy_mult = 0.1
 	}
@@ -584,7 +585,7 @@ civic_machine_rockbreakers = {
 	}
 	modifier = {
 		planet_miners_minerals_produces_add = 1
-		station_gatherers_produces_mult = 0.1		
+		station_gatherers_produces_mult = 0.1
 		planet_district_mining_build_speed_mult = 0.25
 		district_mining_max = 2
 		job_mining_drone_per_pop = 0.066
@@ -719,7 +720,7 @@ civic_machine_delegated_functions = {
 	}
 	modifier = {
 		leaders_upkeep_mult = -0.25
-		planet_jobs_complex_drone_upkeep_mult = -0.25		
+		planet_jobs_complex_drone_upkeep_mult = -0.25
 		species_leader_exp_gain = 0.15
 		country_leader_pool_size = 2
 		envoys_add = 1
