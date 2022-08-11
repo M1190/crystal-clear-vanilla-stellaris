@@ -1,19 +1,17 @@
 namespace = pw_research
-
 #General Events (0 - 999)
-
 ##Particle Supercollider Events (1000 - 1999)
-
 #Pre-event setup
 country_event = {
 	id = pw_research.999
 	is_triggered_only = yes
 	hide_window = yes
-
 	trigger = {
 		is_at_war = no
 		is_ai = no
-		NOT = { is_homicidal = yes }
+		NOT = {
+			is_homicidal = yes
+		}
 		any_owned_planet = {
 			pw_planet_has_particle_supercollider = yes
 		}
@@ -28,7 +26,6 @@ country_event = {
 			}
 		}
 	}
-
 	immediate = {
 		random_country = {
 			limit = {
@@ -53,7 +50,6 @@ country_event = {
 			id = pw_research.1000
 		}
 	}
-
 }
 
 #Spiritualist Empire requests Collider
@@ -65,7 +61,6 @@ country_event = {
 	location = event_target:PWFallenEmpirePCPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpirePC
 		planet_background = event_target:PWFallenEmpirePC
@@ -73,7 +68,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpirePC
 		room = event_target:PWFallenEmpirePC.ruler
 	}
-
 	#Let them
 	option = {
 		name = pw_research.1000.a
@@ -85,27 +79,47 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			event_target:PWFallenEmpirePC = { add_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request }}
-			country_event = { id = pw_research.1002 } #OK
-			country_event = { id = pw_research.1004 days = 90 } #At war
-			country_event = { id = pw_research.1005 days = 90 }	#Not at war
+			event_target:PWFallenEmpirePC = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_accepted_fallen_empire_request
+				}
+			}
+			country_event = {
+				id = pw_research.1002
+			}			#OK
+			country_event = {
+				id = pw_research.1004
+				days = 90
+			}			#At war
+			country_event = {
+				id = pw_research.1005
+				days = 90
+			}			#Not at war
 		}
 	}
-
 	#Ask what they want with it
 	option = {
 		name = pw_research.1000.b
 		hidden_effect = {
-			country_event = { id = pw_research.1001 }
+			country_event = {
+				id = pw_research.1001
+			}
 		}
 	}
-
 	#Deny
 	option = {
 		name = pw_research.1000.c
 		hidden_effect = {
-			country_event = { id = pw_research.1003 }
-			event_target:PWFallenEmpirePC = { add_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request }}
+			country_event = {
+				id = pw_research.1003
+			}
+			event_target:PWFallenEmpirePC = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
 		}
 	}
 }
@@ -119,7 +133,6 @@ country_event = {
 	location = event_target:PWFallenEmpirePCPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpirePC
 		planet_background = event_target:PWFallenEmpirePC
@@ -127,7 +140,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpirePC
 		room = event_target:PWFallenEmpirePC.ruler
 	}
-
 	#OK
 	option = {
 		name = pw_research.1001.a
@@ -139,19 +151,38 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			event_target:PWFallenEmpirePC = { add_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request }}
-			country_event = { id = pw_research.1002 } #OK
-			country_event = { id = pw_research.1004 days = 90 } #At war
-			country_event = { id = pw_research.1005 days = 90 }	#Not at war
+			event_target:PWFallenEmpirePC = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_accepted_fallen_empire_request
+				}
+			}
+			country_event = {
+				id = pw_research.1002
+			}			#OK
+			country_event = {
+				id = pw_research.1004
+				days = 90
+			}			#At war
+			country_event = {
+				id = pw_research.1005
+				days = 90
+			}			#Not at war
 		}
 	}
-
 	#Deny
 	option = {
 		name = pw_research.1000.c
 		hidden_effect = {
-			country_event = { id = pw_research.1003 }
-			event_target:PWFallenEmpirePC = { add_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request }}
+			country_event = {
+				id = pw_research.1003
+			}
+			event_target:PWFallenEmpirePC = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
 		}
 	}
 }
@@ -165,7 +196,6 @@ country_event = {
 	location = event_target:PWFallenEmpirePCPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpirePC
 		planet_background = event_target:PWFallenEmpirePC
@@ -173,7 +203,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpirePC
 		room = event_target:PWFallenEmpirePC.ruler
 	}
-
 	#OK
 	option = {
 		name = pw_research.1002.a
@@ -189,7 +218,6 @@ country_event = {
 	location = event_target:PWFallenEmpirePCPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpirePC
 		planet_background = event_target:PWFallenEmpirePC
@@ -197,7 +225,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpirePC
 		room = event_target:PWFallenEmpirePC.ruler
 	}
-
 	#OK
 	option = {
 		name = pw_research.1003.a
@@ -212,22 +239,24 @@ country_event = {
 	picture = GFX_evt_physics_research
 	is_triggered_only = yes
 	location = event_target:PWFallenEmpirePCPlanet
-
 	trigger = {
 		OR = {
-			NOT = { exists = event_target:PWFallenEmpirePC }
+			NOT = {
+				exists = event_target:PWFallenEmpirePC
+			}
 			event_target:PWFallenEmpirePC = {
 				is_at_war = yes
 			}
 		}
 	}
-
 	#OK
 	option = {
 		name = pw_research.1004.a
 		event_target:PWFallenEmpirePCPlanet = {
 			if = {
-				limit = { has_modifier = pw_mod_particle_supercollider_research_in_use }
+				limit = {
+					has_modifier = pw_mod_particle_supercollider_research_in_use
+				}
 				remove_modifier = pw_mod_particle_supercollider_research_in_use
 			}
 		}
@@ -243,14 +272,12 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWFallenEmpirePCPlanet
 	show_sound = event_energy_field
-
 	trigger = {
 		exists = event_target:PWFallenEmpirePC
 		event_target:PWFallenEmpirePC = {
 			is_at_war = no
 		}
 	}
-
 	#Contact them
 	option = {
 		name = pw_research.1005.a
@@ -258,10 +285,11 @@ country_event = {
 			energy = -500
 		}
 		hidden_effect = {
-			country_event = { id = pw_research.1006 }
+			country_event = {
+				id = pw_research.1006
+			}
 		}
 	}
-
 	#Let them
 	option = {
 		name = pw_research.1005.b
@@ -270,8 +298,14 @@ country_event = {
 			influence = 25
 		}
 		hidden_effect = {
-			country_event = { id = pw_research.1004 days = 90 }	#At war
-			country_event = { id = pw_research.1009 days = 90 }
+			country_event = {
+				id = pw_research.1004
+				days = 90
+			}			#At war
+			country_event = {
+				id = pw_research.1009
+				days = 90
+			}
 		}
 	}
 }
@@ -285,7 +319,6 @@ country_event = {
 	location = event_target:PWFallenEmpirePCPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpirePC
 		planet_background = event_target:PWFallenEmpirePC
@@ -293,32 +326,56 @@ country_event = {
 		city_level = event_target:PWFallenEmpirePC
 		room = event_target:PWFallenEmpirePC.ruler
 	}
-
 	#Continue
 	option = {
 		name = pw_research.1006.a
-
 		hidden_effect = {
-			event_target:PWFallenEmpirePC = { add_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request }}
-			country_event = { id = pw_research.1004 days = 90 }	#At war
-			country_event = { id = pw_research.1009 days = 90 }
-			country_event = { id = pw_research.1007 }
+			event_target:PWFallenEmpirePC = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_accepted_fallen_empire_request
+				}
+			}
+			country_event = {
+				id = pw_research.1004
+				days = 90
+			}			#At war
+			country_event = {
+				id = pw_research.1009
+				days = 90
+			}
+			country_event = {
+				id = pw_research.1007
+			}
 		}
 	}
-
 	#Leave
 	option = {
 		name = pw_research.1006.b
 		event_target:PWFallenEmpirePCPlanet = {
 			if = {
-				limit = { has_modifier = pw_mod_particle_supercollider_research_in_use }
+				limit = {
+					has_modifier = pw_mod_particle_supercollider_research_in_use
+				}
 				remove_modifier = pw_mod_particle_supercollider_research_in_use
 			}
 		}
 		hidden_effect = {
-			country_event = { id = pw_research.1008 }
-			event_target:PWFallenEmpirePC = { remove_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request } }
-			event_target:PWFallenEmpirePC = { add_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request }}
+			country_event = {
+				id = pw_research.1008
+			}
+			event_target:PWFallenEmpirePC = {
+				remove_opinion_modifier = {
+					who = root
+					modifier = opinion_accepted_fallen_empire_request
+				}
+			}
+			event_target:PWFallenEmpirePC = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
 		}
 	}
 }
@@ -332,7 +389,6 @@ country_event = {
 	location = event_target:PWFallenEmpirePCPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpirePC
 		planet_background = event_target:PWFallenEmpirePC
@@ -340,7 +396,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpirePC
 		room = event_target:PWFallenEmpirePC.ruler
 	}
-
 	#OK
 	option = {
 		name = pw_research.1007.a
@@ -356,7 +411,6 @@ country_event = {
 	location = event_target:PWFallenEmpirePCPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpirePC
 		planet_background = event_target:PWFallenEmpirePC
@@ -364,7 +418,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpirePC
 		room = event_target:PWFallenEmpirePC.ruler
 	}
-
 	#OK
 	option = {
 		name = pw_research.1008.a
@@ -380,14 +433,12 @@ country_event = {
 	location = event_target:PWFallenEmpirePCPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	trigger = {
 		exists = event_target:PWFallenEmpirePC
 		event_target:PWFallenEmpirePC = {
 			is_at_war = no
 		}
 	}
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpirePC
 		planet_background = event_target:PWFallenEmpirePC
@@ -395,7 +446,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpirePC
 		room = event_target:PWFallenEmpirePC.ruler
 	}
-
 	#GOOD
 	option = {
 		name = pw_research.1009.a
@@ -422,7 +472,6 @@ country_event = {
 	}
 }
 
-
 #Start the Experiments Event Chain
 # Begin Particle Experiments
 country_event = {
@@ -433,14 +482,14 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWPCPlanet
 	show_sound = event_laboratory_sound
-
 	trigger = {
-		NOT = { has_country_flag = pw_particle_supercollider_experiments_started }
+		NOT = {
+			has_country_flag = pw_particle_supercollider_experiments_started
+		}
 		any_owned_planet = {
 			pw_planet_has_particle_supercollider = yes
 		}
 	}
-
 	immediate = {
 		set_country_flag = pw_particle_supercollider_experiments_started
 		random_owned_planet = {
@@ -450,7 +499,6 @@ country_event = {
 			save_event_target_as = PWPCPlanet
 		}
 	}
-
 	#Commence the experiments
 	option = {
 		name = pw_research.1100.a
@@ -464,24 +512,25 @@ country_event = {
 			location = event_target:PWPCPlanet
 		}
 	}
-
 	#Skip the experiments
 	option = {
 		name = pw_research.skip_experiment
 		custom_tooltip = pw_research.skip_experiment.tooltip
-
 		allow = {
 			owner = {
-				resource_stockpile_compare = { resource = unity value >= 500 }
+				resource_stockpile_compare = {
+					resource = unity
+					value >= 500
+				}
 			}
 		}
 		add_resource = {
 			unity = -500
 		}
-
 		add_research_option = pw_tech_interdimensional_collider
 	}
 }
+
 #25% Progress - Nuclear Core Collision
 country_event = {
 	id = pw_research.1101
@@ -491,16 +540,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWPCPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_physics_experiment_done_1 }}
-	immediate = { set_country_flag = pw_physics_experiment_done_1 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_physics_experiment_done_1
+		}
+	}
+	immediate = {
+		set_country_flag = pw_physics_experiment_done_1
+	}
 	#Get the tech
 	option = {
 		name = pw_research.1101.a
 		add_research_option = pw_tech_nuclear_core_collision
 	}
 }
+
 #50% Progress - Weaponized Acceleration
 country_event = {
 	id = pw_research.1102
@@ -510,16 +564,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWPCPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_physics_experiment_done_2 }}
-	immediate = { set_country_flag = pw_physics_experiment_done_2 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_physics_experiment_done_2
+		}
+	}
+	immediate = {
+		set_country_flag = pw_physics_experiment_done_2
+	}
 	#Get the tech
 	option = {
 		name = pw_research.1102.a
 		add_research_option = pw_tech_small_particle_weaponizing
 	}
 }
+
 #75% Progress - Dark Matter secrets
 country_event = {
 	id = pw_research.1103
@@ -529,15 +588,23 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWPCPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_physics_experiment_done_3 }}
-	immediate = { set_country_flag = pw_physics_experiment_done_3 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_physics_experiment_done_3
+		}
+	}
+	immediate = {
+		set_country_flag = pw_physics_experiment_done_3
+	}
 	#Get the tech
 	option = {
 		name = pw_research.1103.a
 		if = {
-			limit = { NOT = { has_technology = tech_mine_dark_matter }}
+			limit = {
+				NOT = {
+					has_technology = tech_mine_dark_matter
+				}
+			}
 			add_resource = {
 				sr_dark_matter = 10
 			}
@@ -557,6 +624,7 @@ country_event = {
 		}
 	}
 }
+
 #Complete the experiment
 country_event = {
 	id = pw_research.1104
@@ -566,7 +634,6 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWPCPlanet
 	show_sound = event_laboratory_sound
-
 	immediate = {
 		random_owned_planet = {
 			limit = {
@@ -575,7 +642,6 @@ country_event = {
 			save_event_target_as = PWPCPlanet
 		}
 	}
-
 	#Get the next tier
 	option = {
 		name = pw_research.1104.a
@@ -592,7 +658,6 @@ country_event = {
 	}
 }
 
-
 # Begin Computing Experiments
 #25% Progress - Dimensional Randomizing
 country_event = {
@@ -603,16 +668,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWPCPlanet
 	show_sound = event_encrypted_comms
-
-	trigger = { NOT = { has_country_flag = pw_physics_experiment_done_4 }}
-	immediate = { set_country_flag = pw_physics_experiment_done_4 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_physics_experiment_done_4
+		}
+	}
+	immediate = {
+		set_country_flag = pw_physics_experiment_done_4
+	}
 	#Get the tech
 	option = {
 		name = pw_research.1111.a
 		add_research_option = pw_tech_dimensional_randomizing
 	}
 }
+
 #50% Progress - Quantum Race Condition
 country_event = {
 	id = pw_research.1112
@@ -622,10 +692,14 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWPCPlanet
 	show_sound = event_encrypted_comms
-
-	trigger = { NOT = { has_country_flag = pw_physics_experiment_done_5 }}
-	immediate = { set_country_flag = pw_physics_experiment_done_5 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_physics_experiment_done_5
+		}
+	}
+	immediate = {
+		set_country_flag = pw_physics_experiment_done_5
+	}
 	#Get the tech
 	option = {
 		name = pw_research.1112.a
@@ -636,6 +710,7 @@ country_event = {
 		}
 	}
 }
+
 #75% Progress - Develop Reality Map
 country_event = {
 	id = pw_research.1113
@@ -645,16 +720,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWPCPlanet
 	show_sound = event_encrypted_comms
-
-	trigger = { NOT = { has_country_flag = pw_physics_experiment_done_6 }}
-	immediate = { set_country_flag = pw_physics_experiment_done_6 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_physics_experiment_done_6
+		}
+	}
+	immediate = {
+		set_country_flag = pw_physics_experiment_done_6
+	}
 	#Get the tech
 	option = {
 		name = pw_research.1113.a
 		add_research_option = pw_tech_reality_map
 	}
 }
+
 #Complete the experiment (and map)
 country_event = {
 	id = pw_research.1114
@@ -664,7 +744,6 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWPCPlanet
 	show_sound = event_encrypted_comms
-
 	immediate = {
 		random_owned_planet = {
 			limit = {
@@ -673,7 +752,6 @@ country_event = {
 			save_event_target_as = PWPCPlanet
 		}
 	}
-
 	#Get the next tier
 	option = {
 		name = pw_research.1114.a
@@ -692,7 +770,6 @@ country_event = {
 	}
 }
 
-
 # Begin Field Manipulation Experiments
 #25% Progress - Exploring Hazardous Dimension
 country_event = {
@@ -703,16 +780,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWPCPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_physics_experiment_done_7 }}
-	immediate = { set_country_flag = pw_physics_experiment_done_7 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_physics_experiment_done_7
+		}
+	}
+	immediate = {
+		set_country_flag = pw_physics_experiment_done_7
+	}
 	#Get the tech
 	option = {
 		name = pw_research.1121.a
 		add_research_option = pw_tech_crystal_personal_armor
 	}
 }
+
 #50% Progress - Food Dimension
 country_event = {
 	id = pw_research.1122
@@ -722,10 +804,14 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWPCPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_physics_experiment_done_8 }}
-	immediate = { set_country_flag = pw_physics_experiment_done_8 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_physics_experiment_done_8
+		}
+	}
+	immediate = {
+		set_country_flag = pw_physics_experiment_done_8
+	}
 	#Get the tech (Uses Food)
 	option = {
 		name = pw_research.1122.a
@@ -740,7 +826,6 @@ country_event = {
 		}
 		add_research_option = pw_tech_food_dimension_draining
 	}
-
 	#Mockery (Not Uses Food)
 	option = {
 		name = pw_research.1122.b
@@ -755,6 +840,7 @@ country_event = {
 		}
 	}
 }
+
 #75% Progress - Center of a Star
 country_event = {
 	id = pw_research.1123
@@ -764,8 +850,11 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWPCPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_physics_experiment_done_9 }}
+	trigger = {
+		NOT = {
+			has_country_flag = pw_physics_experiment_done_9
+		}
+	}
 	immediate = {
 		set_country_flag = pw_physics_experiment_done_9
 		set_country_flag = pw_particle_supercollider_experiments_started
@@ -776,7 +865,6 @@ country_event = {
 			save_event_target_as = PWPCPlanet
 		}
 	}
-
 	#Get the tech
 	option = {
 		name = pw_research.1123.a
@@ -791,6 +879,7 @@ country_event = {
 		}
 	}
 }
+
 #Complete the experiment (and chain)
 country_event = {
 	id = pw_research.1124
@@ -800,7 +889,6 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWPCPlanet
 	show_sound = event_laboratory_sound
-
 	#Get the final reward
 	option = {
 		name = pw_research.1124.a
@@ -816,19 +904,18 @@ country_event = {
 	}
 }
 
-
 ##Domed City Events (2000 - 2999)
-
 #Pre-event setup
 country_event = {
 	id = pw_research.1999
 	is_triggered_only = yes
 	hide_window = yes
-
 	trigger = {
 		is_at_war = no
 		is_ai = no
-		NOT = { is_homicidal = yes }
+		NOT = {
+			is_homicidal = yes
+		}
 		any_owned_planet = {
 			pw_planet_has_domed_city = yes
 		}
@@ -843,7 +930,6 @@ country_event = {
 			}
 		}
 	}
-
 	immediate = {
 		random_country = {
 			limit = {
@@ -868,7 +954,6 @@ country_event = {
 			id = pw_research.2000
 		}
 	}
-
 }
 
 #Xenophile Empire requests Collider
@@ -880,7 +965,6 @@ country_event = {
 	location = event_target:PWFallenEmpireDCPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpireDC
 		planet_background = event_target:PWFallenEmpireDC
@@ -888,7 +972,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpireDC
 		room = event_target:PWFallenEmpireDC.ruler
 	}
-
 	#Let them
 	option = {
 		name = pw_research.2000.a
@@ -900,27 +983,47 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			event_target:PWFallenEmpireDC = { add_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request }}
-			country_event = { id = pw_research.2002 } #OK
-			country_event = { id = pw_research.2004 days = 90 } #At war
-			country_event = { id = pw_research.2005 days = 90 }	#Not at war
+			event_target:PWFallenEmpireDC = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_accepted_fallen_empire_request
+				}
+			}
+			country_event = {
+				id = pw_research.2002
+			}			#OK
+			country_event = {
+				id = pw_research.2004
+				days = 90
+			}			#At war
+			country_event = {
+				id = pw_research.2005
+				days = 90
+			}			#Not at war
 		}
 	}
-
 	#Ask what they want with it
 	option = {
 		name = pw_research.2000.b
 		hidden_effect = {
-			country_event = { id = pw_research.2001 }
+			country_event = {
+				id = pw_research.2001
+			}
 		}
 	}
-
 	#Deny
 	option = {
 		name = pw_research.2000.c
 		hidden_effect = {
-			country_event = { id = pw_research.2003 }
-			event_target:PWFallenEmpireDC = { add_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request }}
+			country_event = {
+				id = pw_research.2003
+			}
+			event_target:PWFallenEmpireDC = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
 		}
 	}
 }
@@ -934,7 +1037,6 @@ country_event = {
 	location = event_target:PWFallenEmpireDCPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpireDC
 		planet_background = event_target:PWFallenEmpireDC
@@ -942,7 +1044,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpireDC
 		room = event_target:PWFallenEmpireDC.ruler
 	}
-
 	#OK
 	option = {
 		name = pw_research.2001.a
@@ -954,19 +1055,38 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			event_target:PWFallenEmpireDC = { add_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request }}
-			country_event = { id = pw_research.2002 } #OK
-			country_event = { id = pw_research.2004 days = 90 } #At war
-			country_event = { id = pw_research.2005 days = 90 }	#Not at war
+			event_target:PWFallenEmpireDC = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_accepted_fallen_empire_request
+				}
+			}
+			country_event = {
+				id = pw_research.2002
+			}			#OK
+			country_event = {
+				id = pw_research.2004
+				days = 90
+			}			#At war
+			country_event = {
+				id = pw_research.2005
+				days = 90
+			}			#Not at war
 		}
 	}
-
 	#Deny
 	option = {
 		name = pw_research.2000.c
 		hidden_effect = {
-			country_event = { id = pw_research.2003 }
-			event_target:PWFallenEmpireDC = { add_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request }}
+			country_event = {
+				id = pw_research.2003
+			}
+			event_target:PWFallenEmpireDC = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
 		}
 	}
 }
@@ -980,7 +1100,6 @@ country_event = {
 	location = event_target:PWFallenEmpireDCPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpireDC
 		planet_background = event_target:PWFallenEmpireDC
@@ -988,7 +1107,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpireDC
 		room = event_target:PWFallenEmpireDC.ruler
 	}
-
 	#OK
 	option = {
 		name = pw_research.2002.a
@@ -1004,7 +1122,6 @@ country_event = {
 	location = event_target:PWFallenEmpireDCPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpireDC
 		planet_background = event_target:PWFallenEmpireDC
@@ -1012,7 +1129,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpireDC
 		room = event_target:PWFallenEmpireDC.ruler
 	}
-
 	#OK
 	option = {
 		name = pw_research.2003.a
@@ -1027,22 +1143,24 @@ country_event = {
 	picture = GFX_evt_pw_domed_city
 	is_triggered_only = yes
 	location = event_target:PWFallenEmpireDCPlanet
-
 	trigger = {
 		OR = {
-			NOT = { exists = event_target:PWFallenEmpireDC }
+			NOT = {
+				exists = event_target:PWFallenEmpireDC
+			}
 			event_target:PWFallenEmpireDC = {
 				is_at_war = yes
 			}
 		}
 	}
-
 	#OK
 	option = {
 		name = pw_research.2004.a
 		event_target:PWFallenEmpireDCPlanet = {
 			if = {
-				limit = { has_modifier = pw_mod_domed_city_research_in_use }
+				limit = {
+					has_modifier = pw_mod_domed_city_research_in_use
+				}
 				remove_modifier = pw_mod_domed_city_research_in_use
 			}
 		}
@@ -1058,14 +1176,12 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWFallenEmpireDCPlanet
 	show_sound = event_energy_field
-
 	trigger = {
 		exists = event_target:PWFallenEmpireDC
 		event_target:PWFallenEmpireDC = {
 			is_at_war = no
 		}
 	}
-
 	#Contact them
 	option = {
 		name = pw_research.2005.a
@@ -1073,10 +1189,11 @@ country_event = {
 			influence = -50
 		}
 		hidden_effect = {
-			country_event = { id = pw_research.2006 }
+			country_event = {
+				id = pw_research.2006
+			}
 		}
 	}
-
 	#Let them
 	option = {
 		name = pw_research.2005.b
@@ -1085,8 +1202,14 @@ country_event = {
 			unity = 500
 		}
 		hidden_effect = {
-			country_event = { id = pw_research.2004 days = 90 }	#At war
-			country_event = { id = pw_research.2009 days = 90 }
+			country_event = {
+				id = pw_research.2004
+				days = 90
+			}			#At war
+			country_event = {
+				id = pw_research.2009
+				days = 90
+			}
 		}
 	}
 }
@@ -1100,7 +1223,6 @@ country_event = {
 	location = event_target:PWFallenEmpireDCPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpireDC
 		planet_background = event_target:PWFallenEmpireDC
@@ -1108,32 +1230,56 @@ country_event = {
 		city_level = event_target:PWFallenEmpireDC
 		room = event_target:PWFallenEmpireDC.ruler
 	}
-
 	#Continue
 	option = {
 		name = pw_research.2006.a
-
 		hidden_effect = {
-			event_target:PWFallenEmpireDC = { add_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request }}
-			country_event = { id = pw_research.2004 days = 90 }	#At war
-			country_event = { id = pw_research.2009 days = 90 }
-			country_event = { id = pw_research.2007 }
+			event_target:PWFallenEmpireDC = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_accepted_fallen_empire_request
+				}
+			}
+			country_event = {
+				id = pw_research.2004
+				days = 90
+			}			#At war
+			country_event = {
+				id = pw_research.2009
+				days = 90
+			}
+			country_event = {
+				id = pw_research.2007
+			}
 		}
 	}
-
 	#Leave
 	option = {
 		name = pw_research.2006.b
 		event_target:PWFallenEmpireDCPlanet = {
 			if = {
-				limit = { has_modifier = pw_mod_domed_city_research_in_use }
+				limit = {
+					has_modifier = pw_mod_domed_city_research_in_use
+				}
 				remove_modifier = pw_mod_domed_city_research_in_use
 			}
 		}
 		hidden_effect = {
-			country_event = { id = pw_research.2008 }
-			event_target:PWFallenEmpireDC = { remove_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request } }
-			event_target:PWFallenEmpireDC = { add_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request }}
+			country_event = {
+				id = pw_research.2008
+			}
+			event_target:PWFallenEmpireDC = {
+				remove_opinion_modifier = {
+					who = root
+					modifier = opinion_accepted_fallen_empire_request
+				}
+			}
+			event_target:PWFallenEmpireDC = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
 		}
 	}
 }
@@ -1147,7 +1293,6 @@ country_event = {
 	location = event_target:PWFallenEmpireDCPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpireDC
 		planet_background = event_target:PWFallenEmpireDC
@@ -1155,7 +1300,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpireDC
 		room = event_target:PWFallenEmpireDC.ruler
 	}
-
 	#OK
 	option = {
 		name = pw_research.2007.a
@@ -1171,7 +1315,6 @@ country_event = {
 	location = event_target:PWFallenEmpireDCPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpireDC
 		planet_background = event_target:PWFallenEmpireDC
@@ -1179,7 +1322,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpireDC
 		room = event_target:PWFallenEmpireDC.ruler
 	}
-
 	#OK
 	option = {
 		name = pw_research.2008.a
@@ -1195,14 +1337,12 @@ country_event = {
 	location = event_target:PWFallenEmpireDCPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	trigger = {
 		exists = event_target:PWFallenEmpireDC
 		event_target:PWFallenEmpireDC = {
 			is_at_war = no
 		}
 	}
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpireDC
 		planet_background = event_target:PWFallenEmpireDC
@@ -1210,7 +1350,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpireDC
 		room = event_target:PWFallenEmpireDC.ruler
 	}
-
 	#GOOD
 	option = {
 		name = pw_research.2009.a
@@ -1247,15 +1386,15 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWDCPlanet
 	show_sound = event_laboratory_sound
-
 	trigger = {
 		is_gestalt = no
-		NOT = { has_valid_civic = civic_fanatic_purifiers }
+		NOT = {
+			has_valid_civic = civic_fanatic_purifiers
+		}
 		any_owned_planet = {
 			pw_planet_has_domed_city = yes
 		}
 	}
-
 	immediate = {
 		random_owned_planet = {
 			limit = {
@@ -1264,7 +1403,6 @@ country_event = {
 			save_event_target_as = PWDCPlanet
 		}
 	}
-
 	#Regular Reality show
 	option = {
 		name = pw_research.2010.a
@@ -1272,7 +1410,6 @@ country_event = {
 			modifier = pw_mod_domed_city_transmitted_experiments_unity
 		}
 	}
-
 	#Megacorp Reality show
 	option = {
 		name = pw_research.2010.b
@@ -1283,7 +1420,6 @@ country_event = {
 			modifier = pw_mod_domed_city_transmitted_experiments_megacorp
 		}
 	}
-
 	#Media Conglomerate Reality show
 	option = {
 		name = pw_research.2010.c
@@ -1300,7 +1436,6 @@ country_event = {
 			modifier = pw_mod_domed_city_transmitted_experiments_megacorp
 		}
 	}
-
 	#Materialist - archive
 	option = {
 		name = pw_research.2010.d
@@ -1311,7 +1446,6 @@ country_event = {
 			modifier = pw_mod_domed_city_transmitted_experiments_research
 		}
 	}
-
 	#No
 	option = {
 		name = pw_research.2010.e
@@ -1334,14 +1468,14 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWDCPlanet
 	show_sound = event_laboratory_sound
-
 	trigger = {
-		NOT = { has_country_flag = pw_domed_city_experiments_started }
+		NOT = {
+			has_country_flag = pw_domed_city_experiments_started
+		}
 		any_owned_planet = {
 			pw_planet_has_domed_city = yes
 		}
 	}
-
 	immediate = {
 		set_country_flag = pw_domed_city_experiments_started
 		random_owned_planet = {
@@ -1351,7 +1485,6 @@ country_event = {
 			save_event_target_as = PWDCPlanet
 		}
 	}
-
 	#Commence the experiments
 	option = {
 		name = pw_research.2100.a
@@ -1365,24 +1498,25 @@ country_event = {
 			location = event_target:PWDCPlanet
 		}
 	}
-
 	#Skip the experiments
 	option = {
 		name = pw_research.skip_experiment
 		custom_tooltip = pw_research.skip_experiment.tooltip
-
 		allow = {
 			owner = {
-				resource_stockpile_compare = { resource = unity value >= 500 }
+				resource_stockpile_compare = {
+					resource = unity
+					value >= 500
+				}
 			}
 		}
 		add_resource = {
 			unity = -500
 		}
-
 		add_research_option = pw_tech_psionic_observatory
 	}
 }
+
 #25% Progress - Too hazardous
 country_event = {
 	id = pw_research.2101
@@ -1392,8 +1526,11 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWDCPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_society_experiment_done_1 }}
+	trigger = {
+		NOT = {
+			has_country_flag = pw_society_experiment_done_1
+		}
+	}
 	immediate = {
 		set_country_flag = pw_society_experiment_done_1
 		random_owned_planet = {
@@ -1403,7 +1540,6 @@ country_event = {
 			save_event_target_as = PWDCPlanet
 		}
 	}
-
 	#Pop dies
 	option = {
 		name = pw_research.2101.a
@@ -1435,6 +1571,7 @@ country_event = {
 		}
 	}
 }
+
 #50% Progress - Better habitation
 country_event = {
 	id = pw_research.2102
@@ -1444,16 +1581,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWDCPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_society_experiment_done_2 }}
-	immediate = { set_country_flag = pw_society_experiment_done_2 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_society_experiment_done_2
+		}
+	}
+	immediate = {
+		set_country_flag = pw_society_experiment_done_2
+	}
 	#Get the tech
 	option = {
 		name = pw_research.2102.a
 		add_research_option = pw_tech_extreme_habitation_studies
 	}
 }
+
 #75% Progress - Crisis management
 country_event = {
 	id = pw_research.2103
@@ -1463,16 +1605,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWDCPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_society_experiment_done_3 }}
-	immediate = { set_country_flag = pw_society_experiment_done_3 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_society_experiment_done_3
+		}
+	}
+	immediate = {
+		set_country_flag = pw_society_experiment_done_3
+	}
 	#Get the tech
 	option = {
 		name = pw_research.2103.a
 		add_research_option = pw_tech_crisis_management
 	}
 }
+
 #Complete the experiment
 country_event = {
 	id = pw_research.2104
@@ -1482,7 +1629,6 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWDCPlanet
 	show_sound = event_laboratory_sound
-
 	immediate = {
 		random_owned_planet = {
 			limit = {
@@ -1491,7 +1637,6 @@ country_event = {
 			save_event_target_as = PWDCPlanet
 		}
 	}
-
 	#Get the next tier
 	option = {
 		name = pw_research.2104.a
@@ -1518,16 +1663,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWDCPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_society_experiment_done_4 }}
-	immediate = { set_country_flag = pw_society_experiment_done_4 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_society_experiment_done_4
+		}
+	}
+	immediate = {
+		set_country_flag = pw_society_experiment_done_4
+	}
 	#Get tech
 	option = {
 		name = pw_research.2111.a
 		add_research_option = pw_tech_social_construction_fabrication
 	}
 }
+
 #50% Progress - Manufacturing Consent
 country_event = {
 	id = pw_research.2112
@@ -1537,29 +1687,36 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWDCPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_society_experiment_done_5 }}
-	immediate = { set_country_flag = pw_society_experiment_done_5 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_society_experiment_done_5
+		}
+	}
+	immediate = {
+		set_country_flag = pw_society_experiment_done_5
+	}
 	#Manufacture Consent
 	option = {
 		name = pw_research.2112.a
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		add_modifier = {
 			modifier = pw_mod_domed_city_rule_manufactured_consent
 			days = @pw_10years
 		}
 	}
-
 	#Consent
 	option = {
 		name = pw_research.2112.b
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		allow = {
 			is_authoritarian = no
@@ -1569,13 +1726,14 @@ country_event = {
 			days = @pw_10years
 		}
 	}
-
 	#Coercion
 	option = {
 		name = pw_research.2112.c
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		allow = {
 			is_egalitarian = no
@@ -1585,20 +1743,20 @@ country_event = {
 			days = @pw_10years
 		}
 	}
-
 	#Gestalt
 	option = {
 		name = pw_research.2112.d
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		add_modifier = {
 			modifier = pw_mod_domed_city_rule_gestalt
 			days = @pw_10years
 		}
 	}
-
 	after = {
 		hidden_effect = {
 			country_event = {
@@ -1608,6 +1766,7 @@ country_event = {
 		}
 	}
 }
+
 #75% Progress - Army Organization
 country_event = {
 	id = pw_research.2113
@@ -1617,16 +1776,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWDCPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_society_experiment_done_6 }}
-	immediate = { set_country_flag = pw_society_experiment_done_6 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_society_experiment_done_6
+		}
+	}
+	immediate = {
+		set_country_flag = pw_society_experiment_done_6
+	}
 	#Get the tech
 	option = {
 		name = pw_research.2113.a
 		add_research_option = pw_tech_military_social_values
 	}
 }
+
 #Complete the experiment
 country_event = {
 	id = pw_research.2114
@@ -1636,7 +1800,6 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWDCPlanet
 	show_sound = event_laboratory_sound
-
 	immediate = {
 		random_owned_planet = {
 			limit = {
@@ -1645,7 +1808,6 @@ country_event = {
 			save_event_target_as = PWDCPlanet
 		}
 	}
-
 	#Get the next tier
 	option = {
 		name = pw_research.2114.a
@@ -1663,7 +1825,6 @@ country_event = {
 			location = event_target:PWDCPlanet
 		}
 	}
-
 	#Get the next tier
 	option = {
 		name = pw_research.2114.b
@@ -1681,6 +1842,7 @@ country_event = {
 		}
 	}
 }
+
 #Additional Event - Scarcity vs Abundance
 country_event = {
 	id = pw_research.2115
@@ -1690,7 +1852,6 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWDCPlanet
 	show_sound = event_laboratory_sound
-
 	#Abundance
 	option = {
 		name = pw_research.2115.a
@@ -1701,7 +1862,6 @@ country_event = {
 			max = @tier3unitymax
 		}
 	}
-
 	#Scarcity
 	option = {
 		name = pw_research.2115.b
@@ -1724,8 +1884,11 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWDCPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_society_experiment_done_7 }}
+	trigger = {
+		NOT = {
+			has_country_flag = pw_society_experiment_done_7
+		}
+	}
 	immediate = {
 		set_country_flag = pw_society_experiment_done_7
 		random_owned_planet = {
@@ -1735,7 +1898,6 @@ country_event = {
 			save_event_target_as = PWDCPlanet
 		}
 	}
-
 	#Get science
 	option = {
 		name = pw_research.2121.a
@@ -1754,6 +1916,7 @@ country_event = {
 		}
 	}
 }
+
 #50% Progress - Nerve Gas
 country_event = {
 	id = pw_research.2122
@@ -1763,16 +1926,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWDCPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_society_experiment_done_8 }}
-	immediate = { set_country_flag = pw_society_experiment_done_8 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_society_experiment_done_8
+		}
+	}
+	immediate = {
+		set_country_flag = pw_society_experiment_done_8
+	}
 	#Get tech
 	option = {
 		name = pw_research.2122.a
 		add_research_option = pw_tech_exotic_nerve_gas
 	}
 }
+
 #75% Progress - Zro
 country_event = {
 	id = pw_research.2123
@@ -1782,15 +1950,23 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWDCPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_society_experiment_done_9 }}
-	immediate = { set_country_flag = pw_society_experiment_done_9 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_society_experiment_done_9
+		}
+	}
+	immediate = {
+		set_country_flag = pw_society_experiment_done_9
+	}
 	#Get the tech
 	option = {
 		name = pw_research.2123.a
 		if = {
-			limit = { NOT = { has_technology = tech_mine_zro }}
+			limit = {
+				NOT = {
+					has_technology = tech_mine_zro
+				}
+			}
 			add_resource = {
 				sr_zro = 10
 			}
@@ -1810,6 +1986,7 @@ country_event = {
 		}
 	}
 }
+
 #Complete the experiment
 country_event = {
 	id = pw_research.2124
@@ -1819,7 +1996,6 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWDCPlanet
 	show_sound = event_laboratory_sound
-
 	#Get the final reward
 	option = {
 		name = pw_research.2124.a
@@ -1837,6 +2013,7 @@ country_event = {
 		}
 	}
 }
+
 #Additional choice
 country_event = {
 	id = pw_research.2125
@@ -1846,7 +2023,6 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWDCPlanet
 	show_sound = event_laboratory_sound
-
 	#Zro Fertility
 	option = {
 		name = pw_research.2125.a
@@ -1857,7 +2033,6 @@ country_event = {
 			modifier = pw_mod_domed_city_zro_fertility
 		}
 	}
-
 	#Zro Cloning
 	option = {
 		name = pw_research.2125.b
@@ -1868,7 +2043,6 @@ country_event = {
 			modifier = pw_mod_domed_city_zro_cloning
 		}
 	}
-
 	#Zro Psionic Boost
 	option = {
 		name = pw_research.2125.c
@@ -1879,7 +2053,6 @@ country_event = {
 			modifier = pw_mod_domed_city_zro_psionic_development
 		}
 	}
-
 	#Zro Circuitry
 	option = {
 		name = pw_research.2125.d
@@ -1896,17 +2069,17 @@ country_event = {
 }
 
 ##Abyssal Crater Test Site Events (3000 - 3999)
-
 #Pre-event setup
 country_event = {
 	id = pw_research.2999
 	is_triggered_only = yes
 	hide_window = yes
-
 	trigger = {
 		is_at_war = no
 		is_ai = no
-		NOT = { is_homicidal = yes }
+		NOT = {
+			is_homicidal = yes
+		}
 		any_owned_planet = {
 			pw_planet_has_abyssal_test_crater = yes
 		}
@@ -1921,7 +2094,6 @@ country_event = {
 			}
 		}
 	}
-
 	immediate = {
 		random_country = {
 			limit = {
@@ -1946,7 +2118,6 @@ country_event = {
 			id = pw_research.3000
 		}
 	}
-
 }
 
 #Materialist Empire requests Test Site
@@ -1958,7 +2129,6 @@ country_event = {
 	location = event_target:PWFallenEmpireACTSPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpireACTS
 		planet_background = event_target:PWFallenEmpireACTS
@@ -1966,7 +2136,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpireACTS
 		room = event_target:PWFallenEmpireACTS.ruler
 	}
-
 	#Let them
 	option = {
 		name = pw_research.3000.a
@@ -1978,27 +2147,47 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			event_target:PWFallenEmpireACTS = { add_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request }}
-			country_event = { id = pw_research.3002 } #OK
-			country_event = { id = pw_research.3004 days = 90 } #At war
-			country_event = { id = pw_research.3005 days = 90 }	#Not at war
+			event_target:PWFallenEmpireACTS = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_accepted_fallen_empire_request
+				}
+			}
+			country_event = {
+				id = pw_research.3002
+			}			#OK
+			country_event = {
+				id = pw_research.3004
+				days = 90
+			}			#At war
+			country_event = {
+				id = pw_research.3005
+				days = 90
+			}			#Not at war
 		}
 	}
-
 	#Ask what they want with it
 	option = {
 		name = pw_research.3000.b
 		hidden_effect = {
-			country_event = { id = pw_research.3001 }
+			country_event = {
+				id = pw_research.3001
+			}
 		}
 	}
-
 	#Deny
 	option = {
 		name = pw_research.3000.c
 		hidden_effect = {
-			country_event = { id = pw_research.3003 }
-			event_target:PWFallenEmpireACTS = { add_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request }}
+			country_event = {
+				id = pw_research.3003
+			}
+			event_target:PWFallenEmpireACTS = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
 		}
 	}
 }
@@ -2012,7 +2201,6 @@ country_event = {
 	location = event_target:PWFallenEmpireACTSPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpireACTS
 		planet_background = event_target:PWFallenEmpireACTS
@@ -2020,7 +2208,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpireACTS
 		room = event_target:PWFallenEmpireACTS.ruler
 	}
-
 	#OK
 	option = {
 		name = pw_research.3001.a
@@ -2032,19 +2219,38 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			event_target:PWFallenEmpireACTS = { add_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request }}
-			country_event = { id = pw_research.3002 } #OK
-			country_event = { id = pw_research.3004 days = 90 } #At war
-			country_event = { id = pw_research.3005 days = 90 }	#Not at war
+			event_target:PWFallenEmpireACTS = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_accepted_fallen_empire_request
+				}
+			}
+			country_event = {
+				id = pw_research.3002
+			}			#OK
+			country_event = {
+				id = pw_research.3004
+				days = 90
+			}			#At war
+			country_event = {
+				id = pw_research.3005
+				days = 90
+			}			#Not at war
 		}
 	}
-
 	#Deny
 	option = {
 		name = pw_research.3000.c
 		hidden_effect = {
-			country_event = { id = pw_research.3003 }
-			event_target:PWFallenEmpireACTS = { add_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request }}
+			country_event = {
+				id = pw_research.3003
+			}
+			event_target:PWFallenEmpireACTS = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
 		}
 	}
 }
@@ -2058,7 +2264,6 @@ country_event = {
 	location = event_target:PWFallenEmpireACTSPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpireACTS
 		planet_background = event_target:PWFallenEmpireACTS
@@ -2066,7 +2271,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpireACTS
 		room = event_target:PWFallenEmpireACTS.ruler
 	}
-
 	#OK
 	option = {
 		name = pw_research.3002.a
@@ -2082,7 +2286,6 @@ country_event = {
 	location = event_target:PWFallenEmpireACTSPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpireACTS
 		planet_background = event_target:PWFallenEmpireACTS
@@ -2090,7 +2293,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpireACTS
 		room = event_target:PWFallenEmpireACTS.ruler
 	}
-
 	#OK
 	option = {
 		name = pw_research.3003.a
@@ -2105,22 +2307,24 @@ country_event = {
 	picture = GFX_evt_pw_abyssal_crater_test_site
 	is_triggered_only = yes
 	location = event_target:PWFallenEmpireACTSPlanet
-
 	trigger = {
 		OR = {
-			NOT = { exists = event_target:PWFallenEmpireACTS }
+			NOT = {
+				exists = event_target:PWFallenEmpireACTS
+			}
 			event_target:PWFallenEmpireACTS = {
 				is_at_war = yes
 			}
 		}
 	}
-
 	#OK
 	option = {
 		name = pw_research.3004.a
 		event_target:PWFallenEmpireACTSPlanet = {
 			if = {
-				limit = { has_modifier = pw_mod_abyssal_test_crater_research_in_use }
+				limit = {
+					has_modifier = pw_mod_abyssal_test_crater_research_in_use
+				}
 				remove_modifier = pw_mod_abyssal_test_crater_research_in_use
 			}
 		}
@@ -2136,14 +2340,12 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWFallenEmpireACTSPlanet
 	show_sound = event_energy_field
-
 	trigger = {
 		exists = event_target:PWFallenEmpireACTS
 		event_target:PWFallenEmpireACTS = {
 			is_at_war = no
 		}
 	}
-
 	#Contact them
 	option = {
 		name = pw_research.3005.a
@@ -2151,10 +2353,11 @@ country_event = {
 			add_planet_devastation = 25
 		}
 		hidden_effect = {
-			country_event = { id = pw_research.3006 }
+			country_event = {
+				id = pw_research.3006
+			}
 		}
 	}
-
 	#Par for the Course
 	option = {
 		name = pw_research.3005.b
@@ -2162,8 +2365,14 @@ country_event = {
 			add_planet_devastation = 25
 		}
 		hidden_effect = {
-			country_event = { id = pw_research.3004 days = 90 }	#At war
-			country_event = { id = pw_research.3009 days = 90 }
+			country_event = {
+				id = pw_research.3004
+				days = 90
+			}			#At war
+			country_event = {
+				id = pw_research.3009
+				days = 90
+			}
 		}
 	}
 }
@@ -2177,7 +2386,6 @@ country_event = {
 	location = event_target:PWFallenEmpireACTSPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpireACTS
 		planet_background = event_target:PWFallenEmpireACTS
@@ -2185,32 +2393,56 @@ country_event = {
 		city_level = event_target:PWFallenEmpireACTS
 		room = event_target:PWFallenEmpireACTS.ruler
 	}
-
 	#Continue
 	option = {
 		name = pw_research.3006.a
-
 		hidden_effect = {
-			event_target:PWFallenEmpireACTS = { add_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request }}
-			country_event = { id = pw_research.3004 days = 90 }	#At war
-			country_event = { id = pw_research.3009 days = 90 }
-			country_event = { id = pw_research.3007 }
+			event_target:PWFallenEmpireACTS = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_accepted_fallen_empire_request
+				}
+			}
+			country_event = {
+				id = pw_research.3004
+				days = 90
+			}			#At war
+			country_event = {
+				id = pw_research.3009
+				days = 90
+			}
+			country_event = {
+				id = pw_research.3007
+			}
 		}
 	}
-
 	#Leave
 	option = {
 		name = pw_research.3006.b
 		event_target:PWFallenEmpireACTSPlanet = {
 			if = {
-				limit = { has_modifier = pw_mod_abyssal_test_crater_research_in_use }
+				limit = {
+					has_modifier = pw_mod_abyssal_test_crater_research_in_use
+				}
 				remove_modifier = pw_mod_abyssal_test_crater_research_in_use
 			}
 		}
 		hidden_effect = {
-			country_event = { id = pw_research.3008 }
-			event_target:PWFallenEmpireACTS = { remove_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request } }
-			event_target:PWFallenEmpireACTS = { add_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request }}
+			country_event = {
+				id = pw_research.3008
+			}
+			event_target:PWFallenEmpireACTS = {
+				remove_opinion_modifier = {
+					who = root
+					modifier = opinion_accepted_fallen_empire_request
+				}
+			}
+			event_target:PWFallenEmpireACTS = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
 		}
 	}
 }
@@ -2224,7 +2456,6 @@ country_event = {
 	location = event_target:PWFallenEmpireACTSPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpireACTS
 		planet_background = event_target:PWFallenEmpireACTS
@@ -2232,7 +2463,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpireACTS
 		room = event_target:PWFallenEmpireACTS.ruler
 	}
-
 	#OK
 	option = {
 		name = pw_research.3007.a
@@ -2248,7 +2478,6 @@ country_event = {
 	location = event_target:PWFallenEmpireACTSPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpireACTS
 		planet_background = event_target:PWFallenEmpireACTS
@@ -2256,7 +2485,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpireACTS
 		room = event_target:PWFallenEmpireACTS.ruler
 	}
-
 	#OK
 	option = {
 		name = pw_research.3008.a
@@ -2272,14 +2500,12 @@ country_event = {
 	location = event_target:PWFallenEmpireACTSPlanet
 	show_sound = diplomatic_notification
 	diplomatic = yes
-
 	trigger = {
 		exists = event_target:PWFallenEmpireACTS
 		event_target:PWFallenEmpireACTS = {
 			is_at_war = no
 		}
 	}
-
 	picture_event_data = {
 		portrait = event_target:PWFallenEmpireACTS
 		planet_background = event_target:PWFallenEmpireACTS
@@ -2287,7 +2513,6 @@ country_event = {
 		city_level = event_target:PWFallenEmpireACTS
 		room = event_target:PWFallenEmpireACTS.ruler
 	}
-
 	#GOOD
 	option = {
 		name = pw_research.3009.a
@@ -2323,14 +2548,14 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWACTSPlanet
 	show_sound = event_laboratory_sound
-
 	trigger = {
-		NOT = { has_country_flag = pw_abyssal_crater_test_site_experiments_started }
+		NOT = {
+			has_country_flag = pw_abyssal_crater_test_site_experiments_started
+		}
 		any_owned_planet = {
 			pw_planet_has_abyssal_test_crater = yes
 		}
 	}
-
 	immediate = {
 		set_country_flag = pw_abyssal_crater_test_site_experiments_started
 		random_owned_planet = {
@@ -2340,7 +2565,6 @@ country_event = {
 			save_event_target_as = PWACTSPlanet
 		}
 	}
-
 	#Commence the experiments
 	option = {
 		name = pw_research.3100.a
@@ -2354,24 +2578,25 @@ country_event = {
 			location = event_target:PWACTSPlanet
 		}
 	}
-
 	#Skip the experiments
 	option = {
 		name = pw_research.skip_experiment
 		custom_tooltip = pw_research.skip_experiment.tooltip
-
 		allow = {
 			owner = {
-				resource_stockpile_compare = { resource = unity value >= 500 }
+				resource_stockpile_compare = {
+					resource = unity
+					value >= 500
+				}
 			}
 		}
 		add_resource = {
 			unity = -500
 		}
-
 		add_research_option = pw_tech_metal_vivarium
 	}
 }
+
 #25% Progress - Portable Weapons
 country_event = {
 	id = pw_research.3101
@@ -2381,16 +2606,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWACTSPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_engineering_experiment_done_1 }}
-	immediate = { set_country_flag = pw_engineering_experiment_done_1 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_engineering_experiment_done_1
+		}
+	}
+	immediate = {
+		set_country_flag = pw_engineering_experiment_done_1
+	}
 	#Get the tech
 	option = {
 		name = pw_research.3101.a
 		add_research_option = pw_tech_motes_portable_weapons
 	}
 }
+
 #50% Progress - Mounted Weapons
 country_event = {
 	id = pw_research.3102
@@ -2400,16 +2630,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWACTSPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_engineering_experiment_done_2 }}
-	immediate = { set_country_flag = pw_engineering_experiment_done_2 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_engineering_experiment_done_2
+		}
+	}
+	immediate = {
+		set_country_flag = pw_engineering_experiment_done_2
+	}
 	#Get the tech
 	option = {
 		name = pw_research.3102.a
 		add_research_option = pw_tech_massive_mounted_weapons
 	}
 }
+
 #75% Progress - Misfiring Devastation + living Metal
 country_event = {
 	id = pw_research.3103
@@ -2419,8 +2654,11 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWACTSPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_engineering_experiment_done_3 }}
+	trigger = {
+		NOT = {
+			has_country_flag = pw_engineering_experiment_done_3
+		}
+	}
 	immediate = {
 		set_country_flag = pw_engineering_experiment_done_3
 		random_owned_planet = {
@@ -2430,12 +2668,15 @@ country_event = {
 			save_event_target_as = PWACTSPlanet
 		}
 	}
-
 	#Devastation
 	option = {
 		name = pw_research.3101.a
 		if = {
-			limit = { NOT = { has_technology = tech_mine_living_metal }}
+			limit = {
+				NOT = {
+					has_technology = tech_mine_living_metal
+				}
+			}
 			add_resource = {
 				sr_living_metal = 10
 			}
@@ -2464,6 +2705,7 @@ country_event = {
 		}
 	}
 }
+
 #Complete the experiment
 country_event = {
 	id = pw_research.3104
@@ -2473,7 +2715,6 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWACTSPlanet
 	show_sound = event_laboratory_sound
-
 	immediate = {
 		random_owned_planet = {
 			limit = {
@@ -2482,7 +2723,6 @@ country_event = {
 			save_event_target_as = PWACTSPlanet
 		}
 	}
-
 	#Get the next tier
 	option = {
 		name = pw_research.3104.a
@@ -2498,6 +2738,7 @@ country_event = {
 		}
 	}
 }
+
 #Additional - Get Bombardment
 country_event = {
 	id = pw_research.3105
@@ -2507,7 +2748,6 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWACTSPlanet
 	show_sound = event_laboratory_sound
-
 	#Get the tech
 	option = {
 		name = pw_research.3105.a
@@ -2525,16 +2765,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWACTSPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_engineering_experiment_done_4 }}
-	immediate = { set_country_flag = pw_engineering_experiment_done_4 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_engineering_experiment_done_4
+		}
+	}
+	immediate = {
+		set_country_flag = pw_engineering_experiment_done_4
+	}
 	#Get tech
 	option = {
 		name = pw_research.3111.a
 		add_research_option = pw_tech_variable_pressure_armor
 	}
 }
+
 #50% Progress - Efficient Urbanism
 country_event = {
 	id = pw_research.3112
@@ -2544,16 +2789,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWACTSPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_engineering_experiment_done_5 }}
-	immediate = { set_country_flag = pw_engineering_experiment_done_5 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_engineering_experiment_done_5
+		}
+	}
+	immediate = {
+		set_country_flag = pw_engineering_experiment_done_5
+	}
 	#Get tech
 	option = {
 		name = pw_research.3112.a
 		add_research_option = pw_tech_efficient_urbanism
 	}
 }
+
 #75% Progress - Critical Military Production
 country_event = {
 	id = pw_research.3113
@@ -2563,16 +2813,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWACTSPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_engineering_experiment_done_6 }}
-	immediate = { set_country_flag = pw_engineering_experiment_done_6 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_engineering_experiment_done_6
+		}
+	}
+	immediate = {
+		set_country_flag = pw_engineering_experiment_done_6
+	}
 	#Get the tech
 	option = {
 		name = pw_research.3113.a
 		add_research_option = pw_tech_reinforced_military_production
 	}
 }
+
 #Complete the experiment + Living Metal Districts
 country_event = {
 	id = pw_research.3114
@@ -2582,7 +2837,6 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWACTSPlanet
 	show_sound = event_laboratory_sound
-
 	immediate = {
 		random_owned_planet = {
 			limit = {
@@ -2591,7 +2845,6 @@ country_event = {
 			save_event_target_as = PWACTSPlanet
 		}
 	}
-
 	#Get the next tier
 	option = {
 		name = pw_research.3114.a
@@ -2618,16 +2871,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWACTSPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_engineering_experiment_done_7 }}
-	immediate = { set_country_flag = pw_engineering_experiment_done_7 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_engineering_experiment_done_7
+		}
+	}
+	immediate = {
+		set_country_flag = pw_engineering_experiment_done_7
+	}
 	#Get tech
 	option = {
 		name = pw_research.3121.a
 		add_research_option = pw_tech_living_metal_decouples
 	}
 }
+
 #50% Progress - Metal Plague
 country_event = {
 	id = pw_research.3122
@@ -2637,8 +2895,11 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWACTSPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_engineering_experiment_done_8 }}
+	trigger = {
+		NOT = {
+			has_country_flag = pw_engineering_experiment_done_8
+		}
+	}
 	immediate = {
 		set_country_flag = pw_engineering_experiment_done_8
 		random_owned_planet = {
@@ -2648,7 +2909,6 @@ country_event = {
 			save_event_target_as = PWACTSPlanet
 		}
 	}
-
 	#Apply modifier
 	option = {
 		name = pw_research.3122.a
@@ -2660,7 +2920,6 @@ country_event = {
 			}
 		}
 	}
-
 	#Apply lesser modifier
 	option = {
 		name = pw_research.3122.b
@@ -2682,6 +2941,7 @@ country_event = {
 		}
 	}
 }
+
 #75% Progress - Living Metal Warforms
 country_event = {
 	id = pw_research.3123
@@ -2691,16 +2951,21 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWACTSPlanet
 	show_sound = event_laboratory_sound
-
-	trigger = { NOT = { has_country_flag = pw_engineering_experiment_done_9 }}
-	immediate = { set_country_flag = pw_engineering_experiment_done_9 }
-
+	trigger = {
+		NOT = {
+			has_country_flag = pw_engineering_experiment_done_9
+		}
+	}
+	immediate = {
+		set_country_flag = pw_engineering_experiment_done_9
+	}
 	#Get the tech
 	option = {
 		name = pw_research.3123.a
 		add_research_option = pw_tech_living_metal_warforms
 	}
 }
+
 #Complete the experiment
 country_event = {
 	id = pw_research.3124
@@ -2710,7 +2975,6 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:PWACTSPlanet
 	show_sound = event_laboratory_sound
-
 	#Get the next tier
 	option = {
 		name = pw_research.3124.a

@@ -1,27 +1,20 @@
 # FROM = The targeted country
 # THIS = The acting country
-
 ## Relics
-
 # r_coin_of_fortune
 wg_pw_r_coin_of_fortune = {
 	casus_belli = cb_pw_r_coin_of_fortune
-
 	hide_if_no_cb = yes
 	release_occupied_systems_on_status_quo = no
-
 	allowed_peace_offers = {
 		status_quo
 		surrender
 		demand_surrender
 	}
-
 	surrender_acceptance = 20
-
 	potential = {
 		# has_total_war_cb = no
 	}
-
 	possible = {
 		custom_tooltip = {
 			fail_text = has_claimed_all_systems
@@ -30,13 +23,14 @@ wg_pw_r_coin_of_fortune = {
 				any_owned_planet = {
 					is_colony = yes
 					root = {
-						NOT = { has_claim = prev.solar_system }
+						NOT = {
+							has_claim = prev.solar_system
+						}
 					}
 				}
 			}
 		}
 	}
-
 	on_accept = {
 		#Adds Threat
 		hidden_effect = {
@@ -49,14 +43,24 @@ wg_pw_r_coin_of_fortune = {
 		}
 		#Relic switches hands
 		if = {
-			limit = { from = { has_relic = pw_r_coin_of_fortune } }
-			from = { remove_relic = pw_r_coin_of_fortune }
+			limit = {
+				from = {
+					has_relic = pw_r_coin_of_fortune
+				}
+			}
+			from = {
+				remove_relic = pw_r_coin_of_fortune
+			}
 			add_relic = pw_r_coin_of_fortune
 		}
 		#Defender is humiliated
-		from = { add_modifier = { modifier = humiliated days = 3600 } }
+		from = {
+			add_modifier = {
+				modifier = humiliated
+				days = 3600
+			}
+		}
 	}
-
 	on_status_quo = {
 		from = {
 			set_closed_borders = {
@@ -65,7 +69,6 @@ wg_pw_r_coin_of_fortune = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 	}

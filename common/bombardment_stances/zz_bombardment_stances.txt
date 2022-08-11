@@ -24,15 +24,22 @@
 #		weight = 1
 #	}
 #}
-
 raiding = {
 	trigger = {
 		OR = {
-			owner = { has_ascension_perk = ap_nihilistic_acquisition }
-			owner = { has_valid_civic = civic_barbaric_despoilers }
-			owner = { has_valid_civic = civic_living_hosts }
+			owner = {
+				has_ascension_perk = ap_nihilistic_acquisition
+			}
+			owner = {
+				has_valid_civic = civic_barbaric_despoilers
+			}
+			owner = {
+				has_valid_civic = civic_living_hosts
+			}
 			AND = {
-				owner = { is_country_type = enclave_mercenary }
+				owner = {
+					is_country_type = enclave_mercenary
+				}
 				controller = {
 					OR = {
 						has_ascension_perk = ap_nihilistic_acquisition
@@ -43,20 +50,15 @@ raiding = {
 			}
 		}
 	}
-
 	default = no
-
 	stop_when_armies_dead = no
 	abduct_pops = yes
-
-	planet_damage = 1.0
+	planet_damage = 1
 	army_damage = 0.5
-
 	kill_pop_chance = {
-		base = 1.0
+		base = 1
 	}
 	min_pops_to_kill_pop = 2
-
 	# root = fleet
 	# from = planet
 	ai_weight = {
@@ -65,14 +67,20 @@ raiding = {
 			factor = 0
 			exists = from
 			from = {
-				owner = { NOT = { is_hostile = root.owner } }
+				owner = {
+					NOT = {
+						is_hostile = root.owner
+					}
+				}
 			}
 		}
 		modifier = {
 			factor = 0.01
 			exists = from
 			from = {
-				owner = { has_claim = root.solar_system }
+				owner = {
+					has_claim = root.solar_system
+				}
 			}
 		}
 	}
@@ -81,12 +89,22 @@ raiding = {
 liberation = {
 	trigger = {
 		OR = {
-			owner = { has_ascension_perk = ap_eternal_freedom }
-			owner = { has_valid_civic = civic_machine_servitor }
-			owner = { has_valid_civic = civic_emancipators }
-			owner = { has_valid_civic = civic_broken_shackles }
+			owner = {
+				has_ascension_perk = ap_eternal_freedom
+			}
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+			owner = {
+				has_valid_civic = civic_emancipators
+			}
+			owner = {
+				has_valid_civic = civic_broken_shackles
+			}
 			AND = {
-				owner = { is_country_type = enclave_mercenary }
+				owner = {
+					is_country_type = enclave_mercenary
+				}
 				controller = {
 					OR = {
 						has_ascension_perk = ap_eternal_freedom
@@ -98,16 +116,13 @@ liberation = {
 			}
 		}
 	}
-
 	default = no
-
 	stop_when_armies_dead = no
 	abduct_pops = yes
-
-	planet_damage = 1.0
+	planet_damage = 1
 	army_damage = 0.5
-
-	kill_pop_chance = { # Should only target oppressed pops
+	kill_pop_chance = {
+		# Should only target oppressed pops
 		base = 1.25
 		modifier = {
 			factor = 0
@@ -137,7 +152,6 @@ liberation = {
 		}
 	}
 	min_pops_to_kill_pop = 2
-
 	# root = fleet
 	# from = planet
 	ai_weight = {
@@ -146,14 +160,20 @@ liberation = {
 			factor = 0
 			exists = from
 			from = {
-				owner = { NOT = { is_hostile = root.owner } }
+				owner = {
+					NOT = {
+						is_hostile = root.owner
+					}
+				}
 			}
 		}
 		modifier = {
 			factor = 0.01
 			exists = from
 			from = {
-				owner = { has_claim = root.solar_system }
+				owner = {
+					has_claim = root.solar_system
+				}
 			}
 		}
 	}
@@ -165,17 +185,23 @@ death = {
 			owner = {
 				has_technology = tech_reanimated_bombardment
 				OR = {
-					NOT = { is_country_type = default }
+					NOT = {
+						is_country_type = default
+					}
 					has_policy_flag = orbital_bombardment_indiscriminate
 					has_policy_flag = orbital_bombardment_armageddon
 				}
 			}
 			AND = {
-				owner = { is_country_type = enclave_mercenary }
+				owner = {
+					is_country_type = enclave_mercenary
+				}
 				controller = {
 					has_technology = tech_reanimated_bombardment
 					OR = {
-						NOT = { is_country_type = default }
+						NOT = {
+							is_country_type = default
+						}
 						has_policy_flag = orbital_bombardment_indiscriminate
 						has_policy_flag = orbital_bombardment_armageddon
 					}
@@ -183,17 +209,14 @@ death = {
 			}
 		}
 	}
-
 	default = no
-
 	stop_when_armies_dead = no
 	abduct_pops = no
-
 	planet_damage = 0.5
 	army_damage = 1.5
-
-	kill_pop_chance = { # Should only target organics
-		base = 1.0
+	kill_pop_chance = {
+		# Should only target organics
+		base = 1
 		modifier = {
 			factor = 0
 			OR = {
@@ -203,7 +226,6 @@ death = {
 		}
 	}
 	min_pops_to_kill_pop = 0
-
 	# root = fleet
 	# from = planet
 	ai_weight = {
@@ -212,7 +234,11 @@ death = {
 			factor = 0.01
 			exists = from
 			from = {
-				owner = { NOT = { is_hostile = root.owner } }
+				owner = {
+					NOT = {
+						is_hostile = root.owner
+					}
+				}
 			}
 		}
 	}

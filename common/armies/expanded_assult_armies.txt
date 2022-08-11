@@ -1,50 +1,57 @@
 #Defensive armies can't transport of the planet
 #maintenance is directly scripted here. 0.25 translates to 0.25 monthly cost (excluding other upkeep modifiers)
 #morale_damage = 1		# average morale damage of the army, default: auto (calculated from morale * MORALE_DAMAGE_MULT)
-
 android_army = {
-	damage = 2.0
+	damage = 2
 	health = 2.5
-	morale_damage = 1.0
-	collateral_damage = 1.0
+	morale_damage = 1
+	collateral_damage = 1
 	war_exhaustion = 0.2
 	has_morale = no
 	time = 120
 	icon = GFX_army_type_robot
 	use_armynames_from = robotic_army
 	has_species = yes
-
 	resources = {
 		category = armies
 		cost = {
 			minerals = 200
 		}
-
 		upkeep = {
-			energy = 2.0
+			energy = 2
 		}
 	}
-
 	potential_country = {
-		NOT = { has_authority = auth_machine_intelligence }
-		NOT = { has_policy_flag = ai_outlawed }
+		NOT = {
+			has_authority = auth_machine_intelligence
+		}
+		NOT = {
+			has_policy_flag = ai_outlawed
+		}
 	}
 	potential = {
-		from = { has_trait = "trait_mechanical" }
+		from = {
+			has_trait = "trait_mechanical"
+		}
 	}
-	
-	prerequisites = { "tech_synthetic_workers" }
-
+	prerequisites = {
+		"tech_synthetic_workers"
+	}
 	allow = {
-		owner = { NOT = { has_policy_flag = robots_outlawed } }
+		owner = {
+			NOT = {
+				has_policy_flag = robots_outlawed
+			}
+		}
 	}
-	
 	ai_weight = {
 		base = 100
 		modifier = {
 			set = 0
 			OR = {
-				NOT = { has_policy_flag = robots_outlawed }
+				NOT = {
+					has_policy_flag = robots_outlawed
+				}
 				has_technology = tech_telepathy
 				has_technology = tech_gene_seed_purification
 				NAND = {
@@ -60,41 +67,40 @@ android_army = {
 		modifier = {
 			set = 0
 			is_fallen_empire = yes
-			NOT = { has_ethic = ethic_fanatic_materialist }
+			NOT = {
+				has_ethic = ethic_fanatic_materialist
+			}
 		}
 	}
 }
 
 # Mega-Warform
 machine_assault_synth_3 = {
-	damage = 4.0
-	health = 6.0
+	damage = 4
+	health = 6
 	has_morale = no
 	morale_damage = 1.5
-	collateral_damage = 4.0
-	war_exhaustion = 4.0
+	collateral_damage = 4
+	war_exhaustion = 4
 	time = 500
 	has_species = no
 	icon = GFX_army_type_machine_assault
 	use_armynames_from = machine_assault_3
-
 	resources = {
 		category = armies
 		cost = {
 			minerals = 800
 		}
-
 		upkeep = {
 			energy = 8
 		}
 	}
-
 	potential_country = {
 		has_country_flag = synthetic_empire
 	}
-	
-	prerequisites = { "tech_biomechanics_synth" }
-	
+	prerequisites = {
+		"tech_biomechanics_synth"
+	}
 	ai_weight = {
 		base = 50
 	}
@@ -102,41 +108,46 @@ machine_assault_synth_3 = {
 
 # Mega_Zombies
 mega_undead_army = {
-	damage = 3.0
-	health = 5.0
+	damage = 3
+	health = 5
 	has_morale = no
-	morale_damage = 2.0
-	collateral_damage = 4.0
-	war_exhaustion = 2.0
+	morale_damage = 2
+	collateral_damage = 4
+	war_exhaustion = 2
 	time = 250
 	has_species = no
 	icon = GFX_army_type_xenomorph
 	use_armynames_from = undead_army
-
 	resources = {
 		category = armies
 		cost = {
 			energy = 400
 		}
-
 		upkeep = {
 			energy = 4
 		}
 	}
-
-	potential_country = { can_use_undead_armies = yes }
+	potential_country = {
+		can_use_undead_armies = yes
+	}
 	potential = {
 		planet = {
 			has_active_building = building_dread_encampment
 			OR = {
-				num_assigned_jobs = { job = necromancer value >= 1 }
-				num_assigned_jobs = { job = necromancer_drone value >= 1 }
+				num_assigned_jobs = {
+					job = necromancer
+					value >= 1
+				}
+				num_assigned_jobs = {
+					job = necromancer_drone
+					value >= 1
+				}
 			}
 		}
 	}
-
-	prerequisites = { "tech_mega_zombies" }
-
+	prerequisites = {
+		"tech_mega_zombies"
+	}
 	ai_weight = {
 		base = 50
 	}

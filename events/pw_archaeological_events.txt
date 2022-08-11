@@ -1,18 +1,21 @@
 namespace = pw_archaeology
-
 #Gateway event for archaeology site after a blocker is cleared:
 #	- Forgotten Reliquary
 #	- Hidden Factory
 planet_event = {
 	id = pw_archaeology.10
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
-		NOT = { is_homeworld = yes }
-		NOT = { exists = archaeological_site }
-		NOT = { has_planet_flag = suppress_archaeological_sites }
+		NOT = {
+			is_homeworld = yes
+		}
+		NOT = {
+			exists = archaeological_site
+		}
+		NOT = {
+			has_planet_flag = suppress_archaeological_sites
+		}
 		From = {
 			OR = {
 				is_deposit_type = d_deep_sinkhole
@@ -29,40 +32,47 @@ planet_event = {
 			is_ai = no
 		}
 	}
-
 	immediate = {
 		random_list = {
-			5 = { #Forgotten Reliquary
+			5 = {
+				#Forgotten Reliquary
 				modifier = {
 					factor = 0
 					any_country = {
 						has_country_flag = triggered_forgotten_reliquary_digsite
 					}
 				}
-				planet_event = { id = pw_archaeology.501 days = 1 }
+				planet_event = {
+					id = pw_archaeology.501
+					days = 1
+				}
 				owner = {
 					set_country_flag = triggered_forgotten_reliquary_digsite
 				}
 			}
-			5 = { #Hidden Factory
+			5 = {
+				#Hidden Factory
 				modifier = {
 					factor = 0
 					any_country = {
 						has_country_flag = triggered_hidden_factory_digsite
 					}
 				}
-				planet_event = { id = pw_archaeology.601 days = 1 }
+				planet_event = {
+					id = pw_archaeology.601
+					days = 1
+				}
 				owner = {
 					set_country_flag = triggered_hidden_factory_digsite
 				}
 			}
-			95 = {} #Nothing
+			95 = {
+			}			#Nothing
 		}
 	}
 }
 
 ## Archaeology: Drained Paradise. -> 100
-
 # Stage 1 - Demetrius Cornucopia
 fleet_event = {
 	id = pw_archaeology.105
@@ -71,17 +81,17 @@ fleet_event = {
 	picture = GFX_evt_pw_demetrius_cornucopia
 	show_sound = event_ghost_town
 	is_triggered_only = yes
-
 	archaeology = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -95,19 +105,18 @@ fleet_event = {
 	desc = pw_archaeology.110.desc
 	picture = GFX_evt_pw_helios_tower
 	show_sound = event_machinery
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = INTERESTING
 		small_artifact_reward = yes
@@ -121,27 +130,33 @@ fleet_event = {
 	desc = pw_archaeology.115.desc
 	picture = GFX_evt_pw_erebus_project
 	show_sound = event_drilling
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = pw_archaeology.115.a
 		small_artifact_reward = yes
 		allow = {
-			owner = { resource_stockpile_compare = { resource = minerals value >= 1500 }}
+			owner = {
+				resource_stockpile_compare = {
+					resource = minerals
+					value >= 1500
+				}
+			}
 		}
 		owner = {
-			add_resource = { minerals = -1500 }
+			add_resource = {
+				minerals = -1500
+			}
 		}
 	}
 }
@@ -153,24 +168,28 @@ fleet_event = {
 	desc = pw_archaeology.120.desc
 	picture = GFX_evt_desert
 	show_sound = event_mystic_reveal
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = CONTINUE
 		small_artifact_reward = yes
 		allow = {
-			owner = { resource_stockpile_compare = { resource = energy value >= 1500 }}
+			owner = {
+				resource_stockpile_compare = {
+					resource = energy
+					value >= 1500
+				}
+			}
 		}
 		owner = {
 			add_resource = {
@@ -192,27 +211,33 @@ fleet_event = {
 	desc = pw_archaeology.125.desc
 	picture = GFX_evt_ocean
 	show_sound = event_solar_fusion
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = pw_archaeology.125.a
 		small_artifact_reward = yes
 		trigger = {
-			owner = { country_uses_food = yes }
+			owner = {
+				country_uses_food = yes
+			}
 		}
 		allow = {
-			owner = { resource_stockpile_compare = { resource = food value >= 1500 }}
+			owner = {
+				resource_stockpile_compare = {
+					resource = food
+					value >= 1500
+				}
+			}
 		}
 		owner = {
 			add_resource = {
@@ -225,15 +250,21 @@ fleet_event = {
 			}
 		}
 	}
-
 	option = {
 		name = pw_archaeology.125.b
 		small_artifact_reward = yes
 		trigger = {
-			owner = { country_uses_food = no }
+			owner = {
+				country_uses_food = no
+			}
 		}
 		allow = {
-			owner = { resource_stockpile_compare = { resource = energy value >= 1500 }}
+			owner = {
+				resource_stockpile_compare = {
+					resource = energy
+					value >= 1500
+				}
+			}
 		}
 		owner = {
 			add_resource = {
@@ -255,19 +286,18 @@ fleet_event = {
 	desc = pw_archaeology.130.desc
 	picture = GFX_evt_gaia
 	show_sound = event_alien_nature
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = FANTASTIC
 		small_artifact_reward = yes
@@ -293,9 +323,7 @@ fleet_event = {
 	}
 }
 
-
 ## Archaeology: Lunar Archive. -> 200
-
 # Stage 1 - Particle Museum
 fleet_event = {
 	id = pw_archaeology.205
@@ -304,17 +332,17 @@ fleet_event = {
 	picture = GFX_evt_physics_research
 	show_sound = event_solar_fusion
 	is_triggered_only = yes
-
 	archaeology = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -336,19 +364,18 @@ fleet_event = {
 	desc = pw_archaeology.210.desc
 	picture = GFX_evt_resource_cache
 	show_sound = event_laboratory_sound
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = INTERESTING
 		small_artifact_reward = yes
@@ -370,19 +397,18 @@ fleet_event = {
 	desc = pw_archaeology.215.desc
 	picture = GFX_evt_robot_assembly_plant
 	show_sound = event_robot_encounter
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = INTERESTING
 		small_artifact_reward = yes
@@ -404,19 +430,18 @@ fleet_event = {
 	desc = pw_archaeology.220.desc
 	picture = GFX_evt_gaia
 	show_sound = ui_queuing_terraforming
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = INTERESTING
 		medium_artifact_reward = yes
@@ -425,7 +450,9 @@ fleet_event = {
 				from.planet.solar_system = {
 					any_system_planet = {
 						uninhabitable_regular_planet = yes
-						NOT = { has_modifier = terraforming_candidate }
+						NOT = {
+							has_modifier = terraforming_candidate
+						}
 					}
 				}
 			}
@@ -457,24 +484,25 @@ fleet_event = {
 	desc = pw_archaeology.225.desc
 	picture = GFX_evt_ancient_databank
 	show_sound = event_mystic_reveal
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = FASCINATING
 		medium_artifact_reward = yes
 		from.planet = {
-			add_modifier = { modifier = pw_pm_lunar_archive }
+			add_modifier = {
+				modifier = pw_pm_lunar_archive
+			}
 			add_deposit = d_physics_5
 			add_deposit = d_society_5
 			add_deposit = d_engineering_5
@@ -501,21 +529,25 @@ country_event = {
 	desc = pw_archaeology.230.desc
 	picture = GFX_evt_ancient_databank
 	is_triggered_only = yes
-
 	trigger = {
 		is_materialist = yes
-		NOT = { has_technology = pw_tech_materialist_archiving }
+		NOT = {
+			has_technology = pw_tech_materialist_archiving
+		}
 	}
-
 	#Add the tech
 	option = {
 		name = pw_archaeology.230.a
 		if = {
-			limit = { NOT = { has_tech_option = pw_tech_materialist_archiving } }
+			limit = {
+				NOT = {
+					has_tech_option = pw_tech_materialist_archiving
+				}
+			}
 			add_research_option = pw_tech_materialist_archiving
 			add_tech_progress = {
 				tech = pw_tech_materialist_archiving
-				progress = 0.10
+				progress = 0.1
 			}
 		}
 		else = {
@@ -525,7 +557,6 @@ country_event = {
 			}
 		}
 	}
-
 	#No need for such thing
 	option = {
 		name = pw_archaeology.230.b
@@ -539,7 +570,6 @@ country_event = {
 }
 
 ## Archaeology: Living Reliquary -> 300
-
 # Stage 1 - Leviathan Description
 fleet_event = {
 	id = pw_archaeology.305
@@ -548,17 +578,17 @@ fleet_event = {
 	picture = GFX_evt_bone_building
 	show_sound = event_big_door_opening
 	is_triggered_only = yes
-
 	archaeology = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -572,19 +602,18 @@ fleet_event = {
 	desc = pw_archaeology.310.desc
 	picture = GFX_evt_pw_codex_of_the_ages
 	show_sound = event_mystic_reveal
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = pw_archaeology.310.a
 		small_artifact_reward = yes
@@ -611,7 +640,6 @@ fleet_event = {
 			}
 		}
 	}
-
 	option = {
 		name = pw_archaeology.310.b
 		small_artifact_reward = yes
@@ -638,7 +666,6 @@ fleet_event = {
 			}
 		}
 	}
-
 	option = {
 		name = pw_archaeology.310.c
 		small_artifact_reward = yes
@@ -660,9 +687,7 @@ fleet_event = {
 	desc = pw_archaeology.311.desc
 	picture = GFX_evt_pw_codex_of_the_ages
 	show_sound = event_mystic_reveal
-
 	is_triggered_only = yes
-
 	option = {
 		name = pw_archaeology.311.a
 		leader = {
@@ -678,9 +703,7 @@ fleet_event = {
 	desc = pw_archaeology.312.desc
 	picture = GFX_evt_pw_codex_of_the_ages
 	show_sound = event_mystic_reveal
-
 	is_triggered_only = yes
-
 	option = {
 		name = pw_archaeology.312.a
 		owner = {
@@ -690,7 +713,7 @@ fleet_event = {
 				fail_effects = {
 					add_random_research_option = {
 						tier = 3
-						add_progress = 0.10
+						add_progress = 0.1
 						fail_effects = {
 							add_random_research_option = {
 								tier = 4
@@ -719,9 +742,7 @@ fleet_event = {
 	desc = pw_archaeology.313.desc
 	picture = GFX_evt_pw_codex_of_the_ages
 	show_sound = event_mystic_reveal
-
 	is_triggered_only = yes
-
 	option = {
 		name = pw_archaeology.313.a
 		owner = {
@@ -742,19 +763,18 @@ fleet_event = {
 	desc = pw_archaeology.315.desc
 	picture = GFX_evt_pw_stargazing_mirror
 	show_sound = event_mystic_reveal
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = pw_archaeology.315.a
 		small_artifact_reward = yes
@@ -765,7 +785,6 @@ fleet_event = {
 			}
 		}
 	}
-
 	option = {
 		name = pw_archaeology.315.b
 		small_artifact_reward = yes
@@ -776,7 +795,6 @@ fleet_event = {
 			}
 		}
 	}
-
 	option = {
 		name = pw_archaeology.315.c
 		small_artifact_reward = yes
@@ -798,9 +816,7 @@ fleet_event = {
 	desc = pw_archaeology.316.desc
 	picture = GFX_evt_pw_stargazing_mirror
 	show_sound = event_mystic_reveal
-
 	is_triggered_only = yes
-
 	option = {
 		name = pw_archaeology.316.a
 		owner = {
@@ -821,9 +837,7 @@ fleet_event = {
 	desc = pw_archaeology.317.desc
 	picture = GFX_evt_pw_stargazing_mirror
 	show_sound = event_mystic_reveal
-
 	is_triggered_only = yes
-
 	option = {
 		name = pw_archaeology.317.a
 		owner = {
@@ -844,19 +858,18 @@ fleet_event = {
 	desc = pw_archaeology.320.desc
 	picture = GFX_evt_surreal_visions
 	show_sound = ui_queuing_terraforming
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = pw_archaeology.320.a
 		medium_artifact_reward = yes
@@ -878,7 +891,6 @@ fleet_event = {
 			}
 		}
 	}
-
 	option = {
 		name = pw_archaeology.320.b
 		medium_artifact_reward = yes
@@ -906,21 +918,25 @@ country_event = {
 	desc = pw_archaeology.330.desc
 	picture = GFX_evt_psionics
 	is_triggered_only = yes
-
 	trigger = {
 		is_spiritualist = yes
-		NOT = { has_technology = pw_tech_spiritual_artifacts_studies }
+		NOT = {
+			has_technology = pw_tech_spiritual_artifacts_studies
+		}
 	}
-
 	#Add the tech
 	option = {
 		name = pw_archaeology.330.a
 		if = {
-			limit = { NOT = { has_tech_option = pw_tech_spiritual_artifacts_studies } }
+			limit = {
+				NOT = {
+					has_tech_option = pw_tech_spiritual_artifacts_studies
+				}
+			}
 			add_research_option = pw_tech_spiritual_artifacts_studies
 			add_tech_progress = {
 				tech = pw_tech_spiritual_artifacts_studies
-				progress = 0.10
+				progress = 0.1
 			}
 		}
 		else = {
@@ -930,7 +946,6 @@ country_event = {
 			}
 		}
 	}
-
 	#No need for such thing
 	option = {
 		name = pw_archaeology.330.b
@@ -944,7 +959,6 @@ country_event = {
 }
 
 ## Archaeology: Translunar Network -> 400
-
 # Stage 1 - Tunnel Entrance
 fleet_event = {
 	id = pw_archaeology.405
@@ -953,17 +967,17 @@ fleet_event = {
 	picture = GFX_evt_hidden_door
 	show_sound = event_door_opening
 	is_triggered_only = yes
-
 	archaeology = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -977,19 +991,18 @@ fleet_event = {
 	desc = pw_archaeology.410.desc
 	picture = GFX_evt_scanning_remains
 	show_sound = event_scanner
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = INTERESTING
 		small_artifact_reward = yes
@@ -1011,19 +1024,18 @@ fleet_event = {
 	desc = pw_archaeology.415.desc
 	picture = GFX_evt_derelict_interior
 	show_sound = event_dig_site
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = pw_archaeology.415.a
 		small_artifact_reward = yes
@@ -1051,19 +1063,18 @@ fleet_event = {
 	desc = pw_archaeology.420.desc
 	picture = GFX_evt_resource_cache
 	show_sound = event_finding_loot
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = INTERESTING
 		small_artifact_reward = yes
@@ -1095,19 +1106,18 @@ fleet_event = {
 	desc = pw_archaeology.425.desc
 	picture = GFX_evt_worrying_signal
 	show_sound = event_worrying_signal
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = FASCINATING
 		medium_artifact_reward = yes
@@ -1134,21 +1144,25 @@ country_event = {
 	desc = pw_archaeology.430.desc
 	picture = GFX_evt_city_planet
 	is_triggered_only = yes
-
 	trigger = {
 		is_egalitarian = yes
-		NOT = { has_technology = pw_tech_transplanetary_logistics }
+		NOT = {
+			has_technology = pw_tech_transplanetary_logistics
+		}
 	}
-
 	#Add the tech
 	option = {
 		name = pw_archaeology.430.a
 		if = {
-			limit = { NOT = { has_tech_option = pw_tech_transplanetary_logistics } }
+			limit = {
+				NOT = {
+					has_tech_option = pw_tech_transplanetary_logistics
+				}
+			}
 			add_research_option = pw_tech_transplanetary_logistics
 			add_tech_progress = {
 				tech = pw_tech_transplanetary_logistics
-				progress = 0.10
+				progress = 0.1
 			}
 		}
 		else = {
@@ -1158,7 +1172,6 @@ country_event = {
 			}
 		}
 	}
-
 	#No need for such thing
 	option = {
 		name = pw_archaeology.430.b
@@ -1172,7 +1185,6 @@ country_event = {
 }
 
 ## Archaeology: Forgotten Reliquary -> 500
-
 # Site Discovery (after blocker was clear)
 planet_event = {
 	id = pw_archaeology.501
@@ -1181,20 +1193,17 @@ planet_event = {
 	picture = GFX_evt_baol_ruins
 	show_sound = event_mystic_reveal
 	location = this
-
 	is_triggered_only = yes
-
 	option = {
 		name = pw_archaeology.501.a
 		create_archaeological_site = pw_site_forgotten_reliquary
 	}
-
 	option = {
 		name = pw_archaeology.501.b
 	}
 }
-# Archaeological Site
 
+# Archaeological Site
 # Stage 1 - Entrance
 fleet_event = {
 	id = pw_archaeology.505
@@ -1203,24 +1212,24 @@ fleet_event = {
 	picture = GFX_evt_discovered_hidden_door
 	show_sound = event_mystic_reveal
 	location = from
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
 	}
 }
+
 # Stage 2 - Signet Ring
 fleet_event = {
 	id = pw_archaeology.510
@@ -1229,25 +1238,26 @@ fleet_event = {
 	picture = GFX_evt_pw_signet_ring
 	show_sound = event_mystic_reveal_light
 	location = from
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	#Diplo bonus
 	option = {
 		name = pw_archaeology.510.a
 		trigger = {
 			owner = {
-				NOT = { is_homicidal = yes }
+				NOT = {
+					is_homicidal = yes
+				}
 			}
 		}
 		small_artifact_reward = yes
@@ -1264,7 +1274,6 @@ fleet_event = {
 			}
 		}
 	}
-
 	#Diplo civic
 	option = {
 		name = pw_archaeology.510.b
@@ -1291,7 +1300,6 @@ fleet_event = {
 			}
 		}
 	}
-
 	#Pompous Purists
 	option = {
 		name = pw_archaeology.510.c
@@ -1320,7 +1328,6 @@ fleet_event = {
 			}
 		}
 	}
-
 	#Genocidal
 	option = {
 		name = pw_archaeology.510.d
@@ -1335,6 +1342,7 @@ fleet_event = {
 		}
 	}
 }
+
 # Stage 3 - Scepter of the Solar Regent
 fleet_event = {
 	id = pw_archaeology.515
@@ -1343,19 +1351,18 @@ fleet_event = {
 	picture = GFX_evt_pw_scepter_of_the_solar_regent
 	show_sound = event_mystic_reveal_light
 	location = from
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1375,6 +1382,7 @@ fleet_event = {
 		}
 	}
 }
+
 # Stage 4 - Coin of Fortune (Final)
 fleet_event = {
 	id = pw_archaeology.520
@@ -1383,19 +1391,18 @@ fleet_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_lootbox_good
 	location = from
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		small_artifact_reward = yes
@@ -1403,7 +1410,6 @@ fleet_event = {
 			add_relic = pw_r_coin_of_fortune
 		}
 	}
-
 	option = {
 		name = pw_archaeology.520.a
 		small_artifact_reward = yes
@@ -1411,7 +1417,6 @@ fleet_event = {
 			add_relic = pw_r_coin_of_fortune
 		}
 	}
-
 	option = {
 		name = pw_archaeology.520.b
 		medium_artifact_reward = yes
@@ -1432,11 +1437,8 @@ fleet_event = {
 	}
 }
 
-
-
 #Flip coin Relic effects Description:
 #Good luck -> 530:
-
 #Nothing
 country_event = {
 	id = pw_archaeology.530
@@ -1445,7 +1447,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.330.a
 		hidden_effect = {
@@ -1453,7 +1454,9 @@ country_event = {
 				influence = 25
 			}
 			if = {
-				limit = { has_modifier = relic_activation_cooldown }
+				limit = {
+					has_modifier = relic_activation_cooldown
+				}
 				remove_modifier = relic_activation_cooldown
 			}
 		}
@@ -1468,7 +1471,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		add_resource = {
@@ -1485,7 +1487,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		add_resource = {
@@ -1502,7 +1503,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		add_resource = {
@@ -1519,7 +1519,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		add_resource = {
@@ -1536,7 +1535,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		add_resource = {
@@ -1553,7 +1551,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		add_resource = {
@@ -1570,7 +1567,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		add_resource = {
@@ -1587,7 +1583,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		add_resource = {
@@ -1604,7 +1599,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		add_resource = {
@@ -1621,7 +1615,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		add_resource = {
@@ -1638,7 +1631,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		add_resource = {
@@ -1656,7 +1648,6 @@ country_event = {
 	show_sound = event_slot_machine
 	is_triggered_only = yes
 	location = event_target:pw_holy_reliquary_fortune_planet
-
 	immediate = {
 		random_controlled_planet = {
 			limit = {
@@ -1665,12 +1656,13 @@ country_event = {
 					is_planet_class = pc_barren_cold
 				}
 				has_deposit = no
-				NOT = { has_modifier = terraforming_candidate }
+				NOT = {
+					has_modifier = terraforming_candidate
+				}
 			}
 			save_event_target_as = pw_holy_reliquary_fortune_planet
 		}
 	}
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		event_target:pw_holy_reliquary_fortune_planet = {
@@ -1690,17 +1682,17 @@ country_event = {
 	show_sound = event_slot_machine
 	is_triggered_only = yes
 	location = event_target:pw_holy_reliquary_fortune_planet
-
 	immediate = {
 		random_owned_planet = {
 			limit = {
 				is_artificial = no
-				NOT = { has_modifier = natural_beauty }
+				NOT = {
+					has_modifier = natural_beauty
+				}
 			}
 			save_event_target_as = pw_holy_reliquary_fortune_planet
 		}
 	}
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		event_target:pw_holy_reliquary_fortune_planet = {
@@ -1721,17 +1713,17 @@ country_event = {
 	show_sound = event_slot_machine
 	is_triggered_only = yes
 	location = event_target:pw_holy_reliquary_fortune_planet
-
 	immediate = {
 		random_owned_planet = {
 			limit = {
 				is_artificial = no
-				NOT = { has_deposit = d_betharian_deposit }
+				NOT = {
+					has_deposit = d_betharian_deposit
+				}
 			}
 			save_event_target_as = pw_holy_reliquary_fortune_planet
 		}
 	}
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		event_target:pw_holy_reliquary_fortune_planet = {
@@ -1749,17 +1741,17 @@ country_event = {
 	show_sound = event_slot_machine
 	is_triggered_only = yes
 	location = event_target:pw_holy_reliquary_fortune_planet
-
 	immediate = {
 		random_owned_planet = {
 			limit = {
 				is_artificial = no
-				NOT = { has_deposit = d_alien_pets_deposit }
+				NOT = {
+					has_deposit = d_alien_pets_deposit
+				}
 			}
 			save_event_target_as = pw_holy_reliquary_fortune_planet
 		}
 	}
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		event_target:pw_holy_reliquary_fortune_planet = {
@@ -1776,7 +1768,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		capital_scope = {
@@ -1801,7 +1792,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.good_luck.a
 		add_random_research_option = {
@@ -1818,7 +1808,6 @@ country_event = {
 }
 
 #Bad Luck -> 560:
-
 #Nothing
 country_event = {
 	id = pw_archaeology.560
@@ -1827,7 +1816,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_mystic_reveal_light
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.360.a
 		hidden_effect = {
@@ -1835,7 +1823,9 @@ country_event = {
 				influence = 25
 			}
 			if = {
-				limit = { has_modifier = relic_activation_cooldown }
+				limit = {
+					has_modifier = relic_activation_cooldown
+				}
 				remove_modifier = relic_activation_cooldown
 			}
 		}
@@ -1850,7 +1840,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		add_resource = {
@@ -1867,7 +1856,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		add_resource = {
@@ -1884,7 +1872,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		add_resource = {
@@ -1901,7 +1888,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		add_resource = {
@@ -1918,7 +1904,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		add_resource = {
@@ -1935,7 +1920,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		add_resource = {
@@ -1952,7 +1936,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		add_resource = {
@@ -1969,7 +1952,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		add_resource = {
@@ -1986,7 +1968,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		add_resource = {
@@ -2003,7 +1984,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		add_resource = {
@@ -2020,7 +2000,6 @@ country_event = {
 	picture = GFX_evt_pw_coin_of_fortune
 	show_sound = event_slot_machine
 	is_triggered_only = yes
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		add_resource = {
@@ -2038,7 +2017,6 @@ country_event = {
 	show_sound = event_slot_machine
 	is_triggered_only = yes
 	location = event_target:pw_holy_reliquary_fortune_planet
-
 	immediate = {
 		random_owned_planet = {
 			limit = {
@@ -2048,7 +2026,6 @@ country_event = {
 			save_event_target_as = pw_holy_reliquary_fortune_planet
 		}
 	}
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		event_target:pw_holy_reliquary_fortune_planet = {
@@ -2066,7 +2043,6 @@ country_event = {
 	show_sound = event_slot_machine
 	is_triggered_only = yes
 	location = event_target:pw_holy_reliquary_fortune_planet
-
 	immediate = {
 		random_owned_planet = {
 			limit = {
@@ -2076,7 +2052,6 @@ country_event = {
 			save_event_target_as = pw_holy_reliquary_fortune_planet
 		}
 	}
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		event_target:pw_holy_reliquary_fortune_planet = {
@@ -2094,7 +2069,6 @@ country_event = {
 	show_sound = event_slot_machine
 	is_triggered_only = yes
 	location = event_target:pw_holy_reliquary_fortune_planet
-
 	immediate = {
 		random_owned_planet = {
 			limit = {
@@ -2105,7 +2079,6 @@ country_event = {
 			save_event_target_as = pw_holy_reliquary_fortune_planet
 		}
 	}
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		event_target:pw_holy_reliquary_fortune_planet = {
@@ -2123,7 +2096,6 @@ country_event = {
 	show_sound = event_slot_machine
 	is_triggered_only = yes
 	location = event_target:pw_holy_reliquary_fortune_planet
-
 	immediate = {
 		random_owned_planet = {
 			limit = {
@@ -2133,7 +2105,6 @@ country_event = {
 			save_event_target_as = pw_holy_reliquary_fortune_planet
 		}
 	}
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		event_target:pw_holy_reliquary_fortune_planet = {
@@ -2151,7 +2122,6 @@ country_event = {
 	show_sound = event_slot_machine
 	is_triggered_only = yes
 	location = event_target:pw_holy_reliquary_fortune_planet
-
 	immediate = {
 		random_owned_planet = {
 			limit = {
@@ -2161,7 +2131,6 @@ country_event = {
 			save_event_target_as = pw_holy_reliquary_fortune_planet
 		}
 	}
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		event_target:pw_holy_reliquary_fortune_planet = {
@@ -2179,7 +2148,6 @@ country_event = {
 	show_sound = event_slot_machine
 	is_triggered_only = yes
 	location = capital_scope
-
 	option = {
 		name = pw_holy_reliquary.bad_luck.a
 		capital_scope = {
@@ -2190,9 +2158,7 @@ country_event = {
 	}
 }
 
-
 ## Archaeology: Hidden Factory -> 600
-
 # Site Discovery (after blocker was clear)
 planet_event = {
 	id = pw_archaeology.601
@@ -2201,20 +2167,17 @@ planet_event = {
 	picture = GFX_evt_underground_city
 	show_sound = event_activating_unknown_technology
 	location = this
-
 	is_triggered_only = yes
-
 	option = {
 		name = pw_archaeology.601.a
 		create_archaeological_site = pw_site_hidden_factory
 	}
-
 	option = {
 		name = pw_archaeology.601.b
 	}
 }
-# Archaeological Site
 
+# Archaeological Site
 #Stage 1 - Entrance examination
 fleet_event = {
 	id = pw_archaeology.605
@@ -2223,19 +2186,18 @@ fleet_event = {
 	picture = GFX_evt_discovered_hidden_door
 	show_sound = event_mystic_reveal
 	location = from
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = INTRIGUING
 		small_artifact_reward = yes
@@ -2249,6 +2211,7 @@ fleet_event = {
 		}
 	}
 }
+
 #Stage 2 - Stash of Consumer Goods
 fleet_event = {
 	id = pw_archaeology.610
@@ -2257,19 +2220,18 @@ fleet_event = {
 	picture = GFX_evt_resource_cache
 	show_sound = event_mystic_reveal_light
 	location = from
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	#Get goods
 	option = {
 		name = pw_archaeology.610.a
@@ -2288,13 +2250,14 @@ fleet_event = {
 			}
 		}
 	}
-
 	#Get money
 	option = {
 		name = pw_archaeology.610.b
 		trigger = {
 			owner = {
-				NOT = { is_homicidal = yes }
+				NOT = {
+					is_homicidal = yes
+				}
 			}
 		}
 		small_artifact_reward = yes
@@ -2307,7 +2270,6 @@ fleet_event = {
 			}
 		}
 	}
-
 	#Get tech
 	option = {
 		name = pw_archaeology.610.c
@@ -2322,6 +2284,7 @@ fleet_event = {
 		}
 	}
 }
+
 #Stage 3 - Stash of Alloys
 fleet_event = {
 	id = pw_archaeology.615
@@ -2330,25 +2293,29 @@ fleet_event = {
 	picture = GFX_evt_robot_assembly_plant
 	show_sound = event_mystic_reveal_light
 	location = from
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	#Get alloys
 	option = {
 		name = pw_archaeology.615.a
 		small_artifact_reward = yes
 		allow = {
-			owner = { resource_stockpile_compare = { resource = energy value >= 1000 }}
+			owner = {
+				resource_stockpile_compare = {
+					resource = energy
+					value >= 1000
+				}
+			}
 		}
 		owner = {
 			add_resource = {
@@ -2363,7 +2330,6 @@ fleet_event = {
 			}
 		}
 	}
-
 	#Don't get alloys
 	option = {
 		name = pw_archaeology.615.b
@@ -2378,6 +2344,7 @@ fleet_event = {
 		}
 	}
 }
+
 #Stage 4 - Exhausted Minerals
 fleet_event = {
 	id = pw_archaeology.620
@@ -2386,19 +2353,18 @@ fleet_event = {
 	picture = GFX_evt_pw_erebus_project
 	show_sound = event_machinery
 	location = from
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = pw_archaeology.620.a
 		small_artifact_reward = yes
@@ -2412,6 +2378,7 @@ fleet_event = {
 		}
 	}
 }
+
 #Stage 5 - Final Choice
 fleet_event = {
 	id = pw_archaeology.625
@@ -2420,19 +2387,18 @@ fleet_event = {
 	picture = GFX_evt_underground_city
 	show_sound = event_construction
 	location = from
-
 	archaeology = yes
-
 	is_triggered_only = yes
-
 	immediate = {
-		from = { set_site_progress_locked = yes }
+		from = {
+			set_site_progress_locked = yes
+		}
 	}
-
 	after = {
-		from = { set_site_progress_locked = no }
+		from = {
+			set_site_progress_locked = no
+		}
 	}
-
 	option = {
 		name = pw_archaeology.625.a
 		medium_artifact_reward = yes
@@ -2460,7 +2426,6 @@ fleet_event = {
 			}
 		}
 	}
-
 	option = {
 		name = pw_archaeology.625.b
 		medium_artifact_reward = yes
@@ -2488,12 +2453,13 @@ fleet_event = {
 			}
 		}
 	}
-
 	option = {
 		name = pw_archaeology.625.c
 		medium_artifact_reward = yes
 		trigger = {
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		from.planet = {
 			add_deposit = pw_d_mantle_replicator
@@ -2519,13 +2485,14 @@ fleet_event = {
 			}
 		}
 	}
-
 	option = {
 		name = pw_archaeology.625.d
 		medium_artifact_reward = yes
 		from.planet = {
 			if = {
-				limit = { has_modifier = pw_hidden_factory_archaeology_exhausted_minerals }
+				limit = {
+					has_modifier = pw_hidden_factory_archaeology_exhausted_minerals
+				}
 				remove_modifier = pw_hidden_factory_archaeology_exhausted_minerals
 			}
 		}
