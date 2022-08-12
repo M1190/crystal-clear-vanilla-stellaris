@@ -1,39 +1,41 @@
 #############
 # Unity buildings
 #############
-
 ##################
 # Bureaucrats
 ##################
-
 building_bureaucratic_1 = {
 	base_buildtime = @b1_time
 	position_priority = 155
 	category = government
-
 	potential = {
 		exists = owner
-
-		owner = { is_regular_empire = yes }
-		owner = { is_spiritualist = no }
-		NOT = { has_modifier = slave_colony }
-
+		owner = {
+			is_regular_empire = yes
+		}
+		owner = {
+			is_spiritualist = no
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
-			owner = { is_spiritualist = yes }
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				is_spiritualist = yes
+			}
 		}
 	}
-
 	convert_to = {
 		building_temple
 		building_hive_node
 		building_uplink_node
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -43,13 +45,14 @@ building_bureaucratic_1 = {
 			energy = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_megacorp = no
-				NOT = { has_valid_civic = civic_ethical_hedonism }
+				NOT = {
+					has_valid_civic = civic_ethical_hedonism
+				}
 			}
 		}
 		modifier = {
@@ -69,15 +72,15 @@ building_bureaucratic_1 = {
 			job_culture_worker_add = 1
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_megacorp = no }
+			owner = {
+				is_megacorp = no
+			}
 		}
 		text = job_bureaucrat_effect_desc
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -88,20 +91,20 @@ building_bureaucratic_1 = {
 		}
 		text = job_culture_worker_effect_desc
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_megacorp = yes
-				NOT = { has_valid_civic = civic_private_military_companies }
+				NOT = {
+					has_valid_civic = civic_private_military_companies
+				}
 			}
 		}
 		modifier = {
 			job_manager_add = @b1_jobs
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -114,23 +117,21 @@ building_bureaucratic_1 = {
 			job_logistics_officer_add = @b1_jobs
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_megacorp = yes }
+			owner = {
+				is_megacorp = yes
+			}
 		}
 		text = job_manager_effect_desc
 	}
-
 	upgrades = {
 		"building_bureaucratic_2"
 	}
-
 	prerequisites = {
 		"tech_planetary_government"
 	}
-
 	show_tech_unlock_if = {
 		is_regular_empire = yes
 		is_spiritualist = no
@@ -141,35 +142,39 @@ building_bureaucratic_2 = {
 	base_buildtime = @b2_time
 	position_priority = 155
 	can_build = no
-
 	category = government
-
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes }
-		owner = { is_spiritualist = no }
-		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_regular_empire = yes
+		}
+		owner = {
+			is_spiritualist = no
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			buildings_no_crystals = yes
-			owner = { is_regular_empire = no }
-			owner = { is_spiritualist = yes }
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				is_spiritualist = yes
+			}
 		}
 	}
-
 	convert_to = {
 		building_holotemple
 		building_hive_cluster
 		building_network_junction
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -181,13 +186,14 @@ building_bureaucratic_2 = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_megacorp = no
-				NOT = { has_valid_civic = civic_ethical_hedonism }
+				NOT = {
+					has_valid_civic = civic_ethical_hedonism
+				}
 			}
 		}
 		modifier = {
@@ -207,15 +213,15 @@ building_bureaucratic_2 = {
 			job_culture_worker_add = 2
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_megacorp = no }
+			owner = {
+				is_megacorp = no
+			}
 		}
 		text = job_bureaucrat_effect_desc
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -226,20 +232,20 @@ building_bureaucratic_2 = {
 		}
 		text = job_culture_worker_effect_desc
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_megacorp = yes
-				NOT = { has_valid_civic = civic_private_military_companies }
+				NOT = {
+					has_valid_civic = civic_private_military_companies
+				}
 			}
 		}
 		modifier = {
 			job_manager_add = @b2_jobs
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -252,23 +258,21 @@ building_bureaucratic_2 = {
 			job_logistics_officer_add = @b2_jobs
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_megacorp = yes }
+			owner = {
+				is_megacorp = yes
+			}
 		}
 		text = job_manager_effect_desc
 	}
-
 	upgrades = {
 		"building_bureaucratic_3"
 	}
-
 	prerequisites = {
 		"tech_colonial_bureaucracy"
 	}
-
 	show_tech_unlock_if = {
 		is_regular_empire = yes
 		is_spiritualist = no
@@ -279,35 +283,39 @@ building_bureaucratic_3 = {
 	base_buildtime = @b3_time
 	position_priority = 155
 	can_build = no
-
 	category = government
-
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes }
-		owner = { is_spiritualist = no }
-		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_regular_empire = yes
+		}
+		owner = {
+			is_spiritualist = no
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			buildings_no_crystals = yes
-			owner = { is_regular_empire = no }
-			owner = { is_spiritualist = yes }
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				is_spiritualist = yes
+			}
 		}
 	}
-
 	convert_to = {
 		building_sacred_nexus
 		building_hive_confluence
 		building_system_conflux
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -319,13 +327,14 @@ building_bureaucratic_3 = {
 			rare_crystals = @b3_rare_upkeep
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_megacorp = no
-				NOT = { has_valid_civic = civic_ethical_hedonism }
+				NOT = {
+					has_valid_civic = civic_ethical_hedonism
+				}
 			}
 		}
 		modifier = {
@@ -345,15 +354,15 @@ building_bureaucratic_3 = {
 			job_culture_worker_add = 3
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_megacorp = no }
+			owner = {
+				is_megacorp = no
+			}
 		}
 		text = job_bureaucrat_effect_desc
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -364,20 +373,20 @@ building_bureaucratic_3 = {
 		}
 		text = job_culture_worker_effect_desc
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_megacorp = yes
-				NOT = { has_valid_civic = civic_private_military_companies }
+				NOT = {
+					has_valid_civic = civic_private_military_companies
+				}
 			}
 		}
 		modifier = {
 			job_manager_add = @b3_jobs
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -390,19 +399,18 @@ building_bureaucratic_3 = {
 			job_logistics_officer_add = @b3_jobs
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_megacorp = yes }
+			owner = {
+				is_megacorp = yes
+			}
 		}
 		text = job_manager_effect_desc
 	}
-
 	prerequisites = {
 		"tech_galactic_bureaucracy"
 	}
-
 	show_tech_unlock_if = {
 		is_regular_empire = yes
 		is_spiritualist = no
@@ -416,16 +424,16 @@ building_temple = {
 	base_buildtime = @b1_time
 	position_priority = 155
 	category = unity
-
 	potential = {
 		exists = owner
 		owner = {
 			is_spiritualist = yes
 			#is_death_cult_empire = no
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		owner = {
@@ -436,14 +444,12 @@ building_temple = {
 			has_modifier = slave_colony
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_1
 		building_sacrificial_temple_1
 		building_hive_node
 		building_uplink_node
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -453,31 +459,34 @@ building_temple = {
 			energy = @b1_upkeep
 		}
 	}
-
 	planet_modifier = {
 		pop_ethic_spiritualist_attraction_mult = 0.05
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_megacorp = no
-				NOT = { has_valid_civic = civic_crusaders }
-				NOT = { has_valid_civic = civic_machine_cult }
+				NOT = {
+					has_valid_civic = civic_crusaders
+				}
+				NOT = {
+					has_valid_civic = civic_machine_cult
+				}
 			}
 		}
 		modifier = {
 			job_priest_add = @b1_jobs
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_megacorp = yes
-				NOT = { has_valid_civic = civic_private_military_companies }
+				NOT = {
+					has_valid_civic = civic_private_military_companies
+				}
 			}
 		}
 		modifier = {
@@ -485,32 +494,29 @@ building_temple = {
 			job_manager_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_private_military_companies
-			}					
+			}
 		}
 		modifier = {
 			job_chaplain_add = 1
 			job_logistics_officer_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_crusaders
-			}					
+			}
 		}
 		modifier = {
 			job_templar_add = @b1_jobs
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -522,27 +528,24 @@ building_temple = {
 			job_tech_priest_add = @b1_jobs
 		}
 	}
-
 	triggered_desc = {
 		text = job_priest_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_megacorp = yes }
+			owner = {
+				is_megacorp = yes
+			}
 		}
 		text = job_manager_effect_desc
 	}
-
 	upgrades = {
 		building_holotemple
 	}
-
 	prerequisites = {
 		"tech_cultural_heritage"
 	}
-
 	show_tech_unlock_if = {
 		is_spiritualist = yes
 	}
@@ -552,22 +555,20 @@ building_holotemple = {
 	base_buildtime = @b2_time
 	position_priority = 155
 	can_build = no
-
 	category = unity
-
 	potential = {
 		exists = owner
 		owner = {
 			is_spiritualist = yes
 			#is_death_cult_empire = no
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-	
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		owner = {
@@ -578,18 +579,15 @@ building_holotemple = {
 			has_modifier = slave_colony
 		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	convert_to = {
 		building_bureaucratic_2
 		building_sacrificial_temple_2
 		building_hive_cluster
 		building_network_junction
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -601,31 +599,34 @@ building_holotemple = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
-
 	planet_modifier = {
-		pop_ethic_spiritualist_attraction_mult = 0.10
+		pop_ethic_spiritualist_attraction_mult = 0.1
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_megacorp = no
-				NOT = { has_valid_civic = civic_crusaders }
-				NOT = { has_valid_civic = civic_machine_cult }
+				NOT = {
+					has_valid_civic = civic_crusaders
+				}
+				NOT = {
+					has_valid_civic = civic_machine_cult
+				}
 			}
 		}
 		modifier = {
 			job_priest_add = @b2_jobs
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_megacorp = yes
-				NOT = { has_valid_civic = civic_private_military_companies }
+				NOT = {
+					has_valid_civic = civic_private_military_companies
+				}
 			}
 		}
 		modifier = {
@@ -633,32 +634,29 @@ building_holotemple = {
 			job_manager_add = 2
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_private_military_companies
-			}					
+			}
 		}
 		modifier = {
 			job_chaplain_add = 2
 			job_logistics_officer_add = 2
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_crusaders
-			}					
+			}
 		}
 		modifier = {
 			job_templar_add = @b2_jobs
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -670,28 +668,24 @@ building_holotemple = {
 			job_tech_priest_add = @b2_jobs
 		}
 	}
-	
-
 	triggered_desc = {
 		text = job_priest_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_megacorp = yes }
+			owner = {
+				is_megacorp = yes
+			}
 		}
 		text = job_manager_effect_desc
 	}
-
 	upgrades = {
 		building_sacred_nexus
 	}
-
 	prerequisites = {
 		"tech_holographic_rituals"
 	}
-
 	show_tech_unlock_if = {
 		is_spiritualist = yes
 	}
@@ -701,22 +695,20 @@ building_sacred_nexus = {
 	base_buildtime = @b3_time
 	position_priority = 155
 	can_build = no
-
 	category = unity
-
 	potential = {
 		exists = owner
 		owner = {
 			is_spiritualist = yes
 			#is_death_cult_empire = no
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-	
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		owner = {
@@ -727,14 +719,12 @@ building_sacred_nexus = {
 			has_modifier = slave_colony
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_3
 		building_sacrificial_temple_3
 		building_hive_confluence
 		building_system_conflux
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -746,31 +736,34 @@ building_sacred_nexus = {
 			rare_crystals = @b3_rare_upkeep
 		}
 	}
-
 	planet_modifier = {
 		pop_ethic_spiritualist_attraction_mult = 0.15
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_megacorp = no
-				NOT = { has_valid_civic = civic_crusaders }
-				NOT = { has_valid_civic = civic_machine_cult }
+				NOT = {
+					has_valid_civic = civic_crusaders
+				}
+				NOT = {
+					has_valid_civic = civic_machine_cult
+				}
 			}
 		}
 		modifier = {
 			job_priest_add = @b3_jobs
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_megacorp = yes
-				NOT = { has_valid_civic = civic_private_military_companies }
+				NOT = {
+					has_valid_civic = civic_private_military_companies
+				}
 			}
 		}
 		modifier = {
@@ -778,32 +771,29 @@ building_sacred_nexus = {
 			job_manager_add = 3
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_private_military_companies
-			}					
+			}
 		}
 		modifier = {
 			job_chaplain_add = 3
 			job_logistics_officer_add = 3
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_crusaders
-			}					
+			}
 		}
 		modifier = {
 			job_templar_add = @b3_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -815,23 +805,21 @@ building_sacred_nexus = {
 			job_tech_priest_add = @b3_jobs
 		}
 	}
-
 	triggered_desc = {
 		text = job_priest_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_megacorp = yes }
+			owner = {
+				is_megacorp = yes
+			}
 		}
 		text = job_manager_effect_desc
 	}
-
 	prerequisites = {
 		"tech_consecration_fields"
 	}
-
 	show_tech_unlock_if = {
 		is_spiritualist = yes
 	}
@@ -840,14 +828,11 @@ building_sacred_nexus = {
 ##################
 # Machine
 ##################
-
 building_uplink_node = {
 	base_buildtime = @b1_time
 	position_priority = 155
 	icon = building_autochthon_monument
-
 	category = government
-
 	potential = {
 		exists = owner
 		owner = {
@@ -857,7 +842,6 @@ building_uplink_node = {
 			}
 		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		owner = {
@@ -867,14 +851,12 @@ building_uplink_node = {
 			}
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_1
 		building_temple
 		building_hive_node
 		building_sensorium_1
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -884,23 +866,18 @@ building_uplink_node = {
 			energy = @b1_upkeep
 		}
 	}
-
 	planet_modifier = {
 		job_coordinator_add = @b1_jobs
 	}
-
 	triggered_desc = {
 		text = job_coordinator_effect_desc
 	}
-
 	upgrades = {
 		"building_network_junction"
 	}
-
 	prerequisites = {
 		"tech_planetary_government"
 	}
-
 	show_tech_unlock_if = {
 		is_machine_empire = yes
 		NOT = {
@@ -914,9 +891,7 @@ building_network_junction = {
 	position_priority = 155
 	can_build = no
 	icon = building_heritage_site
-
 	category = government
-
 	potential = {
 		exists = owner
 		owner = {
@@ -926,11 +901,9 @@ building_network_junction = {
 			}
 		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -943,14 +916,12 @@ building_network_junction = {
 			}
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_2
 		building_holotemple
 		building_hive_cluster
 		building_sensorium_2
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -962,23 +933,18 @@ building_network_junction = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
-
 	planet_modifier = {
 		job_coordinator_add = @b2_jobs
 	}
-
 	triggered_desc = {
 		text = job_coordinator_effect_desc
 	}
-
 	upgrades = {
 		"building_system_conflux"
 	}
-
 	prerequisites = {
 		"tech_colonial_bureaucracy"
 	}
-
 	show_tech_unlock_if = {
 		is_machine_empire = yes
 		NOT = {
@@ -992,9 +958,7 @@ building_system_conflux = {
 	position_priority = 155
 	can_build = no
 	icon = building_hypercomms_forum
-
 	category = government
-
 	potential = {
 		exists = owner
 		owner = {
@@ -1004,11 +968,9 @@ building_system_conflux = {
 			}
 		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -1021,14 +983,12 @@ building_system_conflux = {
 			}
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_3
 		building_sacred_nexus
 		building_hive_confluence
 		building_sensorium_3
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1040,19 +1000,15 @@ building_system_conflux = {
 			rare_crystals = @b3_rare_upkeep
 		}
 	}
-
 	planet_modifier = {
 		job_coordinator_add = @b3_jobs
 	}
-
 	triggered_desc = {
 		text = job_coordinator_effect_desc
 	}
-
 	prerequisites = {
 		"tech_galactic_bureaucracy"
 	}
-
 	show_tech_unlock_if = {
 		is_machine_empire = yes
 		NOT = {
@@ -1068,25 +1024,24 @@ building_hive_node = {
 	base_buildtime = @b1_time
 	position_priority = 155
 	exempt_from_ai_planet_specialization = no
-
 	category = unity
-
 	potential = {
 		exists = owner
-		owner = { is_hive_empire = yes }
+		owner = {
+			is_hive_empire = yes
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
-		owner = { is_hive_empire = no }
+		owner = {
+			is_hive_empire = no
+		}
 	}
-
 	convert_to = {
 		building_bureaucratic_1
 		building_temple
 		building_uplink_node
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1102,12 +1057,14 @@ building_hive_node = {
 			trigger = {
 				exists = owner
 				owner = {
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 					is_lithoid_empire = no
 				}
 			}
 			minerals = @b1_hive_minerals
-			food = @b1_hive_food 
+			food = @b1_hive_food
 		}
 		cost = {
 			trigger = {
@@ -1134,12 +1091,13 @@ building_hive_node = {
 				exists = owner
 				owner = {
 					is_lithoid_empire = yes
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = @b1_upkeep
 		}
-		
 		upkeep = {
 			trigger = {
 				exists = owner
@@ -1163,11 +1121,9 @@ building_hive_node = {
 			minerals = 1
 		}
 	}
-
 	planet_modifier = {
 		job_synapse_drone_add = @b1_jobs
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1179,7 +1135,6 @@ building_hive_node = {
 			planet_housing_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1189,11 +1144,9 @@ building_hive_node = {
 		}
 		job_maintenance_drone_add = 1
 	}
-
 	triggered_desc = {
 		text = job_synapse_drone_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1203,11 +1156,9 @@ building_hive_node = {
 		}
 		text = job_maintenance_drone_effect_desc
 	}
-
 	prerequisites = {
 		"tech_hive_node"
 	}
-
 	upgrades = {
 		building_hive_cluster
 	}
@@ -1217,34 +1168,31 @@ building_hive_cluster = {
 	base_buildtime = @b2_time
 	position_priority = 155
 	can_build = no
-
 	exempt_from_ai_planet_specialization = no
-
 	category = unity
-
 	potential = {
 		exists = owner
-		owner = { is_hive_empire = yes }
+		owner = {
+			is_hive_empire = yes
+		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			buildings_no_exotic_gases = yes
-			owner = { is_hive_empire = no }
+			owner = {
+				is_hive_empire = no
+			}
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_2
 		building_holotemple
 		building_network_junction
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1261,7 +1209,9 @@ building_hive_cluster = {
 			trigger = {
 				exists = owner
 				owner = {
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 					is_lithoid_empire = no
 				}
 			}
@@ -1296,7 +1246,9 @@ building_hive_cluster = {
 				exists = owner
 				owner = {
 					is_lithoid_empire = yes
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = @b2_upkeep
@@ -1325,11 +1277,9 @@ building_hive_cluster = {
 			minerals = 1
 		}
 	}
-
 	planet_modifier = {
 		job_synapse_drone_add = @b2_jobs
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1341,7 +1291,6 @@ building_hive_cluster = {
 			planet_housing_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1351,11 +1300,9 @@ building_hive_cluster = {
 		}
 		job_maintenance_drone_add = 1
 	}
-
 	triggered_desc = {
 		text = job_synapse_drone_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1365,11 +1312,9 @@ building_hive_cluster = {
 		}
 		text = job_maintenance_drone_effect_desc
 	}
-
 	prerequisites = {
 		"tech_hive_cluster"
 	}
-
 	upgrades = {
 		building_hive_confluence
 	}
@@ -1379,34 +1324,30 @@ building_hive_confluence = {
 	base_buildtime = @b3_time
 	position_priority = 155
 	can_build = no
-
 	category = unity
-
 	potential = {
 		exists = owner
 		owner = {
 			is_hive_empire = yes
 		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			buildings_no_exotic_gases = yes
-			owner = { is_hive_empire = no }
+			owner = {
+				is_hive_empire = no
+			}
 		}
 	}
-
 	convert_to = {
 		building_bureaucratic_3
 		building_sacred_nexus
 		building_system_conflux
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1423,7 +1364,9 @@ building_hive_confluence = {
 			trigger = {
 				exists = owner
 				owner = {
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 					is_lithoid_empire = no
 				}
 			}
@@ -1447,7 +1390,9 @@ building_hive_confluence = {
 				exists = owner
 				owner = {
 					is_lithoid_empire = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = @b3_upkeep_hive
@@ -1459,7 +1404,9 @@ building_hive_confluence = {
 				exists = owner
 				owner = {
 					is_lithoid_empire = yes
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = @b3_upkeep
@@ -1488,11 +1435,9 @@ building_hive_confluence = {
 			minerals = 1
 		}
 	}
-
 	planet_modifier = {
 		job_synapse_drone_add = @b3_jobs
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1504,7 +1449,6 @@ building_hive_confluence = {
 			planet_housing_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1514,15 +1458,12 @@ building_hive_confluence = {
 		}
 		job_maintenance_drone_add = 1
 	}
-
 	prerequisites = {
 		"tech_hive_confluence"
 	}
-
 	triggered_desc = {
 		text = job_synapse_drone_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1537,67 +1478,90 @@ building_hive_confluence = {
 ##################
 # Machine
 ##################
-
 # Servitors
 building_organic_sanctuary = {
 	base_buildtime = @b1_time
 	position_priority = 150
-
 	category = unity
-
 	potential = {
 		exists = owner
-		owner = { 
+		owner = {
 			OR = {
 				has_valid_civic = civic_machine_servitor
 				has_valid_civic = civic_machine_consciousness
 			}
 		}
 	}
-	
 	allow = {
 		exists = owner
 		OR = {
-			owner = { is_ai = no }
+			owner = {
+				is_ai = no
+			}
 			AND = {
-				num_buildings = { type = building_organic_sanctuary value < 2 }
-				NOT = { has_building = building_organic_paradise }
+				num_buildings = {
+					type = building_organic_sanctuary
+					value < 2
+				}
+				NOT = {
+					has_building = building_organic_paradise
+				}
 			}
 		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { 
+			owner = {
 				NOR = {
 					has_valid_civic = civic_machine_servitor
 					has_valid_civic = civic_machine_consciousness
 				}
 			}
 			AND = {
-				owner = { is_ai = yes }
-				count_owned_pop = { limit = { has_citizenship_type = { type = citizenship_organic_trophy } } count <= 20 }
-				num_buildings = { type = building_organic_sanctuary value > 2 }
+				owner = {
+					is_ai = yes
+				}
+				count_owned_pop = {
+					limit = {
+						has_citizenship_type = {
+							type = citizenship_organic_trophy
+						}
+					}
+					count <= 20
+				}
+				num_buildings = {
+					type = building_organic_sanctuary
+					value > 2
+				}
 			}
 			AND = {
-				owner = { is_ai = yes }
-				count_owned_pop = { limit = { has_citizenship_type = { type = citizenship_organic_trophy } } count <= 40 }
-				num_buildings = { type = building_organic_paradise value > 2 }
+				owner = {
+					is_ai = yes
+				}
+				count_owned_pop = {
+					limit = {
+						has_citizenship_type = {
+							type = citizenship_organic_trophy
+						}
+					}
+					count <= 40
+				}
+				num_buildings = {
+					type = building_organic_paradise
+					value > 2
+				}
 			}
 		}
 	}
-
 	convert_to = {
 		building_luxury_residence
 		building_communal_housing
 	}
-
 	planet_modifier = {
 		job_bio_trophy_add = 10
 		job_artisan_drone_add = 1
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1620,7 +1584,6 @@ building_organic_sanctuary = {
 			job_maintenance_drone_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1630,19 +1593,15 @@ building_organic_sanctuary = {
 			energy = @b1_upkeep
 		}
 	}
-
 	upgrades = {
 		"building_organic_paradise"
 	}
-	
 	triggered_desc = {
 		text = job_bio_trophy_effect_desc
 	}
-	
 	triggered_desc = {
 		text = job_artisan_drone_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1652,7 +1611,6 @@ building_organic_sanctuary = {
 		}
 		text = job_servitor_caretaker_drone_effect_desc
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1662,15 +1620,23 @@ building_organic_sanctuary = {
 		}
 		text = job_maintenance_drone_effect_desc
 	}
-
 	triggered_desc = {
 		text = job_artisan_drone_effect_desc
 	}
-	
 	ai_resource_production = {
 		unity = 8
 		trigger = {
-			count_owned_pop = { limit = { has_citizenship_type = { type = citizenship_organic_trophy } not = { has_job = bio_trophy } } count > 0 }
+			count_owned_pop = {
+				limit = {
+					has_citizenship_type = {
+						type = citizenship_organic_trophy
+					}
+					not = {
+						has_job = bio_trophy
+					}
+				}
+				count > 0
+			}
 			free_building_slots > 0
 		}
 	}
@@ -1681,32 +1647,28 @@ building_organic_paradise = {
 	position_priority = 150
 	can_build = no
 	icon = building_paradise_dome
-
 	potential = {
 		exists = owner
-		owner = { 
+		owner = {
 			OR = {
 				has_valid_civic = civic_machine_servitor
 				has_valid_civic = civic_machine_consciousness
 			}
 		}
 	}
-
 	destroy_trigger = {
 		exists = owner
-		owner = { 
+		owner = {
 			NOR = {
 				has_valid_civic = civic_machine_servitor
 				has_valid_civic = civic_machine_consciousness
 			}
 		}
 	}
-
 	convert_to = {
 		building_paradise_dome
 		building_communal_housing_large
 	}
-
 	planet_modifier = {
 		job_bio_trophy_add = 20
 		job_artisan_drone_add = 2
@@ -1733,7 +1695,6 @@ building_organic_paradise = {
 			job_maintenance_drone_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1745,15 +1706,12 @@ building_organic_paradise = {
 			exotic_gases = @b2_rare_upkeep
 		}
 	}
-	
 	triggered_desc = {
 		text = job_bio_trophy_effect_desc
 	}
-
 	triggered_desc = {
 		text = job_artisan_drone_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1763,7 +1721,6 @@ building_organic_paradise = {
 		}
 		text = job_servitor_caretaker_drone_effect_desc
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1773,34 +1730,52 @@ building_organic_paradise = {
 		}
 		text = job_maintenance_drone_effect_desc
 	}
-
-	prerequisites = { "tech_paradise_dome" }
-
+	prerequisites = {
+		"tech_paradise_dome"
+	}
 	show_tech_unlock_if = {
-		owner = { 
+		owner = {
 			OR = {
-				has_valid_civic = civic_machine_servitor 
-				has_valid_civic = civic_machine_consciousness 
+				has_valid_civic = civic_machine_servitor
+				has_valid_civic = civic_machine_consciousness
 			}
 		}
 	}
-
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_gas_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_gas_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_gas_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_gas_building
+					days = 390
+				}
+			}
 		}
 		else = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_gas_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_gas_building
+						days = 510
+					}
+				}
 			}
 		}
 	}
@@ -1809,33 +1784,30 @@ building_organic_paradise = {
 ##################
 # Unity boosters
 ##################
-
 building_autocurating_vault = {
 	base_buildtime = @b2_time
 	base_cap_amount = 1
-
 	category = unity
-
 	potential = {
 		exists = owner
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 		owner = {
 			is_gestalt = no
 			is_spiritualist = no
 			is_megacorp = no
 		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			has_modifier = slave_colony
 			buildings_no_crystals = yes
-	 		owner = {
+			owner = {
 				OR = {
 					is_gestalt = yes
 					is_spiritualist = yes
@@ -1844,14 +1816,12 @@ building_autocurating_vault = {
 			}
 		}
 	}
-
 	convert_to = {
 		building_citadel_of_faith
 		building_alpha_hub
 		building_corporate_vault
 		building_hive_primary_confluence
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1866,17 +1836,15 @@ building_autocurating_vault = {
 			unity = 10
 		}
 	}
-	
 	planet_modifier = {
 		planet_administrators_unity_produces_mult = 0.15
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				has_civic = civic_technocracy
-			}					
+			}
 		}
 		modifier = {
 			job_head_researcher_add = 1
@@ -1885,39 +1853,57 @@ building_autocurating_vault = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_merchant_guilds }
+			owner = {
+				has_civic = civic_merchant_guilds
+			}
 		}
 		modifier = {
 			job_merchant_add = 1
 		}
 	}
-
 	prerequisites = {
 		"tech_autocurating_vault"
 	}
-
 	show_tech_unlock_if = {
 		is_gestalt = no
 		is_spiritualist = no
 		is_megacorp = no
 	}
-
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 390
+				}
+			}
 		}
 		else = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_crystal_building
+						days = 510
+					}
+				}
 			}
 		}
 	}
@@ -1926,41 +1912,40 @@ building_autocurating_vault = {
 building_citadel_of_faith = {
 	base_buildtime = @b2_time
 	base_cap_amount = 1
-
 	category = unity
-
 	potential = {
 		exists = owner
-		owner = { is_spiritualist = yes }
-		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_spiritualist = yes
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_spiritualist = no }
+			owner = {
+				is_spiritualist = no
+			}
 			has_modifier = slave_colony
 			buildings_no_crystals = yes
 		}
 	}
-
 	convert_to = {
 		building_autocurating_vault
 		building_alpha_hub
 		building_corporate_vault
 		building_hive_primary_confluence
 	}
-
 	planet_modifier = {
 		job_high_priest_add = 1
-		pop_ethic_spiritualist_attraction_mult = 0.20
+		pop_ethic_spiritualist_attraction_mult = 0.2
 		planet_administrators_produces_mult = 0.15
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1975,31 +1960,47 @@ building_citadel_of_faith = {
 			unity = 10
 		}
 	}
-
 	prerequisites = {
 		"tech_transcendent_faith"
 	}
-
 	triggered_desc = {
 		text = job_high_priest_effect_desc
 	}
-
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 390
+				}
+			}
 		}
 		else = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_crystal_building
+						days = 510
+					}
+				}
 			}
 		}
 	}
@@ -2009,22 +2010,20 @@ building_corporate_vault = {
 	base_buildtime = @b3_time
 	base_cap_amount = 1
 	icon = building_autocurating_vault
-
 	category = unity
-
 	potential = {
 		exists = owner
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 		owner = {
 			is_megacorp = yes
 			is_spiritualist = no
 		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -2038,14 +2037,12 @@ building_corporate_vault = {
 			}
 		}
 	}
-
 	convert_to = {
 		building_citadel_of_faith
 		building_autocurating_vault
 		building_alpha_hub
 		building_hive_primary_confluence
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -2060,37 +2057,51 @@ building_corporate_vault = {
 			unity = 10
 		}
 	}
-
 	planet_modifier = {
 		planet_managers_produces_mult = 0.15
 		job_executive_add = 1
 	}
-
-
 	prerequisites = {
 		"tech_autocurating_vault"
 	}
-
 	show_tech_unlock_if = {
 		is_megacorp = yes
 	}
-
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 390
+				}
+			}
 		}
 		else = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_crystal_building
+						days = 510
+					}
+				}
 			}
 		}
 	}
@@ -2100,33 +2111,31 @@ building_alpha_hub = {
 	base_buildtime = @b3_time
 	base_cap_amount = 1
 	icon = building_autocurating_vault
-
 	category = unity
-
 	potential = {
 		exists = owner
-		owner = { is_machine_empire = yes }
+		owner = {
+			is_machine_empire = yes
+		}
 	}
-
 	allow = {
 		has_fully_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_machine_empire = no }
+			owner = {
+				is_machine_empire = no
+			}
 			buildings_no_crystals = yes
 		}
 	}
-
 	convert_to = {
 		building_autocurating_vault
 		building_citadel_of_faith
 		building_corporate_vault
 		building_hive_primary_confluence
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -2141,35 +2150,50 @@ building_alpha_hub = {
 			unity = 10
 		}
 	}
-
 	planet_modifier = {
 		planet_administrators_unity_produces_mult = 0.15
 	}
-
 	prerequisites = {
 		"tech_autocurating_vault"
 	}
-
 	show_tech_unlock_if = {
 		is_machine_empire = yes
 	}
-
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 390
+				}
+			}
 		}
 		else = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_crystal_building
+						days = 510
+					}
+				}
 			}
 		}
 	}
@@ -2179,33 +2203,31 @@ building_hive_primary_confluence = {
 	base_buildtime = @b3_time
 	base_cap_amount = 1
 	icon = building_hive_capital
-
 	category = unity
-
 	potential = {
 		exists = owner
-		owner = { is_hive_empire = yes }
+		owner = {
+			is_hive_empire = yes
+		}
 	}
-
 	allow = {
 		has_fully_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_hive_empire = no }
+			owner = {
+				is_hive_empire = no
+			}
 			buildings_no_crystals = yes
 		}
 	}
-
 	convert_to = {
 		building_autocurating_vault
 		building_citadel_of_faith
 		building_corporate_vault
 		building_alpha_hub
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -2222,7 +2244,9 @@ building_hive_primary_confluence = {
 			trigger = {
 				exists = owner
 				owner = {
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 					is_lithoid_empire = no
 				}
 			}
@@ -2257,7 +2281,9 @@ building_hive_primary_confluence = {
 				exists = owner
 				owner = {
 					is_lithoid_empire = yes
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = @b2_upkeep
@@ -2289,7 +2315,6 @@ building_hive_primary_confluence = {
 			unity = 10
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -2299,7 +2324,6 @@ building_hive_primary_confluence = {
 		}
 		job_maintenance_drone_add = 1
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -2309,35 +2333,50 @@ building_hive_primary_confluence = {
 		}
 		text = job_maintenance_drone_effect_desc
 	}
-
 	planet_modifier = {
 		planet_administrators_unity_produces_mult = 0.15
 	}
-
 	prerequisites = {
 		"tech_autocurating_vault"
 	}
-
 	show_tech_unlock_if = {
 		is_hive_empire = yes
 	}
-
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 390
+				}
+			}
 		}
 		else = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_crystal_building
+						days = 510
+					}
+				}
 			}
 		}
 	}

@@ -6,11 +6,17 @@ cb_infestation = {
 	}
 	is_valid = {
 		has_total_war_cb = yes
-		NOT = { is_overlord_to = FROM }
+		NOT = {
+			is_overlord_to = FROM
+		}
 		OR = {
 			is_subject = no
-			overlord = { NOT = { is_same_value = from } }
-		}		
+			overlord = {
+				NOT = {
+					is_same_value = from
+				}
+			}
+		}
 	}
 }
 
@@ -22,17 +28,25 @@ cb_holy_mountain = {
 		has_modifier = lost_holy_mountain
 		FROM = {
 			OR = {
-				any_planet_within_border = { has_deposit = d_holy_mountain }
+				any_planet_within_border = {
+					has_deposit = d_holy_mountain
+				}
 				has_country_flag = holy_mountain_destroyer@prev
 			}
 		}
 	}
 	is_valid = {
-		NOT = { is_overlord_to = FROM }
+		NOT = {
+			is_overlord_to = FROM
+		}
 		OR = {
 			is_subject = no
-			overlord = { NOT = { is_same_value = from } }
-		}		
+			overlord = {
+				NOT = {
+					is_same_value = from
+				}
+			}
+		}
 	}
 }
 
@@ -43,13 +57,25 @@ cb_open_markets = {
 		is_country_type = default
 		is_megacorp = yes
 		is_criminal_syndicate = no
-		FROM = { NOT = { has_country_flag = cb_markets_opened@prev } }
-		FROM = { is_megacorp = no }
-		FROM = { is_gestalt = no }
+		FROM = {
+			NOT = {
+				has_country_flag = cb_markets_opened@prev
+			}
+		}
+		FROM = {
+			is_megacorp = no
+		}
+		FROM = {
+			is_gestalt = no
+		}
 		is_subject = no
 	}
-	is_valid = { 
-		NOT = { has_commercial_pact = from }
-		NOT = { is_in_federation_with = from }
-	}	
+	is_valid = {
+		NOT = {
+			has_commercial_pact = from
+		}
+		NOT = {
+			is_in_federation_with = from
+		}
+	}
 }

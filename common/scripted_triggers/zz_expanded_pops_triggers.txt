@@ -4,15 +4,21 @@ entertainer_job_check_trigger = {
 		exists = owner
 		OR = {
 			is_enslaved = no
-			has_slavery_type = { type = slavery_domestic }
+			has_slavery_type = {
+				type = slavery_domestic
+			}
 			AND = {
-				has_slavery_type = { type = slavery_indentured }
+				has_slavery_type = {
+					type = slavery_indentured
+				}
 				owner = {
 					has_valid_civic = civic_indentured_assets
 				}
 			}
 			AND = {
-				NOT = { host_has_dlc = "Utopia" }
+				NOT = {
+					host_has_dlc = "Utopia"
+				}
 				is_same_species = owner_main_species
 				owner = {
 					OR = {
@@ -24,14 +30,26 @@ entertainer_job_check_trigger = {
 		}
 		is_being_purged = no
 		is_being_assimilated = no
-		NOT = { has_trait = trait_syncretic_proles }
-		can_think = yes
-		NOT = { has_trait = trait_presapient_docile_livestock }
-		OR = {
-			NOT = { has_trait = trait_mechanical }
-			owner = { has_technology = tech_droid_workers }
+		NOT = {
+			has_trait = trait_syncretic_proles
 		}
-		NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+		can_think = yes
+		NOT = {
+			has_trait = trait_presapient_docile_livestock
+		}
+		OR = {
+			NOT = {
+				has_trait = trait_mechanical
+			}
+			owner = {
+				has_technology = tech_droid_workers
+			}
+		}
+		NOT = {
+			has_citizenship_type = {
+				type = citizenship_organic_trophy
+			}
+		}
 		if = {
 			limit = {
 				divinity_right_to_work_job_check_trigger_exempt = no
@@ -47,15 +65,21 @@ battle_thrall_job_check_trigger = {
 		exists = owner
 		OR = {
 			is_enslaved = no
-			has_slavery_type = { type = slavery_military }
+			has_slavery_type = {
+				type = slavery_military
+			}
 			AND = {
-				has_slavery_type = { type = slavery_indentured }
+				has_slavery_type = {
+					type = slavery_indentured
+				}
 				owner = {
 					has_valid_civic = civic_indentured_assets
 				}
 			}
 			AND = {
-				NOT = { host_has_dlc = "Utopia" }
+				NOT = {
+					host_has_dlc = "Utopia"
+				}
 				is_same_species = owner_main_species
 				owner = {
 					OR = {
@@ -67,19 +91,31 @@ battle_thrall_job_check_trigger = {
 		}
 		is_being_purged = no
 		is_being_assimilated = no
-		NOT = { has_trait = trait_syncretic_proles }
+		NOT = {
+			has_trait = trait_syncretic_proles
+		}
 		can_think = yes
-		NOT = { has_trait = trait_presapient_docile_livestock }
+		NOT = {
+			has_trait = trait_presapient_docile_livestock
+		}
 		NOT = {
 			has_military_service_type = {
 				type = military_service_none
 			}
 		}
 		OR = {
-			NOT = { has_trait = trait_mechanical }
-			owner = { has_technology = tech_droid_workers }
+			NOT = {
+				has_trait = trait_mechanical
+			}
+			owner = {
+				has_technology = tech_droid_workers
+			}
 		}
-		NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+		NOT = {
+			has_citizenship_type = {
+				type = citizenship_organic_trophy
+			}
+		}
 		if = {
 			limit = {
 				divinity_right_to_work_job_check_trigger_exempt = no
@@ -88,13 +124,18 @@ battle_thrall_job_check_trigger = {
 		}
 	}
 }
+
 complex_drone_job_check_trigger = {
 	custom_tooltip = DRONE_JOB_TRIGGER
 	hidden_trigger = {
 		has_citizenship_rights = yes
 		can_think = yes
-		NOT = { has_trait = trait_syncretic_proles }
-		NOT = { has_trait = trait_presapient_docile_livestock }	
+		NOT = {
+			has_trait = trait_syncretic_proles
+		}
+		NOT = {
+			has_trait = trait_presapient_docile_livestock
+		}
 	}
 }
 
@@ -102,7 +143,10 @@ divinity_right_to_work_job_check_trigger_worker = {
 	NOT = {
 		planet = {
 			any_owned_pop = {
-				OR = { is_unemployed = yes has_job = servant_noble }
+				OR = {
+					is_unemployed = yes
+					has_job = servant_noble
+				}
 				is_robotic_species = no
 				is_pop_category = worker
 			}
@@ -111,11 +155,14 @@ divinity_right_to_work_job_check_trigger_worker = {
 }
 
 ### BUILDING TRIGGERS ###
-
 buildings_unemployed = {
 	planet = {
 		any_owned_pop = {
-			NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+			NOT = {
+				has_citizenship_type = {
+					type = citizenship_organic_trophy
+				}
+			}
 			NOR = {
 				is_pop_category = specialist
 				is_pop_category = ruler
@@ -137,7 +184,9 @@ overlord_has_num_armies_on_planet = {
 			exists = owner
 			exists = ROOT.owner
 			OR = {
-				ROOT.owner = { has_overlord = PREV.owner }
+				ROOT.owner = {
+					has_overlord = PREV.owner
+				}
 				has_army_flag = overlord_garrison
 			}
 		}
@@ -151,7 +200,9 @@ overlord_has_more_than_num_armies_on_planet = {
 			exists = owner
 			exists = ROOT.owner
 			OR = {
-				ROOT.owner = { has_overlord = PREV.owner }
+				ROOT.owner = {
+					has_overlord = PREV.owner
+				}
 				has_army_flag = overlord_garrison
 			}
 		}
@@ -159,7 +210,6 @@ overlord_has_more_than_num_armies_on_planet = {
 }
 
 ### POP TRIGGERS ###
-
 is_crossbreeding_possible = {
 	is_sapient = yes
 	NOR = {
@@ -186,47 +236,85 @@ is_valid_refugee_pop = {
 	has_culture_shock = no
 	can_think = yes
 	NOR = {
-		has_trait = trait_hive_mind 
+		has_trait = trait_hive_mind
 	}
 	owner = {
 		any_relation = {
-			OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
-			has_communications = prev #relations include countries that have made first contact but not established comms
-			NOT = { has_policy_flag = refugees_not_allowed }
-			prevprev = { #this ensures Pop scope, as root will not always be pop scope
-				OR = { 
-					has_citizenship_type = { type = citizenship_full country = prev }
-					prev = { has_policy_flag = refugees_allowed }
-				}						
+			OR = {
+				is_country_type = default
+				is_country_type = ascended_empire
+				is_country_type = lost_empire
+			}
+			has_communications = prev			#relations include countries that have made first contact but not established comms
+			NOT = {
+				has_policy_flag = refugees_not_allowed
+			}
+			prevprev = {
+				#this ensures Pop scope, as root will not always be pop scope
+				OR = {
+					has_citizenship_type = {
+						type = citizenship_full
+						country = prev
+					}
+					prev = {
+						has_policy_flag = refugees_allowed
+					}
+				}
 				NOR = {
-					has_citizenship_type = { type = citizenship_slavery country = prev }
-					has_citizenship_type = { type = citizenship_purge country = prev }
+					has_citizenship_type = {
+						type = citizenship_slavery
+						country = prev
+					}
+					has_citizenship_type = {
+						type = citizenship_purge
+						country = prev
+					}
 				}
 			}
 			any_owned_planet = {
 				is_under_colonization = no
 				is_controlled_by = owner
 				has_orbital_bombardment = no
-				habitability = { who = prevprevprev value >= 0.2 }
+				habitability = {
+					who = prevprevprev
+					value >= 0.2
+				}
 			}
 		}
 	}
 }
 
 has_any_habitability = {
-	OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+	OR = {
+		is_country_type = default
+		is_country_type = ascended_empire
+		is_country_type = lost_empire
+	}
 	has_communications = prev
-	NOT = { has_policy_flag = refugees_not_allowed } 
+	NOT = {
+		has_policy_flag = refugees_not_allowed
+	}
 	event_target:refugee_pop = {
-		OR = { 
-			has_citizenship_type = { type = citizenship_full country = prev }
-			prev = { has_policy_flag = refugees_allowed }
+		OR = {
+			has_citizenship_type = {
+				type = citizenship_full
+				country = prev
+			}
+			prev = {
+				has_policy_flag = refugees_allowed
+			}
 		}
 		NOR = {
-			has_citizenship_type = { type = citizenship_slavery country = prev }
-			has_citizenship_type = { type = citizenship_purge country = prev }
+			has_citizenship_type = {
+				type = citizenship_slavery
+				country = prev
+			}
+			has_citizenship_type = {
+				type = citizenship_purge
+				country = prev
+			}
 		}
-	}	
+	}
 	any_owned_planet = {
 		is_under_colonization = no
 		is_controlled_by = owner
@@ -266,7 +354,9 @@ country_uses_consumer_goods = {
 	OR = {
 		is_regular_empire = yes
 		has_valid_civic = civic_machine_servitor
-		any_owned_pop = { is_pop_category = resident_gestalt }
+		any_owned_pop = {
+			is_pop_category = resident_gestalt
+		}
 	}
 }
 
@@ -303,7 +393,11 @@ has_total_war_cb = {
 		#attacker checks
 		AND = {
 			OR = {
-				OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+				OR = {
+					is_country_type = default
+					is_country_type = ascended_empire
+					is_country_type = lost_empire
+				}
 				is_country_type = awakened_fallen_empire
 				is_country_type = fallen_empire
 			}
@@ -323,13 +417,15 @@ has_total_war_cb = {
 				}
 				AND = {
 					has_valid_civic = civic_fanatic_purifiers
-					NOT = { is_same_species = from }
+					NOT = {
+						is_same_species = from
+					}
 				}
 			}
 		}
 		#end threat checks
 		AND = {
-			OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+			is_country_type = default
 			NOR = {
 				is_country_type = awakened_fallen_empire
 				has_valid_civic = civic_fanatic_purifiers
@@ -352,16 +448,16 @@ has_total_war_cb = {
 	}
 }
 
-is_megacorp = {
-	OR = {
-		has_authority = auth_corporate
-		has_authority = auth_cooperative
-		has_authority = auth_private
-		has_civic = civic_galactic_sovereign_megacorp
-	}
-}
-
-is_autocracy = { #Power of one
+# is_megacorp = {
+#	OR = {
+#		has_authority = auth_corporate
+#		has_authority = auth_cooperative
+#		has_authority = auth_private
+#		has_civic = civic_galactic_sovereign_megacorp
+#	}
+#}
+is_autocracy = {
+	#Power of one
 	OR = {
 		has_ethic = ethic_gestalt_consciousness
 		has_authority = auth_imperial
@@ -370,14 +466,16 @@ is_autocracy = { #Power of one
 	}
 }
 
-is_oligarchy = { #Power of few
+is_oligarchy = {
+	#Power of few
 	OR = {
 		has_authority = auth_oligarchic
 		has_authority = auth_corporate
 	}
 }
 
-is_democracy = { #Power of many
+is_democracy = {
+	#Power of many
 	has_authority = auth_democratic
 	has_authority = auth_cooperative
 }
@@ -471,12 +569,12 @@ has_materialist_government = {
 #Country scope
 #Note: empires which cannot do diplomacy are already excluded from Espionage
 has_hostile_espionage_operation_ethics = {
-    OR = {
-        has_ethic = ethic_xenophobe
-        has_ethic = ethic_fanatic_xenophobe
-        has_authority = auth_machine_intelligence
-        has_authority = auth_hive_mind
-    }
+	OR = {
+		has_ethic = ethic_xenophobe
+		has_ethic = ethic_fanatic_xenophobe
+		has_authority = auth_machine_intelligence
+		has_authority = auth_hive_mind
+	}
 	NOR = {
 		has_valid_civic = civic_harm_hive
 		has_valid_civic = civic_harm_machine
@@ -486,10 +584,7 @@ has_hostile_espionage_operation_ethics = {
 }
 
 ### PLANET TRIGGERS ###
-
-
 ### FACTION TRIGGERS ###
-
 is_faction_allowed = {
 	OR = {
 		has_country_flag = testing_factions
@@ -506,6 +601,10 @@ is_faction_allowed = {
 			}
 		}
 	}
-	NOT = { has_ethic = ethic_gestalt_consciousness }
-	NOT = { has_country_flag = suppress_vanilla_factions }
+	NOT = {
+		has_ethic = ethic_gestalt_consciousness
+	}
+	NOT = {
+		has_country_flag = suppress_vanilla_factions
+	}
 }

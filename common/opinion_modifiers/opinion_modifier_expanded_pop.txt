@@ -2,9 +2,7 @@ opinion_freed_slaves = {
 	opinion = {
 		base = -10
 	}
-	
 	accumulative = yes
-
 	decay = {
 		base = 1
 	}
@@ -14,7 +12,6 @@ opinion_scion_defiled_holy_world = {
 	opinion = {
 		base = -50
 	}
-	
 	decay = {
 		base = 1
 	}
@@ -24,53 +21,61 @@ opinion_scion_defiled_holy_world = {
 # Personality
 triggered_opinion_authoritarian_collective = {
 	trigger = {
-		OR = {
-			is_country_type = default
-			is_country_type = ascended_empire
-			is_country_type = lost_empire
-		}
+		is_country_type = default
 		is_hive_empire = yes
-		FROM = { is_authoritarian = yes }
+		FROM = {
+			is_authoritarian = yes
+		}
 	}
 	opinion = {
 		base = 15
 		modifier = {
 			add = 15
-			FROM = { has_ethic = ethic_fanatic_authoritarian }
+			FROM = {
+				has_ethic = ethic_fanatic_authoritarian
+			}
 		}
 	}
 }
+
 triggered_opinion_discordant_egalitarians = {
 	trigger = {
-		OR = {
-			is_country_type = default
-			is_country_type = ascended_empire
-			is_country_type = lost_empire
-		}
+		is_country_type = default
 		is_hive_empire = yes
-		FROM = { is_egalitarian = yes }
+		FROM = {
+			is_egalitarian = yes
+		}
 	}
 	opinion = {
 		base = -10
 		modifier = {
 			add = -10
-			FROM = { has_ethic = ethic_fanatic_egalitarian }
+			FROM = {
+				has_ethic = ethic_fanatic_egalitarian
+			}
 		}
 	}
 }
+
 opinion_enlightened_animal = {
 	trigger = {
 		is_country_type = default
 		has_ai_personality = egalitarian_imperialists
-		NOT = { is_same_species = FROM }
+		NOT = {
+			is_same_species = FROM
+		}
 		FROM = {
 			OR = {
 				has_authority = auth_democratic
 				has_authority = auth_oligarchic
 				is_megacorp = yes
 			}
-			NOT = { has_valid_civic = civic_aristocratic_elite }
-			NOT = { has_valid_civic = civic_royal_trading_company }
+			NOT = {
+				has_valid_civic = civic_aristocratic_elite
+			}
+			NOT = {
+				has_valid_civic = civic_royal_trading_company
+			}
 		}
 	}
 	opinion = {
@@ -80,20 +85,27 @@ opinion_enlightened_animal = {
 			OR = {
 				AND = {
 					has_authority = auth_democratic
-					FROM = { has_authority = auth_democratic }
+					FROM = {
+						has_authority = auth_democratic
+					}
 				}
 				AND = {
 					has_authority = auth_oligarchic
-					FROM = { has_authority = auth_oligarchic }
+					FROM = {
+						has_authority = auth_oligarchic
+					}
 				}
 				AND = {
 					is_megacorp = yes
-					FROM = { is_megacorp = yes }
+					FROM = {
+						is_megacorp = yes
+					}
 				}
 			}
 		}
 	}
 }
+
 opinion_enlightened_society = {
 	trigger = {
 		is_country_type = default
@@ -105,8 +117,12 @@ opinion_enlightened_society = {
 				has_authority = auth_oligarchic
 				is_megacorp = yes
 			}
-			NOT = { has_valid_civic = civic_aristocratic_elite }
-			NOT = { has_valid_civic = civic_royal_trading_company }
+			NOT = {
+				has_valid_civic = civic_aristocratic_elite
+			}
+			NOT = {
+				has_valid_civic = civic_royal_trading_company
+			}
 		}
 	}
 	opinion = {
@@ -116,20 +132,27 @@ opinion_enlightened_society = {
 			OR = {
 				AND = {
 					has_authority = auth_democratic
-					FROM = { has_authority = auth_democratic }
+					FROM = {
+						has_authority = auth_democratic
+					}
 				}
 				AND = {
 					has_authority = auth_oligarchic
-					FROM = { has_authority = auth_oligarchic }
+					FROM = {
+						has_authority = auth_oligarchic
+					}
 				}
 				AND = {
 					is_megacorp = yes
-					FROM = { is_megacorp = yes }
+					FROM = {
+						is_megacorp = yes
+					}
 				}
 			}
 		}
 	}
 }
+
 opinion_vile_tyrant = {
 	trigger = {
 		is_country_type = default
@@ -164,15 +187,21 @@ opinion_vile_tyrant = {
 		}
 		modifier = {
 			add = 10
-			FROM = { has_valid_civic = civic_philosopher_king }
+			FROM = {
+				has_valid_civic = civic_philosopher_king
+			}
 		}
 		modifier = {
 			add = 10
-			FROM = { is_pacifist = yes }
+			FROM = {
+				is_pacifist = yes
+			}
 		}
 		modifier = {
 			add = -10
-			FROM = { is_militarist = yes }
+			FROM = {
+				is_militarist = yes
+			}
 		}
 	}
 }
@@ -232,11 +261,15 @@ opinion_tw_advanced = {
 		}
 		modifier = {
 			add = -15
-			FROM = { has_ethic = ethic_spiritualist }
+			FROM = {
+				has_ethic = ethic_spiritualist
+			}
 		}
 		modifier = {
 			add = -25
-			FROM = { has_ethic = ethic_fanatic_spiritualist }
+			FROM = {
+				has_ethic = ethic_fanatic_spiritualist
+			}
 		}
 	}
 }
@@ -275,13 +308,17 @@ opinion_kp_pacifist = {
 	trigger = {
 		is_country_type = default
 		has_ai_personality = vb_keepers_of_peace
-		FROM = { is_pacifist = yes }
+		FROM = {
+			is_pacifist = yes
+		}
 	}
 	opinion = {
 		base = 50
 		modifier = {
 			add = 25
-			FROM = { has_ethic = ethic_fanatic_pacifist }
+			FROM = {
+				has_ethic = ethic_fanatic_pacifist
+			}
 		}
 	}
 }
@@ -290,17 +327,23 @@ opinion_st_fool = {
 	trigger = {
 		is_country_type = default
 		has_ai_personality = vb_sneering_technocrats
-		FROM = { is_materialist = no }
+		FROM = {
+			is_materialist = no
+		}
 	}
 	opinion = {
 		base = -25
 		modifier = {
 			add = -25
-			FROM = { has_ethic = ethic_spiritualist }
+			FROM = {
+				has_ethic = ethic_spiritualist
+			}
 		}
 		modifier = {
 			add = -50
-			FROM = { has_ethic = ethic_fanatic_spiritualist }
+			FROM = {
+				has_ethic = ethic_fanatic_spiritualist
+			}
 		}
 	}
 }
@@ -309,13 +352,17 @@ opinion_st_ignorant = {
 	trigger = {
 		is_country_type = default
 		has_ai_personality = vb_sneering_technocrats
-		FROM = { is_materialist = yes }
+		FROM = {
+			is_materialist = yes
+		}
 	}
 	opinion = {
 		base = -10
 		modifier = {
 			add = 5
-			FROM = { has_ethic = ethic_fanatic_materialist }
+			FROM = {
+				has_ethic = ethic_fanatic_materialist
+			}
 		}
 	}
 }
@@ -330,11 +377,12 @@ opinion_potential_subject = {
 			is_in_federation_with = FROM
 			FROM = {
 				exists = overlord
-				overlord = { is_same_value = prev }
+				overlord = {
+					is_same_value = prev
+				}
 			}
 		}
 	}
-	
 	opinion = {
 		base = -20
 	}
@@ -343,7 +391,9 @@ opinion_potential_subject = {
 # Policy
 opinion_state_media = {
 	trigger = {
-		NOR = { has_ai_personality = democratic_crusaders }
+		NOR = {
+			has_ai_personality = democratic_crusaders
+		}
 		OR = {
 			is_egalitarian = yes
 			has_authority = auth_democratic
@@ -385,17 +435,23 @@ triggered_opinion_homeworld = {
 		OR = {
 			AND = {
 				has_country_flag = human_2
-				FROM = { has_country_flag = human_1 }
+				FROM = {
+					has_country_flag = human_1
+				}
 			}
 			AND = {
 				has_origin = origin_lost_colony
-				FROM = { has_country_flag = lost_colony_parent_of@prev }
+				FROM = {
+					has_country_flag = lost_colony_parent_of@prev
+				}
 			}
 			AND = {
 				has_origin = origin_private_colony
 				is_megacorp = yes
 				is_same_species = FROM
-				FROM = { has_origin = origin_private_colony }
+				FROM = {
+					has_origin = origin_private_colony
+				}
 			}
 		}
 		OR = {
@@ -403,7 +459,9 @@ triggered_opinion_homeworld = {
 			FROM = {
 				exists = ruler
 				ruler = {
-					NOT = { has_trait = leader_trait_ruler_brainslug }
+					NOT = {
+						has_trait = leader_trait_ruler_brainslug
+					}
 					species = {
 						OR = {
 							is_same_species = FROM
@@ -417,7 +475,9 @@ triggered_opinion_homeworld = {
 			AND = {
 				exists = ruler
 				ruler = {
-					NOT = { has_trait = leader_trait_ruler_brainslug }
+					NOT = {
+						has_trait = leader_trait_ruler_brainslug
+					}
 					species = {
 						OR = {
 							is_same_species = FROM
@@ -440,18 +500,24 @@ triggered_opinion_lost_colony = {
 	trigger = {
 		OR = {
 			AND = {
-				FROM = {  has_country_flag = human_1 }
+				FROM = {
+					has_country_flag = human_1
+				}
 				has_country_flag = human_2
 			}
 			AND = {
-				FROM = { has_origin = origin_lost_colony }
+				FROM = {
+					has_origin = origin_lost_colony
+				}
 				has_country_flag = lost_colony_parent_of@from
 			}
 			AND = {
 				has_origin = origin_private_colony
 				is_megacorp = no
 				is_same_species = FROM
-				FROM = { has_origin = origin_private_colony }
+				FROM = {
+					has_origin = origin_private_colony
+				}
 			}
 		}
 		OR = {
@@ -459,7 +525,9 @@ triggered_opinion_lost_colony = {
 			FROM = {
 				exists = ruler
 				ruler = {
-					NOT = { has_trait = leader_trait_ruler_brainslug }
+					NOT = {
+						has_trait = leader_trait_ruler_brainslug
+					}
 					species = {
 						OR = {
 							is_same_species = FROM
@@ -473,7 +541,9 @@ triggered_opinion_lost_colony = {
 			AND = {
 				exists = ruler
 				ruler = {
-					NOT = { has_trait = leader_trait_ruler_brainslug }
+					NOT = {
+						has_trait = leader_trait_ruler_brainslug
+					}
 					species = {
 						OR = {
 							is_same_species = FROM
@@ -491,11 +561,7 @@ triggered_opinion_lost_colony = {
 
 triggered_opinion_mechanist = {
 	trigger = {
-		OR = {
-			is_country_type = default
-			is_country_type = ascended_empire
-			is_country_type = lost_empire
-		}
+		is_country_type = default
 		is_materialist = yes
 		FROM = {
 			has_origin = origin_mechanists
@@ -508,11 +574,7 @@ triggered_opinion_mechanist = {
 
 triggered_opinion_life_seeded = {
 	trigger = {
-		OR = {
-			is_country_type = default
-			is_country_type = ascended_empire
-			is_country_type = lost_empire
-		}
+		is_country_type = default
 		is_spiritualist = yes
 		FROM = {
 			has_origin = origin_life_seeded
@@ -540,7 +602,9 @@ triggered_opinion_is_primitive_cyborg = {
 triggered_opinion_wicked_primitive_cyborg = {
 	trigger = {
 		is_spiritualist = yes
-		NOT = { has_valid_civic = civic_machine_cult }
+		NOT = {
+			has_valid_civic = civic_machine_cult
+		}
 		FROM = {
 			has_origin = origin_primitive_cyborgs
 		}
@@ -572,6 +636,7 @@ triggered_opinion_ancient_dynasty = {
 		}
 	}
 }
+
 triggered_opinion_symbiote = {
 	trigger = {
 		is_gestalt = no
@@ -594,16 +659,20 @@ triggered_opinion_symbiote = {
 
 triggered_opinion_both_imperial_cult = {
 	trigger = {
-		OR = {
-			is_country_type = default
-			is_country_type = ascended_empire
-			is_country_type = lost_empire
-		}
+		is_country_type = default
 		has_valid_civic = civic_imperial_cult
-		FROM = { has_valid_civic = civic_imperial_cult }
+		FROM = {
+			has_valid_civic = civic_imperial_cult
+		}
 		NOR = {
-			overlord = { is_same_value = FROM }
-			FROM = { overlord = { is_same_value = ROOT } }
+			overlord = {
+				is_same_value = FROM
+			}
+			FROM = {
+				overlord = {
+					is_same_value = ROOT
+				}
+			}
 		}
 	}
 	opinion = {
@@ -613,13 +682,11 @@ triggered_opinion_both_imperial_cult = {
 
 triggered_opinion_both_philosopher_king = {
 	trigger = {
-		OR = {
-			is_country_type = default
-			is_country_type = ascended_empire
-			is_country_type = lost_empire
-		}
+		is_country_type = default
 		has_valid_civic = civic_philosopher_king
-		FROM = { has_valid_civic = civic_philosopher_king }
+		FROM = {
+			has_valid_civic = civic_philosopher_king
+		}
 	}
 	opinion = {
 		base = 10
@@ -632,11 +699,7 @@ triggered_opinion_both_philosopher_king = {
 
 triggered_opinion_warrior_culture = {
 	trigger = {
-		OR = {
-			is_country_type = default
-			is_country_type = ascended_empire
-			is_country_type = lost_empire
-		}
+		is_country_type = default
 		FROM = {
 			OR = {
 				has_valid_civic = civic_warrior_culture
@@ -685,11 +748,7 @@ triggered_opinion_warrior_culture = {
 
 triggered_opinion_idealistic_foundation = {
 	trigger = {
-		OR = {
-			is_country_type = default
-			is_country_type = ascended_empire
-			is_country_type = lost_empire
-		}
+		is_country_type = default
 		FROM = {
 			has_valid_civic = civic_idealistic_foundation
 		}
@@ -724,7 +783,9 @@ triggered_opinion_idealistic_foundation = {
 			add = -3
 			is_xenophobe = yes
 			is_egalitarian = no
-			NOT = { is_same_species = FROM }
+			NOT = {
+				is_same_species = FROM
+			}
 		}
 		modifier = {
 			add = -10
@@ -734,11 +795,21 @@ triggered_opinion_idealistic_foundation = {
 			}
 			is_egalitarian = no
 			is_gestalt = no
-			NOT = { is_same_species = FROM }
-			NOT = { has_ai_personality = evangelising_zealots }
-			NOT = { has_valid_civic = civic_corporate_dominion }
-			NOT = { is_megacorp = yes }
-			FROM = { is_pacifist = no }
+			NOT = {
+				is_same_species = FROM
+			}
+			NOT = {
+				has_ai_personality = evangelising_zealots
+			}
+			NOT = {
+				has_valid_civic = civic_corporate_dominion
+			}
+			NOT = {
+				is_megacorp = yes
+			}
+			FROM = {
+				is_pacifist = no
+			}
 		}
 		modifier = {
 			add = -5
@@ -753,7 +824,9 @@ triggered_opinion_idealistic_foundation = {
 				has_ai_personality = evangelising_zealots
 				has_valid_civic = civic_corporate_dominion
 				is_megacorp = yes
-				FROM = { is_pacifist = no }
+				FROM = {
+					is_pacifist = no
+				}
 			}
 		}
 	}
@@ -761,11 +834,7 @@ triggered_opinion_idealistic_foundation = {
 
 triggered_opinion_free_haven = {
 	trigger = {
-		OR = {
-			is_country_type = default
-			is_country_type = ascended_empire
-			is_country_type = lost_empire
-		}
+		is_country_type = default
 		FROM = {
 			has_valid_civic = civic_police_state
 		}
@@ -829,11 +898,7 @@ triggered_opinion_police_state = {
 
 triggered_opinion_technocracy = {
 	trigger = {
-		OR = {
-			is_country_type = default
-			is_country_type = ascended_empire
-			is_country_type = lost_empire
-		}
+		is_country_type = default
 		FROM = {
 			OR = {
 				has_valid_civic = civic_technocracy
@@ -850,7 +915,9 @@ triggered_opinion_technocracy = {
 		modifier = {
 			add = -10
 			is_spiritualist = yes
-			NOT = { has_valid_civic = civic_machine_cult }
+			NOT = {
+				has_valid_civic = civic_machine_cult
+			}
 		}
 	}
 }
@@ -878,7 +945,9 @@ triggered_opinion_unenlightened_spiritualists = {
 		}
 		modifier = {
 			add = -5
-			FROM = { has_ethic = ethic_fanatic_spiritualist }
+			FROM = {
+				has_ethic = ethic_fanatic_spiritualist
+			}
 		}
 	}
 }
@@ -910,14 +979,18 @@ triggered_opinion_bourgeois = {
 		has_valid_civic = civic_shared_burden
 		FROM = {
 			is_auth_corporate = yes
-			NOT = { has_valid_civic = civic_worker_coop }
+			NOT = {
+				has_valid_civic = civic_worker_coop
+			}
 		}
 	}
 	opinion = {
 		base = -25
 		modifier = {
 			add = -15
-			FROM = { has_valid_civic = civic_criminal_heritage }
+			FROM = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 	}
 }
@@ -930,7 +1003,9 @@ triggered_opinion_commie = {
 			is_country_type = lost_empire
 		}
 		is_auth_corporate = yes
-		NOT = { has_valid_civic = civic_worker_coop }
+		NOT = {
+			has_valid_civic = civic_worker_coop
+		}
 		FROM = {
 			has_valid_civic = civic_shared_burden
 		}
@@ -962,7 +1037,9 @@ triggered_opinion_fe_prosperity = {
 		base = -25
 		modifier = {
 			add = -10
-			FROM = { has_valid_civic = civic_criminal_heritage }
+			FROM = {
+				has_valid_civic = civic_criminal_heritage
+			}
 		}
 	}
 }
@@ -978,7 +1055,9 @@ triggered_opinion_bureaucracy = {
 			has_valid_civic = civic_efficient_bureaucracy
 			has_valid_civic = civic_machine_efficient_administrators
 		}
-		NOT = { has_valid_civic = civic_byzantine_bureaucracy }
+		NOT = {
+			has_valid_civic = civic_byzantine_bureaucracy
+		}
 		FROM = {
 			OR = {
 				has_valid_civic = civic_byzantine_bureaucracy
@@ -1039,7 +1118,9 @@ triggered_opinion_crusader_zealot = {
 			is_country_type = ascended_empire
 			is_country_type = lost_empire
 		}
-		FROM = { has_valid_civic = civic_crusaders }
+		FROM = {
+			has_valid_civic = civic_crusaders
+		}
 		OR = {
 			is_materialist = yes
 			has_modifier = "em_atheism"
@@ -1060,7 +1141,9 @@ triggered_opinion_crusader_gestalt = {
 			is_country_type = ascended_empire
 			is_country_type = lost_empire
 		}
-		FROM = { has_valid_civic = civic_crusaders }
+		FROM = {
+			has_valid_civic = civic_crusaders
+		}
 		is_materialist = no
 		NOR = {
 			has_modifier = "em_atheism"
@@ -1111,7 +1194,9 @@ triggered_opinion_crusader_heretic_gospel = {
 			}
 		}
 		OR = {
-			FROM = { has_valid_civic = civic_gospel_of_the_masses }
+			FROM = {
+				has_valid_civic = civic_gospel_of_the_masses
+			}
 			AND = {
 				cosmic_religion_active = yes
 				is_same_religion_as_from = no
@@ -1164,11 +1249,15 @@ triggered_opinion_crusader_faithful_spir = {
 		}
 		has_valid_civic = civic_crusaders
 		FROM = {
-			NOT = { has_valid_civic = civic_gospel_of_the_masses }
+			NOT = {
+				has_valid_civic = civic_gospel_of_the_masses
+			}
 		}
 		OR = {
 			AND = {
-				FROM = { is_spiritualist = yes }
+				FROM = {
+					is_spiritualist = yes
+				}
 				cosmic_religion_active = no
 				void_pantheon_active = no
 			}
@@ -1255,7 +1344,7 @@ triggered_opinion_is_harm_collective = {
 						has_ethic = "ethic_xenophobe"
 						has_ethic = "ethic_fanatic_xenophobe"
 						has_ethic = "ethic_militarist"
-						has_ethic = "ethic_fanatic_militarist"	
+						has_ethic = "ethic_fanatic_militarist"
 					}
 					OR = {
 						has_ethic = "ethic_pacifist"
@@ -1289,7 +1378,9 @@ triggered_opinion_harm_hive = {
 					has_valid_civic = civic_harm_hive
 					has_ai_personality = open_hive_mind
 				}
-				FROM = { is_homicidal = no }
+				FROM = {
+					is_homicidal = no
+				}
 			}
 			AND = {
 				FROM = {
@@ -1320,7 +1411,9 @@ triggered_opinion_harm_machine = {
 					has_valid_civic = civic_harm_machine
 					has_ai_personality = open_machine_intelligence
 				}
-				FROM = { is_homicidal = no }
+				FROM = {
+					is_homicidal = no
+				}
 			}
 			AND = {
 				FROM = {
@@ -1341,13 +1434,14 @@ triggered_opinion_harm_machine = {
 triggered_opinion_machine_emotions = {
 	trigger = {
 		is_country_type = default
-		NOT = { has_ethic = ethic_gestalt_consciousness }
+		NOT = {
+			has_ethic = ethic_gestalt_consciousness
+		}
 		FROM = {
 			has_valid_civic = "civic_machine_emotions"
 			has_authority = auth_machine_intelligence
 		}
 	}
-
 	opinion = {
 		base = 25
 	}
@@ -1484,12 +1578,16 @@ triggered_opinion_iron_despot = {
 		modifier = {
 			add = -10
 			has_ethic = "ethic_spiritualist"
-			NOT = { has_valid_civic = civic_machine_cult }
+			NOT = {
+				has_valid_civic = civic_machine_cult
+			}
 		}
 		modifier = {
 			add = -20
 			has_ethic = "ethic_fanatic_spiritualist"
-			NOT = { has_valid_civic = civic_machine_cult }
+			NOT = {
+				has_valid_civic = civic_machine_cult
+			}
 		}
 		modifier = {
 			add = 5
@@ -1509,10 +1607,18 @@ triggered_opinion_iron_despot = {
 triggered_machine_opinion_materialist = {
 	trigger = {
 		has_authority = auth_machine_intelligence
-		NOT = { has_civic = civic_machine_terminator }
+		NOT = {
+			has_civic = civic_machine_terminator
+		}
 		OR = {
-			NOT = { has_civic = civic_machine_servitor }
-			FROM = { NOT = { has_ai_personality = democratic_crusaders } }
+			NOT = {
+				has_civic = civic_machine_servitor
+			}
+			FROM = {
+				NOT = {
+					has_ai_personality = democratic_crusaders
+				}
+			}
 		}
 		FROM = {
 			is_mechanical_empire = no
@@ -1535,15 +1641,25 @@ triggered_machine_opinion_materialist = {
 triggered_machine_opinion_spiritualist = {
 	trigger = {
 		has_authority = auth_machine_intelligence
-		NOT = { has_civic = civic_machine_terminator }
+		NOT = {
+			has_civic = civic_machine_terminator
+		}
 		OR = {
-			NOT = { has_civic = civic_machine_servitor }
-			FROM = { NOT = { has_ai_personality = democratic_crusaders } }
+			NOT = {
+				has_civic = civic_machine_servitor
+			}
+			FROM = {
+				NOT = {
+					has_ai_personality = democratic_crusaders
+				}
+			}
 		}
 		FROM = {
 			is_mechanical_empire = no
 			is_cyborg_empire = no
-			NOT = { has_valid_civic = civic_machine_cult }
+			NOT = {
+				has_valid_civic = civic_machine_cult
+			}
 			OR = {
 				has_ethic = ethic_spiritualist
 				has_ethic = ethic_fanatic_spiritualist
@@ -1562,10 +1678,18 @@ triggered_machine_opinion_spiritualist = {
 triggered_machine_opinion_machine_cult = {
 	trigger = {
 		has_authority = auth_machine_intelligence
-		NOT = { has_civic = civic_machine_terminator }
+		NOT = {
+			has_civic = civic_machine_terminator
+		}
 		OR = {
-			NOT = { has_civic = civic_machine_servitor }
-			FROM = { NOT = { has_ai_personality = democratic_crusaders } }
+			NOT = {
+				has_civic = civic_machine_servitor
+			}
+			FROM = {
+				NOT = {
+					has_ai_personality = democratic_crusaders
+				}
+			}
 		}
 		FROM = {
 			has_valid_civic = civic_machine_cult
@@ -1600,10 +1724,18 @@ triggered_servitor_opinion_dc = {
 triggered_machine_opinion_cyborg = {
 	trigger = {
 		has_authority = auth_machine_intelligence
-		NOT = { has_civic = civic_machine_terminator }
+		NOT = {
+			has_civic = civic_machine_terminator
+		}
 		OR = {
-			NOT = { has_civic = civic_machine_servitor }
-			FROM = { NOT = { has_ai_personality = democratic_crusaders } }
+			NOT = {
+				has_civic = civic_machine_servitor
+			}
+			FROM = {
+				NOT = {
+					has_ai_personality = democratic_crusaders
+				}
+			}
 		}
 		FROM = {
 			is_mechanical_empire = no
@@ -1634,7 +1766,9 @@ triggered_opinion_living_host = {
 			is_pacifist = yes
 			has_civic = civic_harm_hive
 		}
-		NOT = { has_civic = civic_living_hosts }
+		NOT = {
+			has_civic = civic_living_hosts
+		}
 		FROM = {
 			has_civic = civic_living_hosts
 		}
@@ -1670,7 +1804,7 @@ triggered_opinion_living_host_prey = {
 
 opinion_regular_against_ihm = {
 	trigger = {
-		is_country_type = default	
+		is_country_type = default
 		OR = {
 			is_gestalt = no
 			has_civic = civic_harm_hive
@@ -1678,9 +1812,10 @@ opinion_regular_against_ihm = {
 			has_civic = civic_machine_servitor
 			has_civic = civic_machine_assimilator
 		}
-		FROM = { has_civic = civic_infestation }
+		FROM = {
+			has_civic = civic_infestation
+		}
 	}
-
 	opinion = {
 		base = -100
 	}
@@ -1694,7 +1829,6 @@ opinion_regular_ihm = {
 		}
 		has_civic = civic_infestation
 	}
-
 	opinion = {
 		base = -50
 	}
@@ -1806,12 +1940,13 @@ triggered_dc_opinion_of_necrophages = {
 			has_ai_personality = democratic_crusaders
 			has_ai_personality = egalitarian_imperialists
 		}
-		NOT = { has_origin = origin_necrophage }
+		NOT = {
+			has_origin = origin_necrophage
+		}
 		FROM = {
 			has_origin = origin_necrophage
 		}
 	}
-
 	opinion = {
 		base = -100
 	}
@@ -1819,33 +1954,42 @@ triggered_dc_opinion_of_necrophages = {
 
 triggered_negative_opinion_of_necrophage = {
 	trigger = {
-		is_country_type = default	
-		NOR = { 	
+		is_country_type = default
+		NOR = {
 			is_robot_empire = no
 			has_ai_personality = democratic_crusaders
 			has_ai_personality = egalitarian_imperialists
 			has_origin = origin_necrophage
 		}
-		FROM = { has_origin = origin_necrophage }
+		FROM = {
+			has_origin = origin_necrophage
+		}
 	}
-
 	opinion = {
 		base = -30
 		modifier = {
 			add = 10
-			FROM = { has_ethic = ethic_pacifist }
+			FROM = {
+				has_ethic = ethic_pacifist
+			}
 		}
 		modifier = {
 			add = 20
-			FROM = { has_ethic = ethic_fanatic_pacifist }
+			FROM = {
+				has_ethic = ethic_fanatic_pacifist
+			}
 		}
 		modifier = {
 			add = -10
-			FROM = { is_xenophobe = yes }
+			FROM = {
+				is_xenophobe = yes
+			}
 		}
 		modifier = {
 			add = -10
-			FROM = { is_militarist = yes }
+			FROM = {
+				is_militarist = yes
+			}
 		}
 		modifier = {
 			add = 10
@@ -1864,11 +2008,12 @@ triggered_negative_opinion_of_necrophage = {
 
 triggered_opinion_nationalistic_zeal = {
 	trigger = {
-		is_country_type = default	
+		is_country_type = default
 		is_militarist = no
-		FROM = { has_valid_civic = civic_nationalistic_zeal }
+		FROM = {
+			has_valid_civic = civic_nationalistic_zeal
+		}
 	}
-
 	opinion = {
 		base = 0
 		modifier = {
@@ -1917,9 +2062,10 @@ triggered_opinion_pleasure_seeker = {
 		}
 		is_pleasure_seeker = no
 		is_spiritualist = yes
-		FROM = { is_pleasure_seeker = yes }
+		FROM = {
+			is_pleasure_seeker = yes
+		}
 	}
-
 	opinion = {
 		base = -15
 		modifier = {
@@ -1928,7 +2074,7 @@ triggered_opinion_pleasure_seeker = {
 		}
 		modifier = {
 			add = 10
-			has_valid_civic = civic_machine_cult # doesn't care as much
+			has_valid_civic = civic_machine_cult			# doesn't care as much
 		}
 	}
 }
@@ -1943,9 +2089,10 @@ triggered_opinion_fellow_machine_cultist = {
 			is_country_type = ascended_empire
 		}
 		has_valid_civic = civic_machine_cult
-		FROM = { has_valid_civic = civic_machine_cult }
+		FROM = {
+			has_valid_civic = civic_machine_cult
+		}
 	}
-
 	opinion = {
 		base = 25
 		modifier = {
@@ -1968,7 +2115,6 @@ triggered_opinion_cyborgs_machine_cultist = {
 			}
 		}
 	}
-
 	opinion = {
 		base = 20
 		modifier = {
@@ -1988,9 +2134,10 @@ triggered_opinion_machine_cultist_to_robots = {
 			is_country_type = ascended_empire
 		}
 		has_valid_civic = civic_machine_cult
-		FROM = { is_robot_empire = yes }
+		FROM = {
+			is_robot_empire = yes
+		}
 	}
-
 	opinion = {
 		base = 75
 		modifier = {
@@ -2010,9 +2157,10 @@ triggered_opinion_machine_cultist_to_hive = {
 			is_country_type = ascended_empire
 		}
 		has_valid_civic = civic_machine_cult
-		FROM = { is_hive_empire = yes }
+		FROM = {
+			is_hive_empire = yes
+		}
 	}
-
 	opinion = {
 		base = -50
 		modifier = {
@@ -2031,10 +2179,13 @@ triggered_opinion_machine_heretics = {
 			is_country_type = fallen_empire
 			is_country_type = ascended_empire
 		}
-		NOT = { has_valid_civic = civic_machine_cult }
-		FROM = { has_valid_civic = civic_machine_cult }
+		NOT = {
+			has_valid_civic = civic_machine_cult
+		}
+		FROM = {
+			has_valid_civic = civic_machine_cult
+		}
 	}
-
 	opinion = {
 		base = 0
 		modifier = {
@@ -2064,15 +2215,25 @@ triggered_opinion_emancipators_to_tyrants = {
 			any_owned_species = {
 				is_sapient = yes
 				OR = {
-					has_citizenship_type = { country = from type = citizenship_purge_machine }
-					has_citizenship_type = { country = from type = citizenship_purge }
-					has_citizenship_type = { country = from type = citizenship_slavery }
+					has_citizenship_type = {
+						country = from
+						type = citizenship_purge_machine
+					}
+					has_citizenship_type = {
+						country = from
+						type = citizenship_purge
+					}
+					has_citizenship_type = {
+						country = from
+						type = citizenship_slavery
+					}
 				}
 			}
 		}
-		FROM = { has_valid_civic = civic_emancipators }
+		FROM = {
+			has_valid_civic = civic_emancipators
+		}
 	}
-
 	opinion = {
 		base = -100
 	}
@@ -2101,7 +2262,6 @@ triggered_opinion_data_thieves = {
 			}
 		}
 	}
-
 	opinion = {
 		base = -50
 	}
@@ -2112,7 +2272,9 @@ triggered_opinion_necroid = {
 	trigger = {
 		is_gestalt = no
 		owner_species = {
-			NOT = { is_species_class = NECROID }
+			NOT = {
+				is_species_class = NECROID
+			}
 		}
 		FROM = {
 			exists = ruler
@@ -2172,7 +2334,10 @@ triggered_opinion_pheremones = {
 			exists = ruler
 			ruler = {
 				species = {
-					OR = { has_trait = trait_pheremones has_trait = trait_lithoid_shiny }
+					OR = {
+						has_trait = trait_pheremones
+						has_trait = trait_lithoid_shiny
+					}
 				}
 			}
 		}
