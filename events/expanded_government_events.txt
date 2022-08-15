@@ -3,9 +3,7 @@
 # Expanded Civics Events
 #
 ############################
-
 ### 21, 32, 33, 34, 35 free
-
 ### Subterranean Evolution ###
 namespace = civicsexpanded
 planet_event = {
@@ -15,13 +13,15 @@ planet_event = {
 	picture = GFX_evt_in_the_dark
 	show_sound = event_mystic_reveal
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = civicsexpanded.1.a
 		hidden_effect = {
-			planet_event = { id = civicsexpanded.2 days = 510 random = 60 }
+			planet_event = {
+				id = civicsexpanded.2
+				days = 510
+				random = 60
+			}
 		}
 	}
 }
@@ -33,9 +33,7 @@ planet_event = {
 	picture = GFX_evt_in_the_dark
 	show_sound = event_mystic_reveal
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = EXCELLENT
 		add_deposit = "d_underground_farm"
@@ -49,13 +47,15 @@ planet_event = {
 	picture = GFX_evt_in_the_dark
 	show_sound = event_mystic_reveal
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = civicsexpanded.1.a
 		hidden_effect = {
-			planet_event = { id = civicsexpanded.4 days = 510 random = 60 }
+			planet_event = {
+				id = civicsexpanded.4
+				days = 510
+				random = 60
+			}
 		}
 	}
 }
@@ -67,9 +67,7 @@ planet_event = {
 	picture = GFX_evt_in_the_dark
 	show_sound = event_mystic_reveal
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = EXCELLENT
 		add_deposit = "d_underground_mine"
@@ -83,13 +81,15 @@ planet_event = {
 	picture = GFX_evt_in_the_dark
 	show_sound = event_mystic_reveal
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = civicsexpanded.1.a
 		hidden_effect = {
-			planet_event = { id = civicsexpanded.6 days = 510 random = 60 }
+			planet_event = {
+				id = civicsexpanded.6
+				days = 510
+				random = 60
+			}
 		}
 	}
 }
@@ -101,9 +101,7 @@ planet_event = {
 	picture = GFX_evt_in_the_dark
 	show_sound = event_mystic_reveal
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = EXCELLENT
 		add_deposit = "d_underground_generator"
@@ -116,47 +114,61 @@ country_event = {
 	id = civicsexpanded.7
 	hide_window = yes
 	is_triggered_only = yes
-	
 	immediate = {
 		set_timed_country_flag = {
 			flag = recently_won_war
 			days = 1800
 		}
 		if = {
-			limit = { exists = from }
+			limit = {
+				exists = from
+			}
 			from = {
 				set_timed_country_flag = {
 					flag = recently_lost_war
 					days = 1800
-				}		
+				}
 			}
 		}
 		if = {
-			limit = { has_valid_civic = civic_nationalistic_zeal }
-			if = {
-				limit = { has_modifier = zeal_war_won }
-				remove_modifier = zeal_war_won # reset timer
+			limit = {
+				has_valid_civic = civic_nationalistic_zeal
 			}
-			add_modifier = { modifier = zeal_war_won days = 10800 } # 30 years
+			if = {
+				limit = {
+					has_modifier = zeal_war_won
+				}
+				remove_modifier = zeal_war_won				# reset timer
+			}
+			add_modifier = {
+				modifier = zeal_war_won
+				days = 10800
+			}			# 30 years
 		}
 	}
 }
+
 planet_event = {
 	id = civicsexpanded.8
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
-		FROM = { has_valid_civic = civic_nationalistic_zeal }
+		FROM = {
+			has_valid_civic = civic_nationalistic_zeal
+		}
 	}
-	
 	immediate = {
 		FROM = {
 			if = {
-				limit = { has_modifier = zeal_war_won }
-				remove_modifier = zeal_war_won # reset timer
+				limit = {
+					has_modifier = zeal_war_won
+				}
+				remove_modifier = zeal_war_won				# reset timer
 			}
-			add_modifier = { modifier = zeal_war_won days = 10800 } # 30 years
+			add_modifier = {
+				modifier = zeal_war_won
+				days = 10800
+			}			# 30 years
 		}
 	}
 }
@@ -166,7 +178,6 @@ planet_event = {
 	id = civicsexpanded.9
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		FROM = {
 			has_valid_civic = civic_living_hosts
@@ -180,7 +191,6 @@ planet_event = {
 		}
 		is_controlled_by = FROM
 	}
-	
 	immediate = {
 		create_pop = {
 			species = owner
@@ -193,9 +203,7 @@ planet_event = {
 country_event = {
 	id = civicsexpanded.10
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		has_origin = origin_natural_hunters
 		fromfromfrom = {
@@ -215,7 +223,6 @@ country_event = {
 			}
 		}
 	}
-
 	immediate = {
 		# Leviathans
 		if = {
@@ -352,7 +359,6 @@ country_event = {
 						is_ship_size = hive_asteroid
 						is_ship_size = small_ship_swarm
 						is_ship_size = lesser_space_cloud
-						
 					}
 				}
 			}
@@ -367,13 +373,10 @@ country_event = {
 planet_event = {
 	id = civicsexpanded.11
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		has_deposit = d_dangerous_wildlife_blocker
 	}
-	
 	immediate = {
 		set_planet_flag = has_dangerous_wildlife
 	}
@@ -383,16 +386,18 @@ planet_event = {
 planet_event = {
 	id = civicsexpanded.12
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = owner
-		owner = { has_valid_civic = civic_private_prospectors }
+		owner = {
+			has_valid_civic = civic_private_prospectors
+		}
 	}
-	
 	immediate = {
-		add_modifier = { modifier = private_development days = 3600 }
+		add_modifier = {
+			modifier = private_development
+			days = 3600
+		}
 	}
 }
 
@@ -401,12 +406,12 @@ planet_event = {
 country_event = {
 	id = civicsexpanded.13
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		has_origin = origin_symbiote
-		any_owned_pop = { is_valid_symbiote_pop = yes }
+		any_owned_pop = {
+			is_valid_symbiote_pop = yes
+		}
 	}
 	immediate = {
 		random_list = {
@@ -426,7 +431,9 @@ country_event = {
 			}
 			1 = {
 				random_owned_pop = {
-					limit = { is_valid_symbiote_pop = yes }
+					limit = {
+						is_valid_symbiote_pop = yes
+					}
 					weights = {
 						base = 1
 						modifier = {
@@ -462,12 +469,11 @@ country_event = {
 	}
 }
 
-country_event = { #New leaders get Brainslug Trait
+country_event = {
+	#New leaders get Brainslug Trait
 	id = civicsexpanded.14
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		has_origin = origin_symbiote
 		from.species = {
@@ -480,7 +486,6 @@ country_event = { #New leaders get Brainslug Trait
 			}
 		}
 	}
-
 	immediate = {
 		from = {
 			if = {
@@ -534,16 +539,18 @@ country_event = {
 	desc = "civicsexpanded.15.desc"
 	picture = GFX_evt_dark_alley
 	show_sound = event_criminal_activity
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		random_galaxy_planet = {
 			limit = {
 				has_branch_office = yes
 				exists = branch_office_owner
-				branch_office_owner = { is_same_value = ROOT }
-				NOT = { has_modifier = syndicate_bribery }
+				branch_office_owner = {
+					is_same_value = ROOT
+				}
+				NOT = {
+					has_modifier = syndicate_bribery
+				}
 				planet_crime < 50
 			}
 			save_event_target_as = bribe_planet_1
@@ -552,8 +559,12 @@ country_event = {
 			limit = {
 				has_branch_office = yes
 				exists = branch_office_owner
-				branch_office_owner = { is_same_value = ROOT }
-				NOT = { has_modifier = syndicate_bribery }
+				branch_office_owner = {
+					is_same_value = ROOT
+				}
+				NOT = {
+					has_modifier = syndicate_bribery
+				}
 				planet_crime < 50
 				NOT = {
 					is_same_value = event_target:bribe_planet_1
@@ -565,8 +576,12 @@ country_event = {
 			limit = {
 				has_branch_office = yes
 				exists = branch_office_owner
-				branch_office_owner = { is_same_value = ROOT }
-				NOT = { has_modifier = syndicate_bribery }
+				branch_office_owner = {
+					is_same_value = ROOT
+				}
+				NOT = {
+					has_modifier = syndicate_bribery
+				}
 				planet_crime < 50
 				NOT = {
 					is_same_value = event_target:bribe_planet_1
@@ -579,8 +594,12 @@ country_event = {
 			limit = {
 				has_branch_office = yes
 				exists = branch_office_owner
-				branch_office_owner = { is_same_value = ROOT }
-				NOT = { has_modifier = syndicate_bribery }
+				branch_office_owner = {
+					is_same_value = ROOT
+				}
+				NOT = {
+					has_modifier = syndicate_bribery
+				}
 				planet_crime < 50
 				NOT = {
 					is_same_value = event_target:bribe_planet_1
@@ -594,8 +613,12 @@ country_event = {
 			limit = {
 				has_branch_office = yes
 				exists = branch_office_owner
-				branch_office_owner = { is_same_value = ROOT }
-				NOT = { has_modifier = syndicate_bribery }
+				branch_office_owner = {
+					is_same_value = ROOT
+				}
+				NOT = {
+					has_modifier = syndicate_bribery
+				}
 				planet_crime < 50
 				NOT = {
 					is_same_value = event_target:bribe_planet_1
@@ -610,8 +633,12 @@ country_event = {
 			limit = {
 				has_branch_office = yes
 				exists = branch_office_owner
-				branch_office_owner = { is_same_value = ROOT }
-				NOT = { has_modifier = syndicate_bribery }
+				branch_office_owner = {
+					is_same_value = ROOT
+				}
+				NOT = {
+					has_modifier = syndicate_bribery
+				}
 				planet_crime < 50
 				NOT = {
 					is_same_value = event_target:bribe_planet_1
@@ -627,8 +654,12 @@ country_event = {
 			limit = {
 				has_branch_office = yes
 				exists = branch_office_owner
-				branch_office_owner = { is_same_value = ROOT }
-				NOT = { has_modifier = syndicate_bribery }
+				branch_office_owner = {
+					is_same_value = ROOT
+				}
+				NOT = {
+					has_modifier = syndicate_bribery
+				}
 				planet_crime < 50
 				NOT = {
 					is_same_value = event_target:bribe_planet_1
@@ -645,8 +676,12 @@ country_event = {
 			limit = {
 				has_branch_office = yes
 				exists = branch_office_owner
-				branch_office_owner = { is_same_value = ROOT }
-				NOT = { has_modifier = syndicate_bribery }
+				branch_office_owner = {
+					is_same_value = ROOT
+				}
+				NOT = {
+					has_modifier = syndicate_bribery
+				}
 				planet_crime < 50
 				NOT = {
 					is_same_value = event_target:bribe_planet_1
@@ -664,8 +699,12 @@ country_event = {
 			limit = {
 				has_branch_office = yes
 				exists = branch_office_owner
-				branch_office_owner = { is_same_value = ROOT }
-				NOT = { has_modifier = syndicate_bribery }
+				branch_office_owner = {
+					is_same_value = ROOT
+				}
+				NOT = {
+					has_modifier = syndicate_bribery
+				}
 				planet_crime < 50
 				NOT = {
 					is_same_value = event_target:bribe_planet_1
@@ -681,99 +720,160 @@ country_event = {
 			save_event_target_as = bribe_planet_9
 		}
 	}
-	
 	option = {
 		name = civicsexpanded.15.a
-		trigger = { exists = event_target:bribe_planet_1 }
-		event_target:bribe_planet_1 = {
-			add_modifier = { modifier = "syndicate_bribery" days = 3600 }
+		trigger = {
+			exists = event_target:bribe_planet_1
 		}
-		add_resource = { consumer_goods = -300 }
+		event_target:bribe_planet_1 = {
+			add_modifier = {
+				modifier = "syndicate_bribery"
+				days = 3600
+			}
+		}
+		add_resource = {
+			consumer_goods = -300
+		}
 	}
 	option = {
 		name = civicsexpanded.15.b
-		trigger = { exists = event_target:bribe_planet_2 }
-		event_target:bribe_planet_2 = {
-			add_modifier = { modifier = "syndicate_bribery" days = 3600 }
+		trigger = {
+			exists = event_target:bribe_planet_2
 		}
-		add_resource = { consumer_goods = -300 }
+		event_target:bribe_planet_2 = {
+			add_modifier = {
+				modifier = "syndicate_bribery"
+				days = 3600
+			}
+		}
+		add_resource = {
+			consumer_goods = -300
+		}
 	}
 	option = {
 		name = civicsexpanded.15.c
-		trigger = { exists = event_target:bribe_planet_3 }
-		event_target:bribe_planet_3 = {
-			add_modifier = { modifier = "syndicate_bribery" days = 3600 }
+		trigger = {
+			exists = event_target:bribe_planet_3
 		}
-		add_resource = { consumer_goods = -300 }
+		event_target:bribe_planet_3 = {
+			add_modifier = {
+				modifier = "syndicate_bribery"
+				days = 3600
+			}
+		}
+		add_resource = {
+			consumer_goods = -300
+		}
 	}
 	option = {
 		name = civicsexpanded.15.d
-		trigger = { exists = event_target:bribe_planet_4 }
-		event_target:bribe_planet_4 = {
-			add_modifier = { modifier = "syndicate_bribery" days = 3600 }
+		trigger = {
+			exists = event_target:bribe_planet_4
 		}
-		add_resource = { consumer_goods = -300 }
+		event_target:bribe_planet_4 = {
+			add_modifier = {
+				modifier = "syndicate_bribery"
+				days = 3600
+			}
+		}
+		add_resource = {
+			consumer_goods = -300
+		}
 	}
 	option = {
 		name = civicsexpanded.15.e
-		trigger = { exists = event_target:bribe_planet_5 }
-		event_target:bribe_planet_5 = {
-			add_modifier = { modifier = "syndicate_bribery" days = 3600 }
+		trigger = {
+			exists = event_target:bribe_planet_5
 		}
-		add_resource = { consumer_goods = -300 }
+		event_target:bribe_planet_5 = {
+			add_modifier = {
+				modifier = "syndicate_bribery"
+				days = 3600
+			}
+		}
+		add_resource = {
+			consumer_goods = -300
+		}
 	}
 	option = {
 		name = civicsexpanded.15.f
-		trigger = { exists = event_target:bribe_planet_6 }
-		event_target:bribe_planet_6 = {
-			add_modifier = { modifier = "syndicate_bribery" days = 3600 }
+		trigger = {
+			exists = event_target:bribe_planet_6
 		}
-		add_resource = { consumer_goods = -300 }
+		event_target:bribe_planet_6 = {
+			add_modifier = {
+				modifier = "syndicate_bribery"
+				days = 3600
+			}
+		}
+		add_resource = {
+			consumer_goods = -300
+		}
 	}
 	option = {
 		name = civicsexpanded.15.g
-		trigger = { exists = event_target:bribe_planet_7 }
-		event_target:bribe_planet_7 = {
-			add_modifier = { modifier = "syndicate_bribery" days = 3600 }
+		trigger = {
+			exists = event_target:bribe_planet_7
 		}
-		add_resource = { consumer_goods = -300 }
+		event_target:bribe_planet_7 = {
+			add_modifier = {
+				modifier = "syndicate_bribery"
+				days = 3600
+			}
+		}
+		add_resource = {
+			consumer_goods = -300
+		}
 	}
 	option = {
 		name = civicsexpanded.15.h
-		trigger = { exists = event_target:bribe_planet_8 }
-		event_target:bribe_planet_8 = {
-			add_modifier = { modifier = "syndicate_bribery" days = 3600 }
+		trigger = {
+			exists = event_target:bribe_planet_8
 		}
-		add_resource = { consumer_goods = -300 }
+		event_target:bribe_planet_8 = {
+			add_modifier = {
+				modifier = "syndicate_bribery"
+				days = 3600
+			}
+		}
+		add_resource = {
+			consumer_goods = -300
+		}
 	}
 	option = {
 		name = civicsexpanded.15.i
-		trigger = { exists = event_target:bribe_planet_9 }
-		event_target:bribe_planet_9 = {
-			add_modifier = { modifier = "syndicate_bribery" days = 3600 }
+		trigger = {
+			exists = event_target:bribe_planet_9
 		}
-		add_resource = { consumer_goods = -300 }
+		event_target:bribe_planet_9 = {
+			add_modifier = {
+				modifier = "syndicate_bribery"
+				days = 3600
+			}
+		}
+		add_resource = {
+			consumer_goods = -300
+		}
 	}
 	option = {
 		name = civicsexpanded.15.j
-		trigger = { is_ai = no }
+		trigger = {
+			is_ai = no
+		}
 	}
 }
 
 ### Liberation Bombardment
 pop_event = {
 	id = civicsexpanded.17
-	
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		from = {
 			has_orbital_bombardment = yes
 			has_orbital_bombardment_stance = liberation
 		}
 	}
-	
 	immediate = {
 		owner = {
 			add_resource = {
@@ -793,9 +893,7 @@ pop_event = {
 planet_event = {
 	id = civicsexpanded.18
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		NOT = {
 			has_planet_flag = zombie_anti_cheese
@@ -803,11 +901,16 @@ planet_event = {
 		has_branch_office = yes
 		exists = branch_office_owner
 		OR = {
-			has_holding = { holding = building_dread_encampment_corp owner = branch_office_owner }
-			has_holding = { holding = building_dread_encampment_corp_crime owner = branch_office_owner }
+			has_holding = {
+				holding = building_dread_encampment_corp
+				owner = branch_office_owner
+			}
+			has_holding = {
+				holding = building_dread_encampment_corp_crime
+				owner = branch_office_owner
+			}
 		}
 	}
-
 	immediate = {
 		set_timed_planet_flag = {
 			flag = zombie_anti_cheese
@@ -815,15 +918,24 @@ planet_event = {
 		}
 		if = {
 			limit = {
-				count_owned_pop = { limit = { has_trait = trait_zombie } count < 5 }
+				count_owned_pop = {
+					limit = {
+						has_trait = trait_zombie
+					}
+					count < 5
+				}
 				free_jobs > 0
 				branch_office_owner = {
-					any_owned_species = { has_trait = trait_zombie }
+					any_owned_species = {
+						has_trait = trait_zombie
+					}
 				}
 			}
 			branch_office_owner = {
 				random_owned_species = {
-					limit = { has_trait = trait_zombie }
+					limit = {
+						has_trait = trait_zombie
+					}
 					save_event_target_as = zombie_species
 				}
 			}
@@ -854,15 +966,14 @@ planet_event = {
 country_event = {
 	id = civicsexpanded.19
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		has_valid_civic = civic_hive_pooled_knowledge
 	}
-
 	immediate = {
-		FROM = { add_skill = 1 }
+		FROM = {
+			add_skill = 1
+		}
 	}
 }
 
@@ -871,19 +982,25 @@ planet_event = {
 	id = civicsexpanded.20
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_branch_office = yes
 		exists = branch_office_owner
 		OR = {
-			has_holding = { holding = building_corp_construction owner = branch_office_owner }
-			has_holding = { holding = building_corp_construction_crime owner = branch_office_owner }
+			has_holding = {
+				holding = building_corp_construction
+				owner = branch_office_owner
+			}
+			has_holding = {
+				holding = building_corp_construction_crime
+				owner = branch_office_owner
+			}
 		}
 	}
-	
 	immediate = {
 		branch_office_owner = {
-			add_resource = { energy = 1000 }
+			add_resource = {
+				energy = 1000
+			}
 		}
 	}
 }
@@ -895,12 +1012,9 @@ country_event = {
 	desc = "civicsexpanded.21.desc"
 	picture = GFX_evt_ringworld
 	show_sound = event_alien_nature
-
 	is_triggered_only = yes
-
 	immediate = {
 	}
-
 	option = {
 		name = EXCELLENT
 		locked_random_list = {
@@ -1033,38 +1147,58 @@ planet_event = {
 	id = civicsexpanded.22
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		last_building_changed = building_gaiaseeders_3
 		exists = owner
 		OR = {
 			AND = {
-				owner = { has_origin = origin_terraformer }
-				NOT = { has_modifier = terraformer_homeworld }
+				owner = {
+					has_origin = origin_terraformer
+				}
+				NOT = {
+					has_modifier = terraformer_homeworld
+				}
 			}
 			AND = {
-				owner = { has_ascension_perk = ap_world_shaper }
-				NOT = { has_modifier = world_shaper_mod }
+				owner = {
+					has_ascension_perk = ap_world_shaper
+				}
+				NOT = {
+					has_modifier = world_shaper_mod
+				}
 			}
 		}
 	}
-	
 	immediate = {
 		if = {
 			limit = {
 				exists = owner
-				owner = { has_origin = origin_terraformer }
-				NOT = { has_modifier = terraformer_homeworld }
+				owner = {
+					has_origin = origin_terraformer
+				}
+				NOT = {
+					has_modifier = terraformer_homeworld
+				}
 			}
-			add_modifier = { modifier = terraformer_homeworld days = -1 }
+			add_modifier = {
+				modifier = terraformer_homeworld
+				days = -1
+			}
 		}
 		if = {
 			limit = {
 				exists = owner
-				owner = { has_ascension_perk = ap_world_shaper }
-				NOT = { has_modifier = world_shaper_mod }
+				owner = {
+					has_ascension_perk = ap_world_shaper
+				}
+				NOT = {
+					has_modifier = world_shaper_mod
+				}
 			}
-			add_modifier = { modifier = world_shaper_mod days = -1 }
+			add_modifier = {
+				modifier = world_shaper_mod
+				days = -1
+			}
 		}
 	}
 }
@@ -1073,24 +1207,22 @@ planet_event = {
 country_event = {
 	id = civicsexpanded.23
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		OR = {
 			last_increased_tech = tech_infestation_1
 			last_increased_tech = tech_infestation_2
 		}
 	}
-
 	immediate = {
 		every_owned_pop = {
 			if = {
 				limit = {
 					has_trait = trait_infested_basic
-					ROOT = { has_technology = tech_infestation_1 }
+					ROOT = {
+						has_technology = tech_infestation_1
+					}
 				}
-				
 				modify_species = {
 					species = this
 					remove_trait = trait_infested_basic
@@ -1098,13 +1230,10 @@ country_event = {
 				modify_species = {
 					species = this
 					add_trait = trait_infested
-					
 					add_traits_at_start_of_list = yes
 				}
-				
 				remove_culture_shock = yes
-				remove_self_modified = yes # scripted effect
-				
+				remove_self_modified = yes				# scripted effect
 				set_citizenship_type = {
 					type = citizenship_full
 					country = root
@@ -1114,13 +1243,13 @@ country_event = {
 					country = root
 				}
 			}
-			
 			else_if = {
 				limit = {
 					has_trait = trait_infested
-					ROOT = { has_technology = tech_infestation_2 }
+					ROOT = {
+						has_technology = tech_infestation_2
+					}
 				}
-				
 				modify_species = {
 					species = this
 					remove_trait = trait_infested
@@ -1128,13 +1257,10 @@ country_event = {
 				modify_species = {
 					species = this
 					add_trait = trait_infested_advanced
-					
 					add_traits_at_start_of_list = yes
 				}
-				
 				remove_culture_shock = yes
-				remove_self_modified = yes # scripted effect
-				
+				remove_self_modified = yes				# scripted effect
 				set_citizenship_type = {
 					type = citizenship_full
 					country = root
@@ -1143,17 +1269,15 @@ country_event = {
 					type = living_standard_hive_mind
 					country = root
 				}
-
 			}
 		}
 	}
 }
+
 planet_event = {
 	id = civicsexpanded.24
-	
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		exists = owner
 		owner = {
@@ -1164,7 +1288,6 @@ planet_event = {
 			value >= 1
 		}
 	}
-	
 	immediate = {
 		set_saved_date = {
 			key = necrophage_elevation_timer
@@ -1172,59 +1295,70 @@ planet_event = {
 			expires = 3600
 		}
 		every_owned_pop = {
-			limit = { has_job = infested_pop }
+			limit = {
+				has_job = infested_pop
+			}
 			ROOT = {
 				change_variable = {
 					which = var_necrophaged_pops
 					value = 1
 				}
 			}
-			
 			modify_species = {
 				species = this
 				add_trait = trait_hive_mind
 				add_traits_at_start_of_list = yes
 			}
-			
 			if = {
 				limit = {
-					owner = { has_technology = tech_infestation_2 }
+					owner = {
+						has_technology = tech_infestation_2
+					}
 				}
 				modify_species = {
 					species = this
 					add_trait = trait_infested_advanced
 					add_traits_at_start_of_list = yes
 				}
-				add_modifier = { modifier = recently_infested days = 360 }
+				add_modifier = {
+					modifier = recently_infested
+					days = 360
+				}
 			}
-			
 			else_if = {
 				limit = {
-					owner = { has_technology = tech_infestation_1 }
+					owner = {
+						has_technology = tech_infestation_1
+					}
 				}
 				modify_species = {
 					species = this
 					add_trait = trait_infested
 					add_traits_at_start_of_list = yes
 				}
-				add_modifier = { modifier = recently_infested days = 900 }
+				add_modifier = {
+					modifier = recently_infested
+					days = 900
+				}
 			}
-			
 			else_if = {
 				limit = {
-					owner = { has_technology = tech_infestation_0 }
+					owner = {
+						has_technology = tech_infestation_0
+					}
 				}
 				modify_species = {
 					species = this
 					add_trait = trait_infested_basic
 					add_traits_at_start_of_list = yes
 				}
-				add_modifier = { modifier = recently_infested days = 1800 }
+				add_modifier = {
+					modifier = recently_infested
+					days = 1800
+				}
 			}
-			
 			remove_culture_shock = yes
-			remove_self_modified = yes # scripted effect
-			
+			remove_self_modified = yes			# scripted effect
 			set_citizenship_type = {
 				type = citizenship_full
 				country = root.owner
@@ -1233,16 +1367,27 @@ planet_event = {
 				type = living_standard_hive_mind
 				country = root.owner
 			}
-			
 			every_country = {
 				limit = {
 					has_communications = root.owner
-					NOT = { is_country = root.owner }
-					NOT = { is_same_species = prev }
-					NOT = { has_ai_personality_behaviour = purger }
-					NOT = { has_valid_civic = civic_infestation }
-					NOT = { has_origin = origin_necrophage }
-					NOT = { has_ethic = ethic_gestalt_consciousness }
+					NOT = {
+						is_country = root.owner
+					}
+					NOT = {
+						is_same_species = prev
+					}
+					NOT = {
+						has_ai_personality_behaviour = purger
+					}
+					NOT = {
+						has_valid_civic = civic_infestation
+					}
+					NOT = {
+						has_origin = origin_necrophage
+					}
+					NOT = {
+						has_ethic = ethic_gestalt_consciousness
+					}
 					NOR = {
 						has_valid_civic = civic_death_cult
 						has_valid_civic = civic_death_cult_corporate
@@ -1259,20 +1404,28 @@ planet_event = {
 						level >= 2
 					}
 				}
-				add_opinion_modifier = { who = root.owner modifier = opinion_necrophage }
+				add_opinion_modifier = {
+					who = root.owner
+					modifier = opinion_necrophage
+				}
 			}
 			every_country = {
 				limit = {
 					has_communications = root.owner
-					NOT = { is_country = root.owner }
+					NOT = {
+						is_country = root.owner
+					}
 					is_same_species = prev
 					has_intel_level = {
 						who = FROM
 						category = economy
-						level >= 1 #lower because you'd hear from a friend of a friend
+						level >= 1						#lower because you'd hear from a friend of a friend
 					}
 				}
-				add_opinion_modifier = { who = root.owner modifier = opinion_necrophage_our_species }
+				add_opinion_modifier = {
+					who = root.owner
+					modifier = opinion_necrophage_our_species
+				}
 			}
 		}
 		create_message = {
@@ -1313,74 +1466,81 @@ planet_event = {
 		}
 	}
 }
+
 # New species, get projet to infest it
 country_event = {
 	id = civicsexpanded.26
 	title = civicsexpanded.26.title
 	desc = civicsexpanded.26.desc
-	
 	picture = GFX_evt_genetic_modification
-	
 	trigger = {
 		has_valid_civic = civic_infestation
-		NOT = { has_country_flag = flag_species_infestation_project_possible }
+		NOT = {
+			has_country_flag = flag_species_infestation_project_possible
+		}
 		any_owned_pop = {
 			is_robot_pop = no
 			is_sapient = yes
 			species = {
-				NOT = { has_trait = trait_hive_mind }
-				NOT = { has_species_flag = flag_species_to_infest }
-				NOT = { has_species_flag = flag_species_infestation_project }
-				NOT = { has_species_flag = flag_species_infestation_refused }
+				NOT = {
+					has_trait = trait_hive_mind
+				}
+				NOT = {
+					has_species_flag = flag_species_to_infest
+				}
+				NOT = {
+					has_species_flag = flag_species_infestation_project
+				}
+				NOT = {
+					has_species_flag = flag_species_infestation_refused
+				}
 				#has_citizenship_type = { country = root type = citizenship_slavery }
 			}
 		}
 	}
-	
 	mean_time_to_happen = {
 		days = 30
 	}
-	
 	immediate = {
 		random_owned_pop = {
 			limit = {
 				is_robot_pop = no
 				is_sapient = yes
 				species = {
-					NOT = { has_trait = trait_hive_mind }
-					NOT = { has_species_flag = flag_species_to_infest }
-					NOT = { has_species_flag = flag_species_infestation_project }
-					NOT = { has_species_flag = flag_species_infestation_refused }
-					
+					NOT = {
+						has_trait = trait_hive_mind
+					}
+					NOT = {
+						has_species_flag = flag_species_to_infest
+					}
+					NOT = {
+						has_species_flag = flag_species_infestation_project
+					}
+					NOT = {
+						has_species_flag = flag_species_infestation_refused
+					}
 					#has_citizenship_type = { country = root type = citizenship_slavery }
 				}
 			}
-			
 			save_event_target_as = pop_to_infest
 		}
 	}
-	
 	option = {
 		name = civicsexpanded.26.optA
-		
 		enable_special_project = {
 			name = "SPECIES_INFEST"
 			location = capital_scope
 			owner = root
 		}
-		
 		set_country_flag = flag_species_infestation_project_possible
-		
 		event_target:pop_to_infest = {
 			species = {
 				set_species_flag = flag_species_infestation_project
 			}
 		}
 	}
-	
 	option = {
 		name = civicsexpanded.26.optB
-		
 		event_target:pop_to_infest = {
 			species = {
 				set_species_flag = flag_species_infestation_refused
@@ -1388,81 +1548,74 @@ country_event = {
 		}
 	}
 }
+
 country_event = {
 	id = civicsexpanded.27
 	title = civicsexpanded.26.title
 	desc = civicsexpanded.27.desc
-	
 	picture = GFX_evt_genetic_modification
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		random_owned_pop = {
 			limit = {
 				is_robot_pop = no
 				is_sapient = yes
 				species = {
-					NOT = { has_trait = trait_hive_mind }
-					NOT = { has_species_flag = flag_species_to_infest }
-					NOT = { has_species_flag = flag_species_infestation_project }
+					NOT = {
+						has_trait = trait_hive_mind
+					}
+					NOT = {
+						has_species_flag = flag_species_to_infest
+					}
+					NOT = {
+						has_species_flag = flag_species_infestation_project
+					}
 					#NOT = { has_species_flag = flag_species_infestation_refused }
-					
 					#has_citizenship_type = { country = root type = citizenship_slavery }
 				}
 			}
-			
 			save_event_target_as = pop_to_infest
 		}
-		
 		set_country_flag = flag_infest_species_open
 	}
-	
 	option = {
 		name = civicsexpanded.27.optA
-		
 		enable_special_project = {
 			name = "SPECIES_INFEST"
 			location = capital_scope
 			owner = root
 		}
-		
 		set_country_flag = flag_species_infestation_project_possible
-		
 		event_target:pop_to_infest = {
 			species = {
 				set_species_flag = flag_species_infestation_project
 			}
 		}
-		
 		remove_country_flag = flag_infest_species_open
 	}
-	
 	option = {
 		name = civicsexpanded.26.optB
-		
 		event_target:pop_to_infest = {
 			species = {
 				set_species_flag = flag_species_infestation_refused
 			}
 		}
-		
 		remove_country_flag = flag_infest_species_open
 	}
 }
+
 country_event = {
 	id = civicsexpanded.28
 	title = civicsexpanded.26.title
 	desc = civicsexpanded.28.desc
-	
 	picture = GFX_evt_genetic_modification
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = civicsexpanded.28.optA
 		if = {
-			limit = { exists = event_target:pop_to_infest }
+			limit = {
+				exists = event_target:pop_to_infest
+			}
 			event_target:pop_to_infest = {
 				species = {
 					set_species_flag = flag_species_to_infest
@@ -1492,30 +1645,40 @@ event = {
 	id = civicsexpanded.29
 	hide_window = yes
 	is_triggered_only = yes
-	
 	immediate = {
 		random_country = {
-			country_event = { id = civicsexpanded.30 }
+			country_event = {
+				id = civicsexpanded.30
+			}
 		}
-	}	
+	}
 }
 
 country_event = {
 	id = civicsexpanded.30
 	hide_window = yes
 	is_triggered_only = yes
-	
 	immediate = {
 		# Fanatic Befrienders
 		every_country = {
-			limit = { has_origin = origin_befrienders }
-			country_event = { id = civicsexpanded.31 }
+			limit = {
+				has_origin = origin_befrienders
+			}
+			country_event = {
+				id = civicsexpanded.31
+			}
 		}
 		every_country = {
-			limit = { NOT = { has_origin = origin_befrienders } }
+			limit = {
+				NOT = {
+					has_origin = origin_befrienders
+				}
+			}
 			remove_befriender_migration_modifiers = yes
 			every_owned_planet = {
-				limit = { has_modifier = befriender_xeno_happiness }
+				limit = {
+					has_modifier = befriender_xeno_happiness
+				}
 				remove_modifier = befriender_xeno_happiness
 			}
 		}
@@ -1530,19 +1693,26 @@ country_event = {
 			if = {
 				limit = {
 					has_valid_civic = civic_philosopher_king
-					NOT = { has_modifier = philosopher_king_wise_leader }
+					NOT = {
+						has_modifier = philosopher_king_wise_leader
+					}
 					any_owned_leader = {
 						leader_class = ruler
 						has_skill > 4
 					}
 				}
-				add_modifier = { modifier = philosopher_king_wise_leader days = -1 }
+				add_modifier = {
+					modifier = philosopher_king_wise_leader
+					days = -1
+				}
 			}
 			else_if = {
 				limit = {
 					has_modifier = philosopher_king_wise_leader
 					OR = {
-						NOT = { has_valid_civic = civic_philosopher_king }
+						NOT = {
+							has_valid_civic = civic_philosopher_king
+						}
 						NOT = {
 							any_owned_leader = {
 								leader_class = ruler
@@ -1560,7 +1730,9 @@ country_event = {
 				OR = {
 					has_valid_civic = civic_shadow_council
 					has_valid_civic = civic_shadow_council_megacorp
-					any_owned_pop = { has_modifier = pop_shadow_ruler }
+					any_owned_pop = {
+						has_modifier = pop_shadow_ruler
+					}
 				}
 			}
 			if = {
@@ -1579,13 +1751,20 @@ country_event = {
 				}
 				capital_scope = {
 					random_owned_pop = {
-						limit = { is_pop_category = ruler }
-						add_modifier = { modifier = pop_shadow_ruler days = -1 }
+						limit = {
+							is_pop_category = ruler
+						}
+						add_modifier = {
+							modifier = pop_shadow_ruler
+							days = -1
+						}
 					}
 				}
 				every_owned_pop = {
 					limit = {
-						NOT = { is_pop_category = ruler }
+						NOT = {
+							is_pop_category = ruler
+						}
 						has_modifier = pop_shadow_ruler
 					}
 					remove_modifier = pop_shadow_ruler
@@ -1593,7 +1772,9 @@ country_event = {
 			}
 			else = {
 				every_owned_pop = {
-					limit = { has_modifier = pop_shadow_ruler }
+					limit = {
+						has_modifier = pop_shadow_ruler
+					}
 					remove_modifier = pop_shadow_ruler
 				}
 			}
@@ -1612,8 +1793,15 @@ country_event = {
 					is_at_war = yes
 				}
 				if = {
-					limit = { NOT = { has_modifier = media_war_claims } }
-					add_modifier = { modifier = media_war_claims days = -1 }
+					limit = {
+						NOT = {
+							has_modifier = media_war_claims
+						}
+					}
+					add_modifier = {
+						modifier = media_war_claims
+						days = -1
+					}
 				}
 			}
 			else = {
@@ -1642,9 +1830,18 @@ country_event = {
 								any_owned_species = {
 									is_sapient = yes
 									OR = {
-										has_citizenship_type = { country = from type = citizenship_purge_machine }
-										has_citizenship_type = { country = from type = citizenship_purge }
-										has_citizenship_type = { country = from type = citizenship_slavery }
+										has_citizenship_type = {
+											country = from
+											type = citizenship_purge_machine
+										}
+										has_citizenship_type = {
+											country = from
+											type = citizenship_purge
+										}
+										has_citizenship_type = {
+											country = from
+											type = citizenship_slavery
+										}
 									}
 								}
 							}
@@ -1652,8 +1849,15 @@ country_event = {
 					}
 				}
 				if = {
-					limit = { NOT = { has_modifier = emancipator_wars } }
-					add_modifier = { modifier = emancipator_wars days = -1 }
+					limit = {
+						NOT = {
+							has_modifier = emancipator_wars
+						}
+					}
+					add_modifier = {
+						modifier = emancipator_wars
+						days = -1
+					}
 				}
 			}
 			else = {
@@ -1662,34 +1866,39 @@ country_event = {
 		}
 	}
 }
+
 # Fanatic Befrienders
 country_event = {
 	id = civicsexpanded.31
 	hide_window = yes
 	is_triggered_only = yes
-	
 	immediate = {
 		befriender_migration_update = yes
 		every_owned_planet = {
 			if = {
 				limit = {
-					NOT = { has_modifier = befriender_xeno_happiness }
+					NOT = {
+						has_modifier = befriender_xeno_happiness
+					}
 					count_species = {
-						limit = { 
+						limit = {
 							is_sapient = yes
 							is_shackled_robot = no
 						}
 						count >= 2
 					}
 				}
-				add_modifier = { modifier = befriender_xeno_happiness days = -1 }
+				add_modifier = {
+					modifier = befriender_xeno_happiness
+					days = -1
+				}
 			}
 			else_if = {
 				limit = {
 					has_modifier = befriender_xeno_happiness
 					NOT = {
 						count_species = {
-							limit = { 
+							limit = {
 								is_sapient = yes
 								is_shackled_robot = no
 							}
@@ -1708,24 +1917,32 @@ country_event = {
 	id = civicsexpanded.36
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_valid_civic = civic_starvation_fearing
 	}
-	
 	immediate = {
-		if  = {
+		if = {
 			limit = {
-				NOT = { has_modifier = starvation_fearing_low_food }
+				NOT = {
+					has_modifier = starvation_fearing_low_food
+				}
 				has_deficit = food
 			}
-			add_modifier = { modifier = starvation_fearing_low_food days = -1 }
+			add_modifier = {
+				modifier = starvation_fearing_low_food
+				days = -1
+			}
 		}
 		else_if = {
 			limit = {
 				has_modifier = starvation_fearing_low_food
-				NOT = { has_deficit = food }
-				has_monthly_income = { resource = food  value > 0 }
+				NOT = {
+					has_deficit = food
+				}
+				has_monthly_income = {
+					resource = food
+					value > 0
+				}
 			}
 			remove_modifier = starvation_fearing_low_food
 		}
@@ -1733,7 +1950,6 @@ country_event = {
 }
 
 # 37 at bottom
-
 ### Shadow Council ###
 country_event = {
 	id = civicsexpanded.38
@@ -1742,7 +1958,9 @@ country_event = {
 	desc = {
 		text = "civicsexpanded.38.desc_bombing"
 		trigger = {
-			any_owned_planet = { planet_stability < 35 }
+			any_owned_planet = {
+				planet_stability < 35
+			}
 		}
 	}
 	desc = {
@@ -1793,14 +2011,20 @@ country_event = {
 	desc = {
 		text = "civicsexpanded.38.desc_resign_family"
 		trigger = {
-			NOT = { has_authority = auth_dictatorial }
+			NOT = {
+				has_authority = auth_dictatorial
+			}
 		}
 	}
 	desc = {
 		text = "civicsexpanded.38.desc_resign_health"
 		trigger = {
-			NOT = { has_authority = auth_dictatorial }
-			event_target:deposed_ruler = { is_robotic_species = no }
+			NOT = {
+				has_authority = auth_dictatorial
+			}
+			event_target:deposed_ruler = {
+				is_robotic_species = no
+			}
 		}
 	}
 	desc = {
@@ -1812,7 +2036,9 @@ country_event = {
 	desc = {
 		text = "civicsexpanded.38.desc_scandal_phile"
 		trigger = {
-			NOT = { has_authority = auth_dictatorial }
+			NOT = {
+				has_authority = auth_dictatorial
+			}
 			is_xenophile = yes
 			num_communications > 2
 		}
@@ -1820,9 +2046,13 @@ country_event = {
 	desc = {
 		text = "civicsexpanded.38.desc_scandal_spir"
 		trigger = {
-			NOT = { has_authority = auth_dictatorial }
+			NOT = {
+				has_authority = auth_dictatorial
+			}
 			is_spiritualist = yes
-			NOT = { has_ethic = ethic_fanatic_egalitarian }
+			NOT = {
+				has_ethic = ethic_fanatic_egalitarian
+			}
 		}
 	}
 	desc = {
@@ -1843,7 +2073,9 @@ country_event = {
 	desc = {
 		text = "civicsexpanded.38.desc_scandal_robot"
 		trigger = {
-			NOT = { has_authority = auth_dictatorial }
+			NOT = {
+				has_authority = auth_dictatorial
+			}
 			is_materialist = yes
 			has_technology = tech_robotic_workers
 		}
@@ -1851,7 +2083,9 @@ country_event = {
 	desc = {
 		text = "civicsexpanded.38.desc_scandal_slave"
 		trigger = {
-			any_owned_pop = { is_enslaved = yes }
+			any_owned_pop = {
+				is_enslaved = yes
+			}
 		}
 	}
 	desc = {
@@ -1860,10 +2094,18 @@ country_event = {
 			event_target:deposed_ruler = {
 				OR = {
 					has_trait = trait_ruler_fertility_preacher
-					species = { has_trait = trait_rapid_breeders }
-					species = { has_trait = trait_fertile }
-					species = { has_trait = trait_decadent }
-					species = { has_trait = trait_deviants }
+					species = {
+						has_trait = trait_rapid_breeders
+					}
+					species = {
+						has_trait = trait_fertile
+					}
+					species = {
+						has_trait = trait_decadent
+					}
+					species = {
+						has_trait = trait_deviants
+					}
 				}
 			}
 		}
@@ -1890,12 +2132,24 @@ country_event = {
 					has_trait = trait_ruler_eye_for_talent
 					has_trait = trait_ruler_deep_connections
 					has_trait = trait_ruler_charismatic
-					species = { has_trait = trait_decadent }
-					species = { has_trait = trait_unruly }
-					species = { has_trait = trait_communal }
-					species = { has_trait = trait_charismatic }
-					species = { has_trait = trait_deviants }
-					species = { has_trait = trait_carefree }
+					species = {
+						has_trait = trait_decadent
+					}
+					species = {
+						has_trait = trait_unruly
+					}
+					species = {
+						has_trait = trait_communal
+					}
+					species = {
+						has_trait = trait_charismatic
+					}
+					species = {
+						has_trait = trait_deviants
+					}
+					species = {
+						has_trait = trait_carefree
+					}
 				}
 			}
 		}
@@ -1903,7 +2157,9 @@ country_event = {
 	desc = {
 		text = "civicsexpanded.38.desc_scandal_party"
 		trigger = {
-			NOT = { has_authority = auth_dictatorial }
+			NOT = {
+				has_authority = auth_dictatorial
+			}
 			event_target:deposed_ruler = {
 				is_robotic_species = no
 				OR = {
@@ -1911,12 +2167,24 @@ country_event = {
 					has_trait = trait_ruler_eye_for_talent
 					has_trait = trait_ruler_deep_connections
 					has_trait = trait_ruler_charismatic
-					species = { has_trait = trait_decadent }
-					species = { has_trait = trait_unruly }
-					species = { has_trait = trait_communal }
-					species = { has_trait = trait_charismatic }
-					species = { has_trait = trait_deviants }
-					species = { has_trait = trait_carefree }
+					species = {
+						has_trait = trait_decadent
+					}
+					species = {
+						has_trait = trait_unruly
+					}
+					species = {
+						has_trait = trait_communal
+					}
+					species = {
+						has_trait = trait_charismatic
+					}
+					species = {
+						has_trait = trait_deviants
+					}
+					species = {
+						has_trait = trait_carefree
+					}
 				}
 			}
 		}
@@ -1924,9 +2192,13 @@ country_event = {
 	desc = {
 		text = "civicsexpanded.38.desc_scandal_phobe"
 		trigger = {
-			NOT = { has_authority = auth_dictatorial }
+			NOT = {
+				has_authority = auth_dictatorial
+			}
 			is_xenophobe = yes
-			NOT = { has_valid_civic = civic_fanatic_purifiers }
+			NOT = {
+				has_valid_civic = civic_fanatic_purifiers
+			}
 		}
 	}
 	desc = {
@@ -1944,7 +2216,7 @@ country_event = {
 	desc = {
 		text = "civicsexpanded.38.desc_snake"
 		trigger = {
-			is_xenophobe = no #wouldn't trust an alien pet
+			is_xenophobe = no			#wouldn't trust an alien pet
 		}
 	}
 	desc = {
@@ -1957,8 +2229,12 @@ country_event = {
 		text = "civicsexpanded.38.desc_scandal_draft"
 		trigger = {
 			is_militarist = yes
-			NOT = { has_authority = auth_dictatorial }
-			NOT = { has_valid_civic = civic_citizen_service }
+			NOT = {
+				has_authority = auth_dictatorial
+			}
+			NOT = {
+				has_valid_civic = civic_citizen_service
+			}
 		}
 	}
 	desc = {
@@ -2004,22 +2280,28 @@ country_event = {
 	picture = GFX_evt_conclave
 	show_sound = event_factions
 	location = ROOT.capital_scope
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		random_owned_leader = {
-			limit = { leader_class = ruler }
+			limit = {
+				leader_class = ruler
+			}
 			save_event_target_as = deposed_ruler
 		}
 	}
-	
 	option = {
 		name = EXCELLENT
 		custom_tooltip = civicsexpanded.38.a.tooltip
-		add_modifier = { modifier = recently_deposed_ruler days = 3600 }
+		add_modifier = {
+			modifier = recently_deposed_ruler
+			days = 3600
+		}
 		hidden_effect = {
-			event_target:deposed_ruler = { kill_leader = { show_notification = no } }
+			event_target:deposed_ruler = {
+				kill_leader = {
+					show_notification = no
+				}
+			}
 		}
 	}
 }
@@ -2029,12 +2311,10 @@ country_event = {
 	id = civicsexpanded.40
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_origin = origin_iron_despot
 		exists = ruler
 	}
-	
 	immediate = {
 		if = {
 			limit = {
@@ -2047,15 +2327,21 @@ country_event = {
 					is_materialist = no
 				}
 			}
-			country_event = { id = civicsexpanded.41 }
+			country_event = {
+				id = civicsexpanded.41
+			}
 		}
 		else_if = {
 			limit = {
 				ruler = {
-					NOT = { has_trait = leader_trait_ruler_iron_despot }
+					NOT = {
+						has_trait = leader_trait_ruler_iron_despot
+					}
 				}
 			}
-			country_event = { id = civicsexpanded.53 }
+			country_event = {
+				id = civicsexpanded.53
+			}
 		}
 	}
 }
@@ -2067,9 +2353,7 @@ country_event = {
 	picture = GFX_evt_sapient_AI
 	show_sound = event_alien_signal
 	location = ROOT.capital_scope
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = civicsexpanded.41.a
 		ai_chance = {
@@ -2132,32 +2416,44 @@ country_event = {
 			else_if = {
 				limit = {
 					is_egalitarian = yes
-					NOT = { has_government = gov_totalitarian_iron_despot }
+					NOT = {
+						has_government = gov_totalitarian_iron_despot
+					}
 				}
 				shift_ethic = ethic_materialist
 				if = {
-					limit = { is_egalitarian = yes }
+					limit = {
+						is_egalitarian = yes
+					}
 					shift_ethic = ethic_materialist
 				}
 				if = {
-					limit = { is_egalitarian = yes }
+					limit = {
+						is_egalitarian = yes
+					}
 					country_remove_ethic = ethic_egalitarian
 					country_add_ethic = ethic_xenophile
 				}
 			}
 			if = {
-				limit = { is_materialist = no }
+				limit = {
+					is_materialist = no
+				}
 				shift_ethic = ethic_materialist
 			}
 		}
 		if = {
-			limit = { is_megacorp = no }
+			limit = {
+				is_megacorp = no
+			}
 			change_government = {
 				authority = auth_dictatorial
 			}
 		}
 		else_if = {
-			limit = { is_megacorp = yes }
+			limit = {
+				is_megacorp = yes
+			}
 			change_government = {
 				authority = auth_bugged_corporate_imperial
 			}
@@ -2169,7 +2465,9 @@ country_event = {
 		ai_chance = {
 			factor = 1
 		}
-		country_event = { id = civicsexpanded.42 }
+		country_event = {
+			id = civicsexpanded.42
+		}
 	}
 }
 
@@ -2196,9 +2494,10 @@ country_event = {
 			}
 		}
 	}
-	
 	immediate = {
-		ruler = { save_event_target_as = Ruler_Hal }
+		ruler = {
+			save_event_target_as = Ruler_Hal
+		}
 		if = {
 			limit = {
 				any_owned_leader = {
@@ -2223,11 +2522,8 @@ country_event = {
 			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	diplomatic = yes
-	
 	picture_event_data = {
 		portrait = root.leader
 		planet_background = root
@@ -2235,7 +2531,6 @@ country_event = {
 		city_level = root
 		room = root
 	}
-	
 	option = {
 		name = civicsexpanded.42.a_a
 		trigger = {
@@ -2246,10 +2541,11 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			country_event = { id = civicsexpanded.43 }
+			country_event = {
+				id = civicsexpanded.43
+			}
 		}
 	}
-	
 	option = {
 		name = civicsexpanded.42.a_b
 		trigger = {
@@ -2260,7 +2556,9 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			country_event = { id = civicsexpanded.49 }
+			country_event = {
+				id = civicsexpanded.49
+			}
 		}
 	}
 }
@@ -2270,11 +2568,8 @@ country_event = {
 	id = civicsexpanded.43
 	title = "civicsexpanded.42.name"
 	desc = civicsexpanded.43.desc
-
 	is_triggered_only = yes
-	
 	diplomatic = yes
-	
 	picture_event_data = {
 		portrait = root.leader
 		planet_background = root
@@ -2282,7 +2577,6 @@ country_event = {
 		city_level = root
 		room = root
 	}
-	
 	option = {
 		name = civicsexpanded.43.a
 		trigger = {
@@ -2293,7 +2587,9 @@ country_event = {
 			}
 		}
 		response_text = civicsexpanded.43.a.response
-		country_event = { id = civicsexpanded.44 }
+		country_event = {
+			id = civicsexpanded.44
+		}
 	}
 	option = {
 		name = civicsexpanded.43.a
@@ -2304,9 +2600,12 @@ country_event = {
 				is_militarist = yes
 			}
 		}
-		country_event = { id = civicsexpanded.50 }
+		country_event = {
+			id = civicsexpanded.50
+		}
 	}
 }
+
 country_event = {
 	id = civicsexpanded.44
 	title = "civicsexpanded.44.name"
@@ -2314,9 +2613,7 @@ country_event = {
 	picture = GFX_evt_guardians
 	show_sound = event_trap_laser
 	location = ROOT.capital_scope
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = civicsexpanded.44.paranoid
 		trigger = {
@@ -2329,7 +2626,9 @@ country_event = {
 		}
 		custom_tooltip = civicsexpanded.44.paranoid.tooltip
 		hidden_effect = {
-			country_event = { id = civicsexpanded.46 }
+			country_event = {
+				id = civicsexpanded.46
+			}
 		}
 	}
 	option = {
@@ -2354,7 +2653,9 @@ country_event = {
 		}
 		custom_tooltip = civicsexpanded.44.computer_expert.tooltip
 		hidden_effect = {
-			country_event = { id = civicsexpanded.46 }
+			country_event = {
+				id = civicsexpanded.46
+			}
 		}
 	}
 	option = {
@@ -2380,12 +2681,20 @@ country_event = {
 		custom_tooltip = civicsexpanded.44.sixty.tooltip
 		hidden_effect = {
 			random_list = {
-				40 = { country_event = { id = civicsexpanded.45 } }
+				40 = {
+					country_event = {
+						id = civicsexpanded.45
+					}
+				}
 				60 = {
-					country_event = { id = civicsexpanded.46 }
+					country_event = {
+						id = civicsexpanded.46
+					}
 					modifier = {
 						factor = 1.5
-						event_target:Scientist_Dave = { has_skill >= 5 }
+						event_target:Scientist_Dave = {
+							has_skill >= 5
+						}
 					}
 				}
 			}
@@ -2417,7 +2726,9 @@ country_event = {
 		}
 		custom_tooltip = civicsexpanded.44.fight_expert.tooltip
 		hidden_effect = {
-			country_event = { id = civicsexpanded.46 }
+			country_event = {
+				id = civicsexpanded.46
+			}
 		}
 	}
 	option = {
@@ -2447,18 +2758,27 @@ country_event = {
 		custom_tooltip = civicsexpanded.44.sixty.tooltip
 		hidden_effect = {
 			random_list = {
-				40 = { country_event = { id = civicsexpanded.45 } }
+				40 = {
+					country_event = {
+						id = civicsexpanded.45
+					}
+				}
 				60 = {
-					country_event = { id = civicsexpanded.46 }
+					country_event = {
+						id = civicsexpanded.46
+					}
 					modifier = {
 						factor = 1.5
-						event_target:Scientist_Dave = { has_skill >= 5 }
+						event_target:Scientist_Dave = {
+							has_skill >= 5
+						}
 					}
 				}
 			}
 		}
 	}
 }
+
 # Bad End: AI assumes direct control
 country_event = {
 	id = civicsexpanded.45
@@ -2467,9 +2787,7 @@ country_event = {
 	picture = GFX_evt_sapient_AI
 	show_sound = event_alien_signal
 	location = ROOT.capital_scope
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		if = {
 			limit = {
@@ -2481,51 +2799,68 @@ country_event = {
 		else_if = {
 			limit = {
 				is_egalitarian = yes
-				NOT = { has_government = gov_totalitarian_iron_despot }
+				NOT = {
+					has_government = gov_totalitarian_iron_despot
+				}
 			}
 			shift_ethic = ethic_materialist
 			if = {
-				limit = { is_egalitarian = yes }
+				limit = {
+					is_egalitarian = yes
+				}
 				shift_ethic = ethic_materialist
 			}
 			if = {
-				limit = { is_egalitarian = yes }
+				limit = {
+					is_egalitarian = yes
+				}
 				country_remove_ethic = ethic_egalitarian
 				country_add_ethic = ethic_xenophile
 			}
 		}
 		if = {
-			limit = { is_materialist = no }
+			limit = {
+				is_materialist = no
+			}
 			shift_ethic = ethic_materialist
 		}
 		if = {
-			limit = { is_megacorp = no }
+			limit = {
+				is_megacorp = no
+			}
 			change_government = {
 				authority = auth_dictatorial
 			}
 		}
 		else_if = {
-			limit = { is_megacorp = yes }
+			limit = {
+				is_megacorp = yes
+			}
 			change_government = {
 				authority = auth_bugged_corporate_imperial
 			}
 		}
 		event_target:Scientist_Dave = {
-			kill_leader = { show_notification = no }
+			kill_leader = {
+				show_notification = no
+			}
 		}
 	}
-	
 	option = {
 		name = CURSES
 		tooltip = {
 			if = {
-				limit = { is_megacorp = no }
+				limit = {
+					is_megacorp = no
+				}
 				change_government = {
 					authority = auth_dictatorial
 				}
 			}
 			else_if = {
-				limit = { is_megacorp = yes }
+				limit = {
+					is_megacorp = yes
+				}
 				change_government = {
 					authority = auth_bugged_corporate_imperial
 				}
@@ -2534,16 +2869,14 @@ country_event = {
 		custom_tooltip = civicsexpanded.45.a.tooltip
 	}
 }
+
 # Evil AI Shutdown
 country_event = {
 	id = civicsexpanded.46
 	title = "civicsexpanded.42.name"
 	desc = civicsexpanded.46.desc
-
 	is_triggered_only = yes
-	
 	diplomatic = yes
-	
 	picture_event_data = {
 		portrait = root.leader
 		planet_background = root
@@ -2551,21 +2884,20 @@ country_event = {
 		city_level = root
 		room = root
 	}
-	
 	option = {
 		name = civicsexpanded.46.a
-		country_event = { id = civicsexpanded.47 }
+		country_event = {
+			id = civicsexpanded.47
+		}
 	}
 }
+
 country_event = {
 	id = civicsexpanded.47
 	title = "civicsexpanded.42.name"
 	desc = civicsexpanded.47.desc
-
 	is_triggered_only = yes
-	
 	diplomatic = yes
-	
 	picture_event_data = {
 		portrait = root.leader
 		planet_background = root
@@ -2573,18 +2905,23 @@ country_event = {
 		city_level = root
 		room = root
 	}
-	
 	option = {
 		name = civicsexpanded.47.a
 		response_text = civicsexpanded.47.a.response
-		country_event = { id = civicsexpanded.48 }
+		country_event = {
+			id = civicsexpanded.48
+		}
 	}
 	option = {
 		name = civicsexpanded.47.b
-		trigger = { is_ai = no }
+		trigger = {
+			is_ai = no
+		}
 		response_text = civicsexpanded.47.b.response
 		custom_tooltip = civicsexpanded.47.b.tooltip
-		country_event = { id = civicsexpanded.45 }
+		country_event = {
+			id = civicsexpanded.45
+		}
 	}
 }
 
@@ -2596,18 +2933,19 @@ country_event = {
 	picture = GFX_evt_announcement
 	show_sound = event_celebration
 	location = ROOT.capital_scope
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		set_origin = origin_iron_despot_npc
 	}
-	
 	option = {
 		name = EXCELLENT
 		tooltip = {
 			set_origin = origin_iron_despot_npc
-			ruler = { kill_leader = { show_notification = yes } }
+			ruler = {
+				kill_leader = {
+					show_notification = yes
+				}
+			}
 		}
 		custom_tooltip = civicsexpanded.48.a.tootip
 		add_resource = {
@@ -2616,10 +2954,13 @@ country_event = {
 			unity = 1250
 		}
 	}
-	
 	after = {
 		hidden_effect = {
-			ruler = { kill_leader = { show_notification = no } }
+			ruler = {
+				kill_leader = {
+					show_notification = no
+				}
+			}
 		}
 	}
 }
@@ -2629,11 +2970,8 @@ country_event = {
 	id = civicsexpanded.49
 	title = "civicsexpanded.42.name"
 	desc = civicsexpanded.49.desc
-
 	is_triggered_only = yes
-	
 	diplomatic = yes
-	
 	picture_event_data = {
 		portrait = root.leader
 		planet_background = root
@@ -2641,11 +2979,11 @@ country_event = {
 		city_level = root
 		room = root
 	}
-	
 	immediate = {
-		ruler = { save_event_target_as = Ruler_Hal }
+		ruler = {
+			save_event_target_as = Ruler_Hal
+		}
 	}
-	
 	option = {
 		name = civicsexpanded.49.a
 		ai_chance = {
@@ -2683,11 +3021,14 @@ country_event = {
 					trait = leader_trait_bureaucrat
 				}
 			}
-			last_created_leader = { add_ruler_trait = leader_trait_ruler_iron_despot }
-			country_event = { id = civicsexpanded.52 }
+			last_created_leader = {
+				add_ruler_trait = leader_trait_ruler_iron_despot
+			}
+			country_event = {
+				id = civicsexpanded.52
+			}
 		}
 	}
-	
 	option = {
 		name = civicsexpanded.49.b
 		ai_chance = {
@@ -2717,12 +3058,16 @@ country_event = {
 			}
 		}
 		response_text = civicsexpanded.49.a.response
-		add_modifier = { modifier = iron_despot_administration days = -1 }
+		add_modifier = {
+			modifier = iron_despot_administration
+			days = -1
+		}
 		hidden_effect = {
-			country_event = { id = civicsexpanded.52 }
+			country_event = {
+				id = civicsexpanded.52
+			}
 		}
 	}
-	
 	option = {
 		name = civicsexpanded.49.c
 		ai_chance = {
@@ -2746,7 +3091,9 @@ country_event = {
 		}
 		custom_tooltip = civicsexpanded.49.c.tooltip
 		hidden_effect = {
-			country_event = { id = civicsexpanded.43 }
+			country_event = {
+				id = civicsexpanded.43
+			}
 		}
 	}
 }
@@ -2755,11 +3102,8 @@ country_event = {
 	id = civicsexpanded.50
 	title = "civicsexpanded.42.name"
 	desc = civicsexpanded.50.desc
-
 	is_triggered_only = yes
-	
 	diplomatic = yes
-	
 	picture_event_data = {
 		portrait = root.leader
 		planet_background = root
@@ -2767,17 +3111,22 @@ country_event = {
 		city_level = root
 		room = root
 	}
-	
 	option = {
 		name = civicsexpanded.46.a
-		country_event = { id = civicsexpanded.51 }
+		country_event = {
+			id = civicsexpanded.51
+		}
 	}
 	option = {
 		name = civicsexpanded.50.b
-		trigger = { is_ai = no }
+		trigger = {
+			is_ai = no
+		}
 		response_text = civicsexpanded.50.b.response
 		custom_tooltip = civicsexpanded.47.b.tooltip
-		country_event = { id = civicsexpanded.45 }
+		country_event = {
+			id = civicsexpanded.45
+		}
 	}
 }
 
@@ -2785,11 +3134,8 @@ country_event = {
 	id = civicsexpanded.51
 	title = "civicsexpanded.42.name"
 	desc = civicsexpanded.51.desc
-
 	is_triggered_only = yes
-	
 	diplomatic = yes
-	
 	picture_event_data = {
 		portrait = root.leader
 		planet_background = root
@@ -2797,7 +3143,6 @@ country_event = {
 		city_level = root
 		room = root
 	}
-	
 	immediate = {
 		create_leader = {
 			class = scientist
@@ -2816,18 +3161,23 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = civicsexpanded.51.a
 		response_text = civicsexpanded.51.a.response
-		country_event = { id = civicsexpanded.48 }
+		country_event = {
+			id = civicsexpanded.48
+		}
 	}
 	option = {
 		name = civicsexpanded.50.b
-		trigger = { is_ai = no }
+		trigger = {
+			is_ai = no
+		}
 		response_text = civicsexpanded.50.b.response
 		custom_tooltip = civicsexpanded.47.b.tooltip
-		country_event = { id = civicsexpanded.45 }
+		country_event = {
+			id = civicsexpanded.45
+		}
 	}
 }
 
@@ -2839,27 +3189,31 @@ country_event = {
 	picture = GFX_evt_announcement
 	show_sound = event_celebration
 	location = ROOT.capital_scope
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		set_origin = origin_iron_despot_npc
 	}
-	
 	option = {
 		name = EXCELLENT
 		tooltip = {
 			set_origin = origin_iron_despot_npc
-			ruler = { kill_leader = { show_notification = yes } }
+			ruler = {
+				kill_leader = {
+					show_notification = yes
+				}
+			}
 		}
 		add_resource = {
 			unity = 125
 		}
 	}
-	
 	after = {
 		hidden_effect = {
-			ruler = { kill_leader = { show_notification = no } }
+			ruler = {
+				kill_leader = {
+					show_notification = no
+				}
+			}
 		}
 	}
 }
@@ -2869,14 +3223,14 @@ country_event = {
 	id = civicsexpanded.53
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_origin = origin_iron_despot
 		ruler = {
-			NOT = { has_trait = leader_trait_ruler_iron_despot }
+			NOT = {
+				has_trait = leader_trait_ruler_iron_despot
+			}
 		}
 	}
-	
 	immediate = {
 		create_species = {
 			is_mod = yes
@@ -2888,7 +3242,6 @@ country_event = {
 			traits = {
 				trait = "trait_mechanical"
 			}
-			
 			effect = {
 				if = {
 					limit = {
@@ -2900,7 +3253,9 @@ country_event = {
 							}
 						}
 					}
-					change_species_characteristics = { portrait = "ai_crisis_1" }
+					change_species_characteristics = {
+						portrait = "ai_crisis_1"
+					}
 				}
 				save_event_target_as = new_robotic_species
 			}
@@ -2920,13 +3275,10 @@ country_event = {
 country_event = {
 	id = civicsexpanded.60
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		has_origin = origin_shroud_pact
 	}
-
 	immediate = {
 		if = {
 			limit = {
@@ -2956,7 +3308,6 @@ country_event = {
 				class = EXD
 				portrait = exd1
 				traits = random
-				
 				effect = {
 					save_event_target_as = new_shroud_species
 				}
@@ -2996,12 +3347,10 @@ country_event = {
 	id = civicsexpanded.61
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_origin = origin_shroud_pact
 		exists = ruler
 	}
-	
 	immediate = {
 		if = {
 			limit = {
@@ -3013,50 +3362,65 @@ country_event = {
 					has_civic = civic_machine_cult
 				}
 			}
-			country_event = { id = civicsexpanded.63 }
+			country_event = {
+				id = civicsexpanded.63
+			}
 		}
 		else_if = {
 			limit = {
 				OR = {
 					ruler = {
-						NOT = { has_trait = leader_trait_ruler_shroud_pact }
+						NOT = {
+							has_trait = leader_trait_ruler_shroud_pact
+						}
 					}
 					any_owned_leader = {
 						leader_class = governor
-						NOT = { has_trait = leader_trait_governor_shroud_pact }
+						NOT = {
+							has_trait = leader_trait_governor_shroud_pact
+						}
 					}
 					any_pool_leader = {
 						leader_class = governor
-						NOT = { has_trait = leader_trait_governor_shroud_pact }
+						NOT = {
+							has_trait = leader_trait_governor_shroud_pact
+						}
 					}
 				}
 			}
-			country_event = { id = civicsexpanded.62 }
+			country_event = {
+				id = civicsexpanded.62
+			}
 		}
 	}
 }
+
 country_event = {
 	id = civicsexpanded.62
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_origin = origin_shroud_pact
 		OR = {
 			ruler = {
-				NOT = { has_trait = leader_trait_ruler_shroud_pact }
+				NOT = {
+					has_trait = leader_trait_ruler_shroud_pact
+				}
 			}
 			any_owned_leader = {
 				leader_class = governor
-				NOT = { has_trait = leader_trait_governor_shroud_pact }
+				NOT = {
+					has_trait = leader_trait_governor_shroud_pact
+				}
 			}
 			any_pool_leader = {
 				leader_class = governor
-				NOT = { has_trait = leader_trait_governor_shroud_pact }
+				NOT = {
+					has_trait = leader_trait_governor_shroud_pact
+				}
 			}
 		}
 	}
-	
 	immediate = {
 		if = {
 			limit = {
@@ -3086,7 +3450,6 @@ country_event = {
 				class = EXD
 				portrait = exd1
 				traits = random
-				
 				effect = {
 					save_event_target_as = new_shroud_species
 				}
@@ -3094,7 +3457,11 @@ country_event = {
 		}
 		ruler = {
 			if = {
-				limit = { NOT = { has_trait = leader_trait_ruler_shroud_pact } }
+				limit = {
+					NOT = {
+						has_trait = leader_trait_ruler_shroud_pact
+					}
+				}
 				change_species = event_target:new_shroud_species
 				change_leader_portrait = species
 				add_trait = leader_trait_ruler_shroud_pact
@@ -3106,7 +3473,9 @@ country_event = {
 		every_owned_leader = {
 			limit = {
 				leader_class = governor
-				NOT = { has_trait = leader_trait_governor_shroud_pact }
+				NOT = {
+					has_trait = leader_trait_governor_shroud_pact
+				}
 			}
 			change_species = event_target:new_shroud_species
 			change_leader_portrait = exd1
@@ -3118,7 +3487,9 @@ country_event = {
 		every_pool_leader = {
 			limit = {
 				leader_class = governor
-				NOT = { has_trait = leader_trait_governor_shroud_pact }
+				NOT = {
+					has_trait = leader_trait_governor_shroud_pact
+				}
 			}
 			change_species = event_target:new_shroud_species
 			change_leader_portrait = exd1
@@ -3131,7 +3502,9 @@ country_event = {
 			limit = {
 				leader_class = scientist
 				is_same_species = event_target:new_shroud_species
-				NOT = { has_trait = leader_trait_scientist_shroud_pact }
+				NOT = {
+					has_trait = leader_trait_scientist_shroud_pact
+				}
 			}
 			add_trait = leader_trait_scientist_shroud_pact
 			add_ruler_trait = leader_trait_ruler_shroud_pact
@@ -3140,7 +3513,9 @@ country_event = {
 			limit = {
 				leader_class = scientist
 				is_same_species = event_target:new_shroud_species
-				NOT = { has_trait = leader_trait_scientist_shroud_pact }
+				NOT = {
+					has_trait = leader_trait_scientist_shroud_pact
+				}
 			}
 			add_trait = leader_trait_scientist_shroud_pact
 			add_ruler_trait = leader_trait_ruler_shroud_pact
@@ -3149,7 +3524,9 @@ country_event = {
 			limit = {
 				leader_class = admiral
 				is_same_species = event_target:new_shroud_species
-				NOT = { has_trait = leader_trait_admiral_shroud_pact }
+				NOT = {
+					has_trait = leader_trait_admiral_shroud_pact
+				}
 			}
 			add_trait = leader_trait_admiral_shroud_pact
 			add_ruler_trait = leader_trait_ruler_shroud_pact
@@ -3158,7 +3535,9 @@ country_event = {
 			limit = {
 				leader_class = admiral
 				is_same_species = event_target:new_shroud_species
-				NOT = { has_trait = leader_trait_admiral_shroud_pact }
+				NOT = {
+					has_trait = leader_trait_admiral_shroud_pact
+				}
 			}
 			add_trait = leader_trait_admiral_shroud_pact
 			add_ruler_trait = leader_trait_ruler_shroud_pact
@@ -3167,7 +3546,9 @@ country_event = {
 			limit = {
 				leader_class = general
 				is_same_species = event_target:new_shroud_species
-				NOT = { has_trait = leader_trait_general_shroud_pact }
+				NOT = {
+					has_trait = leader_trait_general_shroud_pact
+				}
 			}
 			add_trait = leader_trait_general_shroud_pact
 			add_ruler_trait = leader_trait_ruler_shroud_pact
@@ -3176,13 +3557,16 @@ country_event = {
 			limit = {
 				leader_class = general
 				is_same_species = event_target:new_shroud_species
-				NOT = { has_trait = leader_trait_general_shroud_pact }
+				NOT = {
+					has_trait = leader_trait_general_shroud_pact
+				}
 			}
 			add_trait = leader_trait_general_shroud_pact
 			add_ruler_trait = leader_trait_ruler_shroud_pact
 		}
 	}
 }
+
 # Shroud Being Ultimatum
 country_event = {
 	id = civicsexpanded.63
@@ -3191,9 +3575,7 @@ country_event = {
 	picture = GFX_evt_psionics
 	show_sound = event_psionic
 	location = ROOT.capital_scope
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = civicsexpanded.63.a
 		ai_chance = {
@@ -3204,7 +3586,6 @@ country_event = {
 					has_ascension_perk = ap_mind_over_matter
 					has_origin = origin_shroudwalker_apprentice
 				}
-
 			}
 			modifier = {
 				factor = 2
@@ -3247,17 +3628,27 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { has_ethic = ethic_fanatic_egalitarian }
+			limit = {
+				has_ethic = ethic_fanatic_egalitarian
+			}
 			shift_ethic = ethic_spiritualist
 		}
 		if = {
-			limit = { is_spiritualist = no }
+			limit = {
+				is_spiritualist = no
+			}
 			shift_ethic = ethic_spiritualist
 		}
 		if = {
-			limit = { has_civic = civic_machine_cult }
+			limit = {
+				has_civic = civic_machine_cult
+			}
 			force_remove_civic = civic_machine_cult
-			hidden_effect = { add_resource = { unity = 500 } }
+			hidden_effect = {
+				add_resource = {
+					unity = 500
+				}
+			}
 		}
 		if = {
 			limit = {
@@ -3286,7 +3677,9 @@ country_event = {
 						has_trait = leader_trait_ruler_shroud_pact
 					}
 				}
-				kill_leader = { show_notification = no }
+				kill_leader = {
+					show_notification = no
+				}
 			}
 			every_pool_leader = {
 				limit = {
@@ -3295,7 +3688,9 @@ country_event = {
 						has_trait = leader_trait_ruler_shroud_pact
 					}
 				}
-				kill_leader = { show_notification = no }
+				kill_leader = {
+					show_notification = no
+				}
 			}
 		}
 		set_timed_country_flag = {
@@ -3310,9 +3705,7 @@ country_event = {
 planet_event = {
 	id = civicsexpanded.70
 	hide_window = yes
-
 	is_triggered_only = yes
-	
 	trigger = {
 		has_deposit = d_holy_mountain
 		owner = {
@@ -3320,15 +3713,20 @@ planet_event = {
 			has_modifier = has_holy_mountain
 		}
 	}
-
 	immediate = {
 		owner = {
 			remove_modifier = has_holy_mountain
-			add_modifier = { modifier = lost_holy_mountain days = -1 }
-			country_event = { id = civicsexpanded.71 }
+			add_modifier = {
+				modifier = lost_holy_mountain
+				days = -1
+			}
+			country_event = {
+				id = civicsexpanded.71
+			}
 		}
 	}
 }
+
 country_event = {
 	id = civicsexpanded.71
 	title = "civicsexpanded.71.name"
@@ -3352,9 +3750,7 @@ country_event = {
 	}
 	picture = GFX_evt_burning_settlement
 	show_sound = event_public_unrest
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "TERRIBLE"
 		trigger = {
@@ -3365,7 +3761,10 @@ country_event = {
 		}
 		tooltip = {
 			remove_modifier = has_holy_mountain
-			add_modifier = { modifier = lost_holy_mountain days = -1 }
+			add_modifier = {
+				modifier = lost_holy_mountain
+				days = -1
+			}
 		}
 		custom_tooltip = civicsexpanded.71.a.tooltip
 	}
@@ -3379,7 +3778,10 @@ country_event = {
 		}
 		tooltip = {
 			remove_modifier = has_holy_mountain
-			add_modifier = { modifier = lost_holy_mountain days = -1 }
+			add_modifier = {
+				modifier = lost_holy_mountain
+				days = -1
+			}
 		}
 		custom_tooltip = civicsexpanded.71.b.tooltip
 	}
@@ -3389,9 +3791,7 @@ country_event = {
 planet_event = {
 	id = civicsexpanded.72
 	hide_window = yes
-
 	is_triggered_only = yes
-	
 	trigger = {
 		has_deposit = d_holy_mountain
 		FROM = {
@@ -3399,22 +3799,25 @@ planet_event = {
 			has_modifier = lost_holy_mountain
 		}
 	}
-
 	immediate = {
 		FROM = {
 			remove_modifier = lost_holy_mountain
-			add_modifier = { modifier = has_holy_mountain days = -1 }
-			country_event = { id = civicsexpanded.74 }
+			add_modifier = {
+				modifier = has_holy_mountain
+				days = -1
+			}
+			country_event = {
+				id = civicsexpanded.74
+			}
 		}
 	}
 }
+
 # Holy Mountain Regained (recolonize)
 planet_event = {
 	id = civicsexpanded.73
 	hide_window = yes
-
 	is_triggered_only = yes
-	
 	trigger = {
 		has_deposit = d_holy_mountain
 		owner = {
@@ -3422,29 +3825,35 @@ planet_event = {
 			has_modifier = lost_holy_mountain
 		}
 	}
-
 	immediate = {
 		owner = {
 			remove_modifier = lost_holy_mountain
-			add_modifier = { modifier = has_holy_mountain days = -1 }
-			country_event = { id = civicsexpanded.74 }
+			add_modifier = {
+				modifier = has_holy_mountain
+				days = -1
+			}
+			country_event = {
+				id = civicsexpanded.74
+			}
 		}
 	}
 }
+
 country_event = {
 	id = civicsexpanded.74
 	title = "civicsexpanded.74.name"
 	desc = "civicsexpanded.74.desc"
 	picture = GFX_evt_announcement
 	show_sound = event_celebration
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = "PRAISE"
 		tooltip = {
 			remove_modifier = lost_holy_mountain
-			add_modifier = { modifier = has_holy_mountain days = -1 }
+			add_modifier = {
+				modifier = has_holy_mountain
+				days = -1
+			}
 		}
 	}
 }
@@ -3454,7 +3863,6 @@ planet_event = {
 	id = civicsexpanded.75
 	is_triggered_only = yes
 	hide_window = yes
-	
 	trigger = {
 		exists = owner
 		has_deposit = d_holy_mountain
@@ -3463,7 +3871,6 @@ planet_event = {
 			has_modifier = has_holy_mountain
 		}
 	}
-
 	immediate = {
 		remove_deposit = d_holy_mountain
 		from.owner = {
@@ -3472,8 +3879,13 @@ planet_event = {
 		owner = {
 			set_country_flag = holy_mountain_destroyed
 			remove_modifier = has_holy_mountain
-			add_modifier = { modifier = lost_holy_mountain days = -1 }
-			country_event = { id = civicsexpanded.71 }
+			add_modifier = {
+				modifier = lost_holy_mountain
+				days = -1
+			}
+			country_event = {
+				id = civicsexpanded.71
+			}
 		}
 	}
 }
@@ -3483,7 +3895,6 @@ planet_event = {
 	id = civicsexpanded.76
 	is_triggered_only = yes
 	hide_window = yes
-	
 	trigger = {
 		exists = owner
 		has_deposit = d_holy_mountain
@@ -3492,7 +3903,6 @@ planet_event = {
 			has_modifier = has_holy_mountain
 		}
 	}
-
 	immediate = {
 		remove_deposit = d_holy_mountain
 		from.owner = {
@@ -3501,8 +3911,13 @@ planet_event = {
 		owner = {
 			set_country_flag = holy_mountain_sheilded
 			remove_modifier = has_holy_mountain
-			add_modifier = { modifier = lost_holy_mountain days = -1 }
-			country_event = { id = civicsexpanded.71 }
+			add_modifier = {
+				modifier = lost_holy_mountain
+				days = -1
+			}
+			country_event = {
+				id = civicsexpanded.71
+			}
 		}
 	}
 }
@@ -3512,7 +3927,6 @@ planet_event = {
 	id = civicsexpanded.77
 	is_triggered_only = yes
 	hide_window = yes
-	
 	trigger = {
 		exists = owner
 		has_deposit = d_holy_mountain
@@ -3521,12 +3935,16 @@ planet_event = {
 			has_modifier = has_holy_mountain
 		}
 	}
-
 	immediate = {
 		owner = {
 			remove_modifier = has_holy_mountain
-			add_modifier = { modifier = lost_holy_mountain days = -1 }
-			country_event = { id = civicsexpanded.71 }
+			add_modifier = {
+				modifier = lost_holy_mountain
+				days = -1
+			}
+			country_event = {
+				id = civicsexpanded.71
+			}
 		}
 	}
 }
@@ -3536,7 +3954,6 @@ planet_event = {
 	id = civicsexpanded.78
 	is_triggered_only = yes
 	hide_window = yes
-	
 	trigger = {
 		solar_system = {
 			any_system_planet = {
@@ -3549,7 +3966,6 @@ planet_event = {
 			}
 		}
 	}
-
 	immediate = {
 		from.owner = {
 			set_country_flag = holy_mountain_destroyer@root.owner
@@ -3568,8 +3984,13 @@ planet_event = {
 				owner = {
 					set_country_flag = holy_mountain_sheilded
 					remove_modifier = has_holy_mountain
-					add_modifier = { modifier = lost_holy_mountain days = -1 }
-					country_event = { id = civicsexpanded.71 }
+					add_modifier = {
+						modifier = lost_holy_mountain
+						days = -1
+					}
+					country_event = {
+						id = civicsexpanded.71
+					}
 				}
 			}
 		}
@@ -3583,34 +4004,52 @@ planet_event = {
 	desc = "civicsexpanded.80.desc"
 	picture = GFX_evt_announcement
 	show_sound = event_celebration
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		NOT = {
-			any_deposit = { is_independent_country_blocker = yes }
+			any_deposit = {
+				is_independent_country_blocker = yes
+			}
 		}
 	}
-	
 	option = {
 		name = "civicsexpanded.80.a"
-		add_modifier = { modifier = prosp_uni_mod days = 7200 }
+		add_modifier = {
+			modifier = prosp_uni_mod
+			days = 7200
+		}
 		owner = {
 			if = {
-				limit = { has_country_flag = human_1 }
-				ROOT = { add_deposit = d_united_nations }
+				limit = {
+					has_country_flag = human_1
+				}
+				ROOT = {
+					add_deposit = d_united_nations
+				}
 			}
 			else_if = {
-				limit = { is_regular_empire = yes }
-				ROOT = { add_deposit = d_default }
+				limit = {
+					is_regular_empire = yes
+				}
+				ROOT = {
+					add_deposit = d_default
+				}
 			}
 			else_if = {
-				limit = { is_hive_empire = yes }
-				ROOT = { add_deposit = d_default_hive }
+				limit = {
+					is_hive_empire = yes
+				}
+				ROOT = {
+					add_deposit = d_default_hive
+				}
 			}
 			else_if = {
-				limit = { is_machine_empire = yes }
-				ROOT = { add_deposit = d_default_machine }
+				limit = {
+					is_machine_empire = yes
+				}
+				ROOT = {
+					add_deposit = d_default_machine
+				}
 			}
 		}
 	}
@@ -3622,11 +4061,8 @@ country_event = {
 	id = civicsexpanded.85
 	title = TRANSMISSION
 	desc = "civicsexpanded.85.desc"
-
 	diplomatic = yes
-
 	is_triggered_only = yes
-
 	picture_event_data = {
 		portrait = event_target:scion_master
 		planet_background = event_target:scion_master
@@ -3634,11 +4070,12 @@ country_event = {
 		city_level = event_target:scion_master
 		room = event_target:scion_master
 	}
-
 	immediate = {
 		overlord = {
 			save_event_target_as = scion_master
-			owner_species = { save_event_target_as = fe_species }
+			owner_species = {
+				save_event_target_as = fe_species
+			}
 		}
 		random_planet_within_border = {
 			limit = {
@@ -3663,7 +4100,6 @@ country_event = {
 		}
 		set_country_flag = scion_lost_probe
 	}
-
 	option = {
 		name = civicsexpanded.85.q
 		response_text = civicsexpanded.85.q.response
@@ -3676,11 +4112,11 @@ country_event = {
 			modifier = {
 				factor = 2
 				has_ethic = ethic_xenophile
-			}			
+			}
 			modifier = {
 				factor = 10
 				has_ethic = ethic_fanatic_xenophile
-			}	
+			}
 			modifier = {
 				factor = 2
 				has_ethic = ethic_materialist
@@ -3720,9 +4156,17 @@ country_event = {
 		}
 		response_text = origin.27.b.response
 		custom_tooltip = fallen_empire_unhappy_tooltip
-		hidden_effect = { event_target:scion_master = { add_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request } } }
+		hidden_effect = {
+			event_target:scion_master = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
+		}
 	}
 }
+
 ship_event = {
 	id = civicsexpanded.86
 	title = "PROJECT_COMPLETE"
@@ -3730,9 +4174,7 @@ ship_event = {
 	picture = GFX_evt_satellite_in_orbit
 	show_sound = event_ship_thrusters
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = EXCELLENT
 		owner = {
@@ -3746,7 +4188,10 @@ ship_event = {
 		custom_tooltip = fallen_empire_happy_tooltip
 		hidden_effect = {
 			event_target:scion_master = {
-				add_opinion_modifier = { who = root.owner modifier = opinion_completed_fallen_empire_task }
+				add_opinion_modifier = {
+					who = root.owner
+					modifier = opinion_completed_fallen_empire_task
+				}
 			}
 		}
 	}
@@ -3757,11 +4202,8 @@ country_event = {
 	id = civicsexpanded.87
 	title = TRANSMISSION
 	desc = "civicsexpanded.87.desc"
-
 	diplomatic = yes
-
 	is_triggered_only = yes
-
 	picture_event_data = {
 		portrait = event_target:scion_master
 		planet_background = event_target:scion_master
@@ -3769,11 +4211,12 @@ country_event = {
 		city_level = event_target:scion_master
 		room = event_target:scion_master
 	}
-
 	immediate = {
 		overlord = {
 			save_event_target_as = scion_master
-			owner_species = { save_event_target_as = fe_species }
+			owner_species = {
+				save_event_target_as = fe_species
+			}
 		}
 		random_planet_within_border = {
 			limit = {
@@ -3798,7 +4241,6 @@ country_event = {
 		}
 		set_country_flag = scion_contingency_base
 	}
-
 	option = {
 		name = civicsexpanded.87.q
 		response_text = civicsexpanded.87.q.response
@@ -3823,7 +4265,7 @@ country_event = {
 			modifier = {
 				factor = 0.5
 				has_ethic = ethic_egalitarian
-			}			
+			}
 			modifier = {
 				factor = 0.25
 				has_ethic = ethic_fanatic_egalitarian
@@ -3831,7 +4273,7 @@ country_event = {
 			modifier = {
 				factor = 0.25
 				has_ethic = ethic_xenophile
-			}			
+			}
 			modifier = {
 				factor = 0.1
 				has_ethic = ethic_fanatic_xenophile
@@ -3855,9 +4297,17 @@ country_event = {
 		}
 		response_text = origin.26.b.response.machine
 		custom_tooltip = fallen_empire_unhappy_tooltip
-		hidden_effect = { event_target:scion_master = { add_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request } } }
+		hidden_effect = {
+			event_target:scion_master = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
+		}
 	}
 }
+
 ship_event = {
 	id = civicsexpanded.88
 	title = "PROJECT_COMPLETE"
@@ -3865,9 +4315,7 @@ ship_event = {
 	picture = GFX_evt_physics_research
 	show_sound = event_alien_signal
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = CURIOUS
 		owner = {
@@ -3882,7 +4330,10 @@ ship_event = {
 		hidden_effect = {
 			set_global_flag = scion_contingency_ghost_signal
 			event_target:scion_master = {
-				add_opinion_modifier = { who = root.owner modifier = opinion_completed_fallen_empire_task }
+				add_opinion_modifier = {
+					who = root.owner
+					modifier = opinion_completed_fallen_empire_task
+				}
 			}
 		}
 	}
@@ -3893,11 +4344,8 @@ country_event = {
 	id = civicsexpanded.89
 	title = TRANSMISSION
 	desc = "civicsexpanded.89.desc"
-
 	diplomatic = yes
-
 	is_triggered_only = yes
-
 	picture_event_data = {
 		portrait = event_target:scion_master
 		planet_background = event_target:scion_master
@@ -3905,11 +4353,12 @@ country_event = {
 		city_level = event_target:scion_master
 		room = event_target:scion_master
 	}
-
 	immediate = {
 		overlord = {
 			save_event_target_as = scion_master
-			owner_species = { save_event_target_as = fe_species }
+			owner_species = {
+				save_event_target_as = fe_species
+			}
 		}
 		random_planet_within_border = {
 			limit = {
@@ -3934,7 +4383,6 @@ country_event = {
 		}
 		set_country_flag = scion_bio_scans
 	}
-
 	option = {
 		name = origin.26.a
 		ai_chance = {
@@ -3942,11 +4390,11 @@ country_event = {
 			modifier = {
 				factor = 2
 				has_ethic = ethic_xenophile
-			}			
+			}
 			modifier = {
 				factor = 10
 				has_ethic = ethic_fanatic_xenophile
-			}	
+			}
 			modifier = {
 				factor = 2
 				has_ethic = ethic_materialist
@@ -3954,7 +4402,7 @@ country_event = {
 			modifier = {
 				factor = 10
 				has_ethic = ethic_fanatic_materialist
-			}				
+			}
 			modifier = {
 				factor = 2
 				is_machine_empire = yes
@@ -3986,7 +4434,14 @@ country_event = {
 		}
 		response_text = civicsexpanded.89.b.response
 		custom_tooltip = fallen_empire_unhappy_tooltip
-		hidden_effect = { event_target:scion_master = { add_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request } } }
+		hidden_effect = {
+			event_target:scion_master = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
+		}
 	}
 	option = {
 		name = NOTIME
@@ -3995,9 +4450,17 @@ country_event = {
 		}
 		response_text = civicsexpanded.89.c.response
 		custom_tooltip = fallen_empire_unhappy_tooltip
-		hidden_effect = { event_target:scion_master = { add_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request } } }
+		hidden_effect = {
+			event_target:scion_master = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
+		}
 	}
 }
+
 ship_event = {
 	id = civicsexpanded.90
 	title = "PROJECT_COMPLETE"
@@ -4005,9 +4468,7 @@ ship_event = {
 	picture = GFX_evt_animal_wildlife
 	show_sound = event_alien_nature
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = FASCINATING
 		FROMFROM = {
@@ -4025,24 +4486,37 @@ ship_event = {
 		hidden_effect = {
 			set_global_flag = scion_contingency_ghost_signal
 			event_target:scion_master = {
-				add_opinion_modifier = { who = root.owner modifier = opinion_completed_fallen_empire_task }
+				add_opinion_modifier = {
+					who = root.owner
+					modifier = opinion_completed_fallen_empire_task
+				}
 			}
 		}
 	}
-	
 	after = {
 		if = {
 			limit = {
-				FROMFROM = { has_modifier = "holy_planet" }
-				any_country = { has_country_flag = fallen_empire_2 }
+				FROMFROM = {
+					has_modifier = "holy_planet"
+				}
+				any_country = {
+					has_country_flag = fallen_empire_2
+				}
 			}
-			FROMFROM = { save_event_target_as = defiled_holy_world }
+			FROMFROM = {
+				save_event_target_as = defiled_holy_world
+			}
 			owner = {
-				country_event = { id = civicsexpanded.93 days = 60 random = 90 }
+				country_event = {
+					id = civicsexpanded.93
+					days = 60
+					random = 90
+				}
 			}
 		}
 	}
 }
+
 ship_event = {
 	id = civicsexpanded.91
 	title = "PROJECT_COMPLETE"
@@ -4050,9 +4524,7 @@ ship_event = {
 	picture = GFX_evt_animal_wildlife
 	show_sound = event_alien_nature
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = WORRYING
 		FROMFROM = {
@@ -4070,24 +4542,37 @@ ship_event = {
 		hidden_effect = {
 			set_global_flag = scion_contingency_ghost_signal
 			event_target:scion_master = {
-				add_opinion_modifier = { who = root.owner modifier = opinion_completed_fallen_empire_task }
+				add_opinion_modifier = {
+					who = root.owner
+					modifier = opinion_completed_fallen_empire_task
+				}
 			}
 		}
 	}
-	
 	after = {
 		if = {
 			limit = {
-				FROMFROM = { has_modifier = "holy_planet" }
-				any_country = { has_country_flag = fallen_empire_2 }
+				FROMFROM = {
+					has_modifier = "holy_planet"
+				}
+				any_country = {
+					has_country_flag = fallen_empire_2
+				}
 			}
-			FROMFROM = { save_event_target_as = defiled_holy_world }
+			FROMFROM = {
+				save_event_target_as = defiled_holy_world
+			}
 			owner = {
-				country_event = { id = civicsexpanded.93 days = 60 random = 90 }
+				country_event = {
+					id = civicsexpanded.93
+					days = 60
+					random = 90
+				}
 			}
 		}
 	}
 }
+
 ship_event = {
 	id = civicsexpanded.92
 	title = "PROJECT_COMPLETE"
@@ -4095,14 +4580,26 @@ ship_event = {
 	picture = GFX_evt_alien_cavemen
 	show_sound = event_primitive_civilization
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	immediate = {
-		owner = { set_country_flag = upl_ongoing_generic }
-		owner = { set_country_flag = found_presapients }
-		owner = { country_event = { id = tutorial.57 days = 5 } }
-		owner = { country_event = { id = story.4 days = 30 } }
+		owner = {
+			set_country_flag = upl_ongoing_generic
+		}
+		owner = {
+			set_country_flag = found_presapients
+		}
+		owner = {
+			country_event = {
+				id = tutorial.57
+				days = 5
+			}
+		}
+		owner = {
+			country_event = {
+				id = story.4
+				days = 30
+			}
+		}
 		FROMFROM = {
 			set_planet_flag = upl_ongoing_planet
 			random_list = {
@@ -4180,21 +4677,26 @@ ship_event = {
 				}
 			}
 			if = {
-				limit = { has_global_flag = expanded_pops_active }
+				limit = {
+					has_global_flag = expanded_pops_active
+				}
 				last_created_species = {
 					if = {
-						limit = { needs_class_trait = yes }
+						limit = {
+							needs_class_trait = yes
+						}
 						add_class_trait_effect = yes
 					}
 				}
 			}
 			while = {
 				count = 3
-				create_pop = { species = last_created_species }
+				create_pop = {
+					species = last_created_species
+				}
 			}
 		}
 	}
-	
 	option = {
 		name = FASCINATING
 		custom_tooltip = civicsexpanded.92.a.tooltip
@@ -4210,33 +4712,43 @@ ship_event = {
 		hidden_effect = {
 			set_global_flag = scion_contingency_ghost_signal
 			event_target:scion_master = {
-				add_opinion_modifier = { who = root.owner modifier = opinion_completed_fallen_empire_task }
+				add_opinion_modifier = {
+					who = root.owner
+					modifier = opinion_completed_fallen_empire_task
+				}
 			}
 		}
 	}
-	
 	after = {
 		if = {
 			limit = {
-				FROMFROM = { has_modifier = "holy_planet" }
-				any_country = { has_country_flag = fallen_empire_2 }
+				FROMFROM = {
+					has_modifier = "holy_planet"
+				}
+				any_country = {
+					has_country_flag = fallen_empire_2
+				}
 			}
-			FROMFROM = { save_event_target_as = defiled_holy_world }
+			FROMFROM = {
+				save_event_target_as = defiled_holy_world
+			}
 			owner = {
-				country_event = { id = civicsexpanded.93 days = 60 random = 90 }
+				country_event = {
+					id = civicsexpanded.93
+					days = 60
+					random = 90
+				}
 			}
 		}
 	}
 }
+
 country_event = {
 	id = civicsexpanded.93
 	title = TRANSMISSION
 	desc = "civicsexpanded.93.desc"
-
 	diplomatic = yes
-
 	is_triggered_only = yes
-
 	picture_event_data = {
 		portrait = event_target:angry_spiritualists
 		planet_background = event_target:angry_spiritualists
@@ -4244,33 +4756,37 @@ country_event = {
 		city_level = event_target:angry_spiritualists
 		room = event_target:angry_spiritualists
 	}
-
 	immediate = {
 		random_country = {
-			limit = { has_country_flag = fallen_empire_2 }
+			limit = {
+				has_country_flag = fallen_empire_2
+			}
 			save_event_target_as = angry_spiritualists
 		}
 		overlord = {
 			save_event_target_as = scion_master
 		}
 	}
-
 	option = {
 		name = civicsexpanded.93.a
 		response_text = civicsexpanded.93.a.response
 		event_target:angry_spiritualists = {
-			add_opinion_modifier = { modifier = opinion_scion_defiled_holy_world who = ROOT }
+			add_opinion_modifier = {
+				modifier = opinion_scion_defiled_holy_world
+				who = ROOT
+			}
 		}
 	}
-	
 	option = {
 		name = civicsexpanded.93.b
 		response_text = civicsexpanded.93.b.response
 		event_target:angry_spiritualists = {
-			add_opinion_modifier = { modifier = opinion_scion_defiled_holy_world who = ROOT }
+			add_opinion_modifier = {
+				modifier = opinion_scion_defiled_holy_world
+				who = ROOT
+			}
 		}
 	}
-	
 	option = {
 		name = civicsexpanded.93.c
 		trigger = {
@@ -4278,7 +4794,10 @@ country_event = {
 		}
 		response_text = civicsexpanded.93.c.response
 		event_target:angry_spiritualists = {
-			add_opinion_modifier = { modifier = opinion_scion_defiled_holy_world who = ROOT }
+			add_opinion_modifier = {
+				modifier = opinion_scion_defiled_holy_world
+				who = ROOT
+			}
 		}
 	}
 	option = {
@@ -4288,7 +4807,10 @@ country_event = {
 		}
 		response_text = civicsexpanded.93.d.response
 		event_target:angry_spiritualists = {
-			add_opinion_modifier = { modifier = opinion_scion_defiled_holy_world who = ROOT }
+			add_opinion_modifier = {
+				modifier = opinion_scion_defiled_holy_world
+				who = ROOT
+			}
 		}
 	}
 }
@@ -4298,11 +4820,8 @@ country_event = {
 	id = civicsexpanded.94
 	title = TRANSMISSION
 	desc = "civicsexpanded.94.desc"
-
 	diplomatic = yes
-
 	is_triggered_only = yes
-
 	picture_event_data = {
 		portrait = event_target:scion_master
 		planet_background = event_target:scion_master
@@ -4310,15 +4829,15 @@ country_event = {
 		city_level = event_target:scion_master
 		room = event_target:scion_master
 	}
-
 	immediate = {
 		overlord = {
 			save_event_target_as = scion_master
-			owner_species = { save_event_target_as = fe_species }
+			owner_species = {
+				save_event_target_as = fe_species
+			}
 		}
 		set_country_flag = scion_missionaries
 	}
-
 	option = {
 		name = civicsexpanded.94.a
 		ai_chance = {
@@ -4326,11 +4845,11 @@ country_event = {
 			modifier = {
 				factor = 2
 				has_ethic = ethic_xenophile
-			}			
+			}
 			modifier = {
 				factor = 10
 				has_ethic = ethic_fanatic_xenophile
-			}	
+			}
 			modifier = {
 				factor = 0.1
 				has_ethic = ethic_materialist
@@ -4338,7 +4857,7 @@ country_event = {
 			modifier = {
 				factor = 0.01
 				has_ethic = ethic_fanatic_materialist
-			}				
+			}
 			modifier = {
 				factor = 0.1
 				has_ethic = ethic_xenophobe
@@ -4353,19 +4872,32 @@ country_event = {
 			}
 		}
 		response_text = civicsexpanded.94.a.response
-		add_modifier = { modifier = scion_missionaries days = -1 }
+		add_modifier = {
+			modifier = scion_missionaries
+			days = -1
+		}
 		custom_tooltip = fallen_empire_happy_tooltip
 		hidden_effect = {
-			random_owned_pop = { pop_change_ethic = ethic_spiritualist }
-			random_owned_pop = { pop_change_ethic = ethic_spiritualist }
-			random_owned_pop = { pop_change_ethic = ethic_spiritualist }
-			random_owned_pop = { pop_change_ethic = ethic_spiritualist }
+			random_owned_pop = {
+				pop_change_ethic = ethic_spiritualist
+			}
+			random_owned_pop = {
+				pop_change_ethic = ethic_spiritualist
+			}
+			random_owned_pop = {
+				pop_change_ethic = ethic_spiritualist
+			}
+			random_owned_pop = {
+				pop_change_ethic = ethic_spiritualist
+			}
 			event_target:scion_master = {
-				add_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request }
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_accepted_fallen_empire_request
+				}
 			}
 		}
 	}
-	
 	option = {
 		name = civicsexpanded.94.b
 		ai_chance = {
@@ -4373,12 +4905,21 @@ country_event = {
 			modifier = {
 				factor = 0
 				is_spiritualist = yes
-				NOT = { has_ethic = ethic_fanatic_xenophobe }
+				NOT = {
+					has_ethic = ethic_fanatic_xenophobe
+				}
 			}
 		}
 		response_text = civicsexpanded.94.b.response
 		custom_tooltip = fallen_empire_unhappy_tooltip
-		hidden_effect = { event_target:scion_master = { add_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request } } }
+		hidden_effect = {
+			event_target:scion_master = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
+		}
 	}
 }
 
@@ -4387,11 +4928,8 @@ country_event = {
 	id = civicsexpanded.95
 	title = TRANSMISSION
 	desc = "civicsexpanded.95.desc"
-
 	diplomatic = yes
-
 	is_triggered_only = yes
-
 	picture_event_data = {
 		portrait = event_target:scion_master
 		planet_background = event_target:scion_master
@@ -4399,15 +4937,15 @@ country_event = {
 		city_level = event_target:scion_master
 		room = event_target:scion_master
 	}
-
 	immediate = {
 		overlord = {
 			save_event_target_as = scion_master
-			owner_species = { save_event_target_as = fe_species }
+			owner_species = {
+				save_event_target_as = fe_species
+			}
 		}
 		set_country_flag = scion_debugging
 	}
-
 	option = {
 		name = origin.26.a
 		ai_chance = {
@@ -4422,7 +4960,6 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = NOTIME
 		ai_chance = {
@@ -4430,9 +4967,17 @@ country_event = {
 		}
 		response_text = civicsexpanded.95.b.response
 		custom_tooltip = fallen_empire_unhappy_tooltip
-		hidden_effect = { event_target:scion_master = { add_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request } } }
+		hidden_effect = {
+			event_target:scion_master = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
+		}
 	}
 }
+
 planet_event = {
 	id = civicsexpanded.96
 	title = "PROJECT_COMPLETE"
@@ -4440,7 +4985,9 @@ planet_event = {
 		text = "civicsexpanded.96.desc"
 		trigger = {
 			owner = {
-				NOT = { has_country_flag = fixed_fallen_machine_empire }
+				NOT = {
+					has_country_flag = fixed_fallen_machine_empire
+				}
 			}
 		}
 	}
@@ -4455,19 +5002,21 @@ planet_event = {
 	picture = GFX_evt_glitchy_matrix
 	show_sound = event_alien_signal
 	location = ROOT
-	
 	is_triggered_only = yes
-	
 	immediate = {
 		owner = {
 			overlord = {
 				save_event_target_as = scion_master
-				owner_species = { save_event_target_as = fe_species }
+				owner_species = {
+					save_event_target_as = fe_species
+				}
 			}
 		}
 		if = {
 			limit = {
-				event_target:scion_master = { has_country_flag = fallen_machine_empire_awaken_2 }
+				event_target:scion_master = {
+					has_country_flag = fallen_machine_empire_awaken_2
+				}
 			}
 			random_list = {
 				1 = {
@@ -4480,18 +5029,21 @@ planet_event = {
 						set_global_flag = fixed_fallen_machine_empire
 					}
 				}
-				2 = { }
+				2 = {
+				}
 			}
 		}
 	}
-	
 	option = {
 		name = OK
 		custom_tooltip = fallen_empire_happy_tooltip
 		hidden_effect = {
 			set_global_flag = scion_contingency_ghost_signal
 			event_target:scion_master = {
-				add_opinion_modifier = { who = root.owner modifier = opinion_completed_fallen_empire_task }
+				add_opinion_modifier = {
+					who = root.owner
+					modifier = opinion_completed_fallen_empire_task
+				}
 			}
 		}
 	}
@@ -4503,17 +5055,22 @@ country_event = {
 	title = TRANSMISSION
 	desc = {
 		text = "civicsexpanded.97.desc_a"
-		trigger = { event_target:scion_master = { has_country_flag = fallen_empire_1 } }
+		trigger = {
+			event_target:scion_master = {
+				has_country_flag = fallen_empire_1
+			}
+		}
 	}
 	desc = {
 		text = "civicsexpanded.97.desc_b"
-		trigger = { event_target:scion_master = { has_country_flag = fallen_empire_3 } }
+		trigger = {
+			event_target:scion_master = {
+				has_country_flag = fallen_empire_3
+			}
+		}
 	}
-
 	diplomatic = yes
-
 	is_triggered_only = yes
-
 	picture_event_data = {
 		portrait = event_target:scion_master
 		planet_background = event_target:scion_master
@@ -4521,21 +5078,26 @@ country_event = {
 		city_level = event_target:scion_master
 		room = event_target:scion_master
 	}
-
 	immediate = {
 		overlord = {
 			save_event_target_as = scion_master
-			owner_species = { save_event_target_as = fe_species }
+			owner_species = {
+				save_event_target_as = fe_species
+			}
 		}
 		set_country_flag = scion_hive_study
 		random_owned_planet = {
 			limit = {
-				count_owned_pop = { limit = { pop_has_trait = trait_hive_mind } count > 20 }
+				count_owned_pop = {
+					limit = {
+						pop_has_trait = trait_hive_mind
+					}
+					count > 20
+				}
 			}
 			save_event_target_as = fe_hive_planet
 		}
 	}
-
 	option = {
 		name = civicsexpanded.97.a
 		ai_chance = {
@@ -4546,17 +5108,21 @@ country_event = {
 		custom_tooltip = fallen_empire_happy_tooltip
 		hidden_effect = {
 			event_target:scion_master = {
-				add_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request }
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_accepted_fallen_empire_request
+				}
 			}
 			event_target:fe_hive_planet = {
 				random_owned_pop = {
-					limit = { pop_has_trait = trait_hive_mind }
+					limit = {
+						pop_has_trait = trait_hive_mind
+					}
 					kill_pop = yes
 				}
 			}
 		}
 	}
-	
 	option = {
 		name = civicsexpanded.97.b
 		ai_chance = {
@@ -4564,16 +5130,21 @@ country_event = {
 		}
 		response_text = civicsexpanded.97.b.response
 		event_target:fe_hive_planet = {
-			add_modifier = { modifier = scion_studying_hive_mind days = 3600 }
+			add_modifier = {
+				modifier = scion_studying_hive_mind
+				days = 3600
+			}
 		}
 		custom_tooltip = fallen_empire_happy_tooltip
 		hidden_effect = {
 			event_target:scion_master = {
-				add_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request }
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_accepted_fallen_empire_request
+				}
 			}
 		}
 	}
-	
 	option = {
 		name = civicsexpanded.97.c
 		ai_chance = {
@@ -4582,8 +5153,12 @@ country_event = {
 		response_text = civicsexpanded.97.c.response
 		custom_tooltip = fallen_empire_unhappy_tooltip
 		hidden_effect = {
-			
-			event_target:scion_master = { add_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request } }
+			event_target:scion_master = {
+				add_opinion_modifier = {
+					who = root
+					modifier = opinion_refused_fallen_empire_request
+				}
+			}
 		}
 	}
 }
@@ -4594,14 +5169,14 @@ planet_event = {
 	id = civicsexpanded.100
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
-		owner = { has_origin = origin_master_computer }
-		from = { 
+		owner = {
+			has_origin = origin_master_computer
+		}
+		from = {
 			has_deposit = d_master_computer
 		}
 	}
-
 	immediate = {
 		from = {
 			remove_deposit = d_master_computer
@@ -4616,163 +5191,180 @@ planet_event = {
 # This = country, planet owner
 # From = country, attack leader
 # FromFrom = planet
-country_event = {#Capital world lost
- 	id = civicsexpanded.101
- 	title = civicsexpanded.101.name
- 	desc = civicsexpanded.101.desc
- 	picture = GFX_evt_sapient_AI
- 	show_sound = event_bad_omen
-
- 	is_triggered_only = yes
-
- 	trigger = {
- 		has_origin = origin_master_computer
- 		fromfrom = { has_deposit = d_master_computer }
- 	}
-
- 	immediate = { 
- 		fromfrom = { 
- 			remove_deposit = d_master_computer
- 			add_deposit = d_master_computer_colony
- 		}
- 	}
-
- 	option = {
- 		name = origin.3215.a
- 		 if = {
- 		 	limit = { NOT = { has_modifier = no_master_computer_country } }
-			add_modifier = { 
+country_event = {
+	#Capital world lost
+	id = civicsexpanded.101
+	title = civicsexpanded.101.name
+	desc = civicsexpanded.101.desc
+	picture = GFX_evt_sapient_AI
+	show_sound = event_bad_omen
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_master_computer
+		fromfrom = {
+			has_deposit = d_master_computer
+		}
+	}
+	immediate = {
+		fromfrom = {
+			remove_deposit = d_master_computer
+			add_deposit = d_master_computer_colony
+		}
+	}
+	option = {
+		name = origin.3215.a
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = no_master_computer_country
+				}
+			}
+			add_modifier = {
 				modifier = no_master_computer_country
 				days = -1
 			}
-			hidden_effect = { set_country_flag = master_computer_destroyed }
+			hidden_effect = {
+				set_country_flag = master_computer_destroyed
+			}
 		}
- 	}
+	}
 }
 
 planet_event = {
-	id = civicsexpanded.102 # remove if not master computer
+	id = civicsexpanded.102	# remove if not master computer
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
-		NOT = { From = { has_origin = origin_master_computer } }
+		NOT = {
+			From = {
+				has_origin = origin_master_computer
+			}
+		}
 		has_modifier = no_master_computer
 	}
-
 	immediate = {
 		remove_modifier = no_master_computer
 	}
 }
 
-planet_event = { #Glassing the Master Computer
+planet_event = {
+	#Glassing the Master Computer
 	id = civicsexpanded.103
- 	title = civicsexpanded.103.name
- 	desc = civicsexpanded.103.desc
- 	picture = GFX_evt_sapient_AI
- 	show_sound = event_bad_omen
- 	is_triggered_only = yes
-
- 	pre_triggers = {
- 		is_capital = yes
- 		has_owner = yes
- 	}
-
- 	trigger = {
- 		owner = { has_origin = origin_master_computer }
- 		has_deposit = d_master_computer
- 	}
-
- 	immediate = {
- 		remove_deposit = d_master_computer
- 	}
- 	option = {
- 		name = civicsexpanded.103.a
- 	}
- 	option = {
- 		name = civicsexpanded.103.b
- 	}
- 	option = {
- 		name = civicsexpanded.103.c
- 	}
- 	option = {
- 		name = civicsexpanded.103.d
- 	}
- 	after = {
- 	 	owner = {
-			 if = {
-				limit = { NOT = { has_modifier = no_master_computer_country } }
-				add_modifier = { 
+	title = civicsexpanded.103.name
+	desc = civicsexpanded.103.desc
+	picture = GFX_evt_sapient_AI
+	show_sound = event_bad_omen
+	is_triggered_only = yes
+	pre_triggers = {
+		is_capital = yes
+		has_owner = yes
+	}
+	trigger = {
+		owner = {
+			has_origin = origin_master_computer
+		}
+		has_deposit = d_master_computer
+	}
+	immediate = {
+		remove_deposit = d_master_computer
+	}
+	option = {
+		name = civicsexpanded.103.a
+	}
+	option = {
+		name = civicsexpanded.103.b
+	}
+	option = {
+		name = civicsexpanded.103.c
+	}
+	option = {
+		name = civicsexpanded.103.d
+	}
+	after = {
+		owner = {
+			if = {
+				limit = {
+					NOT = {
+						has_modifier = no_master_computer_country
+					}
+				}
+				add_modifier = {
 					modifier = no_master_computer_country
 					days = -1
 				}
-				hidden_effect = { set_country_flag = master_computer_destroyed }
+				hidden_effect = {
+					set_country_flag = master_computer_destroyed
+				}
 			}
 		}
- 	}
+	}
 }
 
 country_event = {
-	id = civicsexpanded.104 #removes the deposit even if you kill the country
+	id = civicsexpanded.104	#removes the deposit even if you kill the country
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		has_origin = origin_master_computer
 		capital_scope = {
 			has_deposit = d_master_computer
 		}
 	}
-
 	immediate = {
 		capital_scope = {
 			if = {
-				limit = { has_deposit = d_master_computer }
+				limit = {
+					has_deposit = d_master_computer
+				}
 				remove_deposit = d_master_computer
 			}
 		}
 	}
 }
 
-country_event = { #Bombarding Capital
+country_event = {
+	#Bombarding Capital
 	id = civicsexpanded.105
- 	title = civicsexpanded.103.name
- 	desc = civicsexpanded.105.desc
- 	picture = GFX_evt_progenitor_throne
- 	show_sound = evn_ove_progenitor_throne
- 	is_triggered_only = yes
-
- 	option = {
- 		name = origin.3215.a
- 	}
- 	after = {
- 	 	owner = {
- 			if = {
-				limit = { NOT = { has_modifier = no_master_computer_country } }
+	title = civicsexpanded.103.name
+	desc = civicsexpanded.105.desc
+	picture = GFX_evt_progenitor_throne
+	show_sound = evn_ove_progenitor_throne
+	is_triggered_only = yes
+	option = {
+		name = origin.3215.a
+	}
+	after = {
+		owner = {
+			if = {
+				limit = {
+					NOT = {
+						has_modifier = no_master_computer_country
+					}
+				}
 				add_modifier = {
 					modifier = no_master_computer_country
 					days = -1
 				}
-				hidden_effect = { set_country_flag = master_computer_destroyed }
+				hidden_effect = {
+					set_country_flag = master_computer_destroyed
+				}
 			}
 		}
 		capital_scope = {
- 			remove_deposit = d_master_computer
- 		}
- 	}
+			remove_deposit = d_master_computer
+		}
+	}
 }
 
 country_event = {
 	id = civicsexpanded.106
 	is_triggered_only = yes
 	hide_window = yes
-
 	trigger = {
-		from = { has_origin = origin_master_computer }
+		from = {
+			has_origin = origin_master_computer
+		}
 	}
-
 	immediate = {
 		set_origin = origin_master_computer
 		capital_scope = {
@@ -4787,11 +5379,14 @@ country_event = {
 	id = civicsexpanded.37
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_origin = origin_doomsday
 		is_ai = yes
-		NOT = { any_owned_planet = { is_doomsday_planet = no } }
+		NOT = {
+			any_owned_planet = {
+				is_doomsday_planet = no
+			}
+		}
 		any_owned_planet = {
 			OR = {
 				has_modifier = doomsday_3
@@ -4800,7 +5395,6 @@ country_event = {
 			}
 		}
 	}
-	
 	immediate = {
 		if = {
 			limit = {
@@ -4809,8 +5403,13 @@ country_event = {
 					is_doomsday_planet = no
 					is_under_colonization = no
 					is_colony = no
-					habitability = { who = root.owner_species value >= 0.4 }
-					NOT = { has_modifier = holy_planet } # a different kind of suicide
+					habitability = {
+						who = root.owner_species
+						value >= 0.4
+					}
+					NOT = {
+						has_modifier = holy_planet
+					}					# a different kind of suicide
 				}
 			}
 			random_planet_within_border = {
@@ -4819,10 +5418,19 @@ country_event = {
 					is_doomsday_planet = no
 					is_under_colonization = no
 					is_colony = no
-					habitability = { who = root.owner_species value >= 0.4 }
-					NOT = { has_modifier = holy_planet } # a different kind of suicide
+					habitability = {
+						who = root.owner_species
+						value >= 0.4
+					}
+					NOT = {
+						has_modifier = holy_planet
+					}					# a different kind of suicide
 				}
-				create_colony = { owner = ROOT species = ROOT.owner_species ethos = ROOT }
+				create_colony = {
+					owner = ROOT
+					species = ROOT.owner_species
+					ethos = ROOT
+				}
 			}
 		}
 	}
