@@ -1,0 +1,41 @@
+abucv_bombstance_advertising = {
+	trigger = {
+		OR = {
+			owner = { has_valid_civic = civic_abucv_corp_aggressive_advertising }		
+		}
+	}
+	
+	icon_frame = 1
+	default = no
+	
+	stop_when_armies_dead = no
+	abduct_pops = no
+
+	planet_damage = 0.5
+	army_damage = 0.5	
+	
+	kill_pop_chance = {
+		base = 0.15
+	}
+	min_pops_to_kill_pop = 21
+	
+	# root = fleet
+	# from = planet
+	ai_weight = {
+		weight = 8
+		modifier = {
+			factor = 0
+			exists = from
+			from = { 
+				owner = { NOT = { is_hostile = root.owner } }
+			}
+		}
+		modifier = {
+			factor = 0.01
+			exists = from
+			from = {
+				owner = { has_claim = root.solar_system }
+			}
+		}
+	}
+}
