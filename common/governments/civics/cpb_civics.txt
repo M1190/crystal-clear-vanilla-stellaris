@@ -1,0 +1,143 @@
+#Civic Pack 2
+###CORPORATE
+cpb_civic_catchy_slogans = { #Catchy Slogans
+	potential = { authority = { value = auth_corporate } }
+	random_weight = { base = 5 }
+	modifier = {
+		country_edict_fund_add = 100
+	}
+	description = "cpb_civic_catchy_slogans_effects"
+}
+cpb_civic_budget_manufacturer = { #Budget Manufacturer
+	potential = { authority = { value = auth_corporate } }
+	possible = {
+		ethics = {
+			NOR = {
+				text = civic_tooltip_not_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
+	}
+	random_weight = { base = 4 }
+	modifier = {
+		#country_consumer_goods_produces_mult = 0.10
+		country_trade_fee = -0.05
+	}
+	description = "cpb_civic_budget_manufacturer_effects"
+}
+cpb_civic_megabank = { #Megabank
+	potential = { authority = { value = auth_corporate } }
+	modification = no
+	random_weight = { base = 3 }
+	modifier = {
+		country_resource_max_energy_add = 50000
+		intel_encryption_add = 1
+	}
+	description = "cpb_civic_megabank_effects"
+}
+cpb_civic_private_org = { #Private Organization
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	modification = no
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+		authority = {
+			OR = {
+				value = auth_oligarchic
+				value = auth_dictatorial
+			}
+		}
+	}
+	random_weight = { base = 1 }
+	modifier = {
+		country_influence_produces_mult = 0.15
+		country_unity_produces_mult = 0.15
+		empire_size_penalty_mult = 1.0
+	}
+}
+cpb_civic_corporate_directorate = { #Corporate Directorate
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	modification = no
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+		}
+	}
+	random_weight = { base = 2 }
+	modifier = {
+		local_trade_protection_add = 10
+	}
+	description = "cpb_civic_corporate_directorate_effects"
+}
+cpb_civic_merc_contract = { #Mercenary Contractors
+	potential = { authority = { value = auth_corporate } }
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+	}
+	random_weight = { base = 3 }
+	modifier = {
+		country_war_exhaustion_mult = -0.2
+	}
+	description = "cpb_civic_merc_contract_effects"
+}
+cpb_civic_cooperative = { #Cooperative
+	potential = { authority = { value = auth_corporate } }
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		pop_factions_produces_mult = 0.25
+	}
+}
+cpb_civic_rite_of_passage = { #Rite of Passage
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	modification = no
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+	}
+	random_weight = { base = 2 }
+	modifier = {
+		pop_growth_speed_reduction = 0.25
+		army_morale = 0.5
+		pop_environment_tolerance = 0.05
+	}
+	description = "cpb_civic_rite_of_passage_effects"
+}
