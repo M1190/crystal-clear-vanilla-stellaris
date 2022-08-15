@@ -5,95 +5,132 @@
 ### & Rufus Tronde			  ###
 ### & Henrik Thyrwall			  ###
 #################################
-
 namespace = leviathans
-
 # Trader Destroyed (HIDDEN)
 country_event = {
 	id = leviathans.140
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		is_country_type = enclave
 		has_country_flag = trader_enclave_country
-		FROMFROM = { 
+		FROMFROM = {
 			is_ship_size = enclave_station
 		}
 	}
-	
 	immediate = {
 		FROMFROM = {
-			solar_system = { save_event_target_as = trader_system }
+			solar_system = {
+				save_event_target_as = trader_system
+			}
 		}
-		FROM = { 
-			country_event = { id = leviathans.141 }
+		FROM = {
+			country_event = {
+				id = leviathans.141
+			}
 			save_event_target_as = trader_destroyer
 		}
 		every_country = {
 			limit = {
-				OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+				is_country_type = default
 				has_communications = ROOT
-				NOT = { is_country = event_target:trader_destroyer }
+				NOT = {
+					is_country = event_target:trader_destroyer
+				}
 			}
 			if = {
 				limit = {
-					ROOT = { has_country_flag = trader_enclave_country_1 }
+					ROOT = {
+						has_country_flag = trader_enclave_country_1
+					}
 				}
-				country_event = { id = leviathans.142 }
+				country_event = {
+					id = leviathans.142
+				}
 			}
 			if = {
 				limit = {
-					ROOT = { has_country_flag = trader_enclave_country_2 }
+					ROOT = {
+						has_country_flag = trader_enclave_country_2
+					}
 				}
-				country_event = { id = leviathans.143 }
+				country_event = {
+					id = leviathans.143
+				}
 			}
 			if = {
 				limit = {
-					ROOT = { has_country_flag = trader_enclave_country_3 }
+					ROOT = {
+						has_country_flag = trader_enclave_country_3
+					}
 				}
-				country_event = { id = leviathans.144 }
-			}
-		}
-		random_playable_country = {
-			if = {
-				limit = {
-					ROOT = { has_country_flag = trader_enclave_country_1 }
+				country_event = {
+					id = leviathans.144
 				}
-				observer_event = { id = observer.8 }
-			}
-			if = {
-				limit = {
-					ROOT = { has_country_flag = trader_enclave_country_2 }
-				}
-				observer_event = { id = observer.9 }
-			}
-			if = {
-				limit = {
-					ROOT = { has_country_flag = trader_enclave_country_3 }
-				}
-				observer_event = { id = observer.10 }
 			}
 		}
 		random_playable_country = {
 			if = {
 				limit = {
-					ROOT = { has_country_flag = trader_enclave_country_1 }
+					ROOT = {
+						has_country_flag = trader_enclave_country_1
+					}
 				}
-				observer_event = { id = observer.8 }
+				observer_event = {
+					id = observer.8
+				}
 			}
 			if = {
 				limit = {
-					ROOT = { has_country_flag = trader_enclave_country_2 }
+					ROOT = {
+						has_country_flag = trader_enclave_country_2
+					}
 				}
-				observer_event = { id = observer.9 }
+				observer_event = {
+					id = observer.9
+				}
 			}
 			if = {
 				limit = {
-					ROOT = { has_country_flag = trader_enclave_country_3 }
+					ROOT = {
+						has_country_flag = trader_enclave_country_3
+					}
 				}
-				observer_event = { id = observer.10 }
+				observer_event = {
+					id = observer.10
+				}
+			}
+		}
+		random_playable_country = {
+			if = {
+				limit = {
+					ROOT = {
+						has_country_flag = trader_enclave_country_1
+					}
+				}
+				observer_event = {
+					id = observer.8
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						has_country_flag = trader_enclave_country_2
+					}
+				}
+				observer_event = {
+					id = observer.9
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						has_country_flag = trader_enclave_country_3
+					}
+				}
+				observer_event = {
+					id = observer.10
+				}
 			}
 		}
 		species = {
@@ -101,42 +138,47 @@ country_event = {
 		}
 		random_country = {
 			limit = {
-				OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+				is_country_type = default
 				has_communications = ROOT
-				NOT = { is_country = event_target:trader_destroyer }
-				NOT = { has_country_flag = destroyed_trader }
-				NOT = { has_country_flag = enclave_artist_ignores }
-				NOT = { has_country_flag = destroyed_artist }
-				NOT = { has_country_flag = attacked_curators }
-				NOT = { has_country_flag = destroyed_curator }
-				NOT = { has_ethic = ethic_fanatic_xenophobe }
-				NOT = { has_ethic = ethic_gestalt_consciousness }
-				NOT = { has_policy_flag = refugees_not_allowed }
+				NOR = {
+					is_country = event_target:trader_destroyer
+					has_country_flag = destroyed_trader
+					has_country_flag = enclave_artist_ignores
+					has_country_flag = destroyed_artist
+					has_country_flag = attacked_curators
+					has_country_flag = destroyed_curator
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_gestalt_consciousness
+					has_policy_flag = refugees_not_allowed
+				}
 				any_owned_planet = {
 					is_colony = yes
 					is_under_colonization = no
-					habitability = { who = event_target:enclave_species value > 0.45 }
+					habitability = {
+						who = event_target:enclave_species
+						value > 0.45
+					}
 				}
 			}
 			weights = {
 				base = 1
-				modifier = { 
+				modifier = {
 					add = 3
 					is_ai = no
 				}
-				modifier = { 
+				modifier = {
 					add = 5
 					allows_slavery = no
 				}
-				modifier = { 
+				modifier = {
 					add = 10
 					is_xenophile = yes
 				}
-				modifier = { 
+				modifier = {
 					add = 10
 					is_pacifist = yes
 				}
-				modifier = { 
+				modifier = {
 					add = 1000
 					FROMFROM = {
 						solar_system = {
@@ -149,19 +191,25 @@ country_event = {
 			}
 			if = {
 				limit = {
-					ROOT = { has_country_flag = trader_enclave_country_1 }
+					ROOT = {
+						has_country_flag = trader_enclave_country_1
+					}
 				}
 				set_country_flag = refugee_trader_enclave_country_1
 			}
 			if = {
 				limit = {
-					ROOT = { has_country_flag = trader_enclave_country_2 }
+					ROOT = {
+						has_country_flag = trader_enclave_country_2
+					}
 				}
 				set_country_flag = refugee_trader_enclave_country_2
 			}
 			if = {
 				limit = {
-					ROOT = { has_country_flag = trader_enclave_country_3 }
+					ROOT = {
+						has_country_flag = trader_enclave_country_3
+					}
 				}
 				set_country_flag = refugee_trader_enclave_country_3
 			}
@@ -169,20 +217,25 @@ country_event = {
 				limit = {
 					is_colony = yes
 					is_under_colonization = no
-					habitability = { who = event_target:enclave_species value > 0.45 }
+					habitability = {
+						who = event_target:enclave_species
+						value > 0.45
+					}
 				}
 				weights = {
 					base = 1
-					modifier = { 
+					modifier = {
 						add = 5
 						free_housing > 0
 					}
-					modifier = { 
+					modifier = {
 						add = 10
 						free_housing > 1
 					}
 				}
-				planet_event = { id = refugeeexpanded.8 }
+				planet_event = {
+					id = refugeeexpanded.8
+				}
 				create_pop = {
 					species = event_target:enclave_species
 					ethos = {
@@ -205,11 +258,9 @@ country_event = {
 	id = leviathans.331
 	hide_window = yes
 	is_triggered_only = yes
-	
 	trigger = {
 		has_country_flag = artist_enclave_country
 	}
-
 	immediate = {
 		fromfrom = {
 			remove_fleet_flag = artist_enclave_station
@@ -217,11 +268,16 @@ country_event = {
 				remove_star_flag = guardians_artists_system
 				save_event_target_as = destroyed_station_location
 			}
-			if = { #Change capital
-				limit = { is_custom_capital_location = yes }
+			if = {
+				#Change capital
+				limit = {
+					is_custom_capital_location = yes
+				}
 				owner = {
 					random_owned_fleet = {
-						limit = { has_fleet_flag = artist_enclave_station }
+						limit = {
+							has_fleet_flag = artist_enclave_station
+						}
 						save_event_target_as = newCustomCapital
 					}
 					set_custom_capital_location = event_target:newCustomCapital
@@ -231,7 +287,9 @@ country_event = {
 		every_playable_country = {
 			limit = {
 				has_communications = root
-				NOT = { is_same_value = from }
+				NOT = {
+					is_same_value = from
+				}
 			}
 			if = {
 				limit = {
@@ -243,10 +301,14 @@ country_event = {
 						}
 					}
 				}
-				country_event = { id = leviathans.332 }
+				country_event = {
+					id = leviathans.332
+				}
 			}
 			else = {
-				country_event = { id = leviathans.333 }
+				country_event = {
+					id = leviathans.333
+				}
 			}
 		}
 		random_playable_country = {
@@ -260,10 +322,14 @@ country_event = {
 						}
 					}
 				}
-				observer_event = { id = observer.11 }
+				observer_event = {
+					id = observer.11
+				}
 			}
 			else = {
-				observer_event = { id = observer.12 }
+				observer_event = {
+					id = observer.12
+				}
 			}
 		}
 		species = {
@@ -271,38 +337,45 @@ country_event = {
 		}
 		random_country = {
 			limit = {
-				OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+				is_country_type = default
 				has_communications = ROOT
-				NOT = { is_country = event_target:trader_destroyer }
-				NOT = { has_country_flag = destroyed_trader }
-				NOT = { has_country_flag = enclave_artist_ignores }
-				NOT = { has_country_flag = destroyed_artist }
-				NOT = { has_country_flag = attacked_curators }
-				NOT = { has_country_flag = destroyed_curator }
-				NOT = { has_ethic = ethic_fanatic_xenophobe }
-				NOT = { has_ethic = ethic_gestalt_consciousness }
-				NOT = { has_policy_flag = refugees_not_allowed }
+				NOR = {
+					is_country = event_target:trader_destroyer
+					has_country_flag = destroyed_trader
+					has_country_flag = enclave_artist_ignores
+					has_country_flag = destroyed_artist
+					has_country_flag = attacked_curators
+					has_country_flag = destroyed_curator
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_gestalt_consciousness
+				}
+				NOT = {
+					has_policy_flag = refugees_not_allowed
+				}
 				any_owned_planet = {
 					is_colony = yes
 					is_under_colonization = no
-					habitability = { who = event_target:enclave_species value > 0.45 }
+					habitability = {
+						who = event_target:enclave_species
+						value > 0.45
+					}
 				}
 			}
 			weights = {
 				base = 1
-				modifier = { 
+				modifier = {
 					add = 3
 					is_ai = no
 				}
-				modifier = { 
+				modifier = {
 					add = 5
 					allows_slavery = no
 				}
-				modifier = { 
+				modifier = {
 					add = 20
 					is_xenophile = yes
 				}
-				modifier = { 
+				modifier = {
 					add = 1000
 					FROMFROM = {
 						solar_system = {
@@ -318,20 +391,25 @@ country_event = {
 				limit = {
 					is_colony = yes
 					is_under_colonization = no
-					habitability = { who = event_target:enclave_species value > 0.45 }
+					habitability = {
+						who = event_target:enclave_species
+						value > 0.45
+					}
 				}
 				weights = {
 					base = 1
-					modifier = { 
+					modifier = {
 						add = 5
 						free_housing > 0
 					}
-					modifier = { 
+					modifier = {
 						add = 10
 						free_housing > 1
 					}
 				}
-				planet_event = { id = refugeeexpanded.9 }
+				planet_event = {
+					id = refugeeexpanded.9
+				}
 				create_pop = {
 					species = event_target:enclave_species
 					ethos = {
@@ -353,17 +431,14 @@ country_event = {
 country_event = {
 	id = leviathans.592
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	trigger = {
 		is_country_type = enclave
 		has_country_flag = curator_enclave_country
-		FROMFROM = { 
+		FROMFROM = {
 			is_ship_size = enclave_station
 		}
 	}
-	
 	immediate = {
 		FROMFROM = {
 			solar_system = {
@@ -371,60 +446,73 @@ country_event = {
 				set_star_flag = curator_system_star
 			}
 		}
-		FROM = { 
-			country_event = { id = leviathans.593 }
+		FROM = {
+			country_event = {
+				id = leviathans.593
+			}
 			save_event_target_as = curator_destroyer
 		}
-		observer_event = { id = observer.7 }
+		observer_event = {
+			id = observer.7
+		}
 		every_country = {
 			limit = {
 				has_communications = ROOT
-				NOT = { is_country = event_target:curator_destroyer }
-				OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+				NOT = {
+					is_country = event_target:curator_destroyer
+				}
+				is_country_type = default
 			}
-			country_event = { id = leviathans.594 }
+			country_event = {
+				id = leviathans.594
+			}
 		}
 		species = {
 			save_event_target_as = enclave_species
 		}
 		random_country = {
 			limit = {
-				OR = { is_country_type = default is_country_type = ascended_empire is_country_type = lost_empire }
+				is_country_type = default
 				has_communications = ROOT
-				NOT = { is_country = event_target:trader_destroyer }
-				NOT = { has_country_flag = destroyed_trader }
-				NOT = { has_country_flag = enclave_artist_ignores }
-				NOT = { has_country_flag = destroyed_artist }
-				NOT = { has_country_flag = attacked_curators }
-				NOT = { has_country_flag = destroyed_curator }
-				NOT = { has_ethic = ethic_fanatic_xenophobe }
-				NOT = { has_ethic = ethic_gestalt_consciousness }
-				NOT = { has_policy_flag = refugees_not_allowed }
+				NOR = {
+					is_country = event_target:trader_destroyer
+					has_country_flag = destroyed_trader
+					has_country_flag = enclave_artist_ignores
+					has_country_flag = destroyed_artist
+					has_country_flag = attacked_curators
+					has_country_flag = destroyed_curator
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_gestalt_consciousness
+					has_policy_flag = refugees_not_allowed
+				}
 				any_owned_planet = {
 					is_colony = yes
 					is_under_colonization = no
-					habitability = { who = event_target:enclave_species value > 0.45 }
+					habitability = {
+						who = event_target:enclave_species
+						value > 0.45
+					}
 				}
 			}
 			weights = {
 				base = 1
-				modifier = { 
+				modifier = {
 					add = 3
 					is_ai = no
 				}
-				modifier = { 
+				modifier = {
 					add = 5
 					allows_slavery = no
 				}
-				modifier = { 
+				modifier = {
 					add = 10
 					is_xenophile = yes
 				}
-				modifier = { 
+				modifier = {
 					add = 10
 					is_materialist = yes
 				}
-				modifier = { 
+				modifier = {
 					add = 1000
 					FROMFROM = {
 						solar_system = {
@@ -440,20 +528,25 @@ country_event = {
 				limit = {
 					is_colony = yes
 					is_under_colonization = no
-					habitability = { who = event_target:enclave_species value > 0.45 }
+					habitability = {
+						who = event_target:enclave_species
+						value > 0.45
+					}
 				}
 				weights = {
 					base = 1
-					modifier = { 
+					modifier = {
 						add = 5
 						free_housing > 0
 					}
-					modifier = { 
+					modifier = {
 						add = 10
 						free_housing > 1
 					}
 				}
-				planet_event = { id = refugeeexpanded.10 }
+				planet_event = {
+					id = refugeeexpanded.10
+				}
 				create_pop = {
 					species = event_target:enclave_species
 					ethos = {
