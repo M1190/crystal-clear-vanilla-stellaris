@@ -1,0 +1,18 @@
+ex_generate_start_pops = {	
+	if = { limit = { owner = { has_origin = origin_manufactured_species } } #has_civic = civic_manufactured_species
+
+		
+		last_created_species = {
+			set_citizenship_type = {
+				country = root.owner
+				type = citizenship_full
+			}
+		}
+			while = {
+				count = 6 # overrwrite existing pops
+				random_pop = {
+					limit = { NOT = { is_same_species = last_created_species } }
+					change_species = last_created
+			}
+	}	
+}

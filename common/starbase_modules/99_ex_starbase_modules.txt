@@ -1,0 +1,71 @@
+housemodule = {
+	icon = "GFX_housemodule"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = "tech_housing_2" } #Anti-Gravity Engineering
+	}
+
+	show_in_tech = "tech_housing_2"
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+		custom_tooltip = {
+			fail_text = "requires_colonized_planet"
+			solar_system = {
+				any_system_planet = {
+					is_owned_by = from
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = 50
+		}
+		
+		produces = {
+
+		}
+
+		upkeep = {
+			energy = 1
+		}
+	}
+	
+	station_modifier = {
+
+	}
+
+	system_modifier = {
+		planet_housing_add = 2
+		planet_amenities_add = 3
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_non_swapped_tradition = tr_domination_imperious_architecture
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+
+	#custom_tooltip =
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 0 
+	}
+}

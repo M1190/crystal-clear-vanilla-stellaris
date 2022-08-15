@@ -1,0 +1,233 @@
+decision_cult_world = {
+	owned_planets_only = yes
+
+	enactment_time = 60
+	resources = {
+		category = decisions
+		cost = {
+			unity = 1000
+		}
+	}
+
+	potential = {
+		is_capital = no
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = slave_colony }
+		NOT = { has_modifier = industrial_core }
+		NOT = { has_modifier = galactic_refuse_centre }
+		NOT = { has_modifier = research_complex }
+		owner = {
+			OR = {
+				has_ascension_perk = ap_consecrated_worlds
+				has_ascension_perk = ap_transcendence
+				has_valid_civic = civic_astral_obsession
+			}
+		}
+		is_artificial = no
+		NOT = {
+			owner = {
+				any_owned_planet = { has_modifier = cult_world }
+			}
+		}
+	}
+
+	allow = {
+		planet_size >= 9
+	}
+
+	effect = {
+		add_modifier = {
+			modifier = cult_world
+			days = -1
+		}
+		hidden_effect = { validate_planet_buildings_and_districts = yes }
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_abolish_cult_world = {
+	owned_planets_only = yes
+	#icon = decision_cult_world
+
+	resources = {
+		category = decisions
+		cost = {
+			unity = 2500
+		}
+	}
+
+	potential = {
+		has_modifier = cult_world
+	}
+
+	effect = {
+		remove_modifier = cult_world
+		hidden_effect = { validate_planet_buildings_and_districts = yes }
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_cult_ritual = {
+	icon = decision_burning_settlement
+	sound = event_structural_collapse
+
+	enactment_time = 1080
+	resources = {
+		category = decisions
+		cost = {
+			influence = 25
+		}
+	}
+	owned_planets_only = yes
+
+	potential = {
+		has_modifier = cult_world
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = slave_colony }
+		NOT = { has_modifier = industrial_core }
+		NOT = { has_modifier = galactic_refuse_centre }
+		NOT = { has_modifier = research_complex }
+	}
+
+	allow = {
+		num_free_districts = { type = any value > 0 }
+	}
+
+	effect = {
+		custom_tooltip = cult_world_effect_desc
+
+		if = {
+			limit = { num_districts = { type = any value > 0 } }
+			custom_tooltip = cw_available_districts_must_be_over_0
+		}
+
+		hidden_effect = {
+			random_list = {
+				10 = {
+					add_deposit = d_glowing_trinkets
+
+					create_message = {
+						type = MESSAGE_CULT_RITUAL
+						localization = MESSAGE_CR_TRINKETS
+						days = 30
+						target = this
+
+						variable = {
+							type = name
+							localization = PLANET
+							scope = this
+						}
+					}
+				}
+				10 = {
+					add_deposit = d_prophetic_tablets
+
+					create_message = {
+						type = MESSAGE_CULT_RITUAL
+						localization = MESSAGE_CR_TABLETS
+						days = 30
+						target = this
+
+						variable = {
+							type = name
+							localization = PLANET
+							scope = this
+						}
+					}
+				}
+				10 = {
+					add_deposit = d_house_of_healing
+
+					create_message = {
+						type = MESSAGE_CULT_RITUAL
+						localization = MESSAGE_CR_HEALING
+						days = 30
+						target = this
+
+						variable = {
+							type = name
+							localization = PLANET
+							scope = this
+						}
+					}
+				}
+				10 = {
+					add_deposit = d_glorious_garrison
+
+					create_message = {
+						type = MESSAGE_CULT_RITUAL
+						localization = MESSAGE_CR_GARRISON
+						days = 30
+						target = this
+
+						variable = {
+							type = name
+							localization = PLANET
+							scope = this
+						}
+					}
+				}
+				10 = {
+					add_deposit = d_blessed_fountain
+
+					create_message = {
+						type = MESSAGE_CULT_RITUAL
+						localization = MESSAGE_CR_FOUNTAIN
+						days = 30
+						target = this
+
+						variable = {
+							type = name
+							localization = PLANET
+							scope = this
+						}
+					}
+				}
+				4 = {
+					add_deposit = d_holy_site
+
+					create_message = {
+						type = MESSAGE_CULT_RITUAL
+						localization = MESSAGE_CR_HOLY_SITE
+						days = 30
+						target = this
+
+						variable = {
+							type = name
+							localization = PLANET
+							scope = this
+						}
+					}
+				}
+				2 = {
+					add_deposit = d_fail_site
+					add_planet_devastation = 20
+
+					create_message = {
+						type = MESSAGE_CULT_RITUAL
+						localization = MESSAGE_CR_FAIL_SITE
+						days = 30
+						target = this
+
+						variable = {
+							type = name
+							localization = PLANET
+							scope = this
+						}
+					}
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 5
+		}
+	}
+}

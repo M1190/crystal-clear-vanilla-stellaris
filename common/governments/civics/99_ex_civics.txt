@@ -1,0 +1,272 @@
+#civic_example = {
+#	playable = {}								# AND trigger, no scope; use this to prevent the civic from being selectable by the player (UI)
+#	potential = {}								# requirements list, see ../readme_requirements.txt
+#	possible = {}								# requirements list, see ../readme_requirements.txt
+#	pickable_at_start = yes / no				# default: yes
+#	modification = yes / no						# default: yes, set to no to prevent adding or removing this after creation of the empire
+#
+#	random_weight = { base = 1 }				# scriptable weight for randomizing a civic; required, else the civic will not get assigned randomly
+#
+#	modifier = {}								# modifier added to the country if the civic is selected and valid
+#	can_build_ruler_military_station = yes / no	# default: no
+#	can_build_ruler_ship = yes / no				# default: no
+#	has_secondary_species = {					# default: none; if present, will enable secondary species customization in empire designer and will create secondary species & pops at galaxy generation time (see empire_init_create_capital_secondary_pops)
+#		traits = { trait = ... }					# default: empty; trait set to enforce on the secondary species. They cannot be removed, but more can be added if points/picks permit
+#	}
+#}
+	
+#civic_sapient_intervention = {
+#	allow = { owner = { is_ai = no } }
+#	modification = no
+#	potential = { ethics = { NOT = { value = ethic_gestalt_consciousness } } }
+#	possible = {
+#		ethics = {
+#			NOR = {
+#				text = civic_tooltip_not_spiritualist
+#				value = ethic_spiritualist
+#				value = ethic_fanatic_spiritualist
+#			}
+#		}
+#	}
+#	random_weight = {
+#		base = 0
+#		modifier = {
+#			factor = 0
+#		}
+#	}
+#	modifier = {
+#		#pop_ethic_materialist_attraction_mult = 0.30 now tied to the relic
+#	}
+#	description = "civic_sapient_intervention_effects"
+#}
+
+civic_planetary_senate = {
+	allow = { owner = { is_ai = no } }
+	potential = { ethics = { NOT = { value = ethic_gestalt_consciousness } } }
+	possible = {
+	authority = {	value = auth_democratic	}
+	}
+	random_weight = {
+		base = 0
+		modifier = {
+			factor = 0
+		}
+	}
+		modifier = {
+			pop_factions_produces_mult = 1
+			country_leader_pool_size = 1
+			leaders_upkeep_mult = -0.50
+			job_exregistrar_per_pop = 0.05
+			country_trust_cap_add = 50
+			country_unity_produces_mult = -0.10
+			country_trust_growth = -0.33
+			country_election_cost_mult = 4
+	}
+}
+
+civic_only_war = {
+	allow = { owner = { is_ai = no } }
+	potential = { ethics = { NOT = { value = ethic_gestalt_consciousness } } }
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+	}
+	random_weight = {
+		base = 0
+		modifier = {
+			factor = 0
+		}
+	}
+	description = "civic_only_war_effects"
+		modifier = {		
+			country_unity_produces_mult = -0.05
+			pop_happiness = -0.05
+			all_technology_research_speed = -0.05
+			#planet_jobs_engineering_research_produces_mult= -0.05
+			#planet_jobs_physics_research_produces_mult= -0.05
+			#planet_jobs_society_research_produces_mult= -0.05
+	}
+}
+
+#civic_forsaken = {
+#	allow = { owner = { is_ai = no } }
+#	modification = no
+#	potential = { 
+#		ethics = { NOT = { value = ethic_gestalt_consciousness } } #	
+#	}
+#	modification = no
+#	random_weight = {
+#		base = 0
+#		modifier = {
+#			factor = 0
+#		}
+#	}
+#	description = "civic_forsaken_effects"
+#
+#	#traits = {
+#	#	trait = trait_ex_broken
+#	#}
+#	modifier = {
+#		all_technology_research_speed = 0.15
+#	}
+#}
+
+#civic_divine_legacy = {
+#	allow = { owner = { is_ai = no } }
+#	modification = no
+#	random_weight = {
+#		base = 0
+#		modifier = {
+#			factor = 0
+#		}
+#	}
+#	description = "civic_divine_legacy_effects"
+#
+#	traits = {
+#		trait = trait_ex_ancient
+#	}
+#		modifier = {
+#
+#	}
+#}
+
+civic_decadent_conglomerate = { #renamed Nightmare Conglomerate in-game, because it now includes elements of the old Industrial Nightmare and also there's a new base civic with decadent in the name already
+	allow = { owner = { is_ai = no } }
+	potential = { authority = { value = auth_corporate } }
+	possible = {
+	ethics = {
+			NOR = {
+				text = civic_tooltip_not_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
+	}
+	#modification = no
+	random_weight = {
+		base = 0
+		modifier = {
+			factor = 0
+		}
+	}
+	description = "civic_decadent_conglomerate_effects"
+
+	traits = {
+		#trait = trait_ex_profligate2
+	}
+		modifier = { #all of this stuff is available through planetary designations and the new edict
+			#planet_pops_consumer_goods_upkeep_mult = 0.30
+			#trade_value_mult = 0.15
+			#country_minerals_produces_mult = 0.15
+			#country_energy_produces_mult = 0.15
+			#planet_branch_offices_cost_mult = -0.35
+
+	}
+}
+
+civic_data_liberators = {
+	allow = { owner = { is_ai = no } }
+	potential = { authority = { value = auth_corporate } }
+	possible = {
+	ethics = {
+			NOR = {
+				text = civic_tooltip_not_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+	}
+	modification = yes
+	random_weight = {
+		base = 0
+		modifier = {
+			factor = 0
+		}
+	}
+	description = "civic_data_liberators_effects" #produces 0.25 of each research type per point of trade value (see trade_conversions folder entry. Yes this took me a while)
+
+		modifier = {
+			intel_decryption_add = 2
+			country_trade_fee = 0.05
+			diplo_weight_technology_mult = -0.25
+	}
+}
+
+civic_engineering_world = {
+	allow = { owner = { is_ai = no } }
+	random_weight = {
+		base = 0
+		modifier = {
+			factor = 0
+		}
+	}
+	
+		modifier = {
+			country_alloys_produces_mult = 0.20
+			pop_growth_speed = -0.10
+			country_society_tech_research_speed = -0.10
+			country_physics_tech_research_speed = -0.10
+	}
+		description = "civic_engineering_world_effects"
+}
+
+civic_advisor_mainframe = {
+	modification = no
+	potential = {
+		civics = {
+			value = civic_advisor_mainframe # Only viable if you have it already... thanks to the Galactic Empire event for letting me know this was even possible
+		}
+	}
+	random_weight = { base = 0 }
+	modifier = {
+		country_civics_influence_produces_add = 2
+		all_technology_research_speed = 0.15
+		intel_encryption_add = 3
+		intel_decryption_add = 3
+		#country_admin_cap_add = 250
+		#empire_size_penalty_mult = -0.30 removed this so it's a slightly different set of bonuses to the Tyrant
+		country_unity_produces_mult = 0.35
+		pop_happiness = 0.20 #overall less powerful than the Tyrant version but people are much happier about it
+		planet_stability_add = 10
+		country_government_civic_points_add = 1
+	}
+}
+
+
+
+civic_astral_obsession = {
+	allow = { owner = { is_ai = no } }
+	potential = {
+		origin = {
+			value = origin_psionic_heritage
+		}
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+	}
+	modification = no
+	random_weight = {
+	base = 0
+	modifier = {
+		factor = 0
+	}
+}
+modifier = {
+	pop_ethic_spiritualist_attraction_mult = 0.30
+	diplo_weight_mult = -0.20
+	planet_jobs_engineering_research_produces_mult = -0.10
+	planet_jobs_physics_research_produces_mult = -0.10
+}
+	description = "civic_astral_obsession_effects"
+}

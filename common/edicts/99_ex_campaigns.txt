@@ -1,0 +1,42 @@
+##########################################################################
+# edicts
+##########################################################################
+
+#################
+# Campaigns
+# shorter duration, cost energy
+#################
+
+crisis_protocol = {
+	length = @campaignDuration
+	icon = "GFX_edict_type_time"
+	resources = {
+		category = campaigns
+		cost = {
+			#energy = 5000
+			minor_artifacts = 10
+		}
+		upkeep = {
+			energy = 50
+			multiplier = value:edict_size_effect
+		}
+	}
+
+	modifier = {
+		ship_weapon_damage = 0.25 #was .33
+		ship_evasion_mult = 0.15 #was .25
+	}
+	
+	potential = {
+		has_origin = origin_sapient_intervention
+		has_technology = tech_sapient_ai
+	}
+	
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			energy < 20000
+		}
+	}	
+}

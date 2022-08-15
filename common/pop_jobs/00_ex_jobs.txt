@@ -1,0 +1,1576 @@
+expsion = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_psi_academy
+	clothes_texture_index = 5
+
+	possible_precalc = can_fill_specialist_job
+	
+	resources = {
+		category = planet_telepaths #was planet_culture_workers
+		produces = {
+			unity = 3
+			society_research = 4
+		}	
+		upkeep = {
+			energy = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_policy_flag = upsi_military
+				}
+			}
+			alloys = 2 #buffed until naval cap problem sorted
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_policy_flag = upsi_zro
+				}
+			}
+			sr_zro = 0.02 #was 0.015
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_policy_flag = upsi_research
+				}
+			}
+			unity = -3
+			physics_research = 4
+			engineering_research = 4
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_policy_flag = upsi_trade
+				}
+			}
+			unity = -3
+			society_research = -4
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_policy_flag = upsi_zro
+				}
+			}
+			unity = -3
+			society_research = -4
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_policy_flag = upsi_crime
+				}
+			}
+			unity = -3
+			society_research = -4
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_policy_flag = upsi_military
+				}
+			}
+			unity = -3
+			society_research = -4
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_policy_flag = upsi_military
+				}
+			}
+			minerals = 3
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_policy_flag = upsi_research
+				}
+			}
+			energy = 2
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_policy_flag = upsi_zro
+				}
+			}
+			consumer_goods = 1 #was 1.5
+		}
+	}
+	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = upsi_pacifist }
+		}
+		pop_housing_usage_add = -1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+				has_trait = trait_thrifty
+			}
+		}
+		modifier = {
+			trade_value_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+				has_trait = trait_charismatic
+			}
+		}
+		modifier = {
+			planet_amenities_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = upsi_trade }
+		}
+		modifier = {
+			trade_value_add = 6
+			planet_amenities_add = 4
+		}		
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = upsi_crime }
+		}
+		modifier = {
+			planet_crime_add = -15
+		}		
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = upsi_military }
+		}
+		modifier = {
+			country_naval_cap_add = 3
+		}		
+	}
+		
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 0.2
+			has_citizenship_rights = no
+		}			
+		modifier = {
+			factor = 10
+			OR = {
+				has_trait = trait_latent_psionic
+				has_trait = trait_psionic
+			}
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_trait = trait_traditional
+				has_trait = trait_ex_society_focus
+			}
+		}
+		modifier = {
+			factor = 2
+			has_trait = trait_natural_sociologists
+		}
+		modifier = {
+			factor = 0.1
+			can_take_servant_job = yes
+		}		
+	}
+}
+
+extelekinetic = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_psi_academy
+	clothes_texture_index = 5
+
+	possible_precalc = can_fill_specialist_job
+	possible = {
+		OR = {
+			has_trait = trait_latent_psionic
+			has_trait = trait_psionic
+		}
+	}
+	
+	resources = {
+		category = planet_telepaths #was planet_culture_workers
+		produces = {
+			#unity = 2
+			#society_research = 2
+		}	
+		upkeep = {
+			energy = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_policy_flag = upsi_military
+				}
+			}
+			alloys = 6 #was 4.5, buffed until naval cap problem sorted
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_policy_flag = upsi_zro
+				}
+			}
+			sr_zro = 0.06 #was 0.04
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_policy_flag = upsi_research
+				}
+			}
+			physics_research = 8
+			engineering_research = 8
+			society_research = 8
+		}	
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_policy_flag = upsi_military
+				}
+			}
+			minerals = 9
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_policy_flag = upsi_research
+				}
+			}
+			energy = 5
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_policy_flag = upsi_zro
+				}
+			}
+			consumer_goods = 2.5 #was 3.5
+		}
+	}
+
+	planet_modifier = {
+		planet_building_build_speed_mult = 0.50
+		planet_structures_upkeep_mult = -0.10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+				has_trait = trait_thrifty
+			}
+		}
+		modifier = {
+			trade_value_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+				has_trait = trait_charismatic
+			}
+		}
+		modifier = {
+			planet_amenities_add = 2
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = upsi_military }
+		}
+		modifier = {
+			country_naval_cap_add = 8
+		}		
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = upsi_military }
+		}
+		modifier = {
+			planet_building_build_speed_mult = -0.50
+			planet_structures_upkeep_mult = 0.10
+		}		
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = upsi_trade }
+		}
+		modifier = {
+			planet_building_build_speed_mult = -0.50
+			planet_structures_upkeep_mult = 0.10
+		}		
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = upsi_crime }
+		}
+		modifier = {
+			planet_building_build_speed_mult = -0.50
+			planet_structures_upkeep_mult = 0.10
+		}		
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = upsi_research }
+		}
+		modifier = {
+			planet_building_build_speed_mult = -0.50
+			planet_structures_upkeep_mult = 0.10
+		}		
+	}
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = upsi_zro }
+		}
+		modifier = {
+			planet_building_build_speed_mult = -0.50
+			planet_structures_upkeep_mult = 0.10
+		}		
+	}
+	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = upsi_pacifist }
+		}
+		pop_housing_usage_add = -1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = upsi_trade }
+		}
+		modifier = {
+			trade_value_add = 9
+			planet_amenities_add = 6
+		}		
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = upsi_crime }
+		}
+		modifier = {
+			planet_stability_add = 3
+			planet_crime_add = -25
+		}		
+	}
+		
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 0.2
+			has_citizenship_rights = no
+		}			
+		modifier = {
+			factor = 10
+			OR = {
+				has_trait = trait_latent_psionic
+				has_trait = trait_psionic
+			}
+		}
+		modifier = {
+			factor = 0.1
+			can_take_servant_job = yes
+		}		
+	}
+}
+
+exwarmaster = {
+	category = ruler
+	condition_string = RULER_JOB_TRIGGER
+	building_icon = building_fortress
+	clothes_texture_index = 4
+
+	country_modifier = {
+		country_naval_cap_mult = 0.03
+		army_damage_mult = 0.05
+	}
+	
+	possible_precalc = can_fill_ruler_job
+
+	resources = {
+		category = planet_soldiers
+		upkeep = {
+			energy = 2
+		}
+	}
+		
+		
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 0.2
+			has_citizenship_rights = no
+		}			
+		modifier = {
+			factor = 0.1
+			can_take_servant_job = yes
+		}		
+	}
+}
+
+exmetatechnician = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_power_plant
+	clothes_texture_index = 3
+
+	possible_precalc = can_fill_specialist_job
+	
+	resources = {
+		category = planet_technician
+		produces = {
+			energy = 8
+			physics_research = 6
+		}	
+	}
+	
+	planet_modifier = {
+		planet_technician_physics_research_produces_add = 1
+	}
+			
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 0.2
+			has_citizenship_rights = no
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_trait = trait_ex_high_caste
+			}
+		}
+		modifier = {
+			factor = 1.75
+			OR = {
+				has_trait = trait_robot_superconductive
+				has_trait = trait_ingenious
+				has_trait = trait_nuumismatic_administration
+			}		
+		}			
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_trait = trait_natural_physicists
+				has_trait = trait_ex_physics_focus
+			}
+		}
+		modifier = {
+			factor = 0.1
+			can_take_servant_job = yes
+		}		
+	}
+}
+
+exgrandsmith = {
+	category = ruler
+	condition_string = BATTLE_THRALL_JOB_TRIGGER
+	building_icon = building_capital
+	clothes_texture_index = 4
+
+	possible_precalc = can_fill_ruler_job
+	
+	resources = {
+		category = planet_administrators
+		produces = {
+			unity = 6
+		}
+		upkeep = {
+			alloys = 2
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = 16
+	}	
+		
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 0.2
+			has_citizenship_rights = no
+		}			
+		modifier = {
+			factor = 0.1
+			can_take_servant_job = yes
+		}		
+	}
+}
+
+extinker = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_research_lab_1
+	clothes_texture_index = 3
+
+	possible_precalc = can_fill_specialist_job
+	
+	resources = {
+		category = planet_researchers
+		produces = {
+			consumer_goods = 6
+			engineering_research = 6
+		}
+		upkeep = {
+			alloys = 2
+		}		
+	}
+		
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 0.1
+			can_take_servant_job = yes
+		}		
+	}
+}
+
+exregistrar = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_capital
+	clothes_texture_index = 3
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_specialist_job
+	possible = {
+		complex_specialist_job_check_trigger = yes
+	}
+
+	resources = {
+		category = planet_administrators
+		upkeep = {
+			consumer_goods = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = war_preparations
+				}
+			}
+			alloys = 0.2
+			unity = 0.5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = nutritional_plenitude
+				}
+			}
+			food = 1
+			unity = 0.5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = diplomatic_grants
+				}
+			}
+			unity = 0.5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = peace_festivals
+				}
+			}
+			unity = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = continual_aid
+				}
+			}
+			unity = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = encourage_free_thought
+				}
+			}
+			unity = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = land_of_opportunity
+				}
+			}
+			unity = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = greater_than_ourselves
+				}
+			}
+			unity = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = unification_day_celebrations
+				}
+			}
+			unity = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = essence_of_contentment
+				}
+			}
+			unity = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = capacity_subsidies
+				}
+			}
+			energy = 1
+			unity = 0.5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = mining_subsidies
+				}
+			}
+			minerals = 1
+			unity = 0.5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = farming_subsidies
+				}
+			}
+			food = 1
+			unity = 0.5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = industrial_subsidies
+				}
+			}
+			consumer_goods = 0.20
+			unity = 0.5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = forge_subsidies
+				}
+			}
+			alloys = 0.2
+			unity = 0.5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = research_subsidies
+				}
+			}
+			physics_research = 0.15
+			society_research = 0.15
+			engineering_research = 0.15
+			unity = 0.5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = map_the_stars
+				}
+			}
+			physics_research = 0.15
+			society_research = 0.15
+			engineering_research = 0.15
+			unity = 0.5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = look_within
+				}
+			}
+			physics_research = 0.15
+			society_research = 0.15
+			engineering_research = 0.15
+			unity = 0.5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = engineering_fixation
+				}
+			}
+			engineering_research = 0.5
+			unity = 0.5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = rapid_construction
+				}
+			}
+			energy = 1
+			unity = 0.5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = purity_of_purpose
+				}
+			}
+			influence = 0.15
+			unity = 1
+		}
+	}
+		
+	country_modifier = {
+		country_edict_fund_add = 5
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+				has_trait = trait_thrifty
+			}
+		}
+		modifier = {
+			trade_value_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+				has_trait = trait_charismatic
+			}
+		}
+		modifier = {
+			planet_amenities_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_byzantine_bureaucracy }
+		}
+		modifier = {
+			planet_stability_add = 1
+		}
+	}
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_edict = absurd_excess }
+		}
+		modifier = {
+			planet_amenities_add = 5
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_edict = essence_of_contentment }
+		}
+		modifier = {
+			planet_amenities_add = 3
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_edict = information_quarantine }
+		}
+		modifier = {
+			planet_stability_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_edict = bureau_of_espionage }
+		}
+		modifier = {
+			planet_crime_add = -5
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_edict = enhanced_surveillance }
+		}
+		modifier = {
+			planet_crime_add = -5
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_edict = tracking_implants }
+		}
+		modifier = {
+			planet_crime_add = -15
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_edict = thought_enforcement }
+		}
+		modifier = {
+			planet_crime_add = -15
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_edict = fleet_supremacy }
+		}
+		modifier = {
+			country_naval_cap_add = 3
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_edict = total_conscription }
+		}
+		modifier = {
+			country_naval_cap_add = 3
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_edict = diplomatic_grants }
+		}
+		modifier = {
+			trade_value_add = 3
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_edict = dispatch_prospectors }
+		}
+		modifier = {
+			trade_value_add = 3
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_edict = sabre_rattling }
+		}
+		modifier = {
+			country_naval_cap_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_edict = extended_shifts }
+		}
+		modifier = {
+			planet_jobs_worker_produces_mult = 0.005
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_edict = voluntary_work_scheme }
+		}
+		modifier = {
+			planet_jobs_worker_produces_mult = 0.005
+		}
+	}
+
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 0.2
+			has_citizenship_rights = no
+			NOT = { has_trait = trait_mechanical }
+		}
+		modifier = {
+			factor = 2
+			has_trait = trait_robot_propaganda_machines
+			OR = {
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+			}
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_trait = trait_robot_propaganda_machines
+				has_trait = trait_traditional
+			}
+		}
+		modifier = {
+			factor = 0.5
+			has_trait = trait_quarrelsome
+		}
+		modifier = {
+			factor = 0.1
+			can_take_servant_job = yes
+		}
+		modifier = {
+			factor = 1.5
+			has_job = bureaucrat
+		}
+		modifier = {
+			factor = 0.5
+			has_trait = trait_presapient_proles
+		}
+		modifier = {
+			factor = 1.1
+			has_trait = trait_latent_psionic
+		}
+		modifier = {
+			factor = 1.2
+			has_trait = trait_psionic
+		}
+		modifier = {
+			factor = 0.5
+			has_trait = trait_enigmatic_intelligence_failed
+		}
+	}
+}
+
+expaladin = {
+	category = worker
+	can_set_priority = no #they want to help but they won't let you say "maybe you can do something more productive than that" they'll just continue polishing their sword. Why do they even have a sword it's the 24th Century
+	condition_string = SOLDIER_JOB_TRIGGER
+	building_icon = building_stronghold
+	clothes_texture_index = 4
+
+	possible_precalc = can_fill_worker_job
+	
+	country_modifier = {
+		country_naval_cap_add = 6
+	}
+	
+	resources = {
+		category = planet_soldiers
+		upkeep = {
+			energy = 2
+		}
+		produces = {
+			alloys = 1
+			unity = 2
+		}		
+	}
+	
+	pop_modifier = {
+		pop_defense_armies_add = 3
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				exists = owner
+				owner = { has_technology = "tech_ground_defense_planning" }
+			}
+		}
+		modifier = {
+			country_naval_cap_add = 3
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				exists = owner
+				owner = { has_valid_civic = "civic_astral_obsession" }
+			}
+		}
+		modifier = {
+			country_naval_cap_add = 3
+		}
+	}
+
+	resources = {
+		category = planet_soldiers
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_valid_civic = civic_citizen_service }
+			}
+			unity = 2
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_valid_civic = civic_astral_obsession }
+			}
+			unity = 2
+		}
+	}
+		
+	weight = {
+		weight = @worker_job_weight
+		modifier = {
+			factor = 0.25
+			can_take_servant_job = yes
+		}		
+	}
+}
+
+exlabourer = {
+	category = worker
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_mineral_purification_plant
+	clothes_texture_index = 2
+
+	possible_precalc = can_fill_worker_job
+	
+	resources = {
+		category = planet_miners
+		produces = {
+			minerals = 2
+			food = 2
+			energy = 2
+		}		
+	}
+		
+	weight = {
+		weight = @worker_job_weight
+		modifier = {
+			factor = 0.25
+			can_take_servant_job = yes
+		}		
+	}
+}
+
+exemployee = {
+	category = worker
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_mineral_purification_plant
+	clothes_texture_index = 2
+
+	possible_precalc = can_fill_worker_job
+	
+	resources = {
+		category = planet_miners
+		produces = {
+			minerals = 3
+			energy = 3
+		}		
+	}
+	
+	pop_modifier = {
+		pop_housing_usage_add = -1
+	}
+		
+	weight = {
+		weight = @worker_job_weight
+		modifier = {
+			factor = 0.25
+			can_take_servant_job = yes
+		}		
+	}
+}
+
+exhauler = {
+	category = worker
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_mineral_purification_plant
+	clothes_texture_index = 2
+
+	possible_precalc = can_fill_worker_job
+	
+	resources = {
+		category = planet_miners
+		produces = {
+			consumer_goods = 1
+		}
+	}
+	
+	country_modifier = {
+		planet_amenities_add = 1
+	}
+	
+	
+	planet_modifier = {
+		pop_growth_speed = -0.01
+		planet_amenities_add = -2
+		pop_environment_tolerance = -0.01
+		trade_value_add = 4
+	}
+			
+	weight = {
+		weight = @worker_job_weight
+		modifier = {
+			factor = 0.25
+			can_take_servant_job = yes
+		}		
+	}
+}
+
+exrecruiter = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_stronghold
+	clothes_texture_index = 4
+
+	country_modifier = {
+		country_naval_cap_add = 12
+	}
+
+	possible_precalc = can_fill_specialist_job
+	
+	planet_modifier = {
+		planet_stability_add = -1
+		pop_happiness = -0.02
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				exists = owner
+				owner = { has_technology = "tech_ground_defense_planning" }
+			}
+		}
+		modifier = {
+			country_naval_cap_add = 6
+		}
+	}
+
+	resources = {
+		category = planet_soldiers
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_valid_civic = civic_citizen_service }
+			}
+			unity = 5
+		}
+	}
+		
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 0.1
+			can_take_servant_job = no
+		}		
+	}
+}
+
+exsmuggler = {
+	category = criminal
+	is_capped_by_modifier = yes
+	can_set_priority = no
+	clothes_texture_index = 2
+	building_icon = building_residence
+	contributes_to_diplo_weight = no
+	ignores_favorite = yes
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_sapient = yes
+	}
+
+	possible = {
+		NOT = {
+			has_citizenship_type = {
+				country = owner
+				type = citizenship_robot_servitude
+			}
+		}
+		owner = {
+			is_gestalt = no
+		}
+	}
+
+	planet_modifier = {
+		trade_value_add = 10
+		planet_crime_add = 20
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				exists = owner
+				owner = { has_civic = "civic_criminal_heritage" }
+			}
+		}
+		modifier = {
+			trade_value_add = 2
+			planet_crime_add = -5
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				exists = owner
+				owner = { has_civic = "civic_astral_obsession" }
+			}
+		}
+		modifier = {
+			planet_crime_add = -7
+		}
+	}
+
+	weight = {
+		weight = @criminal_job_weight
+	}
+}
+
+excultist = {
+	category = worker
+	is_capped_by_modifier = yes
+	can_set_priority = no
+	clothes_texture_index = 3
+	building_icon = building_temple
+	ignores_favorite = yes
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_sapient = yes
+	}
+
+	possible = {
+		NOT = {
+			has_citizenship_type = {
+				country = owner
+				type = citizenship_robot_servitude
+			}
+		}
+		owner = {
+			is_gestalt = no
+		}
+	}
+
+	planet_modifier = {
+		planet_crime_add = 20
+	}
+	
+	pop_modifier = {
+		pop_defense_armies_add = 1
+	}
+	
+	resources = {
+		category = planet_priests
+		produces = {
+			unity = 5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_valid_civic = "civic_astral_obsession"
+				}
+			}
+			unity = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				exists = owner
+				owner = { has_civic = "civic_criminal_heritage" }
+			}
+		}
+		modifier = {
+			planet_crime_add = -3
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				exists = owner
+				owner = { has_civic = "civic_astral_obsession" }
+			}
+		}
+		modifier = {
+			planet_crime_add = -5
+		}
+	}
+
+	weight = {
+		weight = @criminal_job_weight
+	}
+}
+
+exarbiter = {
+	category = specialist
+	condition_string = BATTLE_THRALL_JOB_TRIGGER
+	clothes_texture_index = 5
+	building_icon = building_precinct_house
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible = {
+		NOT = {
+			has_citizenship_type = {
+				country = owner
+				type = citizenship_robot_servitude
+			}
+		}
+		owner = {
+			is_gestalt = no
+		}
+	}
+
+	planet_modifier = {
+		planet_crime_add = -45
+		pop_happiness = -0.01
+	}
+	
+	resources = {
+		category = planet_enforcers
+		produces = {
+			unity = 2
+		}
+		upkeep = {
+			energy = 2
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_valid_civic = "civic_astral_obsession"
+				}
+			}
+			unity = 2
+		}
+	}
+	
+	pop_modifier = {
+		pop_defense_armies_add = 3
+	}
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				exists = owner
+				owner = { has_civic = "civic_astral_obsession" }
+			}
+		}
+		modifier = {
+			planet_crime_add = -15
+		}
+	}
+
+	weight = {
+		weight = @specialist_job_weight
+	}
+}
+
+exzealot = {
+	category = ruler
+	is_capped_by_modifier = yes
+	can_set_priority = no
+	clothes_texture_index = 3
+	building_icon = building_temple
+	ignores_favorite = yes
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_sapient = yes
+	}
+
+	possible = {
+		NOT = {
+			has_citizenship_type = {
+				country = owner
+				type = citizenship_robot_servitude
+			}
+		}
+		owner = {
+			is_gestalt = no
+		}
+	}
+	
+	pop_modifier = {
+		pop_defense_armies_add = 5
+	}
+	
+	country_modifier = {
+		#country_naval_cap_mult = 0.01
+		#army_damage_mult = 0.03
+		diplo_weight_pops_mult = 0.05
+	}
+
+	planet_modifier = {
+		planet_crime_add = 40
+	}
+	
+	resources = {
+		category = planet_priests
+		produces = {
+			unity = 12
+		}
+		upkeep = {
+			consumer_goods = 2
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_valid_civic = "civic_astral_obsession"
+				}
+			}
+			unity = 4
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				exists = owner
+				owner = { has_civic = "civic_criminal_heritage" }
+			}
+		}
+		modifier = {
+			planet_crime_add = -10
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				exists = owner
+				owner = { has_civic = "civic_astral_obsession" }
+			}
+		}
+		modifier = {
+			planet_crime_add = -14
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				exists = owner
+				owner = { has_civic = "civic_astral_obsession" }
+			}
+		}
+		modifier = {
+			#country_naval_cap_mult = 0.01
+			#army_damage_mult = 0.02
+			diplo_weight_pops_mult = 0.05
+		}
+	}
+
+	weight = {
+		weight = @criminal_job_weight
+	}
+}

@@ -1,0 +1,380 @@
+namespace = exirelic
+
+country_event = {
+	id = exirelic.10000
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		random_list = {
+			30 = { country_event = { id = exirelic.10001 } } #Gain research
+			30 = { country_event = { id = exirelic.10002 } } #+5% Research Speed, +1% Job output
+			15 = { country_event = { id = exirelic.10012 } } #+10% Research Speed, +2.5% Job output
+			15 = { country_event = { id = exirelic.10003 } } #Progress in single random research
+			1 = { country_event = { id = exirelic.10004 } } #The rest of the 1-chance events are the Fallen Empire buildings you can sometimes unlock via Arcane Deciphering
+			1 = { country_event = { id = exirelic.10005 } }
+			1 = { country_event = { id = exirelic.10006 } }
+			5 = {
+				modifier = {
+				factor = 10
+				has_resource = { type = minor_artifacts amount < 5 }
+				}
+				country_event = { id = exirelic.10016 } #Cache of minor artifacts/special resources
+			}
+			3 = {
+				modifier = {
+					factor = 0
+					has_modifier = supercomputer_insight_permanent #+5% Happiness, +20 Leader lifespan, +10% Pop Growth speed, +1 Influence
+				}
+				country_event = { id = exirelic.10013 } 
+			}
+			3 = {
+				modifier = {
+					factor = 0
+					has_modifier = supercomputer_insight_permanentii #+10% Research Speed, -15% CG upkeep, +1 Influence
+				}
+				country_event = { id = exirelic.10014 } 
+			}
+			3= {
+				modifier = {
+					factor = 0
+					has_modifier = supercomputer_insight_permanentiii #+5 Stability, -15% Empire Size, +1 Influence
+				}
+				country_event = { id = exirelic.10015 } 
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					country_uses_consumer_goods = no
+				}
+				country_event = { id = exirelic.10007 } 
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					country_uses_food = no
+				}
+				country_event = { id = exirelic.10008 } 
+			}
+			1 = { country_event = { id = exirelic.10009 } }
+		}
+	}
+}
+
+country_event = {
+	id = exirelic.10001
+	title = "exirelic.10001.name"
+	desc = "exirelic.10001.desc"
+	picture = GFX_evt_ancient_records
+
+	is_triggered_only = yes
+
+	option = {
+		name = "FASCINATING"
+		locked_random_list = {
+			10 = {
+				add_monthly_resource_mult = {
+					resource = engineering_research
+					value = @tier3researchreward
+					min = @tier3researchmin
+					max = @tier3researchmax
+				}
+			}
+			10 = {
+				add_monthly_resource_mult = {
+					resource = physics_research
+					value = @tier3researchreward
+					min = @tier3researchmin
+					max = @tier3researchmax
+				}
+			}
+			10 = {
+				add_monthly_resource_mult = {
+					resource = society_research
+					value = @tier3researchreward
+					min = @tier3researchmin
+					max = @tier3researchmax
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = exirelic.10002
+	title = "exirelic.10002.name"
+	desc = "exirelic.10002.desc"
+	picture = GFX_evt_ancient_records
+
+	is_triggered_only = yes
+
+	option = {
+		name = "FASCINATING"
+		add_modifier = {
+			modifier = "supercomputer_insight"
+			days = 1800
+		}
+	}
+}
+
+country_event = {
+	id = exirelic.10012
+	title = "exirelic.10012.name"
+	desc = "exirelic.10012.desc"
+	picture = GFX_evt_ancient_records
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+		add_modifier = {
+			modifier = "supercomputer_insightii"
+			days = 1800
+		}
+	}
+}
+
+country_event = {
+	id = exirelic.10013
+	title = "exirelic.10013.name"
+	desc = "exirelic.10013.desc"
+	picture = GFX_evt_ancient_records
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+		add_modifier = {
+			modifier = "supercomputer_insight_permanent"
+			days = -1
+		}
+	}
+}
+
+country_event = {
+	id = exirelic.10014
+	title = "exirelic.10014.name"
+	desc = "exirelic.10014.desc"
+	picture = GFX_evt_ancient_records
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+		add_modifier = {
+			modifier = "supercomputer_insight_permanentii"
+			days = -1
+		}
+	}
+}
+
+country_event = {
+	id = exirelic.10015
+	title = "exirelic.10015.name"
+	desc = "exirelic.10015.desc"
+	picture = GFX_evt_ancient_records
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+		add_modifier = {
+			modifier = "supercomputer_insight_permanentiii"
+			days = -1
+		}
+	}
+}
+
+country_event = {
+	id = exirelic.10003
+	title = "exirelic.10003.name"
+	desc = "exirelic.10003.desc"
+	picture = GFX_evt_ancient_records
+
+	is_triggered_only = yes
+
+	option = {
+		name = "FASCINATING"
+		locked_random_list = {
+			10 = {
+				add_random_research_option = {
+					add_progress = 0.50
+					area = engineering
+					ignore_prereqs = no
+					fail_effects = {
+						add_monthly_resource_mult = {
+							resource = engineering_research
+							value = @tier3researchreward
+							min = @tier3researchmin
+							max = @tier3researchmax
+						}
+					}
+				}
+			}
+			10 = {
+				add_random_research_option = {
+					add_progress = 0.50
+					area = physics
+					ignore_prereqs = no
+					fail_effects = {
+						add_monthly_resource_mult = {
+							resource = physics_research
+							value = @tier3researchreward
+							min = @tier3researchmin
+							max = @tier3researchmax
+						}
+					}
+				}
+			}
+			10 = {
+				add_random_research_option = {
+					add_progress = 0.50
+					area = society
+					ignore_prereqs = no
+					fail_effects = {
+						add_monthly_resource_mult = {
+							resource = society_research
+							value = @tier3researchreward
+							min = @tier3researchmin
+							max = @tier3researchmax
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = exirelic.10016
+	title = "exirelic.10016.name"
+	desc = "exirelic.10016.desc"
+	picture = GFX_evt_ancient_records
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+			add_resource = { 
+				minor_artifacts = 25
+				sr_zro = 25
+				sr_living_metal = 25 
+				sr_dark_matter = 25
+			}
+	}
+}
+
+country_event = {
+	id = exirelic.10004
+	title = "exirelic.10004.name"
+	desc = "exirelic.10004.nanoforge"
+	picture = GFX_evt_ancient_records
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+
+		hidden_effect = {
+			owner = {
+				change_variable = { which = nano_forge_build_count value = 1 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = exirelic.10005
+	title = "exirelic.10004.name"
+	desc = "exirelic.10004.skydome"
+	picture = GFX_evt_ancient_records
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+
+		hidden_effect = {
+			owner = {
+				change_variable = { which = skydome_build_count value = 1 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = exirelic.10006
+	title = "exirelic.10004.name"
+	desc = "exirelic.10004.dimensional_fabricator"
+	picture = GFX_evt_ancient_records
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+
+		hidden_effect = {
+			owner = {
+				change_variable = { which = dimensional_fabricator_build_count value = 1 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = exirelic.10007
+	title = "exirelic.10004.name"
+	desc = "exirelic.10004.affluence_center"
+	picture = GFX_evt_ancient_records
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+
+		hidden_effect = {
+			owner = {
+				change_variable = { which = affluence_center_build_count value = 1 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = exirelic.10008
+	title = "exirelic.10004.name"
+	desc = "exirelic.10004.nourishment_center"
+	picture = GFX_evt_ancient_records
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+
+		hidden_effect = {
+			owner = {
+				change_variable = { which = nourishment_center_build_count value = 1 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = exirelic.10009
+	title = "exirelic.10004.name"
+	desc = "exirelic.10004.class_4_singularity"
+	picture = GFX_evt_ancient_records
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+
+		hidden_effect = {
+			owner = {
+				change_variable = { which = class_4_singularity_build_count value = 1 }
+			}
+		}
+	}
+}
