@@ -1,0 +1,18 @@
+op_generate_start_pops = {	
+	if = { limit = { owner = { has_valid_civic = civic_abhorrent_ascendancy } }
+		
+		last_created_species = {
+			set_citizenship_type = {
+				country = root.owner
+				type = citizenship_full
+			}
+		}
+		while = {
+			count = 4
+			create_pop = {
+				species = last_created_species
+				ethos = random
+			}
+		}		
+	}	
+}

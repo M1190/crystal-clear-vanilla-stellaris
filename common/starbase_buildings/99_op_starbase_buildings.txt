@@ -1,0 +1,57 @@
+op_stellar_aegis = {
+	icon = "GFX_starbase_stellar_aegis"
+	construction_days = 180
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+	}
+
+	potential = {
+		exists = owner
+			OR = {
+				owner = { has_civic = "civic_legendary_fleet" }
+				owner = { has_civic = "civic_galactic_annihilators" }
+	}
+	}
+
+	#show_in_tech = " "
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			influence = 50
+		}
+
+		upkeep = {
+			energy = 5
+		}
+	}
+	
+	station_modifier = {
+			#starbase_defense_platform_capacity_add = 8
+			shipclass_military_station_damage_mult = 2
+			ship_weapon_range_mult = 0.50
+			shipclass_starbase_damage_mult = 1
+			shipclass_starbase_hull_mult = 1
+			local_trade_protection_add = 30
+			#starbase_upgrade_cost_mult = -0.35
+			#starbase_upgrade_speed_mult = 0.5
+			starbases_upkeep_mult = -0.35
+	}
+	
+	system_modifier = {
+		
+	}
+
+
+
+	ai_build_at_chokepoint = yes
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 100 
+			}
+}
+

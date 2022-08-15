@@ -1,0 +1,37 @@
+namespace = opcivicsb
+
+country_event = {
+	id = opcivicsb.1
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = { 																	
+			limit = { 
+				has_civic = civic_legendary_fleet 
+			} 
+			every_owned_leader = {												
+                limit = {
+                    leader_class = admiral
+               }
+                add_trait = leader_trait_supreme_tactician
+				}
+			}
+		}
+}
+
+country_event = {
+	id = opcivicsb.2
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = { 																	
+			limit = { 
+				has_civic = civic_psionic_destiny
+			} 
+			every_owned_pop = {											
+                limit = { has_trait = trait_psionic }
+                from = { add_resource = { sr_zro = 0.01 } } #Credit to Princess Stabbity for helping me figure this one out
+				}
+			}
+		}
+}

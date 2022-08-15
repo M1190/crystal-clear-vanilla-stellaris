@@ -1,0 +1,49 @@
+##########################################################################
+# Empire Policies
+#
+# #####
+#
+# AI:
+# Base AI-weight is 100, if unchanged
+# AI will grab whatever policy-option has the highest weight
+#
+# #####
+#
+##########################################################################
+
+vault_options = {
+	potential = {
+		has_valid_civic = civic_wondrous_vaultREMOVED
+	}
+
+	option = {
+		name = "vault_idle"
+		
+		policy_flags = {}	
+		modifier = {
+			planet_refiners_produces_mult = 0.15
+			planet_translucers_produces_mult = 0.15
+			planet_chemists_produces_mult = 0.15
+		}
+		
+		AI_weight = {
+			factor = 100
+		}		
+	}
+	
+	option = {
+		name = "vault_active"
+		
+		policy_flags = {}	
+		modifier = {
+			job_chemist_per_pop = 0.04
+			job_gas_refiner_per_pop = 0.04
+			job_translucer_per_pop = 0.04
+			job_foundry_per_pop = 0.04
+		}
+		
+		AI_weight = {
+			factor = 0
+		}		
+	}
+}
