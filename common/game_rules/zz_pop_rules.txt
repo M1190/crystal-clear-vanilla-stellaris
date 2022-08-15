@@ -2,14 +2,17 @@
 #There are still multiple hard-coded rules that apply in addition to these.
 #If rules here evaluate to true, there might still be other rules that make the action unavailable.
 #If a rule here evaluates to false the action will become unavailable
-
 # Root = claimer
 # This = system
 can_add_claim = {
 	hidden_trigger = {
 		if = {
 			limit = {
-				root = { NOT = { is_country_type = default } }
+				root = {
+					NOT = {
+						is_country_type = default
+					}
+				}
 			}
 			always = yes
 		}
@@ -19,8 +22,12 @@ can_add_claim = {
 		OR = {
 			root = {
 				has_policy_flag = unrestricted_wars
-				NOT = { has_valid_civic = civic_closed_collective }
-				NOT = { has_valid_civic = civic_closed_network }
+				NOT = {
+					has_valid_civic = civic_closed_collective
+				}
+				NOT = {
+					has_valid_civic = civic_closed_network
+				}
 			}
 			AND = {
 				root = {
@@ -29,23 +36,41 @@ can_add_claim = {
 					has_valid_ai_personality = yes
 					has_ai_personality = democratic_crusaders
 				}
-				owner = { NOT = { has_authority = auth_democratic } }
-				owner = { NOT = { has_authority = auth_cooperative } }
+				owner = {
+					NOT = {
+						has_authority = auth_democratic
+					}
+				}
+				owner = {
+					NOT = {
+						has_authority = auth_bugged_corporate_democratic
+					}
+				}
 			}
 			AND = {
-				root = { has_policy_flag = liberation_wars }
-				owner = { is_gestalt = yes }
+				root = {
+					has_policy_flag = liberation_wars
+				}
+				owner = {
+					is_gestalt = yes
+				}
 			}
 			AND = {
 				exists = owner
-				owner = { is_gestalt = yes }
+				owner = {
+					is_gestalt = yes
+				}
 			}
 			AND = {
 				exists = owner
 				owner = {
 					any_war = {
-						any_attacker = { is_same_value = prevprev }
-						any_defender = { is_same_value = root }
+						any_attacker = {
+							is_same_value = prevprev
+						}
+						any_defender = {
+							is_same_value = root
+						}
 					}
 				}
 			}
@@ -67,15 +92,23 @@ can_add_claim = {
 	custom_tooltip = {
 		fail_text = CANNOT_ADD_CLAIM_DEVOURING_SWARM
 		NAND = {
-			root = { has_valid_civic = civic_hive_devouring_swarm }
-			root = { is_lithoid_empire = no }
+			root = {
+				has_valid_civic = civic_hive_devouring_swarm
+			}
+			root = {
+				is_lithoid_empire = no
+			}
 		}
 	}
 	custom_tooltip = {
 		fail_text = CANNOT_ADD_CLAIM_DEVOURING_SWARM_LITHOID
 		NAND = {
-			root = { has_valid_civic = civic_hive_devouring_swarm }
-			root = { is_lithoid_empire = yes }
+			root = {
+				has_valid_civic = civic_hive_devouring_swarm
+			}
+			root = {
+				is_lithoid_empire = yes
+			}
 		}
 	}
 	custom_tooltip = {
@@ -93,15 +126,23 @@ can_add_claim = {
 		fail_text = CANNOT_ADD_CLAIM_PURIFIERS
 		NAND = {
 			exists = owner
-			root = { has_valid_civic = civic_fanatic_purifiers }
-			NOT = {	owner = { is_same_species = root } }
+			root = {
+				has_valid_civic = civic_fanatic_purifiers
+			}
+			NOT = {
+				owner = {
+					is_same_species = root
+				}
+			}
 		}
 	}
 	custom_tooltip = {
 		fail_text = CANNOT_ADD_CLAIM_EXTERMINATOR
 		NAND = {
 			exists = owner
-			root = { has_valid_civic = civic_machine_terminator }
+			root = {
+				has_valid_civic = civic_machine_terminator
+			}
 			owner = {
 				NOR = {
 					is_same_species = root
@@ -142,18 +183,39 @@ can_add_claim = {
 should_abduct_pop = {
 	planet = {
 		exists = owner
-		owner = { is_hostile = root }
+		owner = {
+			is_hostile = root
+		}
 	}
 	OR = {
-		ROOT = { has_valid_civic = civic_living_hosts }
-		ROOT = { has_valid_civic = civic_infestation }
+		ROOT = {
+			has_valid_civic = civic_living_hosts
+		}
+		ROOT = {
+			has_valid_civic = civic_infestation
+		}
 		NAND = {
-			has_citizenship_type = { type = citizenship_purge country = root }
+			has_citizenship_type = {
+				type = citizenship_purge
+				country = root
+			}
 			NOR = {
-				has_purge_type = { type = purge_matrix country = root }
-				has_purge_type = { type = purge_processing country = root }
-				has_purge_type = { type = purge_labor_camps country = root }
-				has_purge_type = { type = purge_necrophage country = root }
+				has_purge_type = {
+					type = purge_matrix
+					country = root
+				}
+				has_purge_type = {
+					type = purge_processing
+					country = root
+				}
+				has_purge_type = {
+					type = purge_labor_camps
+					country = root
+				}
+				has_purge_type = {
+					type = purge_necrophage
+					country = root
+				}
 			}
 		}
 	}
@@ -167,19 +229,35 @@ can_release_vassal_from_species = {
 		NOR = {
 			AND = {
 				has_trait = trait_machine_unit
-				NOT = { prev.this = { has_origin = origin_master_computer } }
+				NOT = {
+					prev.this = {
+						has_origin = origin_master_computer
+					}
+				}
 			}
 			AND = {
-				NOT = { has_trait = trait_machine_unit }
-				prev.this = { has_authority = auth_machine_intelligence }
+				NOT = {
+					has_trait = trait_machine_unit
+				}
+				prev.this = {
+					has_authority = auth_machine_intelligence
+				}
 			}
 			AND = {
 				has_trait = trait_hive_mind
-				NOT = { prev.this = { has_origin = origin_progenitor_hive } }
+				NOT = {
+					prev.this = {
+						has_origin = origin_progenitor_hive
+					}
+				}
 			}
 			AND = {
-				NOT = { has_trait = trait_hive_mind }
-				prev.this = { has_authority = auth_hive_mind }
+				NOT = {
+					has_trait = trait_hive_mind
+				}
+				prev.this = {
+					has_authority = auth_hive_mind
+				}
 			}
 			has_trait = trait_mechanical
 			can_think = no
@@ -192,14 +270,26 @@ can_release_vassal_from_species = {
 can_generate_leader_from_pop = {
 	has_citizenship_rights = yes
 	can_think = yes
-	NOT = { has_trait = trait_syncretic_proles }
-	NOT = { has_trait = trait_tree_caretaker }
-	NOT = { has_trait = trait_infested_basic }
+	NOT = {
+		has_trait = trait_syncretic_proles
+	}
+	NOT = {
+		has_trait = trait_tree_caretaker
+	}
+	NOT = {
+		has_trait = trait_infested_basic
+	}
 	OR = {
 		is_robot_pop = no
-		root = { has_technology = tech_synthetic_leaders }
-		root = { has_authority = auth_machine_intelligence }
-		root = { is_mechanical_empire = yes }
+		root = {
+			has_technology = tech_synthetic_leaders
+		}
+		root = {
+			has_authority = auth_machine_intelligence
+		}
+		root = {
+			is_mechanical_empire = yes
+		}
 	}
 	OR = {
 		is_same_species = root
@@ -222,7 +312,11 @@ can_species_procreate = {
 		has_trait = trait_mechanical
 		has_trait = trait_memorex_comatos
 		AND = {
-			root = { owner = { has_origin = origin_hive_queen } }
+			root = {
+				owner = {
+					has_origin = origin_hive_queen
+				}
+			}
 			has_trait = trait_hive_mind
 		}
 		AND = {
@@ -232,7 +326,9 @@ can_species_procreate = {
 					OR = {
 						has_country_flag = clone_infertility_5
 						AND = {
-							NOT = { has_origin = origin_clones }
+							NOT = {
+								has_origin = origin_clones
+							}
 							years_passed > 200
 						}
 					}
@@ -241,8 +337,15 @@ can_species_procreate = {
 		}
 	}
 	NAND = {
-		root = { has_modifier = slave_colony }
-		NOT = { has_citizenship_type = { type = citizenship_slavery country = root.owner } }
+		root = {
+			has_modifier = slave_colony
+		}
+		NOT = {
+			has_citizenship_type = {
+				type = citizenship_slavery
+				country = root.owner
+			}
+		}
 	}
 	if = {
 		limit = {
@@ -267,7 +370,9 @@ can_species_procreate = {
 			}
 		}
 	}
-	NOT = { has_species_flag = nivlac_no_procreation }
+	NOT = {
+		has_species_flag = nivlac_no_procreation
+	}
 }
 
 # Checks if a pop can be assembled
@@ -289,14 +394,18 @@ can_species_be_assembled = {
 			is_organic_species = yes
 			if = {
 				limit = {
-					root.owner = { is_hive_empire = yes }
+					root.owner = {
+						is_hive_empire = yes
+					}
 				}
 				has_trait = trait_hive_mind
 			}
 			else_if = {
 				limit = {
 					Root = {
-						owner = { has_origin = origin_sacred_tree }
+						owner = {
+							has_origin = origin_sacred_tree
+						}
 						OR = {
 							has_deposit = d_tree_of_life_home
 							has_deposit = d_tree_of_life_colony
@@ -305,15 +414,25 @@ can_species_be_assembled = {
 				}
 				OR = {
 					has_trait = trait_tree_caretaker
-					Root = { has_building = building_clone_vats }
-					Root = { has_building = building_posthumous_employment_center }
-					Root = { has_modifier = tiyanki_trophy }
+					Root = {
+						has_building = building_clone_vats
+					}
+					Root = {
+						has_building = building_posthumous_employment_center
+					}
+					Root = {
+						has_modifier = tiyanki_trophy
+					}
 				}
 			}
 			else_if = {
-				limit = { has_trait = trait_plantoid_budding }
+				limit = {
+					has_trait = trait_plantoid_budding
+				}
 				root = {
-					any_owned_species = { is_exact_same_species = prevprev }
+					any_owned_species = {
+						is_exact_same_species = prevprev
+					}
 				}
 			}
 			else_if = {
@@ -336,7 +455,9 @@ can_species_be_assembled = {
 			}
 			else_if = {
 				limit = {
-					root.owner = { has_civic = civic_permanent_employment }
+					root.owner = {
+						has_civic = civic_permanent_employment
+					}
 				}
 				root = {
 					OR = {
@@ -348,11 +469,15 @@ can_species_be_assembled = {
 			}
 			else_if = {
 				limit = {
-					root = { has_modifier = tiyanki_trophy }
+					root = {
+						has_modifier = tiyanki_trophy
+					}
 				}
 			}
 			else = {
-				root = { has_building = building_clone_vats }
+				root = {
+					has_building = building_clone_vats
+				}
 			}
 		}
 	}
@@ -367,14 +492,21 @@ can_resettle_pop = {
 	# Self-modified Pops won't leave
 	custom_tooltip = {
 		fail_text = "self_modified_refuse"
-		NOT = { has_trait = trait_self_modified }
+		NOT = {
+			has_trait = trait_self_modified
+		}
 	}
 	custom_tooltip = {
 		fail_text = "caretaker_refuse"
-		NOT = { has_trait = trait_tree_caretaker }
+		NOT = {
+			has_trait = trait_tree_caretaker
+		}
 	}
-	IF = { #Done as an IF/ELSE so the tooltip isn't hideous and unreadable
-		limit = { is_shackled_robot = yes }
+	IF = {
+		#Done as an IF/ELSE so the tooltip isn't hideous and unreadable
+		limit = {
+			is_shackled_robot = yes
+		}
 		always = yes
 	}
 	ELSE_IF = {
@@ -401,12 +533,16 @@ can_resettle_pop = {
 		OR = {
 			is_same_species = planet.owner
 			planet = {
-				NOT = { has_modifier = planet_culture_shock }
+				NOT = {
+					has_modifier = planet_culture_shock
+				}
 			}
 		}
 	}
 	ELSE_IF = {
-		limit = { is_enslaved = yes }
+		limit = {
+			is_enslaved = yes
+		}
 		is_enslaved = yes
 	}
 	else_if = {
@@ -440,7 +576,8 @@ can_country_resettle = {
 				}
 			}
 		}
-		hidden_trigger = { #don't need to show this as tooltip only shown when all game rule fails, and this is a special case
+		hidden_trigger = {
+			#don't need to show this as tooltip only shown when all game rule fails, and this is a special case
 			any_owned_planet = {
 				OR = {
 					has_modifier = deteriorating_ecosystem
@@ -510,14 +647,23 @@ should_force_decline_species = {
 							exists = owner
 							owner = {
 								OR = {
-									NOT = { has_origin = origin_clone_army }					# Can't have Vats.
-									has_country_flag = clone_army_fertility_unlocked			# Can't have Vats anymore.
-									NOT = { owner_main_species = { is_same_species = root } }	# Our Vats can't build this species.
+									NOT = {
+										has_origin = origin_clone_army
+									}									# Can't have Vats.
+									has_country_flag = clone_army_fertility_unlocked									# Can't have Vats anymore.
+									NOT = {
+										owner_main_species = {
+											is_same_species = root
+										}
+									}									# Our Vats can't build this species.
 								}
 							}
 						}
 						# Vats check out, but are there more pops than Vats support?
-						check_variable = { which = clone_pops_missing value < 0 }
+						check_variable = {
+							which = clone_pops_missing
+							value < 0
+						}
 					}
 				}
 			}
@@ -581,7 +727,9 @@ can_build_branch_office_on_planet = {
 		owner = {
 			OR = {
 				is_same_species = root
-				NOT = { has_civic = civic_fanatic_purifiers }
+				NOT = {
+					has_civic = civic_fanatic_purifiers
+				}
 			}
 		}
 	}
@@ -589,11 +737,18 @@ can_build_branch_office_on_planet = {
 		fail_text = BRANCH_OFFICE_NOT_COMMERCIAL_PACT
 		exists = owner
 		OR = {
-			root = { is_criminal_syndicate = yes }
-			owner = { has_commercial_pact = root }
-			owner = { is_in_federation_with = root }
-			owner = { has_country_flag = cb_markets_opened@root }
-
+			root = {
+				is_criminal_syndicate = yes
+			}
+			owner = {
+				has_commercial_pact = root
+			}
+			owner = {
+				is_in_federation_with = root
+			}
+			owner = {
+				has_country_flag = cb_markets_opened@root
+			}
 			# allow branch offices in subsidiaries and vice versa (and fellow subjects)
 			root = {
 				is_subject = yes
@@ -622,12 +777,20 @@ can_build_branch_office_on_planet = {
 				}
 			}
 			AND = {
-				root = { has_civic = civic_galactic_sovereign_megacorp }
-				owner = { is_galactic_community_member = yes }
+				root = {
+					has_civic = civic_galactic_sovereign_megacorp
+				}
+				owner = {
+					is_galactic_community_member = yes
+				}
 			}
 			AND = {
-				root = { has_modifier = imperial_charter }
-				owner = { is_galactic_community_member = yes }
+				root = {
+					has_modifier = imperial_charter
+				}
+				owner = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 	}
@@ -635,7 +798,6 @@ can_build_branch_office_on_planet = {
 		fail_text = BRANCH_OFFICE_MEGACORP_OVERLORD
 		exists = owner
 		# failure message for having a corporate overlord
-
 		if = {
 			limit = {
 				OR = {
@@ -673,7 +835,11 @@ can_build_branch_office_on_planet = {
 						is_subject = no
 						AND = {
 							is_subject = yes
-							overlord = { NOT = { is_same_value = root.overlord } }
+							overlord = {
+								NOT = {
+									is_same_value = root.overlord
+								}
+							}
 						}
 					}
 				}
@@ -684,7 +850,9 @@ can_build_branch_office_on_planet = {
 		fail_text = BRANCH_OFFICE_CRIMINAL_HERITAGE_HAS_TRUCE
 		exists = owner
 		OR = {
-			root = { is_criminal_syndicate = no }
+			root = {
+				is_criminal_syndicate = no
+			}
 			owner = {
 				NOR = {
 					has_truce = root
@@ -697,10 +865,16 @@ can_build_branch_office_on_planet = {
 		fail_text = BRANCH_OFFICE_CRIMINAL_COOLDOWN
 		exists = owner
 		OR = {
-			root = { is_criminal_syndicate = no }
+			root = {
+				is_criminal_syndicate = no
+			}
 			AND = {
-				root = { is_criminal_syndicate = yes }
-				NOT = { has_planet_flag = criminal_branch_closed_cooldown_planet@root }
+				root = {
+					is_criminal_syndicate = yes
+				}
+				NOT = {
+					has_planet_flag = criminal_branch_closed_cooldown_planet@root
+				}
 			}
 		}
 	}
@@ -719,7 +893,9 @@ is_criminal_syndicate_rule = {
 # This = planet
 can_crossbreed_species_on_planet = {
 	exists = owner
-	owner = { has_ascension_perk = ap_xeno_compatibility }
+	owner = {
+		has_ascension_perk = ap_xeno_compatibility
+	}
 	num_pops > 24
 	count_species = {
 		limit = {
@@ -738,23 +914,35 @@ can_be_sold_on_slave_market = {
 		is_non_sapient_robot = yes
 		is_shackled_robot = yes
 		AND = {
-			ROOT = { allows_slavery = yes }
+			ROOT = {
+				allows_slavery = yes
+			}
 			has_job = servant_noble
 		}
 	}
 	NOT = {
-		owner = { has_country_flag = gai_machines_have_organics }
+		owner = {
+			has_country_flag = gai_machines_have_organics
+		}
 	}
 	OR = {
-		ROOT = { is_ai = no }
+		ROOT = {
+			is_ai = no
+		}
 		#has_citizenship_rights = no
 		AND = {
-			OR = { is_unemployed = yes has_job = servant_noble }
+			OR = {
+				is_unemployed = yes
+				has_job = servant_noble
+			}
 			planet = {
 				count_owned_pop = {
 					count > 2
 					limit = {
-						OR = { is_unemployed = yes has_job = servant_noble }
+						OR = {
+							is_unemployed = yes
+							has_job = servant_noble
+						}
 						NOR = {
 							is_pop_category = specialist
 							is_pop_category = ruler
@@ -764,7 +952,10 @@ can_be_sold_on_slave_market = {
 			}
 		}
 		AND = {
-			OR = { has_job = servant has_job = servant_noble }
+			OR = {
+				has_job = servant
+				has_job = servant_noble
+			}
 			planet = {
 				free_amenities > 20
 			}
@@ -813,7 +1004,9 @@ can_pop_auto_migrate = {
 		custom_tooltip = {
 			fail_text = AUTO_MIGRATE_SLAVE_PROCESSING
 			OR = {
-				planet = { has_building = building_slave_processing }
+				planet = {
+					has_building = building_slave_processing
+				}
 				solar_system = {
 					count_starbase_buildings = {
 						type = transit_hub
@@ -831,8 +1024,16 @@ can_pop_auto_migrate = {
 		custom_tooltip = {
 			fail_text = AUTO_MIGRATE_ROBOT_DROIDS
 			OR = {
-				planet = { owner = { has_authority = auth_machine_intelligence } }
-				planet = { owner = { has_technology = tech_droid_workers } }
+				planet = {
+					owner = {
+						has_authority = auth_machine_intelligence
+					}
+				}
+				planet = {
+					owner = {
+						has_technology = tech_droid_workers
+					}
+				}
 				solar_system = {
 					count_starbase_buildings = {
 						type = transit_hub
@@ -859,15 +1060,17 @@ can_pop_auto_migrate = {
 can_planet_auto_migrate = {
 	custom_tooltip = {
 		fail_text = AUTO_MIGRATE_CULTURE_SHOCK
-		NOT = { has_modifier = planet_culture_shock }
+		NOT = {
+			has_modifier = planet_culture_shock
+		}
 	}
 	custom_tooltip = {
 		fail_text = AUTO_MIGRATE_COLONY_TOO_NEW
 		OR = {
 			colony_age > 60
 			num_pops > 25
-			is_capital = yes # Don't break Doomsday!
-			has_planet_flag = void_dweller_habitat # Don't break Void Dwellers!
+			is_capital = yes			# Don't break Doomsday!
+			has_planet_flag = void_dweller_habitat			# Don't break Void Dwellers!
 		}
 	}
 	hidden_trigger = {
@@ -887,15 +1090,27 @@ can_fill_drone_job = {
 	custom_tooltip = DRONE_JOB_TRIGGER
 	hidden_trigger = {
 		exists = owner
-		owner = { is_gestalt = yes }
+		owner = {
+			is_gestalt = yes
+		}
 		is_being_purged = no
 		is_being_assimilated = no
-		NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+		NOT = {
+			has_citizenship_type = {
+				type = citizenship_organic_trophy
+			}
+		}
 		NAND = {
-			has_citizenship_type = { type = citizenship_slavery }
+			has_citizenship_type = {
+				type = citizenship_slavery
+			}
 			OR = {
-				has_slavery_type = { type = slavery_livestock }
-				has_slavery_type = { type = slavery_matrix }
+				has_slavery_type = {
+					type = slavery_livestock
+				}
+				has_slavery_type = {
+					type = slavery_matrix
+				}
 			}
 		}
 	}
@@ -906,20 +1121,36 @@ can_fill_drone_job = {
 can_fill_worker_job = {
 	custom_tooltip = WORKER_JOB_TRIGGER
 	hidden_trigger = {
-		NOT = { has_ethic = ethic_gestalt_consciousness }
+		NOT = {
+			has_ethic = ethic_gestalt_consciousness
+		}
 		exists = owner
 		OR = {
 			is_being_purged = no
-			has_purge_type = { type = purge_displacement }
-			has_purge_type = { type = purge_neutering }
+			has_purge_type = {
+				type = purge_displacement
+			}
+			has_purge_type = {
+				type = purge_neutering
+			}
 		}
 		is_being_assimilated = no
-		NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+		NOT = {
+			has_citizenship_type = {
+				type = citizenship_organic_trophy
+			}
+		}
 		NAND = {
-			has_citizenship_type = { type = citizenship_slavery }
+			has_citizenship_type = {
+				type = citizenship_slavery
+			}
 			OR = {
-				has_slavery_type = { type = slavery_livestock }
-				has_slavery_type = { type = slavery_matrix }
+				has_slavery_type = {
+					type = slavery_livestock
+				}
+				has_slavery_type = {
+					type = slavery_matrix
+				}
 			}
 		}
 		if = {
@@ -936,14 +1167,20 @@ can_fill_worker_job = {
 can_fill_specialist_job = {
 	custom_tooltip = SPECIALIST_JOB_TRIGGER
 	hidden_trigger = {
-		NOT = { has_ethic = ethic_gestalt_consciousness }
+		NOT = {
+			has_ethic = ethic_gestalt_consciousness
+		}
 		exists = owner
 		exists = planet
 		OR = {
 			is_enslaved = no
-			has_slavery_type = { type = slavery_indentured }
+			has_slavery_type = {
+				type = slavery_indentured
+			}
 			AND = {
-				NOT = { host_has_dlc = "Utopia" }
+				NOT = {
+					host_has_dlc = "Utopia"
+				}
 				is_same_species = owner_main_species
 				owner = {
 					OR = {
@@ -955,15 +1192,29 @@ can_fill_specialist_job = {
 		}
 		is_being_purged = no
 		is_being_assimilated = no
-		NOT = { has_trait = trait_syncretic_proles }
-		NOT = { has_trait = trait_tree_caretaker }
-		NOT = { has_trait = trait_presapient_docile_livestock }
+		NOT = {
+			has_trait = trait_syncretic_proles
+		}
+		NOT = {
+			has_trait = trait_tree_caretaker
+		}
+		NOT = {
+			has_trait = trait_presapient_docile_livestock
+		}
 		can_think = yes
 		OR = {
-			NOT = { has_trait = trait_mechanical }
-			owner = { has_technology = tech_droid_workers }
+			NOT = {
+				has_trait = trait_mechanical
+			}
+			owner = {
+				has_technology = tech_droid_workers
+			}
 		}
-		NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+		NOT = {
+			has_citizenship_type = {
+				type = citizenship_organic_trophy
+			}
+		}
 		if = {
 			limit = {
 				divinity_right_to_work_job_check_trigger_exempt = no
@@ -1007,24 +1258,44 @@ can_fill_ruler_job = {
 	else = {
 		custom_tooltip = RULER_JOB_TRIGGER
 		hidden_trigger = {
-			NOT = { has_ethic = ethic_gestalt_consciousness }
+			NOT = {
+				has_ethic = ethic_gestalt_consciousness
+			}
 			exists = owner
 			is_enslaved = no
 			is_being_purged = no
 			is_being_assimilated = no
-			NOT = { has_trait = trait_syncretic_proles }
-			NOT = { has_trait = trait_tree_caretaker }
-			NOT = { has_trait = trait_presapient_docile_livestock }
+			NOT = {
+				has_trait = trait_syncretic_proles
+			}
+			NOT = {
+				has_trait = trait_tree_caretaker
+			}
+			NOT = {
+				has_trait = trait_presapient_docile_livestock
+			}
 			can_think = yes
 			OR = {
-				NOT = { has_trait = trait_mechanical }
-				owner = { is_robot_empire = yes }
+				NOT = {
+					has_trait = trait_mechanical
+				}
+				owner = {
+					is_robot_empire = yes
+				}
 				AND = {
-					owner = { has_technology = tech_synthetic_workers }
-					owner = { has_policy_flag = ai_full_rights }
+					owner = {
+						has_technology = tech_synthetic_workers
+					}
+					owner = {
+						has_policy_flag = ai_full_rights
+					}
 				}
 			}
-			NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+			NOT = {
+				has_citizenship_type = {
+					type = citizenship_organic_trophy
+				}
+			}
 			if = {
 				limit = {
 					divinity_right_to_work_job_check_trigger_exempt = no

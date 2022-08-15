@@ -5,44 +5,43 @@
 # constant_modifier - applied to planet always
 # blocker = <key/any/none> - default any
 # station = station class in orbit to gather
-
 @blocker_high = 10
 @blocker_low = 5
-
 ### Vanilla ###
 d_mountain_range = {
 	time = 270
-
 	is_for_colonizable = yes
 	category = deposit_cat_blockers
-	
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
 			planet = {
-				NOT = { has_building = building_ranger_lodge }
+				NOT = {
+					has_building = building_ranger_lodge
+				}
 			}
 		}
 	}
-
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 1000
 		}
 	}
-
 	potential = {
 		planet_size >= 10
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			OR = {
-				NOT = { exists = owner }
+				NOT = {
+					exists = owner
+				}
 				owner = {
 					is_civic_avian_construction = no
-					NOT = { has_origin = origin_subterranean }
+					NOT = {
+						has_origin = origin_subterranean
+					}
 				}
 			}
 		}
@@ -50,17 +49,17 @@ d_mountain_range = {
 			planet_max_districts_add = -2
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_civic_avian_construction = yes }
+			owner = {
+				is_civic_avian_construction = yes
+			}
 		}
 		modifier = {
 			planet_jobs_unity_produces_mult = 0.1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -73,7 +72,6 @@ d_mountain_range = {
 			planet_housing_mult = 0.1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -86,7 +84,6 @@ d_mountain_range = {
 			planet_housing_mult = 0.1
 		}
 	}
-
 	drop_weight = {
 		weight = @blocker_low
 		modifier = {
@@ -130,7 +127,6 @@ d_mountain_range = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 1
 		modifier = {
@@ -144,58 +140,60 @@ d_mountain_range = {
 			}
 		}
 	}
-
-	prerequisites = { "tech_mountain_range" }
+	prerequisites = {
+		"tech_mountain_range"
+	}
 }
 
 d_dense_jungle = {
 	time = 180
-
 	is_for_colonizable = yes
 	category = deposit_cat_blockers
-	
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
 			planet = {
-				NOT = { has_building = building_ranger_lodge }
+				NOT = {
+					has_building = building_ranger_lodge
+				}
 			}
 		}
 	}
-
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 500
 		}
 	}
-
 	potential = {
 		is_wet = yes
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			OR = {
-				NOT = { exists = owner }
-				owner = { is_civic_avian_construction = no }
+				NOT = {
+					exists = owner
+				}
+				owner = {
+					is_civic_avian_construction = no
+				}
 			}
 		}
 		modifier = {
 			planet_max_districts_add = -1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_civic_avian_construction = yes }
+			owner = {
+				is_civic_avian_construction = yes
+			}
 		}
 		modifier = {
 			planet_jobs_unity_produces_mult = 0.1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -208,7 +206,6 @@ d_dense_jungle = {
 			planet_housing_mult = 0.1
 		}
 	}
-
 	all_blocker_swap_types = yes
 	blocker_swap_types = {
 		d_hot_springs
@@ -237,7 +234,6 @@ d_dense_jungle = {
 		d_levitating_rocks
 		d_karst_cave
 	}
-
 	drop_weight = {
 		weight = @blocker_high
 		modifier = {
@@ -281,51 +277,54 @@ d_dense_jungle = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 1
 		modifier = {
 			factor = 0
 			exists = owner
-			owner = { is_civic_avian_construction = yes }
+			owner = {
+				is_civic_avian_construction = yes
+			}
 		}
 	}
-
-	prerequisites = { "tech_dense_jungle" }
+	prerequisites = {
+		"tech_dense_jungle"
+	}
 }
 
 d_deep_sinkhole = {
 	time = 180
-
 	is_for_colonizable = yes
 	category = deposit_cat_blockers
-
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
 			planet = {
-				NOT = { has_building = building_ranger_lodge }
+				NOT = {
+					has_building = building_ranger_lodge
+				}
 			}
 		}
 	}
-
 	resources = {
 		category = deposit_blockers_natural
 		cost = {
 			energy = 500
 		}
 	}
-
 	potential = {
 		is_dry = yes
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			OR = {
-				NOT = { exists = owner }
+				NOT = {
+					exists = owner
+				}
 				owner = {
-					NOT = { has_origin = origin_subterranean }
+					NOT = {
+						has_origin = origin_subterranean
+					}
 				}
 			}
 		}
@@ -333,7 +332,6 @@ d_deep_sinkhole = {
 			planet_max_districts_add = -1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -346,7 +344,6 @@ d_deep_sinkhole = {
 			planet_housing_mult = 0.1
 		}
 	}
-
 	use_weights_for_blocker_swap_types = yes
 	blocker_swap_types = {
 		d_arid_highlands
@@ -370,7 +367,6 @@ d_deep_sinkhole = {
 		d_levitating_rocks
 		d_karst_cave
 	}
-
 	drop_weight = {
 		weight = @blocker_high
 		modifier = {
@@ -400,41 +396,41 @@ d_deep_sinkhole = {
 			has_modifier = "eyeball_world"
 		}
 	}
-
-	prerequisites = { "tech_deep_sinkhole" }
-	
+	prerequisites = {
+		"tech_deep_sinkhole"
+	}
 	ai_weight = {
 		weight = 1
 		modifier = {
 			factor = 0
 			exists = owner
-			owner = { has_origin = origin_subterranean }
+			owner = {
+				has_origin = origin_subterranean
+			}
 		}
 	}
 }
 
 d_thick_forest = {
 	time = 180
-	
 	is_for_colonizable = yes
 	category = deposit_cat_blockers
-	
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
 			planet = {
-				NOT = { has_building = building_ranger_lodge }
+				NOT = {
+					has_building = building_ranger_lodge
+				}
 			}
 		}
 	}
-	
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 500
 		}
 	}
-	
 	potential = {
 		has_global_flag = has_new_frontiers_mod
 		OR = {
@@ -443,35 +439,38 @@ d_thick_forest = {
 			is_planet_class = pc_alpine
 			has_modifier = "meridiem_world"
 		}
-		NOR = { 
+		NOR = {
 			has_modifier = "pangea_world"
 			has_modifier = "young_world"
 			has_modifier = "mineral_world"
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			OR = {
-				NOT = { exists = owner }
-				owner = { is_civic_avian_construction = no }
+				NOT = {
+					exists = owner
+				}
+				owner = {
+					is_civic_avian_construction = no
+				}
 			}
 		}
 		modifier = {
 			planet_max_districts_add = -1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_civic_avian_construction = yes }
+			owner = {
+				is_civic_avian_construction = yes
+			}
 		}
 		modifier = {
 			planet_jobs_unity_produces_mult = 0.1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -484,7 +483,6 @@ d_thick_forest = {
 			planet_housing_mult = 0.1
 		}
 	}
-	
 	use_weights_for_blocker_swap_types = yes
 	blocker_swap_types = {
 		d_hot_springs
@@ -512,7 +510,6 @@ d_thick_forest = {
 		d_levitating_rocks
 		d_karst_cave
 	}
-
 	drop_weight = {
 		weight = @blocker_high
 		modifier = {
@@ -543,34 +540,32 @@ d_thick_forest = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 1
 		modifier = {
 			factor = 0
 			exists = owner
-			owner = { is_civic_avian_construction = yes }
+			owner = {
+				is_civic_avian_construction = yes
+			}
 		}
 	}
-	
-	prerequisites = { "tech_thick_forest" }
+	prerequisites = {
+		"tech_thick_forest"
+	}
 }
 
 d_city_ruins = {
 	time = 360
-
 	is_for_colonizable = yes
 	category = deposit_cat_blockers
-
 	potential = {
 		is_nuked = yes
 		is_city = yes
 	}
-
 	planet_modifier = {
 		planet_max_districts_add = -2
 	}
-
 	resources = {
 		category = deposit_blockers
 		produces = {
@@ -583,7 +578,6 @@ d_city_ruins = {
 			energy = 1200
 		}
 	}
-	
 	on_cleared = {
 		if = {
 			limit = {
@@ -592,22 +586,32 @@ d_city_ruins = {
 					has_ancrel = yes
 				}
 			}
-
 			custom_tooltip = minor_artifacts_found
 			random_list = {
 				33 = {
-					owner = { add_resource = { minor_artifacts = 1 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 1
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 3 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 3
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 5 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 5
+						}
+					}
 				}
 			}
 		}
 	}
-
 	drop_weight = {
 		weight = @blocker_high
 		modifier = {
@@ -623,16 +627,14 @@ d_city_ruins = {
 d_tomb_world_ruins = {
 	icon = d_city_ruins
 	time = 120
-
 	is_for_colonizable = yes
 	category = deposit_cat_blockers
-
-	potential = { always = no }
-
+	potential = {
+		always = no
+	}
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
-
 	on_cleared = {
 		create_pop = {
 			species = owner
@@ -644,22 +646,32 @@ d_tomb_world_ruins = {
 					has_ancrel = yes
 				}
 			}
-
 			custom_tooltip = minor_artifacts_found
 			random_list = {
 				33 = {
-					owner = { add_resource = { minor_artifacts = 1 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 1
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 3 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 3
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 5 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 5
+						}
+					}
 				}
 			}
 		}
 	}
-
 	resources = {
 		category = deposit_blockers
 		produces = {
@@ -677,22 +689,19 @@ d_tomb_world_ruins = {
 d_machine_empire_ruins = {
 	icon = d_city_ruins
 	time = 120
-
 	is_for_colonizable = yes
 	category = deposit_cat_blockers
-
-	potential = { always = no }
-
+	potential = {
+		always = no
+	}
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
-
 	use_weights_for_blocker_swap_types = no
 	blocker_swap_types = {
 		d_metal_boneyard
 		d_organic_landfill
 	}
-
 	resources = {
 		category = deposit_blockers
 		produces = {
@@ -705,7 +714,6 @@ d_machine_empire_ruins = {
 			energy = 300
 		}
 	}
-	
 	on_cleared = {
 		if = {
 			limit = {
@@ -714,42 +722,49 @@ d_machine_empire_ruins = {
 					has_ancrel = yes
 				}
 			}
-
 			custom_tooltip = minor_artifacts_found
 			random_list = {
 				33 = {
-					owner = { add_resource = { minor_artifacts = 1 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 1
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 3 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 3
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 5 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 5
+						}
+					}
 				}
 			}
 		}
 	}
 }
 
-
 d_exterminators_ruins = {
 	icon = d_city_ruins
 	time = 120
-
 	is_for_colonizable = yes
 	category = deposit_cat_blockers
-
-	potential = { always = no }
-
+	potential = {
+		always = no
+	}
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
-
 	use_weights_for_blocker_swap_types = no
 	blocker_swap_types = {
 		d_metal_boneyard
 	}
-
 	resources = {
 		category = deposit_blockers
 		produces = {
@@ -762,7 +777,6 @@ d_exterminators_ruins = {
 			energy = 300
 		}
 	}
-	
 	on_cleared = {
 		if = {
 			limit = {
@@ -771,32 +785,45 @@ d_exterminators_ruins = {
 					has_ancrel = yes
 				}
 			}
-
 			custom_tooltip = minor_artifacts_found
 			random_list = {
 				33 = {
-					owner = { add_resource = { minor_artifacts = 1 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 1
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 3 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 3
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 5 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 5
+						}
+					}
 				}
 			}
 		}
 	}
 }
 
-d_ruined_building_blocker = {	#Added via event
+d_ruined_building_blocker = {
+	#Added via event
 	icon = d_city_ruins
-
-	potential = { always = no }
-	can_be_cleared = { always = no }
-
+	potential = {
+		always = no
+	}
+	can_be_cleared = {
+		always = no
+	}
 	is_for_colonizable = yes
 	category = deposit_cat_blockers
-	
 	on_cleared = {
 		if = {
 			limit = {
@@ -805,17 +832,28 @@ d_ruined_building_blocker = {	#Added via event
 					has_ancrel = yes
 				}
 			}
-
 			custom_tooltip = minor_artifacts_found
 			random_list = {
 				33 = {
-					owner = { add_resource = { minor_artifacts = 1 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 1
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 3 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 3
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 5 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 5
+						}
+					}
 				}
 			}
 		}
@@ -825,37 +863,36 @@ d_ruined_building_blocker = {	#Added via event
 d_worm_mine = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-	
 	icon = d_crystalline_caverns
-	
 	planet_modifier = {
 		district_mining_max = 4
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_mining_drone_add = 3
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_mining_drone_add = 2
 		}
-	}	
-		
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_gestalt = no
 				is_fallen_empire_spiritualist = no
 			}
@@ -864,17 +901,17 @@ d_worm_mine = {
 			job_miner_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_mine_add = 2
 		}
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -883,37 +920,36 @@ d_worm_mine = {
 d_worm_farm = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-	
 	icon = d_fertile_lands
-	
 	planet_modifier = {
 		district_farming_max = 4
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_agri_drone_add = 3
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_agri_drone_add = 2
 		}
 	}
-		
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_gestalt = no
 				is_fallen_empire_spiritualist = no
 			}
@@ -922,17 +958,17 @@ d_worm_farm = {
 			job_farmer_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_farm_add = 2
 		}
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -941,36 +977,35 @@ d_worm_farm = {
 d_underground_contact_zone = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-	
 	icon = d_quarantine_zone
-	
 	planet_modifier = {
 		district_generator_max = 2
 		planet_max_districts_add = 2
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			job_underground_trade_worker_add = 1
-			job_underground_trade_worker_per_pop = 0.05 # 1 per 20
+			job_underground_trade_worker_per_pop = 0.05			# 1 per 20
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_underground_contact_drone_add = 1
-			job_underground_contact_drone_per_pop = 0.05 # 1 per 20
+			job_underground_contact_drone_per_pop = 0.05			# 1 per 20
 		}
 	}
-	
 	drop_weight = {
 		weight = 0
 	}
@@ -978,13 +1013,10 @@ d_underground_contact_zone = {
 
 # tree of life origin
 # home world
-
 d_tree_of_life_home = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	icon = d_huge_tree
-
 	potential = {
 		exists = owner
 		owner = {
@@ -994,38 +1026,42 @@ d_tree_of_life_home = {
 			}
 		}
 	}
-
 	planet_modifier = {
-		planet_jobs_society_research_produces_mult = 0.10
-		pop_environment_tolerance = 0.10
+		planet_jobs_society_research_produces_mult = 0.1
+		pop_environment_tolerance = 0.1
 		planet_housing_add = 10
 		district_farming_max = 4
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			pop_growth_speed = 0.15
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 			OR = {
-				NOT = { exists = assembling_species }
-				assembling_species = { has_trait = trait_tree_caretaker }
+				NOT = {
+					exists = assembling_species
+				}
+				assembling_species = {
+					has_trait = trait_tree_caretaker
+				}
 			}
 		}
 		modifier = {
 			planet_pop_assembly_organic_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			planet = {
@@ -1037,13 +1073,14 @@ d_tree_of_life_home = {
 				}
 			}
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_agri_drone_add = 2
 		}
 	}
-		
 	triggered_planet_modifier = {
 		potential = {
 			planet = {
@@ -1055,7 +1092,7 @@ d_tree_of_life_home = {
 				}
 			}
 			exists = owner
-			owner = { 
+			owner = {
 				is_gestalt = no
 				is_fallen_empire_spiritualist = no
 			}
@@ -1064,7 +1101,6 @@ d_tree_of_life_home = {
 			job_farmer_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			planet = {
@@ -1076,13 +1112,14 @@ d_tree_of_life_home = {
 				}
 			}
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_farm_add = 2
 		}
 	}
-
 	resources = {
 		category = planet_deposits
 		produces = {
@@ -1105,7 +1142,6 @@ d_tree_of_life_home = {
 			food = 4
 		}
 	}
-
 	drop_weight = {
 		weight = 0
 	}
@@ -1115,9 +1151,7 @@ d_tree_of_life_home = {
 d_tree_of_life_colony = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	icon = d_huge_tree
-
 	potential = {
 		exists = owner
 		planet = {
@@ -1129,37 +1163,39 @@ d_tree_of_life_colony = {
 			}
 		}
 	}
-
 	planet_modifier = {
-		planet_jobs_society_research_produces_mult = 0.10
+		planet_jobs_society_research_produces_mult = 0.1
 		pop_environment_tolerance = 0.05
 		planet_housing_add = 5
 		district_farming_max = 2
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			pop_growth_speed = 0.1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			OR = {
-				NOT = { exists = assembling_species }
-				assembling_species = { has_trait = trait_tree_caretaker }
+				NOT = {
+					exists = assembling_species
+				}
+				assembling_species = {
+					has_trait = trait_tree_caretaker
+				}
 			}
 		}
 		modifier = {
 			planet_pop_assembly_organic_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			planet = {
@@ -1171,13 +1207,14 @@ d_tree_of_life_colony = {
 				}
 			}
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_agri_drone_add = 1
 		}
 	}
-		
 	triggered_planet_modifier = {
 		potential = {
 			planet = {
@@ -1189,7 +1226,7 @@ d_tree_of_life_colony = {
 				}
 			}
 			exists = owner
-			owner = { 
+			owner = {
 				is_gestalt = no
 				is_fallen_empire_spiritualist = no
 			}
@@ -1198,7 +1235,6 @@ d_tree_of_life_colony = {
 			job_farmer_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			planet = {
@@ -1210,13 +1246,14 @@ d_tree_of_life_colony = {
 				}
 			}
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_farm_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_deposits
 		produces = {
@@ -1239,7 +1276,6 @@ d_tree_of_life_colony = {
 			food = 2
 		}
 	}
-
 	drop_weight = {
 		weight = 0
 	}
@@ -1250,9 +1286,9 @@ d_machine_minerals = {
 	is_for_colonizable = yes
 	icon = "d_veiny_cliffs"
 	category = deposit_cat_rare
-
-	potential = { always = no }
-
+	potential = {
+		always = no
+	}
 	resources = {
 		category = planet_deposits
 		produces = {
@@ -1269,9 +1305,9 @@ d_organic_slurry = {
 	is_for_colonizable = yes
 	icon = "d_bubbling_swamp"
 	category = deposit_cat_rare
-
-	potential = { always = no }
-
+	potential = {
+		always = no
+	}
 	resources = {
 		category = planet_deposits
 		produces = {
@@ -1283,16 +1319,14 @@ d_organic_slurry = {
 d_ruined_arcology = {
 	time = 365
 	icon = d_city_ruins
-
 	is_for_colonizable = yes
 	category = deposit_cat_blockers
-
-	potential = { always = no }
-
+	potential = {
+		always = no
+	}
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
-
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -1300,7 +1334,6 @@ d_ruined_arcology = {
 			minerals = 250
 		}
 	}
-
 	on_cleared = {
 		if = {
 			limit = {
@@ -1309,26 +1342,40 @@ d_ruined_arcology = {
 					has_ancrel = yes
 				}
 			}
-
 			custom_tooltip = minor_artifacts_found
 			random_list = {
 				33 = {
-					owner = { add_resource = { minor_artifacts = 1 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 1
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 3 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 3
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 5 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 5
+						}
+					}
 				}
 			}
-
 			if = {
 				limit = {
 					owner = {
-						NOT = { has_country_flag = league_world_found }
+						NOT = {
+							has_country_flag = league_world_found
+						}
 					}
-					planet = { has_modifier = first_league_homeworld }
+					planet = {
+						has_modifier = first_league_homeworld
+					}
 				}
 				hidden_effect = {
 					owner = {
@@ -1340,7 +1387,9 @@ d_ruined_arcology = {
 		}
 		if = {
 			limit = {
-				owner = { has_origin = origin_remnants }
+				owner = {
+					has_origin = origin_remnants
+				}
 				OR = {
 					is_capital = yes
 					has_modifier = colonial_remains
@@ -1349,7 +1398,9 @@ d_ruined_arcology = {
 			custom_tooltip = rediscover_tech
 			hidden_effect = {
 				owner = {
-					country_event = { id = origin.3100 }
+					country_event = {
+						id = origin.3100
+					}
 				}
 			}
 		}
@@ -1360,20 +1411,22 @@ d_ruined_arcology = {
 d_hibernating_lithoids = {
 	icon = d_old_hibernating_lithoids
 	time = 360
-
 	is_for_colonizable = yes
 	category = deposit_cat_blockers
-
-	potential = { always = no }
-
+	potential = {
+		always = no
+	}
 	on_cleared = {
 		if = {
 			limit = {
 				is_homeworld = no
 			}
-			owner = { add_resource = { minerals = 300 } }
+			owner = {
+				add_resource = {
+					minerals = 300
+				}
+			}
 		}
-
 		if = {
 			limit = {
 				is_homeworld = yes
@@ -1383,7 +1436,6 @@ d_hibernating_lithoids = {
 			}
 		}
 	}
-
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -1403,10 +1455,8 @@ d_hibernating_lithoids = {
 			minerals = 1000
 		}
 	}
-
 	ai_weight = {
 		weight = 1
-
 		modifier = {
 			factor = 2
 			from = {
@@ -1417,26 +1467,23 @@ d_hibernating_lithoids = {
 }
 
 ## Shattered Ring
-
 d_segment_rubble_1 = {
 	is_for_colonizable = yes
 	icon = "d_organic_landfill"
 	category = deposit_cat_blockers
 	time = 360
-
-	potential = { always = no }
-
+	potential = {
+		always = no
+	}
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
-
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 250
 		}
 	}
-	
 	on_cleared = {
 		if = {
 			limit = {
@@ -1445,24 +1492,37 @@ d_segment_rubble_1 = {
 					has_ancrel = yes
 				}
 			}
-
 			custom_tooltip = minor_artifacts_found
 			random_list = {
 				33 = {
-					owner = { add_resource = { minor_artifacts = 1 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 1
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 3 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 3
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 5 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 5
+						}
+					}
 				}
 			}
 		}
 		custom_tooltip = discover_tech
 		hidden_effect = {
 			owner = {
-				country_event = { id = civicsexpanded.21 }
+				country_event = {
+					id = civicsexpanded.21
+				}
 			}
 		}
 	}
@@ -1473,20 +1533,18 @@ d_segment_rubble_1_small = {
 	icon = "d_organic_landfill"
 	category = deposit_cat_blockers
 	time = 360
-
-	potential = { always = no }
-
+	potential = {
+		always = no
+	}
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
-
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 250
 		}
 	}
-	
 	on_cleared = {
 		if = {
 			limit = {
@@ -1495,24 +1553,37 @@ d_segment_rubble_1_small = {
 					has_ancrel = yes
 				}
 			}
-
 			custom_tooltip = minor_artifacts_found
 			random_list = {
 				33 = {
-					owner = { add_resource = { minor_artifacts = 1 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 1
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 3 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 3
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 5 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 5
+						}
+					}
 				}
 			}
 		}
 		custom_tooltip = discover_tech
 		hidden_effect = {
 			owner = {
-				country_event = { id = civicsexpanded.21 }
+				country_event = {
+					id = civicsexpanded.21
+				}
 			}
 		}
 	}
@@ -1523,20 +1594,18 @@ d_segment_rubble_2 = {
 	icon = "d_metal_boneyard"
 	category = deposit_cat_blockers
 	time = 360
-
-	potential = { always = no }
-
+	potential = {
+		always = no
+	}
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
-
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 250
 		}
 	}
-	
 	on_cleared = {
 		if = {
 			limit = {
@@ -1545,24 +1614,37 @@ d_segment_rubble_2 = {
 					has_ancrel = yes
 				}
 			}
-
 			custom_tooltip = minor_artifacts_found
 			random_list = {
 				33 = {
-					owner = { add_resource = { minor_artifacts = 1 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 1
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 3 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 3
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 5 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 5
+						}
+					}
 				}
 			}
 		}
 		custom_tooltip = discover_tech
 		hidden_effect = {
 			owner = {
-				country_event = { id = civicsexpanded.21 }
+				country_event = {
+					id = civicsexpanded.21
+				}
 			}
 		}
 	}
@@ -1573,20 +1655,18 @@ d_segment_rubble_3 = {
 	icon = "d_ruins_medium"
 	category = deposit_cat_blockers
 	time = 360
-
-	potential = { always = no }
-
+	potential = {
+		always = no
+	}
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
-
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 250
 		}
 	}
-	
 	on_cleared = {
 		if = {
 			limit = {
@@ -1595,24 +1675,37 @@ d_segment_rubble_3 = {
 					has_ancrel = yes
 				}
 			}
-
 			custom_tooltip = minor_artifacts_found
 			random_list = {
 				33 = {
-					owner = { add_resource = { minor_artifacts = 1 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 1
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 3 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 3
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 5 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 5
+						}
+					}
 				}
 			}
 		}
 		custom_tooltip = discover_tech
 		hidden_effect = {
 			owner = {
-				country_event = { id = civicsexpanded.21 }
+				country_event = {
+					id = civicsexpanded.21
+				}
 			}
 		}
 	}
@@ -1623,20 +1716,18 @@ d_segment_rubble_4 = {
 	icon = "d_city_ruins"
 	category = deposit_cat_blockers
 	time = 360
-
-	potential = { always = no }
-
+	potential = {
+		always = no
+	}
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
-
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 250
 		}
 	}
-	
 	on_cleared = {
 		if = {
 			limit = {
@@ -1645,24 +1736,37 @@ d_segment_rubble_4 = {
 					has_ancrel = yes
 				}
 			}
-
 			custom_tooltip = minor_artifacts_found
 			random_list = {
 				33 = {
-					owner = { add_resource = { minor_artifacts = 1 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 1
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 3 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 3
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 5 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 5
+						}
+					}
 				}
 			}
 		}
 		custom_tooltip = discover_tech
 		hidden_effect = {
 			owner = {
-				country_event = { id = civicsexpanded.21 }
+				country_event = {
+					id = civicsexpanded.21
+				}
 			}
 		}
 	}
@@ -1673,20 +1777,18 @@ d_decrepit_tunnels_1 = {
 	icon = "d_mining_tunnels"
 	category = deposit_cat_blockers
 	time = 360
-
-	potential = { always = no }
-
+	potential = {
+		always = no
+	}
 	planet_modifier = {
 		planet_max_districts_add = -2
 	}
-
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 1000
 		}
 	}
-
 	on_cleared = {
 		if = {
 			limit = {
@@ -1695,17 +1797,28 @@ d_decrepit_tunnels_1 = {
 					has_ancrel = yes
 				}
 			}
-
 			custom_tooltip = minor_artifacts_found
 			random_list = {
 				33 = {
-					owner = { add_resource = { minor_artifacts = 1 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 1
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 3 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 3
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 5 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 5
+						}
+					}
 				}
 			}
 		}
@@ -1723,20 +1836,18 @@ d_decrepit_tunnels_2 = {
 	icon = "d_mining_tunnels"
 	category = deposit_cat_blockers
 	time = 360
-
-	potential = { always = no }
-
+	potential = {
+		always = no
+	}
 	planet_modifier = {
 		planet_max_districts_add = -2
 	}
-
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 1000
 		}
 	}
-
 	on_cleared = {
 		if = {
 			limit = {
@@ -1745,17 +1856,28 @@ d_decrepit_tunnels_2 = {
 					has_ancrel = yes
 				}
 			}
-
 			custom_tooltip = minor_artifacts_found
 			random_list = {
 				33 = {
-					owner = { add_resource = { minor_artifacts = 1 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 1
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 3 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 3
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 5 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 5
+						}
+					}
 				}
 			}
 		}
@@ -1773,20 +1895,18 @@ d_decrepit_tunnels_3 = {
 	icon = "d_mining_tunnels"
 	category = deposit_cat_blockers
 	time = 360
-
-	potential = { always = no }
-
+	potential = {
+		always = no
+	}
 	planet_modifier = {
 		planet_max_districts_add = -2
 	}
-
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 1000
 		}
 	}
-
 	on_cleared = {
 		if = {
 			limit = {
@@ -1795,17 +1915,28 @@ d_decrepit_tunnels_3 = {
 					has_ancrel = yes
 				}
 			}
-
 			custom_tooltip = minor_artifacts_found
 			random_list = {
 				33 = {
-					owner = { add_resource = { minor_artifacts = 1 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 1
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 3 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 3
+						}
+					}
 				}
 				33 = {
-					owner = { add_resource = { minor_artifacts = 5 } }
+					owner = {
+						add_resource = {
+							minor_artifacts = 5
+						}
+					}
 				}
 			}
 		}

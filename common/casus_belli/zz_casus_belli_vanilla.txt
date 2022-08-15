@@ -7,7 +7,6 @@
 #	show_notification = no/yes	# optional (default = yes), flag to control whether this CB will generate a notification (to avoid duplicate
 #								# notification when a claim CB is generated)
 #}
-
 ### 00_casus_belli
 cb_ideology = {
 	show_in_diplomacy = yes
@@ -17,7 +16,9 @@ cb_ideology = {
 		exists = from
 		NOR = {
 			has_ethic = ethic_gestalt_consciousness
-			from = { has_ethic = ethic_gestalt_consciousness }
+			from = {
+				has_ethic = ethic_gestalt_consciousness
+			}
 			is_in_federation_with = from
 		}
 	}
@@ -28,51 +29,87 @@ cb_ideology = {
 				is_ai = yes
 				has_valid_ai_personality = yes
 				has_ai_personality = democratic_crusaders
-				FROM = { NOT = { has_authority = auth_democratic } }
-				FROM = { NOT = { has_authority = auth_cooperative } }
+				FROM = {
+					NOT = {
+						has_authority = auth_democratic
+					}
+				}
+				FROM = {
+					NOT = {
+						has_authority = auth_bugged_corporate_democratic
+					}
+				}
 			}
 		}
-		from = { is_country_type = default }
-		from = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+		from = {
+			is_country_type = default
+		}
+		from = {
+			NOT = {
+				has_ethic = ethic_gestalt_consciousness
+			}
+		}
 		has_total_war_cb = no
 		OR = {
 			AND = {
 				is_xenophile = yes
-				from = { is_xenophile = no }
+				from = {
+					is_xenophile = no
+				}
 			}
 			AND = {
 				is_xenophobe = yes
-				from = { is_xenophobe = no }
+				from = {
+					is_xenophobe = no
+				}
 			}
 			AND = {
 				is_authoritarian = yes
-				from = { is_authoritarian = no }
+				from = {
+					is_authoritarian = no
+				}
 			}
 			AND = {
 				is_egalitarian = yes
-				from = { is_egalitarian = no }
+				from = {
+					is_egalitarian = no
+				}
 			}
 			AND = {
 				is_spiritualist = yes
-				from = { is_spiritualist = no }
+				from = {
+					is_spiritualist = no
+				}
 			}
 			AND = {
 				is_materialist = yes
-				from = { is_materialist = no }
+				from = {
+					is_materialist = no
+				}
 			}
 			AND = {
 				is_militarist = yes
-				from = { is_militarist = no }
+				from = {
+					is_militarist = no
+				}
 			}
 			AND = {
 				is_pacifist = yes
-				from = { is_pacifist = no }
+				from = {
+					is_pacifist = no
+				}
 			}
 		}
-		NOT = { is_overlord_to = FROM }
+		NOT = {
+			is_overlord_to = FROM
+		}
 		OR = {
 			is_subject = no
-			overlord = { NOT = { is_same_value = from } }
+			overlord = {
+				NOT = {
+					is_same_value = from
+				}
+			}
 		}
 	}
 }
@@ -94,9 +131,15 @@ cb_containment = {
 		has_total_war_cb = yes
 		OR = {
 			is_subject = no
-			overlord = { NOT = { is_same_value = from } }
+			overlord = {
+				NOT = {
+					is_same_value = from
+				}
+			}
 		}
-		NOT = { is_overlord_to = FROM }
+		NOT = {
+			is_overlord_to = FROM
+		}
 		from = {
 			OR = {
 				is_country_type = awakened_fallen_empire
@@ -106,7 +149,10 @@ cb_containment = {
 				has_valid_civic = civic_infestation
 				has_valid_civic = civic_machine_terminator
 				any_war = {
-					using_war_goal = { type = wg_holy_mountain owner = attacker }
+					using_war_goal = {
+						type = wg_holy_mountain
+						owner = attacker
+					}
 				}
 			}
 		}
@@ -123,8 +169,12 @@ cb_megacorp_subjugate = {
 		is_subject = no
 	}
 	is_valid = {
-		NOT = { is_overlord_to = FROM }
-		from = { is_subject = no }
+		NOT = {
+			is_overlord_to = FROM
+		}
+		from = {
+			is_subject = no
+		}
 		relative_power = {
 			who = FROM
 			category = all
@@ -146,18 +196,30 @@ cb_hostile_takeover = {
 	potential = {
 		is_country_type = default
 		is_megacorp = yes
-		NOR = { 
-			is_overlord_to = from 
-			from = { is_overlord_to = root }
+		NOR = {
+			is_overlord_to = from
+			from = {
+				is_overlord_to = root
+			}
 		}
 	}
 	is_valid = {
-		from = { is_megacorp = yes }
-		NOT = { is_in_federation_with = from }
-		NOT = { from = { is_overlord_to = root } }
+		from = {
+			is_megacorp = yes
+		}
+		NOT = {
+			is_in_federation_with = from
+		}
+		NOT = {
+			from = {
+				is_overlord_to = root
+			}
+		}
 		any_country = {
 			OR = {
-				ROOT = { has_valid_civic = civic_criminal_heritage }
+				ROOT = {
+					has_valid_civic = civic_criminal_heritage
+				}
 				has_commercial_pact = root
 				is_in_federation_with = root
 			}
@@ -173,18 +235,36 @@ cb_expel_corp = {
 	show_notification = yes
 	potential = {
 		is_country_type = default
-		NOT = { is_megacorp = yes }
+		NOT = {
+			is_megacorp = yes
+		}
 	}
 	is_valid = {
-		NOT = { has_commercial_pact = from }
-		NOT = { is_in_federation_with = from }
-		NOT = { from = { is_overlord_to = root } }
-		NOT = { root = { is_overlord_to = from } }
+		NOT = {
+			has_commercial_pact = from
+		}
+		NOT = {
+			is_in_federation_with = from
+		}
+		NOT = {
+			from = {
+				is_overlord_to = root
+			}
+		}
+		NOT = {
+			root = {
+				is_overlord_to = from
+			}
+		}
 		if = {
 			limit = {
 				exists = from.overlord
 			}
-				NOT = { from.overlord = { is_same_value = root.overlord } }
+			NOT = {
+				from.overlord = {
+					is_same_value = root.overlord
+				}
+			}
 		}
 		any_owned_planet = {
 			has_branch_office = from
@@ -207,6 +287,8 @@ cb_scion = {
 			is_scion_subject = no
 		}
 		has_total_war_cb = no
-		NOT = { is_overlord_to = FROM }
+		NOT = {
+			is_overlord_to = FROM
+		}
 	}
 }
