@@ -1,43 +1,52 @@
 decision_industrial_core = {
 	owned_planets_only = yes
-
 	resources = {
 		category = decisions
 		cost = {
 			unity = 1000
 		}
 	}
-
 	potential = {
 		is_capital = no
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
-		NOT = { has_modifier = galactic_refuse_centre }
-		NOT = { has_modifier = experimental_complex }
-		NOT = { has_modifier = cult_world }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+		NOT = {
+			has_modifier = galactic_refuse_centre
+		}
+		NOT = {
+			has_modifier = experimental_complex
+		}
+		NOT = {
+			has_modifier = cult_world
+		}
 		owner = {
 			has_valid_civic = civic_decadent_conglomerate
 		}
 		is_artificial = no
 		NOT = {
 			owner = {
-				any_owned_planet = { has_modifier = industrial_core }
+				any_owned_planet = {
+					has_modifier = industrial_core
+				}
 			}
 		}
 	}
-
 	allow = {
 		planet_size >= 14
 	}
-
 	effect = {
 		add_modifier = {
 			modifier = industrial_core
 			days = -1
 		}
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
 	}
-
 	ai_weight = {
 		weight = 0
 	}
@@ -46,23 +55,21 @@ decision_industrial_core = {
 decision_abolish_industrial_core = {
 	owned_planets_only = yes
 	#icon = decision_industrial_core
-
 	resources = {
 		category = decisions
 		cost = {
 			unity = 2500
 		}
 	}
-
 	potential = {
 		has_modifier = industrial_core
 	}
-
 	effect = {
 		remove_modifier = industrial_core
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
 	}
-
 	ai_weight = {
 		weight = 0
 	}
@@ -70,44 +77,53 @@ decision_abolish_industrial_core = {
 
 decision_galactic_refuse_centre = {
 	owned_planets_only = yes
-
 	resources = {
 		category = decisions
 		cost = {
 			unity = 1000
 		}
 	}
-
 	potential = {
 		is_capital = no
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
-		NOT = { has_modifier = industrial_core }
-		NOT = { has_modifier = experimental_complex }
-		NOT = { has_modifier = cult_world }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+		NOT = {
+			has_modifier = industrial_core
+		}
+		NOT = {
+			has_modifier = experimental_complex
+		}
+		NOT = {
+			has_modifier = cult_world
+		}
 		owner = {
 			has_valid_civic = civic_decadent_conglomerate
 		}
 		is_artificial = no
 		NOT = {
 			owner = {
-				any_owned_planet = { has_modifier = galactic_refuse_centre }
+				any_owned_planet = {
+					has_modifier = galactic_refuse_centre
+				}
 			}
 		}
 	}
-
 	allow = {
 		planet_size >= 7
 	}
-
 	effect = {
 		add_modifier = {
 			modifier = galactic_refuse_centre
 			days = -1
 		}
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
 	}
-
 	ai_weight = {
 		weight = 0
 	}
@@ -116,23 +132,21 @@ decision_galactic_refuse_centre = {
 decision_abolish_galactic_refuse_centre = {
 	owned_planets_only = yes
 	#icon = decision_galactic_refuse_centre
-
 	resources = {
 		category = decisions
 		cost = {
 			unity = 2500
 		}
 	}
-
 	potential = {
 		has_modifier = galactic_refuse_centre
 	}
-
 	effect = {
 		remove_modifier = galactic_refuse_centre
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
 	}
-
 	ai_weight = {
 		weight = 0
 	}
@@ -140,7 +154,6 @@ decision_abolish_galactic_refuse_centre = {
 
 decision_experimental_complex = {
 	owned_planets_only = yes
-
 	enactment_time = 360
 	resources = {
 		category = decisions
@@ -148,11 +161,9 @@ decision_experimental_complex = {
 			alloys = 250
 		}
 	}
-	
 	prerequisites = {
 		"tech_global_research_initiative"
 	}
-	
 	show_tech_unlock_if = {
 		OR = {
 			has_ethic = ethic_fanatic_materialist
@@ -161,15 +172,28 @@ decision_experimental_complex = {
 			has_origin = origin_forsaken_empire
 		}
 	}
-
 	potential = {
 		is_capital = no
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
-		NOT = { has_modifier = industrial_core }
-		NOT = { has_modifier = galactic_refuse_centre }
-		NOT = { has_modifier = cult_world }
-		NOT = { owner = { has_valid_civic = civic_astral_obsession } }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+		NOT = {
+			has_modifier = industrial_core
+		}
+		NOT = {
+			has_modifier = galactic_refuse_centre
+		}
+		NOT = {
+			has_modifier = cult_world
+		}
+		NOT = {
+			owner = {
+				has_valid_civic = civic_astral_obsession
+			}
+		}
 		owner = {
 			OR = {
 				has_ethic = ethic_fanatic_materialist
@@ -181,23 +205,24 @@ decision_experimental_complex = {
 		is_artificial = no
 		NOT = {
 			owner = {
-				any_owned_planet = { has_modifier = experimental_complex }
+				any_owned_planet = {
+					has_modifier = experimental_complex
+				}
 			}
 		}
 	}
-
 	allow = {
 		planet_size >= 9
 	}
-
 	effect = {
 		add_modifier = {
 			modifier = experimental_complex
 			days = -1
 		}
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
 	}
-
 	ai_weight = {
 		weight = 0
 	}
@@ -206,23 +231,21 @@ decision_experimental_complex = {
 decision_abolish_experimental_complex = {
 	owned_planets_only = yes
 	#icon = decision_experimental_complex
-
 	resources = {
 		category = decisions
 		cost = {
 			influence = 100
 		}
 	}
-
 	potential = {
 		has_modifier = experimental_complex
 	}
-
 	effect = {
 		remove_modifier = experimental_complex
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
 	}
-
 	ai_weight = {
 		weight = 0
 	}
@@ -231,7 +254,6 @@ decision_abolish_experimental_complex = {
 decision_questionable_ethics = {
 	icon = decision_burning_settlement
 	sound = event_structural_collapse
-
 	enactment_time = 1080
 	resources = {
 		category = decisions
@@ -240,23 +262,26 @@ decision_questionable_ethics = {
 		}
 	}
 	owned_planets_only = yes
-
 	potential = {
 		has_modifier = experimental_complex
 	}
-
 	allow = {
-		num_free_districts = { type = any value > 0 }
+		num_free_districts = {
+			type = any
+			value > 0
+		}
 	}
-
 	effect = {
 		custom_tooltip = questionable_ethics_effect_desc
-
 		if = {
-			limit = { num_districts = { type = any value > 0 } }
+			limit = {
+				num_districts = {
+					type = any
+					value > 0
+				}
+			}
 			custom_tooltip = qe_available_districts_must_be_over_0
 		}
-
 		hidden_effect = {
 			random_list = {
 				10 = {
@@ -264,19 +289,17 @@ decision_questionable_ethics = {
 					owner = {
 						add_monthly_resource_mult = {
 							resource = society_research
-							value = 24 #@tier3researchreward
-							min = 500 #@tier3researchmin
-							max = 1000000 #@tier3researchmax
+							value = 24							#@tier3researchreward
+							min = 500							#@tier3researchmin
+							max = 1000000							#@tier3researchmax
 						}
 					}
 					add_planet_devastation = 10
-
 					create_message = {
 						type = MESSAGE_QUESTIONABLE_ETHICS
 						localization = MESSAGE_QE_CHEMISTRY
 						days = 30
 						target = this
-
 						variable = {
 							type = name
 							localization = PLANET
@@ -289,19 +312,17 @@ decision_questionable_ethics = {
 					owner = {
 						add_monthly_resource_mult = {
 							resource = society_research
-							value = 24 #@tier3researchreward
-							min = 500 #@tier3researchmin
-							max = 1000000 #@tier3researchmax
+							value = 24							#@tier3researchreward
+							min = 500							#@tier3researchmin
+							max = 1000000							#@tier3researchmax
 						}
 					}
 					add_planet_devastation = 20
-
 					create_message = {
 						type = MESSAGE_QUESTIONABLE_ETHICS
 						localization = MESSAGE_QE_CHEMISTRY
 						days = 30
 						target = this
-
 						variable = {
 							type = name
 							localization = PLANET
@@ -312,13 +333,11 @@ decision_questionable_ethics = {
 				1 = {
 					add_deposit = d_zro_blocker
 					add_planet_devastation = 10
-
 					create_message = {
 						type = MESSAGE_QUESTIONABLE_ETHICS
 						localization = MESSAGE_QE_ZRO
 						days = 30
 						target = this
-
 						variable = {
 							type = name
 							localization = PLANET
@@ -331,19 +350,17 @@ decision_questionable_ethics = {
 					owner = {
 						add_monthly_resource_mult = {
 							resource = physics_research
-							value = 24 #@tier3researchreward
-							min = 500 #@tier3researchmin
-							max = 1000000 #@tier3researchmax
+							value = 24							#@tier3researchreward
+							min = 500							#@tier3researchmin
+							max = 1000000							#@tier3researchmax
 						}
 					}
 					add_planet_devastation = 10
-
 					create_message = {
 						type = MESSAGE_QUESTIONABLE_ETHICS
 						localization = MESSAGE_QE_PARTICLES
 						days = 30
 						target = this
-
 						variable = {
 							type = name
 							localization = PLANET
@@ -356,19 +373,17 @@ decision_questionable_ethics = {
 					owner = {
 						add_monthly_resource_mult = {
 							resource = physics_research
-							value = 24 #@tier3researchreward
-							min = 500 #@tier3researchmin
-							max = 1000000 #@tier3researchmax
+							value = 24							#@tier3researchreward
+							min = 500							#@tier3researchmin
+							max = 1000000							#@tier3researchmax
 						}
 					}
 					add_planet_devastation = 20
-
 					create_message = {
 						type = MESSAGE_QUESTIONABLE_ETHICS
 						localization = MESSAGE_QE_PARTICLES
 						days = 30
 						target = this
-
 						variable = {
 							type = name
 							localization = PLANET
@@ -379,13 +394,11 @@ decision_questionable_ethics = {
 				1 = {
 					add_deposit = d_dark_matter_blocker
 					add_planet_devastation = 10
-
 					create_message = {
 						type = MESSAGE_QUESTIONABLE_ETHICS
 						localization = MESSAGE_QE_DARK_MATTER
 						days = 30
 						target = this
-
 						variable = {
 							type = name
 							localization = PLANET
@@ -396,13 +409,11 @@ decision_questionable_ethics = {
 				1 = {
 					add_deposit = d_livingmetal_blocker
 					add_planet_devastation = 10
-
 					create_message = {
 						type = MESSAGE_QUESTIONABLE_ETHICS
 						localization = MESSAGE_QE_LIVING_METAL
 						days = 30
 						target = this
-
 						variable = {
 							type = name
 							localization = PLANET
@@ -415,19 +426,17 @@ decision_questionable_ethics = {
 					owner = {
 						add_monthly_resource_mult = {
 							resource = engineering_research
-							value = 24 #@tier3researchreward
-							min = 500 #@tier3researchmin
-							max = 1000000 #@tier3researchmax
+							value = 24							#@tier3researchreward
+							min = 500							#@tier3researchmin
+							max = 1000000							#@tier3researchmax
 						}
 					}
 					add_planet_devastation = 10
-
 					create_message = {
 						type = MESSAGE_QUESTIONABLE_ETHICS
 						localization = MESSAGE_QE_MECHANICS
 						days = 30
 						target = this
-
 						variable = {
 							type = name
 							localization = PLANET
@@ -440,19 +449,17 @@ decision_questionable_ethics = {
 					owner = {
 						add_monthly_resource_mult = {
 							resource = engineering_research
-							value = 24 #@tier3researchreward
-							min = 500 #@tier3researchmin
-							max = 1000000 #@tier3researchmax
+							value = 24							#@tier3researchreward
+							min = 500							#@tier3researchmin
+							max = 1000000							#@tier3researchmax
 						}
 					}
 					add_planet_devastation = 20
-
 					create_message = {
 						type = MESSAGE_QUESTIONABLE_ETHICS
 						localization = MESSAGE_QE_MECHANICS
 						days = 30
 						target = this
-
 						variable = {
 							type = name
 							localization = PLANET
@@ -463,9 +470,7 @@ decision_questionable_ethics = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 5
-		}
 	}
 }
