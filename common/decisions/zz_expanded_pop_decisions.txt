@@ -1,7 +1,6 @@
 ##########################################################################
 # Decisions
 ##########################################################################
-
 decision_lithoid_prospect = {
 	owned_planets_only = yes
 	icon = decision_prospect
@@ -12,23 +11,35 @@ decision_lithoid_prospect = {
 			energy = 1000
 		}
 	}
-	
 	potential = {
 		is_homeworld = no
 		is_artificial = no
-		NOT = { is_planet_class = pc_machine }
-		NOT = { is_planet_class = pc_hive }
-		NOT = { is_planet_class = pc_city }
-		NOT = { is_planet_class = pc_relic }
+		NOT = {
+			is_planet_class = pc_machine
+		}
+		NOT = {
+			is_planet_class = pc_hive
+		}
+		NOT = {
+			is_planet_class = pc_city
+		}
+		NOT = {
+			is_planet_class = pc_relic
+		}
 		owner = {
 			is_lithoid_empire = yes
 		}
-		NOT = { has_planet_flag = planet_lithoid_prospected }
+		NOT = {
+			has_planet_flag = planet_lithoid_prospected
+		}
 	}
-	
 	allow = {
-		NOT = { has_modifier = delicate_ecosystem }
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = delicate_ecosystem
+		}
+		NOT = {
+			has_modifier = resort_colony
+		}
 		custom_tooltip = decision_lithoid_prospect_trigger
 		hidden_trigger = {
 			OR = {
@@ -57,7 +68,6 @@ decision_lithoid_prospect = {
 			}
 		}
 	}
-	
 	effect = {
 		custom_tooltip = decision_lithoid_prospect_effects_short
 		add_planet_devastation = 25
@@ -123,7 +133,7 @@ decision_lithoid_prospect = {
 					add_deposit = d_rich_mountain
 					modifier = {
 						factor = 0
-						is_wet = yes # for balancing purposes only
+						is_wet = yes						# for balancing purposes only
 					}
 				}
 				1 = {
@@ -141,7 +151,9 @@ decision_lithoid_prospect = {
 					add_deposit = d_offshore_fields
 					modifier = {
 						factor = 0
-						NOT = { has_global_flag = has_new_frontiers_mod }
+						NOT = {
+							has_global_flag = has_new_frontiers_mod
+						}
 					}
 					modifier = {
 						factor = 0
@@ -157,7 +169,9 @@ decision_lithoid_prospect = {
 					add_deposit = d_abundant_atoll
 					modifier = {
 						factor = 0
-						NOT = { has_global_flag = has_new_frontiers_mod }
+						NOT = {
+							has_global_flag = has_new_frontiers_mod
+						}
 					}
 					modifier = {
 						factor = 0
@@ -172,7 +186,9 @@ decision_lithoid_prospect = {
 					add_deposit = d_rich_lodes
 					modifier = {
 						factor = 0
-						NOT = { has_global_flag = has_new_frontiers_mod }
+						NOT = {
+							has_global_flag = has_new_frontiers_mod
+						}
 					}
 					modifier = {
 						factor = 0
@@ -194,7 +210,7 @@ decision_lithoid_prospect = {
 					type = name
 					localization = PLANET
 					scope = this
-				}				
+				}
 				variable = {
 					type = name
 					localization = DEPOSIT
@@ -203,14 +219,13 @@ decision_lithoid_prospect = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 1
 		modifier = {
 			factor = 0
 			num_pops < 20
 		}
-	}	
+	}
 }
 
 decision_fungoid_prospect = {
@@ -223,26 +238,36 @@ decision_fungoid_prospect = {
 			energy = 1000
 		}
 	}
-	
 	potential = {
 		is_homeworld = no
 		is_artificial = no
-		NOT = { is_planet_class = pc_machine }
-		NOT = { is_planet_class = pc_hive }
-		NOT = { is_planet_class = pc_city }
-		NOT = { is_planet_class = pc_relic }
+		NOT = {
+			is_planet_class = pc_machine
+		}
+		NOT = {
+			is_planet_class = pc_hive
+		}
+		NOT = {
+			is_planet_class = pc_city
+		}
+		NOT = {
+			is_planet_class = pc_relic
+		}
 		owner = {
 			is_fungoid_empire = yes
 		}
-		NOT = { has_modifier = planet_fungoid_prospect }
+		NOT = {
+			has_modifier = planet_fungoid_prospect
+		}
 	}
-	
 	allow = {
 	}
-	
 	effect = {
 		custom_tooltip = decision_fungoid_prospect_effects_short
-		add_modifier = { modifier = planet_fungoid_prospect days = -1 }
+		add_modifier = {
+			modifier = planet_fungoid_prospect
+			days = -1
+		}
 		hidden_effect = {
 			random_list = {
 				3 = {
@@ -448,7 +473,9 @@ decision_fungoid_prospect = {
 					add_deposit = d_natural_farmland
 					modifier = {
 						factor = 0
-						NOT = { is_planet_class = pc_gaia }
+						NOT = {
+							is_planet_class = pc_gaia
+						}
 					}
 				}
 			}
@@ -461,7 +488,7 @@ decision_fungoid_prospect = {
 					type = name
 					localization = PLANET
 					scope = this
-				}				
+				}
 				variable = {
 					type = name
 					localization = DEPOSIT
@@ -470,19 +497,20 @@ decision_fungoid_prospect = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 1
 		modifier = {
 			factor = 0
 			num_pops < 20
-			NOT = { has_designation = col_farming }
+			NOT = {
+				has_designation = col_farming
+			}
 		}
 		modifier = {
 			factor = 10
 			has_designation = col_farming
 		}
-	}	
+	}
 }
 
 decision_plantoid_prospect = {
@@ -495,41 +523,68 @@ decision_plantoid_prospect = {
 			energy = 1000
 		}
 	}
-	
 	potential = {
 		is_homeworld = no
 		is_artificial = no
-		NOT = { is_planet_class = pc_machine }
-		NOT = { is_planet_class = pc_hive }
-		NOT = { is_planet_class = pc_city }
-		NOT = { is_planet_class = pc_relic }
+		NOT = {
+			is_planet_class = pc_machine
+		}
+		NOT = {
+			is_planet_class = pc_hive
+		}
+		NOT = {
+			is_planet_class = pc_city
+		}
+		NOT = {
+			is_planet_class = pc_relic
+		}
 		owner = {
 			is_plantoid_empire = yes
 		}
-		NOT = { has_planet_flag = planet_plantoid_prospect }
+		NOT = {
+			has_planet_flag = planet_plantoid_prospect
+		}
 	}
-	
 	allow = {
 		exists = owner
-		owner = { has_technology = tech_eco_simulation }
+		owner = {
+			has_technology = tech_eco_simulation
+		}
 	}
-	
 	effect = {
 		if = {
-			limit = { has_modifier = bleak_planet }
+			limit = {
+				has_modifier = bleak_planet
+			}
 			remove_modifier = bleak_planet
 		}
 		else_if = {
-			limit = { has_modifier = irradiated_planet }
+			limit = {
+				has_modifier = irradiated_planet
+			}
 			remove_modifier = irradiated_planet
 		}
 		else_if = {
-			limit = { NOT = { has_modifier = lush_planet } }
-			add_modifier = { modifier = lush_planet days = -1 }
+			limit = {
+				NOT = {
+					has_modifier = lush_planet
+				}
+			}
+			add_modifier = {
+				modifier = lush_planet
+				days = -1
+			}
 		}
 		else_if = {
-			limit = { NOT = { has_modifier = natural_beauty } }
-			add_modifier = { modifier = natural_beauty days = -1 }
+			limit = {
+				NOT = {
+					has_modifier = natural_beauty
+				}
+			}
+			add_modifier = {
+				modifier = natural_beauty
+				days = -1
+			}
 		}
 		custom_tooltip = decision_fungoid_prospect_effects_short
 		hidden_effect = {
@@ -738,7 +793,9 @@ decision_plantoid_prospect = {
 					add_deposit = d_natural_farmland
 					modifier = {
 						factor = 0
-						NOT = { is_planet_class = pc_gaia }
+						NOT = {
+							is_planet_class = pc_gaia
+						}
 					}
 				}
 			}
@@ -751,7 +808,7 @@ decision_plantoid_prospect = {
 					type = name
 					localization = PLANET
 					scope = this
-				}				
+				}
 				variable = {
 					type = name
 					localization = DEPOSIT
@@ -760,13 +817,14 @@ decision_plantoid_prospect = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 1
 		modifier = {
 			factor = 0
 			num_pops < 20
-			NOT = { has_designation = col_farming }
+			NOT = {
+				has_designation = col_farming
+			}
 		}
 		modifier = {
 			factor = 10
@@ -778,7 +836,6 @@ decision_plantoid_prospect = {
 decision_clean_up_lithoid = {
 	owned_planets_only = yes
 	icon = decision_arid_planet
-
 	enactment_time = 720
 	resources = {
 		category = decisions
@@ -788,10 +845,11 @@ decision_clean_up_lithoid = {
 			minerals = 3000
 		}
 	}
-	
 	potential = {
 		owner = {
-			NOT = { has_origin = origin_lithoid }
+			NOT = {
+				has_origin = origin_lithoid
+			}
 		}
 		OR = {
 			has_deposit = d_lithoid_crater
@@ -799,14 +857,12 @@ decision_clean_up_lithoid = {
 			has_modifier = lithoid_crater
 		}
 	}
-	
 	allow = {
 		exists = owner
 		owner = {
 			has_technology = tech_ecological_adaptation
 		}
 	}
-	
 	effect = {
 		custom_tooltip = decision_clean_up_lithoid_effects
 		hidden_effect = {
@@ -815,12 +871,13 @@ decision_clean_up_lithoid = {
 			remove_modifier = lithoid_crater
 		}
 	}
-	
 	ai_weight = {
 		weight = 2
 		modifier = {
 			factor = 0
-			owner = { is_robot_empire = yes }
+			owner = {
+				is_robot_empire = yes
+			}
 		}
 	}
 }
@@ -828,7 +885,6 @@ decision_clean_up_lithoid = {
 hire_corp_mercs = {
 	owned_planets_only = yes
 	icon = decision_martial_law
-
 	enactment_time = 90
 	resources = {
 		category = decisions
@@ -836,25 +892,37 @@ hire_corp_mercs = {
 			energy = 1500
 		}
 	}
-	
 	potential = {
 		has_branch_office = yes
 		exists = branch_office_owner
 		OR = {
-			has_holding = { holding = building_military_contractors owner = branch_office_owner }
-			has_holding = { holding = building_pirate_haven owner = branch_office_owner }
+			has_holding = {
+				holding = building_military_contractors
+				owner = branch_office_owner
+			}
+			has_holding = {
+				holding = building_pirate_haven
+				owner = branch_office_owner
+			}
 		}
 	}
-	
 	effect = {
 		custom_tooltip = decision_hire_corp_mercs_effects
 		hidden_effect = {
 			branch_office_owner = {
-				owner_species = { save_event_target_as = mercenary_enclave_species }
-				add_resource = { energy = 1500 }
+				owner_species = {
+					save_event_target_as = mercenary_enclave_species
+				}
+				add_resource = {
+					energy = 1500
+				}
 				if = {
-					limit = { has_valid_civic = civic_private_military_companies }
-					add_resource = { energy = 500 }
+					limit = {
+						has_valid_civic = civic_private_military_companies
+					}
+					add_resource = {
+						energy = 500
+					}
 				}
 				create_message = {
 					type = MESSAGE_TYPE_MERC_ARMY_HIRED
@@ -897,24 +965,31 @@ hire_corp_mercs = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 2
 		modifier = {
 			factor = 0.5
-			owner = { is_at_war = no }
+			owner = {
+				is_at_war = no
+			}
 		}
 		modifier = {
 			factor = 0.5
-			owner = { is_xenophile = yes }
+			owner = {
+				is_xenophile = yes
+			}
 		}
 		modifier = {
 			factor = 0
-			owner = { is_anti_corp = yes }
+			owner = {
+				is_anti_corp = yes
+			}
 		}
 		modifier = {
 			factor = 0
-			owner = { is_pacifist = yes }
+			owner = {
+				is_pacifist = yes
+			}
 		}
 		modifier = {
 			factor = 0
@@ -1034,7 +1109,6 @@ hire_corp_mercs = {
 hire_corp_mecha_mercs = {
 	owned_planets_only = yes
 	icon = decision_martial_law_machine
-
 	enactment_time = 90
 	resources = {
 		category = decisions
@@ -1042,7 +1116,6 @@ hire_corp_mecha_mercs = {
 			energy = 3000
 		}
 	}
-	
 	potential = {
 		has_branch_office = yes
 		exists = branch_office_owner
@@ -1052,20 +1125,33 @@ hire_corp_mecha_mercs = {
 			has_technology = "tech_combat_computers_2"
 		}
 		OR = {
-			has_holding = { holding = building_military_contractors owner = branch_office_owner }
-			has_holding = { holding = building_pirate_haven owner = branch_office_owner }
+			has_holding = {
+				holding = building_military_contractors
+				owner = branch_office_owner
+			}
+			has_holding = {
+				holding = building_pirate_haven
+				owner = branch_office_owner
+			}
 		}
 	}
-	
 	effect = {
 		custom_tooltip = decision_hire_corp_mecha_mercs_effects
 		hidden_effect = {
 			branch_office_owner = {
-				owner_species = { save_event_target_as = mercenary_enclave_species }
-				add_resource = { energy = 3000 }
+				owner_species = {
+					save_event_target_as = mercenary_enclave_species
+				}
+				add_resource = {
+					energy = 3000
+				}
 				if = {
-					limit = { has_valid_civic = civic_private_military_companies }
-					add_resource = { energy = 1000 }
+					limit = {
+						has_valid_civic = civic_private_military_companies
+					}
+					add_resource = {
+						energy = 1000
+					}
 				}
 				create_message = {
 					type = MESSAGE_TYPE_MERC_ARMY_HIRED
@@ -1108,24 +1194,31 @@ hire_corp_mecha_mercs = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 2
 		modifier = {
 			factor = 0.5
-			owner = { is_at_war = no }
+			owner = {
+				is_at_war = no
+			}
 		}
 		modifier = {
 			factor = 0.5
-			owner = { is_xenophile = yes }
+			owner = {
+				is_xenophile = yes
+			}
 		}
 		modifier = {
 			factor = 0
-			owner = { is_anti_corp = yes }
+			owner = {
+				is_anti_corp = yes
+			}
 		}
 		modifier = {
 			factor = 0
-			owner = { is_pacifist = yes }
+			owner = {
+				is_pacifist = yes
+			}
 		}
 		modifier = {
 			factor = 0
@@ -1255,7 +1348,6 @@ hire_corp_mecha_mercs = {
 decision_trait_burrow = {
 	owned_planets_only = yes
 	icon = decision_prospect
-	
 	enactment_time = 360
 	resources = {
 		category = decisions
@@ -1264,12 +1356,17 @@ decision_trait_burrow = {
 			minerals = 500
 		}
 	}
-	
 	potential = {
 		is_artificial = no
-		NOT = { is_planet_class = pc_machine }
-		NOT = { is_planet_class = pc_city }
-		NOT = { has_deposit = d_trait_burrow }
+		NOT = {
+			is_planet_class = pc_machine
+		}
+		NOT = {
+			is_planet_class = pc_city
+		}
+		NOT = {
+			has_deposit = d_trait_burrow
+		}
 		any_owned_pop = {
 			OR = {
 				has_trait = trait_burrowing
@@ -1277,7 +1374,6 @@ decision_trait_burrow = {
 			}
 		}
 	}
-	
 	allow = {
 		custom_tooltip = {
 			fail_text = decision_trait_burrow_need_five_burrowers
@@ -1292,7 +1388,6 @@ decision_trait_burrow = {
 			}
 		}
 	}
-	
 	effect = {
 		add_deposit = d_trait_burrow
 		hidden_effect = {
@@ -1314,7 +1409,6 @@ decision_trait_burrow = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 1
 	}
@@ -1324,7 +1418,6 @@ decision_trait_burrow = {
 decision_subterranean_expansion = {
 	owned_planets_only = yes
 	icon = decision_mastery_of_nature
-
 	#enactment_time = 720 # do everything by event
 	resources = {
 		category = decisions
@@ -1334,26 +1427,36 @@ decision_subterranean_expansion = {
 			minerals = 2000
 		}
 	}
-	
 	potential = {
 		exists = owner
 		owner = {
 			has_origin = origin_subterranean_evolution
 		}
 		is_artificial = no
-		NOT = { is_planet_class = pc_machine }
-		NOT = { is_planet_class = pc_city }
-		NOT = { has_planet_flag = seismic_disturbance }
-		NOT = { has_planet_flag = planet_sub_expanded }
+		NOT = {
+			is_planet_class = pc_machine
+		}
+		NOT = {
+			is_planet_class = pc_city
+		}
+		NOT = {
+			has_planet_flag = seismic_disturbance
+		}
+		NOT = {
+			has_planet_flag = planet_sub_expanded
+		}
 	}
-	
 	effect = {
 		custom_tooltip = decision_subterranean_expansion_effects
 		hidden_effect = {
 			set_planet_flag = planet_sub_expanded
 			random_list = {
 				1 = {
-					planet_event = { id = civicsexpanded.1 days = 170 random = 30 }
+					planet_event = {
+						id = civicsexpanded.1
+						days = 170
+						random = 30
+					}
 					modifier = {
 						factor = 0
 						has_deposit = d_underground_farm
@@ -1375,14 +1478,22 @@ decision_subterranean_expansion = {
 					}
 				}
 				2 = {
-					planet_event = { id = civicsexpanded.3 days = 170 random = 30 }
+					planet_event = {
+						id = civicsexpanded.3
+						days = 170
+						random = 30
+					}
 					modifier = {
 						factor = 0
 						has_deposit = d_underground_mine
 					}
 				}
 				2 = {
-					planet_event = { id = civicsexpanded.5 days = 170 random = 30 }
+					planet_event = {
+						id = civicsexpanded.5
+						days = 170
+						random = 30
+					}
 					modifier = {
 						factor = 0
 						has_deposit = d_underground_generator
@@ -1391,7 +1502,6 @@ decision_subterranean_expansion = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 1
 		modifier = {
@@ -1402,13 +1512,12 @@ decision_subterranean_expansion = {
 			factor = 0
 			colony_age < 10
 		}
-	}	
+	}
 }
 
 decision_subterranean_expansion_removal = {
 	owned_planets_only = yes
 	icon = decision_resources
-
 	enactment_time = 720
 	resources = {
 		category = decisions
@@ -1417,7 +1526,6 @@ decision_subterranean_expansion_removal = {
 			minerals = 4000
 		}
 	}
-	
 	potential = {
 		OR = {
 			has_deposit = d_underground_farm
@@ -1425,9 +1533,10 @@ decision_subterranean_expansion_removal = {
 			has_deposit = d_underground_generator
 		}
 		exists = owner
-		owner = { has_ascension_perk = ap_arcology_project }
+		owner = {
+			has_ascension_perk = ap_arcology_project
+		}
 	}
-	
 	effect = {
 		custom_tooltip = decision_subterranean_expansion_removal_effects
 		hidden_effect = {
@@ -1438,15 +1547,13 @@ decision_subterranean_expansion_removal = {
 			remove_planet_flag = planet_sub_expanded_mastery
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
-	}	
+	}
 }
 
 decision_hunting_preserve = {
 	owned_planets_only = yes
-
 	enactment_time = 120
 	resources = {
 		category = decisions
@@ -1454,7 +1561,6 @@ decision_hunting_preserve = {
 			energy = 100
 		}
 	}
-	
 	potential = {
 		is_artificial = no
 		NOT = {
@@ -1463,16 +1569,19 @@ decision_hunting_preserve = {
 			is_planet_class = pc_relic
 			is_planet_class = pc_hive
 		}
-		NOT = { has_deposit = d_hunting_preserve }
+		NOT = {
+			has_deposit = d_hunting_preserve
+		}
 		exists = owner
-		owner = { has_origin = origin_natural_hunters }
+		owner = {
+			has_origin = origin_natural_hunters
+		}
 		OR = {
 			has_deposit = d_dangerous_wildlife_blocker
 			has_planet_flag = has_dangerous_wildlife
 			has_modifier = dangerous_wildlife
 		}
 	}
-	
 	effect = {
 		add_deposit = d_hunting_preserve
 		random_deposit = {
@@ -1500,20 +1609,18 @@ decision_hunting_preserve = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 1
 		modifier = {
 			factor = 0
 			num_pops < 6
 		}
-	}	
+	}
 }
 
 decision_remove_hunting_preserve = {
 	owned_planets_only = yes
 	icon = decision_politics
-
 	enactment_time = 120
 	resources = {
 		category = decisions
@@ -1521,32 +1628,32 @@ decision_remove_hunting_preserve = {
 			energy = 200
 		}
 	}
-	
 	potential = {
 		exists = owner
 		OR = {
-			owner = { NOT = { has_origin = origin_natural_hunters } }
+			owner = {
+				NOT = {
+					has_origin = origin_natural_hunters
+				}
+			}
 			habitable_structure = yes
 			is_planet_class = pc_machine
 			is_planet_class = pc_city
 		}
 		has_deposit = d_hunting_preserve
 	}
-	
 	effect = {
 		remove_planet_flag = hunting_preserve_added
 		remove_deposit = d_hunting_preserve
 	}
-	
 	ai_weight = {
 		weight = 0
-	}	
+	}
 }
 
 decision_nature_preserve = {
 	owned_planets_only = yes
 	icon = decision_animal_wildlife
-	
 	enactment_time = 120
 	resources = {
 		category = decisions
@@ -1555,21 +1662,21 @@ decision_nature_preserve = {
 			unity = 100
 		}
 	}
-	
 	potential = {
 		is_artificial = no
-		NOT = { is_planet_class = pc_machine }
-		NOT = { is_planet_class = pc_city }
-		NOT = { has_deposit = d_nature_preserve }
-		NOT = { has_global_flag = EcologyMod_active }
+		NOR = {
+			is_planet_class = pc_machine
+			is_planet_class = pc_city
+			has_deposit = d_nature_preserve
+		}
 		exists = owner
-		owner = { has_civic = civic_environmentalist }
+		owner = {
+			has_civic = civic_environmentalist
+		}
 	}
-	
 	allow = {
 		free_district_slots > 0
 	}
-	
 	effect = {
 		add_deposit = d_nature_preserve
 		hidden_effect = {
@@ -1591,7 +1698,6 @@ decision_nature_preserve = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 1
 		modifier = {
@@ -1604,7 +1710,6 @@ decision_nature_preserve = {
 decision_remove_nature_preserve = {
 	owned_planets_only = yes
 	icon = decision_politics
-	
 	enactment_time = 120
 	resources = {
 		category = decisions
@@ -1612,22 +1717,23 @@ decision_remove_nature_preserve = {
 			energy = 100
 		}
 	}
-	
 	potential = {
 		exists = owner
 		OR = {
-			owner = { NOT = { has_civic = civic_environmentalist } }
+			owner = {
+				NOT = {
+					has_civic = civic_environmentalist
+				}
+			}
 			habitable_structure = yes
 			is_planet_class = pc_machine
 			is_planet_class = pc_city
 		}
 		has_deposit = d_nature_preserve
 	}
-	
 	effect = {
 		remove_deposit = d_nature_preserve
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
@@ -1636,27 +1742,27 @@ decision_remove_nature_preserve = {
 decision_corvee_public_works = {
 	owned_planets_only = yes
 	icon = decision_politics
-	
 	resources = {
 		category = decisions
 		cost = {
 			energy = 500
 		}
 	}
-	
 	potential = {
 		exists = owner
-		owner = { has_civic = civic_corvee_system }
-		NOT = { has_modifier = corvee_public_works }
+		owner = {
+			has_civic = civic_corvee_system
+		}
+		NOT = {
+			has_modifier = corvee_public_works
+		}
 	}
-	
 	effect = {
 		add_modifier = {
 			modifier = "corvee_public_works"
 			days = 3600
 		}
 	}
-	
 	ai_weight = {
 		weight = 1
 		modifier = {
@@ -1677,35 +1783,37 @@ decision_expel_population_gestalt = {
 	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_expel_population
-
 	resources = {
 		category = decisions
 		cost = {
 			unity = 250
 		}
 	}
-
 	potential = {
-		owner = { 
+		owner = {
 			is_gestalt = yes
 			pop_percentage = {
-				percentage >= 0.20
+				percentage >= 0.2
 				limit = {
 					is_free_resident_pop_gestalt = yes
 				}
 			}
 		}
-		any_owned_pop = { is_free_resident_pop_gestalt = yes }
+		any_owned_pop = {
+			is_free_resident_pop_gestalt = yes
+		}
 	}
-
-
 	allow = {
-		NOT = { has_modifier = planet_population_expelled }
+		NOT = {
+			has_modifier = planet_population_expelled
+		}
 	}
-
 	effect = {
 		custom_tooltip = decision_expel_population_effects
-		add_modifier = { modifier = "planet_population_expelled" days = 1800 }
+		add_modifier = {
+			modifier = "planet_population_expelled"
+			days = 1800
+		}
 		hidden_effect = {
 			while = {
 				count = 10
@@ -1714,25 +1822,26 @@ decision_expel_population_gestalt = {
 						is_free_resident_pop_gestalt = yes
 					}
 					if = {
-						limit = { is_valid_refugee_pop = yes }
-						save_event_target_as = refugee_pop #Must be saved for refugee_pop_effect to work
-						refugee_pop_effect = yes					
+						limit = {
+							is_valid_refugee_pop = yes
+						}
+						save_event_target_as = refugee_pop						#Must be saved for refugee_pop_effect to work
+						refugee_pop_effect = yes
 					}
 					else = {
 						kill_pop = yes
 					}
 				}
-			}		
+			}
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 		modifier = {
 			factor = 0
 			owner = {
 				pop_percentage = {
-					percentage < 0.40
+					percentage < 0.4
 					limit = {
 						is_free_resident_pop_gestalt = yes
 					}
@@ -1750,7 +1859,6 @@ decision_expel_population_gestalt = {
 decision_hibernating_lithoids = {
 	owned_planets_only = yes
 	sound = event_administrative_work
-
 	resources = {
 		category = decisions
 		cost = {
@@ -1758,29 +1866,34 @@ decision_hibernating_lithoids = {
 			minerals = 250
 		}
 	}
-
 	potential = {
-		owner = { 
-			is_lithoid_empire = yes 
-			NOT = { has_policy_flag = population_controls_not_allowed }
+		owner = {
+			is_lithoid_empire = yes
+			NOT = {
+				has_policy_flag = population_controls_not_allowed
+			}
 		}
 	}
-
-
 	allow = {
 		owner = {
-			NOT = { has_policy_flag = population_controls_not_allowed }
+			NOT = {
+				has_policy_flag = population_controls_not_allowed
+			}
 		}
-		NOT = { has_modifier = planet_population_hibernation }
+		NOT = {
+			has_modifier = planet_population_hibernation
+		}
 		any_owned_pop = {
 			is_lithoid = yes
 			is_unemployed = yes
 		}
 	}
-
 	effect = {
 		custom_tooltip = decision_hibernating_lithoids_effects
-		add_modifier = { modifier = "planet_population_hibernation" days = 1800 }		
+		add_modifier = {
+			modifier = "planet_population_hibernation"
+			days = 1800
+		}
 		hidden_effect = {
 			while = {
 				count = 10
@@ -1798,10 +1911,9 @@ decision_hibernating_lithoids = {
 					kill_pop = yes
 				}
 				add_deposit = d_sleeping_lithoid
-			}		
+			}
 		}
 	}
-
 	ai_weight = {
 		weight = 0
 	}
@@ -1818,10 +1930,11 @@ decision_memorialist_excavation = {
 			energy = 1000
 		}
 	}
-	
 	potential = {
 		has_ancrel = yes
-		NOT = { has_planet_flag = memorialist_excavated }
+		NOT = {
+			has_planet_flag = memorialist_excavated
+		}
 		OR = {
 			is_planet_class = pc_nuked
 			is_planet_class = pc_irradiated
@@ -1836,11 +1949,9 @@ decision_memorialist_excavation = {
 			}
 		}
 	}
-	
 	allow = {
 		always = yes
 	}
-	
 	effect = {
 		custom_tooltip = decision_memorialist_excavation_effects_short
 		hidden_effect = {
@@ -1859,44 +1970,42 @@ decision_memorialist_excavation = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 1
-	}	
+	}
 }
 
 decision_transplant_sacred_tree = {
 	owned_planets_only = yes
 	sound = event_laboratory_sound
 	icon = decision_resources
-
 	enactment_time = 180
-
 	resources = {
 		category = decisions
 		cost = {
 			food = 500
 		}
 	}
-
 	potential = {
-		owner = { has_origin = origin_sacred_tree }
+		owner = {
+			has_origin = origin_sacred_tree
+		}
 		NOR = {
 			has_deposit = d_tree_of_life_colony
 			has_deposit = d_tree_of_life_home
 		}
 	}
-
 	allow = {
-
 	}
-
 	effect = {
-		hidden_effect = { remove_modifier = no_lifetree }
+		hidden_effect = {
+			remove_modifier = no_lifetree
+		}
 		add_deposit = d_tree_of_life_colony
-		hidden_effect = { spawn_caretaker_effect = yes }
+		hidden_effect = {
+			spawn_caretaker_effect = yes
+		}
 	}
-
 	ai_weight = {
 		weight = 10
 	}
@@ -1906,33 +2015,30 @@ decision_build_master_relay = {
 	owned_planets_only = yes
 	sound = event_laboratory_sound
 	icon = decision_resources
-
 	enactment_time = 180
-
 	resources = {
 		category = decisions
 		cost = {
 			minerals = 500
 		}
 	}
-
 	potential = {
-		owner = { has_origin = origin_master_computer }
+		owner = {
+			has_origin = origin_master_computer
+		}
 		NOR = {
 			has_deposit = d_master_computer
 			has_deposit = d_master_computer_colony
 		}
 	}
-
 	allow = {
-
 	}
-
 	effect = {
-		hidden_effect = { remove_modifier = no_master_computer }
+		hidden_effect = {
+			remove_modifier = no_master_computer
+		}
 		add_deposit = d_master_computer_colony
 	}
-
 	ai_weight = {
 		weight = 10
 	}
@@ -1942,16 +2048,13 @@ decision_rebuilt_master_computer = {
 	owned_planets_only = yes
 	sound = event_laboratory_sound
 	icon = decision_resources
-
 	enactment_time = 180
-
 	resources = {
 		category = decisions
 		cost = {
 			minerals = 2000
 		}
 	}
-
 	potential = {
 		owner = {
 			has_origin = origin_master_computer
@@ -1959,11 +2062,8 @@ decision_rebuilt_master_computer = {
 		}
 		is_capital = yes
 	}
-
 	allow = {
-
 	}
-
 	effect = {
 		hidden_effect = {
 			remove_deposit = d_master_computer_colony
@@ -1976,7 +2076,6 @@ decision_rebuilt_master_computer = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 	}
@@ -1986,7 +2085,6 @@ decision_rebuilt_master_computer = {
 decision_train_telepaths = {
 	owned_planets_only = yes
 	icon = decision_politics
-	
 	enactment_time = 720
 	resources = {
 		category = decisions
@@ -1995,26 +2093,30 @@ decision_train_telepaths = {
 			sr_zro = 50
 		}
 	}
-	
 	potential = {
 		exists = owner
-		owner = { has_country_flag = built_one_psi_corps }
-		NOT = { has_planet_flag = built_one_psi_corps }
+		owner = {
+			has_country_flag = built_one_psi_corps
+		}
+		NOT = {
+			has_planet_flag = built_one_psi_corps
+		}
 	}
-	
 	allow = {
 		has_upgraded_capital = yes
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-	
 	effect = {
 		custom_tooltip = decision_trait_telepaths_effects_tooltip
 		hidden_effect = {
 			set_planet_flag = built_one_psi_corps
 		}
 	}
-	
 	ai_weight = {
 		weight = 1
 		modifier = {
@@ -2037,7 +2139,7 @@ decision_train_telepaths = {
 			factor = 10
 			or = {
 				planet_crime > 10
-				planet_stability < 50			
+				planet_stability < 50
 			}
 		}
 	}
@@ -2046,7 +2148,6 @@ decision_train_telepaths = {
 decision_perfect_world = {
 	owned_planets_only = yes
 	icon = decision_politics
-	
 	enactment_time = 720
 	resources = {
 		category = decisions
@@ -2055,14 +2156,16 @@ decision_perfect_world = {
 			influence = 25
 		}
 	}
-	
 	potential = {
 		exists = owner
-		owner = { has_ascension_perk = ap_world_shaper }
-		NOT = { has_modifier = world_shaper_mod }
-		is_terraforming = no # will be added by terraforming
+		owner = {
+			has_ascension_perk = ap_world_shaper
+		}
+		NOT = {
+			has_modifier = world_shaper_mod
+		}
+		is_terraforming = no		# will be added by terraforming
 	}
-	
 	allow = {
 		custom_tooltip = {
 			fail_text = must_be_ideal_world
@@ -2070,15 +2173,19 @@ decision_perfect_world = {
 				is_gaia = yes
 				is_hive = yes
 				is_machine = yes
-				is_ideal_planet_class = { who = root.owner status = yes }
+				is_ideal_planet_class = {
+					who = root.owner
+					status = yes
+				}
 			}
 		}
 	}
-	
 	effect = {
-		add_modifier = { modifier = world_shaper_mod days = -1 }
+		add_modifier = {
+			modifier = world_shaper_mod
+			days = -1
+		}
 	}
-	
 	ai_weight = {
 		weight = 10
 	}
