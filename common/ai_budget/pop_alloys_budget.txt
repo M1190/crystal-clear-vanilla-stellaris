@@ -1,10 +1,8 @@
 ## Categories used in this file must have use_for_ai_budget = yes defined in economic_categories ##
 ## It is possible to have multiple entries with the same category and resource ##
-
 #################
 ## Expenditure ##
 #################
-
 alloys_expenditure_decisions = {
 	resource = alloys
 	type = expenditure
@@ -22,8 +20,12 @@ alloys_expenditure_decisions = {
 			OR = {
 				AND = {
 					is_planet_class = pc_habitat
-					NOT = { has_planet_flag = advanced_habitat_2 }
-					root = { has_technology = tech_habitat_2 }
+					NOT = {
+						has_planet_flag = advanced_habitat_2
+					}
+					root = {
+						has_technology = tech_habitat_2
+					}
 				}
 				AND = {
 					is_planet_class = pc_shattered_ring_habitable
@@ -47,7 +49,7 @@ alloys_expenditure_decisions = {
 		}
 	}
 	fraction = {
-		weight = 0.20
+		weight = 0.2
 	}
 	# based on habitat / restore ring
 	static_max = {
@@ -57,7 +59,9 @@ alloys_expenditure_decisions = {
 			has_technology = tech_habitat_3
 			any_owned_planet = {
 				has_planet_flag = advanced_habitat
-				NOT = { has_planet_flag = advanced_habitat_2 }
+				NOT = {
+					has_planet_flag = advanced_habitat_2
+				}
 			}
 		}
 		modifier = {

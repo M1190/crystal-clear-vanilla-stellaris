@@ -5,11 +5,14 @@ building_foundry_1 = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
 	category = manufacturing
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 		OR = {
-			NOT = { has_modifier = slave_colony }
+			NOT = {
+				has_modifier = slave_colony
+			}
 			owner = {
 				OR = {
 					has_valid_civic = civic_indentured_assets
@@ -20,11 +23,10 @@ building_foundry_1 = {
 		OR = {
 			owner = {
 				is_ai = no
-			}	
+			}
 			has_any_industry_district = yes
 		}
 	}
-
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -45,7 +47,6 @@ building_foundry_1 = {
 			}
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -58,7 +59,6 @@ building_foundry_1 = {
 			job_alloy_drone_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -71,7 +71,6 @@ building_foundry_1 = {
 			job_fabricator_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -84,7 +83,6 @@ building_foundry_1 = {
 			job_catalytic_drone_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -97,7 +95,6 @@ building_foundry_1 = {
 			job_foundry_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -110,41 +107,66 @@ building_foundry_1 = {
 			job_catalytic_technician_add = @b1_jobs
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = no } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = no
+				}
+			}
 			minerals = @b1_minerals
 		}
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes NOT = { has_valid_civic = civic_integrated_bioarchitecture } } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
+				}
+			}
 			minerals = @b1_hive_minerals
 			food = @b1_hive_food
 		}
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes has_valid_civic = civic_integrated_bioarchitecture } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+					has_valid_civic = civic_integrated_bioarchitecture
+				}
+			}
 			food = @b1_minerals
 		}
 		upkeep = {
-			trigger = { exists = owner owner = { is_catalytic_empire = no } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = no
+				}
+			}
 			energy = @b1_upkeep
 		}
 		upkeep = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+				}
+			}
 			energy = @b1_upkeep_hive
 			food = @b1_upkeep_food
 		}
 	}
-
 	upgrades = {
 		building_foundry_2
 	}
-
 	prerequisites = {
 		tech_basic_industry
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -155,7 +177,6 @@ building_foundry_1 = {
 		}
 		text = job_foundry_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -166,7 +187,6 @@ building_foundry_1 = {
 		}
 		text = job_catalytic_technician_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -177,7 +197,6 @@ building_foundry_1 = {
 		}
 		text = job_alloy_drone_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -188,7 +207,6 @@ building_foundry_1 = {
 		}
 		text = job_fabricator_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -199,7 +217,6 @@ building_foundry_1 = {
 		}
 		text = job_catalytic_drone_effect_desc
 	}
-
 	ai_resource_production = {
 		alloys = 8
 		trigger = {
@@ -216,11 +233,9 @@ building_foundry_2 = {
 	base_buildtime = @b2_time
 	can_build = no
 	category = manufacturing
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -245,55 +260,79 @@ building_foundry_2 = {
 			}
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = no } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = no
+				}
+			}
 			minerals = @b2_minerals
 			volatile_motes = @b3_rare_cost
 		}
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes NOT = { has_valid_civic = civic_integrated_bioarchitecture } } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
+				}
+			}
 			minerals = @b2_hive_minerals
 			food = @b2_hive_food
 			volatile_motes = @b3_rare_cost
 		}
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes has_valid_civic = civic_integrated_bioarchitecture } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+					has_valid_civic = civic_integrated_bioarchitecture
+				}
+			}
 			food = @b2_minerals
 			volatile_motes = @b3_rare_cost
 		}
 		upkeep = {
-			trigger = { exists = owner owner = { is_catalytic_empire = no } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = no
+				}
+			}
 			energy = @b2_upkeep
 			volatile_motes = @b3_rare_upkeep
 		}
 		upkeep = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+				}
+			}
 			energy = @b2_upkeep_hive
 			food = @b2_upkeep_food
 			volatile_motes = @b3_rare_upkeep
 		}
 	}
-
 	upgrades = {
 		building_foundry_3
 	}
-
 	prerequisites = {
 		tech_alloys_1
 	}
-
 	planet_modifier = {
 		planet_metallurgists_alloys_produces_add = 1
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
-				has_technology = tech_agrarian_alloys 
+				has_technology = tech_agrarian_alloys
 				has_valid_civic = civic_agrarian_idyll
 			}
 		}
@@ -301,7 +340,6 @@ building_foundry_2 = {
 			planet_miners_alloys_produces_add = 0.5
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_global_flag = EcologyMod_active
@@ -310,7 +348,6 @@ building_foundry_2 = {
 			planet_metallurgists_waste_produces_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -322,7 +359,6 @@ building_foundry_2 = {
 			planet_metallurgists_minerals_upkeep_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -335,7 +371,6 @@ building_foundry_2 = {
 			job_foundry_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -349,7 +384,6 @@ building_foundry_2 = {
 			job_catalytic_technician_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -362,7 +396,6 @@ building_foundry_2 = {
 			job_alloy_drone_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -375,7 +408,6 @@ building_foundry_2 = {
 			job_fabricator_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -389,7 +421,6 @@ building_foundry_2 = {
 			job_catalytic_drone_add = @b1_jobs
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -400,7 +431,6 @@ building_foundry_2 = {
 		}
 		text = job_foundry_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -411,7 +441,6 @@ building_foundry_2 = {
 		}
 		text = job_catalytic_technician_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -422,7 +451,6 @@ building_foundry_2 = {
 		}
 		text = job_alloy_drone_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -433,7 +461,6 @@ building_foundry_2 = {
 		}
 		text = job_fabricator_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -450,11 +477,9 @@ building_foundry_3 = {
 	base_buildtime = @b3_time
 	can_build = no
 	category = manufacturing
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -480,51 +505,76 @@ building_foundry_3 = {
 			}
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = no } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = no
+				}
+			}
 			minerals = @b3_minerals
 			volatile_motes = @b4_rare_upkeep
 		}
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes NOT = { has_valid_civic = civic_integrated_bioarchitecture } } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
+				}
+			}
 			minerals = @b3_hive_minerals
 			food = @b3_hive_food
 			volatile_motes = @b4_rare_upkeep
 		}
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes has_valid_civic = civic_integrated_bioarchitecture } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+					has_valid_civic = civic_integrated_bioarchitecture
+				}
+			}
 			food = @b3_minerals
 			volatile_motes = @b4_rare_upkeep
 		}
 		upkeep = {
-			trigger = { exists = owner owner = { is_catalytic_empire = no } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = no
+				}
+			}
 			energy = @b3_upkeep
 			volatile_motes = @b4_rare_upkeep
 		}
 		upkeep = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+				}
+			}
 			energy = @b3_upkeep_hive
 			food = @b3_upkeep_food
 			volatile_motes = @b4_rare_upkeep
 		}
 	}
-
 	prerequisites = {
 		tech_alloys_2
 	}
-
 	planet_modifier = {
 		planet_metallurgists_alloys_produces_add = 2
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
-				has_technology = tech_agrarian_alloys 
+				has_technology = tech_agrarian_alloys
 				has_valid_civic = civic_agrarian_idyll
 			}
 		}
@@ -532,7 +582,6 @@ building_foundry_3 = {
 			planet_miners_alloys_produces_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			has_global_flag = EcologyMod_active
@@ -541,7 +590,6 @@ building_foundry_3 = {
 			planet_metallurgists_waste_produces_add = 4
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -553,7 +601,6 @@ building_foundry_3 = {
 			planet_metallurgists_minerals_upkeep_add = 4
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -566,7 +613,6 @@ building_foundry_3 = {
 			job_foundry_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -580,7 +626,6 @@ building_foundry_3 = {
 			job_catalytic_technician_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -593,7 +638,6 @@ building_foundry_3 = {
 			job_alloy_drone_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -606,7 +650,6 @@ building_foundry_3 = {
 			job_fabricator_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -620,7 +663,6 @@ building_foundry_3 = {
 			job_catalytic_drone_add = @b1_jobs
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -631,7 +673,6 @@ building_foundry_3 = {
 		}
 		text = job_foundry_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -652,7 +693,6 @@ building_foundry_3 = {
 		}
 		text = job_alloy_drone_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -663,7 +703,6 @@ building_foundry_3 = {
 		}
 		text = job_fabricator_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -680,15 +719,18 @@ building_factory_1 = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
 	category = manufacturing
-
 	potential = {
 		exists = owner
 		owner = {
 			country_uses_consumer_goods = yes
 		}
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 		OR = {
-			NOT = { has_modifier = slave_colony }
+			NOT = {
+				has_modifier = slave_colony
+			}
 			owner = {
 				OR = {
 					has_valid_civic = civic_indentured_assets
@@ -699,11 +741,10 @@ building_factory_1 = {
 		OR = {
 			owner = {
 				is_ai = no
-			}	
+			}
 			has_any_industry_district = yes
 		}
 	}
-
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -716,24 +757,30 @@ building_factory_1 = {
 					}
 				}
 			}
-
 			AND = {
 				exists = owner
 				OR = {
-					owner = { country_uses_consumer_goods = no }
+					owner = {
+						country_uses_consumer_goods = no
+					}
 					AND = {
 						owner = {
 							is_ai = yes
 						}
-						NOT = { has_district = district_rw_industrial }
-						NOT = { has_district = district_hab_industrial }
-						NOT = { has_district = district_industrial }
+						NOT = {
+							has_district = district_rw_industrial
+						}
+						NOT = {
+							has_district = district_hab_industrial
+						}
+						NOT = {
+							has_district = district_industrial
+						}
 					}
 				}
 			}
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -746,7 +793,6 @@ building_factory_1 = {
 			job_artisan_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -759,51 +805,77 @@ building_factory_1 = {
 			job_artificer_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_artisan_drone_add = @b1_jobs
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = no } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = no
+				}
+			}
 			minerals = @b1_minerals
 		}
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes NOT = { has_valid_civic = civic_integrated_bioarchitecture } } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
+				}
+			}
 			minerals = @b1_hive_minerals
 			food = @b1_hive_food
 		}
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes has_valid_civic = civic_integrated_bioarchitecture } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+					has_valid_civic = civic_integrated_bioarchitecture
+				}
+			}
 			food = @b1_minerals
 		}
 		upkeep = {
-			trigger = { exists = owner owner = { is_catalytic_empire = no } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = no
+				}
+			}
 			energy = @b1_upkeep
 		}
 		upkeep = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+				}
+			}
 			energy = @b1_upkeep_hive
 			food = @b1_upkeep_food
 		}
 	}
-
 	prerequisites = {
 		tech_basic_industry
 	}
-
 	upgrades = {
 		building_factory_2
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -814,7 +886,6 @@ building_factory_1 = {
 		}
 		text = job_artisan_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -825,11 +896,12 @@ building_factory_1 = {
 		}
 		text = job_artificer_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_artisan_drone_effect_desc
 	}
@@ -839,19 +911,21 @@ building_factory_2 = {
 	base_buildtime = @b2_time
 	can_build = no
 	category = manufacturing
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	potential = {
 		exists = owner
 		owner = {
 			country_uses_consumer_goods = yes
 		}
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 		OR = {
-			NOT = { has_modifier = slave_colony }
+			NOT = {
+				has_modifier = slave_colony
+			}
 			owner = {
 				OR = {
 					has_valid_civic = civic_indentured_assets
@@ -860,7 +934,6 @@ building_factory_2 = {
 			}
 		}
 	}
-
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -876,7 +949,9 @@ building_factory_2 = {
 			AND = {
 				exists = owner
 				OR = {
-					owner = { country_uses_consumer_goods = no }
+					owner = {
+						country_uses_consumer_goods = no
+					}
 					AND = {
 						owner = {
 							is_ai = yes
@@ -888,17 +963,15 @@ building_factory_2 = {
 			buildings_no_crystals = yes
 		}
 	}
-
 	planet_modifier = {
 		planet_artisans_consumer_goods_produces_add = 1
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_lithoid_empire = no
-				has_technology = tech_agrarian_goods 
+				has_technology = tech_agrarian_goods
 				has_valid_civic = civic_agrarian_idyll
 			}
 		}
@@ -906,13 +979,12 @@ building_factory_2 = {
 			planet_farmers_consumer_goods_produces_add = 0.5
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_lithoid_empire = yes
-				has_technology = tech_agrarian_goods_lithoid 
+				has_technology = tech_agrarian_goods_lithoid
 				has_valid_civic = civic_agrarian_idyll
 			}
 		}
@@ -920,7 +992,6 @@ building_factory_2 = {
 			planet_miners_consumer_goods_produces_add = 0.5
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -940,7 +1011,9 @@ building_factory_2 = {
 			owner = {
 				OR = {
 					is_lithoid_empire = no
-					NOT = { has_valid_civic = civic_agribusiness }
+					NOT = {
+						has_valid_civic = civic_agribusiness
+					}
 				}
 			}
 		}
@@ -948,7 +1021,6 @@ building_factory_2 = {
 			planet_artisans_minerals_upkeep_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			has_global_flag = EcologyMod_active
@@ -957,7 +1029,6 @@ building_factory_2 = {
 			planet_artisans_waste_produces_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -970,7 +1041,6 @@ building_factory_2 = {
 			job_artisan_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -983,56 +1053,82 @@ building_factory_2 = {
 			job_artificer_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_artisan_drone_add = @b1_jobs
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = no } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = no
+				}
+			}
 			minerals = @b2_minerals
 			rare_crystals = @b3_rare_cost
 		}
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes NOT = { has_valid_civic = civic_integrated_bioarchitecture } } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
+				}
+			}
 			minerals = @b2_hive_minerals
 			food = @b2_hive_food
 			rare_crystals = @b3_rare_cost
 		}
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes has_valid_civic = civic_integrated_bioarchitecture } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+					has_valid_civic = civic_integrated_bioarchitecture
+				}
+			}
 			food = @b2_minerals
 			rare_crystals = @b3_rare_cost
 		}
 		upkeep = {
-			trigger = { exists = owner owner = { is_catalytic_empire = no } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = no
+				}
+			}
 			energy = @b2_upkeep
 			rare_crystals = @b3_rare_upkeep
 		}
 		upkeep = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+				}
+			}
 			energy = @b2_upkeep_hive
 			food = @b2_upkeep_food
 			rare_crystals = @b3_rare_upkeep
 		}
 	}
-
 	prerequisites = {
 		tech_luxuries_1
 	}
-
 	upgrades = {
 		building_factory_3
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1043,7 +1139,6 @@ building_factory_2 = {
 		}
 		text = job_artisan_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1054,11 +1149,12 @@ building_factory_2 = {
 		}
 		text = job_artificer_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		text = job_artisan_drone_effect_desc
 	}
@@ -1067,21 +1163,22 @@ building_factory_2 = {
 building_factory_3 = {
 	base_buildtime = @b3_time
 	can_build = no
-
 	category = manufacturing
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	potential = {
 		exists = owner
 		owner = {
 			country_uses_consumer_goods = yes
 		}
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 		OR = {
-			NOT = { has_modifier = slave_colony }
+			NOT = {
+				has_modifier = slave_colony
+			}
 			owner = {
 				OR = {
 					has_valid_civic = civic_indentured_assets
@@ -1090,7 +1187,6 @@ building_factory_3 = {
 			}
 		}
 	}
-
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -1103,11 +1199,12 @@ building_factory_3 = {
 					}
 				}
 			}
-
 			AND = {
 				exists = owner
 				OR = {
-					owner = { country_uses_consumer_goods = no }
+					owner = {
+						country_uses_consumer_goods = no
+					}
 					AND = {
 						owner = {
 							is_ai = yes
@@ -1119,18 +1216,15 @@ building_factory_3 = {
 			buildings_no_crystals = yes
 		}
 	}
-
-
 	planet_modifier = {
 		planet_artisans_consumer_goods_produces_add = 2
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_lithoid_empire = no
-				has_technology = tech_agrarian_goods 
+				has_technology = tech_agrarian_goods
 				has_valid_civic = civic_agrarian_idyll
 			}
 		}
@@ -1138,13 +1232,12 @@ building_factory_3 = {
 			planet_farmers_consumer_goods_produces_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				is_lithoid_empire = yes
-				has_technology = tech_agrarian_goods_lithoid 
+				has_technology = tech_agrarian_goods_lithoid
 				has_valid_civic = civic_agrarian_idyll
 			}
 		}
@@ -1152,7 +1245,6 @@ building_factory_3 = {
 			planet_miners_consumer_goods_produces_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1172,7 +1264,9 @@ building_factory_3 = {
 			owner = {
 				OR = {
 					is_lithoid_empire = no
-					NOT = { has_valid_civic = civic_agribusiness }
+					NOT = {
+						has_valid_civic = civic_agribusiness
+					}
 				}
 			}
 		}
@@ -1180,7 +1274,6 @@ building_factory_3 = {
 			planet_artisans_minerals_upkeep_add = 2
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			has_global_flag = EcologyMod_active
@@ -1189,7 +1282,6 @@ building_factory_3 = {
 			planet_artisans_waste_produces_add = 4
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1202,7 +1294,6 @@ building_factory_3 = {
 			job_artisan_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1215,52 +1306,79 @@ building_factory_3 = {
 			job_artificer_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_artisan_drone_add = @b1_jobs
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = no } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = no
+				}
+			}
 			minerals = @b3_minerals
 			rare_crystals = @b4_rare_upkeep
 		}
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes NOT = { has_valid_civic = civic_integrated_bioarchitecture } } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
+				}
+			}
 			minerals = @b3_hive_minerals
 			food = @b3_hive_food
 			rare_crystals = @b4_rare_upkeep
 		}
 		cost = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes has_valid_civic = civic_integrated_bioarchitecture } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+					has_valid_civic = civic_integrated_bioarchitecture
+				}
+			}
 			food = @b3_minerals
 			rare_crystals = @b4_rare_upkeep
 		}
 		upkeep = {
-			trigger = { exists = owner owner = { is_catalytic_empire = no } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = no
+				}
+			}
 			energy = @b3_upkeep
 			rare_crystals = @b4_rare_upkeep
 		}
 		upkeep = {
-			trigger = { exists = owner owner = { is_catalytic_empire = yes } }
+			trigger = {
+				exists = owner
+				owner = {
+					is_catalytic_empire = yes
+				}
+			}
 			energy = @b3_upkeep_hive
 			food = @b3_upkeep_food
 			rare_crystals = @b4_rare_upkeep
 		}
 	}
-
 	prerequisites = {
 		tech_luxuries_2
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1271,7 +1389,6 @@ building_factory_3 = {
 		}
 		text = job_artisan_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1282,11 +1399,12 @@ building_factory_3 = {
 		}
 		text = job_artificer_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		text = job_artisan_drone_effect_desc
 	}
@@ -1297,32 +1415,36 @@ building_refinery = {
 	position_priority = 145
 	exempt_from_ai_planet_specialization = no
 	category = manufacturing
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		modifier = {
 			job_gas_refiner_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_gas_refiner_drone_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1332,23 +1454,24 @@ building_refinery = {
 			energy = 3
 		}
 	}
-
 	prerequisites = {
 		"tech_exotic_gases"
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		text = job_gas_refiner_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_gas_refiner_drone_effect_desc
 	}
@@ -1359,32 +1482,36 @@ building_chemical_plant = {
 	position_priority = 146
 	exempt_from_ai_planet_specialization = no
 	category = manufacturing
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		modifier = {
 			job_chemist_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_chemist_drone_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1394,23 +1521,24 @@ building_chemical_plant = {
 			energy = 3
 		}
 	}
-
 	prerequisites = {
 		"tech_volatile_motes"
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		text = job_chemist_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_chemist_drone_effect_desc
 	}
@@ -1421,32 +1549,36 @@ building_crystal_plant = {
 	position_priority = 147
 	exempt_from_ai_planet_specialization = no
 	category = manufacturing
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		modifier = {
 			job_translucer_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_translucer_drone_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1456,27 +1588,27 @@ building_crystal_plant = {
 			energy = 3
 		}
 	}
-
 	prerequisites = {
 		"tech_rare_crystals"
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		text = job_translucer_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_translucer_drone_effect_desc
 	}
-
 	upgrades = {
 		"building_crystal_plant_2"
 	}
@@ -1486,7 +1618,6 @@ building_nanite_transmuter = {
 	base_buildtime = @b3_time
 	position_priority = 148
 	category = manufacturing
-
 	potential = {
 		exists = owner
 		OWNER = {
@@ -1509,11 +1640,9 @@ building_nanite_transmuter = {
 			has_modifier = slave_colony
 		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1536,11 +1665,9 @@ building_nanite_transmuter = {
 			energy = 5
 		}
 	}
-
 	prerequisites = {
 		"tech_nanite_transmutation"
 	}
-
 	ai_resource_production = {
 		rare_crystals = @b3_rare_upkeep
 		volatile_motes = @b3_rare_upkeep

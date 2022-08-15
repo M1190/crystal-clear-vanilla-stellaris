@@ -1,14 +1,15 @@
 #############
 # Resource buildings
 #############
-
 building_hydroponics_farm = {
 	base_buildtime = @b1_time
 	position_priority = 150
 	desc = {
 		trigger = {
 			OR = {
-				NOT = { exists = owner }
+				NOT = {
+					exists = owner
+				}
 				owner = {
 					OR = {
 						is_anglers_empire = no
@@ -48,9 +49,7 @@ building_hydroponics_farm = {
 		}
 		text = building_hydroponics_farm_anglers_desc
 	}
-
 	category = resource
-
 	potential = {
 		exists = owner
 		owner = {
@@ -59,14 +58,16 @@ building_hydroponics_farm = {
 				is_ai = no
 			}
 		}
-		NOT = { is_planet_class = pc_machine }
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			is_planet_class = pc_machine
+		}
+		NOT = {
+			has_modifier = resort_colony
+		}
 	}
-
 	allow = {
 		buildings_simple_allow = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -75,7 +76,9 @@ building_hydroponics_farm = {
 				country_uses_food = no
 			}
 			planet = {
-				NOT = { is_planet_class = pc_habitat }
+				NOT = {
+					is_planet_class = pc_habitat
+				}
 				free_building_slots = 0
 				owner = {
 					is_ai = yes
@@ -87,7 +90,6 @@ building_hydroponics_farm = {
 			}
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -116,27 +118,28 @@ building_hydroponics_farm = {
 			job_farmer_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_farm_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_agri_drone_add = @b1_jobs
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -161,7 +164,6 @@ building_hydroponics_farm = {
 			job_agri_drone_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -184,7 +186,6 @@ building_hydroponics_farm = {
 			job_pearl_diver_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -206,7 +207,9 @@ building_hydroponics_farm = {
 			trigger = {
 				exists = owner
 				owner = {
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 					OR = {
 						is_hive_empire = yes
 						is_civic_plant_organic = yes
@@ -252,17 +255,20 @@ building_hydroponics_farm = {
 							is_civic_plant_organic = no
 						}
 					}
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = @b1_upkeep
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_agri_drone_effect_desc
 	}
@@ -295,7 +301,9 @@ building_hydroponics_farm = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_fe_acolyte_farm_effect_desc
 	}
@@ -335,11 +343,9 @@ building_hydroponics_farm = {
 		}
 		text = job_pearl_diver_effect_desc
 	}
-
 	prerequisites = {
 		"tech_hydroponics"
 	}
-
 	ai_resource_production = {
 		food = 1
 		trigger = {
@@ -352,7 +358,6 @@ building_food_processing_facility = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
 	category = resource
-
 	potential = {
 		exists = owner
 		NOR = {
@@ -362,7 +367,9 @@ building_food_processing_facility = {
 	}
 	allow = {
 		OR = {
-			owner = { is_ai = no }
+			owner = {
+				is_ai = no
+			}
 			has_any_farming_district_or_buildings = yes
 		}
 	}
@@ -380,11 +387,9 @@ building_food_processing_facility = {
 			has_modifier = resort_colony
 		}
 	}
-
 	planet_modifier = {
 		planet_farmers_food_produces_add = 1
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			has_global_flag = EcologyMod_active
@@ -393,7 +398,6 @@ building_food_processing_facility = {
 			planet_farmers_waste_produces_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -404,7 +408,13 @@ building_food_processing_facility = {
 					is_anglers_empire = no
 					AND = {
 						is_anglers_empire = yes
-						NOT = { PREV = { planet = { is_wet = yes } } }
+						NOT = {
+							PREV = {
+								planet = {
+									is_wet = yes
+								}
+							}
+						}
 					}
 				}
 			}
@@ -413,27 +423,28 @@ building_food_processing_facility = {
 			job_farmer_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_farm_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_agri_drone_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -441,14 +452,17 @@ building_food_processing_facility = {
 				is_regular_empire = yes
 				is_fallen_empire_spiritualist = no
 				is_anglers_empire = yes
-				PREV = { planet = { is_wet = yes } }
+				PREV = {
+					planet = {
+						is_wet = yes
+					}
+				}
 			}
 		}
 		modifier = {
 			job_angler_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -461,15 +475,14 @@ building_food_processing_facility = {
 			planet_farmers_food_produces_mult = 0.05
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_hive_empire = yes
 				is_lithoid_empire = no
 			}
-			NOR  = {
+			NOR = {
 				is_planet_class = pc_habitat
 				is_planet_class = pc_machine
 				is_planet_class = pc_hive
@@ -481,7 +494,6 @@ building_food_processing_facility = {
 			district_farming_max = 2
 		}
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -489,7 +501,7 @@ building_food_processing_facility = {
 		}
 		cost = {
 			trigger = {
-				owner = { 
+				owner = {
 					is_hive_empire = yes
 					is_lithoid_empire = no
 				}
@@ -500,11 +512,12 @@ building_food_processing_facility = {
 			energy = 2
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_agri_drone_effect_desc
 	}
@@ -521,7 +534,9 @@ building_food_processing_facility = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_fe_acolyte_farm_effect_desc
 	}
@@ -531,7 +546,11 @@ building_food_processing_facility = {
 			owner = {
 				is_fallen_empire_spiritualist = no
 				is_anglers_empire = yes
-				PREV = { planet = { is_wet = yes } }
+				PREV = {
+					planet = {
+						is_wet = yes
+					}
+				}
 			}
 		}
 		text = job_aqu_angler_effect_desc
@@ -539,11 +558,9 @@ building_food_processing_facility = {
 	upgrades = {
 		building_food_processing_center
 	}
-
 	prerequisites = {
 		"tech_food_processing_1"
 	}
-	
 	ai_resource_production = {
 		food = 1
 		trigger = {
@@ -566,8 +583,6 @@ building_food_processing_center = {
 	base_buildtime = @b2_time
 	can_build = no
 	category = resource
-
-	
 	triggered_planet_modifier = {
 		potential = {
 			has_global_flag = EcologyMod_active
@@ -576,12 +591,10 @@ building_food_processing_center = {
 			planet_farmers_waste_produces_add = 2
 		}
 	}
-	
 	allow = {
 		exists = owner
 		has_upgraded_capital = yes
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -597,11 +610,9 @@ building_food_processing_center = {
 			buildings_no_motes = yes
 		}
 	}
-
 	planet_modifier = {
 		planet_farmers_food_produces_add = 2
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -612,7 +623,13 @@ building_food_processing_center = {
 					is_anglers_empire = no
 					AND = {
 						is_anglers_empire = yes
-						NOT = { PREV = { planet = { is_wet = yes } } }
+						NOT = {
+							PREV = {
+								planet = {
+									is_wet = yes
+								}
+							}
+						}
 					}
 				}
 			}
@@ -621,27 +638,28 @@ building_food_processing_center = {
 			job_farmer_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_farm_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_agri_drone_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -649,14 +667,17 @@ building_food_processing_center = {
 				is_regular_empire = yes
 				is_fallen_empire_spiritualist = no
 				is_anglers_empire = yes
-				PREV = { planet = { is_wet = yes } }
+				PREV = {
+					planet = {
+						is_wet = yes
+					}
+				}
 			}
 		}
 		modifier = {
 			job_angler_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -669,15 +690,14 @@ building_food_processing_center = {
 			planet_farmers_food_produces_mult = 0.05
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_hive_empire = yes
 				is_lithoid_empire = no
 			}
-			NOR  = {
+			NOR = {
 				is_planet_class = pc_habitat
 				is_planet_class = pc_machine
 				is_planet_class = pc_hive
@@ -689,7 +709,6 @@ building_food_processing_center = {
 			district_farming_max = 4
 		}
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -698,7 +717,7 @@ building_food_processing_center = {
 		}
 		cost = {
 			trigger = {
-				owner = { 
+				owner = {
 					is_hive_empire = yes
 					is_lithoid_empire = no
 				}
@@ -710,11 +729,12 @@ building_food_processing_center = {
 			volatile_motes = @b2_rare_upkeep
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_agri_drone_effect_desc
 	}
@@ -731,7 +751,9 @@ building_food_processing_center = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_fe_acolyte_farm_effect_desc
 	}
@@ -741,16 +763,18 @@ building_food_processing_center = {
 			owner = {
 				is_fallen_empire_spiritualist = no
 				is_anglers_empire = yes
-				PREV = { planet = { is_wet = yes } }
+				PREV = {
+					planet = {
+						is_wet = yes
+					}
+				}
 			}
 		}
 		text = job_aqu_angler_effect_desc
 	}
-
 	prerequisites = {
 		"tech_food_processing_2"
-	}	
-	
+	}
 	ai_resource_production = {
 		food = 6
 		trigger = {
@@ -767,44 +791,64 @@ building_food_processing_center = {
 			}
 		}
 	}
-	
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_mote_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_mote_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_mote_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_mote_building
+					days = 390
+				}
+			}
 		}
 		ELSE = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_mote_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_mote_building
+						days = 510
+					}
+				}
 			}
 		}
 	}
 }
 
 building_mineral_purification_plant = {
-
 	desc = {
-		trigger = { NOT = { is_planet_class = pc_shattered_ring_habitable } }
+		trigger = {
+			NOT = {
+				is_planet_class = pc_shattered_ring_habitable
+			}
+		}
 		text = building_mineral_purification_plant_desc
 	}
-
 	desc = {
-		trigger = { is_planet_class = pc_shattered_ring_habitable }
+		trigger = {
+			is_planet_class = pc_shattered_ring_habitable
+		}
 		text = building_scrap_processing_plant_desc
 	}
-
 	base_buildtime = @b1_time
 	base_cap_amount = 1
 	category = resource
-
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -817,16 +861,20 @@ building_mineral_purification_plant = {
 			}
 		}
 	}
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-
-		NOR = { # Ringworlds don't have mines
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOR = {
+			# Ringworlds don't have mines
 			is_planet_class = pc_ringworld_habitable
 			is_planet_class = pc_cybrex
 		}
-		OR = { # Habitats only have mines if they're built on an appropriate deposit
-			NOT = { is_planet_class = pc_habitat }
+		OR = {
+			# Habitats only have mines if they're built on an appropriate deposit
+			NOT = {
+				is_planet_class = pc_habitat
+			}
 			has_planet_flag = mining_habitat
 		}
 		OR = {
@@ -839,7 +887,6 @@ building_mineral_purification_plant = {
 	planet_modifier = {
 		planet_miners_minerals_produces_add = 1
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			has_global_flag = EcologyMod_active
@@ -848,10 +895,11 @@ building_mineral_purification_plant = {
 			planet_miners_waste_produces_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { is_planet_class = pc_shattered_ring_habitable }
+			NOT = {
+				is_planet_class = pc_shattered_ring_habitable
+			}
 			exists = owner
 			owner = {
 				is_regular_empire = yes
@@ -862,51 +910,58 @@ building_mineral_purification_plant = {
 			job_miner_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { is_planet_class = pc_shattered_ring_habitable }
+			NOT = {
+				is_planet_class = pc_shattered_ring_habitable
+			}
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_mine_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { is_planet_class = pc_shattered_ring_habitable }
+			NOT = {
+				is_planet_class = pc_shattered_ring_habitable
+			}
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_mining_drone_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			is_planet_class = pc_shattered_ring_habitable
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			job_scrap_miner_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			is_planet_class = pc_shattered_ring_habitable
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_scrap_miner_drone_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -917,7 +972,7 @@ building_mineral_purification_plant = {
 				}
 			}
 		}
-		modifier = { 
+		modifier = {
 			planet_miners_minerals_produces_mult = 0.05
 		}
 	}
@@ -930,7 +985,7 @@ building_mineral_purification_plant = {
 					is_lithoid_empire = yes
 				}
 			}
-			NOR  = {
+			NOR = {
 				is_planet_class = pc_habitat
 				is_planet_class = pc_machine
 				is_planet_class = pc_hive
@@ -942,17 +997,17 @@ building_mineral_purification_plant = {
 			district_mining_max = 2
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_mining_guilds }
+			owner = {
+				has_civic = civic_mining_guilds
+			}
 		}
 		modifier = {
 			job_guildmaster_add = 1
 		}
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -974,26 +1029,29 @@ building_mineral_purification_plant = {
 			energy = 2
 		}
 	}
-
 	prerequisites = {
 		tech_mineral_purification_1
 	}
-
 	upgrades = {
 		building_mineral_purification_hub
 	}
-
 	triggered_desc = {
 		trigger = {
-			NOT = { is_planet_class = pc_shattered_ring_habitable }
+			NOT = {
+				is_planet_class = pc_shattered_ring_habitable
+			}
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_mining_drone_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
-			NOT = { is_planet_class = pc_shattered_ring_habitable }
+			NOT = {
+				is_planet_class = pc_shattered_ring_habitable
+			}
 			exists = owner
 			owner = {
 				is_gestalt = no
@@ -1004,9 +1062,13 @@ building_mineral_purification_plant = {
 	}
 	triggered_desc = {
 		trigger = {
-			NOT = { is_planet_class = pc_shattered_ring_habitable }
+			NOT = {
+				is_planet_class = pc_shattered_ring_habitable
+			}
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_fe_acolyte_mine_effect_desc
 	}
@@ -1014,7 +1076,9 @@ building_mineral_purification_plant = {
 		trigger = {
 			is_planet_class = pc_shattered_ring_habitable
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_scrap_miner_drone_effect_desc
 	}
@@ -1022,7 +1086,9 @@ building_mineral_purification_plant = {
 		trigger = {
 			is_planet_class = pc_shattered_ring_habitable
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		text = job_scrap_miner_effect_desc
 	}
@@ -1035,7 +1101,6 @@ building_mineral_purification_plant = {
 		}
 		text = job_guildmaster_effect_desc
 	}
-	
 	ai_resource_production = {
 		minerals = 1
 		trigger = {
@@ -1055,51 +1120,54 @@ building_mineral_purification_plant = {
 }
 
 building_mineral_purification_hub = {
-
 	desc = {
-		trigger = { NOT = { is_planet_class = pc_shattered_ring_habitable } }
+		trigger = {
+			NOT = {
+				is_planet_class = pc_shattered_ring_habitable
+			}
+		}
 		text = building_mineral_purification_hub_desc
 	}
-
 	desc = {
-		trigger = { is_planet_class = pc_shattered_ring_habitable }
+		trigger = {
+			is_planet_class = pc_shattered_ring_habitable
+		}
 		text = building_scrap_processing_hub_desc
 	}
-
 	base_buildtime = @b2_time
 	can_build = no
 	category = resource
-
 	allow = {
 		has_upgraded_capital = yes
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 	}
-
 	destroy_trigger = {
 		OR = {
 			OR = {
 				has_modifier = resort_colony
 				buildings_no_motes = yes
 			}
-
 			AND = {
 				exists = owner
-				owner = { is_ai = yes }
+				owner = {
+					is_ai = yes
+				}
 				has_any_mining_district = no
 			}
 		}
 	}
-
-
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { is_planet_class = pc_shattered_ring_habitable }
+			NOT = {
+				is_planet_class = pc_shattered_ring_habitable
+			}
 		}
 		modifier = {
 			planet_miners_minerals_produces_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			is_planet_class = pc_shattered_ring_habitable
@@ -1109,7 +1177,6 @@ building_mineral_purification_hub = {
 			planet_miners_alloys_produces_add = 0.5
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			has_global_flag = EcologyMod_active
@@ -1118,10 +1185,11 @@ building_mineral_purification_hub = {
 			planet_miners_waste_produces_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { is_planet_class = pc_shattered_ring_habitable }
+			NOT = {
+				is_planet_class = pc_shattered_ring_habitable
+			}
 			exists = owner
 			owner = {
 				is_regular_empire = yes
@@ -1132,12 +1200,15 @@ building_mineral_purification_hub = {
 			job_miner_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { is_planet_class = pc_shattered_ring_habitable }
+			NOT = {
+				is_planet_class = pc_shattered_ring_habitable
+			}
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_mine_add = 2
@@ -1145,37 +1216,42 @@ building_mineral_purification_hub = {
 	}
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { is_planet_class = pc_shattered_ring_habitable }
+			NOT = {
+				is_planet_class = pc_shattered_ring_habitable
+			}
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_mining_drone_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			is_planet_class = pc_shattered_ring_habitable
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			job_scrap_miner_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			is_planet_class = pc_shattered_ring_habitable
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_scrap_miner_drone_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1199,7 +1275,7 @@ building_mineral_purification_hub = {
 					is_lithoid_empire = yes
 				}
 			}
-			NOR  = {
+			NOR = {
 				is_planet_class = pc_habitat
 				is_planet_class = pc_machine
 				is_planet_class = pc_hive
@@ -1211,17 +1287,17 @@ building_mineral_purification_hub = {
 			district_mining_max = 4
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_mining_guilds }
+			owner = {
+				has_civic = civic_mining_guilds
+			}
 		}
 		modifier = {
 			job_guildmaster_add = 1
 		}
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1245,22 +1321,26 @@ building_mineral_purification_hub = {
 			volatile_motes = @b2_rare_upkeep
 		}
 	}
-
 	prerequisites = {
 		tech_mineral_purification_2
 	}
-
 	triggered_desc = {
 		trigger = {
-			NOT = { is_planet_class = pc_shattered_ring_habitable }
+			NOT = {
+				is_planet_class = pc_shattered_ring_habitable
+			}
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_mining_drone_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
-			NOT = { is_planet_class = pc_shattered_ring_habitable }
+			NOT = {
+				is_planet_class = pc_shattered_ring_habitable
+			}
 			exists = owner
 			owner = {
 				is_gestalt = no
@@ -1271,18 +1351,23 @@ building_mineral_purification_hub = {
 	}
 	triggered_desc = {
 		trigger = {
-			NOT = { is_planet_class = pc_shattered_ring_habitable }
+			NOT = {
+				is_planet_class = pc_shattered_ring_habitable
+			}
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_fe_acolyte_mine_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			is_planet_class = pc_shattered_ring_habitable
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_scrap_miner_drone_effect_desc
 	}
@@ -1290,7 +1375,9 @@ building_mineral_purification_hub = {
 		trigger = {
 			is_planet_class = pc_shattered_ring_habitable
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		text = job_scrap_miner_effect_desc
 	}
@@ -1302,8 +1389,7 @@ building_mineral_purification_hub = {
 			}
 		}
 		text = job_guildmaster_effect_desc
-	}	
-
+	}
 	ai_resource_production = {
 		minerals = 6
 		trigger = {
@@ -1320,23 +1406,41 @@ building_mineral_purification_hub = {
 			}
 		}
 	}
-	
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_mote_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_mote_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_mote_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_mote_building
+					days = 390
+				}
+			}
 		}
 		ELSE = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_mote_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_mote_building
+						days = 510
+					}
+				}
 			}
 		}
 	}
@@ -1346,38 +1450,44 @@ building_energy_grid = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
 	category = resource
-
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
 			AND = {
 				exists = owner
-				owner = { is_ai = yes }	
+				owner = {
+					is_ai = yes
+				}
 				has_any_generator_district_or_building = no
 			}
 		}
 	}
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 		OR = {
-			NOT = { is_planet_class = pc_habitat }
+			NOT = {
+				is_planet_class = pc_habitat
+			}
 			AND = {
 				exists = owner
-				owner = { is_gestalt = yes }
+				owner = {
+					is_gestalt = yes
+				}
 			}
 			has_planet_flag = energy_habitat
 		}
 		OR = {
-			owner = { is_ai = no }
+			owner = {
+				is_ai = no
+			}
 			has_any_generator_district_or_building = yes
 		}
 	}
-
 	planet_modifier = {
 		planet_technician_energy_produces_add = 1
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			has_global_flag = EcologyMod_active
@@ -1386,7 +1496,6 @@ building_energy_grid = {
 			planet_technician_waste_produces_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1399,27 +1508,28 @@ building_energy_grid = {
 			job_technician_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_generator_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_technician_drone_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1431,14 +1541,13 @@ building_energy_grid = {
 			planet_technician_energy_produces_mult = 0.05
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_robot_empire = yes
 			}
-			NOR  = {
+			NOR = {
 				is_planet_class = pc_habitat
 				is_planet_class = pc_machine
 				is_planet_class = pc_hive
@@ -1453,13 +1562,14 @@ building_energy_grid = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_technology = tech_akx_worm_1 }
+			owner = {
+				has_technology = tech_akx_worm_1
+			}
 		}
 		modifier = {
-			planet_technician_energy_produces_mult = 0.10
+			planet_technician_energy_produces_mult = 0.1
 		}
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1467,7 +1577,7 @@ building_energy_grid = {
 		}
 		cost = {
 			trigger = {
-				owner = { 
+				owner = {
 					is_robot_empire = yes
 				}
 			}
@@ -1477,20 +1587,19 @@ building_energy_grid = {
 		upkeep = {
 			energy = 2
 		}
-	}	
-	
+	}
 	prerequisites = {
 		tech_power_hub_1
 	}
-	
 	upgrades = {
 		building_energy_nexus
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_technician_drone_effect_desc
 	}
@@ -1507,11 +1616,12 @@ building_energy_grid = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_fe_acolyte_generator_effect_desc
 	}
-	
 	ai_resource_production = {
 		energy = 1
 		trigger = {
@@ -1534,15 +1644,12 @@ building_energy_nexus = {
 	base_buildtime = @b2_time
 	can_build = no
 	category = resource
-	
 	allow = {
 		has_upgraded_capital = yes
 	}
-	
 	planet_modifier = {
 		planet_technician_energy_produces_add = 2
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			has_global_flag = EcologyMod_active
@@ -1551,17 +1658,17 @@ building_energy_nexus = {
 			planet_technician_waste_produces_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			job_technician_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1574,21 +1681,21 @@ building_energy_nexus = {
 			job_technician_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_generator_add = 2
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_robot_empire = yes
 			}
 		}
@@ -1596,7 +1703,6 @@ building_energy_nexus = {
 			planet_technician_energy_produces_mult = 0.05
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1615,17 +1721,17 @@ building_energy_nexus = {
 			district_generator_max = 4
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_technology = tech_akx_worm_1 }
+			owner = {
+				has_technology = tech_akx_worm_1
+			}
 		}
 		modifier = {
-			planet_technician_energy_produces_mult = 0.10
+			planet_technician_energy_produces_mult = 0.1
 		}
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1646,15 +1752,15 @@ building_energy_nexus = {
 			exotic_gases = @b2_rare_upkeep
 		}
 	}
-
 	prerequisites = {
 		tech_power_hub_2
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_technician_drone_effect_desc
 	}
@@ -1671,12 +1777,12 @@ building_energy_nexus = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_fe_acolyte_generator_effect_desc
 	}
-
-	
 	ai_resource_production = {
 		energy = 6
 		trigger = {
@@ -1693,23 +1799,41 @@ building_energy_nexus = {
 			}
 		}
 	}
-	
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_gas_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_gas_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_gas_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_gas_building
+					days = 390
+				}
+			}
 		}
 		ELSE = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_gas_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_gas_building
+						days = 510
+					}
+				}
 			}
 		}
 	}
@@ -1719,7 +1843,6 @@ building_bio_reactor = {
 	base_buildtime = 240
 	position_priority = 155
 	category = resource
-
 	potential = {
 		exists = owner
 		owner = {
@@ -1729,12 +1852,15 @@ building_bio_reactor = {
 				is_lithoid_empire = yes
 			}
 			OR = {
-				owner = { is_ai = no }
-				owner = { country_uses_food = no }
+				owner = {
+					is_ai = no
+				}
+				owner = {
+					country_uses_food = no
+				}
 			}
 		}
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1743,7 +1869,11 @@ building_bio_reactor = {
 		produces = {
 			trigger = {
 				exists = owner
-				owner = { NOT = { has_deficit = food } }
+				owner = {
+					NOT = {
+						has_deficit = food
+					}
+				}
 			}
 			energy = 24
 		}
@@ -1751,7 +1881,9 @@ building_bio_reactor = {
 			trigger = {
 				exists = owner
 				owner = {
-					NOT = { has_deficit = food }
+					NOT = {
+						has_deficit = food
+					}
 					has_technology = tech_power_plant_2
 				}
 			}
@@ -1761,7 +1893,9 @@ building_bio_reactor = {
 			trigger = {
 				exists = owner
 				owner = {
-					NOT = { has_deficit = food }
+					NOT = {
+						has_deficit = food
+					}
 					has_technology = tech_power_plant_3
 				}
 			}
@@ -1771,7 +1905,9 @@ building_bio_reactor = {
 			trigger = {
 				exists = owner
 				owner = {
-					NOT = { has_deficit = food }
+					NOT = {
+						has_deficit = food
+					}
 					has_technology = tech_power_plant_4
 				}
 			}
@@ -1781,7 +1917,9 @@ building_bio_reactor = {
 			trigger = {
 				exists = owner
 				owner = {
-					NOT = { has_deficit = food }
+					NOT = {
+						has_deficit = food
+					}
 				}
 				exists = planet
 				planet = {
@@ -1794,7 +1932,9 @@ building_bio_reactor = {
 			trigger = {
 				exists = owner
 				owner = {
-					NOT = { has_deficit = food }
+					NOT = {
+						has_deficit = food
+					}
 				}
 				exists = planet
 				planet = {
@@ -1807,38 +1947,57 @@ building_bio_reactor = {
 			food = 25
 		}
 	}
-
 	prerequisites = {
 		"tech_bio_reactor"
 	}
-	
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_reactor_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_reactor_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_reactor_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_reactor_building
+					days = 390
+				}
+			}
 		}
 		ELSE = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_reactor_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_reactor_building
+						days = 510
+					}
+				}
 			}
 		}
 	}
-	
 	ai_resource_production = {
 		energy = 6
 		trigger = {
 			exists = owner
 			owner = {
 				country_uses_food = no
-				resource_income_compare = { resource = food value > 30 }
+				resource_income_compare = {
+					resource = food
+					value > 30
+				}
 			}
 		}
 	}

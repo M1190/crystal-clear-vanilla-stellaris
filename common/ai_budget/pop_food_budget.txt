@@ -1,15 +1,12 @@
 ## Categories used in this file must have use_for_ai_budget = yes defined in economic_categories ##
 ## It is possible to have multiple entries with the same category and resource ##
-
 #################
 ## Expenditure ##
 #################
-
 food_expenditure_colonies_expand = {
 	resource = food
 	type = expenditure
 	category = colonies
-
 	potential = {
 		is_machine_empire = no
 		is_lithoid_empire = no
@@ -18,17 +15,18 @@ food_expenditure_colonies_expand = {
 			has_origin = origin_sacred_tree
 		}
 		ai_colonize_plans > 0
-		has_resource = { type = food amount > 400 }
+		has_resource = {
+			type = food
+			amount > 400
+		}
 		has_monthly_income = {
 			resource = food
 			value > 0
 		}
 	}
-
 	fraction = {
-		weight = 2.0
+		weight = 2
 	}
-	
 	static_min = {
 		base = 500
 	}
@@ -41,7 +39,6 @@ food_expenditure_colonies_expand_tree = {
 	resource = food
 	type = expenditure
 	category = colonies
-
 	potential = {
 		is_machine_empire = no
 		is_lithoid_empire = no
@@ -50,17 +47,18 @@ food_expenditure_colonies_expand_tree = {
 			has_origin = origin_sacred_tree
 		}
 		ai_colonize_plans > 0
-		has_resource = { type = food amount > 400 }
+		has_resource = {
+			type = food
+			amount > 400
+		}
 		has_monthly_income = {
 			resource = food
 			value > 0
 		}
 	}
-
 	fraction = {
-		weight = 2.0
+		weight = 2
 	}
-
 	static_min = {
 		base = 1500
 	}
@@ -73,7 +71,6 @@ food_expenditure_colonies_expand_rock_tree = {
 	resource = food
 	type = expenditure
 	category = colonies
-
 	potential = {
 		is_machine_empire = no
 		is_lithoid_empire = yes
@@ -82,17 +79,18 @@ food_expenditure_colonies_expand_rock_tree = {
 			has_origin = origin_sacred_tree
 		}
 		ai_colonize_plans > 0
-		has_resource = { type = food amount > 400 }
+		has_resource = {
+			type = food
+			amount > 400
+		}
 		has_monthly_income = {
 			resource = food
 			value > 0
 		}
 	}
-
 	fraction = {
-		weight = 2.0
+		weight = 2
 	}
-
 	static_min = {
 		base = 500
 	}
@@ -105,7 +103,6 @@ food_expenditure_planets = {
 	resource = food
 	type = expenditure
 	category = planets
-	
 	potential = {
 		OR = {
 			is_hive_empire = yes
@@ -118,10 +115,9 @@ food_expenditure_planets = {
 			is_catalytic_empire = yes
 		}
 	}
-	
 	fraction = {
 		weight = 0.5
-	}	
+	}
 	static_min = {
 		base = 50000
 	}
@@ -131,7 +127,6 @@ food_expenditure_armies = {
 	resource = food
 	type = expenditure
 	category = armies
-
 	potential = {
 		is_lithoid_empire = no
 		OR = {
@@ -152,11 +147,10 @@ food_expenditure_armies = {
 			AND = {
 				has_global_flag = str_enabled_flag
 				prepare_for_war = yes
-				used_naval_capacity_percent > 0.9 # focus on the navy first
+				used_naval_capacity_percent > 0.9				# focus on the navy first
 			}
 		}
 	}
-
 	fraction = {
 		weight = 0.1
 		modifier = {
@@ -181,7 +175,6 @@ food_expenditure_agrarian_decisions = {
 	resource = food
 	type = expenditure
 	category = decisions
-
 	potential = {
 		OR = {
 			has_valid_civic = civic_agrarian_idyll
@@ -198,13 +191,12 @@ food_expenditure_agrarian_decisions = {
 		}
 		is_lithoid_empire = no
 		resource_stockpile_compare = {
-            resource = food
-            value > 2000
-        }
+			resource = food
+			value > 2000
+		}
 	}
-
 	fraction = {
-		weight = 0.1 # only needs a little bit
+		weight = 0.1		# only needs a little bit
 	}
 	static_min = {
 		base = 550
@@ -214,12 +206,10 @@ food_expenditure_agrarian_decisions = {
 ############
 ## Upkeep ##
 ############
-
 food_upkeep_planets = {
 	resource = food
 	type = upkeep
 	category = planets
-
 	potential = {
 		OR = {
 			is_hive_empire = yes
@@ -232,7 +222,6 @@ food_upkeep_planets = {
 			is_catalytic_empire = yes
 		}
 	}
-
 	fraction = {
 		weight = 0.25
 		modifier = {
@@ -251,7 +240,6 @@ food_upkeep_agrarian_campaigns = {
 	resource = food
 	type = upkeep
 	category = campaigns
-
 	potential = {
 		OR = {
 			has_valid_civic = civic_agrarian_idyll
@@ -259,7 +247,6 @@ food_upkeep_agrarian_campaigns = {
 		}
 		is_lithoid_empire = no
 	}
-
 	fraction = {
 		weight = 0.1
 	}

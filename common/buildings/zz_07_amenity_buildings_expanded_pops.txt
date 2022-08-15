@@ -5,25 +5,30 @@ building_luxury_residence = {
 	base_buildtime = @b1_time
 	position_priority = 175
 	category = amenity
-	
 	potential = {
 		OR = {
-			NOT = { is_planet_class = pc_habitat }
+			NOT = {
+				is_planet_class = pc_habitat
+			}
 			has_planet_flag = advanced_habitat
 		}
-		NOT = { has_modifier = slave_colony }		
+		NOT = {
+			has_modifier = slave_colony
+		}
 		exists = owner
-		owner = { 
+		owner = {
 			is_regular_empire = yes
-			NOT = { has_valid_civic = civic_shared_burden }
-			NOT = { has_valid_civic = civic_worker_coop }
+			NOT = {
+				has_valid_civic = civic_shared_burden
+			}
+			NOT = {
+				has_valid_civic = civic_worker_coop
+			}
 		}
 	}
-	
 	allow = {
 		buildings_simple_allow = yes
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -35,41 +40,33 @@ building_luxury_residence = {
 					is_ai = yes
 				}
 			}
-			owner = { is_regular_empire = no }
-			owner = { has_valid_civic = civic_shared_burden }
-			owner = { has_valid_civic = civic_worker_coop }
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				has_valid_civic = civic_shared_burden
+			}
+			owner = {
+				has_valid_civic = civic_worker_coop
+			}
 			has_modifier = slave_colony
 		}
 	}
-	
 	convert_to = {
 		building_drone_storage
 		building_hive_warren
 		building_communal_housing
 		building_organic_sanctuary
 	}
-		
 	planet_modifier = {
 		planet_housing_add = 3
 		planet_amenities_add = 5
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_active_tradition = tr_domination_imperious_architecture
-			}					
-		}
-		modifier = {
-			planet_housing_add = 1
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { 
-				has_technology = tech_housing_1 
 			}
 		}
 		modifier = {
@@ -79,20 +76,34 @@ building_luxury_residence = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_technology = tech_housing_2 
-				NOT = { has_valid_civic = civic_agrarian_idyll }
+			owner = {
+				has_technology = tech_housing_1
 			}
 		}
 		modifier = {
 			planet_housing_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_pleasure_seeker = yes }
+			owner = {
+				has_technology = tech_housing_2
+				NOT = {
+					has_valid_civic = civic_agrarian_idyll
+				}
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_pleasure_seeker = yes
+			}
 		}
 		modifier = {
 			job_entertainer_add = 1
@@ -101,13 +112,14 @@ building_luxury_residence = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_valid_civic = civic_ethical_hedonism }
+			owner = {
+				has_valid_civic = civic_ethical_hedonism
+			}
 		}
 		modifier = {
 			job_culture_worker_add = 1
 		}
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -149,32 +161,31 @@ building_luxury_residence = {
 			energy = @b1_upkeep
 		}
 	}
-	
 	upgrades = {
 		"building_paradise_dome"
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { has_valid_civic = civic_ethical_hedonism }
+			owner = {
+				has_valid_civic = civic_ethical_hedonism
+			}
 		}
 		text = job_culture_worker_effect_desc
 	}
 }
 
 building_paradise_dome = {
-
 	base_buildtime = @b2_time
 	position_priority = 175
 	can_build = no
-
 	category = amenity
-	
 	potential = {
 		has_building = building_luxury_residence
 		OR = {
-			NOT = { is_planet_class = pc_habitat }
+			NOT = {
+				is_planet_class = pc_habitat
+			}
 			AND = {
 				has_planet_flag = advanced_habitat
 				exists = owner
@@ -184,50 +195,39 @@ building_paradise_dome = {
 			}
 		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
-			owner = { has_valid_civic = civic_shared_burden }
-			owner = { has_valid_civic = civic_worker_coop }
-
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				has_valid_civic = civic_shared_burden
+			}
+			owner = {
+				has_valid_civic = civic_worker_coop
+			}
 			has_modifier = slave_colony
 		}
 	}
-	
 	convert_to = {
 		building_organic_paradise
 		building_drone_megastorage
 		building_expanded_warren
 		building_communal_housing_large
 	}
-	
 	planet_modifier = {
 		planet_housing_add = 6
 		planet_amenities_add = 10
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_active_tradition = tr_domination_imperious_architecture
-			}					
-		}
-		modifier = {
-			planet_housing_add = 1
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { 
-				has_technology = tech_housing_1 
 			}
 		}
 		modifier = {
@@ -237,20 +237,34 @@ building_paradise_dome = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_technology = tech_housing_2 
-				NOT = { has_valid_civic = civic_agrarian_idyll }
+			owner = {
+				has_technology = tech_housing_1
 			}
 		}
 		modifier = {
 			planet_housing_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_pleasure_seeker = yes }
+			owner = {
+				has_technology = tech_housing_2
+				NOT = {
+					has_valid_civic = civic_agrarian_idyll
+				}
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_pleasure_seeker = yes
+			}
 		}
 		modifier = {
 			job_entertainer_add = 2
@@ -259,13 +273,14 @@ building_paradise_dome = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_valid_civic = civic_ethical_hedonism }
+			owner = {
+				has_valid_civic = civic_ethical_hedonism
+			}
 		}
 		modifier = {
 			job_culture_worker_add = 2
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -311,55 +326,75 @@ building_paradise_dome = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
-	
 	prerequisites = {
 		"tech_paradise_dome"
 	}
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 390
+				}
+			}
 		}
 		else = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_crystal_building
+						days = 510
+					}
+				}
 			}
 		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { has_valid_civic = civic_ethical_hedonism }
+			owner = {
+				has_valid_civic = civic_ethical_hedonism
+			}
 		}
 		text = job_culture_worker_effect_desc
 	}
 }
 
 building_communal_housing = {
-
 	base_buildtime = @b1_time
 	position_priority = 175
 	icon = building_residence
-
 	category = amenity
-	
 	potential = {
 		exists = owner
 		OR = {
-			NOT = { is_planet_class = pc_habitat }
+			NOT = {
+				is_planet_class = pc_habitat
+			}
 			has_planet_flag = advanced_habitat
 		}
-		NOT = { has_modifier = slave_colony }
-		owner = { 
+		NOT = {
+			has_modifier = slave_colony
+		}
+		owner = {
 			is_regular_empire = yes
 			OR = {
 				has_valid_civic = civic_shared_burden
@@ -367,11 +402,9 @@ building_communal_housing = {
 			}
 		}
 	}
-	
 	allow = {
 		buildings_simple_allow = yes
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -384,9 +417,13 @@ building_communal_housing = {
 				}
 			}
 			NOR = {
-				NOT = { is_planet_class = pc_habitat }
-				NOT = { has_modifier = slave_colony }
-				owner = { 
+				NOT = {
+					is_planet_class = pc_habitat
+				}
+				NOT = {
+					has_modifier = slave_colony
+				}
+				owner = {
 					is_regular_empire = yes
 					OR = {
 						has_valid_civic = civic_shared_burden
@@ -396,35 +433,21 @@ building_communal_housing = {
 			}
 		}
 	}
-	
 	convert_to = {
 		building_drone_storage
 		building_hive_warren
 		building_luxury_residence
 		building_organic_sanctuary
 	}
-		
 	planet_modifier = {
 		planet_housing_add = 5
 		planet_amenities_add = 3
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_active_tradition = tr_domination_imperious_architecture
-			}					
-		}
-		modifier = {
-			planet_housing_add = 1
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { 
-				has_technology = tech_housing_1 
 			}
 		}
 		modifier = {
@@ -434,20 +457,34 @@ building_communal_housing = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_technology = tech_housing_2 
-				NOT = { has_valid_civic = civic_agrarian_idyll }
+			owner = {
+				has_technology = tech_housing_1
 			}
 		}
 		modifier = {
 			planet_housing_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_pleasure_seeker = yes }
+			owner = {
+				has_technology = tech_housing_2
+				NOT = {
+					has_valid_civic = civic_agrarian_idyll
+				}
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_pleasure_seeker = yes
+			}
 		}
 		modifier = {
 			job_entertainer_add = 1
@@ -456,13 +493,14 @@ building_communal_housing = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_valid_civic = civic_ethical_hedonism }
+			owner = {
+				has_valid_civic = civic_ethical_hedonism
+			}
 		}
 		modifier = {
 			job_culture_worker_add = 1
 		}
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -504,33 +542,32 @@ building_communal_housing = {
 			energy = @b1_upkeep
 		}
 	}
-	
 	upgrades = {
 		"building_communal_housing_large"
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { has_valid_civic = civic_ethical_hedonism }
+			owner = {
+				has_valid_civic = civic_ethical_hedonism
+			}
 		}
 		text = job_culture_worker_effect_desc
 	}
 }
 
 building_communal_housing_large = {
-
 	base_buildtime = @b2_time
 	position_priority = 175
 	can_build = no
 	icon = building_paradise_dome
-
 	category = amenity
-
 	potential = {
 		has_building = building_communal_housing
 		OR = {
-			NOT = { is_planet_class = pc_habitat }
+			NOT = {
+				is_planet_class = pc_habitat
+			}
 			AND = {
 				has_planet_flag = advanced_habitat
 				exists = owner
@@ -539,26 +576,26 @@ building_communal_housing_large = {
 				}
 			}
 		}
-	}	
-	
+	}
 	allow = {
 		has_upgraded_capital = yes
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			has_modifier = slave_colony
-
 			owner = {
-				NOT = { has_valid_civic = civic_shared_burden }
-				NOT = { has_valid_civic = civic_worker_coop }
+				NOT = {
+					has_valid_civic = civic_shared_burden
+				}
+				NOT = {
+					has_valid_civic = civic_worker_coop
+				}
 			}
 		}
 	}
-	
-	show_tech_unlock_if = { 
-		owner = { 
+	show_tech_unlock_if = {
+		owner = {
 			is_regular_empire = yes
 			OR = {
 				has_valid_civic = civic_shared_burden
@@ -566,35 +603,21 @@ building_communal_housing_large = {
 			}
 		}
 	}
-	
 	convert_to = {
 		building_drone_megastorage
 		building_expanded_warren
 		building_paradise_dome
 		building_organic_paradise
 	}
-	
 	planet_modifier = {
 		planet_housing_add = 10
 		planet_amenities_add = 6
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_active_tradition = tr_domination_imperious_architecture
-			}					
-		}
-		modifier = {
-			planet_housing_add = 1
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { 
-				has_technology = tech_housing_1 
 			}
 		}
 		modifier = {
@@ -604,20 +627,34 @@ building_communal_housing_large = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_technology = tech_housing_2 
-				NOT = { has_valid_civic = civic_agrarian_idyll }
+			owner = {
+				has_technology = tech_housing_1
 			}
 		}
 		modifier = {
 			planet_housing_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_pleasure_seeker = yes }
+			owner = {
+				has_technology = tech_housing_2
+				NOT = {
+					has_valid_civic = civic_agrarian_idyll
+				}
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_pleasure_seeker = yes
+			}
 		}
 		modifier = {
 			job_entertainer_add = 2
@@ -626,13 +663,14 @@ building_communal_housing_large = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_valid_civic = civic_ethical_hedonism }
+			owner = {
+				has_valid_civic = civic_ethical_hedonism
+			}
 		}
 		modifier = {
 			job_culture_worker_add = 2
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -674,22 +712,21 @@ building_communal_housing_large = {
 			energy = @b3_upkeep
 		}
 	}
-	
 	show_tech_unlock_if = {
 		OR = {
 			has_valid_civic = civic_shared_burden
 			has_valid_civic = civic_worker_coop
 		}
 	}
-	
 	prerequisites = {
 		"tech_paradise_dome"
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { has_valid_civic = civic_ethical_hedonism }
+			owner = {
+				has_valid_civic = civic_ethical_hedonism
+			}
 		}
 		text = job_culture_worker_effect_desc
 	}
@@ -697,20 +734,18 @@ building_communal_housing_large = {
 
 #Machine housing
 building_drone_storage = {
-
 	base_buildtime = @b1_time
 	position_priority = 170
 	category = amenity
-	
 	potential = {
 		exists = owner
-		owner = { is_machine_empire = yes }
+		owner = {
+			is_machine_empire = yes
+		}
 	}
-	
 	allow = {
 		buildings_simple_allow = yes
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -723,27 +758,26 @@ building_drone_storage = {
 				}
 			}
 			NOR = {
-				owner = { is_machine_empire = yes }
+				owner = {
+					is_machine_empire = yes
+				}
 			}
 		}
 	}
-	
 	convert_to = {
 		building_luxury_residence
 		building_communal_housing
 		building_hive_warren
 	}
-		
 	planet_modifier = {
 		planet_housing_add = 4
 		planet_amenities_add = 3
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_technology = tech_housing_1 
+			owner = {
+				has_technology = tech_housing_1
 			}
 		}
 		modifier = {
@@ -753,16 +787,17 @@ building_drone_storage = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_technology = tech_housing_2 
-				NOT = { has_valid_civic = civic_agrarian_idyll }
+			owner = {
+				has_technology = tech_housing_2
+				NOT = {
+					has_valid_civic = civic_agrarian_idyll
+				}
 			}
 		}
 		modifier = {
 			planet_housing_add = 1
 		}
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -772,20 +807,16 @@ building_drone_storage = {
 			energy = @b1_upkeep
 		}
 	}
-	
 	upgrades = {
 		"building_drone_megastorage"
 	}
 }
 
 building_drone_megastorage = {
-
 	base_buildtime = @b2_time
 	position_priority = 170
 	can_build = no
-
 	category = amenity
-
 	allow = {
 		has_upgraded_capital = yes
 	}
@@ -795,27 +826,25 @@ building_drone_megastorage = {
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_machine_empire = no }
-
+			owner = {
+				is_machine_empire = no
+			}
 		}
 	}
-	
 	convert_to = {
 		building_paradise_dome
 		building_expanded_warren
 		building_communal_housing_large
 	}
-	
 	planet_modifier = {
 		planet_housing_add = 8
 		planet_amenities_add = 6
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_technology = tech_housing_1 
+			owner = {
+				has_technology = tech_housing_1
 			}
 		}
 		modifier = {
@@ -825,16 +854,17 @@ building_drone_megastorage = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_technology = tech_housing_2 
-				NOT = { has_valid_civic = civic_agrarian_idyll }
+			owner = {
+				has_technology = tech_housing_2
+				NOT = {
+					has_valid_civic = civic_agrarian_idyll
+				}
 			}
 		}
 		modifier = {
 			planet_housing_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -846,27 +876,44 @@ building_drone_megastorage = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
-	
-	
 	prerequisites = {
-		"tech_micro_replicators" 
+		"tech_micro_replicators"
 	}
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 390
+				}
+			}
 		}
 		else = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_crystal_building
+						days = 510
+					}
+				}
 			}
 		}
 	}
@@ -874,20 +921,18 @@ building_drone_megastorage = {
 
 #Hive housing
 building_hive_warren = {
-
 	base_buildtime = @b1_time
 	position_priority = 170
 	category = amenity
-	
 	potential = {
 		exists = owner
-		owner = { is_hive_empire = yes }
+		owner = {
+			is_hive_empire = yes
+		}
 	}
-
 	allow = {
 		buildings_simple_allow = yes
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
@@ -902,28 +947,27 @@ building_hive_warren = {
 				}
 			}
 			NOR = {
-				owner = { is_hive_empire = yes }
+				owner = {
+					is_hive_empire = yes
+				}
 			}
 		}
 	}
-	
 	convert_to = {
 		building_luxury_residence
 		building_drone_storage
 		building_communal_housing
 	}
-		
 	planet_modifier = {
 		planet_housing_add = 3
 		planet_amenities_add = 5
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_underground_drones
-			}					
+			}
 		}
 		modifier = {
 			planet_amenities_add = 2
@@ -932,8 +976,8 @@ building_hive_warren = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_technology = tech_housing_1 
+			owner = {
+				has_technology = tech_housing_1
 			}
 		}
 		modifier = {
@@ -943,16 +987,17 @@ building_hive_warren = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_technology = tech_housing_2 
-				NOT = { has_valid_civic = civic_agrarian_idyll }
+			owner = {
+				has_technology = tech_housing_2
+				NOT = {
+					has_valid_civic = civic_agrarian_idyll
+				}
 			}
 		}
 		modifier = {
 			planet_housing_add = 1
 		}
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -968,7 +1013,9 @@ building_hive_warren = {
 			trigger = {
 				exists = owner
 				owner = {
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 					is_lithoid_empire = no
 				}
 			}
@@ -1000,64 +1047,59 @@ building_hive_warren = {
 				exists = owner
 				owner = {
 					is_lithoid_empire = yes
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = @b1_upkeep_hive
 			minerals = @b1_upkeep_food
 		}
 	}
-	
 	upgrades = {
 		"building_expanded_warren"
 	}
 }
 
 building_expanded_warren = {
-
 	base_buildtime = @b2_time
 	position_priority = 170
 	can_build = no
-	
 	category = amenity
-	
 	potential = {
 		has_building = building_hive_warren
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-	
-	show_tech_unlock_if = { 
-		owner = { is_hive_empire = yes }
+	show_tech_unlock_if = {
+		owner = {
+			is_hive_empire = yes
+		}
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_hive_empire = no }
-
+			owner = {
+				is_hive_empire = no
+			}
 		}
 	}
-	
 	convert_to = {
 		building_paradise_dome
 		building_drone_megastorage
 		building_communal_housing_large
 	}
-	
 	planet_modifier = {
 		planet_housing_add = 8
 		planet_amenities_add = 6
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_underground_drones
-			}					
+			}
 		}
 		modifier = {
 			planet_amenities_add = 2
@@ -1066,8 +1108,8 @@ building_expanded_warren = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_technology = tech_housing_1 
+			owner = {
+				has_technology = tech_housing_1
 			}
 		}
 		modifier = {
@@ -1077,16 +1119,17 @@ building_expanded_warren = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_technology = tech_housing_2 
-				NOT = { has_valid_civic = civic_agrarian_idyll }
+			owner = {
+				has_technology = tech_housing_2
+				NOT = {
+					has_valid_civic = civic_agrarian_idyll
+				}
 			}
 		}
 		modifier = {
 			planet_housing_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1103,7 +1146,10 @@ building_expanded_warren = {
 			trigger = {
 				exists = owner
 				owner = {
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture } is_lithoid_empire = no
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
+					is_lithoid_empire = no
 				}
 			}
 			minerals = @b2_hive_minerals
@@ -1113,7 +1159,10 @@ building_expanded_warren = {
 		cost = {
 			trigger = {
 				exists = owner
-				owner = { has_valid_civic = civic_integrated_bioarchitecture is_lithoid_empire = no }
+				owner = {
+					has_valid_civic = civic_integrated_bioarchitecture
+					is_lithoid_empire = no
+				}
 			}
 			food = @b2_minerals
 			rare_crystals = @b2_rare_cost
@@ -1134,7 +1183,9 @@ building_expanded_warren = {
 				exists = owner
 				owner = {
 					is_lithoid_empire = yes
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = @b2_upkeep_hive
@@ -1142,27 +1193,44 @@ building_expanded_warren = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
-	
-	
 	prerequisites = {
-		"tech_housing_2" 
+		"tech_housing_2"
 	}
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 390
+				}
+			}
 		}
 		else = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_crystal_building
+						days = 510
+					}
+				}
 			}
 		}
 	}
@@ -1172,40 +1240,64 @@ building_holo_theatres = {
 	base_buildtime = @b1_time
 	position_priority = 170
 	category = amenity
-	
 	potential = {
-		NOT = {	has_modifier = slave_colony	}		
-		owner = { is_regular_empire = yes }
-		owner = { NOT = { has_valid_civic = civic_warrior_culture } }
+		NOT = {
+			has_modifier = slave_colony
+		}
+		owner = {
+			is_regular_empire = yes
+		}
+		owner = {
+			NOT = {
+				has_valid_civic = civic_warrior_culture
+			}
+		}
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
-			owner = { has_valid_civic = civic_warrior_culture }
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				has_valid_civic = civic_warrior_culture
+			}
 			has_modifier = slave_colony
 			AND = {
-				owner = { is_ai = yes }
+				owner = {
+					is_ai = yes
+				}
 				free_amenities > 60
 			}
 			AND = {
-				owner = { is_ai = yes }
+				owner = {
+					is_ai = yes
+				}
 				free_amenities > 40
-				num_buildings = { type = building_holo_theatres value > 2 }
+				num_buildings = {
+					type = building_holo_theatres
+					value > 2
+				}
 			}
 			AND = {
 				free_building_slots = 0
-				free_district_slots = 0 # can build more city districts
-				owner = { is_ai = yes }
+				free_district_slots = 0				# can build more city districts
+				owner = {
+					is_ai = yes
+				}
 				OR = {
 					free_amenities > 40
 					AND = {
-						count_owned_pop = { limit = { is_sapient = yes } count < 75 }
+						count_owned_pop = {
+							limit = {
+								is_sapient = yes
+							}
+							count < 75
+						}
 						owner = {
 							is_ai = yes
 							is_robot_empire = no
-							has_technology = tech_frontier_health 
+							has_technology = tech_frontier_health
 						}
 						NOR = {
 							has_building = building_clinic
@@ -1215,26 +1307,29 @@ building_holo_theatres = {
 					AND = {
 						owner = {
 							is_ai = yes
-							NOT = { has_policy_flag = robots_outlawed }
-							has_technology = tech_robotic_workers 
+							NOT = {
+								has_policy_flag = robots_outlawed
+							}
+							has_technology = tech_robotic_workers
 						}
-						NOT = { has_building = building_robot_assembly_plant }
-						NOT = { has_building = building_clone_vats }
+						NOT = {
+							has_building = building_robot_assembly_plant
+						}
+						NOT = {
+							has_building = building_clone_vats
+						}
 					}
 				}
 			}
 		}
 	}
-	
 	convert_to = {
 		building_combat_arena
 	}
-		
 	planet_modifier = {
 		job_entertainer_add = @b1_jobs
 		trade_value_mult = 0.01
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1264,23 +1359,22 @@ building_holo_theatres = {
 			food = 2
 		}
 	}
-	
 	upgrades = {
 		"building_hyper_entertainment_forum"
 	}
-	
 	prerequisites = {
 		"tech_holo_entertainment"
 	}
-	
-	show_tech_unlock_if = { 
-		owner = { NOT = { has_valid_civic = civic_warrior_culture } }
+	show_tech_unlock_if = {
+		owner = {
+			NOT = {
+				has_valid_civic = civic_warrior_culture
+			}
+		}
 	}
-	
-	triggered_desc = {		
+	triggered_desc = {
 		text = job_entertainer_effect_desc
 	}
-	
 	ai_resource_production = {
 		alloys = 1
 		trigger = {
@@ -1299,36 +1393,32 @@ building_hyper_entertainment_forum = {
 	base_buildtime = @b2_time
 	position_priority = 170
 	can_build = no
-
 	category = amenity
-	
 	potential = {
 		has_building = building_holo_theatres
 	}
-	
 	allow = {
 		has_upgraded_capital = yes
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
-			owner = { has_valid_civic = civic_warrior_culture }
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				has_valid_civic = civic_warrior_culture
+			}
 			has_modifier = slave_colony
-
 		}
 	}
-	
 	convert_to = {
 		building_virtual_combat_arena
 	}
-		
 	planet_modifier = {
 		job_entertainer_add = @b2_jobs
 		trade_value_mult = 0.02
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1361,35 +1451,54 @@ building_hyper_entertainment_forum = {
 			exotic_gases = @b2_rare_upkeep
 		}
 	}
-	
 	prerequisites = {
 		"tech_hyper_entertainment_forum"
 	}
-	
-	show_tech_unlock_if = { 
-		owner = { NOT = { has_valid_civic = civic_warrior_culture } }
+	show_tech_unlock_if = {
+		owner = {
+			NOT = {
+				has_valid_civic = civic_warrior_culture
+			}
+		}
 	}
-	
-	triggered_desc = {		
+	triggered_desc = {
 		text = job_entertainer_effect_desc
 	}
-	
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_gas_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_gas_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_gas_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_gas_building
+					days = 390
+				}
+			}
 		}
 		else = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_gas_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_gas_building
+						days = 510
+					}
+				}
 			}
 		}
 	}
@@ -1399,30 +1508,33 @@ building_clinic = {
 	base_buildtime = @b1_time
 	position_priority = 165
 	base_cap_amount = 1
-
 	category = amenity
-
 	potential = {
-		owner = { is_regular_empire = yes }
-		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_regular_empire = yes
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
+			owner = {
+				is_regular_empire = no
+			}
 			has_modifier = slave_colony
 			AND = {
 				buildings_stop_pop = yes
-				owner = { is_ai = yes }
+				owner = {
+					is_ai = yes
+				}
 			}
 		}
 	}
-
 	planet_modifier = {
 		job_healthcare_add = 1
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1432,15 +1544,12 @@ building_clinic = {
 			energy = @b1_upkeep
 		}
 	}
-
 	prerequisites = {
 		"tech_frontier_health"
 	}
-
 	upgrades = {
 		"building_hospital"
 	}
-
 	triggered_desc = {
 		text = job_healthcare_effect_desc
 	}
@@ -1450,34 +1559,32 @@ building_hospital = {
 	base_buildtime = @b2_time
 	position_priority = 165
 	can_build = no
-
 	category = amenity
-
 	potential = {
 		has_building = building_clinic
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
+			owner = {
+				is_regular_empire = no
+			}
 			has_modifier = slave_colony
 			buildings_no_exotic_gases = yes
 			AND = {
 				buildings_stop_pop = yes
-				owner = { is_ai = yes }
+				owner = {
+					is_ai = yes
+				}
 			}
 		}
 	}
-
 	planet_modifier = {
 		job_healthcare_add = 2
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1489,15 +1596,12 @@ building_hospital = {
 			exotic_gases = @b2_rare_upkeep
 		}
 	}
-
 	prerequisites = {
 		"tech_frontier_hospital"
 	}
-
 	show_tech_unlock_if = {
 		is_regular_empire = yes
 	}
-
 	triggered_desc = {
 		text = job_healthcare_effect_desc
 	}
@@ -1508,42 +1612,65 @@ building_combat_arena = {
 	base_buildtime = @b1_time
 	position_priority = 170
 	#icon = building_holo_theatres
-
 	category = amenity
-	
 	potential = {
-		NOT = {	has_modifier = slave_colony	}		
-		owner = { is_regular_empire = yes }
-		owner = { has_valid_civic = civic_warrior_culture }
+		NOT = {
+			has_modifier = slave_colony
+		}
+		owner = {
+			is_regular_empire = yes
+		}
+		owner = {
+			has_valid_civic = civic_warrior_culture
+		}
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
-			owner = { NOT = { has_valid_civic = civic_warrior_culture } }
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				NOT = {
+					has_valid_civic = civic_warrior_culture
+				}
+			}
 			has_modifier = slave_colony
 			AND = {
-				owner = { is_ai = yes }
+				owner = {
+					is_ai = yes
+				}
 				free_amenities > 60
 			}
 			AND = {
-				owner = { is_ai = yes }
+				owner = {
+					is_ai = yes
+				}
 				free_amenities > 40
-				num_buildings = { type = building_holo_theatres value > 2 }
+				num_buildings = {
+					type = building_holo_theatres
+					value > 2
+				}
 			}
 			AND = {
 				free_building_slots = 0
-				free_district_slots = 0 # can build more city districts
-				owner = { is_ai = yes }
+				free_district_slots = 0				# can build more city districts
+				owner = {
+					is_ai = yes
+				}
 				OR = {
 					free_amenities > 40
 					AND = {
-						count_owned_pop = { limit = { is_sapient = yes } count < 75 }
+						count_owned_pop = {
+							limit = {
+								is_sapient = yes
+							}
+							count < 75
+						}
 						owner = {
 							is_ai = yes
 							is_robot_empire = no
-							has_technology = tech_frontier_health 
+							has_technology = tech_frontier_health
 						}
 						NOR = {
 							has_building = building_clinic
@@ -1553,30 +1680,32 @@ building_combat_arena = {
 					AND = {
 						owner = {
 							is_ai = yes
-							NOT = { has_policy_flag = robots_outlawed }
-							has_technology = tech_robotic_workers 
+							NOT = {
+								has_policy_flag = robots_outlawed
+							}
+							has_technology = tech_robotic_workers
 						}
-						NOT = { has_building = building_robot_assembly_plant }
-						NOT = { has_building = building_clone_vats }
+						NOT = {
+							has_building = building_robot_assembly_plant
+						}
+						NOT = {
+							has_building = building_clone_vats
+						}
 					}
 				}
 			}
 		}
 	}
-	
 	convert_to = {
 		building_holo_theatres
 	}
-		
 	planet_modifier = {
 		job_duelist_add = @b1_jobs
 		pop_happiness = 0.01
 	}
-	
 	army_modifier = {
-		army_defense_morale_mult = 0.20
+		army_defense_morale_mult = 0.2
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1586,23 +1715,20 @@ building_combat_arena = {
 			energy = @b1_upkeep
 		}
 	}
-	
 	upgrades = {
 		"building_virtual_combat_arena"
 	}
-	
 	prerequisites = {
 		"tech_holo_entertainment"
 	}
-	
-	show_tech_unlock_if = { 
-		owner = { has_valid_civic = civic_warrior_culture }
+	show_tech_unlock_if = {
+		owner = {
+			has_valid_civic = civic_warrior_culture
+		}
 	}
-	
-	triggered_desc = {		
+	triggered_desc = {
 		text = job_duelist_effect_desc
 	}
-	
 	ai_resource_production = {
 		alloys = 1
 		trigger = {
@@ -1622,40 +1748,37 @@ building_virtual_combat_arena = {
 	position_priority = 170
 	can_build = no
 	#icon = building_hyper_entertainment_forum
-
 	category = amenity
-	
 	potential = {
 		has_building = building_combat_arena
 	}
-	
 	allow = {
 		has_upgraded_capital = yes
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
-			owner = { NOT = { has_valid_civic = civic_warrior_culture } }
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				NOT = {
+					has_valid_civic = civic_warrior_culture
+				}
+			}
 			has_modifier = slave_colony
-
 		}
 	}
-	
 	convert_to = {
 		building_hyper_entertainment_forum
 	}
-		
 	planet_modifier = {
 		job_duelist_add = @b2_jobs
 		pop_happiness = 0.02
 	}
-	
 	army_modifier = {
-		army_defense_morale_mult = 0.40
+		army_defense_morale_mult = 0.4
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1667,35 +1790,52 @@ building_virtual_combat_arena = {
 			exotic_gases = @b2_rare_upkeep
 		}
 	}
-	
 	prerequisites = {
 		"tech_virtual_combat_arena"
 	}
-	
 	show_tech_unlock_if = {
-		owner = { has_valid_civic = civic_warrior_culture }
+		owner = {
+			has_valid_civic = civic_warrior_culture
+		}
 	}
-
-	triggered_desc = {		
+	triggered_desc = {
 		text = job_duelist_effect_desc
 	}
-
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_gas_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_gas_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_gas_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_gas_building
+					days = 390
+				}
+			}
 		}
 		else = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_gas_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_gas_building
+						days = 510
+					}
+				}
 			}
 		}
 	}

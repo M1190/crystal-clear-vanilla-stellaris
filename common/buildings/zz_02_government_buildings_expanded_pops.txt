@@ -5,9 +5,7 @@ building_noble_estates = {
 	base_buildtime = @b2_time
 	icon = building_palace
 	base_cap_amount = 1
-
 	category = government
-
 	potential = {
 		owner = {
 			OR = {
@@ -15,14 +13,14 @@ building_noble_estates = {
 				has_valid_civic = civic_royal_trading_company
 			}
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 		buildings_simple_allow = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		owner = {
@@ -32,13 +30,11 @@ building_noble_estates = {
 			}
 		}
 	}
-
 	planet_modifier = {
 		job_noble_add = 1
 		planet_housing_add = 3
 		planet_amenities_add = 5
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -48,16 +44,15 @@ building_noble_estates = {
 			energy = 2
 		}
 	}
-
 	triggered_desc = {
 		text = job_noble_effect_desc
 	}
-	
 	ai_resource_production = {
-		trigger = { num_pops > 40 }
+		trigger = {
+			num_pops > 40
+		}
 		unity > 8
 	}
-	
 	upgrades = {
 		"building_palatial_estates"
 	}
@@ -65,9 +60,7 @@ building_noble_estates = {
 
 building_palatial_estates = {
 	base_buildtime = @b2_time
-
 	category = government
-
 	potential = {
 		has_building = building_noble_estates
 		owner = {
@@ -76,14 +69,14 @@ building_palatial_estates = {
 				has_valid_civic = civic_royal_trading_company
 			}
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 		buildings_simple_allow = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		owner = {
@@ -93,13 +86,11 @@ building_palatial_estates = {
 			}
 		}
 	}
-
 	planet_modifier = {
 		job_noble_add = 2
 		planet_housing_add = 6
 		planet_amenities_add = 10
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -109,11 +100,9 @@ building_palatial_estates = {
 			energy = 2
 		}
 	}
-
 	triggered_desc = {
 		text = job_noble_effect_desc
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -125,40 +114,57 @@ building_palatial_estates = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
-	
 	prerequisites = {
 		"tech_paradise_dome"
 	}
-	
 	show_tech_unlock_if = {
 		OR = {
 			has_valid_civic = civic_aristocratic_elite
 			has_valid_civic = civic_royal_trading_company
 		}
 	}
-	
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 390
+				}
+			}
 		}
 		else = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_crystal_building
+						days = 510
+					}
+				}
 			}
 		}
 	}
-	
 	ai_resource_production = {
-		trigger = { num_pops > 40 }
+		trigger = {
+			num_pops > 40
+		}
 		unity > 8
 	}
 }
@@ -166,33 +172,40 @@ building_palatial_estates = {
 building_slave_processing = {
 	base_buildtime = @b1_time
 	base_cap_amount = 1
-
 	category = government
-
 	potential = {
-		owner = { is_regular_empire = yes }
-		owner = { has_policy_flag = slavery_allowed }
-		NOT = { has_modifier = resort_colony }
-	}
-
-	allow = {
-		has_upgraded_capital = yes
-	}
-
-	destroy_trigger = { # destroys if true
-		exists = owner
-		OR = {
-			owner = { is_regular_empire = no }
-			NOT = { owner = { has_policy_flag = slavery_allowed } }
+		owner = {
+			is_regular_empire = yes
+		}
+		owner = {
+			has_policy_flag = slavery_allowed
+		}
+		NOT = {
 			has_modifier = resort_colony
 		}
 	}
-
+	allow = {
+		has_upgraded_capital = yes
+	}
+	destroy_trigger = {
+		# destroys if true
+		exists = owner
+		OR = {
+			owner = {
+				is_regular_empire = no
+			}
+			NOT = {
+				owner = {
+					has_policy_flag = slavery_allowed
+				}
+			}
+			has_modifier = resort_colony
+		}
+	}
 	planet_modifier = {
 		planet_jobs_slave_produces_mult = 0.05
 		pop_cat_slave_political_power = -0.25
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -202,15 +215,12 @@ building_slave_processing = {
 			energy = 2
 		}
 	}
-
 	prerequisites = {
 		"tech_neural_implants"
 	}
-	
 	triggered_desc = {
 		text = building_slave_processing_slave_army_effect_desc
 	}
-	
 	triggered_desc = {
 		text = allows_slave_migration
 	}
@@ -219,48 +229,62 @@ building_slave_processing = {
 building_precinct_house = {
 	base_buildtime = @b1_time
 	position_priority = 125
-
 	category = government
-
 	potential = {
-		owner = { is_regular_empire = yes }
-		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_regular_empire = yes
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		hidden_trigger = {
 			OR = {
-				owner = { is_ai = no }
+				owner = {
+					is_ai = no
+				}
 				AND = {
 					planet_crime > 15
 					NOR = {
 						AND = {
 							has_building = building_precinct_house
-							owner = { has_technology = tech_colonial_centralization }
+							owner = {
+								has_technology = tech_colonial_centralization
+							}
 						}
 						has_building = building_hall_judgment
-						num_buildings = { type = building_precinct_house value = 3 }
+						num_buildings = {
+							type = building_precinct_house
+							value = 3
+						}
 					}
 				}
 			}
 		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			NOT = {	owner = { is_regular_empire = yes }	}
+			NOT = {
+				owner = {
+					is_regular_empire = yes
+				}
+			}
 			AND = {
-				owner = { is_ai = yes } #Players dont like random buildings blowing up
-				planet = { has_building = building_hall_judgment }
-			}#This way the AI gets to reclaim its building slots that it sunk into this expense
+				owner = {
+					is_ai = yes
+				}				#Players dont like random buildings blowing up
+				planet = {
+					has_building = building_hall_judgment
+				}
+			}
+			#This way the AI gets to reclaim its building slots that it sunk into this expense
 		}
 	}
-
 	planet_modifier = {
 		job_enforcer_add = 2
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -302,19 +326,15 @@ building_precinct_house = {
 			energy = @b1_upkeep
 		}
 	}
-
 	prerequisites = {
 		"tech_planetary_government"
 	}
-
 	triggered_desc = {
 		text = job_enforcer_effect_desc
 	}
-
 	show_tech_unlock_if = {
 		is_regular_empire = yes
 	}
-
 	upgrades = {
 		building_hall_judgment
 	}
@@ -323,27 +343,30 @@ building_precinct_house = {
 building_hall_judgment = {
 	base_buildtime = @b2_time
 	position_priority = 125
-
 	category = government
 	can_build = no
-
 	potential = {
-		owner = { is_regular_empire = yes }
-		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_regular_empire = yes
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			buildings_no_motes = yes
-			NOT = { owner = { is_regular_empire = yes } }
+			NOT = {
+				owner = {
+					is_regular_empire = yes
+				}
+			}
 		}
 	}
-
 	planet_modifier = {
 		job_enforcer_add = 5
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -389,55 +412,53 @@ building_hall_judgment = {
 			volatile_motes = @b2_rare_upkeep
 		}
 	}
-
 	prerequisites = {
 		"tech_colonial_centralization"
 	}
-
 	triggered_desc = {
 		text = job_enforcer_effect_desc
 	}
-
 	show_tech_unlock_if = {
 		is_regular_empire = yes
 	}
 }
 
-
 building_sentinel_posts = {
 	base_buildtime = @b1_time
 	position_priority = 125
-
 	category = government
-
 	potential = {
 		exists = owner
-		owner = { is_gestalt = yes }
+		owner = {
+			is_gestalt = yes
+		}
 	}
-
 	allow = {
 		hidden_trigger = {
 			OR = {
-				owner = { is_ai = no }
+				owner = {
+					is_ai = no
+				}
 				AND = {
 					buildings_simple_allow = yes
-					NOT = { has_building = building_sentinel_posts }
+					NOT = {
+						has_building = building_sentinel_posts
+					}
 				}
 			}
 		}
 	}
-
 	destroy_trigger = {
 		exists = owner
 		NOT = {
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 	}
-
 	planet_modifier = {
 		job_patrol_drone_add = 2
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -453,7 +474,9 @@ building_sentinel_posts = {
 			trigger = {
 				exists = owner
 				owner = {
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 					is_lithoid_empire = no
 				}
 			}
@@ -485,22 +508,21 @@ building_sentinel_posts = {
 				exists = owner
 				owner = {
 					is_lithoid_empire = yes
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = @b1_upkeep_hive
 			minerals = @b1_upkeep_food
 		}
 	}
-
 	prerequisites = {
 		"tech_planetary_government"
 	}
-
 	triggered_desc = {
 		text = job_patrol_drone_effect_desc
 	}
-
 	show_tech_unlock_if = {
 		is_gestalt = yes
 	}
@@ -509,21 +531,21 @@ building_sentinel_posts = {
 #############
 # Ascension perks
 #############
-
 #Psionic path
 building_psi_corps = {
 	base_buildtime = @b2_time
-
 	category = government
-
 	base_cap_amount = 1
-
 	potential = {
 		custom_tooltip = {
 			text = EMPIRE_UNIQUE_BUILDING
 			owner = {
-				NOT = { has_country_flag = building_psi_corps }
-				NOT = { has_country_flag = built_one_psi_corps }
+				NOT = {
+					has_country_flag = building_psi_corps
+				}
+				NOT = {
+					has_country_flag = built_one_psi_corps
+				}
 			}
 		}
 		owner = {
@@ -532,16 +554,18 @@ building_psi_corps = {
 				has_origin = origin_shroudwalker_apprentice
 			}
 		}
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 		buildings_simple_allow = yes
 		num_pops >= 50
 	}
-
 	destroy_trigger = {
 		exists = owner
 		NOT = {
@@ -553,7 +577,6 @@ building_psi_corps = {
 			}
 		}
 	}
-
 	planet_modifier = {
 		job_telepath_add = @b1_jobs
 		# stability added to jobs
@@ -561,7 +584,6 @@ building_psi_corps = {
 	country_modifier = {
 		pop_government_ethic_attraction = 0.05
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -573,40 +595,48 @@ building_psi_corps = {
 			sr_zro = @b2_rare_upkeep
 		}
 	}
-
 	triggered_desc = {
 		text = job_telepath_effect_desc
 	}
 	triggered_desc = {
 		text = building_psi_corps_effect_desc
 	}
-	
 	on_queued = {
-		owner = { set_country_flag = building_psi_corps }
+		owner = {
+			set_country_flag = building_psi_corps
+		}
 	}
-
 	on_unqueued = {
-		owner = { remove_country_flag = building_psi_corps }
+		owner = {
+			remove_country_flag = building_psi_corps
+		}
 	}
-
 	on_built = {
-		owner = { set_country_flag = built_one_psi_corps }
-		owner = { remove_country_flag = building_psi_corps }
+		owner = {
+			set_country_flag = built_one_psi_corps
+		}
+		owner = {
+			remove_country_flag = building_psi_corps
+		}
 		set_planet_flag = built_one_psi_corps
 	}
-
 	on_destroy = {
-		owner = { remove_country_flag = built_one_psi_corps }
+		owner = {
+			remove_country_flag = built_one_psi_corps
+		}
 	}
-	
 	ai_resource_production = {
-		trigger = { num_pops >= 50 }
+		trigger = {
+			num_pops >= 50
+		}
 		alloys = 4
 		energy = 8
 		minerals = 8
 	}
 	ai_resource_production = {
-		trigger = { is_capital = yes }
+		trigger = {
+			is_capital = yes
+		}
 		alloys = 4
 		energy = 8
 		minerals = 8
@@ -614,17 +644,15 @@ building_psi_corps = {
 }
 
 ### Modded ###
-
 building_individualist_enclave = {
 	base_buildtime = @b1_time
 	position_priority = 175
 	category = government
 	icon = building_residence
 	category = amenity
-	
 	potential = {
 		exists = owner
-		owner = { 
+		owner = {
 			is_gestalt = yes
 			NOR = {
 				has_valid_civic = civic_hive_devouring_swarm
@@ -639,10 +667,16 @@ building_individualist_enclave = {
 				has_valid_civic = civic_living_hosts
 			}
 		}
-		NOT = { is_planet_class = pc_machine }
-		NOT = { is_planet_class = pc_hive }
+		NOT = {
+			is_planet_class = pc_machine
+		}
+		NOT = {
+			is_planet_class = pc_hive
+		}
 		OR = {
-			owner = { is_ai = no }
+			owner = {
+				is_ai = no
+			}
 			NOR = {
 				has_building = building_individualist_enclave
 				has_building = building_individualist_colony
@@ -651,21 +685,32 @@ building_individualist_enclave = {
 				is_free_pop_gestalt = yes
 				is_unemployed = yes
 			}
-			owner = { has_monthly_income = { resource = consumer_goods  value < 10 } }
+			owner = {
+				has_monthly_income = {
+					resource = consumer_goods
+					value < 10
+				}
+			}
 		}
 	}
-	
 	allow = {
-		hidden_trigger  = { buildings_simple_allow = yes }
-		any_owned_pop = { is_free_pop_gestalt = yes }
+		hidden_trigger = {
+			buildings_simple_allow = yes
+		}
+		any_owned_pop = {
+			is_free_pop_gestalt = yes
+		}
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			is_planet_class = pc_machine
 			is_planet_class = pc_hive
-			NOT = { any_owned_pop = { is_free_pop_gestalt = yes } }
+			NOT = {
+				any_owned_pop = {
+					is_free_pop_gestalt = yes
+				}
+			}
 			owner = {
 				OR = {
 					is_gestalt = no
@@ -683,18 +728,15 @@ building_individualist_enclave = {
 			}
 		}
 	}
-	
 	convert_to = {
 		building_luxury_residence
 		building_communal_housing
 	}
-		
 	planet_modifier = {
 		planet_housing_add = 5
 		job_supplier_add = 2
 		job_laborer_gestalt_add = 1
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -713,8 +755,8 @@ building_individualist_enclave = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_technology = tech_housing_1 
+			owner = {
+				has_technology = tech_housing_1
 			}
 		}
 		modifier = {
@@ -724,15 +766,14 @@ building_individualist_enclave = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_technology = tech_housing_2 
+			owner = {
+				has_technology = tech_housing_2
 			}
 		}
 		modifier = {
 			planet_housing_add = 1
 		}
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -742,15 +783,12 @@ building_individualist_enclave = {
 			energy = @b1_upkeep
 		}
 	}
-	
 	triggered_desc = {
 		text = individualist_enclave_effect_desc
 	}
-	
 	upgrades = {
 		"building_individualist_colony"
 	}
-	
 	triggered_desc = {
 		text = job_administrator_gestalt_effect_desc
 	}
@@ -772,7 +810,7 @@ building_individualist_enclave = {
 					has_valid_civic = civic_harm_machine
 				}
 			}
-		}	
+		}
 		text = job_researcher_gestalt_effect_desc
 	}
 	triggered_desc = {
@@ -784,12 +822,13 @@ building_individualist_enclave = {
 					has_valid_civic = civic_harm_machine
 				}
 			}
-		}	
+		}
 		text = job_entertainer_gestalt_effect_desc
 	}
-	
 	ai_resource_production = {
-		trigger = { always = yes }
+		trigger = {
+			always = yes
+		}
 		consumer_goods = 4
 	}
 	ai_resource_production = {
@@ -813,22 +852,25 @@ building_individualist_colony = {
 	category = government
 	icon = building_paradise_dome
 	category = amenity
-	
 	potential = {
 		has_building = building_individualist_enclave
 	}
-	
 	allow = {
 		has_upgraded_capital = yes
-		any_owned_pop = { is_free_pop_gestalt = yes }
+		any_owned_pop = {
+			is_free_pop_gestalt = yes
+		}
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
 			is_planet_class = pc_machine
 			is_planet_class = pc_hive
-			NOT = { any_owned_pop = { is_free_pop_gestalt = yes } }
+			NOT = {
+				any_owned_pop = {
+					is_free_pop_gestalt = yes
+				}
+			}
 			owner = {
 				OR = {
 					is_gestalt = no
@@ -846,19 +888,16 @@ building_individualist_colony = {
 			}
 		}
 	}
-	
 	convert_to = {
 		building_paradise_dome
 		building_communal_housing_large
 	}
-		
 	planet_modifier = {
 		planet_housing_add = 10
 		job_supplier_add = 2
 		job_laborer_gestalt_add = 4
 		job_enforcer_gestalt_add = 1
 	}
-	
 	#triggered_planet_modifier = {
 	#	potential = {
 	#		exists = planet
@@ -894,8 +933,8 @@ building_individualist_colony = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_technology = tech_housing_1 
+			owner = {
+				has_technology = tech_housing_1
 			}
 		}
 		modifier = {
@@ -905,15 +944,14 @@ building_individualist_colony = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				has_technology = tech_housing_2 
+			owner = {
+				has_technology = tech_housing_2
 			}
 		}
 		modifier = {
 			planet_housing_add = 1
 		}
 	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -924,7 +962,6 @@ building_individualist_colony = {
 			energy = 8
 		}
 	}
-	
 	prerequisites = {
 		"tech_housing_2"
 	}
@@ -943,7 +980,6 @@ building_individualist_colony = {
 			has_valid_civic = civic_living_hosts
 		}
 	}
-	
 	triggered_desc = {
 		text = individualist_enclave_effect_desc
 	}
@@ -968,7 +1004,7 @@ building_individualist_colony = {
 					has_valid_civic = civic_harm_machine
 				}
 			}
-		}	
+		}
 		text = job_researcher_gestalt_effect_desc
 	}
 	triggered_desc = {
@@ -980,12 +1016,13 @@ building_individualist_colony = {
 					has_valid_civic = civic_harm_machine
 				}
 			}
-		}	
+		}
 		text = job_entertainer_gestalt_effect_desc
 	}
-	
 	ai_resource_production = {
-		trigger = { always = yes }
+		trigger = {
+			always = yes
+		}
 		consumer_goods = 8
 	}
 	ai_resource_production = {

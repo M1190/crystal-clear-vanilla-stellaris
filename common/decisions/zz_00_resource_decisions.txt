@@ -5,29 +5,32 @@ decision_planet_luxuries_boost = {
 	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_luxuries
-
 	resources = {
 		category = decisions
 		cost = {
 			consumer_goods = 100
-		}	
+		}
 	}
-	
 	potential = {
 		owner = {
 			is_regular_empire = yes
 			OR = {
-				NOT = { has_valid_civic = civic_agrarian_idyll }
+				NOT = {
+					has_valid_civic = civic_agrarian_idyll
+				}
 				is_lithoid_empire = yes
 			}
 		}
-		NOT = { has_modifier = planet_luxuries_boost }
+		NOT = {
+			has_modifier = planet_luxuries_boost
+		}
 	}
-	
 	effect = {
-		add_modifier = { modifier = "planet_luxuries_boost" days = -1 }
+		add_modifier = {
+			modifier = "planet_luxuries_boost"
+			days = -1
+		}
 	}
-	
 	ai_weight = {
 		weight = 100
 		# don't distribute luxuries if there is a lot of amenities already
@@ -38,7 +41,12 @@ decision_planet_luxuries_boost = {
 		modifier = {
 			factor = 0
 			exists = owner
-			owner = { has_monthly_income = { resource = consumer_goods value < 10 } }
+			owner = {
+				has_monthly_income = {
+					resource = consumer_goods
+					value < 10
+				}
+			}
 		}
 		modifier = {
 			factor = 0
@@ -51,7 +59,6 @@ decision_planet_agrarian_luxuries_boost = {
 	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_luxuries
-
 	resources = {
 		category = decisions
 		cost = {
@@ -59,20 +66,22 @@ decision_planet_agrarian_luxuries_boost = {
 			consumer_goods = 50
 		}
 	}
-	
 	potential = {
 		owner = {
 			is_regular_empire = yes
 			has_valid_civic = civic_agrarian_idyll
 			is_lithoid_empire = no
 		}
-		NOT = { has_modifier = planet_agrarian_luxuries_boost }
+		NOT = {
+			has_modifier = planet_agrarian_luxuries_boost
+		}
 	}
-	
 	effect = {
-		add_modifier = { modifier = "planet_agrarian_luxuries_boost" days = -1 }
+		add_modifier = {
+			modifier = "planet_agrarian_luxuries_boost"
+			days = -1
+		}
 	}
-	
 	ai_weight = {
 		weight = 100
 		# don't distribute luxuries if there is a lot of amenities already
@@ -85,8 +94,14 @@ decision_planet_agrarian_luxuries_boost = {
 			exists = owner
 			owner = {
 				OR = {
-					has_monthly_income = { resource = food value < 5 }
-					has_monthly_income = { resource = consumer_goods value < 5 }
+					has_monthly_income = {
+						resource = food
+						value < 5
+					}
+					has_monthly_income = {
+						resource = consumer_goods
+						value < 5
+					}
 				}
 			}
 		}
@@ -101,25 +116,24 @@ decision_end_planet_luxuries_boost = {
 	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_luxuries
-
 	resources = {
 		category = decisions
 		cost = {
 			unity = 100
-		}	
+		}
 	}
-	
 	potential = {
 		has_modifier = planet_luxuries_boost
-	}	
-	
+	}
 	effect = {
 		remove_modifier = planet_luxuries_boost
 		hidden_effect = {
-			set_timed_planet_flag = { flag = ended_luxury days = 1800 }
+			set_timed_planet_flag = {
+				flag = ended_luxury
+				days = 1800
+			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 		# don't distribute luxuries if there is a lot of amenities already
@@ -130,7 +144,12 @@ decision_end_planet_luxuries_boost = {
 		modifier = {
 			weight = 10
 			exists = owner
-			owner = { has_monthly_income = { resource = consumer_goods value < 2 } }
+			owner = {
+				has_monthly_income = {
+					resource = consumer_goods
+					value < 2
+				}
+			}
 		}
 		modifier = {
 			factor = 100
@@ -152,25 +171,24 @@ decision_end_planet_agrarian_luxuries_boost = {
 	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_luxuries
-
 	resources = {
 		category = decisions
 		cost = {
 			unity = 100
 		}
 	}
-	
 	potential = {
 		has_modifier = planet_agrarian_luxuries_boost
-	}	
-	
+	}
 	effect = {
 		remove_modifier = planet_agrarian_luxuries_boost
 		hidden_effect = {
-			set_timed_planet_flag = { flag = ended_luxury days = 1800 }
+			set_timed_planet_flag = {
+				flag = ended_luxury
+				days = 1800
+			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 		# don't distribute luxuries if there is a lot of amenities already
@@ -181,19 +199,31 @@ decision_end_planet_agrarian_luxuries_boost = {
 		modifier = {
 			weight = 10
 			exists = owner
-			owner = { has_monthly_income = { resource = consumer_goods value < 1 } }
+			owner = {
+				has_monthly_income = {
+					resource = consumer_goods
+					value < 1
+				}
+			}
 		}
 		modifier = {
 			weight = 10
 			exists = owner
-			owner = { has_monthly_income = { resource = food value < 1 } }
+			owner = {
+				has_monthly_income = {
+					resource = food
+					value < 1
+				}
+			}
 		}
 		modifier = {
 			factor = 100
 			exists = owner
 			owner = {
 				OR = {
-					NOT = { has_valid_civic = civic_agrarian_idyll }
+					NOT = {
+						has_valid_civic = civic_agrarian_idyll
+					}
 					is_lithoid_empire = yes
 					is_regular_empire = no
 				}
@@ -206,36 +236,41 @@ decision_planet_drone_boost_hive = {
 	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_resources
-
 	resources = {
 		category = decisions
 		cost = {
 			trigger = {
 				exists = owner
-				owner = { is_lithoid_empire = no }
+				owner = {
+					is_lithoid_empire = no
+				}
 			}
 			food = 100
 		}
 		cost = {
 			trigger = {
 				exists = owner
-				owner = { is_lithoid_empire = yes }
+				owner = {
+					is_lithoid_empire = yes
+				}
 			}
 			minerals = 100
 		}
 	}
-	
 	potential = {
 		owner = {
 			is_hive_empire = yes
 		}
-		NOT = { has_modifier = planet_drone_boost_hive }
+		NOT = {
+			has_modifier = planet_drone_boost_hive
+		}
 	}
-	
 	effect = {
-		add_modifier = { modifier = "planet_drone_boost_hive" days = -1 }
+		add_modifier = {
+			modifier = "planet_drone_boost_hive"
+			days = -1
+		}
 	}
-	
 	ai_weight = {
 		weight = 100
 		# don't distribute luxuries if there is a lot of amenities already
@@ -250,11 +285,17 @@ decision_planet_drone_boost_hive = {
 				OR = {
 					AND = {
 						is_lithoid_empire = no
-						has_monthly_income = { resource = food value < 10 }
+						has_monthly_income = {
+							resource = food
+							value < 10
+						}
 					}
 					AND = {
 						is_lithoid_empire = yes
-						has_monthly_income = { resource = minerals value < 10 }
+						has_monthly_income = {
+							resource = minerals
+							value < 10
+						}
 					}
 				}
 			}
@@ -270,25 +311,24 @@ decision_end_planet_drone_boost_hive = {
 	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_resources
-
 	resources = {
 		category = decisions
 		cost = {
 			unity = 100
 		}
 	}
-	
 	potential = {
 		has_modifier = planet_drone_boost_hive
-	}	
-	
+	}
 	effect = {
 		remove_modifier = planet_drone_boost_hive
 		hidden_effect = {
-			set_timed_planet_flag = { flag = ended_drone_boost days = 1800 }
+			set_timed_planet_flag = {
+				flag = ended_drone_boost
+				days = 1800
+			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 		# don't distribute luxuries if there is a lot of amenities already
@@ -303,11 +343,17 @@ decision_end_planet_drone_boost_hive = {
 				OR = {
 					AND = {
 						is_lithoid_empire = no
-						has_monthly_income = { resource = food value < 2 }
+						has_monthly_income = {
+							resource = food
+							value < 2
+						}
 					}
 					AND = {
 						is_lithoid_empire = yes
-						has_monthly_income = { resource = minerals value < 2 }
+						has_monthly_income = {
+							resource = minerals
+							value < 2
+						}
 					}
 				}
 			}
@@ -326,25 +372,26 @@ decision_planet_drone_boost_machine = {
 	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_resources
-
 	resources = {
 		category = decisions
 		cost = {
 			energy = 100
 		}
 	}
-	
 	potential = {
 		owner = {
 			is_machine_empire = yes
 		}
-		NOT = { has_modifier = planet_drone_boost_machine }
+		NOT = {
+			has_modifier = planet_drone_boost_machine
+		}
 	}
-	
 	effect = {
-		add_modifier = { modifier = "planet_drone_boost_machine" days = -1 }
+		add_modifier = {
+			modifier = "planet_drone_boost_machine"
+			days = -1
+		}
 	}
-	
 	ai_weight = {
 		weight = 100
 		# don't distribute luxuries if there is a lot of amenities already
@@ -356,7 +403,10 @@ decision_planet_drone_boost_machine = {
 			factor = 0
 			exists = owner
 			owner = {
-				has_monthly_income = { resource = energy value < 10 }
+				has_monthly_income = {
+					resource = energy
+					value < 10
+				}
 			}
 		}
 		modifier = {
@@ -370,25 +420,24 @@ decision_end_planet_drone_boost_machine = {
 	owned_planets_only = yes
 	sound = event_administrative_work
 	icon = decision_resources
-
 	resources = {
 		category = decisions
 		cost = {
 			unity = 100
-		}	
+		}
 	}
-	
 	potential = {
 		has_modifier = planet_drone_boost_machine
-	}	
-	
+	}
 	effect = {
 		remove_modifier = planet_drone_boost_machine
 		hidden_effect = {
-			set_timed_planet_flag = { flag = ended_drone_boost days = 1800 }
+			set_timed_planet_flag = {
+				flag = ended_drone_boost
+				days = 1800
+			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 		# don't distribute luxuries if there is a lot of amenities already
@@ -400,7 +449,10 @@ decision_end_planet_drone_boost_machine = {
 			weight = 10
 			exists = owner
 			owner = {
-				has_monthly_income = { resource = energy value < 2 }
+				has_monthly_income = {
+					resource = energy
+					value < 2
+				}
 			}
 		}
 		modifier = {

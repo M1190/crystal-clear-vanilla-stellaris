@@ -6,69 +6,89 @@ building_commercial_zone = {
 	position_priority = 160
 	exempt_from_ai_planet_specialization = no
 	category = trade
-	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes }
-		owner = { NOT = { has_valid_civic = civic_agrarian_idyll } }
-		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_regular_empire = yes
+		}
+		owner = {
+			NOT = {
+				has_valid_civic = civic_agrarian_idyll
+			}
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-	
 	allow = {
 		buildings_simple_allow = yes
 		OR = {
 			NOR = {
 				has_building = building_commercial_megaplex
-				num_buildings = { type = building_commercial_zone value > 1 }
+				num_buildings = {
+					type = building_commercial_zone
+					value > 1
+				}
 			}
-			owner = { is_ai = no }
+			owner = {
+				is_ai = no
+			}
 		}
 	}
-
 	destroy_trigger = {
 		OR = {
-			owner = { is_regular_empire = no }
-			owner = { has_valid_civic = civic_agrarian_idyll }
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				has_valid_civic = civic_agrarian_idyll
+			}
 			has_modifier = slave_colony
 			AND = {
-				owner = { is_ai = yes }
+				owner = {
+					is_ai = yes
+				}
 				OR = {
 					has_building = building_commercial_megaplex
-					num_buildings = { type = building_commercial_zone value > 2 }
+					num_buildings = {
+						type = building_commercial_zone
+						value > 2
+					}
 				}
 			}
 		}
 	}
-	
 	convert_to = {
 		building_farmer_market
 	}
-	
 	planet_modifier = {
 		trade_value_mult = 0.02
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_civic = civic_merchant_guilds } }
+			owner = {
+				NOT = {
+					has_civic = civic_merchant_guilds
+				}
+			}
 		}
 		modifier = {
 			job_clerk_add = 3
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_merchant_guilds }
+			owner = {
+				has_civic = civic_merchant_guilds
+			}
 		}
 		modifier = {
 			job_manager_add = 1
 			job_clerk_add = 2
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -78,7 +98,6 @@ building_commercial_zone = {
 			energy = @b1_upkeep
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -90,7 +109,6 @@ building_commercial_zone = {
 			job_merchant_add = 1
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -100,20 +118,18 @@ building_commercial_zone = {
 		}
 		text = job_merchant_effect_desc
 	}
-	
 	prerequisites = {
 		"tech_interplanetary_commerce"
 	}
-	
-	show_tech_unlock_if = { 
+	show_tech_unlock_if = {
 		is_regular_empire = yes
-		NOT = { has_valid_civic = civic_agrarian_idyll }
+		NOT = {
+			has_valid_civic = civic_agrarian_idyll
+		}
 	}
-	
 	triggered_desc = {
 		text = job_clerk_effect_desc
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -123,19 +139,18 @@ building_commercial_zone = {
 		}
 		text = job_merchant_effect_desc
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { has_civic = civic_merchant_guilds }
+			owner = {
+				has_civic = civic_merchant_guilds
+			}
 		}
 		text = job_manager_effect_desc
 	}
-	
 	upgrades = {
 		"building_commercial_megaplex"
 	}
-	
 	ai_resource_production = {
 		energy = 2
 		trigger = {
@@ -148,22 +163,31 @@ building_commercial_megaplex = {
 	base_buildtime = @b2_time
 	position_priority = 160
 	can_build = no
-
 	category = trade
-	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes }
-		owner = { NOT = { has_valid_civic = civic_agrarian_idyll } }
-		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_regular_empire = yes
+		}
+		owner = {
+			NOT = {
+				has_valid_civic = civic_agrarian_idyll
+			}
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 		has_building = building_commercial_zone
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
-			owner = { has_valid_civic = civic_agrarian_idyll }
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				has_valid_civic = civic_agrarian_idyll
+			}
 			has_modifier = slave_colony
 			buildings_no_crystals = yes
 		}
@@ -171,26 +195,29 @@ building_commercial_megaplex = {
 	convert_to = {
 		building_farmer_complex
 	}
-	
 	planet_modifier = {
 		trade_value_mult = 0.04
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_civic = civic_merchant_guilds } }
+			owner = {
+				NOT = {
+					has_civic = civic_merchant_guilds
+				}
+			}
 		}
 		modifier = {
 			job_merchant_add = 1
 			job_clerk_add = 6
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_merchant_guilds }
+			owner = {
+				has_civic = civic_merchant_guilds
+			}
 		}
 		modifier = {
 			job_merchant_add = 1
@@ -198,7 +225,6 @@ building_commercial_megaplex = {
 			job_clerk_add = 5
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -210,7 +236,6 @@ building_commercial_megaplex = {
 			job_merchant_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -222,31 +247,30 @@ building_commercial_megaplex = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
-	
 	prerequisites = {
 		"tech_interstellar_economics"
 	}
-	
-	show_tech_unlock_if = { 
+	show_tech_unlock_if = {
 		is_regular_empire = yes
-		NOT = { has_valid_civic = civic_agrarian_idyll }
+		NOT = {
+			has_valid_civic = civic_agrarian_idyll
+		}
 	}
-	
 	triggered_desc = {
 		text = job_clerk_effect_desc
 	}
-
 	triggered_desc = {
 		text = job_merchant_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { has_civic = civic_merchant_guilds }
+			owner = {
+				has_civic = civic_merchant_guilds
+			}
 		}
 		text = job_manager_effect_desc
 	}
-
 	ai_resource_production = {
 		energy = 4
 		trigger = {
@@ -272,19 +296,38 @@ building_commercial_megaplex = {
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 390
+				}
+			}
 		}
 		else = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_crystal_building
+						days = 510
+					}
+				}
 			}
 		}
 	}
@@ -293,44 +336,44 @@ building_commercial_megaplex = {
 building_galactic_stock_exchange = {
 	base_buildtime = @b2_time
 	base_cap_amount = 1
-
 	category = trade
-
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
+			owner = {
+				is_regular_empire = no
+			}
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 			buildings_no_crystals = yes
 		}
 	}
-
-
 	planet_modifier = {
 		job_merchant_add = 2
-		trade_value_mult = 0.20
+		trade_value_mult = 0.2
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_merchant_guilds }
+			owner = {
+				has_civic = civic_merchant_guilds
+			}
 		}
 		modifier = {
 			job_manager_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -342,23 +385,21 @@ building_galactic_stock_exchange = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
-
 	prerequisites = {
 		"tech_galactic_markets"
 	}
-
 	triggered_desc = {
 		text = job_merchant_effect_desc
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { has_civic = civic_merchant_guilds }
+			owner = {
+				has_civic = civic_merchant_guilds
+			}
 		}
 		text = job_manager_effect_desc
 	}
-
 	ai_resource_production = {
 		energy = 5
 		trigger = {
@@ -367,7 +408,6 @@ building_galactic_stock_exchange = {
 			}
 		}
 	}
-	
 	ai_resource_production = {
 		energy = 3
 		trigger = {
@@ -378,80 +418,94 @@ building_galactic_stock_exchange = {
 	}
 }
 
-
 ### MODDED ###
 building_farmer_market = {
 	base_buildtime = @b1_time
 	position_priority = 160
-
 	exempt_from_ai_planet_specialization = no
 	category = trade
-	
 	potential = {
 		exists = owner
 		owner = {
 			is_regular_empire = yes
 			has_valid_civic = civic_agrarian_idyll
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-	
 	allow = {
 		buildings_simple_allow = yes
 		OR = {
 			NOR = {
 				has_building = building_farmer_complex
-				num_buildings = { type = building_farmer_market value > 1 }
+				num_buildings = {
+					type = building_farmer_market
+					value > 1
+				}
 			}
-			owner = { is_ai = no }
+			owner = {
+				is_ai = no
+			}
 		}
 	}
-
 	destroy_trigger = {
 		OR = {
-			owner = { is_regular_empire = no }
-			owner = { NOT = { has_valid_civic = civic_agrarian_idyll } }
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				NOT = {
+					has_valid_civic = civic_agrarian_idyll
+				}
+			}
 			has_modifier = slave_colony
 			AND = {
-				owner = { is_ai = yes }
+				owner = {
+					is_ai = yes
+				}
 				OR = {
 					has_building = building_farmer_complex
-					num_buildings = { type = building_farmer_market value > 2 }
+					num_buildings = {
+						type = building_farmer_market
+						value > 2
+					}
 				}
 			}
 		}
 	}
-	
 	convert_to = {
 		building_commercial_zone
 	}
-	
 	planet_modifier = {
 		trade_value_mult = 0.02
 		pop_growth_speed = 0.02
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_civic = civic_merchant_guilds } }
+			owner = {
+				NOT = {
+					has_civic = civic_merchant_guilds
+				}
+			}
 		}
 		modifier = {
 			job_clerk_add = 3
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_merchant_guilds }
+			owner = {
+				has_civic = civic_merchant_guilds
+			}
 		}
 		modifier = {
 			job_manager_add = 1
 			job_clerk_add = 2
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -463,7 +517,6 @@ building_farmer_market = {
 			job_merchant_add = 1
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -473,7 +526,6 @@ building_farmer_market = {
 		}
 		text = job_merchant_effect_desc
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -500,20 +552,16 @@ building_farmer_market = {
 			minerals = @b2_upkeep
 		}
 	}
-	
 	prerequisites = {
 		"tech_interplanetary_commerce"
 	}
-	
-	show_tech_unlock_if = { 
+	show_tech_unlock_if = {
 		is_regular_empire = yes
 		has_valid_civic = civic_agrarian_idyll
 	}
-	
 	triggered_desc = {
 		text = job_clerk_effect_desc
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -523,19 +571,18 @@ building_farmer_market = {
 		}
 		text = job_merchant_effect_desc
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { has_civic = civic_merchant_guilds }
+			owner = {
+				has_civic = civic_merchant_guilds
+			}
 		}
 		text = job_manager_effect_desc
 	}
-	
 	upgrades = {
 		"building_farmer_complex"
 	}
-	
 	ai_resource_production = {
 		energy = 2
 		trigger = {
@@ -548,57 +595,63 @@ building_farmer_complex = {
 	base_buildtime = @b2_time
 	position_priority = 160
 	can_build = no
-
 	category = trade
-	
 	potential = {
 		exists = owner
 		owner = {
 			is_regular_empire = yes
 			has_valid_civic = civic_agrarian_idyll
 		}
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = slave_colony
+		}
 		has_building = building_farmer_market
 	}
-	
 	allow = {
 		buildings_simple_allow = yes
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		OR = {
-			owner = { is_regular_empire = no }
-			owner = { NOT = { has_valid_civic = civic_agrarian_idyll } }
+			owner = {
+				is_regular_empire = no
+			}
+			owner = {
+				NOT = {
+					has_valid_civic = civic_agrarian_idyll
+				}
+			}
 			has_modifier = slave_colony
 			buildings_no_crystals = yes
 		}
 	}
-	
 	convert_to = {
 		building_commercial_zone
 	}
-	
 	planet_modifier = {
 		trade_value_mult = 0.04
 		pop_growth_speed = 0.04
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_civic = civic_merchant_guilds } }
+			owner = {
+				NOT = {
+					has_civic = civic_merchant_guilds
+				}
+			}
 		}
 		modifier = {
 			job_merchant_add = 1
 			job_clerk_add = 6
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_merchant_guilds }
+			owner = {
+				has_civic = civic_merchant_guilds
+			}
 		}
 		modifier = {
 			job_merchant_add = 1
@@ -606,7 +659,6 @@ building_farmer_complex = {
 			job_clerk_add = 5
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -618,7 +670,6 @@ building_farmer_complex = {
 			job_merchant_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -648,32 +699,28 @@ building_farmer_complex = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
-	
 	prerequisites = {
 		"tech_interstellar_economics"
 	}
-	
-	show_tech_unlock_if = { 
+	show_tech_unlock_if = {
 		is_regular_empire = yes
 		has_valid_civic = civic_agrarian_idyll
 	}
-	
 	triggered_desc = {
 		text = job_clerk_effect_desc
 	}
-	
 	triggered_desc = {
 		text = job_merchant_effect_desc
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { has_civic = civic_merchant_guilds }
+			owner = {
+				has_civic = civic_merchant_guilds
+			}
 		}
 		text = job_manager_effect_desc
 	}
-
 	ai_resource_production = {
 		energy = 4
 		trigger = {
@@ -699,19 +746,38 @@ building_farmer_complex = {
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_crystal_building
+					days = 390
+				}
+			}
 		}
 		else = {
 			planet = {
-				owner = { set_timed_country_flag = { flag = buildings_new_crystal_building days = 510 } }
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_crystal_building
+						days = 510
+					}
+				}
 			}
 		}
 	}

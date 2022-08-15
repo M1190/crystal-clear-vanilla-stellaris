@@ -1,10 +1,8 @@
 ##########################################################################
 # Decisions
 ##########################################################################
-
 decision_prospect = {
 	owned_planets_only = yes
-
 	enactment_time = 180
 	resources = {
 		category = decisions
@@ -13,24 +11,26 @@ decision_prospect = {
 			energy = 500
 		}
 	}
-
 	potential = {
 		is_artificial = no
-		NOT = { is_planet_class = pc_machine }
-		NOT = { is_planet_class = pc_hive }
-		NOT = { is_planet_class = pc_city }
-		NOT = { is_planet_class = pc_relic }
+		NOR = {
+			is_planet_class = pc_machine
+			is_planet_class = pc_hive
+			is_planet_class = pc_city
+			is_planet_class = pc_relic
+		}
 		owner = {
 			has_active_tradition = tr_adaptability_finish
 		}
-		NOT = { has_planet_flag = planet_prospected }
+		NOT = {
+			has_planet_flag = planet_prospected
+		}
 	}
-	
 	allow = {
-		NOT = { has_modifier = delicate_ecosystem }
-		NOT = { has_modifier = eco_fragile_ecosystem }
+		NOT = {
+			has_modifier = delicate_ecosystem
+		}
 	}
-
 	effect = {
 		custom_tooltip = decision_prospect_effects_short
 		hidden_effect = {
@@ -54,7 +54,6 @@ decision_prospect = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 1
 		modifier = {
@@ -67,48 +66,48 @@ decision_prospect = {
 # Penal Colony
 decision_penal_colony = {
 	owned_planets_only = yes
-
 	prerequisites = {
 		"tech_penal_colonies"
 	}
-
 	resources = {
 		category = decisions
 		cost = {
 			unity = 1000
 		}
 	}
-
 	potential = {
 		is_capital = no
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
-		NOT = { has_modifier = eco_trash_colony }
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+		}
 		owner = {
 			is_regular_empire = yes
 		}
 		is_artificial = no
 		NOT = {
 			owner = {
-				any_owned_planet = { has_modifier = penal_colony }
+				any_owned_planet = {
+					has_modifier = penal_colony
+				}
 			}
 		}
 	}
-
 	allow = {
 		planet_size >= 15
-		NOT = { has_modifier = delicate_ecosystem }
-		NOT = { has_modifier = eco_fragile_ecosystem }
+		NOT = {
+			has_modifier = delicate_ecosystem
+		}
 	}
-
 	effect = {
 		add_modifier = {
 			modifier = penal_colony
 			days = -1
 		}
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
 	}
-
 	ai_weight = {
 		weight = 1
 		modifier = {
@@ -119,7 +118,9 @@ decision_penal_colony = {
 				owner = {
 					count_owned_planet = {
 						count > 3
-						limit = { planet_crime >= 25 }
+						limit = {
+							planet_crime >= 25
+						}
 					}
 				}
 			}
@@ -127,11 +128,16 @@ decision_penal_colony = {
 		modifier = {
 			factor = 0
 			OR = {
-				owner = { num_owned_planets < 5 }
+				owner = {
+					num_owned_planets < 5
+				}
 				is_planet_class = pc_gaia
 				is_planet_class = pc_relic
 				is_planet_class = pc_city
-				habitability = { who = owner_species value > 0.5 }
+				habitability = {
+					who = owner_species
+					value > 0.5
+				}
 				pop_percentage = {
 					percentage > 0.25
 					limit = {
@@ -167,23 +173,21 @@ decision_penal_colony = {
 decision_abolish_penal_colony = {
 	owned_planets_only = yes
 	icon = decision_penal_colony
-
 	resources = {
 		category = decisions
 		cost = {
 			unity = 2500
 		}
 	}
-
 	potential = {
 		has_modifier = penal_colony
 	}
-
 	effect = {
 		remove_modifier = penal_colony
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
@@ -192,67 +196,78 @@ decision_abolish_penal_colony = {
 # Thrall-World
 decision_slave_colony = {
 	owned_planets_only = yes
-
 	prerequisites = {
 		"tech_slave_colonies"
 	}
-
 	resources = {
 		category = decisions
 		cost = {
 			unity = 1000
 		}
 	}
-
 	potential = {
 		is_capital = no
-		NOT = { is_planet_class = pc_city }
-		NOT = { is_planet_class = pc_relic }
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = penal_colony }
-		NOT = { has_modifier = slave_colony }
-		NOT = { has_modifier = eco_trash_colony }
+		NOR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_relic
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
 		owner = {
 			is_regular_empire = yes
 		}
 		is_artificial = no
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = decision_slave_colony_must_have_slave
 			any_owned_pop = {
-				has_citizenship_type = { type = citizenship_slavery }
+				has_citizenship_type = {
+					type = citizenship_slavery
+				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = decision_resort_colony_no_districts
-			num_districts = { type = any value < 1 }
-			num_buildings = { type = any value < 2 }
+			num_districts = {
+				type = any
+				value < 1
+			}
+			num_buildings = {
+				type = any
+				value < 2
+			}
 		}
-		NOT = { has_modifier = delicate_ecosystem }
-		NOT = { has_modifier = eco_fragile_ecosystem }
+		NOT = {
+			has_modifier = delicate_ecosystem
+		}
 	}
-	
 	effect = {
 		custom_tooltip = decision_slave_colony_effects
 		add_modifier = {
 			modifier = slave_colony
 			days = -1
 		}
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
 	}
-
 	ai_weight = {
 		weight = 1
 		modifier = {
 			factor = 0
 			OR = {
-				owner = { num_owned_planets < 5 }
+				owner = {
+					num_owned_planets < 5
+				}
 				is_planet_class = pc_gaia
 				is_planet_class = pc_relic
 				is_planet_class = pc_city
-				habitability = { who = owner_species value > 0.75 }
+				habitability = {
+					who = owner_species
+					value > 0.75
+				}
 				pop_percentage = {
 					percentage > 0.25
 					limit = {
@@ -263,21 +278,30 @@ decision_slave_colony = {
 		}
 		modifier = {
 			factor = 0
-			OR = {
-				is_egalitarian = yes
-				is_xenophile = yes
+			exists = owner
+			owner = {
+				OR = {
+					is_egalitarian = yes
+					is_xenophile = yes
+				}
 			}
 		}
 		modifier = {
 			factor = 3
-			OR = {
-				is_authoritarian = yes
-				is_xenophobe = yes
+			exists = owner
+			owner = {
+				OR = {
+					is_authoritarian = yes
+					is_xenophobe = yes
+				}
 			}
 		}
 		modifier = {
 			factor = 3
-			is_civic_slaver_guilds = yes
+			exists = owner
+			owner = {
+				is_civic_slaver_guilds = yes
+			}
 		}
 	}
 }
@@ -285,30 +309,30 @@ decision_slave_colony = {
 decision_abolish_slave_colony = {
 	owned_planets_only = yes
 	icon = decision_slave_colony
-
 	resources = {
 		category = decisions
 		cost = {
 			unity = 2500
 		}
 	}
-
 	potential = {
 		has_modifier = slave_colony
 	}
-
 	effect = {
 		remove_modifier = slave_colony
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
 	}
-
 	ai_weight = {
 		weight = 0
 		modifier = {
 			weight = 2
 			NOT = {
 				any_owned_pop = {
-					has_citizenship_type = { type = citizenship_slavery }
+					has_citizenship_type = {
+						type = citizenship_slavery
+					}
 				}
 			}
 		}
@@ -318,25 +342,23 @@ decision_abolish_slave_colony = {
 # Resort Colony
 decision_resort_colony = {
 	owned_planets_only = yes
-
 	prerequisites = {
 		"tech_resort_colonies"
 	}
-
 	resources = {
 		category = decisions
 		cost = {
 			unity = 1000
 		}
 	}
-
 	potential = {
-		is_capital = no
-		NOT = { has_modifier = penal_colony }
-		NOT = { has_modifier = slave_colony }
-		is_city = no
-		is_nuked = no
-		NOT = { has_modifier = eco_trash_colony }
+		NOR = {
+			is_capital = yes
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+			is_city = yes
+			is_nuked = yes
+		}
 		owner = {
 			OR = {
 				is_regular_empire = yes
@@ -345,16 +367,22 @@ decision_resort_colony = {
 		}
 		is_artificial = no
 	}
-
 	allow = {
 		planet_size >= 15
-		NOT = { has_modifier = delicate_ecosystem }
-		NOT = { has_modifier = eco_fragile_ecosystem }
-		NOT = { has_deposit = d_exploited_homeworld }
+		NOR = {
+			has_modifier = delicate_ecosystem
+			has_deposit = d_exploited_homeworld
+		}
 		custom_tooltip = {
 			fail_text = decision_resort_colony_no_districts
-			num_districts = { type = any value < 1 }
-			num_buildings = { type = any value < 2 }
+			num_districts = {
+				type = any
+				value < 1
+			}
+			num_buildings = {
+				type = any
+				value < 2
+			}
 		}
 		custom_tooltip = {
 			fail_text = no_upgraded_capital_tooltip
@@ -364,61 +392,99 @@ decision_resort_colony = {
 			fail_text = decision_resort_colony_only_one
 			NOT = {
 				owner = {
-					any_owned_planet = { has_modifier = resort_colony }
+					any_owned_planet = {
+						has_modifier = resort_colony
+					}
 				}
 			}
 		}
 	}
-
 	effect = {
 		add_modifier = {
 			modifier = resort_colony
 			days = -1
 		}
 		if = {
-			limit = { owner = { is_regular_empire = yes } }
+			limit = {
+				owner = {
+					is_regular_empire = yes
+				}
+			}
 			add_deposit = d_resort_world
 		}
 		else_if = {
-			limit = { owner = { has_valid_civic = civic_machine_servitor } }
+			limit = {
+				owner = {
+					has_valid_civic = civic_machine_servitor
+				}
+			}
 			add_deposit = d_resort_world_robot
 		}
 		hidden_effect = {
 			remove_building = building_colony_shelter
 			add_building = building_resort_capital
 		}
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
 	}
-
 	ai_weight = {
 		weight = 0
 		modifier = {
 			weight = 2
 			exists = owner
 			owner = {
-				has_monthly_income = { resource = energy value > 25 }
-				has_monthly_income = { resource = minerals value > 25 }
+				has_monthly_income = {
+					resource = energy
+					value > 25
+				}
+				has_monthly_income = {
+					resource = minerals
+					value > 25
+				}
 				OR = {
-					has_monthly_income = { resource = food value > 25 }
+					has_monthly_income = {
+						resource = food
+						value > 25
+					}
 					country_uses_food = no
 				}
-				has_monthly_income = { resource = alloys value > 50 }
-				has_monthly_income = { resource = consumer_goods value > 25 }
+				has_monthly_income = {
+					resource = alloys
+					value > 50
+				}
+				has_monthly_income = {
+					resource = consumer_goods
+					value > 25
+				}
 			}
 			NOR = {
-				any_deposit = { has_deposit_category = deposit_cat_rare }
+				any_deposit = {
+					has_deposit_category = deposit_cat_rare
+				}
 				AND = {
-					num_free_districts = { type = district_farming value > 5 }
+					num_free_districts = {
+						type = district_farming
+						value > 5
+					}
 					country_uses_food = yes
 				}
-				num_free_districts = { type = district_mining value > 5 }
-				num_free_districts = { type = district_generator value > 5 }
+				num_free_districts = {
+					type = district_mining
+					value > 5
+				}
+				num_free_districts = {
+					type = district_generator
+					value > 5
+				}
 			}
 		}
 		modifier = {
 			factor = 0
 			OR = {
-				owner = { num_owned_planets < 5 }
+				owner = {
+					num_owned_planets < 5
+				}
 				is_planet_class = pc_nuked
 				has_modifier = hazardous_weather
 				has_modifier = dangerous_wildlife
@@ -450,18 +516,15 @@ decision_resort_colony = {
 decision_abolish_resort_colony = {
 	owned_planets_only = yes
 	icon = decision_resort_colony
-
 	resources = {
 		category = decisions
 		cost = {
 			unity = 2500
 		}
 	}
-
 	potential = {
 		has_modifier = resort_colony
 	}
-
 	effect = {
 		remove_modifier = resort_colony
 		remove_deposit = d_resort_world
@@ -470,17 +533,18 @@ decision_abolish_resort_colony = {
 			remove_building = building_resort_capital
 			add_building = building_colony_shelter
 		}
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
 	}
-
 	ai_weight = {
 		weight = 0
 		modifier = {
 			weight = 10
 			exists = owner
-			owner = { 
+			owner = {
 				NOR = {
-					is_regular_empire = yes 
+					is_regular_empire = yes
 					has_valid_civic = civic_machine_servitor
 				}
 			}
@@ -491,7 +555,6 @@ decision_abolish_resort_colony = {
 # Mastery of Nature
 decision_mastery_of_nature = {
 	owned_planets_only = yes
-
 	enactment_time = 360
 	resources = {
 		category = decisions
@@ -501,15 +564,15 @@ decision_mastery_of_nature = {
 			minerals = 2000
 		}
 	}
-
 	potential = {
 		is_artificial = no
 		owner = {
 			has_ascension_perk = ap_mastery_of_nature
 		}
-		NOT = { has_modifier = mastery_of_nature }
+		NOT = {
+			has_modifier = mastery_of_nature
+		}
 	}
-
 	effect = {
 		add_modifier = {
 			modifier = mastery_of_nature
@@ -518,12 +581,24 @@ decision_mastery_of_nature = {
 		if = {
 			limit = {
 				is_artificial = no
-				NOT = { is_planet_class = pc_machine }
-				NOT = { is_planet_class = pc_hive }
-				NOT = { is_planet_class = pc_city }
-				NOT = { is_planet_class = pc_relic }
-				NOT = { has_modifier = delicate_ecosystem }
-				NOT = { has_modifier = eco_fragile_ecosystem }
+				NOT = {
+					is_planet_class = pc_machine
+				}
+				NOT = {
+					is_planet_class = pc_hive
+				}
+				NOT = {
+					is_planet_class = pc_city
+				}
+				NOT = {
+					is_planet_class = pc_relic
+				}
+				NOT = {
+					has_modifier = delicate_ecosystem
+				}
+				NOT = {
+					has_modifier = eco_fragile_ecosystem
+				}
 			}
 			random_list = {
 				2 = {
@@ -539,13 +614,13 @@ decision_mastery_of_nature = {
 								type = name
 								localization = PLANET
 								scope = this
-							}				
+							}
 							variable = {
 								type = name
 								localization = DEPOSIT
 								scope = last_added_deposit
 							}
-						}			
+						}
 					}
 				}
 				3 = {
@@ -553,13 +628,12 @@ decision_mastery_of_nature = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 5
 		modifier = {
 			factor = 0
 			free_district_slots > 0
-			num_pops < 50 #carrying capacity bonus always good at that stage
+			num_pops < 50			#carrying capacity bonus always good at that stage
 		}
 	}
 }
@@ -572,11 +646,12 @@ decision_consecrated_worlds = {
 			unity = 500
 		}
 	}
-
 	potential = {
 		exists = space_owner
 		exists = from
-		space_owner = { is_same_value = from }
+		space_owner = {
+			is_same_value = from
+		}
 		from = {
 			has_ascension_perk = ap_consecrated_worlds
 		}
@@ -591,7 +666,6 @@ decision_consecrated_worlds = {
 			has_modifier = consecrated_quality_4
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			from = {
@@ -603,11 +677,12 @@ decision_consecrated_worlds = {
 			fail_text = consecrated_worlds_too_many
 		}
 		custom_tooltip = {
-			NOT = { exists = owner }
+			NOT = {
+				exists = owner
+			}
 			fail_text = consecrated_worlds_planet_owned
 		}
 	}
-
 	effect = {
 		custom_tooltip = decision_consecrated_worlds_effects_custom
 		# determine quality tier, set variable
@@ -615,7 +690,12 @@ decision_consecrated_worlds = {
 			set_planet_flag = consecrated@from
 			from = {
 				if = {
-					limit = { check_variable = { which = num_consecrated_worlds value < 1 }	}
+					limit = {
+						check_variable = {
+							which = num_consecrated_worlds
+							value < 1
+						}
+					}
 					set_variable = {
 						which = num_consecrated_worlds
 						value = 0
@@ -645,12 +725,16 @@ decision_consecrated_worlds = {
 						has_planet_flag = holy_world_2
 						has_planet_flag = holy_world_3
 						has_planet_flag = holy_world_4
-						has_modifier = holy_planet # mod compatibility
+						has_modifier = holy_planet						# mod compatibility
 					}
-					any_country = { has_country_flag = fallen_empire_2 }
+					any_country = {
+						has_country_flag = fallen_empire_2
+					}
 				}
 				random_country = {
-					limit = { has_country_flag = fallen_empire_2 }
+					limit = {
+						has_country_flag = fallen_empire_2
+					}
 					add_opinion_modifier = {
 						who = from
 						modifier = opinion_worships_our_holy_world
@@ -741,7 +825,9 @@ decision_consecrated_worlds = {
 								has_deposit = d_spice_mine
 								AND = {
 									has_deposit = d_portal_research_zone
-									NOT = { has_planet_flag = dportal_hell }
+									NOT = {
+										has_planet_flag = dportal_hell
+									}
 								}
 							}
 						}
@@ -921,7 +1007,6 @@ decision_consecrated_worlds = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 0
 		modifier = {
@@ -930,7 +1015,12 @@ decision_consecrated_worlds = {
 			NOT = {
 				space_owner = {
 					any_owned_species = {
-						prevprev = { habitability = { who = prev value > 0.35 }	}
+						prevprev = {
+							habitability = {
+								who = prev
+								value > 0.35
+							}
+						}
 					}
 				}
 			}
@@ -946,7 +1036,6 @@ decision_unconsecrated_worlds = {
 			unity = 500
 		}
 	}
-
 	potential = {
 		exists = from
 		from = {
@@ -954,7 +1043,6 @@ decision_unconsecrated_worlds = {
 		}
 		has_planet_flag = consecrated@from
 	}
-
 	allow = {
 		OR = {
 			has_modifier = consecrated_quality_1
@@ -963,7 +1051,6 @@ decision_unconsecrated_worlds = {
 			has_modifier = consecrated_quality_4
 		}
 	}
-
 	effect = {
 		hidden_effect = {
 			from = {
@@ -1020,13 +1107,18 @@ decision_unconsecrated_worlds = {
 						has_planet_flag = holy_world_2
 						has_planet_flag = holy_world_3
 						has_planet_flag = holy_world_4
-						has_modifier = holy_planet # mod compatibility
+						has_modifier = holy_planet						# mod compatibility
 					}
-					any_country = { has_country_flag = fallen_empire_2 }
+					any_country = {
+						has_country_flag = fallen_empire_2
+					}
 				}
 				random_country = {
-					limit = { has_country_flag = fallen_empire_2 }
-					remove_opinion_modifier = { # Currently removes all instances of this modifier, even if several have been added
+					limit = {
+						has_country_flag = fallen_empire_2
+					}
+					remove_opinion_modifier = {
+						# Currently removes all instances of this modifier, even if several have been added
 						who = from
 						modifier = opinion_worships_our_holy_world
 					}
@@ -1044,7 +1136,6 @@ decision_unconsecrated_worlds = {
 decision_arcology_project = {
 	owned_planets_only = yes
 	icon = decision_arcology_project
-
 	enactment_time = 3600
 	resources = {
 		category = decisions
@@ -1053,7 +1144,6 @@ decision_arcology_project = {
 			minerals = 20000
 		}
 	}
-
 	potential = {
 		NOR = {
 			is_planet_class = pc_city
@@ -1072,19 +1162,40 @@ decision_arcology_project = {
 			}
 		}
 	}
-	
 	allow = {
 		if = {
-			limit = { owner = { is_ai = no } }
+			limit = {
+				owner = {
+					is_ai = no
+				}
+			}
 			custom_tooltip = {
 				fail_text = decision_arcology_project_requirements
 				free_district_slots < 1
-				num_districts = { type = district_farming value < 1 }
-				num_districts = { type = district_mining value < 1 }
-				num_districts = { type = district_generator value < 1 }
-				num_districts = { type = district_farming_uncapped value < 1 }
-				num_districts = { type = district_mining_uncapped value < 1 }
-				num_districts = { type = district_generator_uncapped value < 1 }
+				num_districts = {
+					type = district_farming
+					value < 1
+				}
+				num_districts = {
+					type = district_mining
+					value < 1
+				}
+				num_districts = {
+					type = district_generator
+					value < 1
+				}
+				num_districts = {
+					type = district_farming_uncapped
+					value < 1
+				}
+				num_districts = {
+					type = district_mining_uncapped
+					value < 1
+				}
+				num_districts = {
+					type = district_generator_uncapped
+					value < 1
+				}
 			}
 		}
 		num_uncleared_blockers < 1
@@ -1099,7 +1210,10 @@ decision_arcology_project = {
 			OR = {
 				AND = {
 					exists = owner
-					owner = { is_ai = yes } # making ai remove them first is probably too much to ask
+					owner = {
+						is_ai = yes
+					}
+					# making ai remove them first is probably too much to ask
 				}
 				NOR = {
 					has_deposit = d_underground_farm
@@ -1109,7 +1223,6 @@ decision_arcology_project = {
 			}
 		}
 	}
-	
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_arcology_project_effects
@@ -1131,9 +1244,14 @@ decision_arcology_project = {
 				graphical_culture = owner
 			}
 			owner = {
-				country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
+				country_event = {
+					id = distar.201
+				}
+				# port for living planet distar.197, triggers in event
 			}
-			planet_event = { id = mega.200 }
+			planet_event = {
+				id = mega.200
+			}
 			if = {
 				limit = {
 					OR = {
@@ -1142,12 +1260,14 @@ decision_arcology_project = {
 					}
 				}
 				owner = {
-					set_timed_country_flag = { flag = resolution_breached_terraformed days = 3600 }
+					set_timed_country_flag = {
+						flag = resolution_breached_terraformed
+						days = 3600
+					}
 				}
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 1
 		modifier = {
@@ -1214,7 +1334,6 @@ decision_arcology_project = {
 decision_arcology_project_relic = {
 	owned_planets_only = yes
 	icon = decision_arcology_project
-
 	enactment_time = 3600
 	resources = {
 		category = decisions
@@ -1223,7 +1342,6 @@ decision_arcology_project_relic = {
 			minerals = 20000
 		}
 	}
-
 	potential = {
 		is_planet_class = pc_relic
 		is_artificial = no
@@ -1234,22 +1352,28 @@ decision_arcology_project_relic = {
 			has_modifier = pm_wenkwort_custodian
 		}
 	}
-
 	allow = {
 		num_uncleared_blockers < 1
-		owner = { has_technology = tech_housing_2 }
+		owner = {
+			has_technology = tech_housing_2
+		}
 	}
-
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_arcology_project_effects
 		if = {
-			limit = { has_deposit = d_central_spire }
+			limit = {
+				has_deposit = d_central_spire
+			}
 			custom_tooltip = decision_arcology_collapsed_spire_effects
-			hidden_effect = { set_planet_flag = has_central_spire }
+			hidden_effect = {
+				set_planet_flag = has_central_spire
+			}
 		}
 		if = {
-			limit = { has_deposit = d_industrial_sector }
+			limit = {
+				has_deposit = d_industrial_sector
+			}
 			custom_tooltip = decision_arcology_industrial_sector_effects
 			owner = {
 				add_resource = {
@@ -1277,10 +1401,14 @@ decision_arcology_project_relic = {
 			}
 			add_deposit = d_former_relic_world
 			if = {
-				limit = { has_planet_flag = has_central_spire }
+				limit = {
+					has_planet_flag = has_central_spire
+				}
 				add_deposit = d_central_spire_repaired
 			}
-			planet_event = { id =  mega.201 }
+			planet_event = {
+				id = mega.201
+			}
 			if = {
 				limit = {
 					OR = {
@@ -1289,25 +1417,32 @@ decision_arcology_project_relic = {
 					}
 				}
 				owner = {
-					set_timed_country_flag = { flag = resolution_breached_terraformed days = 3600 }
+					set_timed_country_flag = {
+						flag = resolution_breached_terraformed
+						days = 3600
+					}
 				}
 			}
 			owner = {
 				remove_country_flag = memorialist_terraformed_relic
-				set_timed_country_flag = { flag = memorialist_terraformed_relic days = 7200 }
+				set_timed_country_flag = {
+					flag = memorialist_terraformed_relic
+					days = 7200
+				}
 			}
 			while = {
 				count = 4
 				solar_system = {
 					random_system_ambient_object = {
-						limit = { has_ambient_object_flag = relic_world_debris }
+						limit = {
+							has_ambient_object_flag = relic_world_debris
+						}
 						destroy_ambient_object = this
 					}
 				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 		modifier = {
@@ -1315,7 +1450,9 @@ decision_arcology_project_relic = {
 			free_district_slots < 1
 			num_uncleared_blockers < 1
 			num_pops > 50
-			NOT = { exists = archaeological_site }
+			NOT = {
+				exists = archaeological_site
+			}
 		}
 		modifier = {
 			factor = 0.001
@@ -1359,9 +1496,7 @@ decision_arcology_project_relic = {
 # Market Candidate Nomination
 decision_market_nomination = {
 	owned_planets_only = yes
-
 	# instant
-
 	resources = {
 		category = decisions
 		cost = {
@@ -1369,16 +1504,16 @@ decision_market_nomination = {
 			influence = 150
 		}
 	}
-
 	potential = {
 		OR = {
 			has_global_flag = ongoing_market_nomination
 			has_global_flag = ongoing_market_relocation_nomination
 		}
 		#from = { has_communications = event_target:50percentcomms } # should include self
-		from = { has_country_flag = market_nomination_eligible }
+		from = {
+			has_country_flag = market_nomination_eligible
+		}
 	}
-
 	allow = {
 		num_pops > 20
 		custom_tooltip = {
@@ -1390,15 +1525,14 @@ decision_market_nomination = {
 							has_modifier = market_nominee_level_1
 							has_modifier = market_nominee_level_2
 							has_modifier = market_nominee_level_3
-							has_modifier = market_nominee_level_4 # boosted once
-							has_modifier = market_nominee_level_5 # boosted twice
+							has_modifier = market_nominee_level_4							# boosted once
+							has_modifier = market_nominee_level_5							# boosted twice
 						}
 					}
 				}
 			}
 		}
 	}
-
 	effect = {
 		custom_tooltip = decision_market_nomination_effects
 		hidden_effect = {
@@ -1428,15 +1562,21 @@ decision_market_nomination = {
 					}
 					modifier = {
 						factor = 0.33
-						from = { trade_income >= 100 }
+						from = {
+							trade_income >= 100
+						}
 					}
 					modifier = {
 						factor = 2
-						from = { trade_income <= 50 }
+						from = {
+							trade_income <= 50
+						}
 					}
 					modifier = {
 						factor = 1.5
-						from = { has_ethic = ethic_gestalt_consciousness }
+						from = {
+							has_ethic = ethic_gestalt_consciousness
+						}
 					}
 				}
 				6 = {
@@ -1464,15 +1604,21 @@ decision_market_nomination = {
 					}
 					modifier = {
 						factor = 2
-						from = { trade_income >= 120 }
+						from = {
+							trade_income >= 120
+						}
 					}
 					modifier = {
 						factor = 0.5
-						from = { trade_income <= 50 }
+						from = {
+							trade_income <= 50
+						}
 					}
 					modifier = {
 						factor = 0.75
-						from = { has_ethic = ethic_gestalt_consciousness }
+						from = {
+							has_ethic = ethic_gestalt_consciousness
+						}
 					}
 					add_modifier = {
 						modifier = market_nominee_level_3
@@ -1488,7 +1634,6 @@ decision_market_nomination = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 50
 		modifier = {
@@ -1510,15 +1655,21 @@ decision_market_nomination = {
 		}
 		modifier = {
 			factor = 0.25
-			from = { is_xenophobe = yes }
+			from = {
+				is_xenophobe = yes
+			}
 		}
 		modifier = {
 			factor = 0
-			from = { has_ethic = ethic_gestalt_consciousness }
+			from = {
+				has_ethic = ethic_gestalt_consciousness
+			}
 		}
 		modifier = {
 			factor = 0.1
-			from = { is_anti_corp = yes }
+			from = {
+				is_anti_corp = yes
+			}
 		}
 		modifier = {
 			factor = 4
@@ -1538,36 +1689,39 @@ decision_boost_market_nomination = {
 			influence = 300
 		}
 	}
-
 	potential = {
 		OR = {
 			has_global_flag = ongoing_market_nomination
 			has_global_flag = ongoing_market_relocation_nomination
 		}
 		#from = { has_communications = event_target:50percentcomms } # should include self
-		from = { has_country_flag = market_nomination_eligible }
+		from = {
+			has_country_flag = market_nomination_eligible
+		}
 		OR = {
 			has_modifier = market_nominee_level_1
 			has_modifier = market_nominee_level_2
 			has_modifier = market_nominee_level_3
-			has_modifier = market_nominee_level_4 # maxed out and boosted once
-			has_modifier = market_nominee_level_5 # maxed out and boosted twice
+			has_modifier = market_nominee_level_4			# maxed out and boosted once
+			has_modifier = market_nominee_level_5			# maxed out and boosted twice
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = max_boosted
-			NOT = { has_planet_flag = boosted_twice }
+			NOT = {
+				has_planet_flag = boosted_twice
+			}
 		}
 	}
-
 	effect = {
 		custom_tooltip = decision_boost_market_nomination_effects
 		hidden_effect = {
 			# boost counter
 			if = {
-				limit = { has_planet_flag = boosted_once }
+				limit = {
+					has_planet_flag = boosted_once
+				}
 				set_planet_flag = boosted_twice
 			}
 			else = {
@@ -1575,7 +1729,9 @@ decision_boost_market_nomination = {
 			}
 			# boost rating
 			if = {
-				limit = { has_modifier = market_nominee_level_1 }
+				limit = {
+					has_modifier = market_nominee_level_1
+				}
 				remove_modifier = market_nominee_level_1
 				add_modifier = {
 					modifier = market_nominee_level_2
@@ -1583,7 +1739,9 @@ decision_boost_market_nomination = {
 				}
 			}
 			else_if = {
-				limit = { has_modifier = market_nominee_level_2 }
+				limit = {
+					has_modifier = market_nominee_level_2
+				}
 				remove_modifier = market_nominee_level_2
 				add_modifier = {
 					modifier = market_nominee_level_3
@@ -1591,7 +1749,9 @@ decision_boost_market_nomination = {
 				}
 			}
 			else_if = {
-				limit = { has_modifier = market_nominee_level_3 }
+				limit = {
+					has_modifier = market_nominee_level_3
+				}
 				remove_modifier = market_nominee_level_3
 				add_modifier = {
 					modifier = market_nominee_level_4
@@ -1599,7 +1759,9 @@ decision_boost_market_nomination = {
 				}
 			}
 			else_if = {
-				limit = { has_modifier = market_nominee_level_4 }
+				limit = {
+					has_modifier = market_nominee_level_4
+				}
 				remove_modifier = market_nominee_level_4
 				add_modifier = {
 					modifier = market_nominee_level_5
@@ -1614,7 +1776,6 @@ decision_boost_market_nomination = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 50
 		modifier = {
@@ -1636,11 +1797,15 @@ decision_boost_market_nomination = {
 		}
 		modifier = {
 			factor = 0.25
-			from = { is_xenophobe = yes }
+			from = {
+				is_xenophobe = yes
+			}
 		}
 		modifier = {
 			factor = 0.1
-			from = { is_anti_corp = yes }
+			from = {
+				is_anti_corp = yes
+			}
 		}
 		modifier = {
 			factor = 4
@@ -1654,13 +1819,11 @@ decision_boost_market_nomination = {
 decision_lithoid_swarm_consume_world = {
 	icon = decision_burning_settlement
 	sound = event_structural_collapse
-
 	enactment_time = 360
 	resources = {
 		category = decisions
 	}
 	owned_planets_only = yes
-
 	potential = {
 		owner = {
 			is_lithoid_empire = yes
@@ -1669,60 +1832,84 @@ decision_lithoid_swarm_consume_world = {
 		can_have_habitable_deposits = yes
 		is_capital = no
 	}
-
 	allow = {
-		num_free_districts = { type = any value > 0 }
+		num_free_districts = {
+			type = any
+			value > 0
+		}
 	}
-
 	effect = {
 		custom_tooltip = decision_lithoid_swarm_consume_world_effect_desc
-
 		if = {
-			limit = { num_districts = { type = any value > 0 } }
+			limit = {
+				num_districts = {
+					type = any
+					value > 0
+				}
+			}
 			custom_tooltip = decision_lithoid_swarm_consume_world_destroy_district_desc
-
 			hidden_effect = {
 				random_list = {
 					1 = {
 						modifier = {
 							factor = 0
-							num_districts = { type = district_hive value = 0 }
+							num_districts = {
+								type = district_hive
+								value = 0
+							}
 						}
 						remove_district = district_hive
 					}
 					1 = {
 						modifier = {
 							factor = 0
-							num_districts = { type = district_generator value = 0 }
+							num_districts = {
+								type = district_generator
+								value = 0
+							}
 						}
 						remove_district = district_generator
 					}
 					1 = {
 						modifier = {
 							factor = 0
-							num_districts = { type = district_mining value = 0 }
+							num_districts = {
+								type = district_mining
+								value = 0
+							}
 						}
 						remove_district = district_mining
 					}
 					3 = {
 						modifier = {
 							factor = 0
-							num_districts = { type = district_farming value = 0 }
+							num_districts = {
+								type = district_farming
+								value = 0
+							}
 						}
 						remove_district = district_farming
 					}
 				}
 			}
 		}
-
 		hidden_effect = {
 			if = {
-				limit = { num_free_districts = { type = any value >= 2 } }
+				limit = {
+					num_free_districts = {
+						type = any
+						value >= 2
+					}
+				}
 				add_deposit = d_lithoid_devastation
 				add_deposit = d_lithoid_devastation
 				add_planet_devastation = 20
-				create_pop = { species = owner_main_species }
-				create_pop = { species = owner_main_species }
+				create_pop = {
+					species = owner_main_species
+				}
+				create_pop = {
+					species = owner_main_species
+				}
 				owner = {
 					add_monthly_resource_mult = {
 						resource = minerals
@@ -1750,14 +1937,36 @@ decision_lithoid_swarm_consume_world = {
 					}
 				}
 				random_list = {
-					30 = { }
-					5 = { owner = { add_resource = { rare_crystals = 500 } } }
-					5 = { owner = { add_resource = { exotic_gases = 500 } } }
-					5 = { owner = { add_resource = { volatile_motes = 500 } } }
+					30 = {
+					}
+					5 = {
+						owner = {
+							add_resource = {
+								rare_crystals = 500
+							}
+						}
+					}
+					5 = {
+						owner = {
+							add_resource = {
+								exotic_gases = 500
+							}
+						}
+					}
+					5 = {
+						owner = {
+							add_resource = {
+								volatile_motes = 500
+							}
+						}
+					}
 				}
-
 				if = {
-					limit = { owner = { is_ai = yes } }
+					limit = {
+						owner = {
+							is_ai = yes
+						}
+					}
 					random_owned_pop = {
 						resettle_pop = {
 							pop = this
@@ -1769,7 +1978,9 @@ decision_lithoid_swarm_consume_world = {
 			else = {
 				add_deposit = d_lithoid_devastation
 				add_planet_devastation = 10
-				create_pop = { species = owner_main_species }
+				create_pop = {
+					species = owner_main_species
+				}
 				owner = {
 					add_monthly_resource_mult = {
 						resource = minerals
@@ -1797,10 +2008,29 @@ decision_lithoid_swarm_consume_world = {
 					}
 				}
 				random_list = {
-					30 = { }
-					5 = { owner = { add_resource = { rare_crystals = 250 } } }
-					5 = { owner = { add_resource = { exotic_gases = 250 } } }
-					5 = { owner = { add_resource = { volatile_motes = 250 } } }
+					30 = {
+					}
+					5 = {
+						owner = {
+							add_resource = {
+								rare_crystals = 250
+							}
+						}
+					}
+					5 = {
+						owner = {
+							add_resource = {
+								exotic_gases = 250
+							}
+						}
+					}
+					5 = {
+						owner = {
+							add_resource = {
+								volatile_motes = 250
+							}
+						}
+					}
 				}
 			}
 			create_message = {
@@ -1808,7 +2038,6 @@ decision_lithoid_swarm_consume_world = {
 				localization = MESSAGE_TERRAVORE_CONSUME_WORLD_MOD_TEXT
 				days = 30
 				target = this
-
 				variable = {
 					type = name
 					localization = PLANET
@@ -1817,7 +2046,10 @@ decision_lithoid_swarm_consume_world = {
 			}
 			if = {
 				limit = {
-					num_free_districts = { type = any value <= 4 }
+					num_free_districts = {
+						type = any
+						value <= 4
+					}
 					num_uncleared_blockers > 0
 				}
 				random_deposit = {
@@ -1828,13 +2060,16 @@ decision_lithoid_swarm_consume_world = {
 				}
 			}
 			# Abandon the planet if we've finished consuming the planet
-			owner = { country_event = { id = colony.185 days = 1 } }
+			owner = {
+				country_event = {
+					id = colony.185
+					days = 1
+				}
+			}
 		}
 	}
-
 	ai_weight = {
 		weight = 5
-
 		# don't wreck worlds you want to keep
 		modifier = {
 			factor = 0
@@ -1847,7 +2082,6 @@ decision_lithoid_swarm_consume_world = {
 decision_shattered_ring_project = {
 	owned_planets_only = yes
 	icon = decision_arcology_project
-
 	enactment_time = 3600
 	resources = {
 		category = decisions
@@ -1855,12 +2089,10 @@ decision_shattered_ring_project = {
 			alloys = 10000
 		}
 	}
-
 	potential = {
 		is_planet_class = pc_shattered_ring_habitable
 		exists = owner
 	}
-
 	allow = {
 		num_uncleared_blockers < 1
 		owner = {
@@ -1869,29 +2101,31 @@ decision_shattered_ring_project = {
 			has_technology = tech_zero_point_power
 		}
 	}
-
 	effect = {
 		# Make ringworld
 		custom_tooltip = decision_shattered_ring_project_effects
 		hidden_effect = {
 			clear_deposits = yes
 			change_pc = pc_ringworld_habitable
-
 			# Remove Scrap Processing Buildings
 			if = {
-				limit = { has_building = building_mineral_purification_plant }
+				limit = {
+					has_building = building_mineral_purification_plant
+				}
 				remove_building = building_mineral_purification_plant
 			}
-
 			if = {
-				limit = { has_building = building_mineral_purification_hub }
+				limit = {
+					has_building = building_mineral_purification_hub
+				}
 				remove_building = building_mineral_purification_hub
 			}
-
 			# This removes the extra districts when fixing the ring world.
 			if = {
 				limit = {
-					owner = { is_regular_empire = yes }
+					owner = {
+						is_regular_empire = yes
+					}
 				}
 				shattered_ring_world_conversion_effect = {
 					DISTRICT = district_rw_city
@@ -1902,10 +2136,11 @@ decision_shattered_ring_project = {
 					VARIABLE = num_commercial_districts
 				}
 			}
-
 			if = {
 				limit = {
-					owner = { is_hive_empire = yes }
+					owner = {
+						is_hive_empire = yes
+					}
 				}
 				shattered_ring_world_conversion_effect = {
 					DISTRICT = district_rw_hive
@@ -1916,10 +2151,11 @@ decision_shattered_ring_project = {
 					VARIABLE = num_generator_districts
 				}
 			}
-
 			if = {
 				limit = {
-					owner = { is_machine_empire = yes }
+					owner = {
+						is_machine_empire = yes
+					}
 				}
 				shattered_ring_world_conversion_effect = {
 					DISTRICT = district_rw_nexus
@@ -1930,7 +2166,6 @@ decision_shattered_ring_project = {
 					VARIABLE = num_generator_districts
 				}
 			}
-
 			# All empire types get farming and industrial districts
 			shattered_ring_world_conversion_effect = {
 				DISTRICT = district_rw_farming
@@ -1944,7 +2179,6 @@ decision_shattered_ring_project = {
 			set_planet_size = 10
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 		modifier = {
@@ -1952,14 +2186,18 @@ decision_shattered_ring_project = {
 			exists = owner
 			OR = {
 				has_crisis = yes
-				owner = { is_at_war = yes }
+				owner = {
+					is_at_war = yes
+				}
 				owner = {
 					has_monthly_income = {
 						resource = alloys
 						value < 50
 					}
 				}
-				owner = { used_naval_capacity_percent < 0.5 }
+				owner = {
+					used_naval_capacity_percent < 0.5
+				}
 			}
 		}
 	}

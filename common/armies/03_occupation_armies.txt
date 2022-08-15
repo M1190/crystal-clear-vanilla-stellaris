@@ -2,18 +2,16 @@
 #maintenance is directly scripted here. 0.25 translates to 0.25 monthly cost (excluding other upkeep modifiers)
 #morale_damage = 1		# average morale damage of the army, default: auto (calculated from morale * MORALE_DAMAGE_MULT)
 #building spawned armies can't be built normally, but only created from pops working buildings
-
 # Occupation Armies
 occupation_army = {
 	defensive = yes
 	occupation = yes
 	health = 1.25
-	damage = 1.50
+	damage = 1.5
 	morale = 1.25
-	collateral_damage = 0.0
+	collateral_damage = 0
 	war_exhaustion = 0.5
 	icon = GFX_army_type_defensive
-
 	potential = {
 		from = {
 			NOR = {
@@ -23,9 +21,13 @@ occupation_army = {
 			}
 		}
 		owner = {
-			NOT = { can_use_undead_armies = yes }
+			NOT = {
+				can_use_undead_armies = yes
+			}
 			OR = {
-				NOT = { has_authority = auth_machine_intelligence }
+				NOT = {
+					has_authority = auth_machine_intelligence
+				}
 				has_valid_civic = civic_machine_assimilator
 			}
 		}
@@ -36,30 +38,36 @@ occupation_army = {
 robotic_occupation_army = {
 	defensive = yes
 	occupation = yes
-	damage = 1.50
-	health = 2.00
-	morale_damage = 1.00
-	collateral_damage = 0.0
+	damage = 1.5
+	health = 2
+	morale_damage = 1
+	collateral_damage = 0
 	war_exhaustion = 0.05
 	has_morale = no
 	icon = GFX_army_type_robot
 	has_species = yes
-
 	potential = {
-		from = { 
+		from = {
 			has_trait = "trait_mechanical"
 		}
 		owner = {
-			NOT = { has_authority = auth_machine_intelligence }
+			NOT = {
+				has_authority = auth_machine_intelligence
+			}
 			OR = {
-				NOT = { has_technology = tech_synthetic_workers }
+				NOT = {
+					has_technology = tech_synthetic_workers
+				}
 				has_policy_flag = ai_outlawed
 			}
 		}
 	}
-
 	allow = {
-		owner = { NOT = { has_policy_flag = robots_outlawed } }
+		owner = {
+			NOT = {
+				has_policy_flag = robots_outlawed
+			}
+		}
 	}
 }
 
@@ -67,17 +75,18 @@ robotic_occupation_army = {
 machine_occupation_army = {
 	defensive = yes
 	occupation = yes
-	health = 2.50
+	health = 2.5
 	damage = 1.5
 	has_morale = no
-	morale_damage = 1.00
-	collateral_damage = 0.0
+	morale_damage = 1
+	collateral_damage = 0
 	war_exhaustion = 0.25
 	icon = GFX_army_type_machine_defensive
 	has_species = yes
-
 	potential = {
-		owner = { has_authority = auth_machine_intelligence }
+		owner = {
+			has_authority = auth_machine_intelligence
+		}
 		from = {
 			has_trait = "trait_machine_unit"
 		}

@@ -4,22 +4,20 @@
 building_military_academy = {
 	base_buildtime = @b2_time
 	base_cap_amount = 1
-
 	category = army
-	
 	potential = {
 		buildings_simple_allow = yes
 		exists = owner
 		owner = {
-			NOT = { has_valid_civic = civic_machine_terminator }
+			NOT = {
+				has_valid_civic = civic_machine_terminator
+			}
 			can_use_undead_armies = no
 		}
 	}
-	
 	allow = {
 		has_upgraded_capital = yes
 	}
-	
 	destroy_trigger = {
 		exists = owner
 		owner = {
@@ -29,23 +27,21 @@ building_military_academy = {
 			}
 		}
 	}
-	
 	convert_to = {
 		building_war_factory
 		building_dread_encampment
 	}
-	
 	army_modifier = {
 		army_starting_experience_add = 100
 	}
-	
 	planet_modifier = {
 		planet_army_build_speed_mult = 0.5
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		modifier = {
 			job_soldier_add = 1
@@ -53,56 +49,60 @@ building_military_academy = {
 	}
 	triggered_planet_modifier = {
 		potential = {
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_warrior_drone_add = 1
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
 			minerals = @b1_minerals
-		}			
+		}
 		upkeep = {
 			energy = @b1_upkeep
 		}
 	}
-	
 	prerequisites = {
 		"tech_centralized_command"
 	}
-	
-	show_tech_unlock_if = { 
-		NOT = { has_valid_civic = civic_machine_terminator }
+	show_tech_unlock_if = {
+		NOT = {
+			has_valid_civic = civic_machine_terminator
+		}
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_warrior_drone_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		text = job_soldier_effect_desc
 	}
-	
 	triggered_desc = {
 		trigger = {
 			always = yes
 		}
 		text = building_military_academy_tooltip
 	}
-	
 	#trick the ai into building this
 	ai_resource_production = {
-		trigger = { always = yes }
+		trigger = {
+			always = yes
+		}
 		alloys = 5
 		minerals = 5
 	}
@@ -111,79 +111,74 @@ building_military_academy = {
 building_dread_encampment = {
 	base_buildtime = @b2_time
 	base_cap_amount = 1
-
 	category = army
-	
 	potential = {
 		buildings_simple_allow = yes
 		exists = owner
-		owner = { can_use_undead_armies = yes }
+		owner = {
+			can_use_undead_armies = yes
+		}
 	}
-
 	destroy_trigger = {
 		exists = owner
-		owner = { can_use_undead_armies = no }
+		owner = {
+			can_use_undead_armies = no
+		}
 	}
-	
 	convert_to = {
 		building_military_academy
 		building_war_factory
 	}
-	
 	allow = {
 		has_upgraded_capital = yes
 	}
-	
 	army_modifier = {
 		army_starting_experience_add = 110
 	}
-	
 	planet_modifier = {
 		planet_army_build_speed_mult = 0.5
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		modifier = {
 			job_necromancer_add = 2
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_necromancer_drone_add = 2
-			job_necromancer_drone_per_pop = 0.025 # per 40 pops
+			job_necromancer_drone_per_pop = 0.025			# per 40 pops
 		}
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
 			minerals = @b2_minerals
-		}			
+		}
 		upkeep = {
 			energy = @b1_upkeep
 		}
 	}
-	
 	prerequisites = {
 		"tech_centralized_command"
 	}
-	
 	triggered_desc = {
 		trigger = {
 			always = yes
 		}
 		text = job_necromancer_effect_desc
 	}
-	
 	triggered_desc = {
 		trigger = {
 			always = yes
@@ -192,7 +187,9 @@ building_dread_encampment = {
 	}
 	#trick the ai into building this
 	ai_resource_production = {
-		trigger = { always = yes }
+		trigger = {
+			always = yes
+		}
 		alloys = 8
 		minerals = 8
 	}
@@ -201,20 +198,22 @@ building_dread_encampment = {
 building_stronghold = {
 	base_buildtime = 240
 	position_priority = 100
-
 	category = army
-	
 	potential = {
 		buildings_simple_allow = yes
 	}
-	
 	destroy_trigger = {
 		exists = owner
-		owner = { is_ai = yes }
+		owner = {
+			is_ai = yes
+		}
 		OR = {
 			AND = {
 				OR = {
-					num_buildings = { type = building_stronghold value > 1 }
+					num_buildings = {
+						type = building_stronghold
+						value > 1
+					}
 					has_building = building_fortress
 					has_building = building_citadel
 				}
@@ -222,29 +221,39 @@ building_stronghold = {
 				owner = {
 					is_militarist = no
 					used_naval_capacity_percent < 0.6
-					is_at_war = no # don't destroy while at war
+					is_at_war = no					# don't destroy while at war
 				}
 			}
 			AND = {
 				OR = {
-					num_buildings = { type = building_stronghold value > 2 }
-					num_buildings = { type = building_fortress value > 1 }
-					num_buildings = { type = building_fortress value > 1 }
+					num_buildings = {
+						type = building_stronghold
+						value > 2
+					}
+					num_buildings = {
+						type = building_fortress
+						value > 1
+					}
+					num_buildings = {
+						type = building_fortress
+						value > 1
+					}
 				}
 				free_building_slots = 0
 				owner = {
 					is_militarist = yes
 					used_naval_capacity_percent < 0.6
-					is_at_war = no # don't destroy while at war
+					is_at_war = no					# don't destroy while at war
 				}
 			}
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		modifier = {
 			job_soldier_add = @b1_jobs
@@ -253,20 +262,21 @@ building_stronghold = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_warrior_drone_add = @b1_jobs
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_active_tradition = tr_domination_imperious_architecture
 				is_gestalt = no
-			}					
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
@@ -277,13 +287,12 @@ building_stronghold = {
 			exists = owner
 			owner = {
 				has_active_tradition = tr_domination_synaptic_extensions
-			}					
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
 		}
 	}
-
 	resources = {
 		category = planet_buildings_strongholds
 		produces = {
@@ -297,43 +306,48 @@ building_stronghold = {
 		}
 		cost = {
 			minerals = @b1_minerals
-		}			
+		}
 		upkeep = {
 			energy = 1
 		}
 	}
-	
 	prerequisites = {
 		"tech_planetary_defenses"
 	}
-	
 	upgrades = {
 		"building_fortress"
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_warrior_drone_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		text = job_soldier_effect_desc
 	}
-	
 	#trick the ai into building this
 	ai_resource_production = {
 		trigger = {
-			NOR = { has_designation = col_research has_designation = col_bureau }
+			NOR = {
+				has_designation = col_research
+				has_designation = col_bureau
+			}
 			solar_system = {
 				any_neighbor_system = {
 					exists = space_owner
-					NOT = { is_same_value = prev.space_owner }
+					NOT = {
+						is_same_value = prev.space_owner
+					}
 				}
 			}
 		}
@@ -343,7 +357,9 @@ building_stronghold = {
 	ai_resource_production = {
 		trigger = {
 			exists = owner
-			owner = { used_naval_capacity_percent > 0.9 }
+			owner = {
+				used_naval_capacity_percent > 0.9
+			}
 			NOR = {
 				num_pops < 10
 				has_designation = col_refinery
@@ -360,7 +376,9 @@ building_stronghold = {
 	ai_resource_production = {
 		trigger = {
 			exists = owner
-			owner = { used_naval_capacity_percent > 0.8 }
+			owner = {
+				used_naval_capacity_percent > 0.8
+			}
 			NOR = {
 				num_pops < 10
 				has_designation = col_refinery
@@ -377,9 +395,18 @@ building_stronghold = {
 	ai_resource_production = {
 		trigger = {
 			OR = {
-				num_buildings = { type = building_stronghold value >= 1 }
-				num_buildings = { type = building_fortress value >= 1 }
-				num_buildings = { type = building_citadel value >= 1 }
+				num_buildings = {
+					type = building_stronghold
+					value >= 1
+				}
+				num_buildings = {
+					type = building_fortress
+					value >= 1
+				}
+				num_buildings = {
+					type = building_citadel
+					value >= 1
+				}
 			}
 		}
 		alloys = 4
@@ -402,19 +429,21 @@ building_fortress = {
 	can_build = no
 	planetary_ftl_inhibitor = yes
 	position_priority = 100
-
 	category = army
-	
 	allow = {
 		has_upgraded_capital = yes
 	}
-	
 	destroy_trigger = {
 		exists = owner
-		owner = { is_ai = yes }
+		owner = {
+			is_ai = yes
+		}
 		OR = {
 			AND = {
-				num_buildings = { type = building_fortress value > 1 }
+				num_buildings = {
+					type = building_fortress
+					value > 1
+				}
 				free_building_slots = 0
 				owner = {
 					is_militarist = no
@@ -422,7 +451,10 @@ building_fortress = {
 				}
 			}
 			AND = {
-				num_buildings = { type = building_fortress value > 2 }
+				num_buildings = {
+					type = building_fortress
+					value > 2
+				}
 				free_building_slots = 0
 				owner = {
 					is_militarist = yes
@@ -432,11 +464,12 @@ building_fortress = {
 			buildings_no_motes = yes
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		modifier = {
 			job_soldier_add = @b2_jobs
@@ -445,20 +478,21 @@ building_fortress = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_warrior_drone_add = @b2_jobs
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_active_tradition = tr_domination_imperious_architecture
 				is_gestalt = no
-			}					
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
@@ -469,13 +503,12 @@ building_fortress = {
 			exists = owner
 			owner = {
 				has_active_tradition = tr_domination_synaptic_extensions
-			}					
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
 		}
 	}
-
 	resources = {
 		category = planet_buildings_strongholds
 		produces = {
@@ -490,118 +523,130 @@ building_fortress = {
 		cost = {
 			minerals = @b2_minerals
 			volatile_motes = @b2_rare_cost
-		}			
+		}
 		upkeep = {
 			energy = 1
 			volatile_motes = @b2_rare_upkeep
 		}
 	}
-	
 	prerequisites = {
 		"tech_global_defense_grid"
 	}
-	
 	upgrades = {
 		"building_citadel"
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_warrior_drone_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		text = job_soldier_effect_desc
 	}
-	
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_mote_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_mote_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_mote_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_mote_building
+					days = 390
+				}
+			}
 		}
 		else = {
-			planet = { 
-				owner = { set_timed_country_flag = { flag = buildings_new_mote_building days = 510 } }
+			planet = {
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_mote_building
+						days = 510
+					}
+				}
 			}
 		}
 	}
 }
 
 ### NEW ###
-
 building_war_factory = {
 	base_buildtime = @b2_time
 	base_cap_amount = 1
 	icon = building_robot_assembly_plant
-
 	category = army
-	
 	potential = {
 		buildings_simple_allow = yes
 		exists = owner
-		owner = { has_valid_civic = civic_machine_terminator }
+		owner = {
+			has_valid_civic = civic_machine_terminator
+		}
 	}
-	
 	destroy_trigger = {
 		exists = owner
-		owner = { NOT = { has_valid_civic = civic_machine_terminator } }
+		owner = {
+			NOT = {
+				has_valid_civic = civic_machine_terminator
+			}
+		}
 	}
-	
 	convert_to = {
 		building_military_academy
 		building_dread_encampment
 	}
-	
 	allow = {
 		has_upgraded_capital = yes
 	}
-	
 	army_modifier = {
 		army_starting_experience_add = 100
 	}
-	
 	planet_modifier = {
 		planet_army_build_speed_mult = 0.5
 		job_warrior_drone_add = 1
 		job_patrol_drone_add = 1
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
 			minerals = @b1_minerals
-		}			
+		}
 		upkeep = {
 			energy = @b1_upkeep
 		}
 	}
-	
 	prerequisites = {
 		"tech_centralized_command"
 	}
-	
-	show_tech_unlock_if = { 
+	show_tech_unlock_if = {
 		has_valid_civic = civic_machine_terminator
 	}
-	
 	triggered_desc = {
 		text = job_warrior_drone_effect_desc
 	}
-	
 	triggered_desc = {
 		text = job_patrol_drone_effect_desc
 	}
@@ -613,7 +658,9 @@ building_war_factory = {
 	}
 	#trick the ai into building this
 	ai_resource_production = {
-		trigger = { always = yes }
+		trigger = {
+			always = yes
+		}
 		alloys = 8
 		minerals = 8
 	}
@@ -625,19 +672,21 @@ building_citadel = {
 	planetary_ftl_inhibitor = yes
 	position_priority = 100
 	icon = building_fortress
-
 	category = army
-	
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-	
 	destroy_trigger = {
 		exists = owner
-		owner = { is_ai = yes }
+		owner = {
+			is_ai = yes
+		}
 		OR = {
 			AND = {
-				num_buildings = { type = building_citadel value > 1 }
+				num_buildings = {
+					type = building_citadel
+					value > 1
+				}
 				free_building_slots = 0
 				owner = {
 					is_militarist = no
@@ -645,7 +694,10 @@ building_citadel = {
 				}
 			}
 			AND = {
-				num_buildings = { type = building_citadel value > 2 }
+				num_buildings = {
+					type = building_citadel
+					value > 2
+				}
 				free_building_slots = 0
 				owner = {
 					is_militarist = yes
@@ -655,10 +707,11 @@ building_citadel = {
 			buildings_no_motes = yes
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		modifier = {
 			job_soldier_add = @b3_jobs
@@ -666,20 +719,21 @@ building_citadel = {
 	}
 	triggered_planet_modifier = {
 		potential = {
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		modifier = {
 			job_warrior_drone_add = @b3_jobs
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_active_tradition = tr_domination_imperious_architecture
 				is_gestalt = no
-			}					
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
@@ -690,13 +744,12 @@ building_citadel = {
 			exists = owner
 			owner = {
 				has_active_tradition = tr_domination_synaptic_extensions
-			}					
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
 		}
 	}
-
 	resources = {
 		category = planet_buildings_strongholds
 		produces = {
@@ -711,48 +764,68 @@ building_citadel = {
 		cost = {
 			minerals = @b3_minerals
 			volatile_motes = @b3_rare_cost
-		}			
+		}
 		upkeep = {
 			energy = 1
 			volatile_motes = @b3_rare_upkeep
 		}
 	}
-	
 	prerequisites = {
 		"tech_planetary_citadel"
 	}
-	
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_warrior_drone_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = {
+				is_gestalt = no
+			}
 		}
 		text = job_soldier_effect_desc
 	}
-	
 	on_queued = {
 		IF = {
 			limit = {
-				owner = { has_technology = tech_construction_templates }
+				owner = {
+					has_technology = tech_construction_templates
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_mote_building days = 270 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_mote_building
+					days = 270
+				}
+			}
 		}
 		ELSE_IF = {
 			limit = {
-				owner = { has_technology = tech_assembly_pattern }
+				owner = {
+					has_technology = tech_assembly_pattern
+				}
 			}
-			owner = { set_timed_country_flag = { flag = buildings_new_mote_building days = 390 } }
+			owner = {
+				set_timed_country_flag = {
+					flag = buildings_new_mote_building
+					days = 390
+				}
+			}
 		}
 		else = {
-			planet = { 
-				owner = { set_timed_country_flag = { flag = buildings_new_mote_building days = 510 } }
+			planet = {
+				owner = {
+					set_timed_country_flag = {
+						flag = buildings_new_mote_building
+						days = 510
+					}
+				}
 			}
 		}
 	}

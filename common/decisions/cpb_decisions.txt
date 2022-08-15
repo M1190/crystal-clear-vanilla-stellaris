@@ -9,13 +9,22 @@ decision_cpb_sell_planet = {
 		}
 	}
 	potential = {
-		owner = { is_regular_empire = yes }
-		NOT = { has_modifier = cpb_sold_planet }
-		owner = { has_civic = cpb_civic_corporate_directorate }
+		owner = {
+			is_regular_empire = yes
+		}
+		NOT = {
+			has_modifier = cpb_sold_planet
+		}
+		owner = {
+			has_civic = cpb_civic_corporate_directorate
+		}
 	}
 	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = "cpb_sold_planet" days = -1 }
+			add_modifier = {
+				modifier = "cpb_sold_planet"
+				days = -1
+			}
 		}
 		owner = {
 			add_monthly_resource_mult = {
@@ -34,12 +43,15 @@ decision_cpb_sell_planet = {
 		custom_tooltip = decision_cpb_sell_planet_effects_custom
 	}
 	allow = {
-		NOT = { is_capital = yes }
-	}	
+		NOT = {
+			is_capital = yes
+		}
+	}
 	ai_weight = {
 		weight = 100
 	}
 }
+
 decision_cpb_create_bank_world = {
 	owned_planets_only = yes
 	enactment_time = 180
@@ -50,10 +62,18 @@ decision_cpb_create_bank_world = {
 		}
 	}
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = penal_colony }
-		NOT = { has_modifier = slave_colony }
-		NOT = { has_modifier = cpb_bank_world_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = penal_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
+		NOT = {
+			has_modifier = cpb_bank_world_colony
+		}
 		owner = {
 			is_regular_empire = yes
 			has_civic = cpb_civic_megabank
@@ -62,7 +82,10 @@ decision_cpb_create_bank_world = {
 	}
 	effect = {
 		hidden_effect = {
-			add_modifier = { modifier = "cpb_bank_world_colony" days = -1 }
+			add_modifier = {
+				modifier = "cpb_bank_world_colony"
+				days = -1
+			}
 			remove_building = building_colony_shelter
 			add_building = cpb_building_security_vault
 			validate_planet_buildings_and_districts = yes
@@ -71,11 +94,19 @@ decision_cpb_create_bank_world = {
 		custom_tooltip = decision_cpb_create_bank_world_effects_custom
 	}
 	allow = {
-		NOT = { is_capital = yes }
+		NOT = {
+			is_capital = yes
+		}
 		custom_tooltip = {
 			fail_text = decision_resort_colony_no_districts
-			num_districts = { type = any value < 1 }
-			num_buildings = { type = any value < 2 }
+			num_districts = {
+				type = any
+				value < 1
+			}
+			num_buildings = {
+				type = any
+				value < 2
+			}
 		}
 		custom_tooltip = {
 			fail_text = no_upgraded_capital_tooltip
@@ -85,11 +116,12 @@ decision_cpb_create_bank_world = {
 			fail_text = cpb_market_has_been_founded
 			has_global_flag = galactic_market_founded
 		}
-	}	
+	}
 	ai_weight = {
 		weight = 1
 	}
 }
+
 decision_cpb_expand_bank_world = {
 	owned_planets_only = yes
 	enactment_time = 90
@@ -109,9 +141,12 @@ decision_cpb_expand_bank_world = {
 	allow = {
 		custom_tooltip = {
 			fail_text = cpb_no_upgraded_bank_world
-			num_buildings = { type = any value < 12 }
+			num_buildings = {
+				type = any
+				value < 12
+			}
 		}
-	}	
+	}
 	ai_weight = {
 		weight = 1
 	}
