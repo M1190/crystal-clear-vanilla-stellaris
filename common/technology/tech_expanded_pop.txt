@@ -1,40 +1,42 @@
 ### Modded ###
-
 # ##################
 # Basic Science Lab
 # ##################
-
 # Organic Probability Theory
 tech_probability_theory = {
 	cost = @tier4cost1
 	area = physics
 	tier = 4
-	category = { computing }
-	prerequisites = { "tech_colonial_centralization" "tech_self_aware_logic" }
+	category = {
+		computing
+	}
+	prerequisites = {
+		"tech_colonial_centralization"
+		"tech_self_aware_logic"
+	}
 	weight = @tier4weight1
 	is_rare = yes
 	icon = tech_galactic_markets
-	
 	modifier = {
 		planet_researchers_energy_produces_add = 1
 	}
-	
 	potential = {
 		has_authority = auth_machine_intelligence
-		NOT = { has_valid_civic = civic_machine_terminator }
+		NOT = {
+			has_valid_civic = civic_machine_terminator
+		}
 	}
-	
 	weight_modifier = {
 		factor = 0.5
 		modifier = {
 			factor = 0.25
 			NOR = {
 				research_leader = {
-					area = society
+					area = physics
 					has_trait = "leader_trait_expertise_computing"
 				}
 				research_leader = {
-					area = society
+					area = physics
 					has_trait = "leader_trait_curator"
 				}
 			}
@@ -48,13 +50,15 @@ tech_probability_theory = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = tech_probability_theory }
+				any_member = {
+					has_technology = tech_probability_theory
+				}
 			}
 		}
 		modifier = {
 			factor = value:tech_weight_likelihood
 			research_leader = {
-				area = society
+				area = physics
 				has_trait = "leader_trait_expertise_computing"
 			}
 		}
@@ -63,13 +67,12 @@ tech_probability_theory = {
 			num_communications < 2
 		}
 	}
-	
 	ai_weight = {
 		factor = 2
 		modifier = {
 			factor = 1.25
 			research_leader = {
-				area = society
+				area = physics
 				has_trait = "leader_trait_expertise_computing"
 			}
 		}
@@ -79,22 +82,23 @@ tech_probability_theory = {
 # ##################
 # Unity
 # ##################
-
 tech_virtual_combat_arena = {
 	cost = @tier1cost3
 	area = society
-	category = { statecraft }
+	category = {
+		statecraft
+	}
 	tier = 1
-	prerequisites = { "tech_holo_entertainment" }
+	prerequisites = {
+		"tech_holo_entertainment"
+	}
 	weight = @tier1weight3
 	#icon = tech_hyper_entertainment_forum
-	
 	potential = {
 		is_gestalt = no
 		has_valid_civic = civic_warrior_culture
 	}
-
-	weight_modifier = {	
+	weight_modifier = {
 		modifier = {
 			factor = 0
 			NOR = {
@@ -123,7 +127,6 @@ tech_virtual_combat_arena = {
 			years_passed > 70
 		}
 	}
-	
 	ai_weight = {
 		modifier = {
 			factor = 1.25
@@ -176,22 +179,24 @@ tech_virtual_combat_arena = {
 #		}
 #	}
 #}
-
 # ##################
 # Biolab and Colonization
 # ##################
-
 #Psionic Healthcare
 tech_psionic_healthcare = {
 	cost = @tier3cost3
 	area = society
 	tier = 3
-	category = { psionics }
+	category = {
+		psionics
+	}
 	is_rare = yes
-	prerequisites = { "tech_psionic_theory" "tech_frontier_health" }
+	prerequisites = {
+		"tech_psionic_theory"
+		"tech_frontier_health"
+	}
 	weight = @tier3weight3
 	is_reverse_engineerable = no
-	
 	potential = {
 		is_gestalt = no
 		OR = {
@@ -199,19 +204,19 @@ tech_psionic_healthcare = {
 			has_origin = origin_shroudwalker_apprentice
 		}
 	}
-	
 	modifier = {
 		custom_tooltip = feature_improved_healthcare_workers
 	}
-	
 	weight_modifier = {
 		factor = 0.5
 		modifier = {
 			factor = 0.5
-			NOT = { has_policy_flag = robots_outlawed }
+			NOT = {
+				has_policy_flag = robots_outlawed
+			}
 		}
 		modifier = {
-			factor = 0.50
+			factor = 0.5
 			NOR = {
 				research_leader = {
 					area = society
@@ -266,7 +271,9 @@ tech_psionic_healthcare = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = tech_psionic_healthcare }
+				any_member = {
+					has_technology = tech_psionic_healthcare
+				}
 			}
 		}
 		modifier = {
@@ -285,12 +292,13 @@ tech_psionic_healthcare = {
 			}
 		}
 	}
-	
 	ai_weight = {
-		factor = 2 #rare tech
+		factor = 2		#rare tech
 		modifier = {
 			factor = 0.5
-			NOT = { has_policy_flag = robots_outlawed }
+			NOT = {
+				has_policy_flag = robots_outlawed
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -312,24 +320,26 @@ tech_psionic_healthcare = {
 # ##################
 # Fleet Organization
 # ##################
-
 # Undead Fleet Support
 tech_reanimated_fleets = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
-	category = { military_theory }
-	prerequisites = { "tech_interstellar_fleet_traditions" }
+	category = {
+		military_theory
+	}
+	prerequisites = {
+		"tech_interstellar_fleet_traditions"
+	}
 	weight = @tier2weight3
-	
-	potential = { can_use_undead_armies = yes }
-	
+	potential = {
+		can_use_undead_armies = yes
+	}
 	modifier = {
 		country_naval_cap_add = 15
 		ships_upkeep_mult = -0.05
 		country_war_exhaustion_mult = -0.05
 	}
-	
 	weight_modifier = {
 		factor = 2
 		modifier = {
@@ -352,7 +362,6 @@ tech_reanimated_fleets = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		factor = 2
 		modifier = {
@@ -377,16 +386,19 @@ tech_reanimated_bombardment = {
 	cost = @tier3cost2
 	area = society
 	tier = 3
-	category = { military_theory }
-	prerequisites = { "tech_gene_tailoring" }
+	category = {
+		military_theory
+	}
+	prerequisites = {
+		"tech_gene_tailoring"
+	}
 	weight = @tier3weight2
-	
-	potential = { can_use_undead_armies = yes }
-	
+	potential = {
+		can_use_undead_armies = yes
+	}
 	modifier = {
 		custom_tooltip = UNLOCKS_DEATH_BOMBARDMENT
 	}
-	
 	weight_modifier = {
 		factor = 2
 		modifier = {
@@ -409,7 +421,6 @@ tech_reanimated_bombardment = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		factor = 2
 		modifier = {
@@ -434,16 +445,19 @@ tech_zombie_clerks = {
 	cost = @tier2cost2
 	area = society
 	tier = 2
-	category = { statecraft }
-	prerequisites = { "tech_space_trading" }
+	category = {
+		statecraft
+	}
+	prerequisites = {
+		"tech_space_trading"
+	}
 	weight = @tier2weight2
-	
-	potential = { has_valid_civic = civic_permanent_employment }
-	
+	potential = {
+		has_valid_civic = civic_permanent_employment
+	}
 	modifier = {
 		custom_tooltip = UNLOCKS_IMPROVED_ZOMBIES_CLERKS
 	}
-	
 	weight_modifier = {
 		factor = 2
 		modifier = {
@@ -458,7 +472,6 @@ tech_zombie_clerks = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		factor = 2
 		modifier = {
@@ -475,16 +488,19 @@ tech_improved_zombies = {
 	cost = @tier3cost1
 	area = society
 	tier = 3
-	category = { biology }
-	prerequisites = { "tech_cloning" }
+	category = {
+		biology
+	}
+	prerequisites = {
+		"tech_cloning"
+	}
 	weight = @tier3weight1
-	
-	potential = { has_valid_civic = civic_permanent_employment }
-	
+	potential = {
+		has_valid_civic = civic_permanent_employment
+	}
 	modifier = {
 		custom_tooltip = UNLOCKS_IMPROVED_ZOMBIES
 	}
-	
 	weight_modifier = {
 		factor = 2
 		modifier = {
@@ -499,7 +515,6 @@ tech_improved_zombies = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		factor = 2
 		modifier = {
@@ -515,23 +530,26 @@ tech_improved_zombies = {
 # ##################
 # Army Organization
 # ##################
-
 # Biomechanics
 tech_biomechanics_synth = {
 	icon = tech_biomechanics
 	cost = @tier4cost2
 	area = society
-	category = { military_theory }
+	category = {
+		military_theory
+	}
 	tier = 4
 	is_rare = yes
-	prerequisites = { "tech_combat_computers_3" }
+	prerequisites = {
+		"tech_combat_computers_3"
+	}
 	weight = @tier4weight2
-
-	potential = { has_country_flag = synthetic_empire }
-	
+	potential = {
+		has_country_flag = synthetic_empire
+	}
 	weight_modifier = {
 		modifier = {
-			factor = 0.10
+			factor = 0.1
 			NOR = {
 				research_leader = {
 					area = society
@@ -552,7 +570,9 @@ tech_biomechanics_synth = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = tech_biomechanics }
+				any_member = {
+					has_technology = tech_biomechanics
+				}
 			}
 		}
 		modifier = {
@@ -572,7 +592,6 @@ tech_biomechanics_synth = {
 			}
 		}
 	}
-
 	ai_weight = {
 		modifier = {
 			factor = 1.25
@@ -588,17 +607,21 @@ tech_biomechanics_synth = {
 tech_mega_zombies = {
 	cost = @tier4cost2
 	area = society
-	category = { biology }
+	category = {
+		biology
+	}
 	tier = 4
 	is_rare = yes
-	prerequisites = { "tech_glandular_acclimation" }
+	prerequisites = {
+		"tech_glandular_acclimation"
+	}
 	weight = @tier4weight2
-
-	potential = { can_use_undead_armies = yes }
-	
+	potential = {
+		can_use_undead_armies = yes
+	}
 	weight_modifier = {
 		modifier = {
-			factor = 0.10
+			factor = 0.1
 			NOR = {
 				research_leader = {
 					area = society
@@ -619,7 +642,9 @@ tech_mega_zombies = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = tech_mega_zombies }
+				any_member = {
+					has_technology = tech_mega_zombies
+				}
 			}
 		}
 		modifier = {
@@ -639,7 +664,6 @@ tech_mega_zombies = {
 			}
 		}
 	}
-
 	ai_weight = {
 		modifier = {
 			factor = 1.25
@@ -655,17 +679,19 @@ tech_ground_defense_planning_2 = {
 	cost = @tier3cost1
 	area = society
 	tier = 3
-	category = { military_theory }
-	prerequisites = { "tech_global_defense_grid" }
+	category = {
+		military_theory
+	}
+	prerequisites = {
+		"tech_global_defense_grid"
+	}
 	weight = @tier3weight1
-	
 	modifier = {
 		army_defense_health_mult = 0.15
 		army_defense_morale_mult = 0.15
 		show_only_custom_tooltip = no
 		custom_tooltip = ADD_NAVAL_CAPACITY_FROM_SOLDIERS
 	}
-	
 	weight_modifier = {
 		factor = 2
 		modifier = {
@@ -684,7 +710,6 @@ tech_ground_defense_planning_2 = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		factor = 2
 		modifier = {
@@ -711,16 +736,19 @@ tech_planetary_citadel = {
 	cost = @tier3cost3
 	area = society
 	tier = 3
-	category = { military_theory }
-	prerequisites = { "tech_ground_defense_planning_2" "tech_colonial_centralization" }
+	category = {
+		military_theory
+	}
+	prerequisites = {
+		"tech_ground_defense_planning_2"
+		"tech_colonial_centralization"
+	}
 	weight = @tier3weight3
-	
 	# unlocks citadels
 	modifier = {
 		army_defense_health_mult = 0.15
 		army_defense_damage_mult = 0.15
 	}
-	
 	weight_modifier = {
 		factor = 2
 		modifier = {
@@ -739,7 +767,6 @@ tech_planetary_citadel = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		factor = 1
 		modifier = {
@@ -763,20 +790,22 @@ tech_planetary_citadel = {
 # ##################
 # Genetics
 # ##################
-
 # Genetic Mastery
 @tech_genetic_mastery_POINTS = 3
-@tech_genetic_mastery_COST_MULT = -0.20
+@tech_genetic_mastery_COST_MULT = -0.2
 tech_genetic_mastery = {
 	icon = tech_gene_expressions
 	cost = @tier5cost2
 	area = society
 	tier = 5
 	is_rare = yes
-	category = { biology }
-	prerequisites = { "tech_genetic_resequencing" }
+	category = {
+		biology
+	}
+	prerequisites = {
+		"tech_genetic_resequencing"
+	}
 	weight = @tier5weight2
-	
 	modifier = {
 		description = ap_engineered_evolution_modifier_desc
 		description_parameters = {
@@ -785,13 +814,14 @@ tech_genetic_mastery = {
 		}
 		BIOLOGICAL_species_trait_points_add = @tech_genetic_mastery_POINTS
 		modify_species_cost_mult = @tech_genetic_mastery_COST_MULT
-	}	
-	
+	}
 	weight_modifier = {
 		factor = 0.5
 		modifier = {
 			factor = 0
-			NOT = { has_ascension_perk = ap_evolutionary_mastery }
+			NOT = {
+				has_ascension_perk = ap_evolutionary_mastery
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -806,11 +836,13 @@ tech_genetic_mastery = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = tech_genetic_mastery }
+				any_member = {
+					has_technology = tech_genetic_mastery
+				}
 			}
 		}
 		modifier = {
-			factor = 0.50
+			factor = 0.5
 			NOR = {
 				research_leader = {
 					area = society
@@ -823,16 +855,15 @@ tech_genetic_mastery = {
 			}
 		}
 		modifier = {
-			factor = 1.50
+			factor = 1.5
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_spark_of_genius"
 			}
 		}
-	}	
-	
+	}
 	ai_weight = {
-		factor = 100 #rare tech
+		factor = 100		#rare tech
 		modifier = {
 			factor = 1.25
 			OR = {
@@ -852,7 +883,6 @@ tech_genetic_mastery = {
 # ##################
 # Farming
 # ##################
-
 # Hive Food Production
 tech_hive_food_production = {
 	icon = tech_food_processing_2
@@ -860,22 +890,24 @@ tech_hive_food_production = {
 	area = society
 	tier = 4
 	is_rare = yes
-	category = { biology }
-	prerequisites = { "tech_gene_expressions" "tech_nano_vitality_crops" }
+	category = {
+		biology
+	}
+	prerequisites = {
+		"tech_gene_expressions"
+		"tech_nano_vitality_crops"
+	}
 	weight = @tier4weight2
-		
 	modifier = {
 		planet_farmers_food_produces_add = 1
 	}
-	
 	potential = {
 		has_authority = auth_hive_mind
 		is_lithoid_empire = no
 	}
-	
 	weight_modifier = {
 		modifier = {
-			factor = 0.50
+			factor = 0.5
 			NOR = {
 				research_leader = {
 					area = society
@@ -896,11 +928,12 @@ tech_hive_food_production = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = tech_hive_food_production }
+				any_member = {
+					has_technology = tech_hive_food_production
+				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		factor = 4
 		modifier = {
@@ -920,22 +953,24 @@ tech_hive_food_production_lithoid = {
 	area = society
 	tier = 4
 	is_rare = yes
-	category = { biology }
-	prerequisites = { "tech_gene_expressions" "tech_mining_3" }
+	category = {
+		biology
+	}
+	prerequisites = {
+		"tech_gene_expressions"
+		"tech_mining_3"
+	}
 	weight = @tier4weight2
-		
 	modifier = {
 		planet_miners_minerals_produces_add = 1
 	}
-	
 	potential = {
 		has_authority = auth_hive_mind
 		is_lithoid_empire = yes
 	}
-	
 	weight_modifier = {
 		modifier = {
-			factor = 0.50
+			factor = 0.5
 			NOR = {
 				research_leader = {
 					area = society
@@ -956,11 +991,12 @@ tech_hive_food_production_lithoid = {
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
-				any_member = { has_technology = tech_hive_food_production_lithoid }
+				any_member = {
+					has_technology = tech_hive_food_production_lithoid
+				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		factor = 4
 		modifier = {
@@ -976,25 +1012,26 @@ tech_hive_food_production_lithoid = {
 # ##################
 # Industry and Robotics
 # ##################
-
 tech_agrarian_goods = {
 	cost = @tier4cost3
 	area = society
 	tier = 4
-	category = { new_worlds }
-	prerequisites = { "tech_housing_agrarian_idyll" "tech_luxuries_1" }
+	category = {
+		new_worlds
+	}
+	prerequisites = {
+		"tech_housing_agrarian_idyll"
+		"tech_luxuries_1"
+	}
 	weight = @tier4weight3
-	
 	potential = {
 		has_valid_civic = civic_agrarian_idyll
 		is_lithoid_empire = no
 	}
-	
 	modifier = {
 		planet_artisans_produces_mult = 0.05
 		planet_farmers_consumer_goods_produces_add = 1
 	}
-	
 	weight_modifier = {
 		modifier = {
 			factor = value:tech_weight_likelihood
@@ -1004,7 +1041,6 @@ tech_agrarian_goods = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		factor = 5
 		modifier = {
@@ -1026,20 +1062,22 @@ tech_agrarian_goods_lithoid = {
 	cost = @tier4cost3
 	area = society
 	tier = 4
-	category = { new_worlds }
-	prerequisites = { "tech_housing_agrarian_idyll" "tech_luxuries_1" }
+	category = {
+		new_worlds
+	}
+	prerequisites = {
+		"tech_housing_agrarian_idyll"
+		"tech_luxuries_1"
+	}
 	weight = @tier4weight3
-	
 	potential = {
 		has_valid_civic = civic_agrarian_idyll
 		is_lithoid_empire = yes
 	}
-	
 	modifier = {
 		planet_artisans_produces_mult = 0.05
 		planet_miners_consumer_goods_produces_add = 1
 	}
-	
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
@@ -1053,7 +1091,6 @@ tech_agrarian_goods_lithoid = {
 			}
 		}
 	}
-	
 	ai_weight = {
 		factor = 5
 		modifier = {
@@ -1070,19 +1107,21 @@ tech_agrarian_alloys = {
 	cost = @tier4cost3
 	area = engineering
 	tier = 4
-	category = { materials }
-	prerequisites = { "tech_housing_agrarian_idyll" "tech_alloys_1" }
+	category = {
+		materials
+	}
+	prerequisites = {
+		"tech_housing_agrarian_idyll"
+		"tech_alloys_1"
+	}
 	weight = @tier4weight3
-	
 	potential = {
 		has_valid_civic = civic_agrarian_idyll
 	}
-	
 	modifier = {
 		planet_metallurgists_produces_mult = 0.05
 		planet_miners_alloys_produces_add = 0.5
 	}
-	
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
@@ -1091,18 +1130,17 @@ tech_agrarian_alloys = {
 		modifier = {
 			factor = value:tech_weight_likelihood
 			research_leader = {
-				area = society
+				area = engineering
 				has_trait = "leader_trait_expertise_materials"
 			}
 		}
 	}
-	
 	ai_weight = {
 		factor = 5
 		modifier = {
 			factor = 1.25
 			research_leader = {
-				area = society
+				area = engineering
 				has_trait = "leader_trait_expertise_materials"
 			}
 		}
@@ -1112,24 +1150,22 @@ tech_agrarian_alloys = {
 # ##################
 # Other
 # ##################
-
 # Infestation
 tech_infestation_0 = {
 	cost = 0
 	area = society
 	start_tech = yes
-	category = { biology }
+	category = {
+		biology
+	}
 	tier = 0
 	icon = tech_infestation_1
-	
 	potential = {
 		has_valid_civic = civic_infestation
 	}
-	
 	modifier = {
 		custom_tooltip = UNLOCKS_INFESTATION_0
 	}
-	
 	## unlock infestation
 }
 
@@ -1137,24 +1173,25 @@ tech_infestation_1 = {
 	cost = @tier2cost2
 	area = society
 	tier = 2
-	category = { biology }
-	prerequisites = { "tech_infestation_0" }
+	category = {
+		biology
+	}
+	prerequisites = {
+		"tech_infestation_0"
+	}
 	weight = @tier2weight2
-	
 	modifier = {
 		custom_tooltip = UNLOCKS_INFESTATION_1
 	}
-	
 	weight_modifier = {
 		modifier = {
 			factor = value:tech_weight_likelihood
 			research_leader = {
-				area = engineering
+				area = society
 				has_trait = "leader_trait_expertise_biology"
-			}			
+			}
 		}
 	}
-	
 	ai_weight = {
 		factor = 2
 		modifier = {
@@ -1171,24 +1208,25 @@ tech_infestation_2 = {
 	cost = @tier4cost2
 	area = society
 	tier = 4
-	category = { biology }
-	prerequisites = { "tech_infestation_1" }
+	category = {
+		biology
+	}
+	prerequisites = {
+		"tech_infestation_1"
+	}
 	weight = @tier4weight2
-	
 	modifier = {
 		custom_tooltip = UNLOCKS_INFESTATION_2
 	}
-	
 	weight_modifier = {
 		modifier = {
 			factor = value:tech_weight_likelihood
 			research_leader = {
-				area = engineering
+				area = society
 				has_trait = "leader_trait_expertise_biology"
-			}			
+			}
 		}
 	}
-	
 	ai_weight = {
 		factor = 2
 		modifier = {
