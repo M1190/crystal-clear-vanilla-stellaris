@@ -3,11 +3,19 @@ trait_deep_dwellers = {
 	cost = -4
 	sorting_priority = 19
 	host_has_dlc = "Aquatics Species Pack"
-	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_nonadaptive" "trait_extremely_adaptive" "trait_robust" "trait_adaptive_lithoid" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	potential_crossbreeding_chance = 1
+	opposites = {
+		"trait_nonadaptive"
+		"trait_extremely_adaptive"
+		"trait_robust"
+		"trait_adaptive_lithoid"
+	}
+	allowed_archetypes = {
+		BIOLOGICAL
+		LITHOID
+	}
 	allowed_planet_classes = {
-		pc_ocean 
+		pc_ocean
 	}
 	initial = no
 	species_potential_add = {
@@ -20,8 +28,7 @@ trait_deep_dwellers = {
 		always = no
 	}
 	# trait can't be added or removed after game start
-
-	modifier = { 
+	modifier = {
 	}
 	triggered_pop_modifier = {
 		potential = {
@@ -40,7 +47,7 @@ trait_deep_dwellers = {
 					}
 				}
 			}
-		} 
+		}
 		pop_housing_usage_mult = 0.5
 	}
 	triggered_pop_modifier = {
@@ -60,11 +67,11 @@ trait_deep_dwellers = {
 					}
 				}
 			}
-		} 
+		}
 		pop_housing_usage_mult = -0.25
-		planet_jobs_food_produces_mult = 0.10
-		planet_jobs_minerals_produces_mult = 0.10
-		planet_jobs_energy_produces_mult = 0.10
+		planet_jobs_food_produces_mult = 0.1
+		planet_jobs_minerals_produces_mult = 0.1
+		planet_jobs_energy_produces_mult = 0.1
 	}
 	triggered_planet_growth_habitability_modifier = {
 		potential = {
@@ -72,14 +79,14 @@ trait_deep_dwellers = {
 			planet = {
 				has_modifier = crushing_depths_mod
 			}
-		} 
+		}
 		mod_habitability_floor_add = 0.5
 	}
 	triggered_planet_growth_habitability_modifier = {
 		potential = {
 			exists = planet
 			planet = {
-				NOR = { 
+				NOR = {
 					has_modifier = crushing_depths_mod
 					has_modifier = flooded_habitat
 				}
@@ -90,14 +97,17 @@ trait_deep_dwellers = {
 	custom_tooltip_with_modifiers = trait_deep_dwellers_tooltip
 }
 
- trait_amphibian = {
+trait_mea_amphibian = {
 	cost = 1
 	sorting_priority = 18
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = {
+		BIOLOGICAL
+		LITHOID
+	}
 	allowed_planet_classes = {
-		pc_ocean 
+		pc_ocean
 		pc_continental
-		pc_tropical  
+		pc_tropical
 	}
 	random_weight = {
 		AQUATIC = 100
@@ -105,50 +115,53 @@ trait_deep_dwellers = {
 		REP = 100
 		LITHOID = 0.5
 	}
-
-	modifier = { }
+	modifier = {
+	}
 	triggered_planet_growth_habitability_modifier = {
 		potential = {
 			exists = planet
 			planet = {
 				has_climate = wet
 			}
-		} 
+		}
 		pop_growth_speed = 0.1
 	}
 	triggered_planet_growth_habitability_modifier = {
 		potential = {
 			exists = planet
 			planet = {
-				NOT = { 
+				NOT = {
 					has_climate = wet
 				}
 			}
-		} 
+		}
 		pop_growth_speed = -0.1
 	}
 	custom_tooltip_with_modifiers = trait_amphibian_tooltip
 }
- 
- trait_fish_from_the_sea = {
+
+trait_fish_from_the_sea = {
 	cost = 1
-	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	potential_crossbreeding_chance = 1
+	allowed_archetypes = {
+		BIOLOGICAL
+		LITHOID
+	}
 	allowed_planet_classes = {
-		pc_ocean 
+		pc_ocean
 	}
 	random_weight = {
 		AQUATIC = 100
 		MOL = 50
 		LITHOID = 0.5
 	}
-
-	modifier = { }
+	modifier = {
+	}
 	triggered_pop_modifier = {
 		potential = {
 			exists = planet
 			planet = {
-				OR = { 
+				OR = {
 					is_planet_class = pc_ocean
 					is_planet_class = pc_panthalassic
 					is_planet_class = pc_atoll
@@ -162,17 +175,21 @@ trait_deep_dwellers = {
 	custom_tooltip_with_modifiers = trait_fish_from_the_sea_tooltip
 }
 
- trait_privateers = {
+trait_privateers = {
 	cost = 2
-	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_biggest_fish" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	potential_crossbreeding_chance = 1
+	opposites = {
+		"trait_biggest_fish"
+	}
+	allowed_archetypes = {
+		BIOLOGICAL
+		LITHOID
+	}
 	allowed_planet_classes = {
 		pc_ocean
 		pc_continental
 	}
-
-	modifier = { 
+	modifier = {
 		army_defense_damage_mult = 0.15
 		army_defense_morale_mult = 0.15
 		army_defense_health_mult = 0.15
@@ -181,11 +198,16 @@ trait_deep_dwellers = {
 	# randomized traits: Admiral Traits "Seasoned Sailor" and "Heroic Whaler"
 }
 
- trait_biggest_fish = {
+trait_biggest_fish = {
 	cost = 3
-	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_privateers" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	potential_crossbreeding_chance = 1
+	opposites = {
+		"trait_privateers"
+	}
+	allowed_archetypes = {
+		BIOLOGICAL
+		LITHOID
+	}
 	allowed_planet_classes = {
 		pc_ocean
 	}
@@ -194,8 +216,7 @@ trait_deep_dwellers = {
 		MOL = 50
 		LITHOID = 0.5
 	}
-
-	modifier = { 
+	modifier = {
 		leader_age = 20
 		army_damage_mult = 0.5
 		army_attack_health_mult = 0.25
