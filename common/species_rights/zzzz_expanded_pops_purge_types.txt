@@ -1,15 +1,12 @@
 # from = country
 # this = species
-
 purge_matrix = {
 	token = purge_matrix
-	pop_escape_chance = 0.20
-	pop_decline_rate = 50 # 1 pop per 2 months, overrides BASE_POP_DECLINE, will only work on purge types
-	
+	pop_escape_chance = 0.2
+	pop_decline_rate = 50	# 1 pop per 2 months, overrides BASE_POP_DECLINE, will only work on purge types
 	pop_modifier = {
 		pop_happiness = -10
 	}
-
 	potential = {
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		from = {
@@ -19,9 +16,10 @@ purge_matrix = {
 			}
 		}
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = CANNOT_LIVESTOCK_MATRIX_MACHINES
 			NOR = {
@@ -39,23 +37,32 @@ purge_matrix = {
 				}
 				NOR = {
 					OR = {
-						has_valid_civic = civic_machine_servitor 
+						has_valid_civic = civic_machine_servitor
 						has_valid_civic = civic_harm_hive
 						has_valid_civic = civic_harm_machine
-						any_agreement = { agreement_preset = preset_scion_auxiliary }
+						any_agreement = {
+							agreement_preset = preset_scion_auxiliary
+						}
 					}
 				}
 			}
 		}
 	}
-
 	ai_will_do = {
 		factor = 50
 		modifier = {
 			factor = 0
-			from = { NOT = { has_valid_civic = "civic_machine_terminator" } }
-			from = { NOT = { has_ethic = ethic_fanatic_xenophobe } }
-		}		
+			from = {
+				NOT = {
+					has_valid_civic = "civic_machine_terminator"
+				}
+			}
+			from = {
+				NOT = {
+					has_ethic = ethic_fanatic_xenophobe
+				}
+			}
+		}
 		modifier = {
 			factor = 0
 			from = {
@@ -64,36 +71,31 @@ purge_matrix = {
 					has_ai_personality_behaviour = purger
 				}
 			}
-		}		
+		}
 	}
 }
 
-
 purge_processing = {
 	token = purge_processing
-	pop_escape_chance = 0.20
-	pop_decline_rate = 50 # 1 pop per 2 months, overrides BASE_POP_DECLINE, will only work on purge types
-	
+	pop_escape_chance = 0.2
+	pop_decline_rate = 50	# 1 pop per 2 months, overrides BASE_POP_DECLINE, will only work on purge types
 	pop_modifier = {
 		pop_happiness = -10
 	}
-
 	potential = {
 		host_has_dlc = "Utopia"
 		exists = from
 		from = {
 			NOR = {
-				AND = {
-					has_authority = auth_machine_intelligence
-					NOT = { has_valid_civic = civic_machine_consciousness }
-				}
+				has_authority = auth_machine_intelligence
 				has_country_flag = synthetic_empire
 			}
 		}
 	}
-	
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = CAN_NOT_EAT_MACHINES
 			OR = {
@@ -101,7 +103,9 @@ purge_processing = {
 					has_trait = trait_mechanical
 					has_trait = trait_machine_unit
 				}
-				from = { has_valid_civic = civic_hive_devouring_swarm }
+				from = {
+					has_valid_civic = civic_hive_devouring_swarm
+				}
 				# devouring swarms can CRONCH. in edge cases.
 			}
 		}
@@ -127,7 +131,9 @@ purge_processing = {
 					OR = {
 						has_valid_civic = civic_harm_hive
 						has_valid_civic = civic_harm_machine
-						any_agreement = { agreement_preset = preset_scion_auxiliary }
+						any_agreement = {
+							agreement_preset = preset_scion_auxiliary
+						}
 					}
 				}
 			}
@@ -137,9 +143,11 @@ purge_processing = {
 		factor = 50
 		modifier = {
 			factor = 0
-			NOR = { 
-				has_trait = trait_delicious 
-				from = { has_valid_civic = civic_hive_devouring_swarm }
+			NOR = {
+				has_trait = trait_delicious
+				from = {
+					has_valid_civic = civic_hive_devouring_swarm
+				}
 				AND = {
 					is_sapient = no
 					from = {

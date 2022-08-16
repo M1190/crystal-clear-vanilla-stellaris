@@ -1486,9 +1486,7 @@ building_organic_sanctuary = {
 	potential = {
 		exists = owner
 		owner = {
-			OR = {
 				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_consciousness
 			}
 		}
 	}
@@ -1513,9 +1511,8 @@ building_organic_sanctuary = {
 		exists = owner
 		OR = {
 			owner = {
-				NOR = {
+				NOT = {
 					has_valid_civic = civic_machine_servitor
-					has_valid_civic = civic_machine_consciousness
 				}
 			}
 			AND = {
@@ -1573,17 +1570,6 @@ building_organic_sanctuary = {
 			job_servitor_caretaker_drone_add = 1
 		}
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				has_valid_civic = civic_machine_consciousness
-			}
-		}
-		modifier = {
-			job_maintenance_drone_add = 1
-		}
-	}
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1610,15 +1596,6 @@ building_organic_sanctuary = {
 			}
 		}
 		text = job_servitor_caretaker_drone_effect_desc
-	}
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = {
-				has_valid_civic = civic_machine_consciousness
-			}
-		}
-		text = job_maintenance_drone_effect_desc
 	}
 	triggered_desc = {
 		text = job_artisan_drone_effect_desc
@@ -1650,18 +1627,14 @@ building_organic_paradise = {
 	potential = {
 		exists = owner
 		owner = {
-			OR = {
 				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_consciousness
-			}
 		}
 	}
 	destroy_trigger = {
 		exists = owner
 		owner = {
-			NOR = {
+			NOT = {
 				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_consciousness
 			}
 		}
 	}
@@ -1682,17 +1655,6 @@ building_organic_paradise = {
 		}
 		modifier = {
 			job_servitor_caretaker_drone_add = 1
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				has_valid_civic = civic_machine_consciousness
-			}
-		}
-		modifier = {
-			job_maintenance_drone_add = 1
 		}
 	}
 	resources = {
@@ -1721,24 +1683,12 @@ building_organic_paradise = {
 		}
 		text = job_servitor_caretaker_drone_effect_desc
 	}
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = {
-				has_valid_civic = civic_machine_consciousness
-			}
-		}
-		text = job_maintenance_drone_effect_desc
-	}
 	prerequisites = {
 		"tech_paradise_dome"
 	}
 	show_tech_unlock_if = {
 		owner = {
-			OR = {
-				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_consciousness
-			}
+			has_valid_civic = civic_machine_servitor
 		}
 	}
 	on_queued = {

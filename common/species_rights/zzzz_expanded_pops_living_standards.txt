@@ -4,16 +4,13 @@
 #	potential = { is_pop_category = ruler }
 #	pop_happiness = 0.15
 #}
-
 living_standard_deassimilation = {
 	token = living_standard_deassimilation
 	name = living_standard_deassimilation
-
 	pop_modifier = {
 		show_only_custom_tooltip = no
 		custom_tooltip = base_crime_assimilation
 	}
-
 	potential = {
 		host_has_dlc = "Utopia"
 		exists = from
@@ -21,22 +18,27 @@ living_standard_deassimilation = {
 			AND = {
 				has_trait = trait_hive_mind
 				from = {
-					NOT = { has_ethic = ethic_gestalt_consciousness }
+					NOT = {
+						has_ethic = ethic_gestalt_consciousness
+					}
 					has_ascension_perk = ap_evolutionary_mastery
 				}
 			}
 			AND = {
 				is_disconnected_machine_pop = yes
 				from = {
-					NOT = { has_ethic = ethic_gestalt_consciousness }
+					NOT = {
+						has_ethic = ethic_gestalt_consciousness
+					}
 					has_technology = tech_droid_workers
 				}
 			}
 		}
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = SPECIES_MUST_BE_ASSIMILATING
 			has_citizenship_type = {
@@ -45,7 +47,6 @@ living_standard_deassimilation = {
 			}
 		}
 	}
-
 	ai_will_do = {
 		factor = 100
 	}
@@ -54,7 +55,6 @@ living_standard_deassimilation = {
 living_standard_ego_assimilation = {
 	token = living_standard_ego_assimilation
 	name = living_standard_ego_assimilation
-
 	in_breach_of = {
 		{
 			trigger = {
@@ -63,13 +63,11 @@ living_standard_ego_assimilation = {
 			key = resolution_greatergood_universal_prosperity_mandate
 		}
 	}
-
 	pop_modifier = {
-		pop_happiness = -0.50
+		pop_happiness = -0.5
 		show_only_custom_tooltip = no
 		custom_tooltip = base_crime_assimilation
 	}
-
 	potential = {
 		host_has_dlc = "Utopia"
 		exists = from
@@ -78,27 +76,33 @@ living_standard_ego_assimilation = {
 				AND = {
 					has_authority = auth_hive_mind
 					has_ascension_perk = ap_evolutionary_mastery
-					NOT = { has_civic = civic_hive_devouring_swarm }
-					NOT = { has_civic = civic_infestation }
+					NOT = {
+						has_civic = civic_hive_devouring_swarm
+					}
+					NOT = {
+						has_civic = civic_infestation
+					}
 				}
 				AND = {
 					has_authority = auth_hive_mind
 					has_civic = civic_infestation
-					ROOT = { species = { has_species_flag = flag_species_to_infest } }
+					ROOT = {
+						species = {
+							has_species_flag = flag_species_to_infest
+						}
+					}
 				}
 				AND = {
 					has_authority = auth_machine_intelligence
-					OR = {
-						has_valid_civic = civic_machine_consciousness
-						has_valid_civic = civic_machine_assimilator
-					}
+					has_valid_civic = civic_machine_assimilator
 				}
 			}
 		}
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = SPECIES_MUST_BE_ASSIMILATING
 			has_citizenship_type = {
@@ -107,7 +111,6 @@ living_standard_ego_assimilation = {
 			}
 		}
 	}
-
 	ai_will_do = {
 		factor = 100
 	}
@@ -116,13 +119,11 @@ living_standard_ego_assimilation = {
 living_standard_tech_assimilation = {
 	token = living_standard_tech_assimilation
 	name = living_standard_tech_assimilation
-
 	pop_modifier = {
 		pop_happiness = -0.25
 		show_only_custom_tooltip = no
 		custom_tooltip = base_crime_assimilation
 	}
-
 	potential = {
 		host_has_dlc = "Utopia"
 		exists = from
@@ -133,9 +134,10 @@ living_standard_tech_assimilation = {
 			}
 		}
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = SPECIES_MUST_BE_ASSIMILATING
 			has_citizenship_type = {
@@ -144,7 +146,6 @@ living_standard_tech_assimilation = {
 			}
 		}
 	}
-
 	ai_will_do = {
 		factor = 100
 	}
@@ -153,13 +154,11 @@ living_standard_tech_assimilation = {
 living_standard_psi_assimilation = {
 	token = living_standard_psi_assimilation
 	name = living_standard_psi_assimilation
-
 	pop_modifier = {
 		pop_happiness = -0.25
 		show_only_custom_tooltip = no
 		custom_tooltip = base_crime_assimilation
 	}
-
 	potential = {
 		host_has_dlc = "Utopia"
 		exists = from
@@ -167,9 +166,10 @@ living_standard_psi_assimilation = {
 			has_ascension_perk = ap_transcendence
 		}
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = SPECIES_MUST_BE_ASSIMILATING
 			has_citizenship_type = {
@@ -178,59 +178,57 @@ living_standard_psi_assimilation = {
 			}
 		}
 	}
-
 	ai_will_do = {
 		factor = 100
 	}
 }
 
-
 living_standard_organic_trophy = {
 	token = living_standard_organic_trophy
 	name = living_standard_organic_trophy
-
 	triggered_pop_modifier = {
 		potential = {
-			NOT = { has_trait = trait_decadent }
+			NOT = {
+				has_trait = trait_decadent
+			}
 			NAND = {
 				exists = owner
-				owner = { has_deficit = consumer_goods }
+				owner = {
+					has_deficit = consumer_goods
+				}
 			}
 		}
 		pop_happiness = 0.4
 	}
-
 	triggered_pop_modifier = {
-		potential = { 
+		potential = {
 			has_trait = trait_decadent
 			NAND = {
 				exists = owner
-				owner = { has_deficit = consumer_goods }			
+				owner = {
+					has_deficit = consumer_goods
+				}
 			}
 		}
 		pop_happiness = 0.5
 	}
-	
 	pop_modifier = {
 		pop_category_bio_trophy_consumer_goods_upkeep_add = @living_standard_luxuries_very_high
 		show_only_custom_tooltip = no
 		custom_tooltip = base_crime_trophy
 	}
-
 	potential = {
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		exists = from
 		from = {
 			has_authority = auth_machine_intelligence
-			OR = {
-				has_valid_civic = civic_machine_consciousness
-				has_valid_civic = civic_machine_servitor
-			}
+			has_valid_civic = civic_machine_servitor
 		}
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = species_is_not_trophy
 			has_citizenship_type = {
@@ -239,7 +237,6 @@ living_standard_organic_trophy = {
 			}
 		}
 	}
-
 	ai_will_do = {
 		factor = 100
 	}
@@ -248,24 +245,23 @@ living_standard_organic_trophy = {
 living_standard_chemical_bliss = {
 	token = living_standard_chemical_bliss
 	name = living_standard_chemical_bliss
-
 	triggered_pop_modifier = {
 		potential = {
 			NAND = {
 				exists = owner
-				owner = { has_deficit = consumer_goods }
+				owner = {
+					has_deficit = consumer_goods
+				}
 			}
 		}
 		pop_happiness = 0.4
 	}
-
 	triggered_pop_modifier = {
 		potential = {
 			is_unemployed = yes
 		}
-		pop_happiness = -0.20
+		pop_happiness = -0.2
 	}
-
 	pop_modifier = {
 		planet_jobs_produces_mult = -0.6
 		pop_category_rulers_consumer_goods_upkeep_add = @living_standard_luxuries_very_high
@@ -273,38 +269,52 @@ living_standard_chemical_bliss = {
 		pop_category_workers_consumer_goods_upkeep_add = @living_standard_luxuries_very_high
 		pop_category_slave_consumer_goods_upkeep_add = @living_standard_luxuries_low
 	}
-
 	potential = {
-		from = { has_technology = tech_subdermal_stimulation }
-		NOT = { has_trait = trait_hive_mind }
+		from = {
+			has_technology = tech_subdermal_stimulation
+		}
+		NOT = {
+			has_trait = trait_hive_mind
+		}
 		NOR = {
 			has_trait = trait_mechanical
 			has_trait = trait_machine_unit
 		}
 	}
-	
 	triggered_pop_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_ethical_hedonism
-				NOT = { has_deficit = consumer_goods }
+				NOT = {
+					has_deficit = consumer_goods
+				}
 			}
 		}
 		planet_jobs_unity_produces_mult = 0.1
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = is_slaves_chattel_or_domestic
 			if = {
 				limit = {
-					has_citizenship_type = { country = from type = citizenship_slavery }
+					has_citizenship_type = {
+						country = from
+						type = citizenship_slavery
+					}
 				}
 				NOR = {
-					has_slavery_type = { country = from type = slavery_normal }
-					has_slavery_type = { country = from type = slavery_domestic }
+					has_slavery_type = {
+						country = from
+						type = slavery_normal
+					}
+					has_slavery_type = {
+						country = from
+						type = slavery_domestic
+					}
 				}
 			}
 		}
@@ -313,11 +323,20 @@ living_standard_chemical_bliss = {
 			if = {
 				limit = {
 					OR = {
-						has_citizenship_type = { country = from type = citizenship_purge_machine }
-						has_citizenship_type = { country = from type = citizenship_purge }
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge_machine
+						}
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge
+						}
 					}
 				}
-				has_purge_type = { country = from type = purge_neutering }
+				has_purge_type = {
+					country = from
+					type = purge_neutering
+				}
 			}
 		}
 		custom_tooltip = {
@@ -330,7 +349,6 @@ living_standard_chemical_bliss = {
 			}
 		}
 	}
-
 	ai_will_do = {
 		factor = 0
 	}
@@ -339,7 +357,6 @@ living_standard_chemical_bliss = {
 living_standard_shared_burden = {
 	token = living_standard_shared_burden
 	name = living_standard_shared_burden
-
 	potential = {
 		exists = from
 		from = {
@@ -349,12 +366,13 @@ living_standard_shared_burden = {
 			}
 		}
 	}
-
 	triggered_pop_modifier = {
 		potential = {
 			NAND = {
 				exists = owner
-				owner = { has_deficit = consumer_goods }
+				owner = {
+					has_deficit = consumer_goods
+				}
 			}
 		}
 		pop_cat_ruler_happiness = 0.05
@@ -362,13 +380,16 @@ living_standard_shared_burden = {
 		pop_cat_worker_happiness = 0.05
 		pop_demotion_time_mult = -0.45
 	}
-	
 	triggered_pop_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_worker_coop
-				NOT = { owner = { has_deficit = consumer_goods } }
+				NOT = {
+					owner = {
+						has_deficit = consumer_goods
+					}
+				}
 			}
 		}
 		pop_cat_ruler_happiness = 0.025
@@ -376,11 +397,12 @@ living_standard_shared_burden = {
 	triggered_pop_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_valid_civic = civic_worker_coop }
+			owner = {
+				has_valid_civic = civic_worker_coop
+			}
 		}
 		pop_cat_ruler_political_power = 2
 	}
-
 	pop_modifier = {
 		pop_category_rulers_consumer_goods_upkeep_add = @living_standard_luxuries_shared_burden
 		pop_category_specialists_consumer_goods_upkeep_add = @living_standard_luxuries_shared_burden
@@ -388,7 +410,6 @@ living_standard_shared_burden = {
 		show_only_custom_tooltip = no
 		custom_tooltip = base_crime_shared
 	}
-
 	triggered_pop_modifier = {
 		potential = {
 			OR = {
@@ -400,34 +421,50 @@ living_standard_shared_burden = {
 		}
 		unemployment_resources_unity_produces_add = 1
 	}
-	
 	triggered_pop_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_ethical_hedonism
-				NOT = { has_deficit = consumer_goods }
+				NOT = {
+					has_deficit = consumer_goods
+				}
 			}
 		}
 		planet_jobs_unity_produces_mult = 0.05
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = is_slaves_tooltip
-			NOT = { has_citizenship_type = { country = from type = citizenship_slavery } }
+			NOT = {
+				has_citizenship_type = {
+					country = from
+					type = citizenship_slavery
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = is_purged_not_neutered
 			if = {
 				limit = {
 					OR = {
-						has_citizenship_type = { country = from type = citizenship_purge_machine }
-						has_citizenship_type = { country = from type = citizenship_purge }
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge_machine
+						}
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge
+						}
 					}
 				}
-				has_purge_type = { country = from type = purge_neutering }
+				has_purge_type = {
+					country = from
+					type = purge_neutering
+				}
 			}
 		}
 		custom_tooltip = {
@@ -440,29 +477,27 @@ living_standard_shared_burden = {
 			}
 		}
 	}
-
 	ai_will_do = {
 		factor = 1
 	}
 }
 
-
 living_standard_utopian = {
 	token = living_standard_utopian
 	name = living_standard_utopian
-
 	triggered_pop_modifier = {
 		potential = {
 			NAND = {
 				exists = owner
-				owner = { has_deficit = consumer_goods }
+				owner = {
+					has_deficit = consumer_goods
+				}
 			}
 		}
-		pop_cat_ruler_happiness = 0.20
-		pop_cat_specialist_happiness = 0.20
-		pop_cat_worker_happiness = 0.20
+		pop_cat_ruler_happiness = 0.2
+		pop_cat_specialist_happiness = 0.2
+		pop_cat_worker_happiness = 0.2
 	}
-
 	triggered_pop_modifier = {
 		potential = {
 			OR = {
@@ -475,7 +510,6 @@ living_standard_utopian = {
 		unemployment_resources_physics_research_produces_add = 2
 		unemployment_resources_engineering_research_produces_add = 2
 	}
-
 	triggered_pop_modifier = {
 		potential = {
 			OR = {
@@ -487,7 +521,6 @@ living_standard_utopian = {
 		}
 		unemployment_resources_unity_produces_add = 1
 	}
-
 	pop_modifier = {
 		pop_category_rulers_consumer_goods_upkeep_add = @living_standard_luxuries_very_high
 		pop_category_specialists_consumer_goods_upkeep_add = @living_standard_luxuries_very_high
@@ -495,7 +528,6 @@ living_standard_utopian = {
 		show_only_custom_tooltip = no
 		custom_tooltip = base_crime_trophy
 	}
-
 	triggered_pop_modifier = {
 		potential = {
 			exists = owner
@@ -506,35 +538,40 @@ living_standard_utopian = {
 				}
 			}
 		}
-		pop_demotion_time_mult = -0.30
+		pop_demotion_time_mult = -0.3
 	}
-	
 	triggered_pop_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_ethical_hedonism
-				NOT = { has_deficit = consumer_goods }
+				NOT = {
+					has_deficit = consumer_goods
+				}
 			}
 		}
 		planet_jobs_unity_produces_mult = 0.1
 	}
-
 	potential = {
 		exists = from
-		from = { is_gestalt = no }
+		from = {
+			is_gestalt = no
+		}
 		NOR = {
 			AND = {
 				has_trait = trait_hive_mind
-				NOT = { has_trait = trait_tree_caretaker }
+				NOT = {
+					has_trait = trait_tree_caretaker
+				}
 			}
 			has_trait = trait_machine_unit
 			is_shackled_robot_species_rights = yes
 		}
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = empire_not_egalitarian
 			from = {
@@ -543,30 +580,54 @@ living_standard_utopian = {
 					has_ethic = ethic_fanatic_egalitarian
 					has_edict = universal_prosperity_mandate
 					AND = {
-						has_ascension_perk = ap_synthetic_servants 
-						ROOT = { has_citizenship_type = { country = from type = citizenship_full } }
+						has_ascension_perk = ap_synthetic_servants
+						ROOT = {
+							has_citizenship_type = {
+								country = from
+								type = citizenship_full
+							}
+						}
 					}
 					AND = {
 						has_valid_civic = civic_ethical_hedonism
-						ROOT = { has_citizenship_type = { country = from type = citizenship_full } }
+						ROOT = {
+							has_citizenship_type = {
+								country = from
+								type = citizenship_full
+							}
+						}
 					}
 				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = is_slaves_tooltip
-			NOT = { has_citizenship_type = { country = from type = citizenship_slavery } }
+			NOT = {
+				has_citizenship_type = {
+					country = from
+					type = citizenship_slavery
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = is_purged_not_neutered
 			if = {
 				limit = {
 					OR = {
-						has_citizenship_type = { country = from type = citizenship_purge_machine }
-						has_citizenship_type = { country = from type = citizenship_purge }
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge_machine
+						}
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge
+						}
 					}
 				}
-				has_purge_type = { country = from type = purge_neutering }
+				has_purge_type = {
+					country = from
+					type = purge_neutering
+				}
 			}
 		}
 		custom_tooltip = {
@@ -579,30 +640,55 @@ living_standard_utopian = {
 			}
 		}
 	}
-
 	ai_will_do = {
 		factor = 15
 		modifier = {
 			factor = 2
-			has_citizenship_type = { country = from type = citizenship_full }
-			from = { has_ascension_perk = ap_synthetic_servants }
+			has_citizenship_type = {
+				country = from
+				type = citizenship_full
+			}
+			from = {
+				has_ascension_perk = ap_synthetic_servants
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { has_citizenship_type = { country = from type = citizenship_full } }
+			NOT = {
+				has_citizenship_type = {
+					country = from
+					type = citizenship_full
+				}
+			}
 			OR = {
-				from = { is_galactic_community_member = no }
-				from = { is_xenophobe = yes }
-				NOT = { is_active_resolution = "resolution_greatergood_universal_prosperity_mandate" }
+				from = {
+					is_galactic_community_member = no
+				}
+				from = {
+					is_xenophobe = yes
+				}
+				NOT = {
+					is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
+				}
 			}
 		}
 		modifier = {
 			factor = 0.5
-			NOT = { has_citizenship_type = { country = from type = citizenship_full } }
+			NOT = {
+				has_citizenship_type = {
+					country = from
+					type = citizenship_full
+				}
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { has_living_standard = { country = from type = living_standard_utopian } }
+			NOT = {
+				has_living_standard = {
+					country = from
+					type = living_standard_utopian
+				}
+			}
 			NOT = {
 				from = {
 					has_monthly_income = {
@@ -614,7 +700,10 @@ living_standard_utopian = {
 		}
 		modifier = {
 			factor = 0
-			has_living_standard = { country = from type = living_standard_utopian }
+			has_living_standard = {
+				country = from
+				type = living_standard_utopian
+			}
 			NOT = {
 				from = {
 					has_monthly_income = {
@@ -630,7 +719,6 @@ living_standard_utopian = {
 living_standard_academic_privilege = {
 	token = living_standard_academic_privilege
 	name = living_standard_academic_privilege
-
 	in_breach_of = {
 		{
 			trigger = {
@@ -645,12 +733,13 @@ living_standard_academic_privilege = {
 			key = resolution_greatergood_universal_prosperity_mandate
 		}
 	}
-
 	triggered_pop_modifier = {
 		potential = {
 			NAND = {
 				exists = owner
-				owner = { has_deficit = consumer_goods }
+				owner = {
+					has_deficit = consumer_goods
+				}
 			}
 		}
 		planet_jobs_engineering_research_produces_mult = 0.1
@@ -659,7 +748,6 @@ living_standard_academic_privilege = {
 		pop_cat_ruler_happiness = 0.15
 		pop_cat_specialist_happiness = 0.15
 	}
-
 	pop_modifier = {
 		pop_category_rulers_consumer_goods_upkeep_add = @living_standard_luxuries_very_high
 		pop_category_specialists_consumer_goods_upkeep_add = @living_standard_luxuries_very_high
@@ -669,31 +757,34 @@ living_standard_academic_privilege = {
 		show_only_custom_tooltip = no
 		custom_tooltip = base_crime_academic
 	}
-
 	triggered_pop_modifier = {
 		potential = {
 			is_unemployed = yes
 		}
-		pop_happiness = -0.20
+		pop_happiness = -0.2
 	}
-	
 	triggered_pop_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_ethical_hedonism
-				NOT = { has_deficit = consumer_goods }
+				NOT = {
+					has_deficit = consumer_goods
+				}
 			}
 		}
 		planet_jobs_unity_produces_mult = 0.1
 	}
-
 	potential = {
 		exists = from
 		from = {
 			is_gestalt = no
-			NOT = { has_valid_civic = civic_shared_burden }
-			NOT = { has_valid_civic = civic_worker_coop }
+			NOT = {
+				has_valid_civic = civic_shared_burden
+			}
+			NOT = {
+				has_valid_civic = civic_worker_coop
+			}
 		}
 		NOR = {
 			has_trait = trait_hive_mind
@@ -701,9 +792,10 @@ living_standard_academic_privilege = {
 			is_shackled_robot_species_rights = yes
 		}
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = empire_not_materialist
 			from = {
@@ -712,25 +804,44 @@ living_standard_academic_privilege = {
 					has_ethic = ethic_fanatic_materialist
 					AND = {
 						has_valid_civic = civic_ethical_hedonism
-						ROOT = { has_citizenship_type = { country = from type = citizenship_full } }
+						ROOT = {
+							has_citizenship_type = {
+								country = from
+								type = citizenship_full
+							}
+						}
 					}
 				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = is_slaves_tooltip
-			NOT = { has_citizenship_type = { country = from type = citizenship_slavery } }
+			NOT = {
+				has_citizenship_type = {
+					country = from
+					type = citizenship_slavery
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = is_purged_not_neutered
 			if = {
 				limit = {
 					OR = {
-						has_citizenship_type = { country = from type = citizenship_purge_machine }
-						has_citizenship_type = { country = from type = citizenship_purge }
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge_machine
+						}
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge
+						}
 					}
 				}
-				has_purge_type = { country = from type = purge_neutering }
+				has_purge_type = {
+					country = from
+					type = purge_neutering
+				}
 			}
 		}
 		custom_tooltip = {
@@ -743,16 +854,25 @@ living_standard_academic_privilege = {
 			}
 		}
 	}
-
 	ai_will_do = {
 		factor = 10
 		modifier = {
 			factor = 0
-			NOT = { has_citizenship_type = { country = from type = citizenship_full } }
+			NOT = {
+				has_citizenship_type = {
+					country = from
+					type = citizenship_full
+				}
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { has_living_standard = { country = from type = living_standard_academic_privilege } }
+			NOT = {
+				has_living_standard = {
+					country = from
+					type = living_standard_academic_privilege
+				}
+			}
 			NOT = {
 				from = {
 					has_monthly_income = {
@@ -764,7 +884,10 @@ living_standard_academic_privilege = {
 		}
 		modifier = {
 			factor = 0
-			has_living_standard = { country = from type = living_standard_academic_privilege }
+			has_living_standard = {
+				country = from
+				type = living_standard_academic_privilege
+			}
 			NOT = {
 				from = {
 					has_monthly_income = {
@@ -774,7 +897,6 @@ living_standard_academic_privilege = {
 				}
 			}
 		}
-
 		modifier = {
 			factor = 0.25
 			from = {
@@ -785,7 +907,9 @@ living_standard_academic_privilege = {
 				is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
 				AND = {
 					is_active_resolution = "resolution_divinity_a_defined_purpose"
-					FROM = { has_country_flag = synthetic_empire }
+					FROM = {
+						has_country_flag = synthetic_empire
+					}
 				}
 			}
 		}
@@ -795,7 +919,6 @@ living_standard_academic_privilege = {
 living_standard_good = {
 	token = living_standard_good
 	name = living_standard_good
-
 	in_breach_of = {
 		{
 			trigger = {
@@ -804,20 +927,20 @@ living_standard_good = {
 			key = resolution_greatergood_universal_prosperity_mandate
 		}
 	}
-
 	triggered_pop_modifier = {
 		potential = {
 			NAND = {
 				exists = owner
-				owner = { has_deficit = consumer_goods }
+				owner = {
+					has_deficit = consumer_goods
+				}
 			}
 		}
-		pop_cat_ruler_happiness = 0.10
-		pop_cat_specialist_happiness = 0.10
-		pop_cat_worker_happiness = 0.10
-		pop_cat_slave_happiness = 0.10
+		pop_cat_ruler_happiness = 0.1
+		pop_cat_specialist_happiness = 0.1
+		pop_cat_worker_happiness = 0.1
+		pop_cat_slave_happiness = 0.1
 	}
-
 	triggered_pop_modifier = {
 		potential = {
 			OR = {
@@ -828,7 +951,6 @@ living_standard_good = {
 		}
 		unemployment_resources_unity_produces_add = 1
 	}
-
 	pop_modifier = {
 		pop_category_rulers_consumer_goods_upkeep_add = @living_standard_luxuries_very_high
 		pop_category_specialists_consumer_goods_upkeep_add = @living_standard_luxuries_high
@@ -840,46 +962,62 @@ living_standard_good = {
 		show_only_custom_tooltip = no
 		custom_tooltip = base_crime_good
 	}
-	
 	triggered_pop_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_valid_civic = civic_ethical_hedonism
-				NOT = { has_deficit = consumer_goods }
+				NOT = {
+					has_deficit = consumer_goods
+				}
 			}
 		}
 		planet_jobs_unity_produces_mult = 0.05
 	}
-
 	potential = {
 		exists = from
 		from = {
 			is_gestalt = no
-			NOT = { has_valid_civic = civic_shared_burden }
-			NOT = { has_valid_civic = civic_worker_coop }
+			NOT = {
+				has_valid_civic = civic_shared_burden
+			}
+			NOT = {
+				has_valid_civic = civic_worker_coop
+			}
 		}
 		NOR = {
 			AND = {
 				has_trait = trait_hive_mind
-				NOT = { has_trait = trait_tree_caretaker }
+				NOT = {
+					has_trait = trait_tree_caretaker
+				}
 			}
 			has_trait = trait_machine_unit
 			is_shackled_robot_species_rights = yes
 		}
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = is_slaves_chattel_or_domestic
 			if = {
 				limit = {
-					has_citizenship_type = { country = from type = citizenship_slavery }
+					has_citizenship_type = {
+						country = from
+						type = citizenship_slavery
+					}
 				}
 				NOR = {
-					has_slavery_type = { country = from type = slavery_normal }
-					has_slavery_type = { country = from type = slavery_domestic }
+					has_slavery_type = {
+						country = from
+						type = slavery_normal
+					}
+					has_slavery_type = {
+						country = from
+						type = slavery_domestic
+					}
 				}
 			}
 		}
@@ -888,11 +1026,20 @@ living_standard_good = {
 			if = {
 				limit = {
 					OR = {
-						has_citizenship_type = { country = from type = citizenship_purge_machine }
-						has_citizenship_type = { country = from type = citizenship_purge }
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge_machine
+						}
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge
+						}
 					}
 				}
-				has_purge_type = { country = from type = purge_neutering }
+				has_purge_type = {
+					country = from
+					type = purge_neutering
+				}
 			}
 		}
 		custom_tooltip = {
@@ -909,7 +1056,12 @@ living_standard_good = {
 		factor = 5
 		modifier = {
 			factor = 0
-			NOT = { has_citizenship_type = { country = from type = citizenship_full } }
+			NOT = {
+				has_citizenship_type = {
+					country = from
+					type = citizenship_full
+				}
+			}
 		}
 		modifier = {
 			factor = 0
@@ -928,7 +1080,12 @@ living_standard_good = {
 		}
 		modifier = {
 			factor = 0
-			NOT = { has_living_standard = { country = from type = living_standard_good } }
+			NOT = {
+				has_living_standard = {
+					country = from
+					type = living_standard_good
+				}
+			}
 			NOT = {
 				from = {
 					has_monthly_income = {
@@ -940,7 +1097,10 @@ living_standard_good = {
 		}
 		modifier = {
 			factor = 0
-			has_living_standard = { country = from type = living_standard_good }
+			has_living_standard = {
+				country = from
+				type = living_standard_good
+			}
 			NOT = {
 				from = {
 					has_monthly_income = {
@@ -959,7 +1119,9 @@ living_standard_good = {
 				is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
 				AND = {
 					is_active_resolution = "resolution_divinity_a_defined_purpose"
-					FROM = { has_country_flag = synthetic_empire }
+					FROM = {
+						has_country_flag = synthetic_empire
+					}
 				}
 			}
 		}
@@ -969,25 +1131,24 @@ living_standard_good = {
 living_standard_normal = {
 	token = living_standard_normal
 	name = living_standard_normal
-
 	triggered_pop_modifier = {
 		potential = {
 			NAND = {
 				exists = owner
-				owner = { has_deficit = consumer_goods }
+				owner = {
+					has_deficit = consumer_goods
+				}
 			}
 		}
-		pop_cat_ruler_happiness = 0.10
+		pop_cat_ruler_happiness = 0.1
 		pop_cat_specialist_happiness = 0.05
 	}
-
 	triggered_pop_modifier = {
 		potential = {
 			is_unemployed = yes
 		}
-		pop_happiness = -0.20
+		pop_happiness = -0.2
 	}
-
 	in_breach_of = {
 		{
 			trigger = {
@@ -1002,7 +1163,6 @@ living_standard_normal = {
 			key = resolution_greatergood_universal_prosperity_mandate
 		}
 	}
-
 	pop_modifier = {
 		pop_category_rulers_consumer_goods_upkeep_add = @living_standard_luxuries_very_high
 		pop_category_specialists_consumer_goods_upkeep_add = @living_standard_luxuries_high
@@ -1013,30 +1173,41 @@ living_standard_normal = {
 		show_only_custom_tooltip = no
 		custom_tooltip = base_crime_normal
 	}
-
 	potential = {
 		exists = from
 		from = {
 			is_gestalt = no
-			NOT = { has_valid_civic = civic_shared_burden }
-			NOT = { has_valid_civic = civic_worker_coop }
+			NOT = {
+				has_valid_civic = civic_shared_burden
+			}
+			NOT = {
+				has_valid_civic = civic_worker_coop
+			}
 			NAND = {
 				has_valid_civic = civic_ethical_hedonism
-				ROOT = { has_citizenship_type = { country = from type = citizenship_full } }
+				ROOT = {
+					has_citizenship_type = {
+						country = from
+						type = citizenship_full
+					}
+				}
 			}
 		}
 		NOR = {
 			AND = {
 				has_trait = trait_hive_mind
-				NOT = { has_trait = trait_tree_caretaker }
+				NOT = {
+					has_trait = trait_tree_caretaker
+				}
 			}
 			has_trait = trait_machine_unit
 			is_shackled_robot_species_rights = yes
 		}
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = SPECIES_MUST_NOT_BE_ASSIMILATING
 			NOT = {
@@ -1051,11 +1222,20 @@ living_standard_normal = {
 			if = {
 				limit = {
 					OR = {
-						has_citizenship_type = { country = from type = citizenship_purge_machine }
-						has_citizenship_type = { country = from type = citizenship_purge }
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge_machine
+						}
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge
+						}
 					}
 				}
-				has_purge_type = { country = from type = purge_neutering }
+				has_purge_type = {
+					country = from
+					type = purge_neutering
+				}
 			}
 		}
 	}
@@ -1071,7 +1251,9 @@ living_standard_normal = {
 				is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
 				AND = {
 					is_active_resolution = "resolution_divinity_a_defined_purpose"
-					FROM = { has_country_flag = synthetic_empire }
+					FROM = {
+						has_country_flag = synthetic_empire
+					}
 				}
 			}
 		}
@@ -1081,33 +1263,32 @@ living_standard_normal = {
 living_standard_stratified = {
 	token = living_standard_stratified
 	name = living_standard_stratified
-
 	triggered_pop_modifier = {
 		potential = {
 			NAND = {
 				exists = owner
-				owner = { has_deficit = consumer_goods }
+				owner = {
+					has_deficit = consumer_goods
+				}
 			}
 		}
 		pop_cat_ruler_happiness = 0.15
 		pop_cat_specialist_happiness = 0.05
 	}
-	
-	triggered_pop_modifier = { # This hides these values from the auto-generated tooltip
+	triggered_pop_modifier = {
+		# This hides these values from the auto-generated tooltip
 		potential = {
 			always = yes
 		}
-		pop_cat_worker_happiness = -0.10
-		pop_cat_slave_happiness = -0.10
+		pop_cat_worker_happiness = -0.1
+		pop_cat_slave_happiness = -0.1
 	}
-
 	triggered_pop_modifier = {
 		potential = {
 			is_unemployed = yes
 		}
-		pop_happiness = -0.20
+		pop_happiness = -0.2
 	}
-
 	in_breach_of = {
 		{
 			trigger = {
@@ -1128,7 +1309,6 @@ living_standard_stratified = {
 			key = resolution_greatergood_universal_prosperity_mandate
 		}
 	}
-
 	pop_modifier = {
 		pop_category_rulers_consumer_goods_upkeep_add = @living_standard_luxuries_very_high
 		pop_category_specialists_consumer_goods_upkeep_add = @living_standard_luxuries_high
@@ -1140,37 +1320,51 @@ living_standard_stratified = {
 		show_only_custom_tooltip = no
 		custom_tooltip = base_crime_stratified
 	}
-
 	potential = {
 		exists = from
 		from = {
 			is_gestalt = no
-			NOT = { has_valid_civic = civic_shared_burden }
-			NOT = { has_valid_civic = civic_worker_coop }
+			NOT = {
+				has_valid_civic = civic_shared_burden
+			}
+			NOT = {
+				has_valid_civic = civic_worker_coop
+			}
 		}
 		NOR = {
 			AND = {
 				has_trait = trait_hive_mind
-				NOT = { has_trait = trait_tree_caretaker }
+				NOT = {
+					has_trait = trait_tree_caretaker
+				}
 			}
 			has_trait = trait_machine_unit
 			is_shackled_robot_species_rights = yes
 		}
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = empire_not_authoritarian
-			from = { is_authoritarian = yes }
+			from = {
+				is_authoritarian = yes
+			}
 		}
 		custom_tooltip = {
 			fail_text = is_slaves_not_battle_thralls
 			if = {
 				limit = {
-					has_citizenship_type = { country = from type = citizenship_slavery }
+					has_citizenship_type = {
+						country = from
+						type = citizenship_slavery
+					}
 				}
-				has_slavery_type = { country = from type = slavery_military }
+				has_slavery_type = {
+					country = from
+					type = slavery_military
+				}
 			}
 		}
 		custom_tooltip = {
@@ -1178,11 +1372,20 @@ living_standard_stratified = {
 			if = {
 				limit = {
 					OR = {
-						has_citizenship_type = { country = from type = citizenship_purge_machine }
-						has_citizenship_type = { country = from type = citizenship_purge }
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge_machine
+						}
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge
+						}
 					}
 				}
-				has_purge_type = { country = from type = purge_neutering }
+				has_purge_type = {
+					country = from
+					type = purge_neutering
+				}
 			}
 		}
 		custom_tooltip = {
@@ -1208,7 +1411,9 @@ living_standard_stratified = {
 				is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
 				AND = {
 					is_active_resolution = "resolution_divinity_a_defined_purpose"
-					FROM = { has_country_flag = synthetic_empire }
+					FROM = {
+						has_country_flag = synthetic_empire
+					}
 				}
 			}
 		}
@@ -1218,24 +1423,22 @@ living_standard_stratified = {
 living_standard_subsistence = {
 	token = living_standard_subsistence
 	name = living_standard_subsistence
-
-	triggered_pop_modifier = { # This hides these values from the auto-generated tooltip
+	triggered_pop_modifier = {
+		# This hides these values from the auto-generated tooltip
 		potential = {
 			always = yes
 		}
 		pop_cat_ruler_happiness = -0.05
-		pop_cat_specialist_happiness = -0.10
-		pop_cat_worker_happiness = -0.20
-		pop_cat_slave_happiness = -0.10
+		pop_cat_specialist_happiness = -0.1
+		pop_cat_worker_happiness = -0.2
+		pop_cat_slave_happiness = -0.1
 	}
-
 	triggered_pop_modifier = {
 		potential = {
 			is_unemployed = yes
 		}
-		pop_happiness = -0.20
+		pop_happiness = -0.2
 	}
-
 	pop_modifier = {
 		pop_category_rulers_consumer_goods_upkeep_add = @living_standard_luxuries_high
 		pop_category_specialists_consumer_goods_upkeep_add = @living_standard_luxuries_normal
@@ -1246,7 +1449,6 @@ living_standard_subsistence = {
 		show_only_custom_tooltip = no
 		custom_tooltip = base_crime_subsistence
 	}
-
 	in_breach_of = {
 		{
 			key = resolution_greatergood_five_year_plans
@@ -1270,35 +1472,59 @@ living_standard_subsistence = {
 			key = resolution_greatergood_universal_prosperity_mandate
 		}
 	}
-
-
 	potential = {
 		exists = from
-		NOT = { from = { has_valid_civic = civic_shared_burden } }
-		NOT = { from = { has_valid_civic = civic_worker_coop } }
+		NOT = {
+			from = {
+				has_valid_civic = civic_shared_burden
+			}
+		}
+		NOT = {
+			from = {
+				has_valid_civic = civic_worker_coop
+			}
+		}
 		NOR = {
 			AND = {
 				has_trait = trait_hive_mind
-				NOT = { has_trait = trait_tree_caretaker }
+				NOT = {
+					has_trait = trait_tree_caretaker
+				}
 			}
 			has_trait = trait_machine_unit
 			is_shackled_robot_species_rights = yes
 		}
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = MUST_BE_SLAVES_LIMITED_OR_DISPLACEMENT
 			OR = {
-				has_citizenship_type = { country = from type = citizenship_slavery }
-				has_citizenship_type = { type = citizenship_limited country = from }
+				has_citizenship_type = {
+					country = from
+					type = citizenship_slavery
+				}
+				has_citizenship_type = {
+					type = citizenship_limited
+					country = from
+				}
 				AND = {
 					OR = {
-						has_citizenship_type = { country = from type = citizenship_purge_machine }
-						has_citizenship_type = { country = from type = citizenship_purge }
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge_machine
+						}
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge
+						}
 					}
-					has_purge_type = { country = from type = purge_displacement }
+					has_purge_type = {
+						country = from
+						type = purge_displacement
+					}
 				}
 			}
 		}
@@ -1333,7 +1559,9 @@ living_standard_subsistence = {
 				is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
 				AND = {
 					is_active_resolution = "resolution_divinity_a_defined_purpose"
-					FROM = { has_country_flag = synthetic_empire }
+					FROM = {
+						has_country_flag = synthetic_empire
+					}
 				}
 			}
 		}
@@ -1343,20 +1571,22 @@ living_standard_subsistence = {
 living_standard_servitude = {
 	token = living_standard_servitude
 	name = living_standard_servitude
-
 	potential = {
 		exists = from
-		from = { is_gestalt = no }
+		from = {
+			is_gestalt = no
+		}
 		has_trait = trait_mechanical
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = requires_servitude
-			has_citizenship_type = { type = citizenship_robot_servitude country = from }
+			has_citizenship_type = {
+				type = citizenship_robot_servitude
+				country = from
+			}
 		}
 	}
-
 	ai_will_do = {
 		factor = 0
 	}
@@ -1366,20 +1596,21 @@ living_standard_servitude = {
 living_standard_hive_mind = {
 	token = living_standard_hive_mind
 	name = living_standard_hive_mind
-	
 	pop_modifier = {
 		show_only_custom_tooltip = no
 		custom_tooltip = base_crime_gestalt
 	}
-
 	potential = {
-		from = { has_ethic = ethic_gestalt_consciousness }
+		from = {
+			has_ethic = ethic_gestalt_consciousness
+		}
 	}
-
 	allow = {
 		if = {
 			limit = {
-				from = { has_authority = auth_hive_mind }
+				from = {
+					has_authority = auth_hive_mind
+				}
 			}
 			custom_tooltip = {
 				fail_text = species_is_not_hive
@@ -1387,14 +1618,20 @@ living_standard_hive_mind = {
 			}
 		}
 		else_if = {
-			limit = { from = { has_authority = auth_machine_intelligence } }
+			limit = {
+				from = {
+					has_authority = auth_machine_intelligence
+				}
+			}
 			custom_tooltip = {
 				fail_text = species_is_not_machine
 				OR = {
 					has_trait = trait_machine_unit
 					has_trait = trait_mechanical
 					AND = {
-						from = { has_civic = civic_machine_assimilator }
+						from = {
+							has_civic = civic_machine_assimilator
+						}
 						has_trait = trait_cybernetic
 					}
 				}
@@ -1410,7 +1647,6 @@ living_standard_hive_mind = {
 			}
 		}
 	}
-
 	ai_will_do = {
 		factor = 1
 	}
@@ -1419,23 +1655,36 @@ living_standard_hive_mind = {
 living_standard_decadent = {
 	token = living_standard_decadent
 	name = living_standard_decadent
-
 	potential = {
-		host_has_dlc = "Humanoids Species Pack"		
+		host_has_dlc = "Humanoids Species Pack"
 		exists = from
 		from = {
 			OR = {
 				is_pleasure_seeker = yes
 				AND = {
-					has_ascension_perk = ap_synthetic_servants 
-					ROOT = { has_citizenship_type = { country = from type = citizenship_full } }
+					has_ascension_perk = ap_synthetic_servants
+					ROOT = {
+						has_citizenship_type = {
+							country = from
+							type = citizenship_full
+						}
+					}
 				}
 			}
 		}
-		NOT = { from = { has_valid_civic = civic_shared_burden } }
+		NOT = {
+			from = {
+				has_valid_civic = civic_shared_burden
+			}
+		}
 		OR = {
-			from = { is_gestalt = no }
-			has_citizenship_type = { type = citizenship_slavery country = from }
+			from = {
+				is_gestalt = no
+			}
+			has_citizenship_type = {
+				type = citizenship_slavery
+				country = from
+			}
 		}
 		NOR = {
 			has_trait = trait_hive_mind
@@ -1443,23 +1692,38 @@ living_standard_decadent = {
 			is_shackled_robot_species_rights = yes
 		}
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = is_slaves_tooltip
-			NOT = { has_citizenship_type = { country = from type = citizenship_slavery } }
+			NOT = {
+				has_citizenship_type = {
+					country = from
+					type = citizenship_slavery
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = is_purged_not_neutered
 			if = {
 				limit = {
 					OR = {
-						has_citizenship_type = { country = from type = citizenship_purge_machine }
-						has_citizenship_type = { country = from type = citizenship_purge }
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge_machine
+						}
+						has_citizenship_type = {
+							country = from
+							type = citizenship_purge
+						}
 					}
 				}
-				has_purge_type = { country = from type = purge_neutering }
+				has_purge_type = {
+					country = from
+					type = purge_neutering
+				}
 			}
 		}
 		custom_tooltip = {
@@ -1472,27 +1736,26 @@ living_standard_decadent = {
 			}
 		}
 	}
-
 	triggered_pop_modifier = {
 		potential = {
 			NAND = {
 				exists = owner
-				owner = { has_deficit = consumer_goods }
+				owner = {
+					has_deficit = consumer_goods
+				}
 			}
 		}
 		planet_jobs_unity_produces_mult = 0.1
-		pop_cat_ruler_happiness = 0.20
-		pop_cat_specialist_happiness = 0.20
-		pop_cat_worker_happiness = 0.20
+		pop_cat_ruler_happiness = 0.2
+		pop_cat_specialist_happiness = 0.2
+		pop_cat_worker_happiness = 0.2
 	}
-
 	triggered_pop_modifier = {
 		potential = {
 			is_unemployed = yes
 		}
-		pop_happiness = -0.20
+		pop_happiness = -0.2
 	}
-
 	pop_modifier = {
 		pop_category_rulers_consumer_goods_upkeep_add = @living_standard_luxuries_very_high_decadent
 		pop_category_specialists_consumer_goods_upkeep_add = @living_standard_luxuries_high_decadent
@@ -1502,7 +1765,6 @@ living_standard_decadent = {
 		show_only_custom_tooltip = no
 		custom_tooltip = base_crime_normal
 	}
-
 	ai_will_do = {
 		factor = 10
 	}
@@ -1512,30 +1774,41 @@ living_standard_decadent = {
 living_standard_none = {
 	token = living_standard_none
 	name = living_standard_none
-	
 	pop_modifier = {
 		show_only_custom_tooltip = no
 		custom_tooltip = base_crime_assimilation
 	}
-
 	allow = {
-		hidden_trigger = { exists = from }
+		hidden_trigger = {
+			exists = from
+		}
 		custom_tooltip = {
 			fail_text = species_is_neutered_displaced
 			OR = {
-				has_citizenship_type = { country = from type = citizenship_purge_machine }
-				has_citizenship_type = { country = from type = citizenship_purge }
+				has_citizenship_type = {
+					country = from
+					type = citizenship_purge_machine
+				}
+				has_citizenship_type = {
+					country = from
+					type = citizenship_purge
+				}
 			}
 			NOR = {
-				has_purge_type = { country = from type = purge_neutering }
+				has_purge_type = {
+					country = from
+					type = purge_neutering
+				}
 				AND = {
-					has_purge_type = { country = from type = purge_displacement }
+					has_purge_type = {
+						country = from
+						type = purge_displacement
+					}
 					is_robotic_species = no
 				}
 			}
 		}
 	}
-
 	ai_will_do = {
 		factor = 10
 	}
