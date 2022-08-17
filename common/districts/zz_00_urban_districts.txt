@@ -4,15 +4,15 @@
 @hive_food_cost = 100
 @city_hive_min_cost = 333
 @city_hive_food_cost = 167
-
 district_city = {
 	base_buildtime = 480
 	is_capped_by_modifier = no
 	exempt_from_ai_planet_specialization = yes
-
 	show_on_uncolonized = {
 		exists = from
-		from = { is_regular_empire = yes }
+		from = {
+			is_regular_empire = yes
+		}
 		OR = {
 			uses_district_set = standard
 			uses_district_set = hive_world
@@ -21,7 +21,6 @@ district_city = {
 			uses_district_set = pdnecroplanet
 		}
 	}
-
 	potential = {
 		exists = owner
 		owner = {
@@ -38,12 +37,14 @@ district_city = {
 			uses_district_set = pdnecroplanet
 		}
 	}
-
 	allow = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
+		NOT = {
+			has_modifier = slave_colony
+		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_arcology_housing
@@ -51,7 +52,6 @@ district_city = {
 		district_nexus
 		district_hive
 	}
-
 	resources = {
 		category = planet_districts_cities
 		cost = {
@@ -76,7 +76,9 @@ district_city = {
 						is_civic_plant_organic = yes
 					}
 					is_lithoid_empire = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			minerals = @city_hive_min_cost
@@ -125,7 +127,9 @@ district_city = {
 						is_lithoid_empire = yes
 					}
 					is_civic_plant_organic = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = 2
@@ -145,12 +149,10 @@ district_city = {
 			food = 0.7
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 5
 		planet_max_buildings_add = 1
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -162,7 +164,6 @@ district_city = {
 			planet_housing_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -174,7 +175,6 @@ district_city = {
 			planet_housing_add = -1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -186,17 +186,17 @@ district_city = {
 			job_clerk_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_active_tradition = tr_prosperity_public_works }
+			owner = {
+				has_active_tradition = tr_prosperity_public_works
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -208,34 +208,37 @@ district_city = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = {
 				has_technology = tech_housing_2
-				NOT = { has_valid_civic = civic_agrarian_idyll }
+				NOT = {
+					has_valid_civic = civic_agrarian_idyll
+				}
 			}
 		}
 		modifier = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_active_tradition = tr_prosperity_interstellar_franchising }
+			owner = {
+				has_active_tradition = tr_prosperity_interstellar_franchising
+			}
 		}
 		modifier = {
 			job_clerk_add = 1
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		text = job_clerk_effect_desc
 	}
@@ -245,9 +248,10 @@ district_hive = {
 	base_buildtime = 480
 	is_capped_by_modifier = no
 	exempt_from_ai_planet_specialization = yes
-
 	show_on_uncolonized = {
-		from = { is_hive_empire = yes }
+		from = {
+			is_hive_empire = yes
+		}
 		OR = {
 			uses_district_set = standard
 			uses_district_set = hive_world
@@ -260,10 +264,11 @@ district_hive = {
 			uses_district_set = pdnecroplanet
 		}
 	}
-
 	potential = {
 		exists = owner
-		owner = { is_hive_empire = yes }
+		owner = {
+			is_hive_empire = yes
+		}
 		OR = {
 			uses_district_set = standard
 			uses_district_set = hive_world
@@ -276,11 +281,11 @@ district_hive = {
 			uses_district_set = pdnecroplanet
 		}
 	}
-
 	allow = {
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_arcology_housing
@@ -288,7 +293,6 @@ district_hive = {
 		district_nexus
 		district_city
 	}
-
 	resources = {
 		category = planet_districts_cities
 		cost = {
@@ -313,7 +317,9 @@ district_hive = {
 						is_civic_plant_organic = yes
 					}
 					is_lithoid_empire = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			minerals = @city_hive_min_cost
@@ -362,7 +368,9 @@ district_hive = {
 						is_lithoid_empire = yes
 					}
 					is_civic_plant_organic = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = 2
@@ -380,15 +388,13 @@ district_hive = {
 			}
 			energy = 1.3
 			food = 0.7
-		}	
+		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 6
 		job_maintenance_drone_add = 2
 		planet_max_buildings_add = 1
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -400,7 +406,6 @@ district_hive = {
 			planet_housing_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -413,7 +418,6 @@ district_hive = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			is_planet_class = pc_hive
@@ -423,32 +427,35 @@ district_hive = {
 			job_maintenance_drone_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_technology = tech_housing_1 }
+			owner = {
+				has_technology = tech_housing_1
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_technology = tech_housing_2 }
+			owner = {
+				has_technology = tech_housing_2
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
 			job_maintenance_drone_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_active_tradition = tr_prosperity_extended_hives }
+			owner = {
+				has_active_tradition = tr_prosperity_extended_hives
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
@@ -460,9 +467,10 @@ district_nexus = {
 	base_buildtime = 480
 	is_capped_by_modifier = no
 	exempt_from_ai_planet_specialization = yes
-
 	show_on_uncolonized = {
-		from = { is_machine_empire = yes }
+		from = {
+			is_machine_empire = yes
+		}
 		OR = {
 			uses_district_set = standard
 			uses_district_set = hive_world
@@ -473,10 +481,11 @@ district_nexus = {
 			uses_district_set = pdnecroplanet
 		}
 	}
-
 	potential = {
 		exists = owner
-		owner = { is_machine_empire = yes }
+		owner = {
+			is_machine_empire = yes
+		}
 		OR = {
 			uses_district_set = standard
 			uses_district_set = hive_world
@@ -487,11 +496,11 @@ district_nexus = {
 			uses_district_set = pdnecroplanet
 		}
 	}
-
 	allow = {
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_arcology_housing
@@ -499,7 +508,6 @@ district_nexus = {
 		district_city
 		district_hive
 	}
-
 	resources = {
 		category = planet_districts_cities
 		cost = {
@@ -509,38 +517,40 @@ district_nexus = {
 			energy = 2
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 5
 		job_maintenance_drone_add = 2
 		planet_max_buildings_add = 1
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_technology = tech_housing_1 }
+			owner = {
+				has_technology = tech_housing_1
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_technology = tech_housing_2 }
+			owner = {
+				has_technology = tech_housing_2
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
 			job_maintenance_drone_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_active_tradition = tr_prosperity_optimized_nexus }
+			owner = {
+				has_active_tradition = tr_prosperity_optimized_nexus
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
@@ -551,11 +561,9 @@ district_nexus = {
 district_industrial = {
 	base_buildtime = 480
 	is_capped_by_modifier = no
-
 	prerequisites = {
 		tech_basic_industry
 	}
-
 	show_on_uncolonized = {
 		exists = from
 		OR = {
@@ -563,7 +571,6 @@ district_industrial = {
 			uses_district_set = pdnecroplanet
 		}
 	}
-
 	potential = {
 		exists = owner
 		OR = {
@@ -571,25 +578,37 @@ district_industrial = {
 			uses_district_set = pdnecroplanet
 		}
 	}
-
 	allow = {
 		exists = owner
-		NOT = { has_modifier = resort_colony }
-		OR = {
-			NOT = { has_modifier = slave_colony }
-			owner = { has_civic = civic_slaver_guilds }
-			owner = { has_civic = civic_indentured_assets }
+		NOT = {
+			has_modifier = resort_colony
 		}
 		OR = {
-			owner = { is_ai = no }
-			NOT = { has_modifier = slave_colony }
+			NOT = {
+				has_modifier = slave_colony
+			}
+			owner = {
+				has_civic = civic_slaver_guilds
+			}
+			owner = {
+				has_civic = civic_indentured_assets
+			}
+		}
+		OR = {
+			owner = {
+				is_ai = no
+			}
+			NOT = {
+				has_modifier = slave_colony
+			}
 			any_owned_pop = {
 				is_enslaved = yes
-				has_slavery_type = { type = slavery_indentured }
+				has_slavery_type = {
+					type = slavery_indentured
+				}
 			}
 		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_arcology_arms_industry
@@ -598,7 +617,6 @@ district_industrial = {
 		district_bioforge_stomach
 		district_mf_alloy
 	}
-
 	resources = {
 		category = planet_districts_industrial
 		cost = {
@@ -631,7 +649,9 @@ district_industrial = {
 						is_lithoid_empire = no
 						is_catalytic_empire = yes
 					}
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			minerals = @city_hive_min_cost
@@ -668,7 +688,9 @@ district_industrial = {
 					}
 					is_civic_plant_organic = no
 					is_catalytic_empire = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = 2
@@ -691,7 +713,6 @@ district_industrial = {
 			energy = 1.3
 			food = 0.7
 		}
-
 		upkeep = {
 			trigger = {
 				exists = owner
@@ -702,11 +723,9 @@ district_industrial = {
 			energy = 2
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 2
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -721,7 +740,6 @@ district_industrial = {
 			planet_max_buildings_add = 0.34
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -734,17 +752,17 @@ district_industrial = {
 			job_artisan_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_crafter_empire = yes }
+			owner = {
+				is_crafter_empire = yes
+			}
 		}
 		modifier = {
 			job_artificer_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -757,7 +775,6 @@ district_industrial = {
 			job_foundry_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -770,7 +787,6 @@ district_industrial = {
 			job_catalytic_technician_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -783,7 +799,6 @@ district_industrial = {
 			job_alloy_drone_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -796,7 +811,6 @@ district_industrial = {
 			job_fabricator_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -809,7 +823,6 @@ district_industrial = {
 			job_catalytic_drone_add = 2
 		}
 	}
-
 	# Designation Job Changes
 	triggered_planet_modifier = {
 		potential = {
@@ -824,7 +837,6 @@ district_industrial = {
 			job_artisan_add = -1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_designation = col_foundry
@@ -838,7 +850,6 @@ district_industrial = {
 			job_artificer_add = -1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_designation = col_foundry
@@ -852,7 +863,6 @@ district_industrial = {
 			job_foundry_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_designation = col_foundry
@@ -866,7 +876,6 @@ district_industrial = {
 			job_catalytic_technician_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_designation = col_factory
@@ -880,7 +889,6 @@ district_industrial = {
 			job_artisan_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_designation = col_factory
@@ -894,7 +902,6 @@ district_industrial = {
 			job_artificer_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_designation = col_factory
@@ -908,7 +915,6 @@ district_industrial = {
 			job_foundry_add = -1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			has_designation = col_factory
@@ -922,7 +928,6 @@ district_industrial = {
 			job_catalytic_technician_add = -1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			OR = {
@@ -941,7 +946,6 @@ district_industrial = {
 			job_fabricator_add = -1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			OR = {
@@ -960,7 +964,6 @@ district_industrial = {
 			job_catalytic_drone_add = -1
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -971,7 +974,6 @@ district_industrial = {
 		}
 		text = job_artisan_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -982,7 +984,6 @@ district_industrial = {
 		}
 		text = job_artificer_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -993,7 +994,6 @@ district_industrial = {
 		}
 		text = job_artisan_drone_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1004,7 +1004,6 @@ district_industrial = {
 		}
 		text = job_foundry_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1025,7 +1024,6 @@ district_industrial = {
 		}
 		text = job_fabricator_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1036,7 +1034,6 @@ district_industrial = {
 		}
 		text = job_alloy_drone_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1047,7 +1044,6 @@ district_industrial = {
 		}
 		text = job_catalytic_drone_effect_desc
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1060,7 +1056,6 @@ district_industrial = {
 			job_maintenance_drone_add = 1
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1071,7 +1066,6 @@ district_industrial = {
 		}
 		text = job_maintenance_drone_effect_desc
 	}
-
 	ai_resource_production = {
 		alloys = 3
 		trigger = {
@@ -1121,32 +1115,32 @@ district_industrial = {
 district_srw_commercial = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
-
 	min_for_deposits_on_planet = 3
 	max_for_deposits_on_planet = 15
-
 	show_on_uncolonized = {
 		exists = from
-		from = { is_regular_empire = yes }
+		from = {
+			is_regular_empire = yes
+		}
 		uses_district_set = shattered_ring_world
 	}
-
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes }
+		owner = {
+			is_regular_empire = yes
+		}
 		uses_district_set = shattered_ring_world
 	}
-
 	allow = {
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_generator_uncapped
 		district_rw_commercial
 	}
-
 	resources = {
 		category = planet_districts
 		cost = {
@@ -1171,7 +1165,9 @@ district_srw_commercial = {
 						is_civic_plant_organic = yes
 					}
 					is_lithoid_empire = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			minerals = @hive_min_cost
@@ -1200,7 +1196,9 @@ district_srw_commercial = {
 						is_lithoid_empire = yes
 					}
 					is_civic_plant_organic = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = 1
@@ -1220,21 +1218,20 @@ district_srw_commercial = {
 			food = 0.3
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 2
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = no }
+			owner = {
+				is_fallen_empire_spiritualist = no
+			}
 		}
 		modifier = {
 			job_clerk_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1247,27 +1244,28 @@ district_srw_commercial = {
 			job_artisan_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_crafter_empire = yes }
+			owner = {
+				is_crafter_empire = yes
+			}
 		}
 		modifier = {
 			job_artificer_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_manager_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1279,11 +1277,9 @@ district_srw_commercial = {
 			job_merchant_add = 1
 		}
 	}
-
 	triggered_desc = {
 		text = job_clerk_effect_desc
 	}
-	
 	triggered_desc = {
 		text = job_merchant_effect_desc
 		trigger = {
@@ -1293,7 +1289,6 @@ district_srw_commercial = {
 			}
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1304,7 +1299,6 @@ district_srw_commercial = {
 		}
 		text = job_artisan_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -1315,7 +1309,6 @@ district_srw_commercial = {
 		}
 		text = job_artificer_effect_desc
 	}
-
 	ai_resource_production = {
 		energy = 1
 		trigger = {
