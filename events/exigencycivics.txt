@@ -1,12 +1,10 @@
 namespace = exigencycivics
-
 planet_event = {
 	id = exigencycivics.1
 	hide_window = yes
 	is_triggered_only = yes
-
 	immediate = {
-		ex_generate_start_pops = yes #thanks to Red-Eyed_Fairace for guiding me through the secondary species changes in 2.2
+		ex_generate_start_pops = yes		#thanks to Red-Eyed_Fairace for guiding me through the secondary species changes in 2.2
 	}
 }
 
@@ -15,13 +13,16 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		if = { 																	
-			limit = { 
+		if = {
+			limit = {
 				has_civic = civic_psionic_heritage
-			} 
-			give_technology = { message = yes tech = tech_psionic_studies }		# edict fix for games in progress
-		}
 			}
+			give_technology = {
+				message = yes
+				tech = tech_psionic_studies
+			}			# edict fix for games in progress
+		}
+	}
 }
 
 country_event = {
@@ -29,51 +30,55 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		if = { 																	
-			limit = { 
+		if = {
+			limit = {
 				has_civic = civic_psionic_heritage
-			} 
-			give_technology = { message = no tech = tech_mine_zro }
-			add_resource = { sr_zro = 10 }	
-		}
 			}
+			give_technology = {
+				message = no
+				tech = tech_mine_zro
+			}
+			add_resource = {
+				sr_zro = 10
+			}
+		}
+	}
 }
 
 country_event = {
-    id = exigencycivics.4099
-    hide_window = yes
-    is_triggered_only = yes
-
-#   trigger = {
-#        has_origin =
-#    }
-
-    immediate = {
-        #ruler = {
-        #    kill_leader = { show_notification = no }
-        #}
-        create_species = {
-            name = "Tyrant Intelligence"
-            class = ROBOT
-            namelist = TYRANT1
-            traits = { }
-        }
-        create_leader = {
-				class = ruler
-				species = last_created_species
-				#name = "NAME_Supercomputer"
-				skill = 10
-				event_leader = yes
-				traits = {
-					trait = leader_trait_ruler_supercomputer
-				}
+	id = exigencycivics.4099
+	hide_window = yes
+	is_triggered_only = yes
+	#   trigger = {
+	#        has_origin =
+	#    }
+	immediate = {
+		#ruler = {
+		#    kill_leader = { show_notification = no }
+		#}
+		create_species = {
+			name = "Tyrant Intelligence"
+			class = ROBOT
+			namelist = TYRANT1
+			traits = {
 			}
-			last_created_leader = {
-				set_age = 2022
 		}
-        set_leader = last_created_leader
-	save_event_target_as = tyrantintelligence
-        }
+		create_leader = {
+			class = ruler
+			species = last_created_species
+			#name = "NAME_Supercomputer"
+			skill = 10
+			event_leader = yes
+			traits = {
+				trait = leader_trait_ruler_supercomputer
+			}
+		}
+		last_created_leader = {
+			set_age = 2022
+		}
+		set_leader = last_created_leader
+		save_event_target_as = tyrantintelligence
+	}
 }
 
 country_event = {
@@ -83,7 +88,6 @@ country_event = {
 	picture = GFX_origin_sapient_intervention
 	show_sound = event_energy_field
 	is_triggered_only = yes
-	
 	#trigger = {
 	#	is_country_type = default
 	#	NOT = { has_country_flag = tyrantintelligence_event }
@@ -93,40 +97,37 @@ country_event = {
 	#		has_authority = auth_dictatorial
 	#	}
 	#}
-
 	#mean_time_to_happen = {
 	#	months = 120
 	#}
-	
-    immediate = {
-        #ruler = {
-        #    kill_leader = { show_notification = no }
-        #}
+	immediate = {
+		#ruler = {
+		#    kill_leader = { show_notification = no }
+		#}
 		remove_relic = r_supercomputeriii
-        create_species = {
-            name = "Tyrant Intelligence"
-            class = ROBOT
-            namelist = TYRANT1
-            traits = { }
-        }
-        create_leader = {
-				class = ruler
-				species = last_created_species
-				#name = "NAME_Supercomputer"
-				skill = 10
-				event_leader = yes
-				traits = {
-					trait = leader_trait_ruler_supercomputer
-				}
+		create_species = {
+			name = "Tyrant Intelligence"
+			class = ROBOT
+			namelist = TYRANT1
+			traits = {
 			}
-			last_created_leader = {
-				set_age = 23022
 		}
-        set_leader = last_created_leader
-	    save_event_target_as = tyrantintelligence
-        }
-
-	
+		create_leader = {
+			class = ruler
+			species = last_created_species
+			#name = "NAME_Supercomputer"
+			skill = 10
+			event_leader = yes
+			traits = {
+				trait = leader_trait_ruler_supercomputer
+			}
+		}
+		last_created_leader = {
+			set_age = 23022
+		}
+		set_leader = last_created_leader
+		save_event_target_as = tyrantintelligence
+	}
 	#option = {
 	#	name = "tyrantiopa"
 	#	ai_chance = {
@@ -150,7 +151,7 @@ country_event = {
 				factor = 40
 				has_ethic = ethic_authoritarian
 			}
-				modifier = {
+			modifier = {
 				factor = 80
 				has_ethic = ethic_fanatic_authoritarian
 			}
@@ -160,8 +161,8 @@ country_event = {
 		change_government = {
 			authority = auth_dictatorial
 			#civics = {
-				#civic = random
-				#civic = civic_eternity_cell
+			#civic = random
+			#civic = civic_eternity_cell
 			#}
 		}
 		#add_modifier = arcane_augmentation_modifier
@@ -184,76 +185,66 @@ country_event = {
 country_event = {
 	id = exigencycivics.5335
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
-
 	}
-
 	immediate = {
-				create_fleet = {
-					settings = {
-							can_upgrade = no
-							can_change_composition = no
-							can_disband = no
-							uses_naval_capacity = no
+		create_fleet = {
+			settings = {
+				can_upgrade = no
+				can_change_composition = no
+				can_disband = no
+				uses_naval_capacity = no
+			}
+			effect = {
+				set_owner = root
+				while = {
+					count = 6
+					create_ship = {
+						name = random
+						random_existing_design = corvette
 					}
-					effect = {
-						set_owner = root
-					while = {
-						count = 6
-						create_ship = {
-							name = random
-							random_existing_design = corvette
-						}
-						if = {
-
-						}
-						else = {
-							set_location = root.capital_scope
-						}
-					}	
+					if = {
+					}
+					else = {
+						set_location = root.capital_scope
 					}
 				}
+			}
+		}
 	}
 }
 
 country_event = {
 	id = exigencycivics.5336
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
-
 	}
-
 	immediate = {
-				create_fleet = {
-					settings = {
-							can_upgrade = no
-							can_change_composition = no
-							can_disband = no
-							uses_naval_capacity = no
+		create_fleet = {
+			settings = {
+				can_upgrade = no
+				can_change_composition = no
+				can_disband = no
+				uses_naval_capacity = no
+			}
+			effect = {
+				set_owner = root
+				while = {
+					count = 3
+					create_ship = {
+						name = random
+						random_existing_design = cruiser
 					}
-					effect = {
-						set_owner = root
-					while = {
-						count = 3
-						create_ship = {
-							name = random
-							random_existing_design = cruiser
-						}
-						if = {
-
-						}
-						else = {
-							set_location = root.capital_scope
-						}
-					}	
+					if = {
+					}
+					else = {
+						set_location = root.capital_scope
 					}
 				}
+			}
+		}
 	}
 }
 
@@ -264,28 +255,26 @@ country_event = {
 	picture = GFX_origin_sapient_intervention
 	show_sound = event_energy_field
 	is_triggered_only = yes
-		
-    immediate = {
+	immediate = {
 		remove_relic = r_supercomputeriii
 		force_add_civic = civic_advisor_mainframe
-	
-	option = {
-		name = "advisormopb"
-		ai_chance = {
-			factor = 150
-			modifier = {
-				factor = 40
-				has_ethic = ethic_materialist
-			}
+		option = {
+			name = "advisormopb"
+			ai_chance = {
+				factor = 150
 				modifier = {
-				factor = 80
-				has_ethic = ethic_fanatic_materialist
+					factor = 40
+					has_ethic = ethic_materialist
+				}
+				modifier = {
+					factor = 80
+					has_ethic = ethic_fanatic_materialist
+				}
 			}
+			#custom_tooltip = gain_advisor
+			#force_add_civic = civic_advisor_mainframe
 		}
-		#custom_tooltip = gain_advisor
-		#force_add_civic = civic_advisor_mainframe
 	}
-}
 }
 
 country_event = {
@@ -295,7 +284,6 @@ country_event = {
 	picture = GFX_origin_sapient_intervention
 	show_sound = event_energy_field
 	is_triggered_only = yes
-		
 	immediate = {
 		while = {
 			limit = {
@@ -328,67 +316,39 @@ country_event = {
 				}
 			}
 		}
-	
-	option = {
-		name = "advisormopb"
-		ai_chance = {
-			factor = 150
-			modifier = {
-				factor = 40
-				has_ethic = ethic_materialist
-			}
+		option = {
+			name = "advisormopb"
+			ai_chance = {
+				factor = 150
 				modifier = {
-				factor = 80
-				has_ethic = ethic_fanatic_materialist
+					factor = 40
+					has_ethic = ethic_materialist
+				}
+				modifier = {
+					factor = 80
+					has_ethic = ethic_fanatic_materialist
+				}
 			}
 		}
 	}
 }
-}
-
-#country_event = {
-#	id = exigencycivics.1010
-#	#is_triggered_only = yes
-#	hide_window = yes
-#
-#	trigger = {
-#		has_valid_civic = civic_planetary_senate
-#	}
-#
-#	immediate = {
-#		from = {
-#			if = {
-#				limit = { leader_class = ruler }
-#				#limit = { any_owned_leader }
-#				#limit = { leader_of_faction = yes }
-#				random_list = {
-#					30 = { add_trait = leader_trait_exstrong1 }
-#					30 = { add_trait = leader_trait_exstrong2 }
-#					30 = { add_trait = leader_trait_exstrong3 }
-#					10 = { add_trait = leader_trait_exstrong4 }
-#				}
-#			}
-#		}
-#	}
-#}
 
 country_event = {
 	id = exigencycivics.789
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
 		has_civic = civic_planetary_senate
 	}
-
 	immediate = {
 		every_owned_pop = {
-			limit = { has_job = clerk }
+			limit = {
+				has_job = clerk
+			}
 			add_modifier = {
-					modifier = exsenators
-					days = -1
-				}
+				modifier = exsenators
+				days = -1
+			}
 		}
 	}
 }
