@@ -1,3 +1,357 @@
+# BugBranch perks
+## Future Society
+ap_bugged_future_society = {
+	modifier = {
+		country_government_civic_points_add = 1
+	}
+	potential = {
+		NOR = {
+			has_ascension_perk = ap_bugged_future_society
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_technology_tech_galactic_administration"
+			has_technology = tech_galactic_administration
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_4"
+			num_ascension_perks > 3
+		}
+	}
+	ai_weight = {
+		factor = 10
+	}
+}
+
+# Planetery Wonders perks
+## Planetary Wonders
+pw_ap_planetary_wonders = {
+	potential = {
+		NOT = {
+			has_ascension_perk = pw_ap_planetary_wonders
+		}
+	}
+	possible = {
+		has_technology = "pw_tech_planetary_mega_engineering"
+		custom_tooltip = {
+			fail_text = requires_ascension_perks_1
+			num_ascension_perks > 0
+		}
+		custom_tooltip = {
+			fail_text = "pw_ap_requires_planetary_wonder_built"
+			pw_has_build_any_planetary_wonder = yes
+		}
+	}
+	on_enabled = {
+		#Allow multiple Planetary Wonders
+		custom_tooltip = "pw_ap_planetary_wonders_allow_multiple_wonders"
+		# Unlocks the special Wonder
+		if = {
+			#Regular Empire - Living Spire
+			limit = {
+				is_gestalt = no
+			}
+			custom_tooltip = "pw_ap_planetary_wonders_unlock_living_spire"
+		}
+		else = {
+			#Gestalt Empire - Living Spire
+			custom_tooltip = "pw_ap_planetary_wonders_unlock_conduit_of_unity"
+		}
+	}
+	modifier = {
+	}
+	ai_weight = {
+		factor = 20
+	}
+}
+
+# Planetary Diversity Reworked Terraforming submod perks
+## Breath of Creation
+ap_breath_of_creation = {
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ap_world_shaper_tier"
+			OR = {
+				has_ascension_perk = ap_world_shaper
+				has_ascension_perk = ap_hive_worlds
+				has_ascension_perk = ap_machine_worlds
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_3"
+			num_ascension_perks > 2
+		}
+	}
+	modifier = {
+		terraform_speed_mult = 0.15
+	}
+	on_enabled = {
+		tooltip = {
+			add_research_option = tech_terraforming_barren
+			add_research_option = tech_terraforming_frozen
+			add_research_option = tech_terraforming_molten
+			add_research_option = tech_terraforming_toxic
+			add_research_option = tech_terraforming_reconstruction
+		}
+	}
+	potential = {
+		NOT = {
+			has_ascension_perk = ap_breath_of_creation
+		}
+	}
+	ai_weight = {
+		factor = 5
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_origin = origin_void_dwellers
+				has_origin = origin_shattered_ring
+				has_trait = trait_aquatic
+				has_ethic = ethic_gestalt_consciousness
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = ethic_pacifist
+				has_ethic = ethic_xenophobe
+			}
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_ethic = ethic_fanatic_pacifist
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+		modifier = {
+			# only way to get more nice planets
+			factor = 100
+			has_origin = origin_life_seeded
+		}
+	}
+}
+
+## Sublubaris Progressus
+ap_sublunaris_progressus = {
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ap_breath_of_creation"
+			has_ascension_perk = ap_breath_of_creation
+		}
+		AND = {
+			has_technology = tech_terraforming_barren
+			has_technology = tech_terraforming_frozen
+			has_technology = tech_terraforming_molten
+			has_technology = tech_terraforming_toxic
+			has_technology = tech_terraforming_reconstruction
+		}
+	}
+	modifier = {
+		terraform_speed_mult = 0.25
+	}
+	on_enabled = {
+		custom_tooltip = "allow_gaia_any"
+	}
+	potential = {
+		NOT = {
+			has_ascension_perk = ap_sublunaris_progressus
+		}
+		has_global_flag = planetarydiversity
+	}
+	ai_weight = {
+		factor = 5
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_origin = origin_void_dwellers
+				has_origin = origin_shattered_ring
+				has_trait = trait_aquatic
+				has_ethic = ethic_gestalt_consciousness
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = ethic_pacifist
+				has_ethic = ethic_xenophobe
+			}
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_ethic = ethic_fanatic_pacifist
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+		modifier = {
+			#only way to get more nice planets
+			factor = 100
+			has_origin = origin_life_seeded
+		}
+	}
+}
+
+# Planetary Diversity perks
+## Megaflora Hive Worlds
+ap_florahive_worlds = {
+	on_enabled = {
+		custom_tooltip = "allow_flora_worlds"
+		custom_tooltip = "describe_flora_worlds"
+	}
+	potential = {
+		has_authority = auth_hive_mind
+		has_origin = origin_pd_tree_of_life
+		NOT = {
+			has_ascension_perk = ap_florahive_worlds
+		}
+		NAND = {
+			is_lithoid_empire = yes
+			has_valid_civic = civic_hive_devouring_swarm
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_technology_tech_climate_restoration"
+			has_technology = tech_climate_restoration
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+	}
+	ai_weight = {
+		factor = 10
+	}
+}
+
+## Cooling Lava
+ap_pd_molten_terraforming = {
+	on_enabled = {
+		custom_tooltip = "pd_molten_terraforming_tooltip"
+	}
+	possible = {
+		has_origin = origin_pd_ash_tectonic_drillers
+		owner = {
+			has_technology = tech_climate_restoration
+		}
+	}
+	potential = {
+		has_origin = origin_pd_ash_tectonic_drillers
+		NOT = {
+			has_ascension_perk = ap_pd_molten_terraforming
+		}
+	}
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+## Toxic Filtering
+ap_pd_ammonia_terraforming = {
+	on_enabled = {
+		custom_tooltip = "ap_pd_ammonia_terraforming_tooltip"
+	}
+	possible = {
+		has_origin = origin_pd_ammonia_breathers
+		owner = {
+			has_technology = tech_climate_restoration
+		}
+	}
+	potential = {
+		has_origin = origin_pd_ammonia_breathers
+		NOT = {
+			has_ascension_perk = ap_pd_ammonia_terraforming
+		}
+	}
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+## Advanced Methane Cryogenics
+ap_pd_methane_cryogenics = {
+	on_enabled = {
+		custom_tooltip = "ap_pd_methane_cryogenics_tooltip"
+	}
+	modifier = {
+		weapon_type_energy_weapon_damage_mult = 0.05
+		army_damage_mult = 0.05
+	}
+	possible = {
+		has_origin = origin_pd_methane_cryogenics
+		owner = {
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+	potential = {
+		has_origin = origin_pd_methane_cryogenics
+		NOT = {
+			has_ascension_perk = ap_pd_methane_cryogenics
+		}
+	}
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+## Toxic Stabilization
+ap_pd_sulfur_terraforming = {
+	on_enabled = {
+		custom_tooltip = "ap_pd_sulfur_terraforming_tooltip"
+	}
+	possible = {
+		has_origin = origin_pd_sulfur_springs
+		owner = {
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+	potential = {
+		has_origin = origin_pd_sulfur_springs
+		NOT = {
+			has_ascension_perk = ap_pd_sulfur_terraforming
+		}
+	}
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+## Bio-Synthetic Perfection
+ap_fours_children = {
+	on_enabled = {
+		custom_tooltip = "fours_children_tooltip"
+		hidden_effect = {
+			country_event = {
+				id = pdtechnoorganic.1000
+			}
+		}
+		#add_research_option = tech_telepathy
+	}
+	possible = {
+		has_origin = origin_techno_world
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+		owner = {
+			has_technology = tech_biosynth_lm_refinery
+		}
+	}
+	potential = {
+		has_origin = origin_techno_world
+		NOT = {
+			has_ascension_perk = ap_fours_children
+		}
+	}
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+# Unique Ascension Perks perks
+## Space Engineers
 ap_space_engineers = {
 	possible = {
 		custom_tooltip = {
@@ -12,20 +366,14 @@ ap_space_engineers = {
 			fail_text = "ap_space_engineers_req_3"
 			has_ascension_perk = ap_eternal_vigilance
 		}
-		# custom_tooltip = { fail_text = "ap_space_engineers_req_4" has_ascension_perk = ap_grasp_the_void }
 	}
-	# v3.3 reduced
 	modifier = {
-		country_starbase_capacity_mult = 0.1		# 1.0
-		starbases_upkeep_mult = -0.25		# -0.50
-		starbase_upgrade_cost_mult = -0.1		# -0.25
-		starbase_upgrade_speed_mult = 2		# 4.00
-		# starbase_modules_cost_mult = -0.15
-		starbase_module_build_speed_mult = 2		# 4.00
-		# starbase_modules_upkeep_mult = -0.25
-		# starbase_buildings_cost_mult = -0.15
-		starbase_building_build_speed_mult = 2		# 4.00
-		# starbase_buildings_upkeep_mult = -0.25
+		country_starbase_capacity_mult = 0.1
+		starbases_upkeep_mult = -0.25
+		starbase_upgrade_cost_mult = -0.1
+		starbase_upgrade_speed_mult = 2
+		starbase_module_build_speed_mult = 2
+		starbase_building_build_speed_mult = 2
 	}
 	on_enabled = {
 		custom_tooltip = "ap_space_engineers_tooltip"
@@ -53,6 +401,7 @@ ap_space_engineers = {
 	}
 }
 
+## Celestial Manipulation
 ap_stellar_manipulation = {
 	possible = {
 		custom_tooltip = {
@@ -111,6 +460,7 @@ ap_stellar_manipulation = {
 	}
 }
 
+## Lost Heritage
 ap_lost_heritage = {
 	possible = {
 		custom_tooltip = {
@@ -149,12 +499,11 @@ ap_lost_heritage = {
 		}
 	}
 	ai_weight = {
-		factor = event_target:global_event_country.ap_lost_heritage		# TODO AI!?
-		# modifier = { factor = 2 has_ethic = ethic_materialist }
-		# modifier = { factor = 5 has_ethic = ethic_fanatic_materialist }
+		factor = event_target:global_event_country.ap_lost_heritage
 	}
 }
 
+## Void Expeditions
 ap_void_expedition = {
 	possible = {
 		custom_tooltip = {
@@ -204,19 +553,7 @@ ap_void_expedition = {
 	}
 }
 
-# TODO
-# ap_sector_z749 = {
-# 	possible = {
-# 		custom_tooltip = { fail_text = "ap_sector_z749_req_1" has_technology = tech_dangerous_systems }
-# 		custom_tooltip = { fail_text = "ap_sector_z749_req_2" has_ascension_perk = ap_void_expedition }
-# 	}
-# 	on_enabled = {
-# 		custom_tooltip = "ap_sector_z749_tooltip"
-# 		hidden_effect = { country_event = { id = UniqueAscensionPerksEvents.270 } }
-# 	}
-# 	potential = { NOT = { has_ascension_perk = ap_sector_z749 } }
-# 	ai_weight = { factor = 0 }
-# }
+## Expandable Knowledge
 ap_expandable_brain_1 = {
 	possible = {
 		custom_tooltip = {
@@ -251,6 +588,7 @@ ap_expandable_brain_1 = {
 	}
 }
 
+## Unlimited Awareness
 ap_expandable_brain_2 = {
 	possible = {
 		custom_tooltip = {
@@ -292,6 +630,7 @@ ap_expandable_brain_2 = {
 	}
 }
 
+## Cortana Technology Researcher
 ap_ai_cortana = {
 	possible = {
 		custom_tooltip = {
@@ -329,10 +668,9 @@ ap_ai_cortana = {
 	}
 }
 
-# Nano Drone Workers
+## Nano Drone Workers
 ap_nano_drones = {
 	possible = {
-		# custom_tooltip = { fail_text = "ap_nano_drones_req_1" has_technology = tech_auto_drone }
 	}
 	modifier = {
 		planet_max_buildings_add = 3
@@ -355,8 +693,7 @@ ap_nano_drones = {
 	}
 }
 
-# Nanite Composition
-# v3.3 halved values
+## Nanite Composition
 ap_nano_to_nanite = {
 	possible = {
 		custom_tooltip = {
@@ -406,8 +743,7 @@ ap_nano_to_nanite = {
 	}
 }
 
-# Genius Pregnancy
-# v3.4 reduced growth_speed
+## Genius Pregnancy
 ap_genius_cloning = {
 	possible = {
 		custom_tooltip = {
@@ -430,7 +766,6 @@ ap_genius_cloning = {
 	modifier = {
 		pop_growth_speed = 0.2
 	}
-	# 0.3 < v3.4
 	on_enabled = {
 		custom_tooltip = "ap_genius_cloning_tooltip"
 		hidden_effect = {
@@ -450,12 +785,11 @@ ap_genius_cloning = {
 		}
 	}
 	ai_weight = {
-		factor = event_target:global_event_country.ap_genius_cloning		# 10 TODO performance?
-		# modifier = { factor = 5 is_hive_empire = yes }
+		factor = event_target:global_event_country.ap_genius_cloning
 	}
 }
 
-# TODO may split in 2 AP?
+## Grand Colonisation
 ap_adv_colonisation = {
 	possible = {
 		custom_tooltip = {
@@ -476,15 +810,13 @@ ap_adv_colonisation = {
 	}
 	modifier = {
 		planet_colony_development_speed_mult = -0.75
-		colony_start_num_pops_add = 8		# Reduced from 29 with 3.3 due imbalance
+		colony_start_num_pops_add = 8
 		ship_colonizer_cost_mult = 3
 		shipsize_colonizer_build_speed_mult = -0.75
 		shipsize_colonizer_hull_mult = 5
 		shipclass_colonizer_evasion_add = 40
 		shipclass_colonizer_disengage_mult = 2
-		planet_housing_add = 10		# 35 removed with v3.3 due imbalance
-		# planet_max_districts_add = 1 # v3.3
-		# pop_environment_tolerance = 0.05
+		planet_housing_add = 10
 	}
 	on_enabled = {
 		custom_tooltip = "ap_adv_colonisation_tooltip"
@@ -514,8 +846,7 @@ ap_adv_colonisation = {
 	}
 }
 
-# TODO may split in 2 AP?
-# v3.3: halved values
+## Expansion of Infinity
 ap_expansion_infinity = {
 	possible = {
 		custom_tooltip = {
@@ -532,19 +863,12 @@ ap_expansion_infinity = {
 		}
 	}
 	modifier = {
-		planet_max_buildings_add = 10		# 30
+		planet_max_buildings_add = 10
 		planet_max_districts_add = 3
-		# planet_max_districts_mult = 0.5 # 1.00
-		planet_building_build_speed_mult = 0.5		# 1.00
-		planet_buildings_cost_mult = -0.15		# -0.25
-		planet_decision_enact_speed_mult = 0.5		# 1.00
-		planet_housing_mult = 0.05		# 0.20
-		# planet_buildings_volatile_motes_upkeep_mult	= -0.25 # -0.50
-		# planet_buildings_exotic_gases_upkeep_mult	= -0.25 # -0.50
-		# planet_buildings_rare_crystals_upkeep_mult	= -0.25 # -0.50
-		# planet_districts_volatile_motes_upkeep_mult	= -0.25 # -0.50
-		# planet_districts_exotic_gases_upkeep_mult	= -0.25 # -0.50
-		# planet_districts_rare_crystals_upkeep_mult	= -0.25 # -0.50
+		planet_building_build_speed_mult = 0.5
+		planet_buildings_cost_mult = -0.15
+		planet_decision_enact_speed_mult = 0.5
+		planet_housing_mult = 0.05
 		planet_buildings_upkeep_mult = -0.2
 		planet_districts_upkeep_mult = -0.2
 	}
@@ -570,7 +894,7 @@ ap_expansion_infinity = {
 	}
 }
 
-# Recycling Expeditions
+## Recycling Expeditions
 ap_recycling_drones = {
 	possible = {
 		custom_tooltip = {
@@ -579,8 +903,8 @@ ap_recycling_drones = {
 		}
 	}
 	modifier = {
-		country_ship_upgrade_cost_mult = -0.25		# -0.66
-		starbase_shipyard_build_speed_mult = 0.5		# 0.75
+		country_ship_upgrade_cost_mult = -0.25
+		starbase_shipyard_build_speed_mult = 0.5
 		shipclass_military_build_cost_mult = 0.1
 	}
 	on_enabled = {
@@ -610,7 +934,7 @@ ap_recycling_drones = {
 	}
 }
 
-# v3.3 reduced values
+## Emergency Calculation
 ap_emergency_calculation = {
 	possible = {
 		custom_tooltip = {
@@ -635,10 +959,10 @@ ap_emergency_calculation = {
 		}
 	}
 	modifier = {
-		ship_disengage_chance_mult = 0.5		# 2.00
-		ship_emergency_ftl_min_days_mult = -0.25		# -0.50
-		ship_ftl_jumpdrive_range_mult = 0.15		# 0.25
-		country_war_exhaustion_mult = -0.1		# -0.20
+		ship_disengage_chance_mult = 0.5
+		ship_emergency_ftl_min_days_mult = -0.25
+		ship_ftl_jumpdrive_range_mult = 0.15
+		country_war_exhaustion_mult = -0.1
 	}
 	on_enabled = {
 		hidden_effect = {
@@ -666,6 +990,7 @@ ap_emergency_calculation = {
 	}
 }
 
+## Economic Prosperity
 ap_economic_prospertity = {
 	possible = {
 		custom_tooltip = {
@@ -685,7 +1010,6 @@ ap_economic_prospertity = {
 		trade_value_mult = 0.15
 		country_energy_produces_mult = 0.05
 		country_resource_max_energy_add = 10000
-		# branch_office_value_mult = 0.75
 	}
 	on_enabled = {
 		custom_tooltip = "ap_economic_prospertity_tooltip"
@@ -713,6 +1037,7 @@ ap_economic_prospertity = {
 	}
 }
 
+## Chosen Ruler
 ap_chosen_ruler = {
 	possible = {
 		custom_tooltip = {
@@ -753,16 +1078,14 @@ ap_chosen_ruler = {
 	}
 }
 
-# v3.3 reduced values
+## Security Strike Forces
 ap_advanced_security = {
 	possible = {
 	}
 	modifier = {
-		planet_crime_add = -20		# -40
-		# planet_crime_no_happiness_add = -20
+		planet_crime_add = -20
 		planet_crime_mult = -0.25
-		# planet_crime_no_happiness_mult = -0.25
-		local_trade_protection_add = 25		# 50
+		local_trade_protection_add = 25
 	}
 	on_enabled = {
 		custom_tooltip = "ap_advanced_security_tooltip_1"
@@ -791,6 +1114,7 @@ ap_advanced_security = {
 	}
 }
 
+## Space Domestication
 ap_space_domestication = {
 	possible = {
 		custom_tooltip = {
@@ -839,6 +1163,7 @@ ap_space_domestication = {
 	}
 }
 
+## Leviathan Master
 ap_leviathan_master = {
 	possible = {
 		custom_tooltip = {
@@ -886,6 +1211,7 @@ ap_leviathan_master = {
 	}
 }
 
+## Friendly Nature
 ap_friendly_nature = {
 	possible = {
 		custom_tooltip = {
@@ -932,8 +1258,7 @@ ap_friendly_nature = {
 	}
 }
 
-# Robotic Assemblers
-# v3.4 reduced growth_speed
+## Robotic Assemblers
 ap_robot_command = {
 	possible = {
 		custom_tooltip = {
@@ -971,7 +1296,6 @@ ap_robot_command = {
 	modifier = {
 		planet_pop_assembly_mult = 0.25
 	}
-	# 0.3 < v3.4
 	on_enabled = {
 		custom_tooltip = "ap_robot_command_tooltip"
 		hidden_effect = {
@@ -987,12 +1311,11 @@ ap_robot_command = {
 		is_hive_empire = no
 	}
 	ai_weight = {
-		factor = event_target:global_event_country.ap_robot_command		# 10 TODO performance?
-		# modifier = { factor = 2 has_ethic = ethic_materialist }
-		# modifier = { factor = 5 has_ethic = ethic_fanatic_materialist }
+		factor = event_target:global_event_country.ap_robot_command
 	}
 }
 
+## The Recomposer
 ap_recomposer = {
 	possible = {
 		custom_tooltip = {
@@ -1003,8 +1326,6 @@ ap_recomposer = {
 			fail_text = "ap_recomposer_req_2"
 			has_technology = tech_sapient_ai
 		}
-		# custom_tooltip = { fail_text = "ap_recomposer_req_3" has_ascension_perk = ap_genius_cloning }
-		# custom_tooltip = { fail_text = "ap_recomposer_req_4" has_ascension_perk = ap_robot_command }
 		custom_tooltip = {
 			fail_text = "ap_recomposer_req_5"
 			tradition_discovery_finish = yes
@@ -1032,6 +1353,7 @@ ap_recomposer = {
 	}
 }
 
+## Aggressive Marketing
 ap_megacorp = {
 	possible = {
 		custom_tooltip = {
@@ -1057,10 +1379,8 @@ ap_megacorp = {
 	}
 	modifier = {
 		branch_office_value_mult = 0.4
-		# planet_branch_offices_produces_mult = 0.20
 		empire_size_branch_office_mult = -0.25
 		planet_branch_offices_cost_mult = -0.15
-		# planet_max_branch_office_buildings_add = 5 # TODO for 3.4
 	}
 	on_enabled = {
 		custom_tooltip = "ap_megacorp_tooltip"
@@ -1068,7 +1388,6 @@ ap_megacorp = {
 			country_event = {
 				id = UniqueAscensionPerksEvents.67
 			}
-			# every_playable_country = {
 			every_relation = {
 				limit = {
 					merg_is_default_empire = yes
@@ -1098,6 +1417,7 @@ ap_megacorp = {
 	}
 }
 
+## Fallen Disciple
 ap_fallen_disciple = {
 	possible = {
 		custom_tooltip = {
@@ -1131,6 +1451,7 @@ ap_fallen_disciple = {
 	}
 }
 
+## Stability Celebration
 ap_stability_celebration = {
 	possible = {
 		custom_tooltip = {
@@ -1140,9 +1461,8 @@ ap_stability_celebration = {
 	}
 	modifier = {
 		planet_stability_add = 5
-		pop_housing_usage_mult = -0.05		# -0.08
+		pop_housing_usage_mult = -0.05
 		pop_amenities_usage_mult = -0.1
-		# pop_amenities_usage_no_happiness_mult = -0.10
 	}
 	on_enabled = {
 		custom_tooltip = "ap_stability_celebration_tooltip"
@@ -1162,9 +1482,9 @@ ap_stability_celebration = {
 	}
 }
 
+## 	Center of Galaxy
 ap_galaxy_center = {
 	possible = {
-		# custom_tooltip = { fail_text = "ap_galaxy_center_req_1" has_ascension_perk = ap_arcology_project }
 		custom_tooltip = {
 			fail_text = "ap_galaxy_center_req_2"
 			has_technology = tech_zero_point_power
@@ -1208,9 +1528,9 @@ ap_galaxy_center = {
 	}
 }
 
+## Influenceable Population
 ap_advanced_government_1 = {
 	possible = {
-		# custom_tooltip = { fail_text = "ap_advanced_government_1_req_1" has_ascension_perk = ap_one_vision }
 		custom_tooltip = {
 			fail_text = "ap_advanced_government_1_req_2"
 			has_technology = tech_colonial_centralization
@@ -1252,6 +1572,7 @@ ap_advanced_government_1 = {
 	}
 }
 
+## Blind Faith into the Nation
 ap_advanced_government_2 = {
 	possible = {
 		custom_tooltip = {
@@ -1273,7 +1594,6 @@ ap_advanced_government_2 = {
 			fail_text = "requires_mega_engineering"
 			has_technology = tech_mega_engineering
 		}
-		# custom_tooltip = { fail_text = "ap_advanced_government_2_req_4" has_technology = tech_ascension_theory } for stage 4 only
 		custom_tooltip = {
 			fail_text = "requires_technology_starbase_4"
 			has_technology = tech_starbase_4
@@ -1300,6 +1620,7 @@ ap_advanced_government_2 = {
 	}
 }
 
+## Private Galactic Market
 ap_space_merchant = {
 	possible = {
 		custom_tooltip = {
@@ -1328,6 +1649,7 @@ ap_space_merchant = {
 	}
 }
 
+## Super Hivemind
 ap_super_hive_mind = {
 	possible = {
 		custom_tooltip = {
@@ -1341,9 +1663,9 @@ ap_super_hive_mind = {
 		}
 	}
 	modifier = {
-		pop_amenities_usage_mult = -0.15		# -0.25
-		planet_crime_mult = -0.15		# -0.3
-		planet_pop_assembly_organic_add = 2		# Added v3.3
+		pop_amenities_usage_mult = -0.15
+		planet_crime_mult = -0.15
+		planet_pop_assembly_organic_add = 2
 	}
 	on_enabled = {
 		custom_tooltip = "ap_super_hive_mind_tooltip_1"
@@ -1365,6 +1687,7 @@ ap_super_hive_mind = {
 	}
 }
 
+## Mega Hivemind
 ap_mega_hive_mind = {
 	possible = {
 		custom_tooltip = {
@@ -1406,6 +1729,7 @@ ap_mega_hive_mind = {
 	}
 }
 
+## Aggressive Swarm
 ap_aggressive_hivemind = {
 	possible = {
 		custom_tooltip = {
@@ -1450,6 +1774,7 @@ ap_aggressive_hivemind = {
 	}
 }
 
+## Spreading Will
 ap_connected_hivemind = {
 	possible = {
 		custom_tooltip = {
@@ -1480,6 +1805,7 @@ ap_connected_hivemind = {
 	}
 }
 
+## Connected Reserves
 ap_hivemind_reserve = {
 	possible = {
 		custom_tooltip = {
@@ -1509,6 +1835,7 @@ ap_hivemind_reserve = {
 	}
 }
 
+## Primitive Creation
 ap_primitives_creation = {
 	possible = {
 		custom_tooltip = {
@@ -1543,9 +1870,9 @@ ap_primitives_creation = {
 	}
 }
 
+## Perfect Vassals
 ap_powerful_vassals = {
 	possible = {
-		# custom_tooltip = { fail_text = "ap_powerful_vassals_req_1" OR = { has_ascension_perk = ap_primitives_creation is_gestalt = yes } }
 		custom_tooltip = {
 			fail_text = "ap_powerful_vassals_req_2"
 			tradition_domination_finish = yes
@@ -1562,7 +1889,6 @@ ap_powerful_vassals = {
 			fail_text = "requires_independence"
 			is_subject = no
 		}
-		# custom_tooltip = { fail_text = "ap_powerful_vassals_req_6" any_subject = { OR = { is_subject = yes any_agreement = { agreement_preset = preset_protectorate } any_agreement = { agreement_preset = preset_tributary } any_agreement = { agreement_preset = preset_subsidiary } } } }
 		custom_tooltip = {
 			fail_text = "ap_powerful_vassals_req_7"
 			OR = {
@@ -1597,6 +1923,7 @@ ap_powerful_vassals = {
 	}
 }
 
+## Mechanical Prophet
 ap_mechanical_prophet = {
 	possible = {
 		custom_tooltip = {
@@ -1637,6 +1964,7 @@ ap_mechanical_prophet = {
 	}
 }
 
+## Machine Empire Main Core
 ap_machine_core = {
 	possible = {
 		custom_tooltip = {
@@ -1669,6 +1997,7 @@ ap_machine_core = {
 	}
 }
 
+## Defense Sentinels
 ap_defense_sentinels = {
 	possible = {
 		custom_tooltip = {
@@ -1731,6 +2060,7 @@ ap_defense_sentinels = {
 	}
 }
 
+## Leadership Upload
 ap_leadership_transfer = {
 	possible = {
 	}
@@ -1759,6 +2089,7 @@ ap_leadership_transfer = {
 	}
 }
 
+## Space Industrialization
 ap_civilian_activities = {
 	possible = {
 		custom_tooltip = {
@@ -1787,7 +2118,7 @@ ap_civilian_activities = {
 	}
 }
 
-# Pinnacle Society
+## Pinnacle Society
 ap_pyramidal_society = {
 	possible = {
 		custom_tooltip = {
@@ -1806,7 +2137,6 @@ ap_pyramidal_society = {
 	modifier = {
 		planet_max_districts_add = 1
 	}
-	# TODO Remove fully?
 	on_enabled = {
 		custom_tooltip = "ap_pyramidal_society_tooltip"
 		hidden_effect = {
@@ -1826,6 +2156,7 @@ ap_pyramidal_society = {
 	}
 }
 
+## Surgical Orbital Strike
 ap_orbital_surgical_strike = {
 	possible = {
 		custom_tooltip = {
@@ -1863,6 +2194,7 @@ ap_orbital_surgical_strike = {
 	}
 }
 
+## Wheel Of Fortune
 ap_wheel_fortune = {
 	possible = {
 		custom_tooltip = {
@@ -1891,6 +2223,7 @@ ap_wheel_fortune = {
 	}
 }
 
+## Underworld Access
 ap_underworld = {
 	possible = {
 		custom_tooltip = {
@@ -1942,7 +2275,7 @@ ap_underworld = {
 	}
 }
 
-# v3.3 reduced time
+## Slow Learner
 ap_slow_learner = {
 	possible = {
 	}
@@ -1963,17 +2296,14 @@ ap_slow_learner = {
 				id = UniqueAscensionPerksEvents.401
 				days = 9000
 			}
-			# 10800
 			country_event = {
 				id = UniqueAscensionPerksEvents.401
 				days = 18000
 			}
-			# 25200
 			country_event = {
 				id = UniqueAscensionPerksEvents.401
 				days = 36000
 			}
-			# 54000
 		}
 	}
 	potential = {
@@ -1986,13 +2316,13 @@ ap_slow_learner = {
 	}
 }
 
+## Utopian Realisation
 ap_utopian_realisation = {
 	possible = {
 		custom_tooltip = {
 			fail_text = "ap_fallen_disciple_req_1"
 			tradition_harmony_finish = yes
 		}
-		# ap_utopian_realisation_req_3
 		custom_tooltip = {
 			fail_text = "ap_utopian_realisation_req_1"
 			has_technology = tech_genome_mapping
@@ -2034,6 +2364,7 @@ ap_utopian_realisation = {
 	}
 }
 
+## Light of Eternity
 ap_antimatter = {
 	possible = {
 		custom_tooltip = {
@@ -2041,13 +2372,11 @@ ap_antimatter = {
 			num_ascension_perks > 2
 		}
 	}
-	# v3.4 reduced from 0.25
 	modifier = {
 		ship_speed_mult = 0.15
 	}
 	on_enabled = {
 		custom_tooltip = "ap_antimatter_tooltip"
-		# custom_tooltip = "describe_edict_anti_matter_menu"
 		hidden_effect = {
 			country_event = {
 				id = UniqueAscensionPerksEvents.430
@@ -2064,6 +2393,7 @@ ap_antimatter = {
 	}
 }
 
+## Deep Space Scanners
 ap_deep_scanner = {
 	possible = {
 		custom_tooltip = {
@@ -2084,8 +2414,6 @@ ap_deep_scanner = {
 		}
 	}
 	modifier = {
-		# v3.3 halved values
-		# ship_anomaly_generation_chance_mult = 0.50 replaced with policy
 		country_physics_tech_research_speed = 0.2
 	}
 	on_enabled = {
@@ -2104,9 +2432,9 @@ ap_deep_scanner = {
 	ai_weight = {
 		factor = event_target:global_event_country.ap_deep_scanner
 	}
-	# 5 TODO
 }
 
+## Archaeological Experts
 ap_artifact_hunter = {
 	possible = {
 		custom_tooltip = {
@@ -2128,7 +2456,6 @@ ap_artifact_hunter = {
 		has_ancrel = yes
 	}
 	modifier = {
-		# v3.3 halved values
 		ship_archaeological_site_excavation_speed_mult = 0.75
 		ship_archeaological_site_clues_add = 2
 	}
@@ -2148,9 +2475,9 @@ ap_artifact_hunter = {
 	ai_weight = {
 		factor = event_target:global_event_country.ap_artifact_hunter
 	}
-	# 5 } TODO
 }
 
+## Self Managed Colony
 ap_self_aware_colony = {
 	possible = {
 		custom_tooltip = {
@@ -2197,6 +2524,7 @@ ap_self_aware_colony = {
 	}
 }
 
+## Flourishing Technocracy
 ap_flourishing_technocracy = {
 	possible = {
 		custom_tooltip = {
@@ -2239,28 +2567,14 @@ ap_flourishing_technocracy = {
 		planet_researchers_physics_research_produces_mult = 0.01
 		planet_researchers_society_research_produces_mult = 0.01
 		planet_researchers_engineering_research_produces_mult = 0.01
-		# planet_researchers_physics_research_produces_add = 1
-		# planet_researchers_society_research_produces_add = 1
-		# planet_researchers_engineering_research_produces_add = 1
 		planet_farmers_society_research_produces_add = 0.1
 		planet_miners_engineering_research_produces_add = 0.1
 		planet_technician_physics_research_produces_add = 0.1
 		planet_metallurgists_engineering_research_produces_add = 0.25
 		planet_artisans_engineering_research_produces_add = 0.25
-		# planet_culture_workers_society_research_produces_add = 1
-		# planet_entertainers_physics_research_produces_add = 1
 		planet_priests_society_research_produces_add = 1
-		# planet_managers_society_research_produces_add = 1
-		# planet_doctors_society_research_produces_add = 1
-		# planet_refiners_engineering_research_produces_add = 1
-		# planet_chemists_physics_research_produces_add = 1
-		# planet_translucers_physics_research_produces_add = 1
-		# planet_pop_assemblers_engineering_research_produces_add = 2
 		planet_enforcers_society_research_produces_add = 0.5
 		planet_soldiers_society_research_produces_add = 0.25
-		# planet_pops_unemployed_physics_research_produces_add = 1
-		# planet_pops_unemployed_society_research_produces_add = 1
-		# planet_pops_unemployed_engineering_research_produces_add = 1
 		station_researchers_produces_mult = 0.5
 	}
 	on_enabled = {
@@ -2289,6 +2603,7 @@ ap_flourishing_technocracy = {
 	}
 }
 
+## Legendary Forge
 ap_legendary_forge = {
 	possible = {
 		custom_tooltip = {
@@ -2326,6 +2641,7 @@ ap_legendary_forge = {
 	}
 }
 
+## Library of Wisdom
 ap_library_wisedom = {
 	possible = {
 		custom_tooltip = {
@@ -2366,22 +2682,19 @@ ap_library_wisedom = {
 	}
 }
 
+## Expansionist Development
 ap_expansionist_development = {
 	possible = {
 		custom_tooltip = {
 			fail_text = "ap_expansionist_development_req_1"
 			tradition_expansion_finish = yes
 		}
-		# custom_tooltip = { fail_text = "ap_expansionist_development_req_2" has_technology = tech_automated_exploration }
 	}
 	modifier = {
-		country_starbase_influence_cost_mult = -0.1		# -0.15
-		# country_admin_cap_add = 100 		# Removed 3.3
-		# empire_size_penalty_mult = -0.25 	# Removed 3.3
-		# Added 3.3
-		empire_size_systems_mult = -0.1		# -0.15
-		empire_size_colonies_mult = -0.1		# -0.15
-		empire_size_pops_mult = -0.1		# -0.15
+		country_starbase_influence_cost_mult = -0.1
+		empire_size_systems_mult = -0.1
+		empire_size_colonies_mult = -0.1
+		empire_size_pops_mult = -0.1
 	}
 	on_enabled = {
 		hidden_effect = {
@@ -2400,19 +2713,3 @@ ap_expansionist_development = {
 		factor = event_target:global_event_country.ap_expansionist_development
 	}
 }
-
-# ap_dark_galaxy_web = {
-#	possible = {
-#		custom_tooltip = { fail_text = "ap_dark_galaxy_web_req_1" has_technology = tech_administrative_ai }
-#		custom_tooltip = { fail_text = "ap_dark_galaxy_web_req_1" has_technology = tech_sensors_2 }
-#		custom_tooltip = { fail_text = "ap_dark_galaxy_web_req_1" has_technology = tech_power_plant_2 }
-#		custom_tooltip = { fail_text = "ap_dark_galaxy_web_req_1" has_technology = tech_ground_defense_planning }
-#	}
-#	modifier = { }
-#	on_enabled = {
-#		hidden_effect = { country_event = { id = UniqueAscensionPerksEvents.540 } }
-#		custom_tooltip = "ap_dark_galaxy_web_tooltip"
-#	}
-#	potential = { NOT = { has_ascension_perk = ap_dark_galaxy_web } }
-#	ai_weight = { factor = 0 }
-#}
