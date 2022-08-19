@@ -3063,3 +3063,155 @@ ap_eutab_evolved_engineering = {
 		factor = 100
 	}
 }
+
+ap_eternal_freedom = {
+	potential = {
+		host_has_dlc = "Apocalypse"
+		NOR = {
+			has_ascension_perk = ap_eternal_freedom
+			has_ascension_perk = ap_nihilistic_acquisition
+			has_valid_civic = civic_barbaric_despoilers
+			has_valid_civic = civic_living_hosts
+			has_valid_civic = civic_machine_servitor
+			has_valid_civic = civic_emancipators
+		}
+	}
+	on_enabled = {
+		custom_tooltip = "allow_liberation"
+	}
+	possible = {
+		OR = {
+			is_egalitarian = yes
+			is_xenophile = yes
+			has_valid_civic = civic_harm_hive
+			has_valid_civic = civic_harm_machine
+		}
+		is_pacifist = no
+		is_xenophobe = no
+	}
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 0
+			OR = {
+				has_ai_personality_behaviour = slaver
+				has_ai_personality_behaviour = purger
+				has_ai_personality_behaviour = displacer
+			}
+		}
+		modifier = {
+			factor = 0
+			NOR = {
+				is_militarist = yes
+				is_civic_militarist = yes
+				has_origin = origin_necrophage
+			}
+		}
+	}
+}
+
+ap_synthetic_servants = {
+	on_enabled = {
+		custom_tooltip = "synthetic_servants_tooltip"
+		hidden_effect = {
+			country_event = {
+				id = onactionpops.3
+			}
+		}
+	}
+	modifier = {
+		planet_jobs_robotic_produces_mult = 0.1
+		planet_pops_robotics_upkeep_mult = -0.1
+		pop_cat_ruler_happiness = 0.2
+		pop_cat_specialist_happiness = 0.1
+		job_roboticist_add = 1
+	}
+	possible = {
+		NOT = {
+			has_ascension_perk = ap_synthetic_evolution
+		}
+		custom_tooltip = {
+			fail_text = "synthetic_empire_synthetic_ascension"
+			NOT = {
+				has_trait = trait_mechanical
+			}
+		}
+		custom_tooltip = {
+			fail_text = "hive_mind_biological_ascension_only2"
+			NOT = {
+				has_authority = auth_hive_mind
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+		custom_tooltip = {
+			fail_text = "requires_technology_synthetic_workers"
+			has_technology = tech_synthetic_workers
+		}
+		custom_tooltip = {
+			fail_text = "requires_ap_the_flesh_is_weak"
+			has_ascension_perk = ap_the_flesh_is_weak
+		}
+		custom_tooltip = {
+			fail_text = "requires_finished_cybernetics_project"
+			NOT = {
+				has_special_project = FLESH_IS_WEAK_PROJECT
+			}
+		}
+	}
+	potential = {
+		host_has_dlc = "Utopia"
+		NOT = {
+			has_ascension_perk = ap_synthetic_servants
+			has_authority = "auth_machine_intelligence"
+		}
+		is_mechanical_empire = no
+	}
+	ai_weight = {
+		factor = 500
+		modifier = {
+			factor = 0
+			has_ai_personality_behaviour = robot_liberator
+			NOR = {
+				has_origin = origin_necrophage
+				has_origin = origin_clone_army
+				is_pleasure_seeker = yes
+				has_valid_civic = civic_machine_cult
+			}
+		}
+		modifier = {
+			factor = 0.1
+			has_valid_civic = civic_machine_cult
+		}
+		modifier = {
+			factor = 0.1
+			has_ai_personality_behaviour = robot_liberator
+		}
+		modifier = {
+			factor = 5
+			has_origin = origin_exploited_homeworld
+		}
+		modifier = {
+			factor = 10
+			has_origin = origin_necrophage
+		}
+		modifier = {
+			factor = 10
+			is_pleasure_seeker = yes
+		}
+		modifier = {
+			factor = 0.1
+			is_militarist = yes
+		}
+		modifier = {
+			factor = 2
+			is_xenophobe = yes
+		}
+		modifier = {
+			factor = 2.5
+			is_civic_has_elite = yes
+		}
+	}
+}
