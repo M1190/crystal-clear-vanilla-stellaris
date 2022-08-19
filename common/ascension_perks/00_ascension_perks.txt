@@ -122,7 +122,7 @@ ap_hydrocentric = {
 			has_trait = trait_pc_reef_preference
 			has_trait = trait_pc_storm_preference
 			AND = {
-				any_owned_pop = {
+					any_owned_pop = {
 					has_trait = trait_aquatic
 				}
 				OR = {
@@ -1004,6 +1004,38 @@ ap_grasp_the_void = {
 	}
 	on_enabled = {
 		custom_tooltip = "ap_grasp_the_void_tech_effect"
+		if = {
+			limit = {
+				NOT = {
+					has_technology = tech_starbase_3
+				}
+			}
+			add_research_option = tech_starbase_3
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_technology = tech_starbase_4
+				}
+			}
+			add_research_option = tech_starbase_4
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_technology = tech_starbase_5
+				}
+			}
+			add_research_option = tech_starbase_5
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_technology = tech_starbase_6
+				}
+			}
+			add_research_option = tech_starbase_6
+		}
 	}
 	modifier = {
 		country_starbase_capacity_add = 5
@@ -1011,37 +1043,6 @@ ap_grasp_the_void = {
 	potential = {
 		NOT = {
 			has_ascension_perk = ap_grasp_the_void
-		}
-	}
-	ai_weight = {
-		factor = 3
-		modifier = {
-			factor = 2
-			has_civic = civic_inwards_perfection
-		}
-		modifier = {
-			factor = 1.5
-			is_xenophobe = yes
-		}
-	}
-}
-
-ap_eternal_vigilance = {
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_technology_starbase_4"
-			has_technology = tech_starbase_4
-		}
-	}
-	modifier = {
-		shipclass_starbase_damage_mult = 0.25
-		shipclass_starbase_hull_mult = 0.25
-		shipclass_military_station_damage_mult = 0.25
-		starbase_defense_platform_capacity_add = 5
-	}
-	potential = {
-		NOT = {
-			has_ascension_perk = ap_eternal_vigilance
 		}
 	}
 	ai_weight = {
@@ -1054,23 +1055,8 @@ ap_eternal_vigilance = {
 			factor = 1.5
 			is_xenophobe = yes
 		}
-		modifier = {
-			factor = 1.5
-			any_neighbor_country = {
-				is_country_type = default
-				opinion_level = {
-					who = root
-					level <= poor
-				}
-				relative_power = {
-					who = root
-					value >= superior
-				}
-			}
-		}
 	}
 }
-
 ap_galactic_contender = {
 	possible = {
 		custom_tooltip = {
