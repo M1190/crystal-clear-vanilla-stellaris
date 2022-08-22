@@ -1,27 +1,23 @@
 # See wg_example.txt for an explanation
-
 ### Vanilla ###
 @protectorate_tech_threshold = 0.4
 wg_subjugation = {
 	casus_belli = cb_subjugation
-
 	hide_if_no_cb = no
 	release_occupied_systems_on_status_quo = yes
 	show_agreement_terms = no
-
 	allowed_peace_offers = {
 		status_quo
 		surrender
 		demand_surrender
 	}
-
 	surrender_acceptance = -100
-
-
 	potential = {
 		NOR = {
 			is_civic_inwards_perfection = yes
-			FROM = { is_civic_inwards_perfection = yes }
+			FROM = {
+				is_civic_inwards_perfection = yes
+			}
 			is_megacorp = yes
 			has_ascension_perk = ap_become_the_crisis
 		}
@@ -35,7 +31,9 @@ wg_subjugation = {
 				any_owned_planet = {
 					is_colony = yes
 					root = {
-						NOT = { has_claim = prev.solar_system }
+						NOT = {
+							has_claim = prev.solar_system
+						}
 					}
 				}
 			}
@@ -45,27 +43,37 @@ wg_subjugation = {
 			NAND = {
 				has_galactic_emperor = yes
 				is_galactic_community_member = no
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = "cannot_use_against_custodian"
-			from = { is_galactic_custodian = no }
+			from = {
+				is_galactic_custodian = no
+			}
 		}
 		custom_tooltip = {
 			fail_text = "cannot_use_against_emperor"
-			from = { is_galactic_emperor = no }
+			from = {
+				is_galactic_emperor = no
+			}
 		}
 		custom_tooltip = {
 			fail_text = "cannot_use_against_btc"
-			from = { has_been_declared_crisis = no }
+			from = {
+				has_been_declared_crisis = no
+			}
 		}
 		custom_tooltip = {
 			fail_text = pax_galactica_active
 			NAND = {
 				is_active_resolution = resolution_emperor_pax_galactica
 				is_galactic_community_member = yes
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 	}
@@ -79,7 +87,11 @@ wg_subjugation = {
 			}
 		}
 		if = {
-			limit = { from = { has_been_declared_crisis = no } }
+			limit = {
+				from = {
+					has_been_declared_crisis = no
+				}
+			}
 			from = {
 				if = {
 					limit = {
@@ -100,7 +112,9 @@ wg_subjugation = {
 							oppressive_terms = {
 								if = {
 									limit = {
-										ROOT = { is_ai = yes }
+										ROOT = {
+											is_ai = yes
+										}
 									}
 									FROM = {
 										set_subject_of = {
@@ -144,7 +158,6 @@ wg_subjugation = {
 			}
 		}
 	}
-
 	on_status_quo = {
 		if = {
 			limit = {
@@ -153,7 +166,6 @@ wg_subjugation = {
 					has_country_flag = released_empire
 				}
 			}
-
 			last_created_country = {
 				set_origin_effect = yes
 				if = {
@@ -175,7 +187,9 @@ wg_subjugation = {
 							oppressive_terms = {
 								if = {
 									limit = {
-										ROOT = { is_ai = yes }
+										ROOT = {
+											is_ai = yes
+										}
 									}
 									PREV = {
 										set_subject_of = {
@@ -217,11 +231,14 @@ wg_subjugation = {
 					years = 5
 				}
 			}
-
 			if = {
 				limit = {
-					root = { has_authority = auth_corporate }
-					last_created_country = { has_authority = auth_corporate }
+					root = {
+						has_authority = auth_corporate
+					}
+					last_created_country = {
+						has_authority = auth_corporate
+					}
 				}
 				last_created_country = {
 					set_merchant_government_effect = yes
@@ -229,7 +246,6 @@ wg_subjugation = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 		modifier = {
@@ -241,18 +257,14 @@ wg_subjugation = {
 
 wg_tribute = {
 	casus_belli = cb_subjugation
-
 	hide_if_no_cb = no
 	release_occupied_systems_on_status_quo = yes
-
 	allowed_peace_offers = {
 		status_quo
 		surrender
 		demand_surrender
 	}
-
 	surrender_acceptance = -75
-
 	potential = {
 		NO$ = {
 			is_megacorp = yes
@@ -268,7 +280,9 @@ wg_tribute = {
 				any_owned_planet = {
 					is_colony = yes
 					root = {
-						NOT = { has_claim = prev.solar_system }
+						NOT = {
+							has_claim = prev.solar_system
+						}
 					}
 				}
 			}
@@ -278,27 +292,37 @@ wg_tribute = {
 			NAND = {
 				has_galactic_emperor = yes
 				is_galactic_community_member = no
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = "cannot_use_against_custodian"
-			from = { is_galactic_custodian = no }
+			from = {
+				is_galactic_custodian = no
+			}
 		}
 		custom_tooltip = {
 			fail_text = "cannot_use_against_emperor"
-			from = { is_galactic_emperor = no }
+			from = {
+				is_galactic_emperor = no
+			}
 		}
 		custom_tooltip = {
 			fail_text = "cannot_use_against_btc"
-			from = { has_been_declared_crisis = no }
+			from = {
+				has_been_declared_crisis = no
+			}
 		}
 		custom_tooltip = {
 			fail_text = pax_galactica_active
 			NAND = {
 				is_active_resolution = resolution_emperor_pax_galactica
 				is_galactic_community_member = yes
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 	}
@@ -312,7 +336,11 @@ wg_tribute = {
 			}
 		}
 		if = {
-			limit = { from = { has_been_declared_crisis = no } }
+			limit = {
+				from = {
+					has_been_declared_crisis = no
+				}
+			}
 			from = {
 				set_subject_of = {
 					who = root
@@ -325,7 +353,6 @@ wg_tribute = {
 			}
 		}
 	}
-
 	on_status_quo = {
 		if = {
 			limit = {
@@ -334,7 +361,6 @@ wg_tribute = {
 					has_country_flag = released_empire
 				}
 			}
-
 			last_created_country = {
 				set_origin_effect = yes
 				set_subject_of = {
@@ -346,11 +372,14 @@ wg_tribute = {
 					years = 5
 				}
 			}
-
 			if = {
 				limit = {
-					root = { has_authority = auth_corporate }
-					last_created_country = { has_authority = auth_corporate }
+					root = {
+						has_authority = auth_corporate
+					}
+					last_created_country = {
+						has_authority = auth_corporate
+					}
 				}
 				last_created_country = {
 					set_merchant_government_effect = yes
@@ -358,38 +387,38 @@ wg_tribute = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_ai_personality_behaviour = wants_tribute }
+			NOT = {
+				has_ai_personality_behaviour = wants_tribute
+			}
 		}
 	}
 }
 
 wg_megacorp_subjugate = {
 	casus_belli = cb_megacorp_subjugate
-
 	hide_if_no_cb = no
 	release_occupied_systems_on_status_quo = yes
-
 	allowed_peace_offers = {
 		status_quo
 		surrender
 		demand_surrender
 	}
-
 	surrender_acceptance = -100
-
-
 	potential = {
 		is_megacorp = yes
 		has_total_war_cb = no
-		NOT = { has_ascension_perk = ap_become_the_crisis }
+		NOT = {
+			has_ascension_perk = ap_become_the_crisis
+		}
 		NAND = {
 			is_galactic_emperor = yes
-			from = { is_galactic_community_member = yes }
+			from = {
+				is_galactic_community_member = yes
+			}
 		}
 	}
 	possible = {
@@ -400,7 +429,9 @@ wg_megacorp_subjugate = {
 				any_owned_planet = {
 					is_colony = yes
 					root = {
-						NOT = { has_claim = prev.solar_system }
+						NOT = {
+							has_claim = prev.solar_system
+						}
 					}
 				}
 			}
@@ -410,27 +441,37 @@ wg_megacorp_subjugate = {
 			NAND = {
 				has_galactic_emperor = yes
 				is_galactic_community_member = no
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = "cannot_use_against_custodian"
-			from = { is_galactic_custodian = no }
+			from = {
+				is_galactic_custodian = no
+			}
 		}
 		custom_tooltip = {
 			fail_text = "cannot_use_against_emperor"
-			from = { is_galactic_emperor = no }
+			from = {
+				is_galactic_emperor = no
+			}
 		}
 		custom_tooltip = {
 			fail_text = "cannot_use_against_btc"
-			from = { has_been_declared_crisis = no }
+			from = {
+				has_been_declared_crisis = no
+			}
 		}
 		custom_tooltip = {
 			fail_text = pax_galactica_active
 			NAND = {
 				is_active_resolution = resolution_emperor_pax_galactica
 				is_galactic_community_member = yes
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 	}
@@ -445,14 +486,18 @@ wg_megacorp_subjugate = {
 		}
 		FROM = {
 			if = {
-				limit = { has_been_declared_crisis = no }
+				limit = {
+					has_been_declared_crisis = no
+				}
 				ROOT = {
 					switch = {
 						trigger = has_policy_flag
 						oppressive_terms = {
 							if = {
 								limit = {
-									ROOT = { is_ai = yes }
+									ROOT = {
+										is_ai = yes
+									}
 								}
 								FROM = {
 									set_subject_of = {
@@ -495,7 +540,6 @@ wg_megacorp_subjugate = {
 			}
 		}
 	}
-
 	on_status_quo = {
 		if = {
 			limit = {
@@ -504,7 +548,6 @@ wg_megacorp_subjugate = {
 					has_country_flag = released_empire
 				}
 			}
-
 			last_created_country = {
 				set_origin_effect = yes
 				ROOT = {
@@ -513,7 +556,9 @@ wg_megacorp_subjugate = {
 						oppressive_terms = {
 							if = {
 								limit = {
-									ROOT = { is_ai = yes }
+									ROOT = {
+										is_ai = yes
+									}
 								}
 								PREV = {
 									set_subject_of = {
@@ -554,11 +599,14 @@ wg_megacorp_subjugate = {
 					years = 5
 				}
 			}
-
 			if = {
 				limit = {
-					root = { has_authority = auth_corporate }
-					last_created_country = { has_authority = auth_corporate }
+					root = {
+						has_authority = auth_corporate
+					}
+					last_created_country = {
+						has_authority = auth_corporate
+					}
 				}
 				last_created_country = {
 					set_merchant_government_effect = yes
@@ -566,7 +614,6 @@ wg_megacorp_subjugate = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 	}
@@ -576,22 +623,19 @@ wg_expel_corp = {
 	casus_belli = cb_expel_corp
 	hide_if_no_cb = yes
 	release_occupied_systems_on_status_quo = no
-	
 	galactic_empire_joins_defender = {
-		from = { is_galactic_emperor = yes }
+		from = {
+			is_galactic_emperor = yes
+		}
 		imperial_authority >= 100
 	}
-	
 	allowed_peace_offers = {
 		status_quo
 		surrender
 		demand_surrender
 	}
-
 	set_defender_wargoal = wg_megacorp_subjugate
-
 	surrender_acceptance = -50
-
 	potential = {
 		has_total_war_cb = no
 	}
@@ -603,7 +647,9 @@ wg_expel_corp = {
 				any_owned_planet = {
 					is_colony = yes
 					root = {
-						NOT = { has_claim = prev.solar_system }
+						NOT = {
+							has_claim = prev.solar_system
+						}
 					}
 				}
 			}
@@ -611,7 +657,9 @@ wg_expel_corp = {
 		custom_tooltip = {
 			fail_text = cannot_use_against_emperor
 			OR = {
-				from = { is_galactic_emperor = no }
+				from = {
+					is_galactic_emperor = no
+				}
 				is_galactic_community_member = no
 			}
 		}
@@ -620,20 +668,36 @@ wg_expel_corp = {
 			NAND = {
 				is_active_resolution = resolution_emperor_pax_galactica
 				is_galactic_community_member = yes
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = market_forced_opened
-			NOT = { has_country_flag = cb_markets_opened_no_retaliation@from }
+			NOT = {
+				has_country_flag = cb_markets_opened_no_retaliation@from
+			}
 		}
 	}
 	on_status_quo = {
 		if = {
-			limit = { from = { is_criminal_syndicate = no } }
+			limit = {
+				from = {
+					is_criminal_syndicate = no
+				}
+			}
 			every_owned_planet = {
-				limit = { has_branch_office = from }
-				hidden_effect = { branch_office_owner = { add_resource = { energy = 2000 } } }
+				limit = {
+					has_branch_office = from
+				}
+				hidden_effect = {
+					branch_office_owner = {
+						add_resource = {
+							energy = 2000
+						}
+					}
+				}
 				close_branch_office = yes
 			}
 			custom_tooltip = mod_wg_expel_corp_status_quo_effects
@@ -644,25 +708,43 @@ wg_expel_corp = {
 					has_branch_office = from
 					planet_crime < 50
 				}
-				hidden_effect = { branch_office_owner = { add_resource = { energy = 2000 } } }
+				hidden_effect = {
+					branch_office_owner = {
+						add_resource = {
+							energy = 2000
+						}
+					}
+				}
 				close_branch_office = yes
 			}
 			every_owned_planet = {
-				limit = { has_branch_office = from }
-				add_modifier = { modifier = syndicate_crime_reduction days = 3600 }
+				limit = {
+					has_branch_office = from
+				}
+				add_modifier = {
+					modifier = syndicate_crime_reduction
+					days = 3600
+				}
 			}
 			custom_tooltip = mod_wg_expel_criminal_corp_status_quo_effects
 		}
 	}
-	on_accept = {	
+	on_accept = {
 		every_owned_planet = {
-			limit = { has_branch_office = from }
+			limit = {
+				has_branch_office = from
+			}
 			close_branch_office = yes
-			hidden_effect = { owner = { add_resource = { energy = 1000 } } }
+			hidden_effect = {
+				owner = {
+					add_resource = {
+						energy = 1000
+					}
+				}
+			}
 		}
 		custom_tooltip = wg_expel_corp_effects
 	}
-
 	ai_weight = {
 		weight = 10
 	}
@@ -672,20 +754,18 @@ wg_hostile_takeover = {
 	casus_belli = cb_hostile_takeover
 	hide_if_no_cb = yes
 	release_occupied_systems_on_status_quo = no
-
 	galactic_empire_joins_defender = {
-		from = { is_galactic_emperor = yes }
+		from = {
+			is_galactic_emperor = yes
+		}
 		imperial_authority >= 100
 	}
-
 	allowed_peace_offers = {
 		status_quo
 		surrender
 		demand_surrender
 	}
-
 	surrender_acceptance = -75
-
 	potential = {
 		has_total_war_cb = no
 	}
@@ -697,7 +777,9 @@ wg_hostile_takeover = {
 				any_owned_planet = {
 					is_colony = yes
 					root = {
-						NOT = { has_claim = prev.solar_system }
+						NOT = {
+							has_claim = prev.solar_system
+						}
 					}
 				}
 			}
@@ -705,7 +787,9 @@ wg_hostile_takeover = {
 		custom_tooltip = {
 			fail_text = cannot_use_against_emperor
 			OR = {
-				from = { is_galactic_emperor = no }
+				from = {
+					is_galactic_emperor = no
+				}
 				is_galactic_community_member = no
 			}
 		}
@@ -714,7 +798,9 @@ wg_hostile_takeover = {
 			NAND = {
 				is_active_resolution = resolution_emperor_pax_galactica
 				is_galactic_community_member = yes
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 	}
@@ -722,7 +808,9 @@ wg_hostile_takeover = {
 		every_country = {
 			limit = {
 				OR = {
-					ROOT = { has_valid_civic = civic_criminal_heritage }
+					ROOT = {
+						has_valid_civic = civic_criminal_heritage
+					}
 					has_commercial_pact = root
 					is_in_federation_with = root
 				}
@@ -739,7 +827,6 @@ wg_hostile_takeover = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 	}
@@ -747,20 +834,15 @@ wg_hostile_takeover = {
 
 wg_force_ideology = {
 	casus_belli = cb_ideology
-
 	hide_if_no_cb = no
 	release_occupied_systems_on_status_quo = yes
-	
 	allowed_peace_offers = {
 		status_quo
 		surrender
 		demand_surrender
 	}
-
 	surrender_acceptance = -100
-
 	war_exhaustion = 0.75
-
 	potential = {
 		OR = {
 			has_policy_flag = liberation_wars
@@ -768,15 +850,25 @@ wg_force_ideology = {
 				is_ai = yes
 				has_valid_ai_personality = yes
 				has_ai_personality = democratic_crusaders
-				FROM = { NOT = { has_authority = auth_democratic } }
+				FROM = {
+					NOT = {
+						has_authority = auth_democratic
+					}
+				}
 			}
 		}
 		has_total_war_cb = no
-		from = { is_country_type = default }
-		NOT = { is_in_federation_with = from }
+		from = {
+			is_country_type = default
+		}
+		NOT = {
+			is_in_federation_with = from
+		}
 		NAND = {
 			is_galactic_emperor = yes
-			from = { is_galactic_community_member = yes }
+			from = {
+				is_galactic_community_member = yes
+			}
 		}
 	}
 	possible = {
@@ -787,21 +879,27 @@ wg_force_ideology = {
 				any_owned_planet = {
 					is_colony = yes
 					root = {
-						NOT = { has_claim = prev.solar_system }
+						NOT = {
+							has_claim = prev.solar_system
+						}
 					}
 				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = "cannot_use_against_emperor"
-			from = { is_galactic_emperor = no }
+			from = {
+				is_galactic_emperor = no
+			}
 		}
 		custom_tooltip = {
 			fail_text = pax_galactica_active
 			NAND = {
 				is_active_resolution = resolution_emperor_pax_galactica
 				is_galactic_community_member = yes
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 	}
@@ -813,28 +911,45 @@ wg_force_ideology = {
 					has_country_flag = released_empire
 				}
 			}
-			
-			ROOT = { set_timed_country_flag = { flag = imperialist_liberation_timed_flag days = 1800 } }
-
+			ROOT = {
+				set_timed_country_flag = {
+					flag = imperialist_liberation_timed_flag
+					days = 1800
+				}
+			}
 			last_created_country = {
-				add_modifier = { modifier = recently_liberated days = 7300 }
+				add_modifier = {
+					modifier = recently_liberated
+					days = 7300
+				}
 				set_origin_effect = yes
 				copy_ethos_and_authority = root
 			}
-
 			if = {
 				limit = {
-					root = { has_authority = auth_corporate }
-					last_created_country = { has_authority = auth_corporate }
+					root = {
+						has_authority = auth_corporate
+					}
+					last_created_country = {
+						has_authority = auth_corporate
+					}
 				}
 				last_created_country = {
 					set_merchant_government_effect = yes
 				}
 			}
-
-			root = { add_opinion_modifier = { modifier = opinion_we_liberated who = last_created_country } }
-			last_created_country = { add_opinion_modifier = { modifier = opinion_liberated_us who = root } }
-
+			root = {
+				add_opinion_modifier = {
+					modifier = opinion_we_liberated
+					who = last_created_country
+				}
+			}
+			last_created_country = {
+				add_opinion_modifier = {
+					modifier = opinion_liberated_us
+					who = root
+				}
+			}
 			every_country = {
 				limit = {
 					OR = {
@@ -842,18 +957,27 @@ wg_force_ideology = {
 						AND = {
 							is_subject = yes
 							exists = overlord
-							overlord = { is_same_value = root }
+							overlord = {
+								is_same_value = root
+							}
 						}
 					}
 				}
-
-				add_opinion_modifier = { modifier = opinion_we_liberated who = last_created_country }
-				last_created_country = { add_opinion_modifier = { modifier = opinion_liberated_us who = prev } }
+				add_opinion_modifier = {
+					modifier = opinion_we_liberated
+					who = last_created_country
+				}
+				last_created_country = {
+					add_opinion_modifier = {
+						modifier = opinion_liberated_us
+						who = prev
+					}
+				}
 			}
 			from = {
 				add_threat = {
 					who = root
-					amount = 0.10
+					amount = 0.1
 				}
 			}
 		}
@@ -863,7 +987,9 @@ wg_force_ideology = {
 		custom_tooltip = wg_force_ideology_accept_2
 		if = {
 			limit = {
-				from = { has_federation = yes }
+				from = {
+					has_federation = yes
+				}
 			}
 			custom_tooltip = wg_force_ideology_accept_3
 		}
@@ -875,7 +1001,6 @@ wg_force_ideology = {
 					}
 					impose_ideology_effect = yes
 				}
-	
 				every_subject = {
 					limit = {
 						is_gestalt = no
@@ -883,17 +1008,39 @@ wg_force_ideology = {
 					impose_ideology_effect = yes
 				}
 			}
-			from = { add_modifier = { modifier = recently_liberated days = 7300 } }
-			add_opinion_modifier = { modifier = opinion_we_liberated who = from }
-			set_timed_country_flag = { flag = imperialist_liberation_timed_flag days = 3600 }
-			from = { add_opinion_modifier = { modifier = opinion_liberated_us who = root } }
+			from = {
+				add_modifier = {
+					modifier = recently_liberated
+					days = 7300
+				}
+			}
+			add_opinion_modifier = {
+				modifier = opinion_we_liberated
+				who = from
+			}
+			set_timed_country_flag = {
+				flag = imperialist_liberation_timed_flag
+				days = 3600
+			}
+			from = {
+				add_opinion_modifier = {
+					modifier = opinion_liberated_us
+					who = root
+				}
+			}
 			end_rivalry = from
-			from = { end_rivalry = root }
+			from = {
+				end_rivalry = root
+			}
 			every_system_within_border = {
 				limit = {
-					from = { has_claim = prev }
+					from = {
+						has_claim = prev
+					}
 				}
-				remove_claims = { who = from }
+				remove_claims = {
+					who = from
+				}
 			}
 			every_country = {
 				limit = {
@@ -902,57 +1049,69 @@ wg_force_ideology = {
 						AND = {
 							is_subject = yes
 							exists = overlord
-							overlord = { is_same_value = root }
+							overlord = {
+								is_same_value = root
+							}
 						}
 					}
 				}
 				end_rivalry = from
-				from = { end_rivalry = prev }
-				add_opinion_modifier = { modifier = opinion_we_liberated who = from }
-				from = { add_opinion_modifier = { modifier = opinion_liberated_us who = prev } }
+				from = {
+					end_rivalry = prev
+				}
+				add_opinion_modifier = {
+					modifier = opinion_we_liberated
+					who = from
+				}
+				from = {
+					add_opinion_modifier = {
+						modifier = opinion_liberated_us
+						who = prev
+					}
+				}
 				every_system_within_border = {
 					limit = {
-						from = { has_claim = prev }
+						from = {
+							has_claim = prev
+						}
 					}
-					remove_claims = { who = from }
+					remove_claims = {
+						who = from
+					}
 				}
 			}
 			from = {
 				add_threat = {
 					who = root
-					amount = 0.10
+					amount = 0.1
 				}
 			}
 			from = {
-				leave_alliance = { override_requirements = yes }
+				leave_alliance = {
+					override_requirements = yes
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 5
 		modifier = {
 			factor = 10
-			has_ai_personality = democratic_crusaders 
+			has_ai_personality = democratic_crusaders
 		}
 	}
 }
 
 wg_scion = {
 	casus_belli = cb_scion
-
 	hide_if_no_cb = yes
 	release_occupied_systems_on_status_quo = yes
-
 	allowed_peace_offers = {
 		status_quo
 		surrender
 		demand_surrender
 	}
-
 	surrender_acceptance = -100
-
-
 	potential = {
 		has_total_war_cb = no
 	}
@@ -964,7 +1123,9 @@ wg_scion = {
 				any_owned_planet = {
 					is_colony = yes
 					root = {
-						NOT = { has_claim = prev.solar_system }
+						NOT = {
+							has_claim = prev.solar_system
+						}
 					}
 				}
 			}
@@ -974,27 +1135,37 @@ wg_scion = {
 			NAND = {
 				has_galactic_emperor = yes
 				is_galactic_community_member = no
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = "cannot_use_against_custodian"
-			from = { is_galactic_custodian = no }
+			from = {
+				is_galactic_custodian = no
+			}
 		}
 		custom_tooltip = {
 			fail_text = "cannot_use_against_emperor"
-			from = { is_galactic_emperor = no }
+			from = {
+				is_galactic_emperor = no
+			}
 		}
 		custom_tooltip = {
 			fail_text = "cannot_use_against_btc"
-			from = { has_been_declared_crisis = no }
+			from = {
+				has_been_declared_crisis = no
+			}
 		}
 		custom_tooltip = {
 			fail_text = pax_galactica_active
 			NAND = {
 				is_active_resolution = resolution_emperor_pax_galactica
 				is_galactic_community_member = yes
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 	}
@@ -1008,14 +1179,26 @@ wg_scion = {
 				}
 			}
 			root = {
-				overlord = { save_event_target_as = scion_master }
-				country_event = { id = origin.6 days = 1 } # Delay is necessary, or game does not think war was won
-				set_timed_country_flag = { flag = imperialist_scion_timed_flag days = 3600 }
+				overlord = {
+					save_event_target_as = scion_master
+				}
+				country_event = {
+					id = origin.6
+					days = 1
+				}				# Delay is necessary, or game does not think war was won
+				set_timed_country_flag = {
+					flag = imperialist_scion_timed_flag
+					days = 3600
+				}
 			}
 		}
 		tooltip = {
 			if = {
-				limit = { from = { has_been_declared_crisis = no } }
+				limit = {
+					from = {
+						has_been_declared_crisis = no
+					}
+				}
 				from = {
 					set_subject_of = {
 						who = event_target:scion_master
@@ -1025,7 +1208,6 @@ wg_scion = {
 			}
 		}
 	}
-
 	on_status_quo = {
 		if = {
 			limit = {
@@ -1034,20 +1216,29 @@ wg_scion = {
 					has_country_flag = released_empire
 				}
 			}
-			overlord = { save_event_target_as = scion_master }
+			overlord = {
+				save_event_target_as = scion_master
+			}
 			last_created_country = {
 				set_subject_of = {
 					who = event_target:scion_master
 					preset = preset_scion
 				}
 			}
-			
-			root = { set_timed_country_flag = { flag = imperialist_scion_timed_flag days = 1800 } }
-			
+			root = {
+				set_timed_country_flag = {
+					flag = imperialist_scion_timed_flag
+					days = 1800
+				}
+			}
 			if = {
 				limit = {
-					root = { has_authority = auth_corporate }
-					last_created_country = { has_authority = auth_corporate }
+					root = {
+						has_authority = auth_corporate
+					}
+					last_created_country = {
+						has_authority = auth_corporate
+					}
 				}
 				last_created_country = {
 					if = {
@@ -1080,7 +1271,6 @@ wg_scion = {
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 10
 	}
@@ -1089,28 +1279,29 @@ wg_scion = {
 ### Modded ###
 wg_force_ideology_crusader = {
 	casus_belli = cb_ideology
-
 	hide_if_no_cb = no
 	release_occupied_systems_on_status_quo = yes
-	
 	allowed_peace_offers = {
 		status_quo
 		surrender
 		demand_surrender
 	}
-
 	surrender_acceptance = -100
-
 	war_exhaustion = 0.75
-
 	potential = {
 		has_valid_civic = civic_crusaders
 		has_total_war_cb = no
-		from = { is_country_type = default }
-		NOT = { is_in_federation_with = from }
+		from = {
+			is_country_type = default
+		}
+		NOT = {
+			is_in_federation_with = from
+		}
 		NAND = {
 			is_galactic_emperor = yes
-			from = { is_galactic_community_member = yes }
+			from = {
+				is_galactic_community_member = yes
+			}
 		}
 	}
 	possible = {
@@ -1121,21 +1312,27 @@ wg_force_ideology_crusader = {
 				any_owned_planet = {
 					is_colony = yes
 					root = {
-						NOT = { has_claim = prev.solar_system }
+						NOT = {
+							has_claim = prev.solar_system
+						}
 					}
 				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = "cannot_use_against_emperor"
-			from = { is_galactic_emperor = no }
+			from = {
+				is_galactic_emperor = no
+			}
 		}
 		custom_tooltip = {
 			fail_text = pax_galactica_active
 			NAND = {
 				is_active_resolution = resolution_emperor_pax_galactica
 				is_galactic_community_member = yes
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 	}
@@ -1147,32 +1344,51 @@ wg_force_ideology_crusader = {
 					has_country_flag = released_empire
 				}
 			}
-			
-			ROOT = { set_timed_country_flag = { flag = imperialist_liberation_timed_flag days = 1800 } }
-
+			ROOT = {
+				set_timed_country_flag = {
+					flag = imperialist_liberation_timed_flag
+					days = 1800
+				}
+			}
 			last_created_country = {
-				add_modifier = { modifier = recently_liberated days = 7300 }
+				add_modifier = {
+					modifier = recently_liberated
+					days = 7300
+				}
 				set_origin_effect = yes
 				copy_ethos_and_authority = root
 				if = {
-					limit = { has_global_flag = cosmic_religion_active }
+					limit = {
+						has_global_flag = cosmic_religion_active
+					}
 					copy_cosmic_religion_root = yes
 				}
 			}
-
 			if = {
 				limit = {
-					root = { has_authority = auth_corporate }
-					last_created_country = { has_authority = auth_corporate }
+					root = {
+						has_authority = auth_corporate
+					}
+					last_created_country = {
+						has_authority = auth_corporate
+					}
 				}
 				last_created_country = {
 					set_merchant_government_effect = yes
 				}
 			}
-
-			root = { add_opinion_modifier = { modifier = opinion_we_liberated who = last_created_country } }
-			last_created_country = { add_opinion_modifier = { modifier = opinion_liberated_us who = root } }
-
+			root = {
+				add_opinion_modifier = {
+					modifier = opinion_we_liberated
+					who = last_created_country
+				}
+			}
+			last_created_country = {
+				add_opinion_modifier = {
+					modifier = opinion_liberated_us
+					who = root
+				}
+			}
 			every_country = {
 				limit = {
 					OR = {
@@ -1180,18 +1396,27 @@ wg_force_ideology_crusader = {
 						AND = {
 							is_subject = yes
 							exists = overlord
-							overlord = { is_same_value = root }
+							overlord = {
+								is_same_value = root
+							}
 						}
 					}
 				}
-
-				add_opinion_modifier = { modifier = opinion_we_liberated who = last_created_country }
-				last_created_country = { add_opinion_modifier = { modifier = opinion_liberated_us who = prev } }
+				add_opinion_modifier = {
+					modifier = opinion_we_liberated
+					who = last_created_country
+				}
+				last_created_country = {
+					add_opinion_modifier = {
+						modifier = opinion_liberated_us
+						who = prev
+					}
+				}
 			}
 			from = {
 				add_threat = {
 					who = root
-					amount = 0.10
+					amount = 0.1
 				}
 			}
 		}
@@ -1201,7 +1426,9 @@ wg_force_ideology_crusader = {
 		custom_tooltip = wg_force_ideology_accept_2
 		if = {
 			limit = {
-				from = { has_federation = yes }
+				from = {
+					has_federation = yes
+				}
 			}
 			custom_tooltip = wg_force_ideology_accept_3
 		}
@@ -1213,33 +1440,58 @@ wg_force_ideology_crusader = {
 					}
 					impose_ideology_effect = yes
 					if = {
-						limit = { has_global_flag = cosmic_religion_active }
+						limit = {
+							has_global_flag = cosmic_religion_active
+						}
 						copy_cosmic_religion_root = yes
 					}
 				}
-	
 				every_subject = {
 					limit = {
 						is_gestalt = no
 					}
 					impose_ideology_effect = yes
 					if = {
-						limit = { has_global_flag = cosmic_religion_active }
+						limit = {
+							has_global_flag = cosmic_religion_active
+						}
 						copy_cosmic_religion_root = yes
 					}
 				}
 			}
-			from = { add_modifier = { modifier = recently_liberated days = 7300 } }
-			add_opinion_modifier = { modifier = opinion_we_liberated who = from }
-			set_timed_country_flag = { flag = imperialist_liberation_timed_flag days = 3600 }
-			from = { add_opinion_modifier = { modifier = opinion_liberated_us who = root } }
+			from = {
+				add_modifier = {
+					modifier = recently_liberated
+					days = 7300
+				}
+			}
+			add_opinion_modifier = {
+				modifier = opinion_we_liberated
+				who = from
+			}
+			set_timed_country_flag = {
+				flag = imperialist_liberation_timed_flag
+				days = 3600
+			}
+			from = {
+				add_opinion_modifier = {
+					modifier = opinion_liberated_us
+					who = root
+				}
+			}
 			end_rivalry = from
-			from = { end_rivalry = root }
+			from = {
+				end_rivalry = root
+			}
 			every_system_within_border = {
 				limit = {
-					from = { has_claim = prev }
+					from = {
+						has_claim = prev
+					}
 				}
-				remove_claims = { who = from }
+				remove_claims = {
+					who = from
+				}
 			}
 			every_country = {
 				limit = {
@@ -1248,33 +1500,50 @@ wg_force_ideology_crusader = {
 						AND = {
 							is_subject = yes
 							exists = overlord
-							overlord = { is_same_value = root }
+							overlord = {
+								is_same_value = root
+							}
 						}
 					}
 				}
 				end_rivalry = from
-				from = { end_rivalry = prev }
-				add_opinion_modifier = { modifier = opinion_we_liberated who = from }
-				from = { add_opinion_modifier = { modifier = opinion_liberated_us who = prev } }
+				from = {
+					end_rivalry = prev
+				}
+				add_opinion_modifier = {
+					modifier = opinion_we_liberated
+					who = from
+				}
+				from = {
+					add_opinion_modifier = {
+						modifier = opinion_liberated_us
+						who = prev
+					}
+				}
 				every_system_within_border = {
 					limit = {
-						from = { has_claim = prev }
+						from = {
+							has_claim = prev
+						}
 					}
-					remove_claims = { who = from }
+					remove_claims = {
+						who = from
+					}
 				}
 			}
 			from = {
 				add_threat = {
 					who = root
-					amount = 0.10
+					amount = 0.1
 				}
 			}
 			from = {
-				leave_alliance = { override_requirements = yes }
+				leave_alliance = {
+					override_requirements = yes
+				}
 			}
 		}
 	}
-
 	ai_weight = {
 		weight = 50
 	}
@@ -1282,34 +1551,39 @@ wg_force_ideology_crusader = {
 
 wg_infestation = {
 	casus_belli = cb_infestation
-	
 	hide_if_no_cb = yes
 	total_war = yes
 	set_defender_wargoal = wg_end_threat_infesters
-	
 	galactic_empire_joins_defender = {
-		from = { is_galactic_emperor = yes }
+		from = {
+			is_galactic_emperor = yes
+		}
 		imperial_authority >= 100
 	}
-	
 	allowed_peace_offers = {
 		status_quo
 	}
-	
 	surrender_acceptance = -1000
-
 	potential = {
-		from = { NOT = { is_country_type = fallen_empire } }
+		from = {
+			NOT = {
+				is_country_type = fallen_empire
+			}
+		}
 		NAND = {
 			is_galactic_emperor = yes
-			from = { is_galactic_community_member = yes }
+			from = {
+				is_galactic_community_member = yes
+			}
 		}
 	}
 	possible = {
 		custom_tooltip = {
 			fail_text = cannot_use_against_emperor
 			OR = {
-				from = { is_galactic_emperor = no }
+				from = {
+					is_galactic_emperor = no
+				}
 				is_galactic_community_member = no
 			}
 		}
@@ -1318,11 +1592,12 @@ wg_infestation = {
 			NAND = {
 				is_active_resolution = resolution_emperor_pax_galactica
 				is_galactic_community_member = yes
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 100
 	}
@@ -1330,34 +1605,37 @@ wg_infestation = {
 
 wg_infestation_vs_fe = {
 	casus_belli = cb_sublimation
-	
 	hide_if_no_cb = yes
 	total_war = yes
 	set_defender_wargoal = wg_end_threat_infesters
-	
 	galactic_empire_joins_defender = {
-		from = { is_galactic_emperor = yes }
+		from = {
+			is_galactic_emperor = yes
+		}
 		imperial_authority >= 100
 	}
-	
 	allowed_peace_offers = {
 		status_quo
 	}
-	
 	surrender_acceptance = -1000
-
 	potential = {
-		from = { is_country_type = fallen_empire }
+		from = {
+			is_country_type = fallen_empire
+		}
 		NAND = {
 			is_galactic_emperor = yes
-			from = { is_galactic_community_member = yes }
+			from = {
+				is_galactic_community_member = yes
+			}
 		}
 	}
 	possible = {
 		custom_tooltip = {
 			fail_text = cannot_use_against_emperor
 			OR = {
-				from = { is_galactic_emperor = no }
+				from = {
+					is_galactic_emperor = no
+				}
 				is_galactic_community_member = no
 			}
 		}
@@ -1366,11 +1644,12 @@ wg_infestation_vs_fe = {
 			NAND = {
 				is_active_resolution = resolution_emperor_pax_galactica
 				is_galactic_community_member = yes
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 100
 	}
@@ -1378,34 +1657,37 @@ wg_infestation_vs_fe = {
 
 wg_end_threat_infesters = {
 	casus_belli = cb_containment
-	
 	hide_if_no_cb = yes
 	total_war = yes
 	set_defender_wargoal = wg_infestation
-	
 	galactic_empire_joins_defender = {
-		from = { is_galactic_emperor = yes }
+		from = {
+			is_galactic_emperor = yes
+		}
 		imperial_authority >= 100
 	}
-	
 	allowed_peace_offers = {
 		status_quo
 	}
-	
 	surrender_acceptance = -1000
-
 	potential = {
-		from = { has_valid_civic = civic_infestation }
+		from = {
+			has_valid_civic = civic_infestation
+		}
 		NAND = {
 			is_galactic_emperor = yes
-			from = { is_galactic_community_member = yes }
+			from = {
+				is_galactic_community_member = yes
+			}
 		}
 	}
 	possible = {
 		custom_tooltip = {
 			fail_text = cannot_use_against_emperor
 			OR = {
-				from = { is_galactic_emperor = no }
+				from = {
+					is_galactic_emperor = no
+				}
 				is_galactic_community_member = no
 			}
 		}
@@ -1414,11 +1696,12 @@ wg_end_threat_infesters = {
 			NAND = {
 				is_active_resolution = resolution_emperor_pax_galactica
 				is_galactic_community_member = yes
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 100
 	}
@@ -1426,33 +1709,34 @@ wg_end_threat_infesters = {
 
 wg_holy_mountain = {
 	casus_belli = cb_holy_mountain
-	
 	hide_if_no_cb = yes
 	total_war = yes
 	set_defender_wargoal = wg_end_threat_holy_mountain
-	
 	galactic_empire_joins_defender = {
-		from = { is_galactic_emperor = yes }
+		from = {
+			is_galactic_emperor = yes
+		}
 		imperial_authority >= 100
 	}
-	
 	allowed_peace_offers = {
 		status_quo
 	}
-	
 	surrender_acceptance = -1000
-
 	potential = {
 		NAND = {
 			is_galactic_emperor = yes
-			from = { is_galactic_community_member = yes }
+			from = {
+				is_galactic_community_member = yes
+			}
 		}
 	}
 	possible = {
 		custom_tooltip = {
 			fail_text = cannot_use_against_emperor
 			OR = {
-				from = { is_galactic_emperor = no }
+				from = {
+					is_galactic_emperor = no
+				}
 				is_galactic_community_member = no
 			}
 		}
@@ -1461,11 +1745,12 @@ wg_holy_mountain = {
 			NAND = {
 				is_active_resolution = resolution_emperor_pax_galactica
 				is_galactic_community_member = yes
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 100
 	}
@@ -1473,25 +1758,24 @@ wg_holy_mountain = {
 
 wg_end_threat_holy_mountain = {
 	casus_belli = cb_containment
-	
 	hide_if_no_cb = yes
 	total_war = yes
 	set_defender_wargoal = wg_holy_mountain
-	
 	galactic_empire_joins_defender = {
-		from = { is_galactic_emperor = yes }
+		from = {
+			is_galactic_emperor = yes
+		}
 		imperial_authority >= 100
 	}
-	
 	allowed_peace_offers = {
 		status_quo
 	}
-	
 	surrender_acceptance = -1000
-
 	potential = {
 		OR = {
-			any_planet_within_border = { has_deposit = d_holy_mountain }
+			any_planet_within_border = {
+				has_deposit = d_holy_mountain
+			}
 			has_country_flag = holy_mountain_destroyer@from
 		}
 		FROM = {
@@ -1500,14 +1784,18 @@ wg_end_threat_holy_mountain = {
 		}
 		NAND = {
 			is_galactic_emperor = yes
-			from = { is_galactic_community_member = yes }
+			from = {
+				is_galactic_community_member = yes
+			}
 		}
 	}
 	possible = {
 		custom_tooltip = {
 			fail_text = cannot_use_against_emperor
 			OR = {
-				from = { is_galactic_emperor = no }
+				from = {
+					is_galactic_emperor = no
+				}
 				is_galactic_community_member = no
 			}
 		}
@@ -1516,11 +1804,12 @@ wg_end_threat_holy_mountain = {
 			NAND = {
 				is_active_resolution = resolution_emperor_pax_galactica
 				is_galactic_community_member = yes
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 	}
-	
 	ai_weight = {
 		weight = 0
 	}
@@ -1530,20 +1819,18 @@ wg_open_markets = {
 	casus_belli = cb_open_markets
 	hide_if_no_cb = yes
 	release_occupied_systems_on_status_quo = no
-
 	galactic_empire_joins_defender = {
-		from = { is_galactic_emperor = yes }
+		from = {
+			is_galactic_emperor = yes
+		}
 		imperial_authority >= 100
 	}
-
 	allowed_peace_offers = {
 		status_quo
 		surrender
 		demand_surrender
 	}
-
 	surrender_acceptance = -33
-
 	potential = {
 		has_total_war_cb = no
 	}
@@ -1555,7 +1842,9 @@ wg_open_markets = {
 				any_owned_planet = {
 					is_colony = yes
 					root = {
-						NOT = { has_claim = prev.solar_system }
+						NOT = {
+							has_claim = prev.solar_system
+						}
 					}
 				}
 			}
@@ -1563,7 +1852,9 @@ wg_open_markets = {
 		custom_tooltip = {
 			fail_text = cannot_use_against_emperor
 			OR = {
-				from = { is_galactic_emperor = no }
+				from = {
+					is_galactic_emperor = no
+				}
 				is_galactic_community_member = no
 			}
 		}
@@ -1572,21 +1863,34 @@ wg_open_markets = {
 			NAND = {
 				is_active_resolution = resolution_emperor_pax_galactica
 				is_galactic_community_member = yes
-				from = { is_galactic_community_member = yes }
+				from = {
+					is_galactic_community_member = yes
+				}
 			}
 		}
 	}
 	on_status_quo = {
-		add_resource = { energy = 1000 }
+		add_resource = {
+			energy = 1000
+		}
 	}
 	on_accept = {
-		hidden_effect = { 
-			FROM = { set_timed_country_flag = { flag = cb_markets_opened@root days = 18000 } }
-			FROM = { set_timed_country_flag = { flag = cb_markets_opened_no_retaliation@root days = 18000 } }
+		hidden_effect = {
+			FROM = {
+				set_timed_country_flag = {
+					flag = cb_markets_opened@root
+					days = 18000
+				}
+			}
+			FROM = {
+				set_timed_country_flag = {
+					flag = cb_markets_opened_no_retaliation@root
+					days = 18000
+				}
+			}
 		}
 		custom_tooltip = wg_open_markets_effects
 	}
-
 	ai_weight = {
 		weight = 25
 	}
