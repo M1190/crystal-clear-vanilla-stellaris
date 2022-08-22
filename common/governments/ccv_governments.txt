@@ -1,0 +1,4156 @@
+# Expanded Traits, Civics, Pops and More mod
+## Fanatical Befriender Governments
+### Benevolent Empire
+gov_benevolent_empire = {
+	ruler_title = RT_HIGH_SOCIALITE
+	ruler_title_female = RT_HIGH_SOCIALITE_FEMALE
+	heir_title = HT_CROWN_SOCIALITE
+	heir_title_female = HT_CROWN_SOCIALITE_FEMALE
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_imperial
+		has_origin = origin_befrienders
+	}
+	weight = {
+		base = 2000
+	}
+}
+
+### Compassionate Order
+gov_compassionate_order = {
+	ruler_title = RT_LORD_EMINENCE
+	ruler_title_female = RT_LADY_EMINENCE
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_dictatorial
+		has_origin = origin_befrienders
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			OR = {
+				leader_class = admiral
+				leader_class = general
+			}
+		}
+		modifier = {
+			add = 5
+			leader_class = governor
+		}
+	}
+	weight = {
+		base = 2000
+	}
+}
+
+### Friendship Committee
+gov_friendship_committee = {
+	ruler_title = RT_GRAND_PATRON
+	ruler_title_female = RT_GRAND_MATRON
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_oligarchic
+		has_origin = origin_befrienders
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			OR = {
+				leader_class = admiral
+				leader_class = general
+			}
+		}
+		modifier = {
+			add = 5
+			leader_class = governor
+		}
+	}
+	weight = {
+		base = 2000
+	}
+}
+
+### Harmonious Assembly
+gov_harmony_assembly = {
+	ruler_title = RT_GRANDSTANDER
+	ruler_title_female = RT_GRANDSTANDER_FEMALE
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_oligarchic
+		has_origin = origin_befrienders
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			OR = {
+				leader_class = admiral
+				leader_class = general
+				leader_class = governor
+			}
+		}
+		modifier = {
+			factor = 0
+			leader_class = scientist
+		}
+	}
+	weight = {
+		base = 2000
+	}
+}
+
+## Iron Despot Governments
+### Technocratic Cyberocracy
+gov_iron_despot = {
+	ruler_title = RT_CENTRAL_COMPUTER
+	ruler_title_female = RT_CENTRAL_COMPUTER_FEMALE
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_dictatorial
+		has_origin = origin_iron_despot
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			factor = 10
+			leader_class = scientist
+		}
+	}
+	weight = {
+		base = 1500
+		modifier = {
+			factor = 2
+			has_valid_civic = civic_technocracy
+		}
+	}
+}
+
+### Enlightened Cyberocracy
+gov_enlightened_iron_despot = {
+	ruler_title = RT_CENTRAL_COMPUTER
+	ruler_title_female = RT_CENTRAL_COMPUTER_FEMALE
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_dictatorial
+		has_origin = origin_iron_despot
+		OR = {
+			has_valid_civic = civic_philosopher_king
+			has_ethic = ethic_pacifist
+			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_fanatic_xenophile
+		}
+		NOR = {
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			factor = 10
+			leader_class = scientist
+		}
+	}
+	weight = {
+		base = 2200
+		modifier = {
+			factor = 2
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 1.5
+			has_valid_civic = civic_agrarian_idyll
+		}
+		modifier = {
+			factor = 1.5
+			has_valid_civic = civic_philosopher_king
+		}
+		modifier = {
+			factor = 1.5
+			has_origin = origin_delicate_ecosystem
+		}
+	}
+}
+
+### Totalitarian Cyberocracy
+gov_totalitarian_iron_despot = {
+	ruler_title = RT_CENTRAL_COMPUTER
+	ruler_title_female = RT_CENTRAL_COMPUTER_FEMALE
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_dictatorial
+		has_origin = origin_iron_despot
+		OR = {
+			has_ethic = ethic_authoritarian
+			has_ethic = ethic_fanatic_authoritarian
+			has_ethic = ethic_fanatic_militarist
+			has_ethic = ethic_fanatic_xenophobe
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			factor = 10
+			leader_class = scientist
+		}
+	}
+	weight = {
+		base = 2000
+		modifier = {
+			factor = 2
+			has_valid_civic = civic_slaver_guilds
+		}
+	}
+}
+
+### Plutocratic Cyberocracy
+gov_plutocratic_iron_despot = {
+	ruler_title = RT_COMPUTER_COMPTROLLER
+	ruler_title_female = RT_COMPUTER_COMPTROLLER_FEMALE
+	should_force_rename = yes
+	possible = {
+		has_origin = origin_iron_despot
+		is_auth_corporate = yes
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			factor = 10
+			leader_class = scientist
+		}
+	}
+	weight = {
+		base = 3000
+	}
+}
+
+## Heavenly Choir Governments
+### Celestial Choir
+gov_celestial_choir = {
+	ruler_title = RT_ARCHANGEL
+	ruler_title_female = RT_ARCHANGEL_FEMALE
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_oligarchic
+		has_origin = origin_shroud_pact
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			factor = 10
+			leader_class = governor
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				leader_class = scientist
+				leader_class = admiral
+				leader_class = general
+			}
+		}
+	}
+	weight = {
+		base = 3000
+	}
+}
+
+### Celestial Theocracy
+gov_celestial_theocracy = {
+	ruler_title = RT_ARCHANGEL
+	ruler_title_female = RT_ARCHANGEL_FEMALE
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_dictatorial
+		has_origin = origin_shroud_pact
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			factor = 10
+			leader_class = governor
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				leader_class = scientist
+				leader_class = admiral
+				leader_class = general
+			}
+		}
+	}
+	weight = {
+		base = 3000
+	}
+}
+
+### Celestial Theocracy
+gov_celestial_monarchy = {
+	ruler_title = RT_ARCHANGEL
+	ruler_title_female = RT_ARCHANGEL_FEMALE
+	heir_title = HT_PRIEST
+	heir_title_female = HT_PRIESTESS
+	dynastic_last_names = yes
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_imperial
+		has_origin = origin_shroud_pact
+	}
+	weight = {
+		base = 3000
+	}
+}
+
+## Death Cult Governments
+### Mortal Brotherhood
+gov_mortal_brotherhood = {
+	ruler_title = RT_PRIME_SACRIFICANT
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_democratic
+		has_valid_civic = civic_death_cult
+	}
+	weight = {
+		base = 10000
+	}
+}
+
+### Mortiferous Exarchate
+gov_mortiferous_exarchate = {
+	ruler_title = RT_DREAD_THEARCH
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_dictatorial
+		has_valid_civic = civic_death_cult
+	}
+	weight = {
+		base = 10000
+	}
+}
+
+## General Governments
+### Parliamentary Republic
+gov_parliamentary_democracy = {
+	ruler_title = RT_PRIME_MINISTER
+	ruler_title_female = RT_PRIME_MINISTER_FEMALE
+	possible = {
+		has_authority = auth_democratic
+		has_valid_civic = civic_parliamentary_system
+	}
+	weight = {
+		base = 7
+		modifier = {
+			factor = 2
+			ethic_fanatic_egalitarian
+		}
+		modifier = {
+			factor = 1.5
+			ethic_egalitarian
+		}
+		modifier = {
+			factor = 1.5
+			has_origin = origin_league
+		}
+		modifier = {
+			factor = 2
+			has_valid_civic = civic_cutthroat_politics
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_valid_civic = civic_beacon_of_liberty
+				has_valid_civic = civic_idealistic_foundation
+				has_valid_civic = civic_meritocracy
+				has_valid_civic = civic_mining_guilds
+			}
+		}
+	}
+}
+
+### Aristocracy
+gov_aristocracy = {
+	ruler_title = RT_LORD_PROTECTOR
+	ruler_title_female = RT_LADY_PROTECTOR
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_oligarchic
+		has_valid_civic = civic_aristocratic_elite
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			OR = {
+				leader_class = admiral
+				leader_class = general
+				leader_class = governor
+			}
+		}
+		modifier = {
+			factor = 0
+			leader_class = scientist
+		}
+	}
+	weight = {
+		base = 700
+		modifier = {
+			factor = 1.5
+			has_ethic = ethic_authoritarian
+		}
+	}
+}
+
+###	Industrialist Council
+gov_mining_clans = {
+	ruler_title = RT_PATRIARCH
+	ruler_title_female = RT_MATRIARCH
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_oligarchic
+		OR = {
+			has_valid_civic = civic_aristocratic_elite
+			has_valid_civic = civic_merchant_guilds
+		}
+		OR = {
+			has_valid_civic = civic_mining_guilds
+			has_valid_civic = civic_catalytic_processing
+			has_valid_civic = civic_crafters
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			OR = {
+				leader_class = governor
+				leader_class = scientist
+			}
+		}
+		modifier = {
+			factor = 0
+		}
+	}
+	weight = {
+		base = 1000
+		modifier = {
+			factor = 1.5
+			has_ethic = ethic_authoritarian
+		}
+	}
+}
+
+### Peasant Commune
+gov_peasant_commune = {
+	ruler_title = RT_PRESIDING_ELDER
+	ruler_title_female = RT_PRESIDING_ELDER_FEMALE
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			OR = {
+				leader_class = scientist
+				leader_class = governor
+			}
+		}
+		modifier = {
+			factor = 0
+			leader_class = admiral
+			leader_class = general
+		}
+	}
+	possible = {
+		has_valid_civic = civic_shared_burden
+		has_valid_civic = civic_agrarian_idyll
+	}
+	weight = {
+		base = 12500
+	}
+}
+
+### Scholastic Commonwealth
+gov_scholastic_commonwealth = {
+	ruler_title = RT_PROVOST
+	ruler_title_female = RT_PROVOST_FEMALE
+	should_force_rename = yes
+	leader_class = scientist	# Initial ruler will become this if elected out of office
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = scientist
+		}
+	}
+	possible = {
+		has_authority = auth_democratic
+		has_valid_civic = civic_technocracy
+		has_valid_civic = civic_citizen_science
+	}
+	weight = {
+		base = 1200
+	}
+}
+
+### Crusader Kingdom
+gov_crusader_kingdom = {
+	ruler_title = RT_KING
+	ruler_title_female = RT_QUEEN
+	heir_title = HT_CROWN_PRINCE
+	heir_title_female = HT_CROWN_PRINCESS
+	dynastic_last_names = yes
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = civic_crusaders
+	}
+	weight = {
+		base = 1000
+		modifier = {
+			factor = 1.5
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+### Holy Order
+gov_holy_order = {
+	ruler_title = RT_GRANDMASTER
+	ruler_title_female = RT_GRANDMISTRESS
+	should_force_rename = yes
+	possible = {
+		OR = {
+			has_authority = auth_oligarchic
+			has_authority = auth_dictatorial
+		}
+		has_valid_civic = civic_crusaders
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			OR = {
+				leader_class = admiral
+				leader_class = general
+				leader_class = governor
+			}
+		}
+		modifier = {
+			factor = 0
+			leader_class = scientist
+		}
+	}
+	weight = {
+		base = 1000
+		modifier = {
+			factor = 1.5
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+}
+
+### Merchant Republic
+gov_merchant_republic = {
+	ruler_title = RT_DOGE
+	ruler_title_female = RT_DOGARESSA
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	possible = {
+		has_authority = auth_oligarchic
+		has_valid_civic = civic_aristocratic_elite
+		has_valid_civic = civic_merchant_guilds
+	}
+	weight = {
+		base = 2000
+	}
+}
+
+## Corporate Governments
+### Trade Cooperative
+gov_cooperative = {
+	ruler_title = RT_CHAIRMAN
+	ruler_title_female = RT_CHAIRWOMAN
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			OR = {
+				leader_class = governor
+				leader_class = admiral
+				leader_class = general
+			}
+		}
+		modifier = {
+			add = 5
+			leader_class = scientist
+		}
+	}
+	possible = {
+		OR = {
+			has_authority = auth_bugged_corporate_democratic
+			AND = {
+				has_valid_civic = civic_merchant_guilds
+				has_authority = auth_democratic
+			}
+		}
+	}
+	weight = {
+		base = 1200
+	}
+}
+
+### Proprietary Franchise
+gov_private = {
+	ruler_title = RT_CEO
+	ruler_title_female = RT_CEO_FEMALE
+	heir_title = HT_COMPTROLLER
+	heir_title_female = HT_COMPTROLLER_FEMALE
+	dynastic_last_names = yes
+	should_force_rename = yes
+	possible = {
+		OR = {
+			has_authority = auth_bugged_corporate_imperial
+			AND = {
+				has_valid_civic = civic_merchant_guilds
+				OR = {
+					has_authority = auth_dictatorial
+					has_authority = auth_imperial
+				}
+			}
+		}
+	}
+	weight = {
+		base = 1200
+	}
+}
+
+### Family Business
+gov_family_corp = {
+	ruler_title = RT_PROPRIETOR
+	ruler_title_female = RT_PROPRIETOR_FEMALE
+	heir_title = HT_HEIR
+	heir_title_female = HT_HEIR_FEMALE
+	dynastic_last_names = yes
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_bugged_corporate_imperial
+		has_valid_civic = civic_corp_philosopher_king
+	}
+	weight = {
+		base = 1500
+	}
+}
+
+### Divine Megachurch
+gov_private_megachurch = {
+	ruler_title = RT_PROPHET
+	ruler_title_female = RT_PROPHETESS
+	heir_title = RT_HALLOWED_COMPTROLLER
+	heir_title_female = RT_HALLOWED_COMPTROLLER_FEMALE
+	dynastic_last_names = yes
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_bugged_corporate_imperial
+		has_valid_civic = civic_gospel_of_the_masses
+	}
+	weight = {
+		base = 1700
+	}
+}
+
+### Penitent Megachurch
+gov_private_sacrificial_megachurch = {
+	ruler_title = RT_GRAVE_PROPHET
+	ruler_title_female = RT_GRAVE_PROPHETESS
+	heir_title = RT_DISCIPLE
+	heir_title_female = RT_DISCIPLE_FEMALE
+	dynastic_last_names = yes
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_bugged_corporate_imperial
+		has_valid_civic = civic_death_cult_corporate
+		has_valid_civic = civic_gospel_of_the_masses
+	}
+	weight = {
+		base = 10000
+	}
+}
+
+### Subversive Cult
+gov_private_subversive_cult = {
+	ruler_title = RT_ORACLE
+	heir_title = RT_DISCIPLE
+	heir_title_female = RT_DISCIPLE_FEMALE
+	dynastic_last_names = yes
+	should_force_rename = yes
+	possible = {
+		OR = {
+			AND = {
+				has_authority = auth_bugged_corporate_imperial
+				has_valid_civic = civic_criminal_heritage
+				has_valid_civic = civic_gospel_of_the_masses
+			}
+			AND = {
+				OR = {
+					has_authority = auth_dictatorial
+					has_authority = auth_imperial
+				}
+				has_valid_civic = civic_barbaric_despoilers
+				has_valid_civic = civic_exalted_priesthood
+			}
+		}
+	}
+	weight = {
+		base = 30000
+	}
+}
+
+### Crime Network
+gov_cooperative_criminal_syndicate = {
+	ruler_title = RT_BOSS
+	ruler_title_female = RT_BOSS_FEMALE
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			OR = {
+				leader_class = governor
+				leader_class = admiral
+				leader_class = general
+			}
+		}
+		modifier = {
+			add = 5
+			leader_class = scientist
+		}
+	}
+	possible = {
+		OR = {
+			AND = {
+				has_authority = auth_bugged_corporate_democratic
+				has_valid_civic = civic_criminal_heritage
+			}
+			AND = {
+				has_authority = auth_democratic
+				has_valid_civic = civic_merchant_guilds
+				has_valid_civic = civic_barbaric_despoilers
+			}
+		}
+	}
+	weight = {
+		base = 15000
+	}
+}
+
+### Crime Empire
+gov_private_criminal_syndicate = {
+	ruler_title = RT_DON
+	ruler_title_female = RT_DONNA
+	heir_title = RT_COMMISSIONER
+	heir_title_female = RT_COMMISSIONER_FEMALE
+	dynastic_last_names = yes
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	possible = {
+		OR = {
+			AND = {
+				has_authority = auth_bugged_corporate_imperial
+				has_valid_civic = civic_criminal_heritage
+			}
+			AND = {
+				OR = {
+					has_authority = auth_dictatorial
+					has_authority = auth_imperial
+				}
+				has_valid_civic = civic_merchant_guilds
+				has_valid_civic = civic_barbaric_despoilers
+			}
+		}
+	}
+	weight = {
+		base = 15000
+	}
+}
+
+### Charter Company
+gov_charter_company = {
+	ruler_title = RT_DIRECTOR
+	ruler_title_female = RT_DIRECTOR_FEMALE
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	possible = {
+		has_authority = auth_corporate
+		has_valid_civic = civic_royal_trading_company
+	}
+	weight = {
+		base = 1700
+	}
+}
+
+### Royal Company
+gov_royal_company = {
+	ruler_title = RT_KING
+	ruler_title_female = RT_QUEEN
+	heir_title = HT_CROWN_PRINCE
+	heir_title_female = HT_CROWN_PRINCESS
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	should_force_rename = yes
+	possible = {
+		OR = {
+			AND = {
+				has_authority = auth_bugged_corporate_imperial
+				has_valid_civic = civic_royal_trading_company
+			}
+			AND = {
+				has_authority = auth_imperial
+				has_valid_civic = civic_aristocratic_elite
+				has_valid_civic = civic_merchant_guilds
+			}
+		}
+	}
+	weight = {
+		base = 1700
+	}
+}
+
+### Worker Cooperative
+gov_worker_cooperative = {
+	ruler_title = RT_PRESIDING_DIRECTOR
+	should_force_rename = yes
+	possible = {
+		OR = {
+			has_valid_civic = civic_worker_coop
+			AND = {
+				has_valid_civic = civic_merchant_guilds
+				has_valid_civic = civic_shared_burden
+			}
+		}
+	}
+	weight = {
+		base = 10000
+	}
+}
+
+## Hive Governments
+### Infested Hive Mind
+gov_infested_hive_mind = {
+	ruler_title = RT_INFESTED_HIVE_MIND
+	ruler_title_female = RT_INFESTED_HIVE_MIND_FEMALE
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_hive_mind
+		OR = {
+			has_valid_civic = civic_infestation
+			has_origin = origin_necrophage
+		}
+		NOT = {
+			has_valid_civic = civic_hive_devouring_swarm
+		}
+	}
+	weight = {
+		base = 1000000
+	}
+}
+
+### Resource Collector Hive
+gov_resource_collector_mind = {
+	ruler_title = RT_HIVE_MIND
+	ruler_title_female = RT_HIVE_MIND_FEMALE
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_hive_mind
+		OR = {
+			has_valid_civic = civic_starvation_fearing
+			has_valid_civic = civic_mineral_hoarders
+			has_valid_civic = civic_hive_catalytic_processing
+			has_valid_civic = civic_hive_new_pops
+			has_valid_civic = civic_integrated_bioarchitecture
+			has_valid_civic = civic_hive_avian_construction
+		}
+		NOR = {
+			has_valid_civic = civic_hive_devouring_swarm
+			has_valid_civic = civic_infestation
+			has_origin = origin_necrophage
+			has_valid_civic = civic_self_experimentation
+			has_valid_civic = civic_hive_natural_neural_network
+			has_valid_civic = civic_hive_pooled_knowledge
+			has_valid_civic = civic_biological_engineering_hive
+			has_valid_civic = civic_hive_synapses
+		}
+	}
+	weight = {
+		base = 1000000
+	}
+}
+
+### Knowledge-Driven Collective
+gov_knowledge_driven_collective = {
+	ruler_title = RT_HIVE_MIND
+	ruler_title_female = RT_HIVE_MIND_FEMALE
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_hive_mind
+		OR = {
+			has_valid_civic = civic_self_experimentation
+			has_valid_civic = civic_hive_natural_neural_network
+			has_valid_civic = civic_hive_pooled_knowledge
+			has_valid_civic = civic_biological_engineering_hive
+			has_valid_civic = civic_hive_synapses
+		}
+		NOT = {
+			has_valid_civic = civic_hive_devouring_swarm
+		}
+		NOT = {
+			has_valid_civic = civic_infestation
+		}
+		NOT = {
+			has_origin = origin_necrophage
+		}
+	}
+	weight = {
+		base = 500000
+	}
+}
+
+# Amazing Civics: Megacorp mod
+## Locust Megacorporation
+gov_am_civics_locust_corporation = {
+	ruler_title = RT_CEO
+	ruler_title_female = RT_CEO_FEMALE
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	possible = {
+		has_origin = origin_am_civics_locust_capitalism
+	}
+	weight = {
+		base = 10000
+	}
+}
+
+# Civic Pack I mod
+## Toothpaste Conglomerate
+cp_gov_toothpaste_conglomerate = {
+	ruler_title = RT_CEO
+	ruler_title_female = RT_CEO_FEMALE
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	possible = {
+		AND = {
+			has_authority = auth_corporate
+			has_valid_civic = cp_civic_toothpaste_enterprise
+		}
+	}
+	weight = {
+		base = 1000
+	}
+}
+
+## Space Cantina
+cp_gov_space_cantina = {
+	ruler_title = RT_OLIGARCH
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	possible = {
+		AND = {
+			has_authority = auth_corporate
+			has_valid_civic = cp_civic_space_cantina
+		}
+	}
+	weight = {
+		base = 1200
+	}
+}
+
+## Shady Establishment
+cp_gov_shady_establishment = {
+	ruler_title = RT_OLIGARCH
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	possible = {
+		AND = {
+			has_authority = auth_corporate
+			has_valid_civic = cp_civic_space_cantina
+			has_valid_civic = civic_criminal_heritage
+		}
+	}
+	weight = {
+		base = 2100
+	}
+}
+
+# Civic Pack II mod
+## Megabank
+cpb_gov_megabank = {
+	ruler_title = RT_CFO
+	ruler_title_female = RT_CFO
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = envoy
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	possible = {
+		AND = {
+			has_authority = auth_corporate
+			has_valid_civic = cpb_civic_megabank
+		}
+	}
+	weight = {
+		base = 1200
+	}
+}
+
+## Shadow Bank
+cpb_gov_shadow_bank = {
+	ruler_title = RT_OLIGARCH
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = envoy
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	possible = {
+		AND = {
+			has_authority = auth_corporate
+			has_valid_civic = cpb_civic_megabank
+			has_valid_civic = civic_criminal_heritage
+		}
+	}
+	weight = {
+		base = 4000
+	}
+}
+
+## Banking Cult
+cpb_gov_banking_cult = {
+	ruler_title = RT_ORACLE
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = envoy
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	possible = {
+		AND = {
+			has_authority = auth_corporate
+			has_valid_civic = cpb_civic_megabank
+			has_valid_civic = civic_gospel_of_the_masses
+		}
+	}
+	weight = {
+		base = 4000
+	}
+}
+
+## Sacrificial Bank
+cpb_gov_sacrificial_banking_cult = {
+	ruler_title = RT_GRAVE_ADMINISTRATOR
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = envoy
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	possible = {
+		AND = {
+			has_authority = auth_corporate
+			has_valid_civic = cpb_civic_megabank
+			has_valid_civic = civic_death_cult_corporate
+		}
+	}
+	weight = {
+		base = 10000
+	}
+}
+
+## Mercenary Company
+cpb_gov_merc_company = {
+	ruler_title = RT_COMMANDER
+	ruler_title_female = RT_COMMANDER
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 50
+			leader_class = general
+		}
+		modifier = {
+			add = 50
+			leader_class = admiral
+		}
+	}
+	possible = {
+		AND = {
+			has_authority = auth_corporate
+			has_valid_civic = cpb_civic_merc_contract
+		}
+	}
+	weight = {
+		base = 2100
+	}
+}
+
+## Death Company
+cpb_gov_sacrificial_merc_company = {
+	ruler_title = RT_BLOODLORD
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 50
+			leader_class = general
+		}
+		modifier = {
+			add = 50
+			leader_class = admiral
+		}
+	}
+	possible = {
+		AND = {
+			has_authority = auth_corporate
+			has_valid_civic = cpb_civic_merc_contract
+			has_valid_civic = civic_death_cult_corporate
+		}
+	}
+	weight = {
+		base = 10000
+	}
+}
+
+## Paramilitary Organization
+cpb_gov_paramilitary = {
+	ruler_title = RT_COMMANDER
+	ruler_title_female = RT_COMMANDER
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 200
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = general
+		}
+		modifier = {
+			add = 10
+			leader_class = admiral
+		}
+	}
+	possible = {
+		has_valid_civic = cpb_civic_private_org
+		OR = {
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+	weight = {
+		base = 4700
+	}
+}
+
+## Private Organization
+cpb_gov_private_org = {
+	ruler_title = RT_CHAIRMAN
+	ruler_title_female = RT_CHAIRWOMAN
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 200
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	possible = {
+		has_valid_civic = cpb_civic_private_org
+	}
+	weight = {
+		base = 3200
+	}
+}
+
+# Government Variety Pack mod
+# Government Variety Pack
+# Governments - Capitalistic
+# Author: littleraskol
+# Cosmic Cartel (CD + CoI / MC, RC + BL)
+lrsk_gov_var_gov_galactic_cartel = {
+	ruler_title = LRSK_GOV_VAR_RT_COSEO
+	possible = {
+		OR = {
+			AND = {
+				has_valid_civic = civic_corporate_dominion
+				OR = {
+					has_valid_civic = civic_cutthroat_politics
+					has_valid_civic = civic_shadow_council
+				}
+			}
+			AND = {
+				has_authority = auth_corporate
+				has_valid_civic = civic_ruthless_competition
+				has_valid_civic = civic_brand_loyalty
+			}
+		}
+		OR = {
+			has_ethic = ethic_fanatic_militarist
+			has_ethic = ethic_militarist
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+#pacifism for next two
+# Libertarian Freehold (Democracy + Mer/CoI)
+lrsk_gov_var_gov_libertarian_freehold = {
+	ruler_title = LRSK_GOV_VAR_RT_CHIEF_JUSTICE
+	possible = {
+		has_authority = auth_democratic
+		has_valid_civic = civic_meritocracy
+		has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+		NOR = {
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+# Anarcho-Capitalism (Oligarchy + Mer/CoI)
+lrsk_gov_var_gov_anarcho_capitalism = {
+	ruler_title = LRSK_GOV_VAR_RT_CHIEF_INSPECTOR
+	possible = {
+		has_authority = auth_oligarchic
+		has_valid_civic = civic_meritocracy
+		has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+		NOR = {
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+#no egal for next
+# Corporate Neofuedalism
+lrsk_gov_var_gov_corporate_neofuedalism = {
+	ruler_title = LRSK_GOV_VAR_RT_AMBAS_AGENT
+	possible = {
+		has_authority = auth_oligarchic
+		has_valid_civic = civic_merchant_guilds
+		has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+		NOT = {
+			has_ethic = ethic_egalitarian
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+#Room to grow: simple variations on Business Lobby?
+# Proprietary Franchise (Imperal + MerchGuilds + BL or CP)
+lrsk_gov_var_gov_proprietary_franchise = {
+	ruler_title = LRSK_GOV_VAR_RT_PROPRIETOR
+	heir_title = LRSK_GOV_VAR_HT_SENIOR_VP
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = civic_merchant_guilds
+		has_valid_civic = civic_cutthroat_politics
+	}
+	weight = {
+		base = 1000
+	}
+}
+
+#Room to grow: Dictatorial and Oligarchic variants of PF?
+# Entrepreneurial Council (Mer/AE)
+lrsk_gov_var_gov_entrepreneurial_council = {
+	ruler_title = LRSK_GOV_VAR_RT_ENTERPRISE_COM
+	possible = {
+		has_valid_civic = civic_meritocracy
+		has_valid_civic = civic_aristocratic_elite
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+# Merchant Republic
+lrsk_gov_var_gov_merchant_republic = {
+	ruler_title = LRSK_GOV_VAR_RT_SERENE_DOGE
+	ruler_title_female = LRSK_GOV_VAR_RT_SERENE_DOGARESSA
+	possible = {
+		has_authority = auth_oligarchic
+		has_valid_civic = civic_meritocracy
+		has_valid_civic = civic_merchant_guilds
+		NOR = {
+			has_ethic = ethic_egalitarian
+			has_ethic = ethic_fanatic_egalitarian
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1800
+	}
+}
+
+# Constitutional Plutocracy
+lrsk_gov_var_gov_constitutional_plutocracy = {
+	ruler_title = LRSK_GOV_VAR_RT_PROP_PRES
+	ruler_title_female = LRSK_GOV_VAR_RT_PROP_PRES_FEMALE
+	possible = {
+		has_authority = auth_democratic
+		has_valid_civic = civic_meritocracy
+		has_valid_civic = civic_merchant_guilds
+		NOR = {
+			has_ethic = ethic_egalitarian
+			has_ethic = ethic_fanatic_egalitarian
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1800
+	}
+}
+
+# Enterprise Society
+lrsk_gov_var_gov_enterprise_society = {
+	ruler_title = LRSK_GOV_VAR_RT_FRANCHISE_MINISTER
+	possible = {
+		has_authority = auth_democratic
+		has_valid_civic = civic_police_state
+		has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+# Enterprise Junta
+lrsk_gov_var_gov_enterprise_junta = {
+	ruler_title = LRSK_GOV_VAR_RT_PRES_COMMANDER
+	possible = {
+		has_authority = auth_oligarchic
+		has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+		has_valid_civic = civic_police_state
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = admiral
+		}
+		modifier = {
+			add = 10
+			leader_class = general
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+# Enterprise Authority
+lrsk_gov_var_gov_enterprise_authority = {
+	ruler_title = LRSK_GOV_VAR_RT_EXEC_MARSHAL
+	possible = {
+		has_authority = auth_dictatorial
+		has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+		has_valid_civic = civic_police_state
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = admiral
+		}
+		modifier = {
+			add = 10
+			leader_class = general
+		}
+	}
+	weight = {
+		base = 2000
+	}
+}
+
+# Rationalist Managerial Firm
+lrsk_gov_var_gov_rationalist_managerial_firm = {
+	ruler_title = LRSK_GOV_VAR_RT_PROC_EFF_DIRECTOR
+	possible = {
+		OR = {
+			AND = {
+				has_valid_civic = civic_corporate_dominion
+				has_valid_civic = civic_technocracy
+			}
+			AND = {
+				has_authority = auth_corporate
+				has_valid_civic = lrsk_gov_var_civic_mc_sci_mgnt
+			}
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			add = 40
+			leader_class = scientist
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+		modifier = {
+			add = 100
+			has_ethic = ethic_authoritarian
+		}
+	}
+}
+
+# Private Intelligence Agency
+lrsk_gov_var_gov_private_intel_agency = {
+	ruler_title = LRSK_GOV_VAR_RT_CE_DIRECTOR
+	possible = {
+		has_authority = auth_corporate
+		has_valid_civic = lrsk_gov_var_civic_mc_police_state
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = admiral
+		}
+		modifier = {
+			add = 10
+			leader_class = general
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+		modifier = {
+			factor = 0.8
+			has_valid_civic = civic_gospel_of_the_masses
+		}
+	}
+}
+
+# Protection Racket
+lrsk_gov_var_gov_protection_racket = {
+	ruler_title = LRSK_GOV_VAR_RT_CHIEF_ENFORCER
+	possible = {
+		has_authority = auth_corporate
+		has_valid_civic = lrsk_gov_var_civic_mc_police_state
+		has_valid_civic = civic_criminal_heritage
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = admiral
+		}
+		modifier = {
+			add = 10
+			leader_class = general
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1750
+	}
+}
+
+# Government Variety Pack
+# Governments - French Revolution Inspired
+# Author: littleraskol
+### FRENCH REVOLUTION NERD STUFF GOES HERE
+# Kingdom of the Sun
+lrsk_gov_var_gov_solar_monarchy = {
+	ruler_title = LRSK_GOV_VAR_RT_SOLAR_KING
+	ruler_title_female = LRSK_GOV_VAR_RT_SOLAR_QUEEN
+	heir_title = LRSK_GOV_VAR_HT_DAWN_PRINCE
+	heir_title_female = LRSK_GOV_VAR_HT_DAWN_PRINCESS
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = lrsk_gov_var_civic_royal_absolutism
+		has_valid_civic = lrsk_gov_var_civic_universal_sovereignty
+		NOR = {
+			has_ethic = ethic_pacifist
+			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_materialist
+			has_ethic = ethic_fanatic_materialist
+		}
+	}
+	weight = {
+		base = 1010
+	}
+}
+
+# Constitutional Monarchy (TBD: Remake with Dynastic authority, then respec to "Liberal Monarchy"?)
+lrsk_gov_var_gov_constitutional_monarchy = {
+	ruler_title = LRSK_GOV_VAR_RT_PEP_KING
+	ruler_title_female = LRSK_GOV_VAR_RT_PEP_QUEEN
+	heir_title = LRSK_GOV_VAR_HT_PEP_PRINCE
+	heir_title_female = LRSK_GOV_VAR_HT_PEP_PRINCESS
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+		NOR = {
+			has_valid_civic = lrsk_gov_var_civic_royal_absolutism
+		}
+	}
+	weight = {
+		base = 1000
+	}
+}
+
+# Republic of Virtue
+lrsk_gov_var_gov_republic_of_virtue = {
+	ruler_title = LRSK_GOV_VAR_RT_CH_TRUSTEE
+	possible = {
+		has_valid_civic = lrsk_gov_var_civic_republicanism
+		has_valid_civic = lrsk_gov_var_civic_lifelong_learning
+		OR = {
+			has_ethic = ethic_egalitarian
+			has_ethic = ethic_fanatic_egalitarian
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 30
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = scientist
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+# Federal Republic (EB/Parl)
+lrsk_gov_var_gov_federal_republic = {
+	ruler_title = LRSK_GOV_VAR_RT_MLEADER
+	possible = {
+		has_valid_civic = civic_parliamentary_system
+		has_valid_civic = civic_efficient_bureaucracy
+		OR = {
+			has_ethic = ethic_egalitarian
+			has_ethic = ethic_fanatic_egalitarian
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 50
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 100
+	}
+}
+
+# Revolutionary Republic
+lrsk_gov_var_gov_revolutionary_republic = {
+	ruler_title = LRSK_GOV_VAR_RT_SECCOM
+	possible = {
+		has_valid_civic = lrsk_gov_var_civic_republicanism
+		has_valid_civic = civic_nationalistic_zeal
+		has_ethic = ethic_fanatic_egalitarian
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 50
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = admiral
+		}
+		modifier = {
+			add = 10
+			leader_class = general
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+# Republican Directory
+lrsk_gov_var_gov_republican_directory = {
+	ruler_title = LRSK_GOV_VAR_RT_PRES_COUNC
+	possible = {
+		has_authority = auth_oligarchic
+		has_valid_civic = civic_nationalistic_zeal
+		has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+		has_ethic = ethic_egalitarian
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 50
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = admiral
+		}
+		modifier = {
+			add = 10
+			leader_class = general
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+# Room to grow: Democratic version?
+# Republican Protectorate
+lrsk_gov_var_gov_republican_protectorate = {
+	ruler_title = LRSK_GOV_VAR_RT_FIRST_CONSUL
+	possible = {
+		has_authority = auth_dictatorial
+		has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+		OR = {
+			has_valid_civic = civic_nationalistic_zeal
+			has_valid_civic = lrsk_gov_var_civic_imperial_economy
+		}
+		OR = {
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 50
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = admiral
+		}
+		modifier = {
+			add = 10
+			leader_class = general
+		}
+	}
+	weight = {
+		base = 1000
+	}
+}
+
+# Revolutionary Empire
+lrsk_gov_var_gov_revolutionary_empire = {
+	ruler_title = LRSK_GOV_VAR_RT_PEP_EMPEROR
+	ruler_title_female = LRSK_GOV_VAR_RT_PEP_EMPERESS
+	heir_title = LRSK_GOV_VAR_HT_PEP_CROWN_PRINCE
+	heir_title_female = LRSK_GOV_VAR_HT_PEP_CROWN_PRINCESS
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+		OR = {
+			has_valid_civic = civic_police_state
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+		}
+		OR = {
+			has_valid_civic = lrsk_gov_var_civic_universal_sovereignty
+			has_ethic = ethic_xenophile
+			has_ethic = ethic_fanatic_xenophile
+		}
+	}
+	weight = {
+		base = 2000
+	}
+}
+
+# Government Variety Pack
+# Governments - Based on the ideas of Steam user Garlic Pudding
+# Author: littleraskol
+# Merchant Principality (Dic/Imp, PK & MG)
+lrsk_gov_var_gov_merchant_principality_d = {
+	ruler_title = LRSK_GOV_VAR_RT_MERCHANT_PRINCE
+	ruler_title_female = LRSK_GOV_VAR_RT_MERCHANT_PRINCESS
+	#should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 50
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = scientist
+		}
+	}
+	possible = {
+		has_authority = auth_dictatorial
+		has_valid_civic = civic_philosopher_king
+		has_valid_civic = civic_merchant_guilds
+	}
+	weight = {
+		base = 1800
+	}
+}
+
+lrsk_gov_var_gov_merchant_principality_i = {
+	ruler_title = LRSK_GOV_VAR_RT_MERCHANT_PRINCE
+	ruler_title_female = LRSK_GOV_VAR_RT_MERCHANT_PRINCESS
+	heir_title = LRSK_GOV_VAR_HT_VICEPRINCEPS
+	heir_title_female = LRSK_GOV_VAR_HT_VICEPRINCEPS
+	#use_regnal_names = yes
+	#dynastic_last_names = yes	
+	#should_force_rename = yes
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = civic_philosopher_king
+		has_valid_civic = civic_merchant_guilds
+	}
+	weight = {
+		base = 1800
+	}
+}
+
+# Stakeholder Polity - Requires a change to how Republicanism works or a different civic...
+lrsk_gov_var_gov_stakeholder_polity = {
+	ruler_title = LRSK_GOV_VAR_RT_CHEIF_OMBUDS
+	ruler_title_female = LRSK_GOV_VAR_RT_CHEIF_OMBUDS_FEMALE
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 50
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = scientist
+		}
+	}
+	possible = {
+		has_authority = auth_oligarchic
+		has_valid_civic = civic_merchant_guilds
+	}
+	weight = {
+		base = 1800
+	}
+}
+
+# Shareholder Commonwealth
+lrsk_gov_var_gov_shareholder_commonwealth = {
+	ruler_title = LRSK_GOV_VAR_RT_CHIEF_ARBITRATOR
+	ruler_title_female = LRSK_GOV_VAR_RT_CHIEF_ARBITRATOR_FEMALE
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 50
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = scientist
+		}
+	}
+	possible = {
+		has_authority = auth_democratic
+		has_valid_civic = lrsk_gov_var_civic_republicanism
+		has_valid_civic = civic_merchant_guilds
+	}
+	leader_class = governor
+	weight = {
+		base = 1800
+	}
+}
+
+# Crusading Company (FanMil or FanSpi, Corp, GoM & PMC/NC)
+lrsk_gov_var_gov_crusading_company = {
+	ruler_title = LRSK_GOV_VAR_RT_CHAPLAINMARTIAL
+	ruler_title_female = LRSK_GOV_VAR_RT_CHAPLAINMARTIAL
+	#should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 20
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = admiral
+		}
+		modifier = {
+			add = 10
+			leader_class = general
+		}
+	}
+	possible = {
+		#OR = {
+		#	has_ethic = ethic_fanatic_militarist
+		#	has_ethic = ethic_fanatic_spiritualist
+		#}
+		OR = {
+			AND = {
+				# Pretty much only going to show up in rare cases but eh
+				has_valid_civic = civic_corporate_dominion
+				has_valid_civic = civic_exalted_priesthood
+				has_valid_civic = civic_citizen_service
+			}
+			AND = {
+				has_authority = auth_corporate
+				has_valid_civic = civic_gospel_of_the_masses
+				OR = {
+					has_valid_civic = civic_naval_contractors
+					has_valid_civic = civic_private_military_companies
+				}
+			}
+		}
+	}
+	weight = {
+		base = 1500
+	}
+}
+
+#  Colonial Charter Board (FanMil or FanSpi, Corp, GoM & PMC/NC)
+lrsk_gov_var_gov_colonial_charter_board = {
+	ruler_title = LRSK_GOV_VAR_RT_HON_BOARD_CHAIR_M
+	ruler_title_female = LRSK_GOV_VAR_RT_HON_BOARD_CHAIR_F
+	#should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	possible = {
+		has_authority = auth_corporate
+		has_valid_civic = lrsk_gov_var_civic_mc_chart_corp_board
+	}
+	weight = {
+		base = 2500
+	}
+}
+
+#  Colonial Company (NPC Only Vassal)
+lrsk_gov_var_gov_colonial_company = {
+	ruler_title = LRSK_GOV_VAR_RT_GOV_PRES
+	ruler_title_female = LRSK_GOV_VAR_RT_GOV_PRES
+	should_force_rename = yes
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	possible = {
+		has_authority = auth_corporate
+		has_valid_civic = lrsk_gov_var_civic_mc_chartered_company
+	}
+	weight = {
+		base = 2500
+	}
+}
+
+# Government Variety Pack
+# Governments - Gestalt
+# Author: littleraskol
+### HIVE GOVERNMENTS
+# Cooperative Super-Sapience
+lrsk_gov_var_gov_coop_supersap = {
+	ruler_title = RT_OVERMIND
+	ruler_title_female = RT_OVERMIND
+	should_force_rename = yes
+	possible = {
+		has_authority = auth_hive_mind
+		has_valid_civic = lrsk_gov_var_civic_hive_planetmind_creativity
+		NOT = {
+			has_valid_civic = civic_hive_devouring_swarm
+		}
+	}
+	weight = {
+		base = 100001
+	}
+}
+
+# Government Variety Pack
+# Governments - Kingdoms/Monarchies
+# Author: littleraskol
+# Noble Empire (internal string is legacy)
+lrsk_gov_var_gov_noble_empire = {
+	ruler_title = LRSK_GOV_VAR_RT_GREAT_KING
+	ruler_title_female = LRSK_GOV_VAR_RT_GREAT_QUEEN
+	heir_title = LRSK_GOV_VAR_HT_HIGH_PRINCE
+	heir_title_female = LRSK_GOV_VAR_HT_HIGH_PRINCESS
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = civic_feudal_realm
+		OR = {
+			has_valid_civic = civic_aristocratic_elite
+			has_valid_civic = lrsk_gov_var_civic_chivalry
+			has_valid_civic = lrsk_gov_var_civic_colonial_fiefs
+		}
+	}
+	weight = {
+		base = 1000
+	}
+}
+
+# Absolute Monarchy
+lrsk_gov_var_gov_absolute_monarchy = {
+	ruler_title = LRSK_GOV_VAR_RT_PARA_KING
+	ruler_title_female = LRSK_GOV_VAR_RT_PARA_QUEEN
+	heir_title = LRSK_GOV_VAR_HT_BLOOD_PRINCE
+	heir_title_female = LRSK_GOV_VAR_HT_BLOOD_PRINCESS
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = lrsk_gov_var_civic_royal_absolutism
+		NOR = {
+			has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+		}
+	}
+	weight = {
+		base = 1000
+	}
+}
+
+# Libertine Empire
+lrsk_gov_var_gov_libertine_empire = {
+	ruler_title = LRSK_GOV_VAR_RT_LIB_EMPEROR
+	ruler_title_female = LRSK_GOV_VAR_RT_LIB_EMPERESS
+	heir_title = LRSK_GOV_VAR_HT_FREE_PRINCE
+	heir_title_female = LRSK_GOV_VAR_HT_FREE_PRINCESS
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+		OR = {
+			has_valid_civic = civic_police_state
+			has_valid_civic = lrsk_gov_var_civic_royal_absolutism
+		}
+	}
+	weight = {
+		base = 1500
+	}
+}
+
+# Empire of Rapine
+lrsk_gov_var_gov_empire_of_rapine = {
+	ruler_title = LRSK_GOV_VAR_RT_EMPEROR_OF_FREE
+	ruler_title_female = LRSK_GOV_VAR_RT_EMPRESS_OF_FREE
+	heir_title = LRSK_GOV_VAR_HT_PRINCELICENTIOUS
+	heir_title_female = LRSK_GOV_VAR_HT_PRINCESSLICENTIOUS
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+		has_valid_civic = civic_barbaric_despoilers
+	}
+	weight = {
+		base = 11000
+	}
+}
+
+# Government Variety Pack
+# Governments - Based on the ideas of Steam user Namazuo "Horse Poop" Toushiro
+# Author: littleraskol
+# Conspiracy of Equals
+lrsk_gov_var_gov_conspiracy_of_equals = {
+	ruler_title = LRSK_GOV_VAR_RT_FIRST_CITIZEN
+	possible = {
+		has_valid_civic = civic_shadow_council
+		has_valid_civic = lrsk_gov_var_civic_workers_councils
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 30
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = scientist
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1100
+	}
+}
+
+# Utopian Despotism
+lrsk_gov_var_gov_utopian_despotism_dic = {
+	ruler_title = LRSK_GOV_VAR_RT_GRAND_PHILANTHROPIST_D
+	possible = {
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+		has_valid_civic = lrsk_gov_var_civic_automated_indolence
+		has_authority = auth_dictatorial
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 30
+			leader_class = governor
+		}
+		modifier = {
+			add = 50
+			leader_class = scientist
+		}
+	}
+	weight = {
+		base = 1100
+	}
+}
+
+lrsk_gov_var_gov_utopian_despotism_imp = {
+	ruler_title = LRSK_GOV_VAR_RT_GRAND_PHILANTHROPIST_I
+	heir_title = LRSK_GOV_VAR_HT_PHILANTHROPIC_APPRENTICE
+	dynastic_last_names = yes
+	possible = {
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+		has_valid_civic = lrsk_gov_var_civic_automated_indolence
+		has_authority = auth_imperial
+	}
+	weight = {
+		base = 1100
+	}
+}
+
+# Utopian Socialism
+lrsk_gov_var_gov_utopian_socialism = {
+	ruler_title = LRSK_GOV_VAR_RT_PHILANTHROPY_DIRECTOR
+	possible = {
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+		has_valid_civic = lrsk_gov_var_civic_automated_indolence
+		OR = {
+			has_authority = auth_oligarchic
+			has_authority = auth_democratic
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 30
+			leader_class = governor
+		}
+		modifier = {
+			add = 50
+			leader_class = scientist
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1100
+	}
+}
+
+# Social Imperialism
+lrsk_gov_var_gov_social_imperialism = {
+	ruler_title = LRSK_GOV_VAR_RT_INTERPLANETARY_CHAIRMAN
+	ruler_title_female = LRSK_GOV_VAR_RT_INTERPLANETARY_CHAIRWOMAN
+	possible = {
+		has_authority = auth_dictatorial
+		has_valid_civic = lrsk_gov_var_civic_imperial_economy
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 30
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = admiral
+		}
+		modifier = {
+			add = 10
+			leader_class = general
+		}
+	}
+	weight = {
+		base = 1100
+	}
+}
+
+# Purity Collective
+lrsk_gov_var_gov_pure_social_republic = {
+	ruler_title = LRSK_GOV_VAR_RT_PEOPLES_CHAMPION
+	possible = {
+		NOT = {
+			has_authority = auth_imperial
+		}
+		has_valid_civic = civic_fanatic_purifiers
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 30
+			leader_class = governor
+		}
+		modifier = {
+			add = 50
+			leader_class = admiral
+		}
+		modifier = {
+			add = 20
+			leader_class = general
+		}
+	}
+	leader_class = admiral
+	weight = {
+		base = 2100
+	}
+}
+
+# Socialism in One State
+lrsk_gov_var_gov_onestate_socialism = {
+	ruler_title = LRSK_GOV_VAR_RT_NATIONAL_PARTY_CHAIR
+	possible = {
+		NOT = {
+			has_authority = auth_imperial
+		}
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+		has_valid_civic = civic_inwards_perfection
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 30
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = scientist
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1100
+	}
+}
+
+# Worker's Republic
+lrsk_gov_var_gov_workers_republic = {
+	ruler_title = LRSK_GOV_VAR_RT_PLEBIAN_TRIBUNE
+	possible = {
+		has_valid_civic = lrsk_gov_var_civic_republicanism
+		has_valid_civic = lrsk_gov_var_civic_workers_councils
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 30
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = scientist
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1100
+	}
+}
+
+# Rustic Republic
+lrsk_gov_var_gov_rustic_republic = {
+	ruler_title = LRSK_GOV_VAR_RT_COUNTRY_CHANCELLOR
+	possible = {
+		OR = {
+			has_valid_civic = lrsk_gov_var_civic_republicanism
+			has_valid_civic = civic_parliamentary_system
+		}
+		has_valid_civic = civic_agrarian_idyll
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 30
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = scientist
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1100
+	}
+}
+
+# Rural Commune Collective
+lrsk_gov_var_gov_peasant_commune_collective = {
+	ruler_title = LRSK_GOV_VAR_RT_COMMUNAL_REPRESENTATIVE
+	possible = {
+		has_valid_civic = civic_agrarian_idyll
+		has_valid_civic = lrsk_gov_var_civic_workers_councils
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 30
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = scientist
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1100
+	}
+}
+
+# Peasant Dictatorship
+lrsk_gov_var_gov_peasant_dictatorship = {
+	ruler_title = LRSK_GOV_VAR_RT_COLLECTIVE_DIRECTOR
+	possible = {
+		has_authority = auth_dictatorial
+		has_valid_civic = civic_agrarian_idyll
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 30
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = scientist
+		}
+	}
+	weight = {
+		base = 1100
+	}
+}
+
+# Agrarian Monarchy
+lrsk_gov_var_gov_agrarian_monarchy = {
+	ruler_title = LRSK_GOV_VAR_RT_FATHERKING
+	ruler_title_female = LRSK_GOV_VAR_RT_MOTHERQUEEN
+	heir_title = LRSK_GOV_VAR_HT_BROTHERPRINCE
+	heir_title_female = LRSK_GOV_VAR_HT_SISTERPRINCESS
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = civic_agrarian_idyll
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+	}
+	weight = {
+		base = 1100
+	}
+}
+
+# Reactionary Socialism
+lrsk_gov_var_gov_reactionary_socialism = {
+	ruler_title = LRSK_GOV_VAR_RT_LORD_PRESIDENT
+	ruler_title_female = LRSK_GOV_VAR_RT_LADY_PRESIDENT
+	dynastic_last_names = yes
+	possible = {
+		OR = {
+			has_authority = auth_oligarchic
+			has_authority = auth_imperial
+		}
+		has_valid_civic = civic_aristocratic_elite
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1100
+	}
+}
+
+# Feudal Socialism
+lrsk_gov_var_gov_feudal_socialism = {
+	ruler_title = LRSK_GOV_VAR_RT_SOCIAL_KING
+	ruler_title_female = LRSK_GOV_VAR_RT_SOCIAL_QUEEN
+	heir_title = LRSK_GOV_VAR_HT_PRINCE_OF_THE_PROLES
+	heir_title_female = LRSK_GOV_VAR_HT_PRINCESS_OF_THE_PROLES
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = civic_feudal_realm
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+	}
+	weight = {
+		base = 1200
+	}
+}
+
+# Crime Family
+lrsk_gov_var_gov_crime_family = {
+	ruler_title = LRSK_GOV_VAR_RT_BOSSMAN
+	ruler_title_female = LRSK_GOV_VAR_RT_BOSSWOMAN
+	heir_title = LRSK_GOV_VAR_HT_HEAD_UNDERBOSS
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = civic_merchant_guilds
+		has_valid_civic = civic_barbaric_despoilers
+	}
+	weight = {
+		base = 11000
+	}
+}
+
+# Rogue Freehold
+lrsk_gov_var_gov_rogue_freehold = {
+	ruler_title = LRSK_GOV_VAR_RT_HEAD_JUDGE
+	possible = {
+		has_authority = auth_democratic
+		has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+		has_valid_civic = civic_barbaric_despoilers
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			add = 30
+			leader_class = admiral
+		}
+		modifier = {
+			add = 30
+			leader_class = general
+		}
+	}
+	leader_class = admiral
+	weight = {
+		base = 11000
+	}
+}
+
+# Corporate Banditry
+lrsk_gov_var_gov_corporate_banditry = {
+	ruler_title = LRSK_GOV_VAR_RT_CHIEFCORPSEC
+	possible = {
+		OR = {
+			has_authority = auth_dictatorial
+			has_authority = auth_oligarchic
+		}
+		has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+		has_valid_civic = civic_barbaric_despoilers
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			add = 30
+			leader_class = admiral
+		}
+		modifier = {
+			add = 30
+			leader_class = general
+		}
+	}
+	leader_class = admiral
+	weight = {
+		base = 11000
+	}
+}
+
+# Government Variety Pack
+# Governments - Other
+# Author: littleraskol
+# Pretender Hive
+lrsk_gov_var_gov_pretender_hive = {
+	ruler_title = LRSK_GOV_VAR_RT_OVERMIND
+	possible = {
+		has_valid_civic = lrsk_gov_var_civic_ascetic_virtues
+		has_valid_civic = lrsk_gov_var_civic_utilitarian_planning
+		has_ethic = ethic_fanatic_authoritarian
+		has_ethic = ethic_xenophobe
+		has_authority = auth_dictatorial
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 50
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = scientist
+		}
+	}
+	weight = {
+		base = 1000
+	}
+}
+
+# Pretender Hive - Imperialist Variant
+lrsk_gov_var_gov_pretender_hive_imp = {
+	ruler_title = LRSK_GOV_VAR_RT_OVERMIND
+	heir_title = LRSK_GOV_VAR_HT_BACKUP
+	possible = {
+		has_valid_civic = lrsk_gov_var_civic_ascetic_virtues
+		has_valid_civic = lrsk_gov_var_civic_utilitarian_planning
+		has_ethic = ethic_fanatic_authoritarian
+		has_ethic = ethic_xenophobe
+		has_authority = auth_imperial
+	}
+	weight = {
+		base = 1000
+	}
+}
+
+#test
+lrsk_gov_var_gov_colonial_viceroyalty_imp = {
+	ruler_title = LRSK_GOV_VAR_RT_COL_VICEROY
+	ruler_title_female = LRSK_GOV_VAR_RT_COL_VICEREINE
+	heir_title = LRSK_GOV_VAR_HT_DEP_VICEROY
+	heir_title_female = LRSK_GOV_VAR_HT_DEP_VICEREINE
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_imperial
+		has_origin = lrsk_gov_var_origin_colonial_venture
+	}
+	weight = {
+		base = 110000
+	}
+}
+
+lrsk_gov_var_gov_colonial_viceroyalty_dic = {
+	ruler_title = LRSK_GOV_VAR_RT_COL_REGENT
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_dictatorial
+		has_origin = lrsk_gov_var_origin_colonial_venture
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	weight = {
+		base = 110000
+	}
+}
+
+lrsk_gov_var_gov_colonial_viceroyalty_oli = {
+	ruler_title = LRSK_GOV_VAR_RT_COL_OVERSEER
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_oligarchic
+		has_origin = lrsk_gov_var_origin_colonial_venture
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 110000
+	}
+}
+
+lrsk_gov_var_gov_colonial_viceroyalty_dem = {
+	ruler_title = LRSK_GOV_VAR_RT_COL_GOVERNOR
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_democratic
+		has_origin = lrsk_gov_var_origin_colonial_venture
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 110000
+	}
+}
+
+lrsk_gov_var_gov_colonial_viceroyalty_cmp = {
+	ruler_title = LRSK_GOV_VAR_RT_COL_EXEC
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_corporate
+		has_origin = lrsk_gov_var_origin_colonial_venture
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 110000
+	}
+}
+
+# Government Variety Pack
+# Governments - Religious
+# Author: littleraskol
+# Saintly Assembly (FEgal + EC)
+lrsk_gov_var_gov_saintly_assembly = {
+	ruler_title = LRSK_GOV_VAR_RT_ELDER_BROTHER
+	ruler_title_female = LRSK_GOV_VAR_RT_ELDER_SISTER
+	possible = {
+		OR = {
+			has_valid_civic = lrsk_gov_var_civic_elected_clergy
+		}
+		OR = {
+			has_ethic = ethic_egalitarian
+			has_ethic = ethic_fanatic_egalitarian
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+# Cosmic Choir (Dem/Olg + DR/AV)
+# The "olig" variant allows for different namelist uses.
+lrsk_gov_var_gov_cosmic_choir_olig = {
+	ruler_title = LRSK_GOV_VAR_RT_GURU
+	possible = {
+		has_authority = auth_oligarchic
+		has_valid_civic = lrsk_gov_var_civic_direct_revelation
+		has_valid_civic = lrsk_gov_var_civic_ascetic_virtues
+		OR = {
+			has_ethic = ethic_pacifist
+			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_xenophile
+			has_ethic = ethic_fanatic_xenophile
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+lrsk_gov_var_gov_cosmic_choir = {
+	ruler_title = LRSK_GOV_VAR_RT_GURU
+	possible = {
+		has_authority = auth_democratic
+		has_valid_civic = lrsk_gov_var_civic_direct_revelation
+		has_valid_civic = lrsk_gov_var_civic_ascetic_virtues
+		OR = {
+			has_ethic = ethic_pacifist
+			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_xenophile
+			has_ethic = ethic_fanatic_xenophile
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+# Evangelical Franchise (Corporate Dominion + Exalted Priesthood) (internal string is legacy)
+lrsk_gov_var_gov_evangelical_franchise = {
+	ruler_title = LRSK_GOV_VAR_RT_CHIEF_MINISTERIAL_OFFICER
+	possible = {
+		OR = {
+			AND = {
+				has_valid_civic = civic_corporate_dominion
+				has_valid_civic = civic_exalted_priesthood
+			}
+			AND = {
+				has_authority = auth_corporate
+				has_valid_civic = civic_gospel_of_the_masses
+			}
+		}
+		has_ethic = ethic_pacifist
+		has_ethic = ethic_egalitarian
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1300
+	}
+}
+
+# Occult Cartel (As above, but Authoritarian/Fanatic Spiritualist) (internal string is legacy)
+lrsk_gov_var_gov_occult_franchise = {
+	ruler_title = LRSK_GOV_VAR_RT_GRAND_EXECUTIVE_SAGE
+	possible = {
+		OR = {
+			AND = {
+				has_valid_civic = civic_corporate_dominion
+				has_valid_civic = civic_exalted_priesthood
+			}
+			AND = {
+				has_authority = auth_corporate
+				has_valid_civic = civic_gospel_of_the_masses
+			}
+		}
+		has_ethic = ethic_authoritarian
+		has_ethic = ethic_fanatic_spiritualist
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1300
+	}
+}
+
+# Government Variety Pack
+# Governments - Republics and Democracies
+# Author: littleraskol
+# Whig Republic
+lrsk_gov_var_gov_whig_republic = {
+	ruler_title = LRSK_GOV_VAR_RT_EXEC_MINISTER
+	possible = {
+		has_valid_civic = civic_shadow_council
+		OR = {
+			has_valid_civic = civic_idealistic_foundation
+			AND = {
+				has_valid_civic = civic_meritocracy
+				has_ethic = ethic_egalitarian
+			}
+		}
+		has_authority = auth_oligarchic
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+# Whig Commonwealth
+lrsk_gov_var_gov_whig_commonwealth = {
+	ruler_title = LRSK_GOV_VAR_RT_EXEC_CHANCELLOR
+	possible = {
+		has_valid_civic = civic_shadow_council
+		OR = {
+			has_valid_civic = civic_idealistic_foundation
+			has_valid_civic = civic_beacon_of_liberty
+			AND = {
+				has_valid_civic = civic_meritocracy
+				OR = {
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+				}
+			}
+		}
+		has_authority = auth_democratic
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+#Noble Republic (Oligarch + Aristo Elite)
+lrsk_gov_var_gov_noble_republic = {
+	ruler_title = LRSK_GOV_VAR_RT_HIGH_PRINCE
+	ruler_title_female = LRSK_GOV_VAR_RT_HIGH_PRINCESS
+	possible = {
+		has_valid_civic = civic_aristocratic_elite
+		has_authority = auth_oligarchic
+	}
+	election_candidates = {
+		modifier = {
+			add = 1000
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			or = {
+				leader_class = governor
+				leader_class = admiral
+				leader_class = general
+			}
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 800
+		modifier = {
+			add = 201
+			has_valid_civic = civic_shadow_council
+		}
+		modifier = {
+			add = 201
+			has_valid_civic = civic_cutthroat_politics
+		}
+	}
+}
+
+# Government Variety Pack
+# Governments - Scientific
+# Author: littleraskol
+# Innovation Initiative
+lrsk_gov_var_gov_innovation_initiative = {
+	ruler_title = LRSK_GOV_VAR_RT_EXEC_DEAN
+	possible = {
+		OR = {
+			AND = {
+				has_valid_civic = civic_corporate_dominion
+				has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+			}
+			AND = {
+				has_authority = auth_corporate
+				has_valid_civic = lrsk_gov_var_civic_mc_edu_corp
+				has_valid_civic = lrsk_gov_var_civic_mc_sci_mgnt
+			}
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			add = 50
+			leader_class = scientist
+		}
+	}
+	leader_class = scientist
+	weight = {
+		base = 1001
+		modifier = {
+			add = 100
+			has_ethic = ethic_materialist
+		}
+		modifier = {
+			add = 1000
+			has_ethic = ethic_fanatic_materialist
+		}
+	}
+}
+
+# Academy State
+lrsk_gov_var_gov_academy_state = {
+	ruler_title = LRSK_GOV_VAR_RT_PROVOST_GEN
+	possible = {
+		has_authority = auth_oligarchic
+		has_valid_civic = civic_technocracy
+		has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			add = 50
+			leader_class = scientist
+		}
+	}
+	leader_class = scientist
+	weight = {
+		base = 1000
+	}
+}
+
+# Scholastic Commonwealth
+lrsk_gov_var_gov_scholastic_commonwealth = {
+	ruler_title = LRSK_GOV_VAR_RT_FACULTY_DIRECTOR
+	possible = {
+		has_authority = auth_democratic
+		has_valid_civic = civic_technocracy
+		OR = {
+			has_valid_civic = lrsk_gov_var_civic_enlightened_liberalism
+			has_valid_civic = lrsk_gov_var_civic_lifelong_learning
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			add = 50
+			leader_class = scientist
+		}
+	}
+	leader_class = scientist
+	weight = {
+		base = 1000
+	}
+}
+
+# Government Variety Pack
+# Governments - Socialistic
+# Author: littleraskol
+# Proletarian Dictatorship (Dictatorship + UP/IC)
+lrsk_gov_var_gov_proletarian_dictatorship = {
+	ruler_title = LRSK_GOV_VAR_RT_PARTY_CHAIRMAN
+	ruler_title_female = LRSK_GOV_VAR_RT_PARTY_CHAIRWOMAN
+	possible = {
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+		has_authority = auth_dictatorial
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			OR = {
+				leader_class = admiral
+				leader_class = general
+			}
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	weight = {
+		base = 1000
+	}
+}
+
+# Insurrectionary Lineage
+lrsk_gov_var_gov_insurrectionary_lineage = {
+	ruler_title = LRSK_GOV_VAR_RT_DEAR_LEADER
+	heir_title = LRSK_GOV_VAR_HT_DEPUTY_LEADER
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_imperial
+		AND = {
+			has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+			has_valid_civic = lrsk_gov_var_civic_cult_of_personality
+		}
+		OR = {
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+	weight = {
+		base = 1000
+	}
+}
+
+# Social Bureaucracy (Oligarchy + PW/IC)
+lrsk_gov_var_gov_social_bureaucracy = {
+	ruler_title = LRSK_GOV_VAR_RT_GENERAL_DIRECTOR
+	possible = {
+		has_authority = auth_oligarchic
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 30
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = scientist
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+# Social Democracy
+lrsk_gov_var_gov_social_democracy = {
+	ruler_title = LRSK_GOV_VAR_RT_GENERAL_COORDINATOR
+	possible = {
+		has_authority = auth_democratic
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 30
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = scientist
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+# Agrarian Social State (Oligarchy + AI/IC)
+lrsk_gov_var_gov_agrarian_social_state = {
+	ruler_title = LRSK_GOV_VAR_RT_GENERAL_RESOURCE_MANAGER
+	possible = {
+		has_authority = auth_oligarchic
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+		has_valid_civic = civic_agrarian_idyll
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1100
+	}
+}
+
+# Agrarian Commonwealth (Democracy + AI/IC)
+lrsk_gov_var_gov_agrarian_commonwealth = {
+	ruler_title = LRSK_GOV_VAR_RT_WELLBEING_COORDINATOR
+	possible = {
+		has_authority = auth_democratic
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+		has_valid_civic = civic_agrarian_idyll
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1100
+	}
+}
+
+# Populist Monarchy
+lrsk_gov_var_gov_populist_monarchy = {
+	ruler_title = LRSK_GOV_VAR_RT_PRINCE_OF_PLENTY
+	ruler_title_female = LRSK_GOV_VAR_RT_PRINCESS_OF_PLENTY
+	heir_title = LRSK_GOV_VAR_HT_MOST_CHARITABLE_LORD
+	heir_title_female = LRSK_GOV_VAR_HT_MOST_CHARITABLE_LADY
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+	}
+	weight = {
+		base = 1000
+	}
+}
+
+# Communal Democracy (Democracy + WC)
+lrsk_gov_var_gov_communal_democracy = {
+	ruler_title = LRSK_GOV_VAR_RT_POP_TRIBUNE
+	possible = {
+		has_authority = auth_democratic
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+		has_valid_civic = lrsk_gov_var_civic_workers_councils
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 30
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = scientist
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1001
+	}
+}
+
+# Socialist Plenary (Oligarchy + WC)
+lrsk_gov_var_gov_socialist_plenary = {
+	ruler_title = LRSK_GOV_VAR_RT_MODERATOR
+	possible = {
+		has_authority = auth_oligarchic
+		has_valid_civic = lrsk_gov_var_civic_workers_councils
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 30
+			leader_class = governor
+		}
+		modifier = {
+			add = 10
+			leader_class = scientist
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1001
+	}
+}
+
+# Automated World-Commune
+lrsk_gov_var_gov_automated_worldcommune = {
+	ruler_title = LRSK_GOV_VAR_RT_SYSTEM_ADMIN
+	possible = {
+		has_authority = auth_dictatorial
+		has_valid_civic = civic_technocracy
+		has_valid_civic = lrsk_gov_var_civic_institutionalized_collectivism
+		NOR = {
+			has_ethic = ethic_authoritarian
+			has_ethic = ethic_fanatic_authoritarian
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			OR = {
+				leader_class = scientist
+			}
+		}
+		modifier = {
+			add = 20
+			OR = {
+				leader_class = governor
+			}
+		}
+	}
+	weight = {
+		base = 1001
+	}
+}
+
+# Market Socialism (WC+CD)
+lrsk_gov_var_gov_market_socialism = {
+	ruler_title = LRSK_GOV_VAR_RT_CONTRACT_MEDIATOR
+	possible = {
+		has_valid_civic = lrsk_gov_var_civic_workers_councils
+		has_valid_civic = civic_merchant_guilds
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+# Cooperative Enterprise (Corp, EO Coop)
+lrsk_gov_var_gov_coop_enterprise = {
+	ruler_title = LRSK_GOV_VAR_RT_COORDINATING_OFFICER
+	possible = {
+		OR = {
+			AND = {
+				has_valid_civic = civic_corporate_dominion
+				has_valid_civic = lrsk_gov_var_civic_workers_councils
+			}
+			has_valid_civic = lrsk_gov_var_civic_mc_workers_councils
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+# Syndicalist Conference (Oligarchy + WC)
+lrsk_gov_var_gov_syndicalist_conference = {
+	ruler_title = LRSK_GOV_VAR_RT_CHIEF_STEERING_OFFICER
+	possible = {
+		has_valid_civic = lrsk_gov_var_civic_workers_councils
+		has_authority = auth_oligarchic
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+# Syndicalist Congress (Democracy + WC)
+lrsk_gov_var_gov_syndicalist_congress = {
+	ruler_title = LRSK_GOV_VAR_RT_GENERAL_SECRETARY
+	possible = {
+		has_valid_civic = lrsk_gov_var_civic_workers_councils
+		has_authority = auth_democratic
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+	leader_class = governor
+	weight = {
+		base = 1000
+	}
+}
+
+# Government Variety Pack
+# Governments - Warlike
+# Author: littleraskol
+# Cosmic Dominion (Dictatorship + US/IE)
+lrsk_gov_var_gov_galactic_dominion = {
+	ruler_title = LRSK_GOV_VAR_RT_COS_AUTARCH
+	possible = {
+		has_authority = auth_dictatorial
+		has_valid_civic = lrsk_gov_var_civic_universal_sovereignty
+		has_valid_civic = lrsk_gov_var_civic_imperial_economy
+		OR = {
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			OR = {
+				leader_class = admiral
+				leader_class = general
+			}
+		}
+		modifier = {
+			add = 10
+			OR = {
+				leader_class = governor
+			}
+		}
+		modifier = {
+			factor = 0
+			leader_class = scientist
+		}
+	}
+	weight = {
+		base = 1000
+	}
+}
+
+# Cosmic Imperium (Imperial + US/IE)
+lrsk_gov_var_gov_galactic_imperium = {
+	ruler_title = LRSK_GOV_VAR_RT_COS_EMPEROR
+	ruler_title_female = LRSK_GOV_VAR_RT_COS_EMPRESS
+	heir_title = LRSK_GOV_VAR_HT_STAR_PRINCE
+	heir_title_female = LRSK_GOV_VAR_HT_STAR_PRINCESS
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = lrsk_gov_var_civic_universal_sovereignty
+		has_valid_civic = lrsk_gov_var_civic_imperial_economy
+		OR = {
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+	weight = {
+		base = 1000
+	}
+}
+
+# Folkish Commonwealth (Dem + SD)
+lrsk_gov_var_gov_folkish_commonwealth = {
+	ruler_title = LRSK_GOV_VAR_RT_FOLKSPRESIDENT
+	possible = {
+		has_authority = auth_democratic
+		has_valid_civic = lrsk_gov_var_civic_supremacist_demagoguery
+		OR = {
+			has_ethic = ethic_xenophobe
+			has_ethic = ethic_fanatic_xenophobe
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+		}
+		NOR = {
+			has_valid_civic = civic_citizen_service
+			has_valid_civic = civic_fanatic_purifiers
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			factor = 0
+			leader_class = scientist
+		}
+		modifier = {
+			add = 40
+			leader_class = admiral
+		}
+		modifier = {
+			add = 40
+			leader_class = general
+		}
+	}
+	leader_class = admiral
+	weight = {
+		base = 1000
+	}
+}
+
+# Folkish League (Oli + SD)
+lrsk_gov_var_gov_folkish_league = {
+	ruler_title = LRSK_GOV_VAR_RT_FOLKSMARSHAL
+	possible = {
+		has_authority = auth_oligarchic
+		has_valid_civic = lrsk_gov_var_civic_supremacist_demagoguery
+		OR = {
+			has_ethic = ethic_xenophobe
+			has_ethic = ethic_fanatic_xenophobe
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+		}
+		NOR = {
+			has_valid_civic = civic_citizen_service
+			has_valid_civic = civic_fanatic_purifiers
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			factor = 0
+			leader_class = scientist
+		}
+		modifier = {
+			add = 40
+			leader_class = admiral
+		}
+		modifier = {
+			add = 40
+			leader_class = general
+		}
+	}
+	leader_class = admiral
+	weight = {
+		base = 1000
+	}
+}
+
+# Folkish Regime (Dic + SD)
+lrsk_gov_var_gov_folkish_regime = {
+	ruler_title = LRSK_GOV_VAR_RT_FOLKSLEADER
+	possible = {
+		has_authority = auth_dictatorial
+		has_valid_civic = lrsk_gov_var_civic_supremacist_demagoguery
+		OR = {
+			has_ethic = ethic_xenophobe
+			has_ethic = ethic_fanatic_xenophobe
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+		}
+		NOT = {
+			has_valid_civic = civic_fanatic_purifiers
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			OR = {
+				leader_class = admiral
+				leader_class = general
+			}
+		}
+		modifier = {
+			add = 10
+			OR = {
+				leader_class = governor
+			}
+		}
+		modifier = {
+			factor = 0
+			leader_class = scientist
+		}
+	}
+	weight = {
+		base = 1000
+	}
+}
+
+# Folkish Realm (Imp + SD)
+lrsk_gov_var_gov_folkish_realm = {
+	ruler_title = LRSK_GOV_VAR_RT_FOLKSKING
+	ruler_title_female = LRSK_GOV_VAR_RT_FOLKSQUEEN
+	heir_title = LRSK_GOV_VAR_HT_TRUEBORNSON
+	heir_title_female = LRSK_GOV_VAR_HT_TRUEBORNDAUGHTER
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = lrsk_gov_var_civic_supremacist_demagoguery
+		OR = {
+			has_ethic = ethic_xenophobe
+			has_ethic = ethic_fanatic_xenophobe
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+		}
+		NOT = {
+			has_valid_civic = civic_fanatic_purifiers
+		}
+	}
+	weight = {
+		base = 1000
+	}
+}
+
+# Crusader Kingdom (Imp + Mil/Spi + Ch/FR)
+lrsk_gov_var_gov_crusader_kingdom = {
+	ruler_title = LRSK_GOV_VAR_RT_MHOLY_KING
+	ruler_title_female = LRSK_GOV_VAR_RT_MHOLY_QUEEN
+	heir_title = LRSK_GOV_VAR_HT_QUEST_PRINCE
+	heir_title_female = LRSK_GOV_VAR_HT_QUEST_PRINCESS
+	use_regnal_names = yes
+	dynastic_last_names = yes
+	possible = {
+		has_authority = auth_imperial
+		AND = {
+			OR = {
+				has_ethic = ethic_fanatic_militarist
+				has_ethic = ethic_militarist
+			}
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		OR = {
+			has_valid_civic = civic_feudal_realm
+			has_valid_civic = lrsk_gov_var_civic_chivalry
+		}
+	}
+	weight = {
+		base = 990
+		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = ethic_fanatic_spiritualist
+				has_ethic = ethic_fanatic_militarist
+			}
+		}
+	}
+}
+
+# Crusader Order (Oli + Spi + Ch/AE)
+lrsk_gov_var_gov_crusader_order = {
+	ruler_title = LRSK_GOV_VAR_RT_GRANDMASTER
+	possible = {
+		has_authority = auth_oligarchic
+		OR = {
+			has_ethic = ethic_spiritualist
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		AND = {
+			has_valid_civic = civic_bugged_divine_council
+			has_valid_civic = civic_defender_of_the_faith
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			factor = 0
+			leader_class = scientist
+		}
+		modifier = {
+			add = 40
+			leader_class = admiral
+		}
+		modifier = {
+			add = 40
+			leader_class = general
+		}
+	}
+	leader_class = admiral
+	weight = {
+		base = 1400
+		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = ethic_fanatic_spiritualist
+				has_ethic = ethic_fanatic_militarist
+			}
+		}
+	}
+}
+
+# Citizen Crusade
+lrsk_gov_var_gov_citizen_crusade = {
+	ruler_title = LRSK_GOV_VAR_RT_MP_MARSHALL
+	ruler_title_female = LRSK_GOV_VAR_RT_MP_MARSHALL
+	possible = {
+		has_valid_civic = civic_exalted_priesthood
+		has_valid_civic = civic_citizen_service
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			factor = 0
+			leader_class = scientist
+		}
+		modifier = {
+			add = 40
+			leader_class = admiral
+		}
+		modifier = {
+			add = 40
+			leader_class = general
+		}
+	}
+	leader_class = admiral
+	weight = {
+		base = 1400
+	}
+}
+
+# Private Military Contractor
+lrsk_gov_var_gov_private_military_contractor = {
+	ruler_title = LRSK_GOV_VAR_RT_CAPTAIN_DIRECTOR
+	possible = {
+		OR = {
+			AND = {
+				has_valid_civic = civic_corporate_dominion
+				has_valid_civic = civic_citizen_service
+			}
+			AND = {
+				has_authority = auth_corporate
+				AND = {
+					has_valid_civic = civic_private_military_companies
+					has_valid_civic = civic_naval_contractors
+				}
+			}
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			factor = 0
+			leader_class = scientist
+		}
+		modifier = {
+			add = 40
+			leader_class = admiral
+		}
+		modifier = {
+			add = 40
+			leader_class = general
+		}
+	}
+	leader_class = admiral
+	weight = {
+		base = 1000
+	}
+}
+
+# Doom Horde
+lrsk_gov_var_gov_doom_horde = {
+	ruler_title = LRSK_GOV_VAR_RT_DEATH_KHAN
+	ruler_title_female = LRSK_GOV_VAR_RT_DEATH_KHATUN
+	possible = {
+		NOT = {
+			has_authority = auth_imperial
+		}
+		has_valid_civic = civic_fanatic_purifiers
+		has_valid_civic = civic_warrior_culture
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			factor = 0
+			leader_class = scientist
+		}
+		modifier = {
+			add = 40
+			leader_class = admiral
+		}
+		modifier = {
+			add = 40
+			leader_class = general
+		}
+	}
+	leader_class = admiral
+	weight = {
+		base = 2500
+	}
+}
+
+# Doom Horde (Imperial Variant)
+lrsk_gov_var_gov_doom_horde_imp = {
+	ruler_title = LRSK_GOV_VAR_RT_DEATH_KHAN
+	ruler_title_female = LRSK_GOV_VAR_RT_DEATH_KHATUN
+	heir_title = LRSK_GOV_VAR_HT_TERROR_JINONG
+	heir_title_female = LRSK_GOV_VAR_HT_TERROR_GONJI
+	possible = {
+		has_authority = auth_imperial
+		has_valid_civic = civic_fanatic_purifiers
+		has_valid_civic = civic_warrior_culture
+	}
+	weight = {
+		base = 2500
+	}
+}
+
+# Death Cult
+lrsk_gov_var_gov_death_cult = {
+	ruler_title = LRSK_GOV_VAR_RT_BLOOD_ABBOT
+	ruler_title_female = LRSK_GOV_VAR_RT_BLOOD_ABBESS
+	possible = {
+		has_valid_civic = civic_fanatic_purifiers
+		OR = {
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = lrsk_gov_var_civic_elected_clergy
+		}
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			factor = 0
+			leader_class = scientist
+		}
+		modifier = {
+			add = 40
+			leader_class = admiral
+		}
+		modifier = {
+			add = 40
+			leader_class = general
+		}
+	}
+	leader_class = admiral
+	weight = {
+		base = 2500
+	}
+}
+
+# Death Cult (Imperial Variant) (Whoops turns out this will never appear due to Imperial Cult's Authoritarian requirement!)
+lrsk_gov_var_gov_death_cult_imp = {
+	ruler_title = LRSK_GOV_VAR_RT_BLOOD_GOD
+	ruler_title_female = LRSK_GOV_VAR_RT_BLOOD_GODDESS
+	heir_title = LRSK_GOV_VAR_HT_SLAUGHTER_HERO
+	heir_title_female = LRSK_GOV_VAR_HT_SLAUGHTER_HEROINE
+	possible = {
+		has_valid_civic = civic_fanatic_purifiers
+		has_valid_civic = civic_imperial_cult
+	}
+	weight = {
+		base = 2500
+	}
+}
+
+# Citizen Legion
+lrsk_gov_var_gov_citizen_legion = {
+	ruler_title = LRSK_GOV_VAR_RT_GRAVE_MARSHAL
+	ruler_title_female = LRSK_GOV_VAR_RT_GRAVE_MARSHAL_FEMALE
+	possible = {
+		has_valid_civic = civic_fanatic_purifiers
+		has_valid_civic = civic_citizen_service
+	}
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler			
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+		modifier = {
+			factor = 0
+			leader_class = scientist
+		}
+		modifier = {
+			add = 40
+			leader_class = admiral
+		}
+		modifier = {
+			add = 40
+			leader_class = general
+		}
+	}
+	leader_class = admiral
+	weight = {
+		base = 2500
+	}
+}
