@@ -3,20 +3,25 @@
 # Written and designed by Alexis Kennedy   #
 # Scripted and edited by Maximilian Olbers #
 ############################################
-
 namespace = akx
 planet_event = {
 	id = akx.9100
 	title = akx.9100.name
 	desc = {
 		trigger = {
-			owner = { NOT = { has_origin = origin_void_dwellers } }
+			owner = {
+				NOT = {
+					has_origin = origin_void_dwellers
+				}
+			}
 		}
 		text = akx.9100.desc
 	}
 	desc = {
 		trigger = {
-			owner = {has_origin = origin_void_dwellers }
+			owner = {
+				has_origin = origin_void_dwellers
+			}
 		}
 		text = akx.9100.desc.void
 	}
@@ -24,9 +29,7 @@ planet_event = {
 	show_sound = event_mystic_reveal
 	location = root
 	trackable = yes
-
 	is_triggered_only = yes
-
 	after = {
 		enable_special_project = {
 			name = LOOP_TEMPLE_PROJECT
@@ -34,7 +37,6 @@ planet_event = {
 			owner = root.owner
 		}
 	}
-
 	option = {
 		name = akx.9100.spiritual.a
 		trigger = {
@@ -46,7 +48,6 @@ planet_event = {
 			}
 		}
 	}
-
 	option = {
 		name = akx.9100.neutral.a
 		trigger = {
@@ -58,7 +59,6 @@ planet_event = {
 			}
 		}
 	}
-
 	option = {
 		name = akx.9100.b
 	}
@@ -69,22 +69,26 @@ planet_event = {
 	title = akx.9101.name
 	desc = {
 		trigger = {
-			owner = { NOT = { has_origin = origin_void_dwellers } }
+			owner = {
+				NOT = {
+					has_origin = origin_void_dwellers
+				}
+			}
 		}
 		text = akx.9101.desc
 	}
 	desc = {
 		trigger = {
-			owner = {has_origin = origin_void_dwellers }
+			owner = {
+				has_origin = origin_void_dwellers
+			}
 		}
 		text = akx.9101.desc.void
 	}
 	picture = GFX_evt_metropolis
 	show_sound = event_ship_bridge
 	location = root
-
 	is_triggered_only = yes
-
 	option = {
 		name = akx.9101.a.notspiritual
 		custom_tooltip = akx.9101.a.notspiritual.tooltip
@@ -120,11 +124,10 @@ planet_event = {
 			}
 			add_tech_progress = {
 				tech = tech_akx_worm_2
-				progress = 0.20
+				progress = 0.2
 			}
 		}
 	}
-
 	option = {
 		name = akx.9101.a.spiritual
 		custom_tooltip = akx.9101.a.spiritual.tooltip
@@ -160,11 +163,10 @@ planet_event = {
 			}
 			add_tech_progress = {
 				tech = tech_akx_worm_2
-				progress = 0.20
+				progress = 0.2
 			}
 		}
 	}
-
 	option = {
 		name = akx.9101.b
 		custom_tooltip = akx.9101.b.tooltip
@@ -194,11 +196,10 @@ planet_event = {
 			}
 			add_tech_progress = {
 				tech = tech_akx_worm_2
-				progress = 0.20
+				progress = 0.2
 			}
 		}
 	}
-
 	option = {
 		name = akx.9101.c
 		custom_tooltip = akx.9101.c.tooltip
@@ -220,17 +221,19 @@ country_event = {
 	desc = akx.9211.desc
 	picture = GFX_evt_genetic_modification
 	location = capital_scope
-
 	is_triggered_only = yes
-
 	immediate = {
 		if = {
-			limit = { exists = event_target:researchingscientist }
+			limit = {
+				exists = event_target:researchingscientist
+			}
 			# nothing
 		}
 		else = {
 			random_owned_leader = {
-				limit = { leader_class = scientist }
+				limit = {
+					leader_class = scientist
+				}
 				save_global_event_target_as = researchingscientist
 			}
 			event_target:researchingscientist = {
@@ -238,31 +241,38 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = akx.9211.a
 		custom_tooltip = akx.9211.a.tooltip
 		hidden_effect = {
 			capital_scope = {
 				every_owned_pop = {
-					limit = { is_same_species = root }
+					limit = {
+						is_same_species = root
+					}
 					wipe_pop_ethos = yes
 					if = {
-						limit = { pop_has_trait = trait_nerve_stapled }
+						limit = {
+							pop_has_trait = trait_nerve_stapled
+						}
 						modify_species = {
 							species = this
 							remove_trait = trait_nerve_stapled
 						}
 					}
 					if = {
-						limit = { pop_has_trait = trait_intelligent }
+						limit = {
+							pop_has_trait = trait_intelligent
+						}
 						modify_species = {
 							species = this
 							remove_trait = trait_intelligent
 						}
 					}
 					if = {
-						limit = { pop_has_trait = trait_uninventive }
+						limit = {
+							pop_has_trait = trait_uninventive
+						}
 						modify_species = {
 							species = this
 							remove_trait = trait_uninventive
@@ -274,16 +284,24 @@ country_event = {
 					}
 					make_unleashed_messenger = yes
 					pop_change_ethic = ethic_pacifist
-					set_timed_pop_flag = { flag = changed_pop days = 2 }
+					set_timed_pop_flag = {
+						flag = changed_pop
+						days = 2
+					}
 				}
 				random_owned_pop = {
-					limit = { has_pop_flag = changed_pop }
-					root = { change_dominant_species = { species = prev } }
+					limit = {
+						has_pop_flag = changed_pop
+					}
+					root = {
+						change_dominant_species = {
+							species = prev
+						}
+					}
 				}
 			}
 		}
 	}
-
 	option = {
 		name = akx.9211.b
 		custom_tooltip = akx.9211.b.tooltip
@@ -298,7 +316,9 @@ country_event = {
 				while = {
 					limit = {
 						count_owned_pop = {
-							limit = { is_same_species = root }
+							limit = {
+								is_same_species = root
+							}
 							count > 1
 						}
 					}
@@ -309,35 +329,44 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = akx.9211.c
 		custom_tooltip = akx.9211.c.tooltip
 		hidden_effect = {
 			every_owned_leader = {
-				limit = { is_same_species = root }
+				limit = {
+					is_same_species = root
+				}
 				make_unleashed_messenger = yes
 			}
 			every_owned_pop = {
-				limit = { is_same_species = root }
+				limit = {
+					is_same_species = root
+				}
 				wipe_pop_ethos = yes
 				make_unleashed_messenger = yes
 				if = {
-					limit = { pop_has_trait = trait_nerve_stapled }
+					limit = {
+						pop_has_trait = trait_nerve_stapled
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_nerve_stapled
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_intelligent }
+					limit = {
+						pop_has_trait = trait_intelligent
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_intelligent
 					}
 				}
 				if = {
-					limit = { pop_has_trait = trait_uninventive }
+					limit = {
+						pop_has_trait = trait_uninventive
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_uninventive
@@ -348,11 +377,20 @@ country_event = {
 					add_trait = trait_messanger_intelligent
 				}
 				pop_change_ethic = ethic_pacifist
-				set_timed_pop_flag = { flag = changed_pop days = 2 }
+				set_timed_pop_flag = {
+					flag = changed_pop
+					days = 2
+				}
 			}
 			random_owned_pop = {
-				limit = { has_pop_flag = changed_pop }
-				root = { change_dominant_species = { species = prev } }
+				limit = {
+					has_pop_flag = changed_pop
+				}
+				root = {
+					change_dominant_species = {
+						species = prev
+					}
+				}
 			}
 		}
 	}
@@ -364,16 +402,18 @@ country_event = {
 	desc = akx.9221.desc
 	picture = GFX_evt_genetic_modification
 	location = capital_scope
-
 	is_triggered_only = yes
-
 	immediate = {
 		if = {
-			limit = { exists = event_target:researchingscientist9220 }
+			limit = {
+				exists = event_target:researchingscientist9220
+			}
 		}
 		else = {
 			random_owned_leader = {
-				limit = { leader_class = scientist }
+				limit = {
+					leader_class = scientist
+				}
 				save_global_event_target_as = researchingscientist9220
 			}
 			event_target:researchingscientist9220 = {
@@ -381,25 +421,30 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = akx.9221.a
 		custom_tooltip = akx.9221.a.tooltip
 		hidden_effect = {
 			capital_scope = {
 				every_owned_pop = {
-					limit = { is_same_species = root }
+					limit = {
+						is_same_species = root
+					}
 					wipe_pop_ethos = yes
 					make_resilient = yes
 					if = {
-						limit = { pop_has_trait = trait_weak }
+						limit = {
+							pop_has_trait = trait_weak
+						}
 						modify_species = {
 							species = this
 							remove_trait = trait_weak
 						}
 					}
 					if = {
-						limit = { pop_has_trait = trait_strong }
+						limit = {
+							pop_has_trait = trait_strong
+						}
 						modify_species = {
 							species = this
 							remove_trait = trait_strong
@@ -411,16 +456,24 @@ country_event = {
 					}
 					make_leashed_messenger = yes
 					pop_change_ethic = ethic_militarist
-					set_timed_pop_flag = { flag = changed_pop days = 2 }
+					set_timed_pop_flag = {
+						flag = changed_pop
+						days = 2
+					}
 				}
 				random_owned_pop = {
-					limit = { has_pop_flag = changed_pop }
-					root = { change_dominant_species = { species = prev } }
+					limit = {
+						has_pop_flag = changed_pop
+					}
+					root = {
+						change_dominant_species = {
+							species = prev
+						}
+					}
 				}
 			}
 		}
 	}
-
 	option = {
 		name = akx.9221.b
 		custom_tooltip = akx.9221.b.tooltip
@@ -435,7 +488,9 @@ country_event = {
 				while = {
 					limit = {
 						count_owned_pop = {
-							limit = { is_same_species = root }
+							limit = {
+								is_same_species = root
+							}
 							count > 1
 						}
 					}
@@ -446,21 +501,26 @@ country_event = {
 			}
 		}
 	}
-
 	option = {
 		name = akx.9221.c
 		custom_tooltip = akx.9221.c.tooltip
 		hidden_effect = {
 			every_owned_leader = {
-				limit = { is_same_species = root }
+				limit = {
+					is_same_species = root
+				}
 				make_leashed_messenger = yes
 			}
 			every_owned_pop = {
-				limit = { is_same_species = root }
+				limit = {
+					is_same_species = root
+				}
 				wipe_pop_ethos = yes
 				make_leashed_messenger = yes
 				if = {
-					limit = { pop_has_trait = trait_weak }
+					limit = {
+						pop_has_trait = trait_weak
+					}
 					modify_species = {
 						species = this
 						remove_trait = trait_weak
@@ -471,11 +531,20 @@ country_event = {
 					add_trait = trait_messanger_strong
 				}
 				pop_change_ethic = ethic_militarist
-				set_timed_pop_flag = { flag = changed_pop days = 2 }
+				set_timed_pop_flag = {
+					flag = changed_pop
+					days = 2
+				}
 			}
 			random_owned_pop = {
-				limit = { has_pop_flag = changed_pop }
-				root = { change_dominant_species = { species = prev } }
+				limit = {
+					has_pop_flag = changed_pop
+				}
+				root = {
+					change_dominant_species = {
+						species = prev
+					}
+				}
 			}
 		}
 	}
@@ -488,13 +557,10 @@ planet_event = {
 	picture = GFX_evt_black_hole
 	show_sound = event_activating_unknown_technology
 	location = root
-
 	is_triggered_only = yes
-
 	pre_triggers = {
 		is_ai = no
 	}
-
 	immediate = {
 		solar_system = {
 			every_system_planet = {
@@ -521,24 +587,34 @@ planet_event = {
 						is_sapient = yes
 					}
 					if = {
-						limit = { NOT = { has_trait = trait_natural_physicists } }
+						limit = {
+							NOT = {
+								has_trait = trait_natural_physicists
+							}
+						}
 						# remove opposite traits
 						if = {
-							limit = { has_trait = trait_natural_engineers }
+							limit = {
+								has_trait = trait_natural_engineers
+							}
 							modify_species = {
 								species = this
 								remove_trait = trait_natural_engineers
 							}
 						}
 						if = {
-							limit = { has_trait = trait_natural_sociologists }
+							limit = {
+								has_trait = trait_natural_sociologists
+							}
 							modify_species = {
 								species = this
 								remove_trait = trait_natural_sociologists
 							}
 						}
 						if = {
-							limit = { has_trait = trait_nerve_stapled }
+							limit = {
+								has_trait = trait_nerve_stapled
+							}
 							modify_species = {
 								species = this
 								remove_trait = trait_nerve_stapled
@@ -551,24 +627,34 @@ planet_event = {
 						}
 					}
 					if = {
-						limit = { NOT = { has_trait = trait_repugnant } }
+						limit = {
+							NOT = {
+								has_trait = trait_repugnant
+							}
+						}
 						# remove opposite traits
 						if = {
-							limit = { has_trait = trait_charismatic }
+							limit = {
+								has_trait = trait_charismatic
+							}
 							modify_species = {
 								species = this
 								remove_trait = trait_charismatic
 							}
 						}
 						if = {
-							limit = { has_trait = trait_pheremones }
+							limit = {
+								has_trait = trait_pheremones
+							}
 							modify_species = {
 								species = this
 								remove_trait = trait_pheremones
 							}
 						}
 						if = {
-							limit = { has_trait = trait_lithoid_shiny }
+							limit = {
+								has_trait = trait_lithoid_shiny
+							}
 							modify_species = {
 								species = this
 								remove_trait = trait_lithoid_shiny
@@ -588,15 +674,20 @@ planet_event = {
 				reroll_planet = yes
 			}
 			every_system_planet = {
-				limit = { is_star = yes }
+				limit = {
+					is_star = yes
+				}
 				change_pc = pc_black_hole
 				clear_deposits = yes
 				set_deposit = d_dark_matter_deposit_3
 			}
 		}
-		owner = { observer_event = { id = observer.71 } }
+		owner = {
+			observer_event = {
+				id = observer.71
+			}
+		}
 	}
-
 	after = {
 		hidden_effect = {
 			owner = {
@@ -606,9 +697,10 @@ planet_event = {
 			}
 		}
 	}
-
 	option = {
 		name = akx.10020.a
-		owner = { end_event_chain = WORM_CHAIN_2 }
+		owner = {
+			end_event_chain = WORM_CHAIN_2
+		}
 	}
 }
