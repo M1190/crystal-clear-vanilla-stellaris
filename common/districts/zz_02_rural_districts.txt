@@ -2,30 +2,25 @@
 @city_cost = 500
 @hive_min_cost = 200
 @hive_food_cost = 100
-
 district_generator = {
 	base_buildtime = 240
-
 	min_for_deposits_on_planet = 3
 	max_for_deposits_on_planet = 15
-
 	show_on_uncolonized = {
 		uses_district_set = standard
 	}
-
 	potential = {
 		uses_district_set = standard
 	}
-
 	allow = {
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_generator_uncapped
 	}
-
 	resources = {
 		category = planet_districts
 		cost = {
@@ -50,7 +45,9 @@ district_generator = {
 						is_civic_plant_organic = yes
 					}
 					is_lithoid_empire = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			minerals = @hive_min_cost
@@ -79,7 +76,9 @@ district_generator = {
 						is_lithoid_empire = yes
 					}
 					is_civic_plant_organic = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = 1
@@ -99,11 +98,9 @@ district_generator = {
 			food = 0.3
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 2
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -115,28 +112,29 @@ district_generator = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_technician_drone_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_technician_drone_add = 2
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -149,21 +147,23 @@ district_generator = {
 			job_technician_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_generator_add = 2
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_technician_drone_effect_desc
 	}
@@ -180,15 +180,15 @@ district_generator = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_fe_acolyte_generator_effect_desc
 	}
-
 	prerequisites = {
 		tech_power_plant_1
 	}
-
 	ai_resource_production = {
 		energy = 1
 		trigger = {
@@ -196,37 +196,38 @@ district_generator = {
 		}
 	}
 }
+
 district_mining = {
 	base_buildtime = 240
-
 	min_for_deposits_on_planet = 1
 	max_for_deposits_on_planet = 15
-
 	show_on_uncolonized = {
 		uses_district_set = standard
 		NAND = {
 			exists = from
-			from = { is_subterranean_empire = yes }
+			from = {
+				is_subterranean_empire = yes
+			}
 		}
 	}
-
 	potential = {
 		uses_district_set = standard
 		NAND = {
 			exists = owner
-			owner = { is_subterranean_empire = yes }
+			owner = {
+				is_subterranean_empire = yes
+			}
 		}
 	}
-
 	allow = {
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_mining_uncapped
 	}
-
 	resources = {
 		category = planet_districts
 		cost = {
@@ -251,7 +252,9 @@ district_mining = {
 						is_civic_plant_organic = yes
 					}
 					is_lithoid_empire = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			minerals = @hive_min_cost
@@ -280,7 +283,9 @@ district_mining = {
 						is_lithoid_empire = yes
 					}
 					is_civic_plant_organic = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = 1
@@ -300,11 +305,9 @@ district_mining = {
 			food = 0.3
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 2
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -316,7 +319,6 @@ district_mining = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -329,13 +331,12 @@ district_mining = {
 			planet_max_buildings_add = 0.34
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_lithoid_empire = yes
-				has_technology = tech_housing_agrarian_idyll 
+				has_technology = tech_housing_agrarian_idyll
 				has_valid_civic = civic_agrarian_idyll
 			}
 		}
@@ -343,7 +344,6 @@ district_mining = {
 			planet_housing_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -356,33 +356,40 @@ district_mining = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { uses_district_set = shattered_ring_world }
+			NOT = {
+				uses_district_set = shattered_ring_world
+			}
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_mining_drone_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { uses_district_set = shattered_ring_world }
+			NOT = {
+				uses_district_set = shattered_ring_world
+			}
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_mining_drone_add = 2
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { uses_district_set = shattered_ring_world }
+			NOT = {
+				uses_district_set = shattered_ring_world
+			}
 			exists = owner
 			owner = {
 				is_gestalt = no
@@ -393,22 +400,26 @@ district_mining = {
 			job_miner_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { uses_district_set = shattered_ring_world }
+			NOT = {
+				uses_district_set = shattered_ring_world
+			}
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_mine_add = 2
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_mining_drone_effect_desc
 	}
@@ -422,19 +433,18 @@ district_mining = {
 		}
 		text = job_miner_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_fe_acolyte_mine_effect_desc
 	}
-
 	prerequisites = {
 		tech_mechanized_mining
 	}
-
 	ai_resource_production = {
 		minerals = 1
 		trigger = {
@@ -445,21 +455,26 @@ district_mining = {
 
 district_farming = {
 	base_buildtime = 240
-
 	min_for_deposits_on_planet = 3
 	max_for_deposits_on_planet = 15
-
 	show_on_uncolonized = {
 		uses_district_set = standard
 	}
-
 	potential = {
 		uses_district_set = standard
 		OR = {
-			NOT = { exists = owner }
-			NOT = { owner = { is_anglers_empire = yes } }
+			NOT = {
+				exists = owner
+			}
+			NOT = {
+				owner = {
+					is_anglers_empire = yes
+				}
+			}
 			AND = {
-				owner = { is_anglers_empire = yes }
+				owner = {
+					is_anglers_empire = yes
+				}
 				NOR = {
 					is_ocean = yes
 					is_planet_class = pc_gaia
@@ -476,16 +491,15 @@ district_farming = {
 			}
 		}
 	}
-
 	allow = {
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_farming_uncapped
 	}
-
 	resources = {
 		category = planet_districts
 		cost = {
@@ -506,8 +520,12 @@ district_farming = {
 			trigger = {
 				AND = {
 					exists = owner
-					owner = { is_anglers_empire = yes }
-					planet = { has_climate = wet }
+					owner = {
+						is_anglers_empire = yes
+					}
+					planet = {
+						has_climate = wet
+					}
 				}
 			}
 			minerals = -50
@@ -521,7 +539,9 @@ district_farming = {
 						is_civic_plant_organic = yes
 					}
 					is_lithoid_empire = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			minerals = @hive_min_cost
@@ -550,7 +570,9 @@ district_farming = {
 						is_lithoid_empire = yes
 					}
 					is_civic_plant_organic = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = 1
@@ -570,11 +592,9 @@ district_farming = {
 			food = 0.3
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 2
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -586,7 +606,6 @@ district_farming = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -599,7 +618,6 @@ district_farming = {
 			planet_max_buildings_add = 0.34
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -613,7 +631,6 @@ district_farming = {
 			planet_housing_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -626,11 +643,10 @@ district_farming = {
 			planet_housing_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				has_valid_civic = civic_agribusiness
 			}
 		}
@@ -638,28 +654,29 @@ district_farming = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_agri_drone_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_agri_drone_add = 2
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -668,7 +685,11 @@ district_farming = {
 				is_fallen_empire_spiritualist = no
 				NAND = {
 					is_anglers_empire = yes
-					PREV = { planet = { is_wet = yes } }
+					PREV = {
+						planet = {
+							is_wet = yes
+						}
+					}
 				}
 			}
 		}
@@ -676,33 +697,38 @@ district_farming = {
 			job_farmer_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_farm_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_anglers_empire = yes }
-			planet = { is_wet = yes }
+			owner = {
+				is_anglers_empire = yes
+			}
+			planet = {
+				is_wet = yes
+			}
 		}
 		modifier = {
 			job_angler_add = 1
 			job_pearl_diver_add = 1
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_agri_drone_effect_desc
 	}
@@ -714,7 +740,11 @@ district_farming = {
 				is_fallen_empire_spiritualist = no
 				NAND = {
 					is_anglers_empire = yes
-					PREV = { planet = { is_wet = yes } }
+					PREV = {
+						planet = {
+							is_wet = yes
+						}
+					}
 				}
 			}
 		}
@@ -723,39 +753,50 @@ district_farming = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_fe_acolyte_farm_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_anglers_empire = yes }
-			planet = { is_wet = yes }
+			owner = {
+				is_anglers_empire = yes
+			}
+			planet = {
+				is_wet = yes
+			}
 		}
 		text = job_aqu_angler_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_anglers_empire = yes }
-			planet = { is_wet = yes }
+			owner = {
+				is_anglers_empire = yes
+			}
+			planet = {
+				is_wet = yes
+			}
 		}
 		text = job_pearl_diver_effect_desc
 	}
-
 	prerequisites = {
 		tech_industrial_farming
 	}
-
 	destroy_trigger = {
 		exists = owner
 		AND = {
-			owner = { is_ai = yes }
-			owner = { country_uses_food = no }
+			owner = {
+				is_ai = yes
+			}
+			owner = {
+				country_uses_food = no
+			}
 		}
 	}
-
 	ai_resource_production = {
 		food = 1
 		trigger = {
@@ -768,7 +809,6 @@ district_generator_uncapped = {
 	base_buildtime = 240
 	icon = district_generator
 	is_capped_by_modifier = no
-
 	show_on_uncolonized = {
 		OR = {
 			uses_district_set = pdnecroplanet
@@ -786,7 +826,6 @@ district_generator_uncapped = {
 			}
 		}
 	}
-
 	potential = {
 		OR = {
 			uses_district_set = pdnecroplanet
@@ -804,18 +843,17 @@ district_generator_uncapped = {
 			}
 		}
 	}
-
 	allow = {
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_generator
 		district_rw_generator
 		district_srw_commercial
 	}
-
 	resources = {
 		category = planet_districts
 		cost = {
@@ -840,7 +878,9 @@ district_generator_uncapped = {
 						is_civic_plant_organic = yes
 					}
 					is_lithoid_empire = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			minerals = @hive_min_cost
@@ -869,7 +909,9 @@ district_generator_uncapped = {
 						is_lithoid_empire = yes
 					}
 					is_civic_plant_organic = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = 1
@@ -889,11 +931,9 @@ district_generator_uncapped = {
 			food = 0.3
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 2
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -905,28 +945,29 @@ district_generator_uncapped = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_technician_drone_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_technician_drone_add = 2
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -939,43 +980,47 @@ district_generator_uncapped = {
 			job_technician_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_generator_add = 2
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			is_planet_class = pc_machine
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
 			job_technician_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			is_planet_class = pc_machine
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
 			job_technician_drone_add = 1
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_technician_drone_effect_desc
 	}
@@ -992,11 +1037,12 @@ district_generator_uncapped = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_fe_acolyte_generator_effect_desc
 	}
-
 	ai_resource_production = {
 		energy = 1
 		trigger = {
@@ -1009,22 +1055,25 @@ district_mining_uncapped = {
 	base_buildtime = 240
 	icon = district_mining
 	is_capped_by_modifier = no
-
 	desc = {
 		trigger = {
-			NOT = { uses_district_set = shattered_ring_world }
+			NOT = {
+				uses_district_set = shattered_ring_world
+			}
 		}
 		text = district_mining_uncapped_desc
 	}
-
 	desc = {
-		trigger = { 
+		trigger = {
 			uses_district_set = shattered_ring_world
-			NOT = { owner = { is_subterranean_empire = yes } }
+			NOT = {
+				owner = {
+					is_subterranean_empire = yes
+				}
+			}
 		}
 		text = district_srw_mining_desc
 	}
-
 	show_on_uncolonized = {
 		OR = {
 			uses_district_set = hive_world
@@ -1033,12 +1082,13 @@ district_mining_uncapped = {
 			uses_district_set = pdnecroplanet
 			AND = {
 				exists = from
-				from = { is_subterranean_empire = yes }
+				from = {
+					is_subterranean_empire = yes
+				}
 				uses_district_set = standard
 			}
 		}
 	}
-
 	potential = {
 		OR = {
 			uses_district_set = hive_world
@@ -1047,21 +1097,22 @@ district_mining_uncapped = {
 			uses_district_set = pdnecroplanet
 			AND = {
 				exists = owner
-				owner = { is_subterranean_empire = yes }
+				owner = {
+					is_subterranean_empire = yes
+				}
 				uses_district_set = standard
 			}
 		}
 	}
-
 	allow = {
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_mining
 	}
-
 	resources = {
 		category = planet_districts
 		cost = {
@@ -1086,7 +1137,9 @@ district_mining_uncapped = {
 						is_civic_plant_organic = yes
 					}
 					is_lithoid_empire = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			minerals = @hive_min_cost
@@ -1115,7 +1168,9 @@ district_mining_uncapped = {
 						is_lithoid_empire = yes
 					}
 					is_civic_plant_organic = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = 1
@@ -1135,11 +1190,9 @@ district_mining_uncapped = {
 			food = 0.3
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 2
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1151,7 +1204,6 @@ district_mining_uncapped = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1164,13 +1216,12 @@ district_mining_uncapped = {
 			planet_max_buildings_add = 0.34
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				is_lithoid_empire = yes
-				has_technology = tech_housing_agrarian_idyll 
+				has_technology = tech_housing_agrarian_idyll
 				has_valid_civic = civic_agrarian_idyll
 			}
 		}
@@ -1178,33 +1229,40 @@ district_mining_uncapped = {
 			planet_housing_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { uses_district_set = shattered_ring_world }
+			NOT = {
+				uses_district_set = shattered_ring_world
+			}
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_mining_drone_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { uses_district_set = shattered_ring_world }
+			NOT = {
+				uses_district_set = shattered_ring_world
+			}
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_mining_drone_add = 2
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { uses_district_set = shattered_ring_world }
+			NOT = {
+				uses_district_set = shattered_ring_world
+			}
 			exists = owner
 			owner = {
 				is_gestalt = no
@@ -1215,9 +1273,8 @@ district_mining_uncapped = {
 			job_miner_add = 2
 		}
 	}
-	
 	triggered_planet_modifier = {
-		potential = { 
+		potential = {
 			exists = owner
 			owner = {
 				is_hive_empire = yes
@@ -1230,51 +1287,56 @@ district_mining_uncapped = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { uses_district_set = shattered_ring_world }
+			NOT = {
+				uses_district_set = shattered_ring_world
+			}
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_mine_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_origin = origin_subterranean }
+			owner = {
+				has_origin = origin_subterranean
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			uses_district_set = shattered_ring_world
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_scrap_miner_drone_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			uses_district_set = shattered_ring_world
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_scrap_miner_drone_add = 2
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			uses_district_set = shattered_ring_world
@@ -1287,39 +1349,46 @@ district_mining_uncapped = {
 			job_scrap_miner_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_origin = origin_subterranean }
+			owner = {
+				has_origin = origin_subterranean
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_origin = origin_subterranean }
+			owner = {
+				has_origin = origin_subterranean
+			}
 		}
 		modifier = {
 			planet_max_buildings_add = 0.34
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
-			NOT = { uses_district_set = shattered_ring_world }
+			NOT = {
+				uses_district_set = shattered_ring_world
+			}
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_mining_drone_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			NOT = { uses_district_set = shattered_ring_world }
+			NOT = {
+				uses_district_set = shattered_ring_world
+			}
 			owner = {
 				is_gestalt = no
 				is_fallen_empire_spiritualist = no
@@ -1327,36 +1396,48 @@ district_mining_uncapped = {
 		}
 		text = job_miner_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
-			NOT = { owner = { has_origin = origin_subterranean } }
+			owner = {
+				is_gestalt = yes
+			}
+			NOT = {
+				owner = {
+					has_origin = origin_subterranean
+				}
+			}
 		}
 		text = job_scrap_miner_drone_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_regular_empire = yes }
-			NOT = { owner = { has_origin = origin_subterranean } }
+			owner = {
+				is_regular_empire = yes
+			}
+			NOT = {
+				owner = {
+					has_origin = origin_subterranean
+				}
+			}
 		}
 		text = job_scrap_miner_effect_desc
 	}
-
 	triggered_desc = {
 		trigger = {
-			NOT = { uses_district_set = shattered_ring_world }
+			NOT = {
+				uses_district_set = shattered_ring_world
+			}
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_fe_acolyte_mine_effect_desc
 	}
-
 	prerequisites = {
 	}
-
 	ai_resource_production = {
 		minerals = 1
 		trigger = {
@@ -1369,7 +1450,6 @@ district_farming_uncapped = {
 	base_buildtime = 240
 	icon = district_farming
 	is_capped_by_modifier = no
-
 	show_on_uncolonized = {
 		OR = {
 			uses_district_set = hive_world
@@ -1377,7 +1457,6 @@ district_farming_uncapped = {
 			uses_district_set = pdnecroplanet
 		}
 	}
-
 	potential = {
 		OR = {
 			uses_district_set = hive_world
@@ -1385,7 +1464,9 @@ district_farming_uncapped = {
 			uses_district_set = pdnecroplanet
 			AND = {
 				exists = owner
-				owner = { is_anglers_empire = yes }
+				owner = {
+					is_anglers_empire = yes
+				}
 				planet = {
 					OR = {
 						is_ocean = yes
@@ -1396,22 +1477,25 @@ district_farming_uncapped = {
 		}
 		NOT = {
 			AND = {
-				owner = { is_ai = yes }
-				owner = { country_uses_food = no }
+				owner = {
+					is_ai = yes
+				}
+				owner = {
+					country_uses_food = no
+				}
 			}
 		}
 	}
-
 	allow = {
-		NOT = { has_modifier = resort_colony }
+		NOT = {
+			has_modifier = resort_colony
+		}
 	}
-
 	conversion_ratio = 1
 	convert_to = {
 		district_farming
 		district_rw_farming
 	}
-
 	resources = {
 		category = planet_districts
 		cost = {
@@ -1432,7 +1516,9 @@ district_farming_uncapped = {
 			trigger = {
 				AND = {
 					exists = owner
-					owner = { is_anglers_empire = yes }
+					owner = {
+						is_anglers_empire = yes
+					}
 					planet = {
 						OR = {
 							is_ocean = yes
@@ -1452,7 +1538,9 @@ district_farming_uncapped = {
 						is_civic_plant_organic = yes
 					}
 					is_lithoid_empire = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			minerals = @hive_min_cost
@@ -1481,7 +1569,9 @@ district_farming_uncapped = {
 						is_lithoid_empire = yes
 					}
 					is_civic_plant_organic = no
-					NOT = { has_valid_civic = civic_integrated_bioarchitecture }
+					NOT = {
+						has_valid_civic = civic_integrated_bioarchitecture
+					}
 				}
 			}
 			energy = 1
@@ -1501,11 +1591,9 @@ district_farming_uncapped = {
 			food = 0.3
 		}
 	}
-
 	planet_modifier = {
 		planet_housing_add = 2
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1517,7 +1605,6 @@ district_farming_uncapped = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1529,7 +1616,6 @@ district_farming_uncapped = {
 			planet_housing_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1542,7 +1628,6 @@ district_farming_uncapped = {
 			planet_max_buildings_add = 0.34
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1556,7 +1641,6 @@ district_farming_uncapped = {
 			planet_housing_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1569,11 +1653,10 @@ district_farming_uncapped = {
 			planet_housing_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
+			owner = {
 				has_valid_civic = civic_agribusiness
 			}
 		}
@@ -1581,28 +1664,29 @@ district_farming_uncapped = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+			}
 		}
 		modifier = {
 			job_agri_drone_add = 3
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_machine_empire = yes
+			}
 		}
 		modifier = {
 			job_agri_drone_add = 2
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1611,7 +1695,11 @@ district_farming_uncapped = {
 				is_fallen_empire_spiritualist = no
 				NAND = {
 					is_anglers_empire = yes
-					PREV = { planet = { is_wet = yes } }
+					PREV = {
+						planet = {
+							is_wet = yes
+						}
+					}
 				}
 			}
 		}
@@ -1619,31 +1707,34 @@ district_farming_uncapped = {
 			job_farmer_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		modifier = {
 			job_fe_acolyte_farm_add = 2
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_anglers_empire = yes }
-			planet = { is_wet = yes }
+			owner = {
+				is_anglers_empire = yes
+			}
+			planet = {
+				is_wet = yes
+			}
 		}
 		modifier = {
 			job_angler_add = 1
 			job_pearl_diver_add = 1
 		}
 	}
-	
 	triggered_planet_modifier = {
-		potential = { 
+		potential = {
 			exists = owner
 			owner = {
 				is_hive_empire = yes
@@ -1656,11 +1747,12 @@ district_farming_uncapped = {
 			planet_housing_add = 1
 		}
 	}
-
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
+			owner = {
+				is_gestalt = yes
+			}
 		}
 		text = job_agri_drone_effect_desc
 	}
@@ -1672,7 +1764,11 @@ district_farming_uncapped = {
 				is_fallen_empire_spiritualist = no
 				NAND = {
 					is_anglers_empire = yes
-					PREV = { planet = { is_wet = yes } }
+					PREV = {
+						planet = {
+							is_wet = yes
+						}
+					}
 				}
 			}
 		}
@@ -1681,35 +1777,47 @@ district_farming_uncapped = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
+			owner = {
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_fe_acolyte_farm_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_anglers_empire = yes  }
-			planet = { is_wet = yes }
+			owner = {
+				is_anglers_empire = yes
+			}
+			planet = {
+				is_wet = yes
+			}
 		}
 		text = job_aqu_angler_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_anglers_empire = yes  }
-			planet = { is_wet = yes }
+			owner = {
+				is_anglers_empire = yes
+			}
+			planet = {
+				is_wet = yes
+			}
 		}
 		text = job_pearl_diver_effect_desc
 	}
-
 	destroy_trigger = {
 		exists = owner
 		AND = {
-			owner = { is_ai = yes }
-			owner = { country_uses_food = no }
+			owner = {
+				is_ai = yes
+			}
+			owner = {
+				country_uses_food = no
+			}
 		}
 	}
-
 	ai_resource_production = {
 		food = 1
 		trigger = {
