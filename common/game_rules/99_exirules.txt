@@ -14,21 +14,21 @@ can_species_be_assembled = {
 			is_organic_species = yes
 			if = {
 				limit = {
-					root.owner = { is_hive_empire = yes }
+					root.owner = {
+						is_hive_empire = yes
+					}
 				}
 				has_trait = trait_hive_mind
 			}
 			else_if = {
-				limit = { has_trait = trait_plantoid_budding }
-				root = {
-					any_owned_species = { is_exact_same_species = prevprev }
-				}
-			}
-			else_if = {
 				limit = {
-					root.owner = { has_origin = origin_manufactured_species }
+					has_trait = trait_plantoid_budding
 				}
-				has_trait = trait_ex_gef
+				root = {
+					any_owned_species = {
+						is_exact_same_species = prevprev
+					}
+				}
 			}
 			else_if = {
 				limit = {
@@ -50,14 +50,18 @@ can_species_be_assembled = {
 			}
 			else_if = {
 				limit = {
-					root.owner = { has_civic = civic_permanent_employment }
+					root.owner = {
+						has_civic = civic_permanent_employment
+					}
 				}
 				root = {
 					has_building = building_posthumous_employment_center
 				}
 			}
 			else = {
-				root = { has_building = building_clone_vats }
+				root = {
+					has_building = building_clone_vats
+				}
 			}
 		}
 	}
