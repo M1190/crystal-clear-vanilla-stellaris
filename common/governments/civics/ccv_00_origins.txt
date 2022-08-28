@@ -1,0 +1,517 @@
+origin_league = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_league.dds"
+	picture = GFX_origin_league
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		authority = {
+			NOR = {
+				value = auth_imperial
+				value = auth_bugged_corporate_imperial
+			}
+		}
+	}
+	possible = {
+	}
+	modifier = {
+		envoys_add = 1
+	}
+	random_weight = {
+		base = 50
+	}
+	description = "origin_tooltip_league_effects"
+	advanced_start = yes
+	flags = {
+		custom_start_screen
+	}
+}
+
+origin_militarist = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_separatists.dds"
+	picture = GFX_origin_militarist
+	potential = {
+		always = yes
+	}
+	possible = {
+		authority = {
+			NOR = {
+				value = auth_corporate
+				value = auth_bugged_corporate_democratic
+				value = auth_bugged_corporate_imperial
+			}
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+	}
+	modifier = {
+		country_war_exhaustion_mult = -0.1
+	}
+	swap_type = {
+		description = "origin_tooltip_militarist_effects"
+		trigger = {
+			host_has_dlc = "Overlord"
+		}
+		modifier = {
+			country_enclave_capacity_add = 1
+		}
+	}
+	random_weight = {
+		base = 50
+	}
+	description = "origin_tooltip_militarist_effects"
+	advanced_start = yes
+}
+
+origin_ancient_dynasty = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_ancient_dynasty.dds"
+	picture = GFX_origin_ancient_dynasty
+	max_once_global = yes
+	possible = {
+		authority = {
+			value = auth_imperial
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_merchant_guilds
+				value = civic_technocracy
+			}
+		}
+	}
+	description = "civic_tooltip_ancient_dynasty_effects"
+	modifier = {
+		planet_politicians_unity_produces_add = 1
+		planet_nobles_unity_produces_add = 1
+	}
+	flags = {
+		custom_gov_desc
+	}
+	random_weight = {
+		base = 25
+	}
+}
+origin_syncretic_evolution_hive = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_syncretic_evolution.dds"
+	picture = GFX_origin_syncretic_evolution_hive
+	playable = {
+		host_has_dlc = "Utopia"
+	}
+	possible = {
+		authority = {
+			value = auth_hive_mind
+		}
+		civics = {
+			NOR = {
+				value = civic_hive_devouring_swarm
+				value = civic_closed_collective
+				value = civic_living_hosts
+				value = civic_infestation
+			}
+		}
+	}
+	description = civic_tooltip_syncretic_evolution_effects
+	has_secondary_species = {
+		# see game_start.11
+		title = civic_syncretic_evolution_secondary_species
+		traits = {
+			trait = trait_hive_mind
+			trait = trait_syncretic_proles
+		}
+	}
+	advanced_start = yes
+	random_weight = {
+		base = 10
+	}
+}
+
+origin_syncretic_equals = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_syncretic_equals.dds"
+	picture = GFX_origin_common_ground
+	playable = {
+		host_has_dlc = "Utopia"
+	}
+	possible = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_fanatic_purifiers
+			}
+		}
+	}
+	description = civic_tooltip_syncretic_equals_effects
+	has_secondary_species = {
+		# see game_start.11
+		title = civic_syncretic_evolution_secondary_species
+		traits = {
+			trait = trait_syncretic_equal
+		}
+	}
+	advanced_start = yes
+	random_weight = {
+		base = 10
+	}
+}
+
+origin_syncretic_livestock = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_syncretic_livestock.dds"
+	picture = GFX_origin_syncretic_livestock
+	playable = {
+		host_has_dlc = "Utopia"
+	}
+	possible = {
+		authority = {
+			NOT = {
+				value = auth_machine_intelligence
+			}
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_hive_phobe
+				value = ethic_gestalt_consciousness
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+			NOR = {
+				text = civic_tooltip_not_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_fanatic_purifiers
+				value = civic_hive_devouring_swarm
+				value = civic_agrarian_idyll
+				value = civic_agribusiness
+				value = civic_harm_hive
+				value = civic_closed_collective
+				value = civic_living_hosts
+				value = civic_infestation
+			}
+		}
+		species_archetype = {
+			NOT = {
+				value = LITHOID
+			}
+		}
+	}
+	description = civic_tooltip_syncretic_livestock_effects
+	has_secondary_species = {
+		# see game_start.11
+		title = civic_syncretic_evolution_secondary_species
+		traits = {
+			trait = trait_delicious
+		}
+	}
+	advanced_start = yes
+	random_weight = {
+		base = 5
+	}
+}
+
+origin_syncretic_livestock_lithoid = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_syncretic_livestock.dds"
+	picture = GFX_syncretic_livestock_lithoid
+	playable = {
+		host_has_dlc = "Utopia"
+		host_has_dlc = "Lithoids Species Pack"
+	}
+	possible = {
+		authority = {
+			NOT = {
+				value = auth_machine_intelligence
+			}
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_hive_phobe
+				value = ethic_gestalt_consciousness
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+			NOR = {
+				text = civic_tooltip_not_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_fanatic_purifiers
+				value = civic_hive_devouring_swarm
+				value = civic_agrarian_idyll
+				value = civic_agribusiness
+				value = civic_harm_hive
+				value = civic_closed_collective
+				value = civic_living_hosts
+				value = civic_infestation
+			}
+		}
+	}
+	description = civic_tooltip_syncretic_livestock_lithoid_effects
+	has_secondary_species = {
+		# see game_start.11
+		title = civic_syncretic_evolution_secondary_species
+		traits = {
+			trait = trait_dense
+		}
+	}
+	advanced_start = yes
+	random_weight = {
+		base = 3
+	}
+}
+
+origin_extant_creators = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_extant_creators.dds"
+	picture = GFX_origin_unwashed_masses
+	playable = {
+		host_has_dlc = "Utopia"
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
+	possible = {
+		authority = {
+			value = auth_machine_intelligence
+		}
+		civics = {
+			NOR = {
+				value = civic_machine_terminator
+				value = civic_machine_assimilator
+				value = civic_machine_servitor
+				value = civic_closed_network
+				value = civic_machine_warbots
+				value = civic_hive_subspace_ephapse
+			}
+		}
+	}
+	modifier = {
+		planet_pop_assembly_mult = 0.1
+	}
+	description = civic_tooltip_extant_creators_effects
+	has_secondary_species = {
+		# see game_start.11
+		title = civic_extant_creators_secondary_species
+		traits = {
+		}
+	}
+	advanced_start = yes
+	flags = {
+		custom_start_screen
+	}
+	random_weight = {
+		base = 5
+	}
+}
+origin_sacred_tree = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_tree_of_life.dds"
+	picture = GFX_origin_forest
+	max_once_global = yes
+	playable = {
+		host_has_dlc = "Utopia"
+		host_has_dlc = "Plantoids Species Pack"
+	}
+	possible = {
+		ethics = {
+			NOR = {
+				value = ethic_gestalt_consciousness
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+	}
+	description = "origin_sacred_tree_effects"
+	flags = {
+		custom_start_screen
+	}
+	has_secondary_species = {
+		# see game_start.11
+		title = origin_sacred_tree_secondary_species
+		traits = {
+			trait = trait_hive_mind
+			trait = trait_photosynthetic
+			trait = trait_tree_caretaker
+		}
+	}
+	advanced_start = yes
+	random_weight = {
+		base = 5
+	}
+}
+
+origin_holy_mountain = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_holy_mountain.dds"
+	picture = GFX_origin_holy_mountain
+	max_once_global = yes
+	playable = {
+		host_has_dlc = "Lithoids Species Pack"
+	}
+	possible = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_machine_cult
+			}
+		}
+		species_archetype = {
+			value = LITHOID
+		}
+	}
+	description = "civic_tooltip_holy_mountain_effects"
+	flags = {
+		custom_homeworld_desc
+	}
+	advanced_start = yes
+	random_weight = {
+		base = 25
+	}
+}
+origin_research_coop = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_research_coop.dds"
+	picture = GFX_origin_research_coop
+	max_once_global = yes
+	playable = {
+		host_has_dlc = "Federations"
+	}
+	possible = {
+		authority = {
+			NOT = {
+				value = auth_hive_mind
+			}
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_machine_materialist
+				value = ethic_gestalt_consciousness
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+			NOR = {
+				text = civic_tooltip_not_xenophobe
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_barbaric_despoilers
+				value = civic_fanatic_purifiers
+				value = civic_inwards_perfection
+				value = civic_machine_terminator
+				value = civic_machine_assimilator
+				value = civic_closed_network
+			}
+		}
+	}
+	description = "origin_tooltip_research_coop_effects"
+	flags = {
+		custom_start_screen
+	}
+	traits = {
+	}
+	random_weight = {
+		base = 5
+	}
+}
+
+origin_research_coop_npc = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_research_coop.dds"
+	picture = GFX_origin_research_coop
+	playable = {
+		always = no		# Non-player origin
+	}
+	possible = {
+		authority = {
+			NOT = {
+				value = auth_hive_mind
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_machine_terminator
+				value = civic_machine_assimilator
+				value = civic_closed_network
+			}
+		}
+	}
+	description = origin_tooltip_research_coop_npc_effects
+	random_weight = {
+		base = 0
+	}
+}
+
+origin_private_colony = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_private_colony.dds"
+	picture = GFX_origin_private_colony
+	max_once_global = yes
+	playable = {
+		host_has_dlc = "Megacorp"
+	}
+	possible = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_inwards_perfection
+				value = civic_shared_burden
+				value = civic_criminal_heritage
+			}
+		}
+	}
+	modifier = {
+		trade_value_mult = 0.1
+	}
+	description = "origin_tooltip_private_colony_effects"
+	flags = {
+		custom_start_screen
+	}
+	traits = {
+	}
+	random_weight = {
+		base = 5
+	}
+}
