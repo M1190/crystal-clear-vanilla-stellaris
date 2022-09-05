@@ -718,7 +718,7 @@ origin_ancient_dynasty = {
 			}
 		}
 	}
-	description = "civic_tooltip_ancient_dynasty_effects"
+	description = "origin_tooltip_ancient_dynasty_effects"
 	modifier = {
 		planet_politicians_unity_produces_add = 1
 		planet_nobles_unity_produces_add = 1
@@ -787,7 +787,7 @@ origin_syncretic_equals = {
 			}
 		}
 	}
-	description = civic_tooltip_syncretic_equals_effects
+	description = origin_tooltip_syncretic_equals_effects
 	has_secondary_species = {
 		# see game_start.11
 		title = civic_syncretic_evolution_secondary_species
@@ -846,7 +846,7 @@ origin_syncretic_livestock = {
 			}
 		}
 	}
-	description = civic_tooltip_syncretic_livestock_effects
+	description = origin_tooltip_syncretic_livestock_effects
 	has_secondary_species = {
 		# see game_start.11
 		title = civic_syncretic_evolution_secondary_species
@@ -901,7 +901,7 @@ origin_syncretic_livestock_lithoid = {
 			}
 		}
 	}
-	description = civic_tooltip_syncretic_livestock_lithoid_effects
+	description = origin_tooltip_syncretic_livestock_lithoid_effects
 	has_secondary_species = {
 		# see game_start.11
 		title = civic_syncretic_evolution_secondary_species
@@ -942,7 +942,7 @@ origin_extant_creators = {
 	modifier = {
 		planet_pop_assembly_mult = 0.1
 	}
-	description = civic_tooltip_extant_creators_effects
+	description = origin_tooltip_extant_creators_effects
 	has_secondary_species = {
 		# see game_start.11
 		title = origin_extant_creators_secondary_species
@@ -1456,7 +1456,7 @@ origin_befrienders = {
 			}
 		}
 	}
-	description = "civic_tooltip_befrienders_effects"
+	description = "origin_tooltip_befrienders_effects"
 	modifier = {
 		pop_growth_from_immigration = 0.15
 	}
@@ -1601,7 +1601,7 @@ origin_psionic_heritage = {
 	modifier = {
 		pop_ethic_spiritualist_attraction_mult = 0.3
 	}
-	description = "origin_psionic_heritage_effects"	#through the use of events should also grant the empire Psionic Theory for free. Thanks to Alfray Stryke for letting me see how he modded events for his own God-Emperor civic
+	description = "origin_psionic_heritage_effects"
 }
 
 ## Sapient Intervention
@@ -1676,4 +1676,94 @@ origin_forsaken_empire = {
 		all_technology_research_speed = 0.15
 	}
 	description = "origin_forsaken_empire_effects"
+}
+
+## Empires Expanded mod
+### Seeded Evolution
+origin_shiva = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_shiva_ico.dds"
+	picture = GFX_origin_seeders
+	max_once_global = yes
+	initializers = {
+		qfts_home_system
+	}
+	possible = {
+		authority = {
+			value = auth_hive_mind
+		}
+		civics = {
+			NOT = {
+				value = civic_hive_devouring_swarm
+			}
+		}
+	}
+	description = "origin_tooltip_shiva_effects"
+	flags = {
+		custom_start_screen
+	}
+	traits = {
+		trait = trait_seeded
+	}
+	random_weight = {
+		base = 0
+	}
+}
+
+### Seeded Evolution
+origin_arcology = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_arcology.dds"
+	picture = GFX_origin_arcology
+	starting_colony = pc_city_cep
+	max_once_global = yes
+	non_colonizable_planet_class_neighbor = yes
+	possible = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_agrarian_idyll
+			}
+		}
+		species_archetype = {
+			value = BIOLOGICAL
+		}
+	}
+	description = "origin_tooltip_arcology_effects"
+	flags = {
+		custom_start_screen
+	}
+	advanced_start = yes
+	random_weight = {
+		base = 0
+	}
+}
+
+### Seeded Evolution
+origin_pandemic = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_pandemic.dds"
+	picture = GFX_origin_pandemic
+	max_once_global = yes
+	possible = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	description = "origin_tooltip_pandemic_effects"
+	flags = {
+		custom_start_screen
+	}
+	traits = {
+		trait = trait_plague_ridden
+	}
+	random_weight = {
+		base = 0
+	}
 }
