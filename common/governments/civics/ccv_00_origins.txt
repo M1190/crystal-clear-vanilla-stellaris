@@ -1732,7 +1732,7 @@ origin_shiva = {
 	}
 }
 
-### Seeded Evolution
+### Dwindling Arcologies
 origin_arcology = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origin_arcology.dds"
@@ -1765,7 +1765,7 @@ origin_arcology = {
 	}
 }
 
-### Seeded Evolution
+### Plague-Ridden
 origin_pandemic = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origin_pandemic.dds"
@@ -2081,7 +2081,7 @@ origin_ai_uprising = {
 	}
 }
 
-### AI Uprising
+### Vat Grown
 origin_vat_grown = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origin_vat_grown.dds"
@@ -2286,7 +2286,7 @@ origin_war_of_the_worlds = {
 	}
 }
 
-### War of the Worlds
+### Gray Goo
 origin_gray_goo = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origin_gray_goo.dds"
@@ -2336,7 +2336,7 @@ origin_gpm_death_world = {
 	}
 }
 
-### Death World
+### Rebirth
 origin_gpm_precursor_world = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origin_gpm_precursor_world.dds"
@@ -2355,7 +2355,7 @@ origin_gpm_precursor_world = {
 	}
 }
 
-### Death World
+### Lost Project
 origin_gpm_fallen_empire_colony = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origin_gpm_fallen_empire_colony.dds"
@@ -2371,5 +2371,229 @@ origin_gpm_fallen_empire_colony = {
 	}
 	traits = {
 		trait = trait_gpm_high_status
+	}
+}
+
+## Planetary Diversity mod and submods
+### Infecting Planetary Hive
+origin_pd_hive = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_pd_hive_start.dds"
+	picture = GFX_origin_pd_hive_start
+	description = "origin_tooltip_pd_hive_start_effects"
+	starting_colony = pc_hive
+	habitability_preference = pc_hive
+	max_once_global = yes
+	random_weight = {
+		base = 1
+	}
+	possible = {
+		authority = {
+			value = auth_hive_mind
+		}
+		civics = {
+			value = civic_hive_devouring_swarm
+			NOR = {
+				text = civic_tooltip_not_idyllic_bloom
+				value = civic_hive_idyllic_bloom
+			}
+		}
+	}
+}
+
+### Megaflora Tree of Life
+origin_pd_tree_of_life = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_pd_tol_start.dds"
+	picture = GFX_origin_pd_tol_start
+	description = "origin_tooltip_pd_tree_of_life_start_effects"
+	starting_colony = pc_megaflorahive
+	habitability_preference = pc_megaflora
+	max_once_global = yes
+	random_weight = {
+		base = 1
+	}
+	possible = {
+		authority = {
+			value = auth_hive_mind
+		}
+		civics = {
+			NOR = {
+				text = civic_tooltip_not_idyllic_bloom
+				value = civic_hive_idyllic_bloom
+				value = civic_hive_devouring_swarm
+			}
+		}
+	}
+	flags = {
+		custom_start_screen
+	}
+}
+
+### Aquatic Paradise
+origin_aquatic_paradise = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_ocean_paradise.dds"
+	picture = GFX_origin_aquatic_paradise
+	flags = {
+		custom_start_screen
+	}
+	starting_colony = pc_aquatic
+	habitability_preference = pc_aquatic
+	initializers = {
+		ocean_paradise_start
+	}
+	playable = {
+		has_aquatics = yes
+	}
+	possible = {
+		authority = {
+			NOT = {
+				value = auth_machine_intelligence
+			}
+		}
+	}
+	description = origin_aquatic_paradise_effects
+	traits = {
+		trait = trait_aquatic
+	}
+	advanced_start = yes
+	random_weight = {
+		base = 5
+	}
+}
+
+### Acid Seeders
+origin_pd_acid_seeders = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_pd_acid_seeders.dds"
+	picture = GFX_origin_pd_acid_seeders
+	description = "origin_tooltip_pd_acid_seeders_effects"
+	starting_colony = pc_acid
+	habitability_preference = pc_acid
+	max_once_global = yes
+	random_weight = {
+		base = 1
+	}
+	possible = {
+		authority = {
+			NOT = {
+				value = auth_machine_intelligence
+			}
+		}
+	}
+}
+
+### Radiotrophic Mutants
+origin_pd_radiotrophic_mutants = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_pd_radiotrophic_mutants.dds"
+	picture = GFX_origin_pd_radiotrophic_mutants
+	description = "origin_tooltip_pd_radiotrophic_mutants_effects"
+	starting_colony = pc_irradiated
+	habitability_preference = pc_irradiated
+	max_once_global = yes
+	random_weight = {
+		base = 1
+	}
+	traits = {
+		trait = trait_radiotrophic_mutants
+	}
+	possible = {
+		authority = {
+			NOT = {
+				value = auth_machine_intelligence
+			}
+		}
+	}
+}
+
+### Ash Tectonic Drillers
+origin_pd_ash_tectonic_drillers = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_pd_ash_tectonic_drillers.dds"
+	picture = GFX_origin_pd_ash_tectonic_drillers
+	description = "origin_tooltip_pd_ash_tectonic_drillers_effects"
+	starting_colony = pc_ash
+	habitability_preference = pc_ash
+	max_once_global = yes
+	random_weight = {
+		base = 1
+	}
+}
+
+### Ammonia Rebreathers
+origin_pd_ammonia_breathers = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_pd_ammonia_breathers.dds"
+	picture = GFX_origin_pd_ammonia_breathers
+	description = "origin_origin_pd_ammonia_breathers_effects"
+	starting_colony = pc_ammonia
+	habitability_preference = pc_ammonia
+	max_once_global = yes
+	random_weight = {
+		base = 1
+	}
+	possible = {
+		authority = {
+			NOT = {
+				value = auth_machine_intelligence
+			}
+		}
+	}
+}
+
+### Methane Cryogenics
+origin_pd_methane_cryogenics = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_pd_methane_cryogenics.dds"
+	picture = GFX_origin_pd_methane_cryogenics
+	description = "origin_pd_methane_cryogenics_effects"
+	starting_colony = pc_methane
+	habitability_preference = pc_methane
+	max_once_global = yes
+	random_weight = {
+		base = 1
+	}
+}
+
+### Sulfur Springs
+origin_pd_sulfur_springs = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_pd_sulfur_springs.dds"
+	picture = GFX_origin_pd_sulfur_springs
+	description = "origin_pd_sulfur_springs_effects"
+	starting_colony = pc_sulfur
+	habitability_preference = pc_sulfur
+	max_once_global = yes
+	random_weight = {
+		base = 1
+	}
+}
+
+### Snowball Homeworld
+origin_pd_snowball_earth = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_pd_snowball_start.dds"
+	picture = GFX_origin_pd_snowball_earth
+	description = "origin_tooltip_pd_snowball_earth_effects"
+	random_weight = {
+		base = 1
+	}
+	starting_colony = pc_snowball
+	initializers = {
+		pdsnowball_sol_system_initializer
+		pdsnowbal_system_initializer
+	}
+	habitability_preference = pc_continental
+	possible = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	flags = {
+		custom_start_screen
 	}
 }
