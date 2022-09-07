@@ -2597,3 +2597,206 @@ origin_pd_snowball_earth = {
 		custom_start_screen
 	}
 }
+
+### Planetary Habitats
+origin_pd_sol_hab_start = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_pd_habitat_start.dds"
+	picture = GFX_origin_pd_sol_hab_start
+	description = "origin_tooltip_pd_sol_habitat_start_effects"
+	random_weight = {
+		base = 1
+	}
+	initializers = {
+		pdhabitat_system_initializer
+		pdhabitat_sol_system_initializer
+	}
+	possible = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+}
+
+### Acean Crystal Homeworld
+origin_crystal_world = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_pdcrystal.dds"
+	picture = GFX_origin_pd_crystal
+	starting_colony = pc_crystal
+	habitability_preference = pc_crystal
+	preferred_planet_class_neighbor = no
+	description = "origin_tooltip_crystal_world_effects"
+	initializers = {
+		pd_origin_init_crystal
+	}
+}
+
+### Floating Islands Homeworld
+origin_floating_world = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_pdfloating.dds"
+	picture = GFX_origin_pd_floating
+	starting_colony = pc_floating
+	habitability_preference = pc_floating
+	preferred_planet_class_neighbor = no
+	description = "origin_tooltip_floating_world_effects"
+	initializers = {
+		pd_origin_init_floating
+	}
+}
+
+### The Graveyard of the Tiyanki
+origin_graveyard_world = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_pdgraveyard.dds"
+	picture = GFX_origin_pd_graveyard
+	starting_colony = pc_graveyard
+	habitability_preference = pc_graveyard
+	preferred_planet_class_neighbor = no
+	description = "origin_tooltip_graveyard_world_effects"
+	initializers = {
+		pd_origin_init_graveyard
+	}
+}
+
+### The Children of Unit 04
+origin_techno_world = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_pdtechno.dds"
+	picture = GFX_origin_pd_techno
+	starting_colony = pc_technoorganic
+	habitability_preference = pc_technoorganic
+	preferred_planet_class_neighbor = no
+	description = "origin_tooltip_techno_world_effects"
+	initializers = {
+		pd_origin_init_technoorganic
+	}
+	traits = {
+		trait = trait_organic_fourschildren
+	}
+	possible = {
+		authority = {
+			NOT = {
+				value = auth_machine_intelligence
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_fanatic_purifiers
+			}
+			NOT = {
+				value = civic_barbaric_despoilers
+			}
+			NOT = {
+				value = civic_hive_devouring_swarm
+			}
+		}
+		species_archetype = {
+			NOT = {
+				value = LITHOID
+			}
+		}
+	}
+	flags = {
+		custom_start_screen
+	}
+}
+
+### The Archive of the Iarkans
+origin_archive_world = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_pdarchive.dds"
+	picture = GFX_origin_pd_archive
+	starting_colony = pc_archive
+	description = "origin_tooltip_archive_world_effects"
+	possible = {
+		authority = {
+			NOT = {
+				value = auth_hive_mind
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_fanatic_purifiers
+			}
+			NOT = {
+				value = civic_barbaric_despoilers
+			}
+			NOT = {
+				value = civic_machine_terminator
+			}
+			NOT = {
+				value = civic_machine_servitor
+			}
+			NOT = {
+				value = civic_machine_assimilator
+			}
+		}
+	}
+	initializers = {
+		pd_origin_init_archive
+	}
+	flags = {
+		custom_start_screen
+	}
+}
+
+### From The Ashes of the Rusnads
+origin_crucible_world = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_pd_crucible.dds"
+	picture = GFX_origin_pd_crucible_start
+	preferred_planet_class_neighbor = no
+	description = "origin_tooltip_crucible_world_effects"
+	initializers = {
+		pd_origin_init_crucible
+	}
+	flags = {
+		custom_start_screen
+	}
+	possible = {
+		authority = {
+			NOT = {
+				value = auth_machine_intelligence
+			}
+			NOT = {
+				value = auth_hive_mind
+			}
+		}
+	}
+}
+
+### Shroud-Touched
+origin_pd_shroud = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_pd_shroud_start.dds"
+	picture = GFX_origin_pd_shroud_start
+	description = "origin_tooltip_pd_shroud_start_effects"
+	starting_colony = pc_pdshroud
+	habitability_preference = pc_pdshroud
+	preferred_planet_class_neighbor = no
+	max_once_global = yes
+	random_weight = {
+		base = 1
+	}
+	possible = {
+		species_archetype = {
+			OR = {
+				value = BIOLOGICAL
+				value = LITHOID
+			}
+		}
+		ethics = {
+			OR = {
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+	}
+	traits = {
+		trait = trait_latent_psionic
+	}
+}
