@@ -10,6 +10,6 @@ tags={
 }
 name="Crystal Clear Vanilla"
 picture="thumbnail.png"
-supported_version="3.4.*"
+supported_version="3.5.*"
 path="C:/Users/ivana/Documents/Paradox Interactive/Stellaris/mod/crystal-clear-vanilla-stellaris"
 remote_file_id="2818809693"
